@@ -1,18 +1,15 @@
-import './globals.css'
+import { ReactNode } from "react";
+import Header from "@/components/header/Header";
+import "./globals.css";
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      {/*
-        <head /> will contain the components returned by the nearest parent
-        head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
-      */}
       <head />
-      <body>{children}</body>
+      <body className="h-screen bg-neutral-500">
+        <Header />
+        {children}
+      </body>
     </html>
-  )
+  );
 }

@@ -1,0 +1,113 @@
+<mj-column width="70px">
+  <mj-button
+    align="center"
+    font-family="Helvetica"
+    background-color="#000000"
+    color="#ffffff"
+    font-size="14px"
+    font-weight="600"
+    line-height="20px"
+    border-radius="50px"
+    inner-padding="6px 10px"
+    padding="0px"
+  >
+    Badge
+  </mj-button>
+</mj-column>
+<mj-column width="70px">
+  <mj-button
+    align="center"
+    font-family="Helvetica"
+    background-color="#F1F5F9"
+    color="#64748B"
+    font-size="14px"
+    font-weight="600"
+    line-height="20px"
+    border-radius="50px"
+    inner-padding="6px 10px"
+    padding="0px"
+  >
+    Badge
+  </mj-button>
+</mj-column>
+<mj-column width="70px">
+  <mj-button
+    align="center"
+    font-family="Helvetica"
+    background-color="#ffffff"
+    color="#64748B"
+    font-size="14px"
+    font-weight="600"
+    line-height="20px"
+    border-radius="50px"
+    inner-padding="5.5px 9.5px"
+    padding="0px"
+    border="1px solid #E2E8F0"
+  >
+    Badge
+  </mj-button>
+</mj-column>
+<mj-column width="70px">
+  <mj-button
+    align="center"
+    font-family="Helvetica"
+    background-color="#F0FDF4"
+    color="#22C55E"
+    font-size="14px"
+    font-weight="600"
+    line-height="20px"
+    border-radius="50px"
+    inner-padding="6px 10px"
+    padding="0px"
+  >
+    Badge
+  </mj-button>
+</mj-column>
+<mj-column width="70px">
+  <mj-button
+    align="center"
+    font-family="Helvetica"
+    background-color="#FFFBEB"
+    color="#F59E0B"
+    font-size="14px"
+    font-weight="600"
+    line-height="20px"
+    border-radius="50px"
+    inner-padding="6px 10px"
+    padding="0px"
+  >
+    Badge
+  </mj-button>
+</mj-column>
+<mj-column width="70px">
+  <mj-button
+    align="center"
+    font-family="Helvetica"
+    background-color="#FEF2F2"
+    color="#DC2626"
+    font-size="14px"
+    font-weight="600"
+    line-height="20px"
+    border-radius="50px"
+    inner-padding="6px 10px"
+    padding="0px"
+  >
+    Badge
+  </mj-button>
+</mj-column>
+<mj-column width="70px">
+  <mj-button
+    align="center"
+    font-family="Helvetica"
+    background-color="#EFF6FF"
+    color="#2563EB"
+    font-size="14px"
+    font-weight="600"
+    line-height="20px"
+    border-radius="50px"
+    inner-padding="6px 10px"
+    padding="0px"
+  >
+    Badge
+  </mj-button>
+</mj-column>
