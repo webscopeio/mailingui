@@ -1,0 +1,12 @@
+<mj-column>
+  <mj-text font-size="18px">1. Lorem ipsum dolor sit amet</mj-text>
+  <mj-text font-size="18px">2. Senectus et netus et malesuada fames</mj-text>
+  <mj-text font-size="18px"
+    >3. Habitant morbi tristique senectus et netus</mj-text
+  >
+  <mj-text font-size="18px">4. Lorem sed risus ultricies tristique</mj-text>
+  <mj-text font-size="18px">5. Sed cras ornare arcu dui vivamus</mj-text>
+  <mj-text font-size="18px"
+    >6. A iaculis at erat pellentesque adipiscing</mj-text
+  >
+</mj-column>

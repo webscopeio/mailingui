@@ -116,5 +116,60 @@ export const templates = {
       mjmlCode: "/templates/lists/vertical-left-list/MjmlCode.mjml",
       htmlPreview: "/templates/lists/vertical-left-list/HtmlPreview.html",
     },
+    bulletPointList: {
+      title: "Bullet point list",
+      htmlCode: "/templates/lists/bullet-point-list/HtmlCode.html",
+      mjmlCode: "/templates/lists/bullet-point-list/MjmlCode.mjml",
+      htmlPreview: "/templates/lists/bullet-point-list/HtmlPreview.html",
+    },
+    bulletNumberList: {
+      title: "Bullet number list",
+      htmlCode: "/templates/lists/bullet-number-list/HtmlCode.html",
+      mjmlCode: "/templates/lists/bullet-number-list/MjmlCode.mjml",
+      htmlPreview: "/templates/lists/bullet-number-list/HtmlPreview.html",
+    },
+  },
+  emojies: {
+    basic: {
+      title: "Basic emojies",
+      htmlCode: "/templates/emojies/basic-emojies/HtmlCode.html",
+      mjmlCode: "/templates/emojies/basic-emojies/MjmlCode.mjml",
+      htmlPreview: "/templates/emojies/basic-emojies/HtmlPreview.html",
+    },
+    basicBackground: {
+      title: "Basic emojies with background",
+      htmlCode: "/templates/emojies/basic-emojies-background/HtmlCode.html",
+      mjmlCode: "/templates/emojies/basic-emojies-background/MjmlCode.mjml",
+      htmlPreview:
+        "/templates/emojies/basic-emojies-background/HtmlPreview.html",
+    },
+  },
+  banners: {
+    titleButton: {
+      title: "Title with button",
+      htmlCode: "/templates/banners/title-button-banner/HtmlCode.html",
+      mjmlCode: "/templates/banners/title-button-banner/MjmlCode.mjml",
+      htmlPreview: "/templates/banners/title-button-banner/HtmlPreview.html",
+    },
+    titleCenter: {
+      title: "Title center",
+      htmlCode: "/templates/banners/title-banner-center/HtmlCode.html",
+      mjmlCode: "/templates/banners/title-banner-center/MjmlCode.mjml",
+      htmlPreview: "/templates/banners/title-banner-center/HtmlPreview.html",
+    },
+    titleButtonLarge: {
+      title: "Title with button large",
+      htmlCode: "/templates/banners/title-button-banner-large/HtmlCode.html",
+      mjmlCode: "/templates/banners/title-button-banner-large/MjmlCode.mjml",
+      htmlPreview:
+        "/templates/banners/title-button-banner-large/HtmlPreview.html",
+    },
+    titleBottomlarge: {
+      title: "Title bottom large",
+      htmlCode: "/templates/banners/title-banner-bottom-large/HtmlCode.html",
+      mjmlCode: "/templates/banners/title-banner-bottom-large/MjmlCode.mjml",
+      htmlPreview:
+        "/templates/banners/title-banner-bottom-large/HtmlPreview.html",
+    },
   },
 };
