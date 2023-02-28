@@ -91,7 +91,7 @@ export const templates = {
         "/templates/dividers/solid-divider-text-center/HtmlPreview.html",
     },
   },
-  list: {
+  lists: {
     horizontaCenter: {
       title: "Horizontal center list",
       htmlCode: "/templates/lists/horizontal-center-list/HtmlCode.html",
