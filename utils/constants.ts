@@ -172,4 +172,60 @@ export const templates = {
         "/templates/banners/title-banner-bottom-large/HtmlPreview.html",
     },
   },
+  heroes: {
+    empty: {
+      title: "Empty hero",
+      htmlCode: "/templates/heroes/empty-hero/HtmlCode.html",
+      htmlPreview: "/templates/heroes/empty-hero/HtmlPreview.html",
+      reactEmailCode: "/templates/heroes/empty-hero/ReactEmailCode.tsx",
+    },
+    topLeftIcon: {
+      title: "Top left icon",
+      htmlCode: "/templates/heroes/top-left-icon-hero/HtmlCode.html",
+      htmlPreview: "/templates/heroes/top-left-icon-hero/HtmlPreview.html",
+      reactEmailCode: "/templates/heroes/top-left-icon-hero/ReactEmailCode.tsx",
+    },
+    topCenterIcon: {
+      title: "Top center icon",
+      htmlCode: "/templates/heroes/top-center-icon-hero/HtmlCode.html",
+      htmlPreview: "/templates/heroes/top-center-icon-hero/HtmlPreview.html",
+      reactEmailCode:
+        "/templates/heroes/top-center-icon-hero/ReactEmailCode.tsx",
+    },
+    fadeTopCenterIcon: {
+      title: "Fade top center icon",
+      htmlCode: "/templates/heroes/fade-top-center-icon-hero/HtmlCode.html",
+      htmlPreview:
+        "/templates/heroes/fade-top-center-icon-hero/HtmlPreview.html",
+      reactEmailCode:
+        "/templates/heroes/fade-top-center-icon-hero/ReactEmailCode.tsx",
+    },
+    paddingBlack: {
+      title: "Padding black",
+      htmlCode: "/templates/heroes/padding-black-hero/HtmlCode.html",
+      htmlPreview: "/templates/heroes/padding-black-hero/HtmlPreview.html",
+      reactEmailCode: "/templates/heroes/padding-black-hero/ReactEmailCode.tsx",
+    },
+    paddingWhite: {
+      title: "Padding white",
+      htmlCode: "/templates/heroes/padding-white-hero/HtmlCode.html",
+      htmlPreview: "/templates/heroes/padding-white-hero/HtmlPreview.html",
+      reactEmailCode: "/templates/heroes/padding-white-hero/ReactEmailCode.tsx",
+    },
+  },
+  icons: {
+    brand: {
+      title: "Brand icons",
+      htmlCode: "/templates/icons/brand-icons/HtmlCode.html",
+      reactEmailCode: "/templates/icons/brand-icons/ReactEmailCode.tsx",
+      htmlPreview: "/templates/icons/brand-icons/HtmlPreview.html",
+    },
+    brandBackground: {
+      title: "Brand icons with background",
+      htmlCode: "/templates/icons/brand-icons-background/HtmlCode.html",
+      reactEmailCode:
+        "/templates/icons/brand-icons-background/ReactEmailCode.tsx",
+      htmlPreview: "/templates/icons/brand-icons-background/HtmlPreview.html",
+    },
+  },
 };
