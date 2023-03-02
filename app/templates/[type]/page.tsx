@@ -1,4 +1,4 @@
-import fs from "fs";
+import { readFileSync } from "fs";
 import TemplateTypeList from "@/components/templateTypeList/TemplateTypeList";
 import { templates } from "@/utils/constants";
 
@@ -18,34 +18,26 @@ type Template = {
 };
 
 async function getTemplates(type: Params["type"]) {
-  const rootPath = process.cwd();
   return {
     type: type,
     templates: (await Promise.all(
-      Object.values(templates[type]).map(async ({ title, ...paths }) => {
-        return {
-          title,
-          ...(
-            await Promise.all(
-              Object.entries(paths).map(async ([key, path]) => {
-                if (path) {
-                  try {
-                    const data = await fs.promises.readFile(
-                      `${rootPath}${path}`,
-                      "utf8"
-                    );
-                    return { [key]: data };
-                  } catch (err) {
-                    throw err;
+      templates[type]
+        ? Object.values(templates[type]).map(({ title, ...paths }) => {
+            return {
+              title,
+              ...Object.entries(paths)
+                .map(([key, path]) => {
+                  if (path) {
+                    const fileContent = readFileSync(path, "utf8");
+                    return { [key]: fileContent };
                   }
-                }
-              })
-            )
-          ).reduce((acc, curr) => {
-            return { ...acc, ...curr };
-          }, {}),
-        };
-      })
+                })
+                .reduce((acc, curr) => {
+                  return { ...acc, ...curr };
+                }, {}),
+            };
+          })
+        : []
     )) as Template[],
   };
 }
@@ -53,4 +45,9 @@ async function getTemplates(type: Params["type"]) {
 export default async function TemplateType({ params: { type } }: Props) {
   const { templates } = await getTemplates(type);
   return <TemplateTypeList templates={templates} type={type} />;
+}
+
+export async function generateStaticParams() {
+  const templateTypes = Object.keys(templates) as Params["type"][];
+  return templateTypes.map((type) => ({ type }));
 }
