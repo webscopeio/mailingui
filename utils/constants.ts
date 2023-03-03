@@ -1,3 +1,12 @@
+import Heroes from "/public/static/images/components-preview/heroes.png";
+import Listing from "/public/static/images/components-preview/listing.png";
+import Badges from "/public/static/images/components-preview/badges.png";
+import Buttons from "/public/static/images/components-preview/buttons.png";
+import Emojis from "/public/static/images/components-preview/emojis.png";
+import SocialIcons from "/public/static/images/components-preview/social_icons.png";
+import Paragraphs from "/public/static/images/components-preview/paragraphs.png";
+import Dividers from "/public/static/images/components-preview/dividers.png";
+
 import MjmlIcon from "/public/static/icons/mjml.png";
 import ReactIcon from "/public/static/icons/react.png";
 import HtmlIcon from "/public/static/icons/html.png";
@@ -232,6 +241,49 @@ export const templates = {
     },
   },
 };
+
+export const componentList = [
+  {
+    image: Heroes,
+    title: "Hero section",
+    subtitle: "Lorem ipsum dolor sit amet",
+  },
+  {
+    image: Listing,
+    title: "Listing",
+    subtitle: "Lorem ipsum dolor sit amet",
+  },
+  {
+    image: Badges,
+    title: "Badges",
+    subtitle: "Lorem ipsum dolor sit amet",
+  },
+  {
+    image: Buttons,
+    title: "Buttons",
+    subtitle: "Lorem ipsum dolor sit amet",
+  },
+  {
+    image: Emojis,
+    title: "Emoji",
+    subtitle: "Lorem ipsum dolor sit amet",
+  },
+  {
+    image: SocialIcons,
+    title: "Social icons",
+    subtitle: "Lorem ipsum dolor sit amet",
+  },
+  {
+    image: Paragraphs,
+    title: "Paragraph",
+    subtitle: "Lorem ipsum dolor sit amet",
+  },
+  {
+    image: Dividers,
+    title: "Dividers",
+    subtitle: "Lorem ipsum dolor sit amet",
+  },
+];
 
 export const emailTypes = [
   {
