@@ -5,7 +5,8 @@ type Props = {
   title: string;
   htmlPreview: string;
   htmlCode: string;
-  mjmlCode: string;
+  mjmlCode?: string;
+  reactEmailCode?: string;
 };
 
 export default function TemplateTypeItem({
@@ -13,6 +14,7 @@ export default function TemplateTypeItem({
   htmlPreview,
   htmlCode,
   mjmlCode,
+  reactEmailCode,
 }: Props) {
   const [showPreview, setShowPreview] = useState(true);
   const [codeType, setCodeType] = useState<"html" | "mjml">("html");
@@ -44,7 +46,10 @@ export default function TemplateTypeItem({
             onChange={(e) => setCodeType(e.target.value as "html" | "mjml")}
           >
             <option value="html">HTML</option>
-            <option value="mjml">MJML</option>
+            {!!mjmlCode && <option value="mjml">MJML</option>}
+            {!!reactEmailCode && (
+              <option value="react email">React Email</option>
+            )}
           </select>
         </div>
       </div>
@@ -66,7 +71,11 @@ export default function TemplateTypeItem({
           <div className="mt-4 focus:outline-none">
             <pre className="flex overflow-auto bg-slate-800 rounded-b-lg text-sm leading-[1.5714285714] text-white sm:rounded-t-lg language-htm">
               <code className="p-4 w-5/6">
-                {codeType === "html" ? htmlCode : mjmlCode}
+                {codeType === "html"
+                  ? htmlCode
+                  : codeType === "mjml"
+                  ? mjmlCode
+                  : reactEmailCode}
               </code>
             </pre>
           </div>

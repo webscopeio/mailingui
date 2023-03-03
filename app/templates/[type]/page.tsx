@@ -14,7 +14,8 @@ type Template = {
   title: string;
   htmlPreview: string;
   htmlCode: string;
-  mjmlCode: string;
+  mjmlCode?: string;
+  reactEmailCode?: string;
 };
 
 async function getTemplates(type: Params["type"]) {
