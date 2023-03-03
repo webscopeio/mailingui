@@ -1,3 +1,7 @@
+import MjmlIcon from "/public/static/icons/mjml.png";
+import ReactIcon from "/public/static/icons/react.png";
+import HtmlIcon from "/public/static/icons/html.png";
+
 export const templates = {
   buttons: {
     primary: {
@@ -228,3 +232,18 @@ export const templates = {
     },
   },
 };
+
+export const emailTypes = [
+  {
+    name: "MJML",
+    icon: MjmlIcon,
+  },
+  {
+    name: "React",
+    icon: ReactIcon,
+  },
+  {
+    name: "HTML",
+    icon: HtmlIcon,
+  },
+];
