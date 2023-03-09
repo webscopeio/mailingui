@@ -1,4 +1,4 @@
-import { emailTypes } from "@/utils/constants";
+import { emailCodeTypes } from "@/utils/constants";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -7,7 +7,7 @@ export default function Greetings() {
     <section className="flex items-center justify-center gap-4 pt-3 max-lg:flex-col">
       <div className="flex max-w-[40%] flex-col justify-center max-lg:max-w-[90%]">
         <div className="flex gap-3 text-neutral-500 max-sm:justify-center">
-          {emailTypes.map(({ name, icon }) => (
+          {emailCodeTypes.map(({ name, icon }) => (
             <div
               key={name}
               className="flex gap-2 rounded-3xl bg-dark-900 py-2 px-4"
@@ -31,7 +31,7 @@ export default function Greetings() {
             </button>
           </Link>
           <Link
-            href="/templates"
+            href="/components"
             className="text-base font-medium hover:opacity-70"
           >
             Explore components

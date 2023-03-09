@@ -25,7 +25,7 @@ export default function Header() {
 
       <ul className="flex items-center justify-between gap-8">
         <li>
-          <Link href="/templates" className={linkStyles("/templates")}>
+          <Link href="/components" className={linkStyles("/components")}>
             Components
           </Link>
         </li>
