@@ -21,6 +21,7 @@
     "typescript": "4.9.5"
   },
   "devDependencies": {
+    "@svgr/webpack": "^6.5.1",
     "@webscopeio/eslint-config": "^2.0.1",
     "autoprefixer": "^10.4.13",
     "cz-conventional-changelog": "^3.3.0",
