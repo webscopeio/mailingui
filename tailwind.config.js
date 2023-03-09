@@ -12,6 +12,8 @@ module.exports = {
     extend: {
       backgroundImage: {
         "costomizable-hero": "url('/static/images/customizable_hero.png')",
+        "pink-to-purple-gradient":
+          "linear-gradient(85.07deg, #C81679 0%, #7D4BF9 100%);",
       },
     },
     colors: {
@@ -19,6 +21,7 @@ module.exports = {
       white: "#ffffff",
       black: "#000000",
       neutral: {
+        400: "#A3A3A3",
         500: "#737373",
       },
       dark: {
