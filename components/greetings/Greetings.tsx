@@ -39,7 +39,7 @@ export default function Greetings() {
         </div>
       </div>
       <div className="max-sm:min-w-300 h-[660px] w-[30vw] min-w-[420px] rounded-t-[40px] bg-gradient-to-b from-dark-800 via-dark-950 to-black p-6  max-lg:mt-8 max-lg:w-[60vw] max-sm:w-[90%] max-sm:min-w-[0] max-sm:p-5">
-        <div className="flex h-[210px] w-[115%] items-center justify-center rounded-2xl bg-costomizable-hero bg-cover  max-sm:w-auto">
+        <div className="bg-customizable-hero flex h-[210px] w-[115%] items-center justify-center rounded-2xl bg-cover  max-sm:w-auto">
           <h2 className="align-middle text-2xl max-sm:text-lg">
             Customizable hero image
           </h2>
