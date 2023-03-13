@@ -1,3 +1,4 @@
+// component images
 import Heroes from "/public/static/images/components-preview/heroes.png";
 import Listing from "/public/static/images/components-preview/listing.png";
 import Badges from "/public/static/images/components-preview/badges.png";
@@ -6,6 +7,14 @@ import Emojis from "/public/static/images/components-preview/emojis.png";
 import SocialIcons from "/public/static/images/components-preview/social_icons.png";
 import Paragraphs from "/public/static/images/components-preview/paragraphs.png";
 import Dividers from "/public/static/images/components-preview/dividers.png";
+
+// template images
+import Espace from "public/static/images/templates-preview/espace.png";
+import Giola from "public/static/images/templates-preview/giola.png";
+import Viola from "public/static/images/templates-preview/viola.png";
+import Finanza from "public/static/images/templates-preview/finanza.png";
+import Bianco from "public/static/images/templates-preview/bianco.png";
+import Olivio from "public/static/images/templates-preview/olivio.png";
 
 import MjmlIcon from "/public/static/icons/mjml.png";
 import ReactIcon from "/public/static/icons/react.png";
@@ -333,6 +342,147 @@ export const emailComponents = [
           "email-components/banners/title-banner-bottom-large/MjmlCode.mjml",
         htmlPreview:
           "email-components/banners/title-banner-bottom-large/HtmlPreview.html",
+      },
+    ],
+  },
+];
+
+export const emailTemplates = [
+  {
+    title: "Espace",
+    image: Espace,
+    type: "espace",
+    templates: [
+      {
+        title: "Reset password",
+        route: "reset-password",
+        desktopPreview:
+          "email-templates/espace/reset-password/desktopPreview.html",
+        mobilePreview:
+          "email-templates/espace/reset-password/mobilePreview.html",
+      },
+      {
+        title: "Booking confirmation",
+        route: "booking-confirmation",
+        desktopPreview:
+          "email-templates/espace/booking-confirmation/desktopPreview.html",
+        mobilePreview:
+          "email-templates/espace/booking-confirmation/mobilePreview.html",
+      },
+    ],
+  },
+  {
+    title: "Giola",
+    image: Giola,
+    type: "giola",
+    templates: [
+      {
+        title: "Reset password",
+        route: "reset-password",
+        desktopPreview:
+          "email-templates/giola/reset-password/desktopPreview.html",
+        mobilePreview:
+          "email-templates/giola/reset-password/mobilePreview.html",
+      },
+      {
+        title: "Booking confirmation",
+        route: "booking-confirmation",
+        desktopPreview:
+          "email-templates/giola/booking-confirmation/desktopPreview.html",
+        mobilePreview:
+          "email-templates/giola/booking-confirmation/mobilePreview.html",
+      },
+    ],
+  },
+  {
+    title: "Viola",
+    image: Viola,
+    type: "viola",
+    templates: [
+      {
+        title: "Reset password",
+        route: "reset-password",
+        desktopPreview:
+          "email-templates/viola/reset-password/desktopPreview.html",
+        mobilePreview:
+          "email-templates/viola/reset-password/mobilePreview.html",
+      },
+      {
+        title: "Booking confirmation",
+        route: "booking-confirmation",
+        desktopPreview:
+          "email-templates/viola/booking-confirmation/desktopPreview.html",
+        mobilePreview:
+          "email-templates/viola/booking-confirmation/mobilePreview.html",
+      },
+    ],
+  },
+  {
+    title: "Finanza",
+    image: Finanza,
+    type: "finanza",
+    templates: [
+      {
+        title: "Reset password",
+        route: "reset-password",
+        desktopPreview:
+          "email-templates/finanza/reset-password/desktopPreview.html",
+        mobilePreview:
+          "email-templates/finanza/reset-password/mobilePreview.html",
+      },
+      {
+        title: "Booking confirmation",
+        route: "booking-confirmation",
+        desktopPreview:
+          "email-templates/finanza/booking-confirmation/desktopPreview.html",
+        mobilePreview:
+          "email-templates/finanza/booking-confirmation/mobilePreview.html",
+      },
+    ],
+  },
+  {
+    title: "Bianco",
+    image: Bianco,
+    type: "bianco",
+    templates: [
+      {
+        title: "Reset password",
+        route: "reset-password",
+        desktopPreview:
+          "email-templates/bianco/reset-password/desktopPreview.html",
+        mobilePreview:
+          "email-templates/bianco/reset-password/mobilePreview.html",
+      },
+      {
+        title: "Booking confirmation",
+        route: "booking-confirmation",
+        desktopPreview:
+          "email-templates/bianco/booking-confirmation/desktopPreview.html",
+        mobilePreview:
+          "email-templates/bianco/booking-confirmation/mobilePreview.html",
+      },
+    ],
+  },
+  {
+    title: "Olivio",
+    image: Olivio,
+    type: "olivio",
+    templates: [
+      {
+        title: "Reset password",
+        route: "reset-password",
+        desktopPreview:
+          "email-templates/olivio/reset-password/desktopPreview.html",
+        mobilePreview:
+          "email-templates/olivio/reset-password/mobilePreview.html",
+      },
+      {
+        title: "Booking confirmation",
+        route: "booking-confirmation",
+        desktopPreview:
+          "email-templates/olivio/booking-confirmation/desktopPreview.html",
+        mobilePreview:
+          "email-templates/olivio/booking-confirmation/mobilePreview.html",
       },
     ],
   },

@@ -17,7 +17,7 @@ export default function Home() {
       />
       <HomePreview
         PreviewElement={TemplatesPreview}
-        linkHref="/components"
+        linkHref="/templates"
         buttonTitle="Explore Templates"
         title="Explore the templates and choose yours"
         previewType="templates"
