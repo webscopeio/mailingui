@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import Logo from "public/static/images/logo.png";
 import Instagram from "public/static/icons/instagram.png";
 import Github from "public/static/icons/github.png";

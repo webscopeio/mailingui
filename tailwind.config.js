@@ -1,3 +1,4 @@
+const colors = require("tailwindcss/colors");
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -11,16 +12,14 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        "costomizable-hero": "url('/static/images/customizable_hero.png')",
+        "customizable-hero": "url('/static/images/customizable_hero.png')",
       },
     },
     colors: {
       transparent: "transparent",
       white: "#ffffff",
       black: "#000000",
-      neutral: {
-        500: "#737373",
-      },
+      neutral: colors.neutral,
       dark: {
         100: "#5C5C5C",
         300: "#474747",
