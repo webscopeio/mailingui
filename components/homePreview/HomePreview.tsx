@@ -1,7 +1,7 @@
-import Link from "next/link";
+import PrimaryLink from "../primaryLink/PrimaryLink";
 
 type Props = {
-  PreviewElement: React.FC;
+  children: React.ReactNode;
   linkHref: string;
   buttonTitle: string;
   title: string;
@@ -9,7 +9,7 @@ type Props = {
 };
 
 export default function HomePreview({
-  PreviewElement,
+  children,
   linkHref,
   buttonTitle,
   title,
@@ -29,12 +29,10 @@ export default function HomePreview({
           {title}
         </h2>
       </div>
-      <PreviewElement />
-      <Link href={linkHref}>
-        <button className="mt-10 rounded-xl bg-white py-4 px-14 text-base font-medium text-black hover:opacity-70 max-md:py-2 max-md:px-3">
-          {buttonTitle}
-        </button>
-      </Link>
+      {children}
+      <PrimaryLink href={linkHref} className="mt-10">
+        {buttonTitle}
+      </PrimaryLink>
     </section>
   );
 }

@@ -1,6 +1,7 @@
-import { emailTypes } from "@/utils/constants";
 import Image from "next/image";
 import Link from "next/link";
+import PrimaryLink from "../primaryLink/PrimaryLink";
+import { emailTypes } from "@/utils/constants";
 
 export default function Greetings() {
   return (
@@ -25,11 +26,9 @@ export default function Greetings() {
           eiusmod tempor.
         </p>
         <div className="mt-8 flex items-center gap-8 max-sm:justify-center">
-          <Link href="/build">
-            <button className="rounded-xl bg-white py-4 px-6 text-base font-medium text-black hover:opacity-70 max-sm:py-2 max-sm:px-3">
-              Build an email
-            </button>
-          </Link>
+          <PrimaryLink href="/build" className="md:px-6">
+            Build an email
+          </PrimaryLink>
           <Link
             href="/templates"
             className="text-base font-medium hover:opacity-70"
@@ -38,8 +37,8 @@ export default function Greetings() {
           </Link>
         </div>
       </div>
-      <div className="max-sm:min-w-300 h-[660px] w-[30vw] min-w-[420px] rounded-t-[40px] bg-gradient-to-b from-dark-800 via-dark-950 to-black p-6  max-lg:mt-8 max-lg:w-[60vw] max-sm:w-[90%] max-sm:min-w-[0] max-sm:p-5">
-        <div className="flex h-[210px] w-[115%] items-center justify-center rounded-2xl bg-costomizable-hero bg-cover  max-sm:w-auto">
+      <div className="h-[660px] w-[30vw] min-w-[420px] rounded-t-[40px] bg-gradient-to-b from-dark-800 via-dark-950 to-black p-6 max-lg:mt-8 max-lg:w-[60vw] max-sm:w-[90%] max-sm:min-w-[0] max-sm:p-5">
+        <div className="flex h-[210px] w-[115%] items-center justify-center rounded-2xl bg-customizable-hero bg-cover  max-sm:w-auto">
           <h2 className="align-middle text-2xl max-sm:text-lg">
             Customizable hero image
           </h2>
