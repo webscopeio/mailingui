@@ -22,9 +22,11 @@ export default function ComponentsTypeList({ components, title }: Props) {
               key={title}
               title={title}
               htmlPreview={htmlPreview}
-              htmlCode={htmlCode}
-              mjmlCode={mjmlCode}
-              reactEmailCode={reactEmailCode}
+              emailCodes={{
+                htmlCode,
+                mjmlCode,
+                reactEmailCode,
+              }}
             />
           );
         }
