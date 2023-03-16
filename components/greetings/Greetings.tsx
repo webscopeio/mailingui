@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import PrimaryLink from "../primaryLink/PrimaryLink";
-import { emailTypes } from "@/utils/constants";
+import { emailCodeTypes } from "@/utils/constants";
 
 export default function Greetings() {
   return (
