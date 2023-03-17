@@ -1,6 +1,7 @@
 import { readFileSync } from "fs";
 import ComponentsTypeList from "@/components/componentsTypeList/ComponentsTypeList";
 import { emailComponents } from "@/utils/constants";
+import { EmailComponent } from "@/utils/types";
 
 type Props = {
   params: {
@@ -8,26 +9,17 @@ type Props = {
   };
 };
 
-type Component = {
-  title: string;
-  htmlPreview: string;
-  htmlCode: string;
-  mjmlCode?: string;
-  reactEmailCode?: string;
-};
-
-async function getComponents(type: string) {
+function getComponents(type: string) {
   const componentType = emailComponents.find(
     (component) => component.type === type
   );
-
-  if (!componentType)
-    return Promise.reject(new Error("No component type found"));
-
+  if (!componentType) {
+    throw new Error("No component type found");
+  }
   return {
     title: componentType.title,
-    components: (await Promise.all(
-      componentType.components.map(({ title, ...paths }: Component) => {
+    components: componentType.components.map(
+      ({ title, ...paths }: EmailComponent) => {
         return {
           title,
           ...Object.entries(paths)
@@ -41,16 +33,16 @@ async function getComponents(type: string) {
               return { ...acc, ...curr };
             }, {}),
         };
-      })
-    )) as Component[],
+      }
+    ) as EmailComponent[],
   };
 }
 
-export default async function ComponentType({ params: { type } }: Props) {
-  const { components, title } = await getComponents(type);
+export default function ComponentType({ params: { type } }: Props) {
+  const { components, title } = getComponents(type);
   return <ComponentsTypeList components={components} title={title} />;
 }
 
-export async function generateStaticParams() {
+export function generateStaticParams() {
   return emailComponents.map((item) => ({ type: item.type }));
 }

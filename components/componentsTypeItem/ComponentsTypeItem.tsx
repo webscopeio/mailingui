@@ -1,27 +1,22 @@
 "use client";
 import { useState } from "react";
 import ComponentOptions from "../componentOptions/ComponentOptions";
+import { CodeType, EmailCodes } from "@/utils/types";
 
 type Props = {
   title: string;
   htmlPreview: string;
-  htmlCode: string;
-  mjmlCode?: string;
-  reactEmailCode?: string;
+  emailCodes: EmailCodes;
 };
 
 export default function ComponentsTypeItem({
   title,
   htmlPreview,
-  htmlCode,
-  mjmlCode,
-  reactEmailCode,
+  emailCodes,
 }: Props) {
   const [showPreview, setShowPreview] = useState(true);
   const [showOptions, setShowOptions] = useState(false);
-  const [codeType, setCodeType] = useState<"html" | "mjml" | "react email">(
-    "html"
-  );
+  const [codeType, setCodeType] = useState<CodeType>("htmlCode");
 
   return (
     <div className="mx-4 my-10 flex w-full flex-col">
@@ -34,9 +29,7 @@ export default function ComponentsTypeItem({
               setShowPreview={setShowPreview}
               codeType={codeType}
               setCodeType={setCodeType}
-              mjmlCode={mjmlCode}
-              reactEmailCode={reactEmailCode}
-              htmlCode={htmlCode}
+              emailCodes={emailCodes}
             />
           ) : (
             <span
@@ -66,11 +59,7 @@ export default function ComponentsTypeItem({
           <div className="w-full focus:outline-none">
             <pre className="language-htm flex overflow-auto whitespace-pre-wrap rounded-2xl text-sm leading-[1.5714285714] text-white">
               <code className="w-full bg-dark-800 p-4">
-                {codeType === "html"
-                  ? htmlCode
-                  : codeType === "mjml"
-                  ? mjmlCode
-                  : reactEmailCode}
+                {emailCodes[codeType]}
               </code>
             </pre>
           </div>

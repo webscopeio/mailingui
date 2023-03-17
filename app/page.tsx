@@ -9,19 +9,22 @@ export default function Home() {
       <Greetings />
 
       <HomePreview
-        PreviewElement={ComponentsPreview}
         linkHref="/components"
         buttonTitle="All Components"
         title="Build an eye-catching email with pre-made components"
         previewType="components"
-      />
+      >
+        <ComponentsPreview />
+      </HomePreview>
       <HomePreview
         PreviewElement={TemplatesPreview}
         linkHref="/templates"
         buttonTitle="Explore Templates"
         title="Explore the templates and choose yours"
         previewType="templates"
-      />
+      >
+        <TemplatesPreview />
+      </HomePreview>
     </main>
   );
 }

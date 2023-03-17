@@ -1,19 +1,16 @@
-"use client";
 import EyeIcon from "public/static/svg/eye.svg";
 import CodeIcon from "public/static/svg/code.svg";
-import CopyIcon from "public/static/svg/copy.svg";
 import SunIcon from "public/static/svg/sun.svg";
-import CheckIcon from "public/static/svg/check.svg";
-import { useClipboard } from "@/hooks/useClipboard";
+import CopyButton from "../copyButton/CopyButton";
+import { CodeType, EmailCodes } from "@/utils/types";
+import IconButton from "../iconButton/IconButton";
 
 type Props = {
   showPreview: boolean;
   setShowPreview: (showPreview: boolean) => void;
-  codeType: "html" | "mjml" | "react email";
-  setCodeType: (codeType: "html" | "mjml" | "react email") => void;
-  mjmlCode?: string;
-  reactEmailCode?: string;
-  htmlCode: string;
+  codeType: CodeType;
+  setCodeType: (codeType: CodeType) => void;
+  emailCodes: EmailCodes;
 };
 
 export default function ComponentOptions({
@@ -21,26 +18,8 @@ export default function ComponentOptions({
   setShowPreview,
   codeType,
   setCodeType,
-  mjmlCode,
-  reactEmailCode,
-  htmlCode,
+  emailCodes,
 }: Props) {
-  const clipboard = useClipboard();
-
-  const copyCode = () => {
-    switch (codeType) {
-      case "html":
-        clipboard.copy(htmlCode);
-        break;
-      case "mjml":
-        clipboard.copy(mjmlCode || "");
-        break;
-      case "react email":
-        clipboard.copy(reactEmailCode || "");
-        break;
-    }
-  };
-
   return (
     <div className="flex w-full items-center justify-between">
       <div className="w-60 rounded-3xl bg-dark-800 p-1">
@@ -67,25 +46,22 @@ export default function ComponentOptions({
           <span className="align-middle">Code</span>
         </button>
       </div>
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between gap-3">
         <select
           className="h-10 rounded-3xl border border-r-8 border-transparent bg-dark-800 px-3 text-xs font-bold"
           value={codeType}
           onChange={(e) => setCodeType(e.target.value as Props["codeType"])}
         >
-          <option value="html">HTML</option>
-          {!!mjmlCode && <option value="mjml">MJML</option>}
-          {!!reactEmailCode && <option value="react email">React Email</option>}
+          <option value="htmlCode">HTML</option>
+          {!!emailCodes["mjmlCode"] && <option value="mjmlCode">MJML</option>}
+          {!!emailCodes["reactEmailCode"] && (
+            <option value="reactEmailCode">React Email</option>
+          )}
         </select>
-        <div
-          className="ml-3 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-dark-800 text-dark-100 hover:opacity-70"
-          onClick={copyCode}
-        >
-          {clipboard.copied ? <CheckIcon width={20} /> : <CopyIcon />}
-        </div>
-        <div className="ml-3 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-dark-800 text-dark-100 hover:opacity-70">
+        <CopyButton code={emailCodes[codeType]} />
+        <IconButton>
           <SunIcon />
-        </div>
+        </IconButton>
       </div>
     </div>
   );
