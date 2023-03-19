@@ -14,10 +14,9 @@ export default function Home() {
         title="Build an eye-catching email with pre-made components"
         previewType="components"
       >
-        <ComponentsPreview />
+        <ComponentsPreview componentsShown={8} />
       </HomePreview>
       <HomePreview
-        PreviewElement={TemplatesPreview}
         linkHref="/components"
         buttonTitle="Explore Templates"
         title="Explore the templates and choose yours"
