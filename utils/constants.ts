@@ -11,281 +11,334 @@ import MjmlIcon from "/public/static/icons/mjml.png";
 import ReactIcon from "/public/static/icons/react.png";
 import HtmlIcon from "/public/static/icons/html.png";
 
-export const templates = {
-  buttons: {
-    primary: {
-      title: "Primary buttons",
-      htmlCode: "templates/buttons/primary-buttons/HtmlCode.html",
-      mjmlCode: "templates/buttons/primary-buttons/MjmlCode.mjml",
-      htmlPreview: "templates/buttons/primary-buttons/HtmlPreview.html",
-    },
-    secondary: {
-      title: "Secondary buttons",
-      htmlCode: "templates/buttons/secondary-buttons/HtmlCode.html",
-      mjmlCode: "templates/buttons/secondary-buttons/MjmlCode.mjml",
-      htmlPreview: "templates/buttons/secondary-buttons/HtmlPreview.html",
-    },
-    tertiary: {
-      title: "Tertiary buttons",
-      htmlCode: "templates/buttons/tertiary-buttons/HtmlCode.html",
-      mjmlCode: "templates/buttons/tertiary-buttons/MjmlCode.mjml",
-      htmlPreview: "templates/buttons/tertiary-buttons/HtmlPreview.html",
-    },
-    primaryRound: {
-      title: "Primary round buttons",
-      htmlCode: "templates/buttons/primary-buttons-round/HtmlCode.html",
-      mjmlCode: "templates/buttons/primary-buttons-round/MjmlCode.mjml",
-      htmlPreview: "templates/buttons/primary-buttons-round/HtmlPreview.html",
-    },
-    secondaryRound: {
-      title: "Secondary round buttons",
-      htmlCode: "templates/buttons/secondary-buttons-round/HtmlCode.html",
-      mjmlCode: "templates/buttons/secondary-buttons-round/MjmlCode.mjml",
-      htmlPreview: "templates/buttons/secondary-buttons-round/HtmlPreview.html",
-    },
-    tertiaryRound: {
-      title: "Tertiary round buttons",
-      htmlCode: "templates/buttons/tertiary-buttons-round/HtmlCode.html",
-      mjmlCode: "templates/buttons/tertiary-buttons-round/MjmlCode.mjml",
-      htmlPreview: "templates/buttons/tertiary-buttons-round/HtmlPreview.html",
-    },
-  },
-  badges: {
-    small: {
-      title: "Small badges",
-      htmlCode: "templates/badges/small-badges/HtmlCode.html",
-      mjmlCode: "templates/badges/small-badges/MjmlCode.mjml",
-      htmlPreview: "templates/badges/small-badges/HtmlPreview.html",
-    },
-    medium: {
-      title: "Medium badges",
-      htmlCode: "templates/badges/medium-badges/HtmlCode.html",
-      mjmlCode: "templates/badges/medium-badges/MjmlCode.mjml",
-      htmlPreview: "templates/badges/medium-badges/HtmlPreview.html",
-    },
-    smallRound: {
-      title: "Small round badges",
-      htmlCode: "templates/badges/small-badges-round/HtmlCode.html",
-      mjmlCode: "templates/badges/small-badges-round/MjmlCode.mjml",
-      htmlPreview: "templates/badges/small-badges-round/HtmlPreview.html",
-    },
-    mediumRound: {
-      title: "Medium round badges",
-      htmlCode: "templates/badges/medium-badges-round/HtmlCode.html",
-      mjmlCode: "templates/badges/medium-badges-round/MjmlCode.mjml",
-      htmlPreview: "templates/badges/medium-badges-round/HtmlPreview.html",
-    },
-  },
-  dividers: {
-    solid: {
-      title: "Solid divider",
-      htmlCode: "templates/dividers/solid-divider/HtmlCode.html",
-      mjmlCode: "templates/dividers/solid-divider/MjmlCode.mjml",
-      htmlPreview: "templates/dividers/solid-divider/HtmlPreview.html",
-    },
-    dashed: {
-      title: "Dashed divider",
-      htmlCode: "templates/dividers/dashed-divider/HtmlCode.html",
-      mjmlCode: "templates/dividers/dashed-divider/MjmlCode.mjml",
-      htmlPreview: "templates/dividers/dashed-divider/HtmlPreview.html",
-    },
-    dotted: {
-      title: "Dotted divider",
-      htmlCode: "templates/dividers/dotted-divider/HtmlCode.html",
-      mjmlCode: "templates/dividers/dotted-divider/MjmlCode.mjml",
-      htmlPreview: "templates/dividers/dotted-divider/HtmlPreview.html",
-    },
-    solidTextCenter: {
-      title: "Solid text center",
-      htmlCode: "templates/dividers/solid-divider-text-center/HtmlCode.html",
-      mjmlCode: "templates/dividers/solid-divider-text-center/MjmlCode.mjml",
-      htmlPreview:
-        "templates/dividers/solid-divider-text-center/HtmlPreview.html",
-    },
-  },
-  lists: {
-    horizontaCenter: {
-      title: "Horizontal center list",
-      htmlCode: "templates/lists/horizontal-center-list/HtmlCode.html",
-      mjmlCode: "templates/lists/horizontal-center-list/MjmlCode.mjml",
-      htmlPreview: "templates/lists/horizontal-center-list/HtmlPreview.html",
-    },
-    horizontalLeft: {
-      title: "Horizontal left list",
-      htmlCode: "templates/lists/horizontal-left-list/HtmlCode.html",
-      mjmlCode: "templates/lists/horizontal-left-list/MjmlCode.mjml",
-      htmlPreview: "templates/lists/horizontal-left-list/HtmlPreview.html",
-    },
-    verticalCenter: {
-      title: "Vertical center list",
-      htmlCode: "templates/lists/vertical-center-list/HtmlCode.html",
-      mjmlCode: "templates/lists/vertical-center-list/MjmlCode.mjml",
-      htmlPreview: "templates/lists/vertical-center-list/HtmlPreview.html",
-    },
-    verticalLeft: {
-      title: "Vertical left list",
-      htmlCode: "templates/lists/vertical-left-list/HtmlCode.html",
-      mjmlCode: "templates/lists/vertical-left-list/MjmlCode.mjml",
-      htmlPreview: "templates/lists/vertical-left-list/HtmlPreview.html",
-    },
-    bulletPointList: {
-      title: "Bullet point list",
-      htmlCode: "templates/lists/bullet-point-list/HtmlCode.html",
-      mjmlCode: "templates/lists/bullet-point-list/MjmlCode.mjml",
-      htmlPreview: "templates/lists/bullet-point-list/HtmlPreview.html",
-    },
-    bulletNumberList: {
-      title: "Bullet number list",
-      htmlCode: "templates/lists/bullet-number-list/HtmlCode.html",
-      mjmlCode: "templates/lists/bullet-number-list/MjmlCode.mjml",
-      htmlPreview: "templates/lists/bullet-number-list/HtmlPreview.html",
-    },
-  },
-  emojies: {
-    basic: {
-      title: "Basic emojies",
-      htmlCode: "templates/emojies/basic-emojies/HtmlCode.html",
-      mjmlCode: "templates/emojies/basic-emojies/MjmlCode.mjml",
-      htmlPreview: "templates/emojies/basic-emojies/HtmlPreview.html",
-    },
-    basicBackground: {
-      title: "Basic emojies with background",
-      htmlCode: "templates/emojies/basic-emojies-background/HtmlCode.html",
-      mjmlCode: "templates/emojies/basic-emojies-background/MjmlCode.mjml",
-      htmlPreview:
-        "templates/emojies/basic-emojies-background/HtmlPreview.html",
-    },
-  },
-  banners: {
-    titleButton: {
-      title: "Title with button",
-      htmlCode: "templates/banners/title-button-banner/HtmlCode.html",
-      mjmlCode: "templates/banners/title-button-banner/MjmlCode.mjml",
-      htmlPreview: "templates/banners/title-button-banner/HtmlPreview.html",
-    },
-    titleCenter: {
-      title: "Title center",
-      htmlCode: "templates/banners/title-banner-center/HtmlCode.html",
-      mjmlCode: "templates/banners/title-banner-center/MjmlCode.mjml",
-      htmlPreview: "templates/banners/title-banner-center/HtmlPreview.html",
-    },
-    titleButtonLarge: {
-      title: "Title with button large",
-      htmlCode: "templates/banners/title-button-banner-large/HtmlCode.html",
-      mjmlCode: "templates/banners/title-button-banner-large/MjmlCode.mjml",
-      htmlPreview:
-        "templates/banners/title-button-banner-large/HtmlPreview.html",
-    },
-    titleBottomlarge: {
-      title: "Title bottom large",
-      htmlCode: "templates/banners/title-banner-bottom-large/HtmlCode.html",
-      mjmlCode: "templates/banners/title-banner-bottom-large/MjmlCode.mjml",
-      htmlPreview:
-        "templates/banners/title-banner-bottom-large/HtmlPreview.html",
-    },
-  },
-  heroes: {
-    empty: {
-      title: "Empty hero",
-      htmlCode: "templates/heroes/empty-hero/HtmlCode.html",
-      htmlPreview: "templates/heroes/empty-hero/HtmlPreview.html",
-      reactEmailCode: "templates/heroes/empty-hero/ReactEmailCode.tsx",
-    },
-    topLeftIcon: {
-      title: "Top left icon",
-      htmlCode: "templates/heroes/top-left-icon-hero/HtmlCode.html",
-      htmlPreview: "templates/heroes/top-left-icon-hero/HtmlPreview.html",
-      reactEmailCode: "templates/heroes/top-left-icon-hero/ReactEmailCode.tsx",
-    },
-    topCenterIcon: {
-      title: "Top center icon",
-      htmlCode: "templates/heroes/top-center-icon-hero/HtmlCode.html",
-      htmlPreview: "templates/heroes/top-center-icon-hero/HtmlPreview.html",
-      reactEmailCode:
-        "templates/heroes/top-center-icon-hero/ReactEmailCode.tsx",
-    },
-    fadeTopCenterIcon: {
-      title: "Fade top center icon",
-      htmlCode: "templates/heroes/fade-top-center-icon-hero/HtmlCode.html",
-      htmlPreview:
-        "templates/heroes/fade-top-center-icon-hero/HtmlPreview.html",
-      reactEmailCode:
-        "templates/heroes/fade-top-center-icon-hero/ReactEmailCode.tsx",
-    },
-    paddingBlack: {
-      title: "Padding black",
-      htmlCode: "templates/heroes/padding-black-hero/HtmlCode.html",
-      htmlPreview: "templates/heroes/padding-black-hero/HtmlPreview.html",
-      reactEmailCode: "templates/heroes/padding-black-hero/ReactEmailCode.tsx",
-    },
-    paddingWhite: {
-      title: "Padding white",
-      htmlCode: "templates/heroes/padding-white-hero/HtmlCode.html",
-      htmlPreview: "templates/heroes/padding-white-hero/HtmlPreview.html",
-      reactEmailCode: "templates/heroes/padding-white-hero/ReactEmailCode.tsx",
-    },
-  },
-  icons: {
-    brand: {
-      title: "Brand icons",
-      htmlCode: "templates/icons/brand-icons/HtmlCode.html",
-      reactEmailCode: "templates/icons/brand-icons/ReactEmailCode.tsx",
-      htmlPreview: "templates/icons/brand-icons/HtmlPreview.html",
-    },
-    brandBackground: {
-      title: "Brand icons with background",
-      htmlCode: "templates/icons/brand-icons-background/HtmlCode.html",
-      reactEmailCode:
-        "templates/icons/brand-icons-background/ReactEmailCode.tsx",
-      htmlPreview: "templates/icons/brand-icons-background/HtmlPreview.html",
-    },
-  },
-};
-
-export const componentList = [
+export const emailComponents = [
   {
     image: Heroes,
     title: "Hero section",
     subtitle: "Lorem ipsum dolor sit amet",
+    type: "heroes",
+    components: [
+      {
+        title: "Empty hero",
+        htmlCode: "email-components/heroes/empty-hero/HtmlCode.html",
+        htmlPreview: "email-components/heroes/empty-hero/HtmlPreview.html",
+        reactEmailCode: "email-components/heroes/empty-hero/ReactEmailCode.tsx",
+      },
+      {
+        title: "Top left icon",
+        htmlCode: "email-components/heroes/top-left-icon-hero/HtmlCode.html",
+        htmlPreview:
+          "email-components/heroes/top-left-icon-hero/HtmlPreview.html",
+        reactEmailCode:
+          "email-components/heroes/top-left-icon-hero/ReactEmailCode.tsx",
+      },
+      {
+        title: "Top center icon",
+        htmlCode: "email-components/heroes/top-center-icon-hero/HtmlCode.html",
+        htmlPreview:
+          "email-components/heroes/top-center-icon-hero/HtmlPreview.html",
+        reactEmailCode:
+          "email-components/heroes/top-center-icon-hero/ReactEmailCode.tsx",
+      },
+      {
+        title: "Fade top center icon",
+        htmlCode:
+          "email-components/heroes/fade-top-center-icon-hero/HtmlCode.html",
+        htmlPreview:
+          "email-components/heroes/fade-top-center-icon-hero/HtmlPreview.html",
+        reactEmailCode:
+          "email-components/heroes/fade-top-center-icon-hero/ReactEmailCode.tsx",
+      },
+      {
+        title: "Padding black",
+        htmlCode: "email-components/heroes/padding-black-hero/HtmlCode.html",
+        htmlPreview:
+          "email-components/heroes/padding-black-hero/HtmlPreview.html",
+        reactEmailCode:
+          "email-components/heroes/padding-black-hero/ReactEmailCode.tsx",
+      },
+      {
+        title: "Padding white",
+        htmlCode: "email-components/heroes/padding-white-hero/HtmlCode.html",
+        htmlPreview:
+          "email-components/heroes/padding-white-hero/HtmlPreview.html",
+        reactEmailCode:
+          "email-components/heroes/padding-white-hero/ReactEmailCode.tsx",
+      },
+    ],
   },
   {
     image: Listing,
     title: "Listing",
     subtitle: "Lorem ipsum dolor sit amet",
+    type: "lists",
+    components: [
+      {
+        title: "Horizontal center list",
+        htmlCode: "email-components/lists/horizontal-center-list/HtmlCode.html",
+        mjmlCode: "email-components/lists/horizontal-center-list/MjmlCode.mjml",
+        htmlPreview:
+          "email-components/lists/horizontal-center-list/HtmlPreview.html",
+      },
+      {
+        title: "Horizontal left list",
+        htmlCode: "email-components/lists/horizontal-left-list/HtmlCode.html",
+        mjmlCode: "email-components/lists/horizontal-left-list/MjmlCode.mjml",
+        htmlPreview:
+          "email-components/lists/horizontal-left-list/HtmlPreview.html",
+      },
+      {
+        title: "Vertical center list",
+        htmlCode: "email-components/lists/vertical-center-list/HtmlCode.html",
+        mjmlCode: "email-components/lists/vertical-center-list/MjmlCode.mjml",
+        htmlPreview:
+          "email-components/lists/vertical-center-list/HtmlPreview.html",
+      },
+      {
+        title: "Vertical left list",
+        htmlCode: "email-components/lists/vertical-left-list/HtmlCode.html",
+        mjmlCode: "email-components/lists/vertical-left-list/MjmlCode.mjml",
+        htmlPreview:
+          "email-components/lists/vertical-left-list/HtmlPreview.html",
+      },
+      {
+        title: "Bullet point list",
+        htmlCode: "email-components/lists/bullet-point-list/HtmlCode.html",
+        mjmlCode: "email-components/lists/bullet-point-list/MjmlCode.mjml",
+        htmlPreview:
+          "email-components/lists/bullet-point-list/HtmlPreview.html",
+      },
+      {
+        title: "Bullet number list",
+        htmlCode: "email-components/lists/bullet-number-list/HtmlCode.html",
+        mjmlCode: "email-components/lists/bullet-number-list/MjmlCode.mjml",
+        htmlPreview:
+          "email-components/lists/bullet-number-list/HtmlPreview.html",
+      },
+    ],
   },
   {
     image: Badges,
     title: "Badges",
     subtitle: "Lorem ipsum dolor sit amet",
+    type: "badges",
+    components: [
+      {
+        title: "Small badges",
+        htmlCode: "email-components/badges/small-badges/HtmlCode.html",
+        mjmlCode: "email-components/badges/small-badges/MjmlCode.mjml",
+        htmlPreview: "email-components/badges/small-badges/HtmlPreview.html",
+      },
+      {
+        title: "Medium badges",
+        htmlCode: "email-components/badges/medium-badges/HtmlCode.html",
+        mjmlCode: "email-components/badges/medium-badges/MjmlCode.mjml",
+        htmlPreview: "email-components/badges/medium-badges/HtmlPreview.html",
+      },
+      {
+        title: "Small round badges",
+        htmlCode: "email-components/badges/small-badges-round/HtmlCode.html",
+        mjmlCode: "email-components/badges/small-badges-round/MjmlCode.mjml",
+        htmlPreview:
+          "email-components/badges/small-badges-round/HtmlPreview.html",
+      },
+      {
+        title: "Medium round badges",
+        htmlCode: "email-components/badges/medium-badges-round/HtmlCode.html",
+        mjmlCode: "email-components/badges/medium-badges-round/MjmlCode.mjml",
+        htmlPreview:
+          "email-components/badges/medium-badges-round/HtmlPreview.html",
+      },
+    ],
   },
   {
     image: Buttons,
     title: "Buttons",
     subtitle: "Lorem ipsum dolor sit amet",
+    type: "buttons",
+    components: [
+      {
+        title: "Primary buttons",
+        htmlCode: "email-components/buttons/primary-buttons/HtmlCode.html",
+        mjmlCode: "email-components/buttons/primary-buttons/MjmlCode.mjml",
+        htmlPreview:
+          "email-components/buttons/primary-buttons/HtmlPreview.html",
+      },
+      {
+        title: "Secondary buttons",
+        htmlCode: "email-components/buttons/secondary-buttons/HtmlCode.html",
+        mjmlCode: "email-components/buttons/secondary-buttons/MjmlCode.mjml",
+        htmlPreview:
+          "email-components/buttons/secondary-buttons/HtmlPreview.html",
+      },
+      {
+        title: "Tertiary buttons",
+        htmlCode: "email-components/buttons/tertiary-buttons/HtmlCode.html",
+        mjmlCode: "email-components/buttons/tertiary-buttons/MjmlCode.mjml",
+        htmlPreview:
+          "email-components/buttons/tertiary-buttons/HtmlPreview.html",
+      },
+      {
+        title: "Primary round buttons",
+        htmlCode:
+          "email-components/buttons/primary-buttons-round/HtmlCode.html",
+        mjmlCode:
+          "email-components/buttons/primary-buttons-round/MjmlCode.mjml",
+        htmlPreview:
+          "email-components/buttons/primary-buttons-round/HtmlPreview.html",
+      },
+      {
+        title: "Secondary round buttons",
+        htmlCode:
+          "email-components/buttons/secondary-buttons-round/HtmlCode.html",
+        mjmlCode:
+          "email-components/buttons/secondary-buttons-round/MjmlCode.mjml",
+        htmlPreview:
+          "email-components/buttons/secondary-buttons-round/HtmlPreview.html",
+      },
+      {
+        title: "Tertiary round buttons",
+        htmlCode:
+          "email-components/buttons/tertiary-buttons-round/HtmlCode.html",
+        mjmlCode:
+          "email-components/buttons/tertiary-buttons-round/MjmlCode.mjml",
+        htmlPreview:
+          "email-components/buttons/tertiary-buttons-round/HtmlPreview.html",
+      },
+    ],
   },
   {
     image: Emojis,
     title: "Emoji",
     subtitle: "Lorem ipsum dolor sit amet",
+    type: "emojis",
+    components: [
+      {
+        title: "Basic emojis",
+        htmlCode: "email-components/emojis/basic-emojis/HtmlCode.html",
+        mjmlCode: "email-components/emojis/basic-emojis/MjmlCode.mjml",
+        htmlPreview: "email-components/emojis/basic-emojis/HtmlPreview.html",
+      },
+      {
+        title: "Basic emojis with background",
+        htmlCode:
+          "email-components/emojis/basic-emojis-background/HtmlCode.html",
+        mjmlCode:
+          "email-components/emojis/basic-emojis-background/MjmlCode.mjml",
+        htmlPreview:
+          "email-components/emojis/basic-emojis-background/HtmlPreview.html",
+      },
+    ],
   },
   {
     image: SocialIcons,
     title: "Social icons",
     subtitle: "Lorem ipsum dolor sit amet",
+    type: "icons",
+    components: [
+      {
+        title: "Brand icons",
+        htmlCode: "email-components/icons/brand-icons/HtmlCode.html",
+        reactEmailCode: "email-components/icons/brand-icons/ReactEmailCode.tsx",
+        htmlPreview: "email-components/icons/brand-icons/HtmlPreview.html",
+      },
+      {
+        title: "Brand icons with background",
+        htmlCode: "email-components/icons/brand-icons-background/HtmlCode.html",
+        reactEmailCode:
+          "email-components/icons/brand-icons-background/ReactEmailCode.tsx",
+        htmlPreview:
+          "email-components/icons/brand-icons-background/HtmlPreview.html",
+      },
+    ],
   },
   {
     image: Paragraphs,
     title: "Paragraph",
     subtitle: "Lorem ipsum dolor sit amet",
+    type: "paragraphs",
+    components: [],
   },
   {
     image: Dividers,
     title: "Dividers",
     subtitle: "Lorem ipsum dolor sit amet",
+    type: "dividers",
+    components: [
+      {
+        title: "Solid divider",
+        htmlCode: "email-components/dividers/solid-divider/HtmlCode.html",
+        mjmlCode: "email-components/dividers/solid-divider/MjmlCode.mjml",
+        htmlPreview: "email-components/dividers/solid-divider/HtmlPreview.html",
+      },
+      {
+        title: "Dashed divider",
+        htmlCode: "email-components/dividers/dashed-divider/HtmlCode.html",
+        mjmlCode: "email-components/dividers/dashed-divider/MjmlCode.mjml",
+        htmlPreview:
+          "email-components/dividers/dashed-divider/HtmlPreview.html",
+      },
+      {
+        title: "Dotted divider",
+        htmlCode: "email-components/dividers/dotted-divider/HtmlCode.html",
+        mjmlCode: "email-components/dividers/dotted-divider/MjmlCode.mjml",
+        htmlPreview:
+          "email-components/dividers/dotted-divider/HtmlPreview.html",
+      },
+      {
+        title: "Solid text center",
+        htmlCode:
+          "email-components/dividers/solid-divider-text-center/HtmlCode.html",
+        mjmlCode:
+          "email-components/dividers/solid-divider-text-center/MjmlCode.mjml",
+        htmlPreview:
+          "email-components/dividers/solid-divider-text-center/HtmlPreview.html",
+      },
+    ],
+  },
+  {
+    image: Heroes,
+    title: "Banners",
+    subtitle: "Lorem ipsum dolor sit amet",
+    type: "banners",
+    components: [
+      {
+        title: "Title with button",
+        htmlCode: "email-components/banners/title-button-banner/HtmlCode.html",
+        mjmlCode: "email-components/banners/title-button-banner/MjmlCode.mjml",
+        htmlPreview:
+          "email-components/banners/title-button-banner/HtmlPreview.html",
+      },
+      {
+        title: "Title center",
+        htmlCode: "email-components/banners/title-banner-center/HtmlCode.html",
+        mjmlCode: "email-components/banners/title-banner-center/MjmlCode.mjml",
+        htmlPreview:
+          "email-components/banners/title-banner-center/HtmlPreview.html",
+      },
+      {
+        title: "Title with button large",
+        htmlCode:
+          "email-components/banners/title-button-banner-large/HtmlCode.html",
+        mjmlCode:
+          "email-components/banners/title-button-banner-large/MjmlCode.mjml",
+        htmlPreview:
+          "email-components/banners/title-button-banner-large/HtmlPreview.html",
+      },
+      {
+        title: "Title bottom large",
+        htmlCode:
+          "email-components/banners/title-banner-bottom-large/HtmlCode.html",
+        mjmlCode:
+          "email-components/banners/title-banner-bottom-large/MjmlCode.mjml",
+        htmlPreview:
+          "email-components/banners/title-banner-bottom-large/HtmlPreview.html",
+      },
+    ],
   },
 ];
 
-export const emailTypes = [
+export const emailCodeTypes = [
   {
     name: "MJML",
     icon: MjmlIcon,
