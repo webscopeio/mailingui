@@ -14,7 +14,7 @@ export default function Home() {
         title="Build an eye-catching email with pre-made components"
         previewType="components"
       >
-        <ComponentsPreview />
+        <ComponentsPreview componentsShown={8} />
       </HomePreview>
       <HomePreview
         linkHref="/templates"

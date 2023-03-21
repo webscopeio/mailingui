@@ -3,10 +3,13 @@ import { emailComponents } from "@/utils/constants";
 
 type Props = {
   isHomepage?: boolean;
+  componentsShown?: number;
 };
 
-export default function ComponentsPreview({ isHomepage = true }: Props) {
-  const maxItems = isHomepage ? 8 : emailComponents.length;
+export default function ComponentsPreview({
+  isHomepage = true,
+  componentsShown,
+}: Props) {
   return (
     <div className="relative mx-6 grid max-w-[1344px] grid-cols-4 gap-12 max-2xl:gap-6 max-md:gap-4 max-sm:grid-cols-2">
       {!isHomepage && (
@@ -15,7 +18,7 @@ export default function ComponentsPreview({ isHomepage = true }: Props) {
         </h2>
       )}
       {emailComponents
-        .slice(0, maxItems)
+        .slice(0, componentsShown)
         .map(({ image, title, subtitle, type }) => (
           <ComponentsPreviewItem
             key={title}
