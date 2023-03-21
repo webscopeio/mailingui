@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { emailTemplates } from "@/utils/constants";
+import { emailTemplates } from "@constants";
 
 import Link from "next/link";
 

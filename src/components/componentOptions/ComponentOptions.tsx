@@ -1,9 +1,9 @@
+import CopyButton from "../copyButton/CopyButton";
+import IconButton from "../iconButton/IconButton";
 import EyeIcon from "public/static/svg/eye.svg";
 import CodeIcon from "public/static/svg/code.svg";
 import SunIcon from "public/static/svg/sun.svg";
-import CopyButton from "../copyButton/CopyButton";
-import { CodeType, EmailCodes } from "@/utils/types";
-import IconButton from "../iconButton/IconButton";
+import { CodeType, EmailCodes } from "@types";
 
 type Props = {
   showPreview: boolean;

@@ -1,5 +1,5 @@
 import TemplatesItem from "@/components/templatesItem/TemplatesItem";
-import { emailTemplates } from "@/utils/constants";
+import { emailTemplates } from "@constants";
 import { readFileSync } from "fs";
 
 type Props = {

@@ -1,5 +1,5 @@
 import ComponentsPreviewItem from "../componentsPreviewItem/ComponentsPreviewItem";
-import { emailComponents } from "@/utils/constants";
+import { emailComponents } from "@constants";
 
 type Props = {
   isHomepage?: boolean;

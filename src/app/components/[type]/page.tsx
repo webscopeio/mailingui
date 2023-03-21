@@ -1,7 +1,7 @@
 import { readFileSync } from "fs";
 import ComponentsTypeList from "@/components/componentsTypeList/ComponentsTypeList";
-import { emailComponents } from "@/utils/constants";
-import { EmailComponent } from "@/utils/types";
+import { emailComponents } from "@constants";
+import { EmailComponent } from "@types";
 
 type Props = {
   params: {

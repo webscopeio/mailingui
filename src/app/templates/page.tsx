@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { emailTemplates } from "@/utils/constants";
+import { emailTemplates } from "@constants";
 import Link from "next/link";
 
 export default function Templates() {

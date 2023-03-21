@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import ComponentOptions from "../componentOptions/ComponentOptions";
-import { CodeType, EmailCodes } from "@/utils/types";
+import { CodeType, EmailCodes } from "@types";
 
 type Props = {
   title: string;
