@@ -21,8 +21,12 @@ export default function TemplateLayout({
   return (
     <div className="flex w-full">
       <aside className="min-w-[300px] border-r border-solid border-dark-700 p-8">
-        <h4 className="text-base font-bold uppercase text-dark-300">{title}</h4>
-        <h2 className="text-2xl font-bold">Available emails</h2>
+        <h1>
+          <div className="text-base font-bold uppercase text-dark-300">
+            {title}
+          </div>
+          <div className="text-2xl font-bold">Available emails</div>
+        </h1>
         <ul className="mt-4 flex w-full flex-col">
           {templates?.map(({ title, route }) => (
             <li
