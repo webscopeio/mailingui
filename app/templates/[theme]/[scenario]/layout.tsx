@@ -27,17 +27,17 @@ export default function TemplateLayout({
           </div>
           <div className="text-2xl font-bold">Available emails</div>
         </h1>
-        <ul className="mt-4 flex w-full flex-col">
+        <ul className="mt-4">
           {templates?.map(({ title, route }) => (
             <li
-              className={`w-full cursor-pointer rounded-xl ${
+              className={`rounded-xl ${
                 scenario === route ? "bg-dark-800" : ""
               }`}
               key={route}
             >
               <Link
                 href={`/templates/${theme}/${route}`}
-                className="block py-3.5 px-4 text-base"
+                className="block py-3.5 px-4"
               >
                 {title}
               </Link>
