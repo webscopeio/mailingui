@@ -26,9 +26,7 @@ function getTemplates(theme: string, scenario: string) {
   };
 }
 
-export default async function TemplateType({
-  params: { theme, scenario },
-}: Props) {
+export default function TemplateType({ params: { theme, scenario } }: Props) {
   const { desktopPreview, mobilePreview } = getTemplates(theme, scenario);
   return (
     <div className="w-full">
@@ -40,7 +38,7 @@ export default async function TemplateType({
   );
 }
 
-export async function generateStaticParams() {
+export function generateStaticParams() {
   return emailTemplates.reduce((acc, item) => {
     const params = item.templates.map((template) => {
       return {
