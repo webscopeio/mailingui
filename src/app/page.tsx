@@ -1,7 +1,7 @@
 import Greetings from "@/components/greetings/Greetings";
 import ComponentsPreview from "@/components/componentsPreview/ComponentsPreview";
 import TemplatesPreview from "@/components/templatesPreview/TemplatesPreview";
-import HomePreview from "@/components/homePreview/HomePreview";
+import HomePreview from "@components/homePreview/HomePreview";
 
 export default function Home() {
   return (

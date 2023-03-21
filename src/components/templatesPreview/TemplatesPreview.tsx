@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { emailTemplates } from "@/utils/constants";
-import TemplatePlug from "@/public/static/images/template_plug.png";
+import TemplatePlug from "public/static/images/template_plug.png";
 
 export default function TemplatesPreview() {
   const dynamicStyles: { [index: number]: string } = {
