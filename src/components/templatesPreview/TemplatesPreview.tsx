@@ -2,7 +2,7 @@ import Image from "next/image";
 import { emailTemplates } from "@constants";
 import TemplatePlug from "public/static/images/template_plug.png";
 
-export default function TemplatesPreview() {
+export const TemplatesPreview = () => {
   const dynamicStyles: { [index: number]: string } = {
     0: "-mb-20",
     1: "-mb-40",
@@ -24,4 +24,4 @@ export default function TemplatesPreview() {
       <div className="absolute inset-0 z-50	bg-gradient-to-b from-transparent via-[#000000d0] to-black p-6"></div>
     </div>
   );
-}
+};

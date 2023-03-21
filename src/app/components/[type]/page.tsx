@@ -1,7 +1,14 @@
 import { readFileSync } from "fs";
-import ComponentsTypeList from "@/components/componentsTypeList/ComponentsTypeList";
+import { ComponentsTypeList } from "@components/ComponentsTypeList";
 import { emailComponents } from "@constants";
-import { EmailComponent } from "@types";
+
+type EmailComponent = {
+  title: string;
+  htmlPreview: string;
+  htmlCode: string;
+  mjmlCode?: string;
+  reactEmailCode?: string;
+};
 
 type Props = {
   params: {

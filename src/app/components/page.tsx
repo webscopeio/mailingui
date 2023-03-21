@@ -1,4 +1,4 @@
-import ComponentsPreview from "@/components/componentsPreview/ComponentsPreview";
+import { ComponentsPreview } from "@components/ComponentsPreview";
 
 export default function Components() {
   return (

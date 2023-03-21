@@ -1,12 +1,12 @@
-import Greetings from "@/components/greetings/Greetings";
-import ComponentsPreview from "@/components/componentsPreview/ComponentsPreview";
-import TemplatesPreview from "@/components/templatesPreview/TemplatesPreview";
-import HomePreview from "@components/homePreview/HomePreview";
+import { Greeting } from "@components/Greeting";
+import { ComponentsPreview } from "@components/ComponentsPreview/ComponentsPreview";
+import { TemplatesPreview } from "@components/TemplatesPreview/TemplatesPreview";
+import { HomePreview } from "@components/HomePreview";
 
 export default function Home() {
   return (
     <main className="mt-16 pb-32">
-      <Greetings />
+      <Greeting />
 
       <HomePreview
         linkHref="/components"

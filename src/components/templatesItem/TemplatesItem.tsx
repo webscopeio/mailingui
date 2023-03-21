@@ -2,17 +2,14 @@
 import Link from "next/link";
 import { useState } from "react";
 import ShareIcon from "public/static/svg/share.svg";
-import TemplateOptions from "@/components/templateOptions/TemplateOptions";
+import { TemplateOptions } from "@components/TemplatesItem/TemplateOptions";
 
-type Props = {
+export type TemplatesItemProps = {
   desktopPreview: string;
   mobilePreview: string;
 };
 
-export default function TemplatesItem({
-  desktopPreview,
-  mobilePreview,
-}: Props) {
+export const TemplatesItem = ({ desktopPreview, mobilePreview }: TemplatesItemProps) => {
   const [active, setActive] = useState<"desktop" | "mobile" | "code">(
     "desktop"
   );
@@ -54,4 +51,4 @@ export default function TemplatesItem({
       </div>
     </>
   );
-}
+};

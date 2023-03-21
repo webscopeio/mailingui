@@ -6,7 +6,7 @@ import Logo from "public/static/images/logo.png";
 import Instagram from "public/static/icons/instagram.png";
 import Github from "public/static/icons/github.png";
 
-export default function Header() {
+export const Header = () => {
   const pathname = usePathname();
 
   const linkStyles = (path: string) => {
@@ -66,4 +66,4 @@ export default function Header() {
       </div>
     </div>
   );
-}
+};

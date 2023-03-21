@@ -1,6 +1,6 @@
-import TemplatesItem from "@/components/templatesItem/TemplatesItem";
-import { emailTemplates } from "@constants";
 import { readFileSync } from "fs";
+import { TemplatesItem } from "@components/TemplatesItem";
+import { emailTemplates } from "@constants";
 
 type Props = {
   params: {

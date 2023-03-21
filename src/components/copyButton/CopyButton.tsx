@@ -1,19 +1,20 @@
 "use client";
+import { IconButton } from "@components/IconButton";
 import CopyIcon from "public/static/svg/copy.svg";
 import CheckIcon from "public/static/svg/check.svg";
 import { useClipboard } from "@/hooks/useClipboard";
-import IconButton from "../iconButton/IconButton";
 
-type Props = {
+export type CopyButtonProps = {
   code?: string;
   className?: string;
 };
 
-export default function CopyButton({ code = "", className }: Props) {
+export const CopyButton = ({ code = "", className }: CopyButtonProps) => {
   const clipboard = useClipboard();
+
   return (
     <IconButton onClick={() => clipboard.copy(code)} className={className}>
       {clipboard.copied ? <CheckIcon width={20} /> : <CopyIcon />}
     </IconButton>
   );
-}
+};

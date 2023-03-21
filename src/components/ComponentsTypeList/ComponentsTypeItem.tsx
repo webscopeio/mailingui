@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
-import ComponentOptions from "../componentOptions/ComponentOptions";
-import { CodeType, EmailCodes } from "@types";
+import { ComponentOptions } from "./ComponentOptions";
+import { CodeType, EmailCodes } from "./types";
 
 type Props = {
   title: string;
@@ -9,11 +9,11 @@ type Props = {
   emailCodes: EmailCodes;
 };
 
-export default function ComponentsTypeItem({
+export const ComponentsTypeItem = ({
   title,
   htmlPreview,
   emailCodes,
-}: Props) {
+}: Props) => {
   const [showPreview, setShowPreview] = useState(true);
   const [showOptions, setShowOptions] = useState(false);
   const [codeType, setCodeType] = useState<CodeType>("htmlCode");
@@ -67,4 +67,4 @@ export default function ComponentsTypeItem({
       </div>
     </div>
   );
-}
+};
