@@ -49,7 +49,6 @@ export async function generateStaticParams() {
       };
     });
 
-    acc = acc.concat(params);
-    return acc;
+    return [...acc, ...params];
   }, [] as Props["params"][]);
 }
