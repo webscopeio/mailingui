@@ -21,19 +21,15 @@ function getTemplates(theme: string, scenario: string) {
   if (!templates) throw new Error("No template type found");
 
   return {
-    desktopPreview: readFileSync(templates.desktopPreview, "utf8"),
-    mobilePreview: readFileSync(templates.mobilePreview, "utf8"),
+    preview: readFileSync(templates.preview, "utf8"),
   };
 }
 
 export default function TemplateType({ params: { theme, scenario } }: Props) {
-  const { desktopPreview, mobilePreview } = getTemplates(theme, scenario);
+  const { preview } = getTemplates(theme, scenario);
   return (
     <div className="w-full">
-      <TemplatesItem
-        desktopPreview={desktopPreview}
-        mobilePreview={mobilePreview}
-      />
+      <TemplatesItem desktopPreview={preview} mobilePreview={preview} />
     </div>
   );
 }

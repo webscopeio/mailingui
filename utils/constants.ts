@@ -356,18 +356,12 @@ export const emailTemplates = [
       {
         title: "Reset password",
         route: "reset-password",
-        desktopPreview:
-          "email-templates/espace/reset-password/desktopPreview.html",
-        mobilePreview:
-          "email-templates/espace/reset-password/mobilePreview.html",
+        preview: "email-templates/espace/reset-password/preview.html",
       },
       {
         title: "Booking confirmation",
         route: "booking-confirmation",
-        desktopPreview:
-          "email-templates/espace/booking-confirmation/desktopPreview.html",
-        mobilePreview:
-          "email-templates/espace/booking-confirmation/mobilePreview.html",
+        preview: "email-templates/espace/booking-confirmation/preview.html",
       },
     ],
   },
@@ -379,18 +373,12 @@ export const emailTemplates = [
       {
         title: "Reset password",
         route: "reset-password",
-        desktopPreview:
-          "email-templates/giola/reset-password/desktopPreview.html",
-        mobilePreview:
-          "email-templates/giola/reset-password/mobilePreview.html",
+        preview: "email-templates/giola/reset-password/preview.html",
       },
       {
         title: "Booking confirmation",
         route: "booking-confirmation",
-        desktopPreview:
-          "email-templates/giola/booking-confirmation/desktopPreview.html",
-        mobilePreview:
-          "email-templates/giola/booking-confirmation/mobilePreview.html",
+        preview: "email-templates/giola/booking-confirmation/preview.html",
       },
     ],
   },
@@ -402,18 +390,12 @@ export const emailTemplates = [
       {
         title: "Reset password",
         route: "reset-password",
-        desktopPreview:
-          "email-templates/viola/reset-password/desktopPreview.html",
-        mobilePreview:
-          "email-templates/viola/reset-password/mobilePreview.html",
+        preview: "email-templates/viola/reset-password/preview.html",
       },
       {
         title: "Booking confirmation",
         route: "booking-confirmation",
-        desktopPreview:
-          "email-templates/viola/booking-confirmation/desktopPreview.html",
-        mobilePreview:
-          "email-templates/viola/booking-confirmation/mobilePreview.html",
+        preview: "email-templates/viola/booking-confirmation/preview.html",
       },
     ],
   },
@@ -425,18 +407,12 @@ export const emailTemplates = [
       {
         title: "Reset password",
         route: "reset-password",
-        desktopPreview:
-          "email-templates/finanza/reset-password/desktopPreview.html",
-        mobilePreview:
-          "email-templates/finanza/reset-password/mobilePreview.html",
+        preview: "email-templates/finanza/reset-password/preview.html",
       },
       {
         title: "Booking confirmation",
         route: "booking-confirmation",
-        desktopPreview:
-          "email-templates/finanza/booking-confirmation/desktopPreview.html",
-        mobilePreview:
-          "email-templates/finanza/booking-confirmation/mobilePreview.html",
+        preview: "email-templates/finanza/booking-confirmation/preview.html",
       },
     ],
   },
@@ -448,18 +424,12 @@ export const emailTemplates = [
       {
         title: "Reset password",
         route: "reset-password",
-        desktopPreview:
-          "email-templates/bianco/reset-password/desktopPreview.html",
-        mobilePreview:
-          "email-templates/bianco/reset-password/mobilePreview.html",
+        preview: "email-templates/bianco/reset-password/preview.html",
       },
       {
         title: "Booking confirmation",
         route: "booking-confirmation",
-        desktopPreview:
-          "email-templates/bianco/booking-confirmation/desktopPreview.html",
-        mobilePreview:
-          "email-templates/bianco/booking-confirmation/mobilePreview.html",
+        preview: "email-templates/bianco/booking-confirmation/preview.html",
       },
     ],
   },
@@ -471,18 +441,12 @@ export const emailTemplates = [
       {
         title: "Reset password",
         route: "reset-password",
-        desktopPreview:
-          "email-templates/olivio/reset-password/desktopPreview.html",
-        mobilePreview:
-          "email-templates/olivio/reset-password/mobilePreview.html",
+        preview: "email-templates/olivio/reset-password/preview.html",
       },
       {
         title: "Booking confirmation",
         route: "booking-confirmation",
-        desktopPreview:
-          "email-templates/olivio/booking-confirmation/desktopPreview.html",
-        mobilePreview:
-          "email-templates/olivio/booking-confirmation/mobilePreview.html",
+        preview: "email-templates/olivio/booking-confirmation/preview.html",
       },
     ],
   },
