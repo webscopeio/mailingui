@@ -4,18 +4,18 @@ import { readFileSync } from "fs";
 
 type Props = {
   params: {
-    type: string;
-    subtype: string;
+    theme: string;
+    scenario: string;
   };
 };
 
-function getTemplates(type: string, subtype: string) {
+function getTemplates(theme: string, scenario: string) {
   const templateType = emailTemplates.find(
-    (template) => template.type === type
+    (template) => template.type === theme
   );
 
   const templates = templateType?.templates.find(
-    (template) => template.route === subtype
+    (template) => template.route === scenario
   );
 
   if (!templates) throw new Error("No template type found");
@@ -27,9 +27,9 @@ function getTemplates(type: string, subtype: string) {
 }
 
 export default async function TemplateType({
-  params: { type, subtype },
+  params: { theme, scenario },
 }: Props) {
-  const { desktopPreview, mobilePreview } = getTemplates(type, subtype);
+  const { desktopPreview, mobilePreview } = getTemplates(theme, scenario);
   return (
     <div className="w-full">
       <TemplatesItem
@@ -44,8 +44,8 @@ export async function generateStaticParams() {
   return emailTemplates.reduce((acc, item) => {
     const params = item.templates.map((template) => {
       return {
-        type: item.type,
-        subtype: template.route,
+        theme: item.type,
+        scenario: template.route,
       };
     });
 

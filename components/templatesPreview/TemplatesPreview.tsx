@@ -13,10 +13,9 @@ export default function TemplatesPreview() {
 
   return (
     <div className="relative mx-6 grid max-w-[1344px] grid-cols-3 place-items-center gap-12 p-6 max-2xl:gap-6 max-md:gap-4">
-      {templateImages.map((image, index) => (
+      {emailTemplates.map(({ image }, index) => (
         <div key={index} className={dynamicStyles[index]}>
           <Image src={image} alt="template preview" quality={100} />
-
         </div>
       ))}
       <div className="col-start-3">

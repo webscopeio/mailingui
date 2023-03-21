@@ -6,17 +6,17 @@ import Link from "next/link";
 type Props = {
   children: ReactNode;
   params: {
-    type: string;
-    subtype: string;
+    theme: string;
+    scenario: string;
   };
 };
 
 export default function TemplateLayout({
   children,
-  params: { type, subtype },
+  params: { theme, scenario },
 }: Props) {
   const { templates, title } =
-    emailTemplates.find((template) => template.type === type) || {};
+    emailTemplates.find((template) => template.type === theme) || {};
 
   return (
     <div className="flex w-full">
@@ -27,12 +27,12 @@ export default function TemplateLayout({
           {templates?.map(({ title, route }) => (
             <li
               className={`w-full cursor-pointer rounded-xl ${
-                subtype === route ? "bg-dark-800" : ""
+                scenario === route ? "bg-dark-800" : ""
               }`}
               key={route}
             >
               <Link
-                href={`/templates/${type}/${route}`}
+                href={`/templates/${theme}/${route}`}
                 className="block py-3.5 px-4 text-base"
               >
                 {title}
