@@ -46,7 +46,7 @@ export const TemplatesItem = ({
           />
         ) : (
           <div className="w-full focus:outline-none">
-            <pre className="language-htm flex overflow-auto whitespace-pre-wrap rounded-2xl text-sm leading-[1.5714285714] text-white">
+            <pre className="flex overflow-auto whitespace-pre-wrap rounded-2xl text-sm leading-[1.5714285714] text-white">
               <code className="w-full bg-dark-800 p-4">{desktopPreview}</code>
             </pre>
           </div>

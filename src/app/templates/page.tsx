@@ -1,12 +1,12 @@
 import Image from "next/image";
-import { emailTemplates } from "@constants";
 import Link from "next/link";
+import { emailTemplates } from "@constants";
 
 export default function Templates() {
   return (
-    <div className="max-w-[1344px] mx-auto px-6 pt-24 pb-10">
+    <div className="mx-auto max-w-[1344px] px-6 pt-24 pb-10">
       <h2 className="text-2xl font-bold xl:text-4xl">Templates</h2>
-      <div className="grid grid-cols-3 mt-16 gap-y-8 gap-x-6 xl:gap-x-10 xl:gap-y-16">
+      <div className="mt-16 grid grid-cols-3 gap-y-8 gap-x-6 xl:gap-x-10 xl:gap-y-16">
         {emailTemplates.map(({ image, title, type }) => (
           <Link
             key={type}

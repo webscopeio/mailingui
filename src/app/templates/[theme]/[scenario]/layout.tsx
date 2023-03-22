@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
+import Link from "next/link";
 import { emailTemplates } from "@constants";
 
-import Link from "next/link";
 
 type Props = {
   children: ReactNode;
