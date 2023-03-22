@@ -1,6 +1,6 @@
 import { Greeting } from "@components/Greeting";
-import { ComponentsPreview } from "@components/ComponentsPreview/ComponentsPreview";
-import { TemplatesPreview } from "@components/TemplatesPreview/TemplatesPreview";
+import { ComponentsPreview } from "@components/ComponentsPreview";
+import { TemplatesPreview } from "@components/TemplatesPreview";
 import { HomePreview } from "@components/HomePreview";
 
 export default function Home() {

@@ -2,7 +2,7 @@
 import { IconButton } from "@components/IconButton";
 import CopyIcon from "public/static/svg/copy.svg";
 import CheckIcon from "public/static/svg/check.svg";
-import { useClipboard } from "@/hooks/useClipboard";
+import { useClipboard } from "@hooks/useClipboard";
 
 export type CopyButtonProps = {
   code?: string;

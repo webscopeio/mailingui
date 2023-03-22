@@ -1,15 +1,18 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
+import { TemplateOptions } from "./TemplateOptions";
 import ShareIcon from "public/static/svg/share.svg";
-import { TemplateOptions } from "@components/TemplatesItem/TemplateOptions";
 
 export type TemplatesItemProps = {
   desktopPreview: string;
   mobilePreview: string;
 };
 
-export const TemplatesItem = ({ desktopPreview, mobilePreview }: TemplatesItemProps) => {
+export const TemplatesItem = ({
+  desktopPreview,
+  mobilePreview,
+}: TemplatesItemProps) => {
   const [active, setActive] = useState<"desktop" | "mobile" | "code">(
     "desktop"
   );
