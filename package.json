@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@next/font": "13.2.4",
+    "@radix-ui/react-popover": "^1.0.5",
     "@types/node": "18.15.5",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",

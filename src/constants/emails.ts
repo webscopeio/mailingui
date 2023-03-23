@@ -1,12 +1,12 @@
 // component images
-import Heroes from "/public/static/images/components-preview/heroes.png";
-import Listing from "/public/static/images/components-preview/listing.png";
-import Badges from "/public/static/images/components-preview/badges.png";
-import Buttons from "/public/static/images/components-preview/buttons.png";
-import Emojis from "/public/static/images/components-preview/emojis.png";
-import SocialIcons from "/public/static/images/components-preview/social_icons.png";
-import Paragraphs from "/public/static/images/components-preview/paragraphs.png";
-import Dividers from "/public/static/images/components-preview/dividers.png";
+import Heroes from "public/static/images/components-preview/heroes.png";
+import Listing from "public/static/images/components-preview/listing.png";
+import Badges from "public/static/images/components-preview/badges.png";
+import Buttons from "public/static/images/components-preview/buttons.png";
+import Emojis from "public/static/images/components-preview/emojis.png";
+import SocialIcons from "public/static/images/components-preview/social_icons.png";
+import Paragraphs from "public/static/images/components-preview/paragraphs.png";
+import Dividers from "public/static/images/components-preview/dividers.png";
 
 // template images
 import Espace from "public/static/images/templates-preview/espace.png";
@@ -16,9 +16,9 @@ import Finanza from "public/static/images/templates-preview/finanza.png";
 import Bianco from "public/static/images/templates-preview/bianco.png";
 import Olivio from "public/static/images/templates-preview/olivio.png";
 
-import MjmlIcon from "/public/static/icons/mjml.png";
-import ReactIcon from "/public/static/icons/react.png";
-import HtmlIcon from "/public/static/icons/html.png";
+import MjmlIcon from "public/static/icons/mjml.png";
+import ReactIcon from "public/static/icons/react.png";
+import HtmlIcon from "public/static/icons/html.png";
 
 export const emailComponents = [
   {
