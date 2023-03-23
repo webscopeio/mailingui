@@ -23,7 +23,7 @@
     "paths": {
       "@components/*": ["./src/components/*"],
       "@hooks/*": ["./src/hooks/*"],
-      "@constants": ["./src/constants.ts"],
+      "@constants": ["./src/constants/index.ts"],
       "@utils": ["./src/utils.ts"]
     }
   },

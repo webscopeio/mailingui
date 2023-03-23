@@ -1,42 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
+import { navigationLinks, socialLinks } from "@constants";
 import Logo from "public/static/images/logo.png";
-import InstagramIcon from "public/static/icons/instagram.png";
-import GitHubIcon from "public/static/icons/github.png";
-
-const links = [
-  {
-    href: "/components",
-    label: "Components",
-  },
-  {
-    href: "/",
-    label: "Pricing",
-  },
-  {
-    href: "/",
-    label: "Documentation",
-  },
-  {
-    href: "/",
-    label: "Support",
-  },
-];
-
-const socialLinks = [
-  {
-    href: "https://instagram.com",
-    label: "Instagram",
-    iconSrc: InstagramIcon,
-    iconAltText: "Instagram Logo",
-  },
-  {
-    href: "https://github.com",
-    label: "GitHub",
-    iconSrc: GitHubIcon,
-    iconAltText: "GitHub Logo",
-  },
-];
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -54,7 +19,7 @@ export const Footer = () => {
           </div>
 
           <ul className="mt-8 flex flex-col gap-y-4 md:mt-0 md:flex-row md:gap-x-8">
-            {links.map(({ href, label }, index) => (
+            {navigationLinks.map(({ href, label }, index) => (
               <li key={index}>
                 <Link className="font-medium hover:opacity-70" href={href}>
                   {label}

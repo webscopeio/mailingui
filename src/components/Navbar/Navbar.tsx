@@ -5,45 +5,10 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import * as Popover from "@radix-ui/react-popover";
 import { clsx } from "@utils";
+import { navigationLinks, socialLinks } from "@constants";
 import Logo from "public/static/images/logo.png";
 import CrossIcon from "public/static/icons/cross.png";
 import MenuIcon from "public/static/icons/menu.png";
-import GitHubIcon from "public/static/icons/github.png";
-import InstagramIcon from "public/static/icons/instagram.png";
-
-const links = [
-  {
-    href: "/components",
-    label: "Components",
-  },
-  {
-    href: "/",
-    label: "Pricing",
-  },
-  {
-    href: "/",
-    label: "Documentation",
-  },
-  {
-    href: "/",
-    label: "Support",
-  },
-];
-
-const socialLinks = [
-  {
-    href: "https://instagram.com",
-    label: "Instagram",
-    iconSrc: InstagramIcon,
-    iconAltText: "Instagram Logo",
-  },
-  {
-    href: "https://github.com",
-    label: "GitHub",
-    iconSrc: GitHubIcon,
-    iconAltText: "GitHub Logo",
-  },
-];
 
 export const Navbar = () => {
   const pathname = usePathname();
@@ -59,7 +24,7 @@ export const Navbar = () => {
             </Link>
 
             <ul className="hidden gap-x-8 md:flex">
-              {links.map(({ href, label }, index) => (
+              {navigationLinks.map(({ href, label }, index) => (
                 <li key={index}>
                   <Link
                     className={clsx(
@@ -111,7 +76,7 @@ export const Navbar = () => {
             <Popover.Portal>
               <Popover.Content className="w-screen border-b border-solid border-dark-700 bg-black py-6 px-4 md:hidden">
                 <ul className="space-y-8">
-                  {links.map(({ href, label }, index) => (
+                  {navigationLinks.map(({ href, label }, index) => (
                     <li key={index}>
                       <Popover.Close asChild>
                         <Link
