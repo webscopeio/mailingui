@@ -57,7 +57,7 @@ export const ComponentOptions = ({
           <option value="reactEmailCode">React Email</option>
         )}
       </select>
-      <CopyButton code={emailCodes[codeType]} />
+      <CopyButton textToCopy={emailCodes[codeType] ?? "Nothing to copy"} />
       <IconButton>
         <SunIcon />
       </IconButton>

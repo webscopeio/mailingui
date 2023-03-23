@@ -1,16 +1,20 @@
 "use client";
 import React from "react";
-import { IconButton } from "@components/IconButton";
+import { IconButton, IconButtonProps } from "@components/IconButton";
 import { useClipboard, useTimeout } from "@hooks";
 import CheckIcon from "public/static/svg/check.svg";
 import CopyIcon from "public/static/svg/copy.svg";
 
-export type CopyButtonProps = {
-  code?: string;
-  className?: string;
+export type CopyButtonProps = Omit<IconButtonProps, "children"> & {
+  textToCopy: string;
 };
 
-export const CopyButton = ({ code = "", className }: CopyButtonProps) => {
+export const CopyButton = ({
+  onClick,
+  textToCopy,
+  "aria-label": ariaLabel = "Copy to clipboard",
+  ...delegated
+}: CopyButtonProps) => {
   const [showCopied, setShowCopied] = React.useState(false);
   const [copy] = useClipboard();
 
@@ -23,13 +27,18 @@ export const CopyButton = ({ code = "", className }: CopyButtonProps) => {
 
   return (
     <IconButton
-      onClick={async () => {
-        const isCopied = await copy(code);
-        setShowCopied(isCopied);
+      {...delegated}
+      onClick={async (e) => {
+        if (showCopied) {
+          return;
+        }
+        onClick?.(e);
+        const copyingSuccessful = await copy(textToCopy);
+        setShowCopied(copyingSuccessful);
       }}
-      className={className}
+      aria-label={ariaLabel}
     >
-      {showCopied ? <CheckIcon width={20} /> : <CopyIcon />}
+      {showCopied ? <CheckIcon /> : <CopyIcon />}
     </IconButton>
   );
 };
