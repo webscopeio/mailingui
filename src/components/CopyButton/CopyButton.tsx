@@ -1,9 +1,8 @@
 "use client";
 import React from "react";
 import { IconButton, IconButtonProps } from "@components/IconButton";
+import { CopyIcon, CheckIcon } from "@components/Icons";
 import { useClipboard, useTimeout } from "@hooks";
-import CheckIcon from "public/static/svg/check.svg";
-import CopyIcon from "public/static/svg/copy.svg";
 
 export type CopyButtonProps = Omit<IconButtonProps, "children"> & {
   textToCopy: string;
@@ -38,7 +37,7 @@ export const CopyButton = ({
       }}
       aria-label={ariaLabel}
     >
-      {showCopied ? <CheckIcon /> : <CopyIcon />}
+      {showCopied ? <CheckIcon className="text-green-700" /> : <CopyIcon />}
     </IconButton>
   );
 };
