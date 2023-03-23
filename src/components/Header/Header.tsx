@@ -17,8 +17,6 @@ export const Header = () => {
     }`;
   };
 
-  if (pathname?.startsWith("/templates/")) return null;
-
   return (
     <div className="flex w-full items-center justify-evenly border-b border-solid border-dark-700 py-7">
       <Link href="/" className="hover:opacity-70">

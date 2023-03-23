@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import localFont from "next/font/local";
 import { ReactNode } from "react";
-import { Header } from "@components/Header";
 import "./globals.css";
 
 const basierCircle = localFont({
@@ -74,10 +73,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={basierCircle.variable}>
       <head />
-      <body className="h-screen bg-black text-white">
-        <Header />
-        {children}
-      </body>
+      <body className="h-screen bg-black text-white">{children}</body>
     </html>
   );
 }
