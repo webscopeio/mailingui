@@ -14,30 +14,30 @@ export const CopyButton = ({
   "aria-label": ariaLabel = "Copy to clipboard",
   ...delegated
 }: CopyButtonProps) => {
-  const [showCopied, setShowCopied] = React.useState(false);
+  const [showCheck, setShowCheck] = React.useState(false);
   const [copy] = useClipboard();
 
   useTimeout(
     () => {
-      setShowCopied(false);
+      setShowCheck(false);
     },
-    showCopied ? 2500 : null
+    showCheck ? 2500 : null
   );
 
   return (
     <IconButton
       {...delegated}
       onClick={async (e) => {
-        if (showCopied) {
+        if (showCheck) {
           return;
         }
         onClick?.(e);
         const copyingSuccessful = await copy(textToCopy);
-        setShowCopied(copyingSuccessful);
+        setShowCheck(copyingSuccessful);
       }}
       aria-label={ariaLabel}
     >
-      {showCopied ? <CheckIcon className="text-green-700" /> : <CopyIcon />}
+      {showCheck ? <CheckIcon className="text-green-700" /> : <CopyIcon />}
     </IconButton>
   );
 };
