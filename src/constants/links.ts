@@ -1,5 +1,4 @@
-import InstagramIcon from "public/static/icons/instagram.png";
-import GitHubIcon from "public/static/icons/github.png";
+import { GitHubIcon, InstagramIcon } from "@components/Icons";
 
 export const navigationLinks = [
   {
@@ -24,13 +23,12 @@ export const socialLinks = [
   {
     href: "https://instagram.com",
     label: "Instagram",
-    iconSrc: InstagramIcon,
+    Icon: InstagramIcon,
     iconAltText: "Instagram Logo",
   },
   {
     href: "https://github.com",
     label: "GitHub",
-    iconSrc: GitHubIcon,
-    iconAltText: "GitHub Logo",
+    Icon: GitHubIcon,
   },
 ];

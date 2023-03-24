@@ -1,7 +1,14 @@
 export { CheckIcon } from "./CheckIcon";
 export { CodeIcon } from "./CodeIcon";
 export { CopyIcon } from "./CopyIcon";
+export { CrossIcon } from "./CrossIcon";
 export { DesktopIcon } from "./DesktopIcon";
 export { EyeIcon } from "./EyeIcon";
+export { GitHubIcon } from "./GitHubIcon";
+export { HtmlIcon } from "./HtmlIcon";
+export { InstagramIcon } from "./InstagramIcon";
+export { MenuIcon } from "./MenuIcon";
+export { MjmlIcon } from "./MjmlIcon";
+export { ReactIcon } from "./ReactIcon";
 export { ShareIcon } from "./ShareIcon";
 export { SunIcon } from "./SunIcon";

@@ -1,18 +1,32 @@
-import Image from "next/image";
 import Link from "next/link";
 import { PrimaryLink } from "@components/PrimaryLink";
-import { emailCodeTypes } from "@constants";
+import { HtmlIcon, MjmlIcon, ReactIcon } from "@components/Icons";
+
+const emailCodeTypes = [
+  {
+    name: "MJML",
+    Icon: MjmlIcon,
+  },
+  {
+    name: "React",
+    Icon: ReactIcon,
+  },
+  {
+    name: "HTML",
+    Icon: HtmlIcon,
+  },
+];
 
 export const Greeting = () => (
   <section className="flex items-center justify-center gap-4 pt-3 max-lg:flex-col">
     <div className="flex max-w-[40%] flex-col justify-center max-lg:max-w-[90%]">
       <div className="flex gap-3 text-neutral-500 max-sm:justify-center">
-        {emailCodeTypes.map(({ name, icon }) => (
+        {emailCodeTypes.map(({ name, Icon }) => (
           <div
             key={name}
-            className="flex gap-2 rounded-3xl bg-dark-900 py-2 px-4"
+            className="inline-flex items-center justify-center gap-2 rounded-3xl bg-dark-900 py-2 px-4"
           >
-            <Image src={icon} alt={name} />
+            <Icon />
             <span className="text-sm font-medium">{name}</span>
           </div>
         ))}
