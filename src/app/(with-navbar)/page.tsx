@@ -5,7 +5,7 @@ import { FeaturePreview } from "@components/FeaturePreview";
 import templatesPreview from "public/static/images/templates-preview.png";
 
 const Home = () => (
-  <main className="mt-16 pb-32">
+  <main className="mt-16">
     <Greeting />
 
     <FeaturePreview
