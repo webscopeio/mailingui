@@ -1,38 +1,42 @@
 import React from "react";
+import { useTimeout } from "@hooks";
+
+type CopyState = "ready" | "success" | Error;
 
 /**
  * Hook for copying text to a user's clipboard. Doesn't support Internet Explorer.
- * @returns Tuple with copy function and copied text.
+ * @returns Tuple with copy function and the copy state. The copy state can be one of three values:
+ * 1. `"ready"` when the copy function is ready to be used;
+ * 2. `"success"` if the copying was successful;
+ * 3. `Error` if a problem was encountered during the copying.
  */
-export const useClipboard = (): [
-  (value: string | number) => Promise<boolean>,
-  string | undefined
-] => {
-  const [text, setText] = React.useState<string | undefined>();
+export const useClipboard = (
+  timeout = 2000
+): [(value: string | number) => void, CopyState] => {
+  const [copyState, setCopyState] = React.useState<CopyState>("ready");
 
-  const copy = React.useCallback(
-    async (value: string | number): Promise<boolean> => {
-      if (!("clipboard" in navigator)) {
-        // eslint-disable-next-line no-console
-        console.warn("Clipboard not supported.");
-        return false;
-      }
-
-      const text = value.toString();
-
-      try {
-        await navigator.clipboard.writeText(text);
-        setText(text);
-        return true;
-      } catch (error) {
-        // eslint-disable-next-line no-console
-        console.warn("Copy to clipboard failed: ", error);
-        setText(undefined);
-        return false;
-      }
+  useTimeout(
+    () => {
+      setCopyState("ready");
     },
-    []
+    copyState !== "ready" ? timeout : null
   );
 
-  return [copy, text];
+  const copy = React.useCallback(async (value: string | number) => {
+    if (!("clipboard" in navigator)) {
+      setCopyState(new Error("Navigation clipboard is not supported"));
+    }
+
+    try {
+      const text = value.toString();
+      await navigator.clipboard.writeText(text);
+      setCopyState("success");
+    } catch (error) {
+      if (error instanceof Error) {
+        setCopyState(error);
+      }
+    }
+  }, []);
+
+  return [copy, copyState];
 };

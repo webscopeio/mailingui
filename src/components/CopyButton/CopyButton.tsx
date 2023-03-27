@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
 import { IconButton, IconButtonProps } from "@components/IconButton";
-import { CopyIcon, CheckIcon } from "@components/Icons";
-import { useClipboard, useTimeout } from "@hooks";
+import { CopyIcon, CheckIcon, CrossIcon } from "@components/Icons";
+import { useClipboard } from "@hooks";
 
 export type CopyButtonProps = Omit<IconButtonProps, "children"> & {
   textToCopy: string;
@@ -14,30 +14,24 @@ export const CopyButton = ({
   "aria-label": ariaLabel = "Copy to clipboard",
   ...delegated
 }: CopyButtonProps) => {
-  const [showCheck, setShowCheck] = React.useState(false);
-  const [copy] = useClipboard();
-
-  useTimeout(
-    () => {
-      setShowCheck(false);
-    },
-    showCheck ? 2500 : null
-  );
+  const [copy, copyState] = useClipboard();
 
   return (
     <IconButton
       {...delegated}
-      onClick={async (e) => {
-        if (showCheck) {
-          return;
-        }
-        onClick?.(e);
-        const copyingSuccessful = await copy(textToCopy);
-        setShowCheck(copyingSuccessful);
+      onClick={(event) => {
+        onClick?.(event);
+        copy(textToCopy);
       }}
       aria-label={ariaLabel}
     >
-      {showCheck ? <CheckIcon className="text-green-700" /> : <CopyIcon />}
+      {copyState === "ready" ? (
+        <CopyIcon />
+      ) : copyState === "success" ? (
+        <CheckIcon className="text-green-700" />
+      ) : (
+        <CrossIcon className="text-red-600" />
+      )}
     </IconButton>
   );
 };
