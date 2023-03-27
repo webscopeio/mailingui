@@ -29,7 +29,7 @@ export const Footer = () => {
           </ul>
 
           <ul className="mt-8 flex gap-4 md:mt-0">
-            {socialLinks.map(({ href, label, iconSrc, iconAltText }, index) => (
+            {socialLinks.map(({ href, label, Icon }, index) => (
               <li key={index}>
                 <a
                   href={href}
@@ -38,12 +38,7 @@ export const Footer = () => {
                   rel="noopener noreferrer"
                 >
                   <span className="sr-only">{label}</span>
-                  <Image
-                    src={iconSrc}
-                    alt={iconAltText}
-                    width={24}
-                    height={24}
-                  />
+                  <Icon />
                 </a>
               </li>
             ))}

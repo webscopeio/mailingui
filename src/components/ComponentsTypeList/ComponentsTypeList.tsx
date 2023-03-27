@@ -11,8 +11,11 @@ export type ComponentsTypeListProps = {
   title: string;
 };
 
-export const ComponentsTypeList = ({ components, title }: ComponentsTypeListProps) => (
-  <div className="mx-auto mt-24 flex max-w-[900px] flex-col items-center">
+export const ComponentsTypeList = ({
+  components,
+  title,
+}: ComponentsTypeListProps) => (
+  <div className="mx-auto mt-24 flex w-full max-w-[900px] flex-col items-center">
     <h1 className="mb-16 self-start text-4xl font-bold">{title}</h1>
     {components.map(
       ({ title, htmlPreview, htmlCode, mjmlCode, reactEmailCode }) => {

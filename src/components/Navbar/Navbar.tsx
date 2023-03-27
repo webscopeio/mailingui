@@ -1,14 +1,13 @@
 "use client";
 import React from "react";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import * as Popover from "@radix-ui/react-popover";
-import { clsx } from "@utils";
+import { CrossIcon, MenuIcon } from "@components/Icons";
 import { navigationLinks, socialLinks } from "@constants";
+import { clsx } from "@utils";
 import Logo from "public/static/images/logo.png";
-import CrossIcon from "public/static/icons/cross.png";
-import MenuIcon from "public/static/icons/menu.png";
 
 export const Navbar = () => {
   const pathname = usePathname();
@@ -42,36 +41,26 @@ export const Navbar = () => {
             </ul>
 
             <ul className="hidden gap-4 md:flex">
-              {socialLinks.map(
-                ({ href, label, iconSrc, iconAltText }, index) => (
-                  <li key={index}>
-                    <a
-                      href={href}
-                      className="hover:opacity-70"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <span className="sr-only">{label}</span>
-                      <Image
-                        src={iconSrc}
-                        alt={iconAltText}
-                        width={24}
-                        height={24}
-                      />
-                    </a>
-                  </li>
-                )
-              )}
+              {socialLinks.map(({ href, label, Icon }, index) => (
+                <li key={index}>
+                  <a
+                    href={href}
+                    className="hover:opacity-70"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <span className="sr-only">{label}</span>
+                    <Icon />
+                  </a>
+                </li>
+              ))}
             </ul>
 
-            <Popover.Trigger className="md:hidden">
-              <span className="sr-only">{isMenuOpen ? "Close" : "Open"}</span>
-              <Image
-                src={isMenuOpen ? CrossIcon : MenuIcon}
-                alt="Hamburger Icon"
-                width={24}
-                height={24}
-              />
+            <Popover.Trigger
+              className="md:hidden"
+              aria-label={isMenuOpen ? "Close" : "Open"}
+            >
+              {isMenuOpen ? <CrossIcon /> : <MenuIcon />}
             </Popover.Trigger>
             <Popover.Portal>
               <Popover.Content className="w-screen border-b border-solid border-dark-700 bg-black py-6 px-4 md:hidden">

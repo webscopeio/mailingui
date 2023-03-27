@@ -1,20 +1,37 @@
 "use client";
-import { IconButton } from "@components/IconButton";
-import CopyIcon from "public/static/svg/copy.svg";
-import CheckIcon from "public/static/svg/check.svg";
-import { useClipboard } from "@hooks/useClipboard";
+import React from "react";
+import { IconButton, IconButtonProps } from "@components/IconButton";
+import { CopyIcon, CheckIcon, CrossIcon } from "@components/Icons";
+import { useClipboard } from "@hooks";
 
-export type CopyButtonProps = {
-  code?: string;
-  className?: string;
+export type CopyButtonProps = Omit<IconButtonProps, "children"> & {
+  textToCopy: string;
 };
 
-export const CopyButton = ({ code = "", className }: CopyButtonProps) => {
-  const clipboard = useClipboard();
+export const CopyButton = ({
+  onClick,
+  textToCopy,
+  "aria-label": ariaLabel = "Copy to clipboard",
+  ...delegated
+}: CopyButtonProps) => {
+  const [copy, copyState] = useClipboard();
 
   return (
-    <IconButton onClick={() => clipboard.copy(code)} className={className}>
-      {clipboard.copied ? <CheckIcon width={20} /> : <CopyIcon />}
+    <IconButton
+      {...delegated}
+      onClick={(event) => {
+        onClick?.(event);
+        copy(textToCopy);
+      }}
+      aria-label={ariaLabel}
+    >
+      {copyState === "ready" ? (
+        <CopyIcon />
+      ) : copyState === "success" ? (
+        <CheckIcon className="text-green-700" />
+      ) : (
+        <CrossIcon className="text-red-600" />
+      )}
     </IconButton>
   );
 };

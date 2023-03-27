@@ -16,10 +16,6 @@ import Finanza from "public/static/images/templates-preview/finanza.png";
 import Bianco from "public/static/images/templates-preview/bianco.png";
 import Olivio from "public/static/images/templates-preview/olivio.png";
 
-import MjmlIcon from "public/static/icons/mjml.png";
-import ReactIcon from "public/static/icons/react.png";
-import HtmlIcon from "public/static/icons/html.png";
-
 export const emailComponents = [
   {
     image: Heroes,
@@ -477,20 +473,5 @@ export const emailTemplates = [
         preview: "src/email-templates/olivio/booking-confirmation/preview.html",
       },
     ],
-  },
-];
-
-export const emailCodeTypes = [
-  {
-    name: "MJML",
-    icon: MjmlIcon,
-  },
-  {
-    name: "React",
-    icon: ReactIcon,
-  },
-  {
-    name: "HTML",
-    icon: HtmlIcon,
   },
 ];

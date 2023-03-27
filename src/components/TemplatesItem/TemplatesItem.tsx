@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { TemplateOptions } from "./TemplateOptions";
-import ShareIcon from "public/static/svg/share.svg";
+import { ShareIcon } from "@components/Icons";
 
 export type TemplatesItemProps = {
   desktopPreview: string;
@@ -27,7 +27,7 @@ export const TemplatesItem = ({
           <span className="pr-1">&#129120;</span> Back to templates
         </Link>
         <TemplateOptions active={active} setActive={setActive} />
-        <ShareIcon className="cursor-pointer hover:opacity-70" />
+        <ShareIcon className="cursor-pointer text-white hover:opacity-70" />
       </div>
 
       <div className="mt-4 flex w-full justify-center pr-4">

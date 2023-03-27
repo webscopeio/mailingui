@@ -1,18 +1,11 @@
-export type IconButtonProps = {
-  className?: string;
-  onClick?: () => void;
-  children: React.ReactNode;
-};
+export type IconButtonProps = Omit<
+  React.ComponentPropsWithoutRef<"button">,
+  "className"
+>;
 
-export const IconButton = ({
-  className,
-  onClick,
-  children,
-}: IconButtonProps) => (
+export const IconButton = ({ ...delegated }: IconButtonProps) => (
   <button
-    className={`flex h-10 w-10 items-center justify-center rounded-full bg-dark-800 text-dark-100 hover:opacity-70 ${className}`}
-    onClick={onClick}
-  >
-    {children}
-  </button>
+    className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-dark-800 text-dark-100 hover:opacity-80"
+    {...delegated}
+  />
 );
