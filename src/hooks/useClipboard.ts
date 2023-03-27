@@ -5,6 +5,7 @@ type CopyState = "ready" | "success" | Error;
 
 /**
  * Hook for copying text to a user's clipboard. Doesn't support Internet Explorer.
+ * @param timeout - Amount of milliseconds after which the copy state will be set to `"ready"` after the copy function is ran. Defaults to 2000.
  * @returns Tuple with copy function and the copy state. The copy state can be one of three values:
  * 1. `"ready"` when the copy function is ready to be used;
  * 2. `"success"` if the copying was successful;
