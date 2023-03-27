@@ -16,6 +16,7 @@ export default function Home() {
       >
         <ComponentsPreview componentsShown={8} />
       </HomePreview>
+
       <HomePreview
         linkHref="/templates"
         buttonTitle="Explore Templates"

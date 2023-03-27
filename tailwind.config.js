@@ -10,7 +10,6 @@ module.exports = {
         sans: ["var(--font-basier-circle)", ...defaultTheme.fontFamily.sans],
       },
       backgroundImage: {
-        "customizable-hero": "url('/static/images/customizable_hero.png')",
         "pink-to-purple-gradient":
           "linear-gradient(85.07deg, #C81679 0%, #7D4BF9 100%);",
       },
