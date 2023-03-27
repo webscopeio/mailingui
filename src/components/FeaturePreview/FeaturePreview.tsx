@@ -17,7 +17,7 @@ export const FeaturePreview = ({
   previewType,
 }: FeaturePreviewProps) => (
   <section className="mx-auto mt-16 max-w-6xl px-4 md:mt-32">
-    <h2 className="mx-auto mb-16 text-center md:max-w-[70%]">
+    <h2 className="mx-auto text-center md:max-w-[70%]">
       <div className="text-xs font-semibold uppercase text-dark-200 md:text-base">
         {previewType}
       </div>
