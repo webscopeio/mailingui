@@ -10,7 +10,7 @@
  * const isEnabled = true
  * const isTitle = true
  *
- * clsx("base", undefined, null, "", ["more", "classes"],
+ * clsx("base", undefined, null, "",
  *   hasError && "bg-red",
  *   isEnabled || "pointer-events-none",
  *   isTitle ? "font-semibold" : "font-normal"
