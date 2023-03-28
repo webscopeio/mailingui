@@ -26,13 +26,8 @@ export const FeaturePreview = ({
       </div>
     </h2>
     <div className="mt-8 md:mt-16">{children}</div>
-    <div className="mt-8 md:hidden">
-      <CTA href={cta.href} color="white" fullWidth>
-        {cta.title}
-      </CTA>
-    </div>
-    <div className="hidden md:mt-16 md:flex md:justify-center">
-      <CTA href={cta.href} color="white">
+    <div className="mt-8 w-full md:mt-16 md:flex md:justify-center">
+      <CTA href={cta.href} color="white" className="w-full md:w-auto">
         {cta.title}
       </CTA>
     </div>

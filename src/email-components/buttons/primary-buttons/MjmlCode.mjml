@@ -1,4 +1,4 @@
-<mj-column width="120px">
+<mj-column width="120px" padding='8px'>
   <mj-button
     align="center"
     font-family="Helvetica"
@@ -14,7 +14,7 @@
     Button text
   </mj-button>
 </mj-column>
-<mj-column width="120px">
+<mj-column width="120px" padding='8px'>
   <mj-button
     align="center"
     font-family="Helvetica"
@@ -30,7 +30,7 @@
     Button text
   </mj-button>
 </mj-column>
-<mj-column width="140px">
+<mj-column width="140px" padding='8px'>
   <mj-button
     align="center"
     font-family="Helvetica"
@@ -45,7 +45,7 @@
     >Button text
   </mj-button>
 </mj-column>
-<mj-column width="150px">
+<mj-column width="150px" padding='8px'>
   <mj-button
     align="center"
     font-family="Helvetica"
@@ -61,7 +61,7 @@
     Button text
   </mj-button>
 </mj-column>
-<mj-column width="155px">
+<mj-column width="155px" padding='8px'>
   <mj-button
     align="center"
     font-family="Helvetica"
@@ -77,7 +77,7 @@
     Button text
   </mj-button>
 </mj-column>
-<mj-column width="165px">
+<mj-column width="165px" padding='8px'>
   <mj-button
     align="center"
     font-family="Helvetica"

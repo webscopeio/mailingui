@@ -1,5 +1,7 @@
+import { twMerge } from "tailwind-merge";
+
 /**
- * A utility for constructing `className` strings conditionally.
+ * A utility for constructing `className` strings conditionally. Merges Tailwind classes without conflicts.
  * @param args - Any number of arguments, each of which can be `undefined`, `null`, `string` or `boolean`.
  * Any `falsey` values are discarded. Standalone `boolean` values are discarded as well.
  * @returns The `className` string.
@@ -22,9 +24,11 @@
 export const clsx = (
   ...args: Array<undefined | null | string | boolean>
 ): string =>
-  args
-    .filter(
-      (x): x is string =>
-        x !== undefined && x !== null && x !== "" && typeof x !== "boolean"
-    )
-    .join(" ");
+  twMerge(
+    args
+      .filter(
+        (x): x is string =>
+          x !== undefined && x !== null && x !== "" && typeof x !== "boolean"
+      )
+      .join(" ")
+  );

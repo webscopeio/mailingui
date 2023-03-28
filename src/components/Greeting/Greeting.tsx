@@ -39,19 +39,11 @@ export const Greeting = () => (
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor.
       </p>
-      <div className="mt-6 space-y-3 md:hidden">
-        <CTA href="/" color="white" fullWidth>
+      <div className="mt-6 space-y-3 md:mt-12 md:inline-flex md:gap-x-3 md:space-y-0">
+        <CTA href="/" color="white" className="w-full md:w-auto">
           Build an email
         </CTA>
-        <CTA href="/" color="black" fullWidth>
-          Explore components
-        </CTA>
-      </div>
-      <div className="hidden md:mt-12 md:inline-flex md:gap-x-3">
-        <CTA href="/" color="white">
-          Build an email
-        </CTA>
-        <CTA href="/" color="black">
+        <CTA href="/" color="black" className="w-full md:w-auto">
           Explore components
         </CTA>
       </div>
