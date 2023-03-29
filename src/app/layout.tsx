@@ -76,7 +76,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <head />
       <body className="flex min-h-screen flex-col bg-black text-white">
         {children}
-        <div className="mt-auto pt-16">
+        <div className="mt-auto pt-16 md:pt-32">
           <Footer />
         </div>
       </body>

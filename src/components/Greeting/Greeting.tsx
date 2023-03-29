@@ -1,6 +1,7 @@
-import Link from "next/link";
-import { PrimaryLink } from "@components/PrimaryLink";
+import Image from "next/image";
+import { CTA } from "@components/CTA";
 import { HtmlIcon, MjmlIcon, ReactIcon } from "@components/Icons";
+import homepageHeroImage from "public/static/images/homepage-hero.png";
 
 const emailCodeTypes = [
   {
@@ -18,69 +19,44 @@ const emailCodeTypes = [
 ];
 
 export const Greeting = () => (
-  <section className="flex items-center justify-center gap-4 pt-3 max-lg:flex-col">
-    <div className="flex max-w-[40%] flex-col justify-center max-lg:max-w-[90%]">
-      <div className="flex gap-3 text-neutral-500 max-sm:justify-center">
+  <section className="max-w-6xl md:mx-auto md:flex md:items-center">
+    <div className="px-4 md:flex-1">
+      <div className="space-x-2 md:space-x-3">
         {emailCodeTypes.map(({ name, Icon }) => (
           <div
             key={name}
-            className="inline-flex items-center justify-center gap-2 rounded-3xl bg-dark-900 py-2 px-4"
+            className="inline-flex items-center justify-center gap-x-1.5 rounded-full bg-dark-900 py-1 px-2 text-neutral-500 md:py-2 md:px-4"
           >
-            <Icon />
-            <span className="text-sm font-medium">{name}</span>
+            <Icon className="h-4 w-4 md:h-5 md:w-5" />
+            <span className="text-xs font-medium md:text-sm">{name}</span>
           </div>
         ))}
       </div>
-      <h1 className="mt-4 max-w-xl text-[64px] font-semibold leading-[72px] max-xl:text-[42px] max-xl:leading-[52px] max-sm:text-center">
+      <h1 className="mt-3 text-4xl font-semibold md:mt-5 md:text-6xl">
         Easy to build an email with React & MJML
       </h1>
-      <p className="mt-4 max-w-xl text-xl text-neutral-500 max-sm:text-center">
+      <p className="mt-4 text-lg text-neutral-500 md:mt-6 md:text-xl">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor.
       </p>
-      <div className="mt-8 flex items-center gap-8 max-sm:justify-center">
-        <PrimaryLink href="/build" className="md:px-6">
+      <div className="mt-6 space-y-3 md:mt-12 md:inline-flex md:gap-x-3 md:space-y-0">
+        <CTA href="/" color="white" className="w-full md:w-auto">
           Build an email
-        </PrimaryLink>
-        <Link
-          href="/components"
-          className="text-base font-medium hover:opacity-70"
-        >
+        </CTA>
+        <CTA href="/" color="black" className="w-full md:w-auto">
           Explore components
-        </Link>
+        </CTA>
       </div>
     </div>
-    <div className="h-[660px] w-[30vw] min-w-[420px] rounded-t-[40px] bg-gradient-to-b from-dark-800 via-dark-950 to-black p-6 max-lg:mt-8 max-lg:w-[60vw] max-sm:w-[90%] max-sm:min-w-[0] max-sm:p-5">
-      <div className="flex h-[210px] w-[115%] items-center justify-center rounded-2xl bg-customizable-hero bg-cover  max-sm:w-auto">
-        <h2 className="align-middle text-2xl max-sm:text-lg">
-          Customizable hero image
-        </h2>
-      </div>
-      <div className="mt-6 flex w-[130%] items-start gap-4 max-sm:w-auto max-sm:flex-col">
-        <div className="flex w-[383px] flex-col rounded-2xl bg-dark-800 p-6 max-2xl:w-[225px] max-2xl:p-4 max-sm:w-full">
-          <h3 className="text-sm font-semibold">This is listing components</h3>
-          <hr className="mt-2 w-11/12 rounded-md border-b-[12px] border-dark-600" />
-          <hr className="mt-2 w-8/12 rounded-md border-b-[12px] border-dark-600" />
-          <h3 className="mt-7 text-sm font-semibold">
-            This is listing components
-          </h3>
-          <hr className="mt-2 w-11/12 rounded-md border-b-[12px] border-dark-600" />
-          <hr className="mt-2 w-8/12 rounded-md border-b-[12px] border-dark-600" />
-        </div>
-        <div className="flex h-[323px] w-[271px] min-w-[250px] flex-col rounded-2xl bg-gradient-to-b from-dark-800 via-dark-800 to-[#0a0a0a] p-6 max-2xl:p-4 max-sm:h-[200px] max-sm:w-full">
-          <div className="flex justify-between">
-            <span className="rounded-2xl bg-pink-background py-1.5 px-3 text-sm text-pink-text">
-              Badges
-            </span>
-            <span className="rounded-2xl bg-pink-background py-1.5 px-3 text-sm text-pink-text">
-              Full customizable
-            </span>
-          </div>
-          <h2 className="mt-5 text-xl font-semibold">
-            Excepteur sint occaec cupidatat non
-          </h2>
-        </div>
-      </div>
+    <div className="relative mt-8 overflow-hidden px-4 md:flex-1">
+      <Image
+        src={homepageHeroImage}
+        alt="Homepage hero image"
+        quality={100}
+        className="min-w-[390px] md:min-w-[500px]"
+        priority={true}
+      />
+      <div className="absolute bottom-0 h-1/3 w-full bg-[linear-gradient(to_bottom,transparent,#000000_80%)]" />
     </div>
   </section>
 );
