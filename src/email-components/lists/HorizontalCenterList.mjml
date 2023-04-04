@@ -1,0 +1,30 @@
+<mjml>
+  <mj-body width="600px">
+    <mj-section padding="10px">
+      <mj-column padding="10px">
+        <mj-text align="center" font-size="16px" line-height="24px" font-weight="700" color="black" padding="0">
+          Excepteur sint
+        </mj-text>
+        <mj-text align="center" font-size="16px" line-height="24px" font-weight="400" color="#475569" padding="0" padding-top="4px">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </mj-text>
+      </mj-column>
+      <mj-column padding="10px">
+        <mj-text align="center" font-size="16px" line-height="24px" font-weight="700" color="black" padding="0">
+          Excepteur sint
+        </mj-text>
+        <mj-text align="center" font-size="16px" line-height="24px" font-weight="400" color="#475569" padding="0" padding-top="4px">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </mj-text>
+      </mj-column>
+      <mj-column padding="10px">
+        <mj-text align="center" font-size="16px" line-height="24px" font-weight="700" color="black" padding="0">
+          Excepteur sint
+        </mj-text>
+        <mj-text align="center" font-size="16px" line-height="24px" font-weight="400" color="#475569" padding="0" padding-top="4px">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>

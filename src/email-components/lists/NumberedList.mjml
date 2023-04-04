@@ -1,0 +1,19 @@
+<mjml>
+  <mj-body width="600px">
+    <mj-section padding="20px">
+      <mj-column>
+        <mj-text padding="0" font-size="18px" line-height="28px">1.&nbsp;Lorem ipsum dolor sit amet</mj-text>
+        <mj-spacer height="4px" />
+        <mj-text padding="0" font-size="18px" line-height="28px">2.&nbsp;Senectus et netus et malesuada fames</mj-text>
+        <mj-spacer height="4px" />
+        <mj-text padding="0" font-size="18px" line-height="28px">3.&nbsp;Habitant morbi tristique senectus et netus</mj-text>
+        <mj-spacer height="4px" />
+        <mj-text padding="0" font-size="18px" line-height="28px">4.&nbsp;Lorem sed risus ultricies tristique</mj-text>
+        <mj-spacer height="4px" />
+        <mj-text padding="0" font-size="18px" line-height="28px">5.&nbsp;Sed cras ornare arcu dui vivamus</mj-text>
+        <mj-spacer height="4px" />
+        <mj-text padding="0" font-size="18px" line-height="28px">6.&nbsp;A iaculis at erat pellentesque adipiscing</mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>
