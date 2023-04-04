@@ -1,0 +1,111 @@
+<mjml>
+  <mj-head>
+    <mj-attributes>
+      <mj-section padding="0" />
+      <mj-column padding="24px 10px" />
+      <mj-image padding="0" />
+    </mj-attributes>
+  </mj-head>
+  <mj-body>
+    <mj-section>
+      <mj-column>
+        <mj-image width="44px" src="https://www.linkpicture.com/q/grinning_face.png" />
+      </mj-column>
+      <mj-column>
+        <mj-image width="44px" src="https://www.linkpicture.com/q/grinning_face_sweat.png" />
+      </mj-column>
+      <mj-column>
+        <mj-image width="44px" src="https://www.linkpicture.com/q/tears_of_joy.png" />
+      </mj-column>
+      <mj-column>
+        <mj-image width="44px" src="https://www.linkpicture.com/q/slightly_smilling.png" />
+      </mj-column>
+      <mj-column>
+        <mj-image width="44px" src="https://www.linkpicture.com/q/heart_eyes.png" />
+      </mj-column>
+    </mj-section>
+    <mj-section>
+      <mj-column>
+        <mj-image width="44px" src="https://www.linkpicture.com/q/enraged_face.png" />
+      </mj-column>
+      <mj-column>
+        <mj-image width="44px" src="https://www.linkpicture.com/q/pensive_face.png" />
+      </mj-column>
+      <mj-column>
+        <mj-image width="44px" src="https://www.linkpicture.com/q/loudly_crying.png" />
+      </mj-column>
+      <mj-column>
+        <mj-image width="44px" src="https://www.linkpicture.com/q/star_struck.png" />
+      </mj-column>
+      <mj-column>
+        <mj-image width="44px" src="https://www.linkpicture.com/q/smilling_with_sunglasses.png" />
+      </mj-column>
+    </mj-section>
+    <mj-section>
+      <mj-column>
+        <mj-image width="44px" src="https://www.linkpicture.com/q/partying_face.png" />
+      </mj-column>
+      <mj-column>
+        <mj-image width="44px" src="https://www.linkpicture.com/q/sneezing_face.png" />
+      </mj-column>
+      <mj-column>
+        <mj-image width="44px" src="https://www.linkpicture.com/q/cold_face.png" />
+      </mj-column>
+      <mj-column>
+        <mj-image width="44px" src="https://www.linkpicture.com/q/hot_face.png" />
+      </mj-column>
+      <mj-column>
+        <mj-image width="44px" src="https://www.linkpicture.com/q/smilling_eyes_face.png" />
+      </mj-column>
+    </mj-section>
+    <mj-section>
+      <mj-column>
+        <mj-image width="44px" src="https://www.linkpicture.com/q/shushing_face.png" />
+      </mj-column>
+      <mj-column>
+        <mj-image width="44px" src="https://www.linkpicture.com/q/waving_hand.png" />
+      </mj-column>
+      <mj-column>
+        <mj-image width="44px" src="https://www.linkpicture.com/q/handshake.png" />
+      </mj-column>
+      <mj-column>
+        <mj-image width="44px" src="https://www.linkpicture.com/q/heart_hands.png" />
+      </mj-column>
+      <mj-column>
+        <mj-image width="44px" src="https://www.linkpicture.com/q/sleeping_face.png" />
+      </mj-column>
+    </mj-section>
+    <mj-section>
+      <mj-column>
+        <mj-image width="44px" src="https://www.linkpicture.com/q/sub_behind_rain_cloud.png" />
+      </mj-column>
+      <mj-column>
+        <mj-image width="44px" src="https://www.linkpicture.com/q/sun_behind_small_cloud.png" />
+      </mj-column>
+      <mj-column>
+        <mj-image width="44px" src="https://www.linkpicture.com/q/snowflake.png" />
+      </mj-column>
+      <mj-column>
+        <mj-image width="44px" src="https://www.linkpicture.com/q/cloud_lightning_rain.png" />
+      </mj-column>
+      <mj-column>
+        <mj-image width="44px" src="https://www.linkpicture.com/q/sun_5.png" />
+      </mj-column>
+    </mj-section>
+    <mj-section>
+      <mj-column>
+        <mj-image width="44px" src="https://www.linkpicture.com/q/folded_hands.png" />
+      </mj-column>
+      <mj-column>
+        <mj-image width="44px" src="https://www.linkpicture.com/q/thumbs_up.png" />
+      </mj-column>
+      <mj-column>
+        <mj-image width="44px" src="https://www.linkpicture.com/q/thumbs_down.png" />
+      </mj-column>
+      <mj-column>
+        <mj-image width="44px" src="https://www.linkpicture.com/q/heart_6.png" />
+      </mj-column>
+      <mj-column />
+    </mj-section>
+  </mj-body>
+</mjml>
