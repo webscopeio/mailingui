@@ -1,27 +1,33 @@
 <mjml>
+  <mj-head>
+    <mj-attributes>
+      <mj-column padding="10px" />
+      <mj-text padding="0" font-size="16px" line-height="24px" />
+    </mj-attributes>
+  </mj-head>
   <mj-body width="600px">
     <mj-section padding="10px">
-      <mj-column padding="10px">
-        <mj-text font-size="16px" line-height="24px" font-weight="700" color="black" padding="0">
+      <mj-column>
+        <mj-text font-weight="700" color="black">
           Excepteur sint
         </mj-text>
-        <mj-text font-size="16px" line-height="24px" font-weight="400" color="#475569" padding="0" padding-top="4px">
+        <mj-text font-weight="400" color="#475569" padding-top="4px">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </mj-text>
       </mj-column>
-      <mj-column padding="10px">
-        <mj-text font-size="16px" line-height="24px" font-weight="700" color="black" padding="0">
+      <mj-column>
+        <mj-text font-weight="700" color="black">
           Excepteur sint
         </mj-text>
-        <mj-text font-size="16px" line-height="24px" font-weight="400" color="#475569" padding="0" padding-top="4px">
+        <mj-text font-weight="400" color="#475569" padding-top="4px">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </mj-text>
       </mj-column>
-      <mj-column padding="10px">
-        <mj-text font-size="16px" line-height="24px" font-weight="700" color="black" padding="0">
+      <mj-column>
+        <mj-text font-weight="700" color="black">
           Excepteur sint
         </mj-text>
-        <mj-text font-size="16px" line-height="24px" font-weight="400" color="#475569" padding="0" padding-top="4px">
+        <mj-text font-weight="400" color="#475569" padding-top="4px">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </mj-text>
       </mj-column>
