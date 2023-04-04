@@ -1,0 +1,38 @@
+<mjml>
+  <mj-body width="600px">
+    <mj-section padding="0px">
+      <mj-column vertical-align="bottom" padding="10px">
+        <mj-button href="#" align="center" font-family="Helvetica" background-color="white" color="#1E293B" border="1px solid #CBD5E1" font-size="14px" font-weight="500" line-height="20px" border-radius="8px" inner-padding="8px 12px" padding="0px">
+          Button text
+        </mj-button>
+      </mj-column>
+      <mj-column vertical-align="bottom" padding="10px">
+        <mj-button href="#" align="center" font-family="Helvetica" background-color="white" color="#1E293B" border="1px solid #CBD5E1" font-size="14px" font-weight="500" line-height="20px" border-radius="8px" inner-padding="10px 14px" padding="0px">
+          Button text
+        </mj-button>
+      </mj-column>
+      <mj-column vertical-align="bottom" padding="10px">
+        <mj-button href="#" align="center" font-family="Helvetica" background-color="white" color="#1E293B" border="1px solid #CBD5E1" font-size="16px" font-weight="500" line-height="24px" border-radius="8px" inner-padding="10px 16px" padding="0px">
+          Button text
+        </mj-button>
+      </mj-column>
+    </mj-section>
+    <mj-section padding="0px">
+      <mj-column vertical-align="bottom" padding="10px">
+        <mj-button href="#" align="center" font-family="Helvetica" background-color="white" color="#1E293B" border="1px solid #CBD5E1" font-size="16px" font-weight="500" line-height="24px" border-radius="8px" inner-padding="12px 20px" padding="0px">
+          Button text
+        </mj-button>
+      </mj-column>
+      <mj-column vertical-align="bottom" padding="10px">
+        <mj-button href="#" align="center" font-family="Helvetica" background-color="white" color="#1E293B" border="1px solid #CBD5E1" font-size="16px" font-weight="500" line-height="24px" border-radius="8px" inner-padding="14px 24px" padding="0px">
+          Button text
+        </mj-button>
+      </mj-column>
+      <mj-column vertical-align="bottom" padding="10px">
+        <mj-button href="#" align="center" font-family="Helvetica" background-color="white" color="#1E293B" border="1px solid #CBD5E1" font-size="18px" font-weight="500" line-height="24px" border-radius="8px" inner-padding="16px 24px" padding="0px">
+          Button text
+        </mj-button>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>
