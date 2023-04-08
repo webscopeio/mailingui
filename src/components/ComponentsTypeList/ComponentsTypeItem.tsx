@@ -1,7 +1,15 @@
 "use client";
 import { useState } from "react";
+import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/prism-light";
+import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { ComponentOptions } from "./ComponentOptions";
 import { CodeType, EmailCodes } from "./types";
+
+const supportedLangs: Record<CodeType, string> = {
+  htmlCode: "html",
+  mjmlCode: "html",
+  reactEmailCode: "jsx",
+};
 
 type Props = {
   title: string;
@@ -56,12 +64,17 @@ export const ComponentsTypeItem = ({
             }}
           />
         ) : (
-          <div className="w-full focus:outline-none">
-            <pre className="flex overflow-auto whitespace-pre-wrap rounded-2xl text-sm leading-[1.5714285714] text-white">
-              <code className="w-full bg-dark-800 p-4">
-                {emailCodes[codeType]}
-              </code>
-            </pre>
+          <div className="w-full overflow-hidden rounded-2xl focus:outline-none">
+            <SyntaxHighlighter
+              language={supportedLangs[codeType]}
+              style={vscDarkPlus}
+              customStyle={{
+                margin: "0",
+                padding: "1.2rem",
+              }}
+            >
+              {emailCodes[codeType] ?? "Source code is missing"}
+            </SyntaxHighlighter>
           </div>
         )}
       </div>
