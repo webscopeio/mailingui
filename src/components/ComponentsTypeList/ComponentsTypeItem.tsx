@@ -1,9 +1,8 @@
 "use client";
 import { useState } from "react";
-import SyntaxHighlighter from "react-syntax-highlighter/dist/esm/prism-light";
-import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { ComponentOptions } from "./ComponentOptions";
 import { CodeType, EmailCodes } from "./types";
+import { CodeBlock } from "@components/CodeBlock";
 
 const supportedLangs: Record<CodeType, string> = {
   htmlCode: "html",
@@ -65,16 +64,9 @@ export const ComponentsTypeItem = ({
           />
         ) : (
           <div className="w-full overflow-hidden rounded-2xl focus:outline-none">
-            <SyntaxHighlighter
-              language={supportedLangs[codeType]}
-              style={vscDarkPlus}
-              customStyle={{
-                margin: "0",
-                padding: "1.2rem",
-              }}
-            >
+            <CodeBlock language={supportedLangs[codeType]}>
               {emailCodes[codeType] ?? "Source code is missing"}
-            </SyntaxHighlighter>
+            </CodeBlock>
           </div>
         )}
       </div>

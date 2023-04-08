@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { TemplateOptions } from "./TemplateOptions";
 import { ShareIcon } from "@components/Icons";
+import { CodeBlock } from "@components/CodeBlock";
 
 export type TemplatesItemProps = {
   desktopPreview: string;
@@ -45,10 +46,8 @@ export const TemplatesItem = ({
             }}
           />
         ) : (
-          <div className="w-full focus:outline-none">
-            <pre className="flex overflow-auto whitespace-pre-wrap rounded-2xl text-sm leading-[1.5714285714] text-white">
-              <code className="w-full bg-dark-800 p-4">{desktopPreview}</code>
-            </pre>
+          <div className="inline-grid w-full focus:outline-none">
+            <CodeBlock language="html">{desktopPreview}</CodeBlock>
           </div>
         )}
       </div>
