@@ -1,6 +1,6 @@
 "use client";
-import { Tabs } from "@components/Tabs";
 import { useState } from "react";
+import { Tabs } from "@components/Tabs";
 import { CodeIcon, EyeIcon, SunIcon } from "@components/Icons";
 import { CopyButton } from "@components/CopyButton";
 import { IconButton } from "@components/IconButton";

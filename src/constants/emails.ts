@@ -1,20 +1,4 @@
 import { StaticImageData } from "next/image";
-// component images
-import Badges from "public/static/images/components-preview/badges.png";
-import Buttons from "public/static/images/components-preview/buttons.png";
-import Dividers from "public/static/images/components-preview/dividers.png";
-import Emojis from "public/static/images/components-preview/emojis.png";
-import Heroes from "public/static/images/components-preview/heroes.png";
-import Lists from "public/static/images/components-preview/listing.png";
-import Paragraphs from "public/static/images/components-preview/paragraphs.png";
-import SocialIcons from "public/static/images/components-preview/social_icons.png";
-// template images
-import Bianco from "public/static/images/templates-preview/bianco.png";
-import Espace from "public/static/images/templates-preview/espace.png";
-import Finanza from "public/static/images/templates-preview/finanza.png";
-import Giola from "public/static/images/templates-preview/giola.png";
-import Olivio from "public/static/images/templates-preview/olivio.png";
-import Viola from "public/static/images/templates-preview/viola.png";
 
 import ImageOnlyHeroMjml from "../email-components/heroes/ImageOnly.mjml";
 import HeroWithHeading from "../email-components/heroes/WithHeading.mjml";
@@ -53,6 +37,21 @@ import CenteredParagraphsMjml from "../email-components/paragraphs/Centered.mjml
 import SolidDividersMjml from "../email-components/dividers/Solid.mjml";
 import DashedDividersMjml from "../email-components/dividers/Dashed.mjml";
 import DottedDividersMjml from "../email-components/dividers/Dotted.mjml";
+
+import Viola from "public/static/images/templates-preview/viola.png";
+import Olivio from "public/static/images/templates-preview/olivio.png";
+import Giola from "public/static/images/templates-preview/giola.png";
+import Finanza from "public/static/images/templates-preview/finanza.png";
+import Espace from "public/static/images/templates-preview/espace.png";
+import Bianco from "public/static/images/templates-preview/bianco.png";
+import SocialIcons from "public/static/images/components-preview/social_icons.png";
+import Paragraphs from "public/static/images/components-preview/paragraphs.png";
+import Lists from "public/static/images/components-preview/listing.png";
+import Heroes from "public/static/images/components-preview/heroes.png";
+import Emojis from "public/static/images/components-preview/emojis.png";
+import Dividers from "public/static/images/components-preview/dividers.png";
+import Buttons from "public/static/images/components-preview/buttons.png";
+import Badges from "public/static/images/components-preview/badges.png";
 
 interface EmailComponentExample {
   title: string;

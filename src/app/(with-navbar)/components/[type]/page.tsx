@@ -1,9 +1,9 @@
+import mjml2html from "mjml";
 import {
   ComponentExample,
   ComponentExampleProps,
 } from "@components/ComponentExample";
 import { emailComponents } from "@constants";
-import mjml2html from "mjml";
 
 type ComponentPageProps = {
   params: {
