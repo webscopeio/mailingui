@@ -10,9 +10,7 @@ const List = React.forwardRef<
 >(({ ...props }, ref) => (
   <TabsPrimitive.List
     ref={ref}
-    className={
-      "inline-flex items-center justify-center rounded-3xl bg-dark-800 p-1"
-    }
+    className="inline-flex items-center justify-center rounded-3xl bg-dark-800 p-1"
     {...props}
   />
 ));
@@ -27,7 +25,7 @@ const Trigger = React.forwardRef<
 >(({ ...props }, ref) => (
   <TabsPrimitive.Trigger
     ref={ref}
-    className="inline-flex h-8  items-center justify-center rounded-2xl px-2 py-2 lg:px-3 text-sm text-dark-100 data-[state=active]:bg-pink-to-purple-gradient data-[state=active]:text-white"
+    className="inline-flex h-8 items-center justify-center rounded-2xl px-2 py-2 md:px-3 text-sm text-dark-100 data-[state=active]:bg-pink-to-purple-gradient data-[state=active]:text-white"
     {...props}
   />
 ));

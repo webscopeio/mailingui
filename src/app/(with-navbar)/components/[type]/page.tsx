@@ -1,55 +1,85 @@
-import { readFileSync } from "fs";
-import { ComponentsTypeList } from "@components/ComponentsTypeList";
+import {
+  ComponentExample,
+  ComponentExampleProps,
+} from "@components/ComponentExample";
 import { emailComponents } from "@constants";
+import mjml2html from "mjml";
 
-type EmailComponent = {
-  title: string;
-  htmlPreview: string;
-  htmlCode: string;
-  mjmlCode?: string;
-  reactEmailCode?: string;
-};
-
-type Props = {
+type ComponentPageProps = {
   params: {
     type: string;
   };
 };
 
-function getComponents(type: string) {
-  const componentType = emailComponents.find(
-    (component) => component.type === type
+export default function ComponentPage({
+  params: { type },
+}: ComponentPageProps) {
+  const component = getComponent(type);
+
+  return (
+    <div className="px-4">
+      <div className="mx-auto w-full max-w-[900px] ">
+        <h1 className="pt-8 md:pt-16 text-2xl md:text-4xl font-semibold">
+          {component.title}
+        </h1>
+        <div className="space-y-16 mt-8 md:mt-16">
+          {component.examples.map(({ ...example }, index) => (
+            <ComponentExample key={index} {...example} />
+          ))}
+        </div>
+      </div>
+    </div>
   );
-  if (!componentType) {
-    throw new Error("No component type found");
+}
+
+/**
+ * Maps over mjml examples, translates them to html, and puts them together.
+ * @param type - A type of component. Same as `type` param of the page.
+ * @returns An object containing component title and array of component examples in mjml and html.
+ */
+const getComponent = (
+  type: string
+): {
+  title: string;
+  examples: ComponentExampleProps[];
+} => {
+  const component = emailComponents.find((c) => c.type === type);
+
+  if (!component) {
+    throw new Error(`No component for given type ${type} found.`);
   }
-  return {
-    title: componentType.title,
-    components: componentType.components.map(
-      ({ title, ...paths }: EmailComponent) => {
-        return {
-          title,
-          ...Object.entries(paths)
-            .map(([key, path]) => {
-              if (path) {
-                const fileContent = readFileSync(path, "utf8");
-                return { [key]: fileContent };
-              }
-            })
-            .reduce((acc, curr) => {
-              return { ...acc, ...curr };
-            }, {}),
-        };
+
+  const transformedExamples = component.examples.flatMap(({ title, mjml }) => {
+    try {
+      const { html, errors } = mjml2html(mjml, {
+        /** `strict` validation throws if a wrong `mjml` is encountered. */
+        validationLevel: "strict",
+        keepComments: false,
+      });
+
+      if (errors.length > 0) {
+        /** If the mjml parsing fails - for whatever reason - we filter the component out. */
+        return [];
       }
-    ) as EmailComponent[],
+
+      return [
+        {
+          title,
+          mjml,
+          html,
+        },
+      ];
+    } catch (error) {
+      /** If the mjml parsing fails - for whatever reason - we filter the component out. */
+      return [];
+    }
+  });
+
+  return {
+    title: component.title,
+    examples: transformedExamples,
   };
-}
+};
 
-export default function ComponentType({ params: { type } }: Props) {
-  const { components, title } = getComponents(type);
-  return <ComponentsTypeList components={components} title={title} />;
-}
-
-export function generateStaticParams() {
-  return emailComponents.map((item) => ({ type: item.type }));
-}
+export const generateStaticParams = () =>
+  emailComponents.map((item) => ({ type: item.type }));
