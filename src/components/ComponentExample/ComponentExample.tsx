@@ -24,11 +24,11 @@ export const ComponentExample = ({
 
   return (
     <Tabs.Root defaultValue="preview">
-      <div className="min-h-[2.5rem] flex items-center justify-between">
-        <h2 className="text-sm md:text-xl text-neutral-400 truncate">
+      <div className="flex min-h-[2.5rem] items-center justify-between">
+        <h2 className="truncate text-sm text-neutral-400 md:text-xl">
           {title}
         </h2>
-        <div className="flex items-center justify-between gap-x-3 ml-4">
+        <div className="ml-4 flex items-center justify-between gap-x-3">
           <Tabs.List aria-label="A label">
             <Tabs.Trigger value="preview">
               <EyeIcon />
@@ -39,7 +39,7 @@ export const ComponentExample = ({
               <span className="sr-only md:not-sr-only md:ml-2">Code</span>
             </Tabs.Trigger>
           </Tabs.List>
-          <div className="hidden sm:block ml-3 mr-3 h-5 w-px bg-dark-100" />
+          <div className="mx-3 hidden h-5 w-px bg-dark-100 sm:block" />
           <select
             className="h-10 rounded-3xl border border-r-8 border-transparent bg-dark-800 px-3 text-xs font-bold"
             value={codeViewType}

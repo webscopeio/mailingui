@@ -1,9 +1,4 @@
 {
   "root": true,
-  "extends": [
-    "next/core-web-vitals",
-    "@webscopeio/eslint-config",
-    "plugin:tailwindcss/recommended",
-    "prettier"
-  ]
+  "extends": ["next", "plugin:tailwindcss/recommended", "prettier"]
 }

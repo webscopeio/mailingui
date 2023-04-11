@@ -19,10 +19,10 @@ export default function ComponentPage({
   return (
     <div className="px-4">
       <div className="mx-auto w-full max-w-[900px] ">
-        <h1 className="pt-8 md:pt-16 text-2xl md:text-4xl font-semibold">
+        <h1 className="pt-8 text-2xl font-semibold md:pt-16 md:text-4xl">
           {component.title}
         </h1>
-        <div className="space-y-16 mt-8 md:mt-16">
+        <div className="mt-8 space-y-16 md:mt-16">
           {component.examples.map(({ ...example }, index) => (
             <ComponentExample key={index} {...example} />
           ))}
