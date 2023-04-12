@@ -1,0 +1,30 @@
+<mjml>
+  <mj-head>
+    <mj-attributes>
+      <mj-section padding="20px" />
+      <mj-divider border-style="dotted" padding="0" border-width="1px" border-color="#CBD5E1" />
+    </mj-attributes>
+  </mj-head>
+  <mj-body background-color="#fff">
+    <mj-section>
+      <mj-column>
+        <mj-divider />
+      </mj-column>
+    </mj-section>
+    <mj-section>
+      <mj-group>
+        <mj-column width="38%" padding-top="8px">
+          <mj-divider />
+        </mj-column>
+        <mj-column width="24%">
+          <mj-text align="center" font-size="12px" line-height="16px" font-weight="500" color="#64748B" padding="0">
+            Continue
+          </mj-text>
+        </mj-column>
+        <mj-column width="38%" padding-top="8px">
+          <mj-divider />
+        </mj-column>
+      </mj-group>
+    </mj-section>
+  </mj-body>
+</mjml>
