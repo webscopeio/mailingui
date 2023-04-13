@@ -4,8 +4,14 @@ import { Tabs } from "@components/Tabs";
 import { CodeIcon, EyeIcon, SunIcon } from "@components/Icons";
 import { CopyButton } from "@components/CopyButton";
 import { IconButton } from "@components/IconButton";
+import { CodeBlock } from "@components/CodeBlock";
 
 type Code = "mjml" | "html";
+
+const supportedLangs: Record<Code, string> = {
+  mjml: "html",
+  html: "html",
+};
 
 export type ComponentExampleProps = {
   title: string;
@@ -74,10 +80,10 @@ export const ComponentExample = ({
           />
         </Tabs.Content>
         <Tabs.Content value="code">
-          <div className="w-full focus:outline-none">
-            <pre className="flex overflow-auto whitespace-pre-wrap rounded-2xl text-sm leading-[1.5714285714] text-white">
-              <code className="w-full bg-dark-800 p-4">{selectedCode}</code>
-            </pre>
+          <div className="w-full overflow-auto rounded-3xl">
+            <CodeBlock language={supportedLangs[codeViewType]}>
+              {selectedCode}
+            </CodeBlock>
           </div>
         </Tabs.Content>
       </div>
