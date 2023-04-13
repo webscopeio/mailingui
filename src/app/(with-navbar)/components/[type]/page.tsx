@@ -17,16 +17,14 @@ export default function ComponentPage({
   const component = getComponent(type);
 
   return (
-    <div className="px-4">
-      <div className="mx-auto w-full max-w-[900px] ">
-        <h1 className="pt-8 text-2xl font-semibold md:pt-16 md:text-4xl">
-          {component.title}
-        </h1>
-        <div className="mt-8 space-y-16 md:mt-16">
-          {component.examples.map(({ ...example }, index) => (
-            <ComponentExample key={index} {...example} />
-          ))}
-        </div>
+    <div className="mx-auto w-full max-w-[900px] px-4">
+      <h1 className="pt-8 text-2xl font-semibold md:pt-16 md:text-4xl">
+        {component.title}
+      </h1>
+      <div className="mt-8 space-y-16 md:mt-16">
+        {component.examples.map(({ ...example }, index) => (
+          <ComponentExample key={index} {...example} />
+        ))}
       </div>
     </div>
   );
