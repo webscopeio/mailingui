@@ -5,6 +5,7 @@ import { CodeIcon, EyeIcon, SunIcon } from "@components/Icons";
 import { CopyButton } from "@components/CopyButton";
 import { IconButton } from "@components/IconButton";
 import { CodeBlock } from "@components/CodeBlock";
+import { FramePreview } from "@components/FramePreview";
 
 type Code = "mjml" | "html";
 
@@ -25,6 +26,7 @@ export const ComponentExample = ({
   html,
 }: ComponentExampleProps) => {
   const [codeViewType, setCodeViewType] = useState<Code>("mjml");
+  const [darkMode, setDarkMode] = useState(false);
 
   const selectedCode = codeViewType === "mjml" ? mjml : html;
 
@@ -58,7 +60,7 @@ export const ComponentExample = ({
             <CopyButton textToCopy={selectedCode} />
           </div>
           <div className="hidden sm:block">
-            <IconButton>
+            <IconButton onClick={() => setDarkMode(!darkMode)}>
               <SunIcon />
             </IconButton>
           </div>
@@ -66,21 +68,15 @@ export const ComponentExample = ({
       </div>
       <div className="mt-4 md:mt-6">
         <Tabs.Content value="preview">
-          <iframe
-            title="Primary buttons"
-            srcDoc={html}
-            className="mx-auto w-full overflow-hidden rounded-3xl ring-1"
-            onLoad={(event) => {
-              const iframe = event.target as HTMLIFrameElement;
-              if (iframe?.contentWindow) {
-                iframe.style.height =
-                  iframe.contentWindow.document.body.scrollHeight + "px";
-              }
-            }}
+          <FramePreview
+            title={title}
+            html={html}
+            darkMode={darkMode}
+            className="mx-auto w-full rounded-3xl border border-dark-100"
           />
         </Tabs.Content>
         <Tabs.Content value="code">
-          <div className="w-full overflow-auto rounded-3xl">
+          <div className="w-full overflow-auto rounded-3xl border border-transparent">
             <CodeBlock language={supportedLangs[codeViewType]}>
               {selectedCode}
             </CodeBlock>
