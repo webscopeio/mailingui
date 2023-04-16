@@ -1,6 +1,6 @@
 "use client";
 
-import { ComponentPropsWithoutRef, useLayoutEffect, useRef } from "react";
+import { ComponentPropsWithoutRef, useCallback } from "react";
 import { clsx } from "@utils";
 import { SupportedViewPorts } from "@components/ComponentExample";
 
@@ -18,27 +18,29 @@ export const FramePreview = ({
   previewWidth = "100%",
   ...otherProps
 }: FramePreviewProps) => {
-  const iframeRef = useRef<HTMLIFrameElement>(null);
-
-  useLayoutEffect(() => {
-    if (iframeRef?.current?.contentWindow) {
-      const html =
-        iframeRef.current.contentWindow.document.querySelector("html");
-      if (html) {
-        html.style.colorScheme = `${darkMode ? "dark" : "light"}`;
+  const callbackRef = useCallback(
+    (node: HTMLIFrameElement) => {
+      if (node?.contentWindow) {
+        const html = node.contentWindow.document.querySelector("html");
+        if (html) {
+          html.style.colorScheme = `${darkMode ? "dark" : "light"}`;
+        }
       }
-    }
-  }, [darkMode]);
+    },
+    [darkMode]
+  );
 
   return (
     <iframe
-      ref={iframeRef}
+      ref={callbackRef}
+      id={title}
       title={title}
       srcDoc={html}
-      /** This property can be set dynamically if we'd like to show mobile view */
       style={{
         maxWidth: previewWidth,
-        colorScheme: darkMode ? "dark" : "light",
+      }}
+      onLoad={(e) => {
+        callbackRef(e.target as HTMLIFrameElement);
       }}
       className={clsx("overflow-scroll transition-[max-width]", className)}
       {...otherProps}
