@@ -1,4 +1,4 @@
-import { readFileSync } from "fs";
+import { readdirSync, readFileSync } from "fs";
 import path from "path";
 import { compileMDX } from "next-mdx-remote/rsc";
 import { blogDir, type PostFrontMatter } from "@constants";
@@ -22,6 +22,14 @@ export default async function BlogPost({ params: { slug } }: BlogPostProps) {
       </article>
     </div>
   );
+}
+
+export async function generateStaticParams() {
+  const posts = readdirSync(blogDir);
+
+  return posts.map((post: string) => ({
+    slug: post.replace(".mdx", ""),
+  }));
 }
 
 async function getPost(blogDir: string, slug: string) {
