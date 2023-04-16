@@ -19,9 +19,6 @@ export const FramePreview = ({
 
   useLayoutEffect(() => {
     if (iframeRef?.current?.contentWindow) {
-      iframeRef.current.style.height =
-        iframeRef.current.contentWindow.document.documentElement.getBoundingClientRect()
-          .height + "px";
       const html =
         iframeRef.current.contentWindow.document.querySelector("html");
       if (html) {
@@ -35,15 +32,9 @@ export const FramePreview = ({
       ref={iframeRef}
       title={title}
       srcDoc={html}
-      className={clsx(" overflow-scroll", className)}
-      onLoad={(e) => {
-        const iframe = e.target as HTMLIFrameElement;
-        if (iframe?.contentWindow) {
-          iframe.style.height =
-            iframe.contentWindow.document.documentElement.getBoundingClientRect()
-              .height + "px";
-        }
-      }}
+      /** This property can be set dynamically if we'd like to show mobile view */
+      style={{ maxWidth: "100%" }}
+      className={clsx("overflow-auto transition-all", className)}
       {...otherProps}
     />
   );

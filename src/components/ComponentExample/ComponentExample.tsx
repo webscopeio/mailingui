@@ -72,11 +72,11 @@ export const ComponentExample = ({
             title={title}
             html={html}
             darkMode={darkMode}
-            className="mx-auto w-full rounded-3xl border border-dark-100"
+            className="mx-auto h-[400px] w-full rounded-3xl border border-dark-100"
           />
         </Tabs.Content>
         <Tabs.Content value="code">
-          <div className="w-full overflow-auto rounded-3xl border border-transparent">
+          <div className=" h-[400px] w-full overflow-auto rounded-3xl border border-transparent bg-[#1e1e1e]">
             <CodeBlock language={supportedLangs[codeViewType]}>
               {selectedCode}
             </CodeBlock>
