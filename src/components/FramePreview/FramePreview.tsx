@@ -2,12 +2,12 @@
 
 import { ComponentPropsWithoutRef, useLayoutEffect, useRef } from "react";
 import { clsx } from "@utils";
-import { SupporteViewPorts } from "@components/ComponentExample";
+import { SupportedViewPorts } from "@components/ComponentExample";
 
 export type FramePreviewProps = ComponentPropsWithoutRef<"iframe"> & {
   html: string;
   darkMode: boolean;
-  previewWidth?: SupporteViewPorts;
+  previewWidth?: SupportedViewPorts;
 };
 
 export const FramePreview = ({

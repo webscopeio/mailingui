@@ -21,7 +21,7 @@ const supportedViewports = {
   full: "100%",
 } as const;
 
-export type SupporteViewPorts =
+export type SupportedViewPorts =
   (typeof supportedViewports)[keyof typeof supportedViewports];
 
 export type ComponentExampleProps = {

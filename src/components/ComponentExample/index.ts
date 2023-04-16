@@ -1,5 +1,5 @@
 export {
   ComponentExample,
   type ComponentExampleProps,
-  type SupporteViewPorts,
+  type SupportedViewPorts,
 } from "./ComponentExample";
