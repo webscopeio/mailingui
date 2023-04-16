@@ -2,10 +2,12 @@
 
 import { ComponentPropsWithoutRef, useLayoutEffect, useRef } from "react";
 import { clsx } from "@utils";
+import { SupporteViewPorts } from "@components/ComponentExample";
 
 export type FramePreviewProps = ComponentPropsWithoutRef<"iframe"> & {
   html: string;
   darkMode: boolean;
+  previewWidth?: SupporteViewPorts;
 };
 
 export const FramePreview = ({
@@ -13,6 +15,7 @@ export const FramePreview = ({
   html,
   className,
   darkMode,
+  previewWidth = "100%",
   ...otherProps
 }: FramePreviewProps) => {
   const iframeRef = useRef<HTMLIFrameElement>(null);
@@ -33,8 +36,11 @@ export const FramePreview = ({
       title={title}
       srcDoc={html}
       /** This property can be set dynamically if we'd like to show mobile view */
-      style={{ maxWidth: "100%" }}
-      className={clsx("overflow-auto transition-all", className)}
+      style={{
+        maxWidth: previewWidth,
+        colorScheme: darkMode ? "dark" : "light",
+      }}
+      className={clsx("overflow-scroll transition-[max-width]", className)}
       {...otherProps}
     />
   );

@@ -6,6 +6,7 @@ import { CopyButton } from "@components/CopyButton";
 import { IconButton } from "@components/IconButton";
 import { CodeBlock } from "@components/CodeBlock";
 import { FramePreview } from "@components/FramePreview";
+import { MobileIcon } from "@components/Icons/MobileIcon";
 
 type Code = "mjml" | "html";
 
@@ -13,6 +14,15 @@ const supportedLangs: Record<Code, string> = {
   mjml: "html",
   html: "html",
 };
+
+/** `mjml` playground's breakpoint is 320px */
+const supportedViewports = {
+  mobile: "320px",
+  full: "100%",
+} as const;
+
+export type SupporteViewPorts =
+  (typeof supportedViewports)[keyof typeof supportedViewports];
 
 export type ComponentExampleProps = {
   title: string;
@@ -27,6 +37,7 @@ export const ComponentExample = ({
 }: ComponentExampleProps) => {
   const [codeViewType, setCodeViewType] = useState<Code>("mjml");
   const [darkMode, setDarkMode] = useState(false);
+  const [mobileView, setMobileView] = useState(false);
 
   const selectedCode = codeViewType === "mjml" ? mjml : html;
 
@@ -60,6 +71,11 @@ export const ComponentExample = ({
             <CopyButton textToCopy={selectedCode} />
           </div>
           <div className="hidden sm:block">
+            <IconButton onClick={() => setMobileView(!mobileView)}>
+              <MobileIcon />
+            </IconButton>
+          </div>
+          <div className="hidden sm:block">
             <IconButton onClick={() => setDarkMode(!darkMode)}>
               <SunIcon />
             </IconButton>
@@ -72,7 +88,8 @@ export const ComponentExample = ({
             title={title}
             html={html}
             darkMode={darkMode}
-            className="mx-auto h-[400px] w-full rounded-3xl border border-dark-100"
+            previewWidth={mobileView ? "320px" : "100%"}
+            className="h-[400px] w-full rounded-3xl border border-dark-100"
           />
         </Tabs.Content>
         <Tabs.Content value="code">
