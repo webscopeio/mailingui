@@ -1,4 +1,5 @@
 import mjml2html from "mjml";
+import { format } from "prettier";
 import {
   ComponentExample,
   ComponentExampleProps,
@@ -47,31 +48,37 @@ const getComponent = (
     throw new Error(`No component for given type ${type} found.`);
   }
 
-  const transformedExamples = component.examples.flatMap(({ title, mjml }) => {
-    try {
-      const { html, errors } = mjml2html(mjml, {
-        /** `strict` validation throws if a wrong `mjml` is encountered. */
-        validationLevel: "strict",
-        keepComments: false,
-      });
+  const transformedExamples = component.examples.flatMap(
+    ({ title, mjml: inputMjml }) => {
+      try {
+        const htmlOutput = mjml2html(inputMjml, {
+          /** `strict` validation throws if a wrong `mjml` is encountered. */
+          validationLevel: "strict",
+          keepComments: false,
+        });
 
-      if (errors.length > 0) {
+        if (htmlOutput.errors.length > 0) {
+          /** If the mjml parsing fails - for whatever reason - we filter the component out. */
+          return [];
+        }
+
+        /** `mjml` beautify has been deprecated, format using default `prettier` */
+        const html = format(htmlOutput.html, { parser: "html" });
+        const mjml = format(inputMjml, { parser: "html" });
+
+        return [
+          {
+            title,
+            mjml,
+            html,
+          },
+        ];
+      } catch (error) {
         /** If the mjml parsing fails - for whatever reason - we filter the component out. */
         return [];
       }
-
-      return [
-        {
-          title,
-          mjml,
-          html,
-        },
-      ];
-    } catch (error) {
-      /** If the mjml parsing fails - for whatever reason - we filter the component out. */
-      return [];
     }
-  });
+  );
 
   return {
     title: component.title,
