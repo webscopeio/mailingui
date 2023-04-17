@@ -7,7 +7,7 @@ export default function NotFound() {
   return (
     <>
       <Navbar />
-      <div className="mx-auto mt-16 grid max-w-md place-items-center gap-4 px-4 md:mt-24">
+      <div className="mx-auto mt-16 grid max-w-md place-items-center gap-6 px-4 md:mt-24">
         <Image
           src={notFoundImage}
           alt="Homepage hero image"
