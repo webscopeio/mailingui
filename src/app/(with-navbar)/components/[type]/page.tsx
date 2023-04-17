@@ -1,5 +1,6 @@
 import mjml2html from "mjml";
 import { format } from "prettier";
+import type { Metadata } from "next";
 import {
   ComponentExample,
   ComponentExampleProps,
@@ -11,6 +12,31 @@ type ComponentPageProps = {
     type: string;
   };
 };
+
+export async function generateMetadata({
+  params: { type },
+}: ComponentPageProps): Promise<Metadata> {
+  const component = getComponent(type);
+  return {
+    title: component.title,
+    description: "Explore components",
+    openGraph: {
+      title: component.title,
+      description: "Explore components",
+      url: "https://mailingui.vercel.app/components",
+      images: [
+        {
+          url: "public/static/images/og/components.png",
+          width: 1200,
+          height: 630,
+        },
+      ],
+      siteName: "MailingUI",
+      locale: "en-US",
+      type: "website",
+    },
+  };
+}
 
 export default function ComponentPage({
   params: { type },

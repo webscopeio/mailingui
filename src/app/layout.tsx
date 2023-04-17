@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { ReactNode } from "react";
 import { Footer } from "@components/Footer";
@@ -64,6 +64,13 @@ export const metadata: Metadata = {
     title: "MailingUI",
     description: "Easy to build an email with React & MJML",
     url: "https://mailingui.vercel.app/",
+    images: [
+      {
+        url: "public/static/images/og/homepage.png",
+        width: 1200,
+        height: 630,
+      },
+    ],
     siteName: "MailingUI",
     locale: "en-US",
     type: "website",
