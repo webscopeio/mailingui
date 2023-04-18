@@ -1,7 +1,13 @@
 "use client";
 import { useState } from "react";
 import { Tabs } from "@components/Tabs";
-import { CodeIcon, EyeIcon, SunIcon } from "@components/Icons";
+import {
+  CodeIcon,
+  DesktopIcon,
+  EyeIcon,
+  MoonIcon,
+  SunIcon,
+} from "@components/Icons";
 import { CopyButton } from "@components/CopyButton";
 import { IconButton } from "@components/IconButton";
 import { CodeBlock } from "@components/CodeBlock";
@@ -72,12 +78,12 @@ export const ComponentExample = ({
           </div>
           <div className="hidden sm:block">
             <IconButton onClick={() => setMobileView(!mobileView)}>
-              <MobileIcon />
+              {mobileView ? <DesktopIcon /> : <MobileIcon />}
             </IconButton>
           </div>
           <div className="hidden sm:block">
             <IconButton onClick={() => setDarkMode(!darkMode)}>
-              <SunIcon />
+              {darkMode ? <SunIcon /> : <MoonIcon />}
             </IconButton>
           </div>
         </div>
