@@ -13,9 +13,9 @@ type ComponentPageProps = {
   };
 };
 
-export async function generateMetadata({
+export function generateMetadata({
   params: { type },
-}: ComponentPageProps): Promise<Metadata> {
+}: ComponentPageProps): Metadata {
   const component = getComponent(type);
   return {
     title: component.title,
