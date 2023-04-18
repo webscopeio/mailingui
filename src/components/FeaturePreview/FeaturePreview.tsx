@@ -2,7 +2,7 @@ import { CTA } from "@components/CTA";
 
 export type FeaturePreviewProps = {
   children: React.ReactNode;
-  cta: {
+  cta?: {
     href: string;
     title: string;
   };
@@ -26,10 +26,12 @@ export const FeaturePreview = ({
       </div>
     </h2>
     <div className="mt-8 md:mt-16">{children}</div>
-    <div className="mt-8 w-full md:mt-16 md:flex md:justify-center">
-      <CTA href={cta.href} color="white" className="w-full md:w-auto">
-        {cta.title}
-      </CTA>
-    </div>
+    {cta && (
+      <div className="mt-8 w-full md:mt-16 md:flex md:justify-center">
+        <CTA href={cta.href} color="white" className="w-full md:w-auto">
+          {cta.title}
+        </CTA>
+      </div>
+    )}
   </section>
 );
