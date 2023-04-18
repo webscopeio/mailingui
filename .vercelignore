@@ -1,2 +1,3 @@
-/src/app/(with-navbar)/templates/*
-/src/app/templates/*
+# Ignore templates pages
+/src/app/(with-navbar)/templates
+/src/app/templates
