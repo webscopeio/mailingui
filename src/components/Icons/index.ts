@@ -12,3 +12,4 @@ export { MjmlIcon } from "./MjmlIcon";
 export { ReactIcon } from "./ReactIcon";
 export { ShareIcon } from "./ShareIcon";
 export { SunIcon } from "./SunIcon";
+export { MoonIcon } from "./MoonIcon";
