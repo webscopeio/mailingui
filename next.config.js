@@ -4,6 +4,23 @@ const nextConfig = {
     appDir: true,
   },
 
+  images: {
+    remotePatterns: [
+      {
+        protocol: "http",
+        hostname: "avatars.githubusercontent.com",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "github.com",
+        port: "",
+        pathname: "/**",
+      },
+    ],
+  },
+
   webpack: (config) => {
     config.module.rules.push({
       resolve: {
