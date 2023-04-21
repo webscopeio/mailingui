@@ -1,6 +1,7 @@
 import mjml2html from "mjml";
 import { format } from "prettier";
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import {
   ComponentExample,
   ComponentExampleProps,
@@ -16,12 +17,12 @@ type ComponentPageProps = {
 export function generateMetadata({
   params: { type },
 }: ComponentPageProps): Metadata {
-  const component = getComponent(type);
+  const component = getComponentData(type);
   return {
-    title: component.title,
+    title: component?.title ?? "Components",
     description: "Explore components",
     openGraph: {
-      title: component.title,
+      title: component?.title ?? "Components",
       description: "Explore components",
       url: "https://mailingui.vercel.app/components",
       images: [
@@ -58,6 +59,19 @@ export default function ComponentPage({
 }
 
 /**
+ * Finds a match for the component type or calls a navigation error
+ * @param type - A type of component. Same as `type` param of the page.
+ * @returns an object containing the email component
+ */
+const getComponentData = (type: string) => {
+  const component = emailComponents.find((c) => c.type === type);
+  if (!component) {
+    return notFound();
+  }
+  return component;
+};
+
+/**
  * Maps over mjml examples, translates them to html, and puts them together.
  * @param type - A type of component. Same as `type` param of the page.
  * @returns An object containing component title and array of component examples in mjml and html.
@@ -68,11 +82,7 @@ const getComponent = (
   title: string;
   examples: ComponentExampleProps[];
 } => {
-  const component = emailComponents.find((c) => c.type === type);
-
-  if (!component) {
-    throw new Error(`No component for given type ${type} found.`);
-  }
+  const component = getComponentData(type);
 
   const transformedExamples = component.examples.flatMap(
     ({ title, mjml: inputMjml }) => {
