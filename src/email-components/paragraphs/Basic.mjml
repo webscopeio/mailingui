@@ -1,24 +1,46 @@
 <mjml>
   <mj-head>
+    <mj-font
+      name="Roboto"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+    ></mj-font>
+    <mj-raw>
+      <meta name="color-scheme" content="light dark" />
+      <meta name="supported-color-schemes" content="light dark" />
+    </mj-raw>
     <mj-attributes>
-      <mj-section padding="20px" />
-      <mj-text padding="0" font-family="Arial" font-size="20px" line-height="24px" color="black" />
-      <mj-spacer height="24px" />
+      <mj-text
+        font-family="Roboto, sans-serif"
+        font-size="16px"
+        line-height="24px"
+        color="#262626"
+      />
     </mj-attributes>
+    <mj-style>
+      :root { color-scheme: light dark; supported-color-schemes: light dark; }
+      @media (prefers-color-scheme: dark) { .dark-text div { color: #f5f5f5
+      !important; } }
+    </mj-style>
   </mj-head>
   <mj-body>
-    <mj-section>
+    <mj-section padding="20px 0 0">
       <mj-column>
-        <mj-text>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Suscipit tellus mauris a diam maecenas.
+        <mj-text css-class="dark-text">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Suscipit
+          tellus mauris a diam maecenas.
         </mj-text>
-        <mj-spacer />
-        <mj-text>
-          Donec et odio pellentesque diam volutpat commodo sed egestas. Velit scelerisque in dictum non consectetur a erat. Ornare quam viverra orci sagittis eu volutpat odio facilisis. Id cursus metus aliquam eleifend mi in. Rhoncus mattis rhoncus urna neque. Quam quisque id diam vel quam elementum. Vitae et leo duis ut diam quam.
+        <mj-text css-class="dark-text">
+          Donec et odio pellentesque diam volutpat commodo sed egestas. Velit
+          scelerisque in dictum non consectetur a erat. Ornare quam viverra orci
+          sagittis eu volutpat odio facilisis. Id cursus metus aliquam eleifend
+          mi in. Rhoncus mattis rhoncus urna neque. Quam quisque id diam vel
+          quam elementum. Vitae et leo duis ut diam quam.
         </mj-text>
-        <mj-spacer />
-        <mj-text>
-          Sed elementum tempus egestas sed sed risus pretium quam. Lectus nulla at volutpat diam ut venenatis tellus. Convallis aenean et tortor at risus viverra adipiscing. Amet nisl suscipit adipiscing bibendum est.
+        <mj-text css-class="dark-text">
+          Sed elementum tempus egestas sed sed risus pretium quam. Lectus nulla
+          at volutpat diam ut venenatis tellus. Convallis aenean et tortor at
+          risus viverra adipiscing. Amet nisl suscipit adipiscing bibendum est.
         </mj-text>
       </mj-column>
     </mj-section>
