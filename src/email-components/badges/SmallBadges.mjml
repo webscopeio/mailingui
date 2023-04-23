@@ -1,46 +1,77 @@
 <mjml>
   <mj-head>
+    <mj-font
+      name="Roboto"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+    ></mj-font>
+    <mj-raw>
+      <meta name="color-scheme" content="light dark" />
+      <meta name="supported-color-schemes" content="light dark" />
+    </mj-raw>
     <mj-attributes>
-      <mj-column padding="10px 1px" />
-      <mj-button align="center" font-family="Helvetica" font-size="12px" line-height="16px" font-weight="500" border-radius="6px" inner-padding="4px 8px" padding="0px" />
+      <mj-button
+        align="left"
+        font-family="Roboto, sans-serif"
+        font-size="12px"
+        line-height="16px"
+        font-weight="500"
+        border-radius="4px"
+        inner-padding="4px 8px"
+        padding="0 9px 9px 0"
+      ></mj-button>
     </mj-attributes>
+    <mj-style
+      >:root { color-scheme: light dark; supported-color-schemes: light dark; }
+      .badge-container tbody { display: flex !important; justify-content: center
+      !important; flex-wrap: wrap !important; } @media (prefers-color-scheme:
+      dark){ .badge-green td, .badge-green p { background: #012D1F !important; }
+      .badge-orange td, .badge-orange p { background: #4B2207 !important; }
+      .badge-red td, .badge-red p { background: #420B0B !important; }
+      .badge-blue td, .badge-blue p { background: #0B1E46 !important; }
+      .badge-purple td, .badge-purple p { background: #260A3E !important; }
+      .badge-yellow td, .badge-yellow p { background: #463602 !important; }
+      }</mj-style
+    >
   </mj-head>
-  <mj-body width="600px">
-    <mj-section padding="10px 20px">
-      <mj-column>
-        <mj-button background-color="#000000" color="#ffffff">
-          Badge
-        </mj-button>
-      </mj-column>
-      <mj-column>
-        <mj-button background-color="#F1F5F9" color="#64748B">
-          Badge
-        </mj-button>
-      </mj-column>
-      <mj-column>
-        <mj-button background-color="#ffffff" color="#64748B" inner-padding="3px 7px" border="1px solid #E2E8F0">
-          Badge
-        </mj-button>
-      </mj-column>
-      <mj-column>
-        <mj-button background-color="#F0FDF4" color="#22C55E">
-          Badge
-        </mj-button>
-      </mj-column>
-      <mj-column>
-        <mj-button background-color="#FFFBEB" color="#F59E0B">
-          Badge
-        </mj-button>
-      </mj-column>
-      <mj-column>
-        <mj-button background-color="#FEF2F2" color="#DC2626">
-          Badge
-        </mj-button>
-      </mj-column>
-      <mj-column>
-        <mj-button background-color="#EFF6FF" color="#2563EB">
-          Badge
-        </mj-button>
+  <mj-body>
+    <mj-section padding="0px">
+      <mj-column padding="25px 25px" css-class="badge-container">
+        <mj-button
+          css-class="badge-green"
+          color="#059669"
+          background-color="#D1FAE5"
+          >Badge</mj-button
+        >
+        <mj-button
+          css-class="badge-orange"
+          color="#F97316"
+          background-color="#FFEDD5"
+          >Badge</mj-button
+        >
+        <mj-button
+          css-class="badge-red"
+          color="#DC2626"
+          background-color="#FEE2E2"
+          >Badge</mj-button
+        >
+        <mj-button
+          css-class="badge-blue"
+          color="#2563EB"
+          background-color="#DBEAFE"
+          >Badge</mj-button
+        >
+        <mj-button
+          css-class="badge-purple"
+          color="#7E22CE"
+          background-color="#F3E8FF"
+          >Badge</mj-button
+        >
+        <mj-button
+          css-class="badge-yellow"
+          color="#CA8A04"
+          background-color="#FEF9C3"
+          >Badge</mj-button
+        >
       </mj-column>
     </mj-section>
   </mj-body>
