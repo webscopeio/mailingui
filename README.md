@@ -1,38 +1,49 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Mailing UI
 
-## Getting Started
+## Description
+Mailing UI is an _open source_ collection of email components (templates coming soon!) that can help you save time and improve your email campaigns.
 
-First, run the development server:
+All of the components are designed to be visually appealing and easy to use. The [MJML](https://mjml.io/) markup language was used to reduce the pain of coding a responsive email.
 
+Since the Mailing UI is open source, you can use any part of it for free and modify it to suit your needs!
+
+### Technology stack
+Email components are created using the [MJML](https://mjml.io/) markup language, which is being compiled to HTML using the official [`mjml` npm package](https://www.npmjs.com/package/mjml).
+
+The website is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). We use the experimental (beta) [app](https://beta.nextjs.org/docs/routing/defining-routes) directory. The email components are showcased on the website.
+
+## Dependencies
+- Node.js - recommended version is the LTS 'Hydrogen' - `18.x.x`. (The table of releases: https://nodejs.org/en/download/releases)
+- npm - recommended version is the one described next to Node.js version. For example, recommended npm version for Node.js `18.16.0` is `9.5.1`.
+
+## Installation
+Detailed instructions on how to install, configure, and get the project running.
+This should be frequently tested to ensure reliability. Alternatively, link to
+a separate [INSTALL](INSTALL.md) document.
+
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). 
+
+First, install the dependencies:
+```bash
+npm install
+```
+
+Then run the development server:
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+----
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Open source licensing info
+- [LICENSE](LICENSE)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+----
 
-To learn more about Next.js, take a look at the following resources:
+## References
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- To better understand the MJML language visit [the documentation](https://documentation.mjml.io/).
