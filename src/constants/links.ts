@@ -1,4 +1,4 @@
-import { GitHubIcon, InstagramIcon } from "@components/Icons";
+import { GitHubIcon, TwitterIcon } from "@components/Icons";
 
 export const navigationLinks = [
   {
@@ -21,14 +21,13 @@ export const navigationLinks = [
 
 export const socialLinks = [
   {
-    href: "https://instagram.com",
-    label: "Instagram",
-    Icon: InstagramIcon,
-    iconAltText: "Instagram Logo",
-  },
-  {
-    href: "https://github.com",
+    href: "https://github.com/webscopeio/mailingui-web",
     label: "GitHub",
     Icon: GitHubIcon,
+  },
+  {
+    href: "https://twitter.com/MailingUI",
+    label: "Twitter",
+    Icon: TwitterIcon,
   },
 ];
