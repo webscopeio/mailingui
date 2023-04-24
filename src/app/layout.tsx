@@ -73,7 +73,15 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={basierCircle.variable}>
-      <head />
+      <head>
+        {process.env.NEXT_PUBLIC_VERCEL_ENV === "production" && (
+          <script
+            defer
+            data-domain="mailingui.com"
+            src="https://plausible.io/js/script.js"
+          />
+        )}
+      </head>
       <body className="flex min-h-screen flex-col bg-black text-white">
         {children}
         <div className="mt-auto pt-16 md:pt-32">
