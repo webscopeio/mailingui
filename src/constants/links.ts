@@ -5,18 +5,6 @@ export const navigationLinks = [
     href: "/components",
     label: "Components",
   },
-  {
-    href: "/",
-    label: "Pricing",
-  },
-  {
-    href: "/",
-    label: "Documentation",
-  },
-  {
-    href: "/",
-    label: "Support",
-  },
 ];
 
 export const socialLinks = [
