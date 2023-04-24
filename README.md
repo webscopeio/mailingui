@@ -7,6 +7,8 @@ All of the components are designed to be visually appealing and easy to use. The
 
 Since the Mailing UI is open source, you can use any part of it for free and modify it to suit your needs!
 
+The project is an MVP. We plan on adding new features in the near future.
+
 ### Technology stack
 Email components are created using the [MJML](https://mjml.io/) markup language, which is being compiled to HTML using the official [`mjml` npm package](https://www.npmjs.com/package/mjml).
 
