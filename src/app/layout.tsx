@@ -74,11 +74,13 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={basierCircle.variable}>
       <head>
-        <script
-          defer
-          data-domain="mailingui.com"
-          src="https://plausible.io/js/script.js"
-        ></script>
+        {process.env.NEXT_PUBLIC_VERCEL_ENV === "production" && (
+          <script
+            defer
+            data-domain="mailingui.com"
+            src="https://plausible.io/js/script.js"
+          />
+        )}
       </head>
       <body className="flex min-h-screen flex-col bg-black text-white">
         {children}
