@@ -56,6 +56,20 @@ export const metadata: Metadata = {
     default: "MailingUI",
     template: "%s | MailingUI",
   },
+  icons: {
+    icon: [
+      {
+        url: "/static/favicons/favicon-32.svg",
+        type: "image/svg+xml",
+      },
+      {
+        url: "/static/favicons/favicon-32.ico",
+        sizes: "any",
+      },
+    ],
+    apple: "/static/favicons/favicon-512.png",
+    shortcut: "/static/favicons/favicon-512.png",
+  },
   description: "Easy to build an email with React & MJML",
   keywords: ["email", "mail", "mjml", "react", "html"],
   colorScheme: "dark",
