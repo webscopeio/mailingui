@@ -1,4 +1,25 @@
+import type { Metadata } from "next";
 import { ComponentsPreview } from "@components/ComponentsPreview";
+
+export const metadata: Metadata = {
+  title: "Components",
+  description: "Explore components",
+  openGraph: {
+    title: "Components",
+    description: "Explore components",
+    url: "https://mailingui.com/components",
+    images: [
+      {
+        url: "/static/images/og/components.png",
+        width: 1200,
+        height: 630,
+      },
+    ],
+    siteName: "MailingUI",
+    locale: "en-US",
+    type: "website",
+  },
+};
 
 const Components = () => (
   <div className="mx-auto w-full max-w-6xl px-4">

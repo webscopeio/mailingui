@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { ReactNode } from "react";
 import { Footer } from "@components/Footer";
@@ -52,6 +52,7 @@ const basierCircle = localFont({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://mailingui.com"),
   title: {
     default: "MailingUI",
     template: "%s | MailingUI",
@@ -77,7 +78,14 @@ export const metadata: Metadata = {
   openGraph: {
     title: "MailingUI",
     description: "Easy to build an email with React & MJML",
-    url: "https://mailingui.vercel.app/",
+    url: "https://mailingui.com/",
+    images: [
+      {
+        url: "/static/images/og/homepage.png",
+        width: 1200,
+        height: 630,
+      },
+    ],
     siteName: "MailingUI",
     locale: "en-US",
     type: "website",
