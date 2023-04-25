@@ -56,6 +56,20 @@ export const metadata: Metadata = {
     default: "MailingUI",
     template: "%s | MailingUI",
   },
+  icons: {
+    icon: [
+      {
+        url: "/static/favicons/favicon-32.svg",
+        type: "image/svg+xml",
+      },
+      {
+        url: "/static/favicons/favicon-32.ico",
+        sizes: "any",
+      },
+    ],
+    apple: "/static/favicons/favicon-512.png",
+    shortcut: "/static/favicons/favicon-512.png",
+  },
   description: "Easy to build an email with React & MJML",
   keywords: ["email", "mail", "mjml", "react", "html"],
   colorScheme: "dark",
@@ -73,7 +87,15 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={basierCircle.variable}>
-      <head />
+      <head>
+        {process.env.NEXT_PUBLIC_VERCEL_ENV === "production" && (
+          <script
+            defer
+            data-domain="mailingui.com"
+            src="https://plausible.io/js/script.js"
+          />
+        )}
+      </head>
       <body className="flex min-h-screen flex-col bg-black text-white">
         {children}
         <div className="mt-auto pt-16 md:pt-32">
