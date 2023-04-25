@@ -6,6 +6,7 @@ import { CopyButton } from "@components/CopyButton";
 import { IconButton } from "@components/IconButton";
 import { CodeBlock } from "@components/CodeBlock";
 import { FramePreview } from "@components/FramePreview";
+import { clsx } from "@utils";
 
 type Code = "mjml" | "html";
 
@@ -27,11 +28,17 @@ export const ComponentExample = ({
 }: ComponentExampleProps) => {
   const [codeViewType, setCodeViewType] = useState<Code>("mjml");
   const [darkMode, setDarkMode] = useState(false);
+  const [activeTab, setActiveTab] = useState<"preview" | "code">("preview");
 
   const selectedCode = codeViewType === "mjml" ? mjml : html;
 
   return (
-    <Tabs.Root defaultValue="preview">
+    <Tabs.Root
+      value={activeTab}
+      onValueChange={(value) => {
+        setActiveTab(value as "preview" | "code");
+      }}
+    >
       <div className="flex min-h-[2.5rem] items-center justify-between">
         <h2 className="truncate text-sm text-neutral-400 md:text-xl">
           {title}
@@ -67,7 +74,17 @@ export const ComponentExample = ({
         </div>
       </div>
       <div className="mt-4 md:mt-6">
-        <Tabs.Content value="preview">
+        <Tabs.Content
+          value="preview"
+          /**
+           * The preview tab should always be mounted for 2 reasons:
+           * To avoid flicker when HTML document loads in FrameReview;
+           * And to keep track of the Resizable width inside FrameReview
+           * when switching between tabs.
+           */
+          forceMount
+          className={clsx(activeTab === "code" && "hidden")}
+        >
           <FramePreview
             title={title}
             html={html}
