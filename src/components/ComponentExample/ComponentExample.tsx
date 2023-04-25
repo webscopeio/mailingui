@@ -1,10 +1,12 @@
 "use client";
 import { useState } from "react";
 import { Tabs } from "@components/Tabs";
-import { CodeIcon, EyeIcon, SunIcon } from "@components/Icons";
+import { CodeIcon, EyeIcon, MoonIcon, SunIcon } from "@components/Icons";
 import { CopyButton } from "@components/CopyButton";
 import { IconButton } from "@components/IconButton";
 import { CodeBlock } from "@components/CodeBlock";
+import { FramePreview } from "@components/FramePreview";
+import { clsx } from "@utils";
 
 type Code = "mjml" | "html";
 
@@ -25,11 +27,18 @@ export const ComponentExample = ({
   html,
 }: ComponentExampleProps) => {
   const [codeViewType, setCodeViewType] = useState<Code>("mjml");
+  const [darkMode, setDarkMode] = useState(false);
+  const [activeTab, setActiveTab] = useState<"preview" | "code">("preview");
 
   const selectedCode = codeViewType === "mjml" ? mjml : html;
 
   return (
-    <Tabs.Root defaultValue="preview">
+    <Tabs.Root
+      value={activeTab}
+      onValueChange={(value) => {
+        setActiveTab(value as "preview" | "code");
+      }}
+    >
       <div className="flex min-h-[2.5rem] items-center justify-between">
         <h2 className="truncate text-sm text-neutral-400 md:text-xl">
           {title}
@@ -58,29 +67,34 @@ export const ComponentExample = ({
             <CopyButton textToCopy={selectedCode} />
           </div>
           <div className="hidden sm:block">
-            <IconButton>
-              <SunIcon />
+            <IconButton onClick={() => setDarkMode(!darkMode)}>
+              {darkMode ? <SunIcon /> : <MoonIcon />}
             </IconButton>
           </div>
         </div>
       </div>
       <div className="mt-4 md:mt-6">
-        <Tabs.Content value="preview">
-          <iframe
-            title="Primary buttons"
-            srcDoc={html}
-            className="mx-auto w-full overflow-hidden rounded-3xl ring-1"
-            onLoad={(event) => {
-              const iframe = event.target as HTMLIFrameElement;
-              if (iframe?.contentWindow) {
-                iframe.style.height =
-                  iframe.contentWindow.document.body.scrollHeight + "px";
-              }
-            }}
+        <Tabs.Content
+          value="preview"
+          /**
+           * The preview tab should always be mounted for 2 reasons:
+           * To avoid flicker when HTML document loads in FrameReview
+           * when switching between tabs;
+           * And to keep track of the Resizable width inside FrameReview
+           * when switching between tabs.
+           */
+          forceMount
+          className={clsx(activeTab === "code" && "hidden")}
+        >
+          <FramePreview
+            title={title}
+            html={html}
+            darkMode={darkMode}
+            className="h-[400px] w-full rounded-3xl border border-dark-100"
           />
         </Tabs.Content>
         <Tabs.Content value="code">
-          <div className="w-full overflow-auto rounded-3xl">
+          <div className=" h-[400px] w-full overflow-auto rounded-3xl border border-transparent bg-[#1e1e1e]">
             <CodeBlock language={supportedLangs[codeViewType]}>
               {selectedCode}
             </CodeBlock>
