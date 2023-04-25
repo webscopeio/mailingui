@@ -40,10 +40,7 @@ export const Greeting = () => (
         tempor.
       </p>
       <div className="mt-6 space-y-3 md:mt-12 md:inline-flex md:gap-x-3 md:space-y-0">
-        <CTA href="/" color="white" className="w-full md:w-auto">
-          Build an email
-        </CTA>
-        <CTA href="/" color="black" className="w-full md:w-auto">
+        <CTA href="/components" color="white" className="w-full md:w-auto">
           Explore components
         </CTA>
       </div>
