@@ -27,7 +27,7 @@ export function generateMetadata({
       url: "https://mailingui.vercel.app/components",
       images: [
         {
-          url: "public/static/images/og/components.png",
+          url: "/static/images/og/components.png",
           width: 1200,
           height: 630,
         },

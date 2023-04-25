@@ -52,6 +52,7 @@ const basierCircle = localFont({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://mailingui.vercel.app"),
   title: {
     default: "MailingUI",
     template: "%s | MailingUI",
@@ -80,7 +81,7 @@ export const metadata: Metadata = {
     url: "https://mailingui.vercel.app/",
     images: [
       {
-        url: "public/static/images/og/homepage.png",
+        url: "/static/images/og/homepage.png",
         width: 1200,
         height: 630,
       },

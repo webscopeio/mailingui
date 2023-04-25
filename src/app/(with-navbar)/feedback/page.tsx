@@ -1,6 +1,27 @@
 import Image from "next/image";
+import type { Metadata } from "next";
 import { CTA } from "@components/CTA";
 import feedbackImage from "public/static/images/feedback/feedback.png";
+
+export const metadata: Metadata = {
+  title: "Feedback",
+  description: "Be part of the MailingUI community",
+  openGraph: {
+    title: "Feedback",
+    description: "Be part of the MailingUI community",
+    url: "https://mailingui.vercel.app/feedback",
+    images: [
+      {
+        url: "/static/images/og/feedback.png",
+        width: 1200,
+        height: 630,
+      },
+    ],
+    siteName: "MailingUI",
+    locale: "en-US",
+    type: "website",
+  },
+};
 
 export default function FeedbackPage() {
   return (
