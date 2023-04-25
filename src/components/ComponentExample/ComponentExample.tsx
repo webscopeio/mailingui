@@ -1,18 +1,12 @@
 "use client";
 import { useState } from "react";
 import { Tabs } from "@components/Tabs";
-import {
-  CodeIcon,
-  DesktopIcon,
-  EyeIcon,
-  MoonIcon,
-  SunIcon,
-} from "@components/Icons";
+import { CodeIcon, EyeIcon, MoonIcon, SunIcon } from "@components/Icons";
 import { CopyButton } from "@components/CopyButton";
 import { IconButton } from "@components/IconButton";
 import { CodeBlock } from "@components/CodeBlock";
 import { FramePreview } from "@components/FramePreview";
-import { MobileIcon } from "@components/Icons/MobileIcon";
+import { clsx } from "@utils";
 
 type Code = "mjml" | "html";
 
@@ -20,15 +14,6 @@ const supportedLangs: Record<Code, string> = {
   mjml: "html",
   html: "html",
 };
-
-/** `mjml` playground's breakpoint is 320px */
-const supportedViewports = {
-  mobile: "320px",
-  full: "100%",
-} as const;
-
-export type SupportedViewPorts =
-  (typeof supportedViewports)[keyof typeof supportedViewports];
 
 export type ComponentExampleProps = {
   title: string;
@@ -43,12 +28,17 @@ export const ComponentExample = ({
 }: ComponentExampleProps) => {
   const [codeViewType, setCodeViewType] = useState<Code>("mjml");
   const [darkMode, setDarkMode] = useState(false);
-  const [mobileView, setMobileView] = useState(false);
+  const [activeTab, setActiveTab] = useState<"preview" | "code">("preview");
 
   const selectedCode = codeViewType === "mjml" ? mjml : html;
 
   return (
-    <Tabs.Root defaultValue="preview">
+    <Tabs.Root
+      value={activeTab}
+      onValueChange={(value) => {
+        setActiveTab(value as "preview" | "code");
+      }}
+    >
       <div className="flex min-h-[2.5rem] items-center justify-between">
         <h2 className="truncate text-sm text-neutral-400 md:text-xl">
           {title}
@@ -77,11 +67,6 @@ export const ComponentExample = ({
             <CopyButton textToCopy={selectedCode} />
           </div>
           <div className="hidden sm:block">
-            <IconButton onClick={() => setMobileView(!mobileView)}>
-              {mobileView ? <DesktopIcon /> : <MobileIcon />}
-            </IconButton>
-          </div>
-          <div className="hidden sm:block">
             <IconButton onClick={() => setDarkMode(!darkMode)}>
               {darkMode ? <SunIcon /> : <MoonIcon />}
             </IconButton>
@@ -89,12 +74,22 @@ export const ComponentExample = ({
         </div>
       </div>
       <div className="mt-4 md:mt-6">
-        <Tabs.Content value="preview">
+        <Tabs.Content
+          value="preview"
+          /**
+           * The preview tab should always be mounted for 2 reasons:
+           * To avoid flicker when HTML document loads in FrameReview
+           * when switching between tabs;
+           * And to keep track of the Resizable width inside FrameReview
+           * when switching between tabs.
+           */
+          forceMount
+          className={clsx(activeTab === "code" && "hidden")}
+        >
           <FramePreview
             title={title}
             html={html}
             darkMode={darkMode}
-            previewWidth={mobileView ? "320px" : "100%"}
             className="h-[400px] w-full rounded-3xl border border-dark-100"
           />
         </Tabs.Content>
