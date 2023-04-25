@@ -1,18 +1,11 @@
 "use client";
 import { useState } from "react";
 import { Tabs } from "@components/Tabs";
-import {
-  CodeIcon,
-  DesktopIcon,
-  EyeIcon,
-  MoonIcon,
-  SunIcon,
-} from "@components/Icons";
+import { CodeIcon, EyeIcon, MoonIcon, SunIcon } from "@components/Icons";
 import { CopyButton } from "@components/CopyButton";
 import { IconButton } from "@components/IconButton";
 import { CodeBlock } from "@components/CodeBlock";
 import { FramePreview } from "@components/FramePreview";
-import { MobileIcon } from "@components/Icons/MobileIcon";
 
 type Code = "mjml" | "html";
 
@@ -20,15 +13,6 @@ const supportedLangs: Record<Code, string> = {
   mjml: "html",
   html: "html",
 };
-
-/** `mjml` playground's breakpoint is 320px */
-const supportedViewports = {
-  mobile: "320px",
-  full: "100%",
-} as const;
-
-export type SupportedViewPorts =
-  (typeof supportedViewports)[keyof typeof supportedViewports];
 
 export type ComponentExampleProps = {
   title: string;
@@ -43,7 +27,6 @@ export const ComponentExample = ({
 }: ComponentExampleProps) => {
   const [codeViewType, setCodeViewType] = useState<Code>("mjml");
   const [darkMode, setDarkMode] = useState(false);
-  const [mobileView, setMobileView] = useState(false);
 
   const selectedCode = codeViewType === "mjml" ? mjml : html;
 
@@ -77,11 +60,6 @@ export const ComponentExample = ({
             <CopyButton textToCopy={selectedCode} />
           </div>
           <div className="hidden sm:block">
-            <IconButton onClick={() => setMobileView(!mobileView)}>
-              {mobileView ? <DesktopIcon /> : <MobileIcon />}
-            </IconButton>
-          </div>
-          <div className="hidden sm:block">
             <IconButton onClick={() => setDarkMode(!darkMode)}>
               {darkMode ? <SunIcon /> : <MoonIcon />}
             </IconButton>
@@ -94,7 +72,6 @@ export const ComponentExample = ({
             title={title}
             html={html}
             darkMode={darkMode}
-            previewWidth={mobileView ? "320px" : "100%"}
             className="h-[400px] w-full rounded-3xl border border-dark-100"
           />
         </Tabs.Content>
