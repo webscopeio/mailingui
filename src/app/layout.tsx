@@ -52,7 +52,7 @@ const basierCircle = localFont({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://mailingui.vercel.app"),
+  metadataBase: new URL("https://mailingui.com"),
   title: {
     default: "MailingUI",
     template: "%s | MailingUI",
@@ -78,7 +78,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "MailingUI",
     description: "Easy to build an email with React & MJML",
-    url: "https://mailingui.vercel.app/",
+    url: "https://mailingui.com/",
     images: [
       {
         url: "/static/images/og/homepage.png",

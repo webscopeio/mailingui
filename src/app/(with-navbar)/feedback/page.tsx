@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Feedback",
     description: "Be part of the MailingUI community",
-    url: "https://mailingui.vercel.app/feedback",
+    url: "https://mailingui.com/feedback",
     images: [
       {
         url: "/static/images/og/feedback.png",

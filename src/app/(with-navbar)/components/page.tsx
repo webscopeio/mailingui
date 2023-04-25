@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Components",
     description: "Explore components",
-    url: "https://mailingui.vercel.app/components",
+    url: "https://mailingui.com/components",
     images: [
       {
         url: "/static/images/og/components.png",
