@@ -27,7 +27,6 @@ export const ComponentExample = ({
   html,
 }: ComponentExampleProps) => {
   const [codeViewType, setCodeViewType] = useState<Code>("mjml");
-  const [darkMode, setDarkMode] = useState(false);
   const [activeTab, setActiveTab] = useState<"preview" | "code">("preview");
 
   const selectedCode = codeViewType === "mjml" ? mjml : html;
@@ -66,11 +65,6 @@ export const ComponentExample = ({
           <div className="hidden sm:block">
             <CopyButton textToCopy={selectedCode} />
           </div>
-          <div className="hidden sm:block">
-            <IconButton onClick={() => setDarkMode(!darkMode)}>
-              {darkMode ? <SunIcon /> : <MoonIcon />}
-            </IconButton>
-          </div>
         </div>
       </div>
       <div className="mt-4 md:mt-6">
@@ -89,7 +83,6 @@ export const ComponentExample = ({
           <FramePreview
             title={title}
             html={html}
-            darkMode={darkMode}
             className="h-[400px] w-full rounded-3xl border border-dark-100"
           />
         </Tabs.Content>

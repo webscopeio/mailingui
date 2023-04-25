@@ -1,11 +1,10 @@
 "use client";
-import { ComponentPropsWithoutRef, useCallback } from "react";
+import { ComponentPropsWithoutRef } from "react";
 import { Resizable } from "re-resizable";
 import { clsx } from "@utils";
 
 export type FramePreviewProps = ComponentPropsWithoutRef<"iframe"> & {
   html: string;
-  darkMode: boolean;
   resizingEnabled?: boolean;
 };
 
@@ -18,22 +17,9 @@ export const FramePreview = ({
   title,
   html,
   className,
-  darkMode,
   resizingEnabled = true,
   ...otherProps
 }: FramePreviewProps) => {
-  const callbackRef = useCallback(
-    (node: HTMLIFrameElement) => {
-      if (node?.contentWindow) {
-        const html = node.contentWindow.document.querySelector("html");
-        if (html) {
-          html.style.colorScheme = `${darkMode ? "dark" : "light"}`;
-        }
-      }
-    },
-    [darkMode]
-  );
-
   return (
     <Resizable
       bounds="parent"
@@ -59,13 +45,9 @@ export const FramePreview = ({
       }}
     >
       <iframe
-        ref={callbackRef}
         id={title}
         title={title}
         srcDoc={html}
-        onLoad={(e) => {
-          callbackRef(e.target as HTMLIFrameElement);
-        }}
         className={clsx("text-clip transition-[max-width]", className)}
         {...otherProps}
       />
