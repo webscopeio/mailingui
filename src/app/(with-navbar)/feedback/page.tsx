@@ -6,9 +6,9 @@ export default function FeedbackPage() {
   return (
     <div className="mx-auto grid w-full max-w-6xl grid-cols-1 place-items-center gap-4 px-4 pt-8 md:grid-cols-2 md:pt-16">
       <section>
-        <h2 className="mt-2 text-3xl font-semibold md:text-5xl">
+        <h1 className="mt-2 text-3xl font-semibold md:text-5xl">
           Be part of the <br /> MailingUI community
-        </h2>
+        </h1>
         <p className="mt-4 text-lg text-neutral-500 md:mt-6 md:text-xl">
           You found a issue or have a suggestion for a new feature, let us know
           and become part of MailingUI.
