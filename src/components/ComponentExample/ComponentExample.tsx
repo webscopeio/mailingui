@@ -78,7 +78,8 @@ export const ComponentExample = ({
           value="preview"
           /**
            * The preview tab should always be mounted for 2 reasons:
-           * To avoid flicker when HTML document loads in FrameReview;
+           * To avoid flicker when HTML document loads in FrameReview
+           * when switching between tabs;
            * And to keep track of the Resizable width inside FrameReview
            * when switching between tabs.
            */
