@@ -5,6 +5,10 @@ export const navigationLinks = [
     href: "/components",
     label: "Components",
   },
+  {
+    href: "/feedback",
+    label: "Feedback",
+  },
 ];
 
 export const socialLinks = [
