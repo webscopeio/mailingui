@@ -19,7 +19,10 @@ const Home = () => (
       <ComponentsPreview componentsShown={8} componentsShownOnMobile={3} />
     </FeaturePreview>
 
-    <FeaturePreview title="Templates coming soon!" previewType="templates">
+    <FeaturePreview
+      title="Explore the templates and choose yours"
+      previewType="templates"
+    >
       <div className="relative -mx-4 overflow-hidden">
         <Image
           src={templatesPreview}
