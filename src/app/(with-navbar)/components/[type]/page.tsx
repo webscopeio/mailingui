@@ -102,11 +102,49 @@ const getComponent = (
         const html = format(htmlOutput.html, { parser: "html" });
         const mjml = format(inputMjml, { parser: "html" });
 
+        const regex =
+          /@media\s*\(prefers-color-scheme:\s*dark\)\s*{([\s\S]*?)}\s*}/g;
+        const hasDarkMode = regex.test(inputMjml);
+
+        /** Early return if no media queries were found */
+        if (!hasDarkMode) {
+          return [
+            {
+              title,
+              mjml,
+              html,
+            },
+          ];
+        }
+
+        const mjmlLight = inputMjml.replace(regex, "");
+        const mjmlDark = inputMjml.replace(regex, "$1");
+        const htmlLightOutput = mjml2html(mjmlLight, {
+          validationLevel: "strict",
+          keepComments: false,
+        });
+
+        const htmlDarkOutput = mjml2html(mjmlDark, {
+          validationLevel: "strict",
+          keepComments: false,
+        });
+        if (
+          htmlLightOutput.errors.length > 0 ||
+          htmlDarkOutput.errors.length > 0
+        ) {
+          return [];
+        }
+        const htmlLight = format(htmlLightOutput.html, { parser: "html" });
+        const htmlDark = format(htmlDarkOutput.html, { parser: "html" });
         return [
           {
             title,
             mjml,
             html,
+            transformedHtml: {
+              light: htmlLight,
+              dark: htmlDark,
+            },
           },
         ];
       } catch (error) {
