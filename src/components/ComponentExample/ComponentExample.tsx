@@ -1,9 +1,8 @@
 "use client";
 import { useState } from "react";
 import { Tabs } from "@components/Tabs";
-import { CodeIcon, EyeIcon, MoonIcon, SunIcon } from "@components/Icons";
+import { CodeIcon, EyeIcon } from "@components/Icons";
 import { CopyButton } from "@components/CopyButton";
-import { IconButton } from "@components/IconButton";
 import { CodeBlock } from "@components/CodeBlock";
 import { FramePreview } from "@components/FramePreview";
 import { clsx } from "@utils";
