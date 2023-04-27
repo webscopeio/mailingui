@@ -70,7 +70,7 @@ export const emailComponents: EmailComponent[] = [
   {
     type: "heroes",
     title: "Hero section",
-    subtitle: "Lorem ipsum dolor sit amet",
+    subtitle: "Beautiful headers to showcase your message",
     image: Heroes,
     examples: [
       { title: "Image only", mjml: ImageOnlyHeroMjml },
@@ -93,7 +93,7 @@ export const emailComponents: EmailComponent[] = [
   {
     type: "lists",
     title: "Lists",
-    subtitle: "Lorem ipsum dolor sit amet",
+    subtitle: "Organize information with simple lists",
     image: Lists,
     examples: [
       {
@@ -130,7 +130,7 @@ export const emailComponents: EmailComponent[] = [
   {
     type: "badges",
     title: "Badges",
-    subtitle: "Lorem ipsum dolor sit amet",
+    subtitle: "Highlight key information with attention-grabbing badges",
     image: Badges,
     examples: [
       {
@@ -154,7 +154,7 @@ export const emailComponents: EmailComponent[] = [
   {
     type: "buttons",
     title: "Buttons",
-    subtitle: "Lorem ipsum dolor sit amet",
+    subtitle: "Drive user action with clickable buttons",
     image: Buttons,
     examples: [
       {
@@ -186,7 +186,7 @@ export const emailComponents: EmailComponent[] = [
   {
     type: "emojis",
     title: "Emojis",
-    subtitle: "Lorem ipsum dolor sit amet",
+    subtitle: "Add personality and emotion to your messages",
     image: Emojis,
     examples: [
       {
@@ -202,7 +202,7 @@ export const emailComponents: EmailComponent[] = [
   {
     type: "social-icons",
     title: "Social icons",
-    subtitle: "Lorem ipsum dolor sit amet",
+    subtitle: "Increase engagement with clickable social icons",
     image: SocialIcons,
     examples: [
       {
@@ -214,7 +214,7 @@ export const emailComponents: EmailComponent[] = [
   {
     type: "paragraphs",
     title: "Paragraphs",
-    subtitle: "Lorem ipsum dolor sit amet",
+    subtitle: "Craft compelling content with easy-to-read paragraphs",
     image: Paragraphs,
     examples: [
       {
@@ -230,7 +230,7 @@ export const emailComponents: EmailComponent[] = [
   {
     type: "dividers",
     title: "Dividers",
-    subtitle: "Lorem ipsum dolor sit amet",
+    subtitle: "Create visual separation for a clean, professional look",
     image: Dividers,
     examples: [
       {
