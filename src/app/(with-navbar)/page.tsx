@@ -30,7 +30,7 @@ const Home = () => (
           quality={100}
           className="relative left-1/2 w-full min-w-[540px] -translate-x-1/2 px-4"
         />
-        <div className="absolute inset-0 flex items-center justify-center bg-[linear-gradient(180deg,rgba(0,0,0,0.3)_0%,rgba(0,0,0,0.35)_50.1%,#000000_100%)]">
+        <div className="absolute inset-0 flex items-center justify-center bg-[linear-gradient(180deg,rgba(0,0,0,0.3)_0%,rgba(0,0,0,0.65)_50.1%,#000000_100%)]">
           <div className="bg-pink-to-purple-gradient bg-clip-text text-3xl font-bold uppercase text-transparent drop-shadow-lg sm:text-6xl">
             Coming soon
           </div>
