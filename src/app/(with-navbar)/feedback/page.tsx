@@ -30,7 +30,7 @@ export default function FeedbackPage() {
     <div className="mx-auto grid w-full max-w-6xl grid-cols-1 place-items-center gap-4 px-4 pt-8 md:grid-cols-2 md:pt-16">
       <section>
         <h1 className="mt-2 text-3xl font-semibold md:text-5xl">
-          Share Your Feedback
+          Share your Feedback
         </h1>
         <p className="mt-4 text-lg text-neutral-500 md:mt-6 md:text-xl">
           We want to hear what you think about MailingUI! Whether it&apos;s an
