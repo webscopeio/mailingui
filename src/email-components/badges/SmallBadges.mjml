@@ -30,6 +30,15 @@
       .badge-blue td, .badge-blue p { background: #0B1E46 !important; }
       .badge-purple td, .badge-purple p { background: #260A3E !important; }
       .badge-yellow td, .badge-yellow p { background: #463602 !important; } }
+      :root { color-scheme: light dark; supported-color-schemes: light dark; }
+      .badge-container tbody { display: flex !important; justify-content: center
+      !important; flex-wrap: wrap !important; } @media (prefers-color-scheme:
+      dark){ .badge-green td, .badge-green p { background: #012D1F !important; }
+      .badge-orange td, .badge-orange p { background: #4B2207 !important; }
+      .badge-red td, .badge-red p { background: #420B0B !important; }
+      .badge-blue td, .badge-blue p { background: #0B1E46 !important; }
+      .badge-purple td, .badge-purple p { background: #260A3E !important; }
+      .badge-yellow td, .badge-yellow p { background: #463602 !important; } }
     </mj-style>
   </mj-head>
   <mj-body>

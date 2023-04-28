@@ -1,11 +1,10 @@
 "use client";
-import { ComponentPropsWithoutRef, useCallback } from "react";
+import { ComponentPropsWithoutRef } from "react";
 import { Resizable } from "re-resizable";
 import { clsx } from "@utils";
 
 export type FramePreviewProps = ComponentPropsWithoutRef<"iframe"> & {
   html: string;
-  darkMode: boolean;
   resizingEnabled?: boolean;
 };
 
@@ -18,23 +17,9 @@ export const FramePreview = ({
   title,
   html,
   className,
-  darkMode = false,
   resizingEnabled = true,
   ...otherProps
 }: FramePreviewProps) => {
-  /** We'd need this callbackRef, unless we think it's a good idea
-   * to add the background when parsing the html */
-  const callbackRef = useCallback(
-    (node: HTMLIFrameElement) => {
-      if (node?.contentWindow) {
-        const html = node?.contentWindow.document.querySelector("html");
-        if (html) {
-          html.style.background = `${darkMode ? "black" : "white"}`;
-        }
-      }
-    },
-    [darkMode]
-  );
   return (
     <Resizable
       bounds="parent"
@@ -60,17 +45,9 @@ export const FramePreview = ({
       }}
     >
       <iframe
-        ref={callbackRef}
         id={title}
         title={title}
         srcDoc={html}
-        /** This helps with the theme flashing */
-        style={{
-          background: darkMode ? "black" : "white",
-        }}
-        onLoad={(e) => {
-          callbackRef(e.target as HTMLIFrameElement);
-        }}
         className={clsx("text-clip transition-[max-width]", className)}
         {...otherProps}
       />

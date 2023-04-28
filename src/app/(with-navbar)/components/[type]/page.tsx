@@ -6,7 +6,7 @@ import {
   ComponentExample,
   ComponentExampleProps,
 } from "@components/ComponentExample";
-import { emailComponents } from "@constants";
+import { emailComponents, regex } from "@constants";
 
 type ComponentPageProps = {
   params: {
@@ -86,6 +86,7 @@ const getComponent = (
 
   const transformedExamples = component.examples.flatMap(
     ({ title, mjml: inputMjml }) => {
+      const { preferColorScheme, colorScheme, supportedColorScheme } = regex;
       try {
         const htmlOutput = mjml2html(inputMjml, {
           /** `strict` validation throws if a wrong `mjml` is encountered. */
@@ -102,9 +103,7 @@ const getComponent = (
         const html = format(htmlOutput.html, { parser: "html" });
         const mjml = format(inputMjml, { parser: "html" });
 
-        const regex =
-          /@media\s*\(prefers-color-scheme:\s*dark\)\s*{([\s\S]*?)}\s*}/g;
-        const hasDarkMode = regex.test(inputMjml);
+        const hasDarkMode = preferColorScheme.test(inputMjml);
 
         /** Early return if no media queries were found */
         if (!hasDarkMode) {
@@ -113,12 +112,22 @@ const getComponent = (
               title,
               mjml,
               html,
+              hasDarkMode: false,
             },
           ];
         }
 
-        const mjmlLight = inputMjml.replace(regex, "");
-        const mjmlDark = inputMjml.replace(regex, "$1");
+        /** To avoid background flashes, find and replace CSS color-schemes */
+        const mjmlLight = inputMjml
+          .replaceAll(colorScheme, "color-scheme: light;")
+          .replaceAll(supportedColorScheme, "supported-color-schemes: light;")
+          .replaceAll(preferColorScheme, "");
+
+        const mjmlDark = inputMjml
+          .replaceAll(colorScheme, "color-scheme: dark;")
+          .replaceAll(supportedColorScheme, "supported-color-schemes: dark;")
+          .replaceAll(preferColorScheme, "$1");
+
         const htmlLightOutput = mjml2html(mjmlLight, {
           validationLevel: "strict",
           keepComments: false,
@@ -141,6 +150,7 @@ const getComponent = (
             title,
             mjml,
             html,
+            hasDarkMode: true,
             transformedHtml: {
               light: htmlLight,
               dark: htmlDark,

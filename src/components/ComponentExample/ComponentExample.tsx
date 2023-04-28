@@ -1,11 +1,12 @@
 "use client";
 import { useState } from "react";
 import { Tabs } from "@components/Tabs";
-import { CodeIcon, EyeIcon } from "@components/Icons";
+import { CodeIcon, EyeIcon, MoonIcon, SunIcon } from "@components/Icons";
 import { CopyButton } from "@components/CopyButton";
 import { CodeBlock } from "@components/CodeBlock";
 import { FramePreview } from "@components/FramePreview";
 import { clsx } from "@utils";
+import { IconButton } from "@components/IconButton";
 
 type Code = "mjml" | "html";
 
@@ -70,16 +71,14 @@ export const ComponentExample = ({
           <div className="hidden sm:block">
             <CopyButton textToCopy={selectedCode} />
           </div>
-          {!!transformedHtml && (
-            <div className="hidden sm:block">
-              <IconButton
-                onClick={() =>
-                  setColorTheme(colorTheme === "light" ? "dark" : "light")
-                }
-              >
-                {colorTheme === "dark" ? <SunIcon /> : <MoonIcon />}
-              </IconButton>
-            </div>
+          {transformedHtml && (
+            <IconButton
+              onClick={() =>
+                setColorTheme(colorTheme === "light" ? "dark" : "light")
+              }
+            >
+              {colorTheme === "dark" ? <SunIcon /> : <MoonIcon />}
+            </IconButton>
           )}
         </div>
       </div>
@@ -100,7 +99,6 @@ export const ComponentExample = ({
             title={title}
             html={transformedHtml ? transformedHtml[colorTheme] : html}
             className="h-[400px] w-full rounded-3xl border border-dark-100"
-            darkMode={colorTheme === "dark"}
           />
         </Tabs.Content>
         <Tabs.Content value="code">
