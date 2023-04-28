@@ -2,6 +2,7 @@ import Image from "next/image";
 import { CTA } from "@components/CTA";
 import { HtmlIcon, MjmlIcon, ReactIcon } from "@components/Icons";
 import homepageHeroImage from "public/static/images/homepage-hero.png";
+import { StarIcon } from "@components/Icons/StarIcon";
 
 const emailCodeTypes = [
   {
@@ -42,6 +43,15 @@ export const Greeting = () => (
       <div className="mt-6 space-y-3 md:mt-12 md:inline-flex md:gap-x-3 md:space-y-0">
         <CTA href="/components" color="white" className="w-full md:w-auto">
           Explore components
+        </CTA>
+        <CTA
+          href="https://github.com/webscopeio/mailingui-web/stargazers"
+          target="_blank"
+          rel="noopener"
+          color="black"
+          className="w-full md:w-auto"
+        >
+          <StarIcon className="mr-2" /> GitHub stars
         </CTA>
       </div>
     </div>
