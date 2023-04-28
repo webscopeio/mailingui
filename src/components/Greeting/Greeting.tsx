@@ -33,11 +33,11 @@ export const Greeting = () => (
         ))}
       </div>
       <h1 className="mt-3 text-4xl font-semibold md:mt-5 md:text-6xl">
-        Easy to build an email with React & MJML
+        Create emails powered by open-source
       </h1>
       <p className="mt-4 text-lg text-neutral-500 md:mt-6 md:text-xl">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor.
+        Build emails effortlessly with our stunning open-sourced components and
+        templates
       </p>
       <div className="mt-6 space-y-3 md:mt-12 md:inline-flex md:gap-x-3 md:space-y-0">
         <CTA href="/components" color="white" className="w-full md:w-auto">
