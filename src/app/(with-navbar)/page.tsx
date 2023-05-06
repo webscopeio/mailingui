@@ -9,7 +9,7 @@ const Home = () => (
   <>
     <main className="mt-16">
       <Greeting />
-
+      <NewsletterForm />
       <FeaturePreview
         cta={{
           href: "/components",
@@ -40,9 +40,6 @@ const Home = () => (
         </div>
       </FeaturePreview>
     </main>
-    <div className="mx-auto mt-16 max-w-6xl px-4">
-      <NewsletterForm />
-    </div>
   </>
 );
 
