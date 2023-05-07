@@ -30,7 +30,7 @@ export const SubscriptionDialog: React.FC<{
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogAction>
+          <AlertDialogAction asChild>
             <CTA
               onClick={() => {
                 router.push("/");
