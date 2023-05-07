@@ -4,9 +4,10 @@ import { ComponentsPreview } from "@components/ComponentsPreview";
 import { FeaturePreview } from "@components/FeaturePreview";
 import { NewsletterForm } from "@components/NewsletterForm";
 import templatesPreview from "public/static/images/templates-preview.png";
+import { ConfettiWrapper } from "@components/ConfettiWrapper";
 
 const Home = () => (
-  <>
+  <ConfettiWrapper>
     <main className="mt-16">
       <Greeting />
       <NewsletterForm />
@@ -40,7 +41,7 @@ const Home = () => (
         </div>
       </FeaturePreview>
     </main>
-  </>
+  </ConfettiWrapper>
 );
 
 export default Home;
