@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { useRouter } from "next/navigation";
 import { CTA } from "@components/CTA";
 import {
   AlertDialog,
@@ -12,11 +13,13 @@ import {
   AlertDialogAction,
 } from "@components/AlertDialog";
 
-export const SubscriptionDialog: React.FC<{ isOpen: boolean }> = ({
-  isOpen = false,
-}) => {
+export const SubscriptionDialog: React.FC<{
+  isOpen: boolean;
+  onOpenChange: (isOpen: boolean) => void;
+}> = ({ isOpen = false, onOpenChange }) => {
+  const router = useRouter();
   return (
-    <AlertDialog defaultOpen={false} open={isOpen}>
+    <AlertDialog defaultOpen={false} open={isOpen} onOpenChange={onOpenChange}>
       <AlertDialogContent className="bg-black">
         <AlertDialogHeader>
           <AlertDialogTitle className="text-center text-xl font-semibold md:text-3xl">
@@ -28,7 +31,14 @@ export const SubscriptionDialog: React.FC<{ isOpen: boolean }> = ({
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogAction>
-            <CTA href="/" color="white" className="w-full md:w-auto">
+            <CTA
+              onClick={() => {
+                router.push("/");
+                onOpenChange(!isOpen);
+              }}
+              color="white"
+              className="w-full md:w-auto"
+            >
               Continue
             </CTA>
           </AlertDialogAction>
