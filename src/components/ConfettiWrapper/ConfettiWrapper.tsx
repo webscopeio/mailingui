@@ -21,7 +21,7 @@ export const ConfettiWrapper: React.FC<{ children: React.ReactNode }> = ({
 
   return (
     <div ref={ref}>
-      <Confetti run={isOpen} width={width} height={height} />
+      {isOpen && <Confetti width={width} height={height} />}
       <SubscriptionDialog isOpen={isOpen} onOpenChange={setIsOpen} />
       {children}
     </div>
