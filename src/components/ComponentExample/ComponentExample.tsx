@@ -1,11 +1,12 @@
 "use client";
 import { useState } from "react";
 import { Tabs } from "@components/Tabs";
-import { CodeIcon, EyeIcon } from "@components/Icons";
+import { CodeIcon, EyeIcon, MoonIcon, SunIcon } from "@components/Icons";
 import { CopyButton } from "@components/CopyButton";
 import { CodeBlock } from "@components/CodeBlock";
 import { FramePreview } from "@components/FramePreview";
 import { clsx } from "@utils";
+import { IconButton } from "@components/IconButton";
 
 type Code = "mjml" | "html";
 
@@ -18,15 +19,21 @@ export type ComponentExampleProps = {
   title: string;
   mjml: string;
   html: string;
+  transformedHtml?: {
+    light: string;
+    dark: string;
+  };
 };
 
 export const ComponentExample = ({
   title,
   mjml,
   html,
+  transformedHtml,
 }: ComponentExampleProps) => {
   const [codeViewType, setCodeViewType] = useState<Code>("mjml");
   const [activeTab, setActiveTab] = useState<"preview" | "code">("preview");
+  const [colorTheme, setColorTheme] = useState<"light" | "dark">("light");
 
   const selectedCode = codeViewType === "mjml" ? mjml : html;
 
@@ -60,10 +67,23 @@ export const ComponentExample = ({
           >
             <option value="html">HTML</option>
             <option value="mjml">MJML</option>
+            {/* Adding React option as a teaser, implementation is pending */}
+            <option disabled value="react">
+              React
+            </option>
           </select>
           <div className="hidden sm:block">
             <CopyButton textToCopy={selectedCode} />
           </div>
+          {transformedHtml && (
+            <IconButton
+              onClick={() =>
+                setColorTheme(colorTheme === "light" ? "dark" : "light")
+              }
+            >
+              {colorTheme === "dark" ? <SunIcon /> : <MoonIcon />}
+            </IconButton>
+          )}
         </div>
       </div>
       <div className="mt-4 md:mt-6">
@@ -81,7 +101,7 @@ export const ComponentExample = ({
         >
           <FramePreview
             title={title}
-            html={html}
+            html={transformedHtml ? transformedHtml[colorTheme] : html}
             className="h-[400px] w-full rounded-3xl border border-dark-100"
           />
         </Tabs.Content>
