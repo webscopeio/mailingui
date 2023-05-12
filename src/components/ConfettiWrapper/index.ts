@@ -1,0 +1,1 @@
+export { ConfettiWrapper } from "./ConfettiWrapper";

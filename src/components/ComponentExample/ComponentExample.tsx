@@ -67,6 +67,10 @@ export const ComponentExample = ({
           >
             <option value="html">HTML</option>
             <option value="mjml">MJML</option>
+            {/* Adding React option as a teaser, implementation is pending */}
+            <option disabled value="react">
+              React
+            </option>
           </select>
           <div className="hidden sm:block">
             <CopyButton textToCopy={selectedCode} />

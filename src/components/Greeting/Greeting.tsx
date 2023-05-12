@@ -2,15 +2,16 @@ import Image from "next/image";
 import { CTA } from "@components/CTA";
 import { HtmlIcon, MjmlIcon, ReactIcon } from "@components/Icons";
 import homepageHeroImage from "public/static/images/homepage-hero.png";
+import { StarIcon } from "@components/Icons/StarIcon";
 
 const emailCodeTypes = [
   {
-    name: "MJML",
-    Icon: MjmlIcon,
+    name: "React coming soon",
+    Icon: ReactIcon,
   },
   {
-    name: "React",
-    Icon: ReactIcon,
+    name: "MJML",
+    Icon: MjmlIcon,
   },
   {
     name: "HTML",
@@ -25,10 +26,14 @@ export const Greeting = () => (
         {emailCodeTypes.map(({ name, Icon }) => (
           <div
             key={name}
-            className="inline-flex items-center justify-center gap-x-1.5 rounded-full bg-dark-900 py-1 px-2 text-neutral-500 md:py-2 md:px-4"
+            className="group inline-flex rounded-full p-px first:bg-pink-to-purple-gradient"
           >
-            <Icon className="h-4 w-4 md:h-5 md:w-5" />
-            <span className="text-xs font-medium md:text-sm">{name}</span>
+            <div className="inline-flex h-full w-full items-center justify-center gap-x-1.5 rounded-full bg-pink-background py-1 px-2 text-pink-text md:py-2 md:px-4">
+              <Icon className="h-4 w-4 md:h-5 md:w-5" />
+              <span className="bg-clip-text text-xs font-medium group-first:bg-pink-to-purple-gradient group-first:bg-clip-text group-first:text-transparent md:text-sm">
+                {name}
+              </span>
+            </div>
           </div>
         ))}
       </div>
@@ -42,6 +47,15 @@ export const Greeting = () => (
       <div className="mt-6 space-y-3 md:mt-12 md:inline-flex md:gap-x-3 md:space-y-0">
         <CTA href="/components" color="white" className="w-full md:w-auto">
           Explore components
+        </CTA>
+        <CTA
+          href="https://github.com/webscopeio/mailingui-web/stargazers"
+          target="_blank"
+          rel="noopener"
+          color="black"
+          className="w-full md:w-auto"
+        >
+          <StarIcon className="mr-2" /> GitHub stars
         </CTA>
       </div>
     </div>

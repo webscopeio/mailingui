@@ -27,10 +27,10 @@ module.exports = {
         },
         pink: {
           text: "#C71679",
-          background: "rgba(199, 22, 121, 0.1)",
+          background: "#1E0312",
         },
       },
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/forms")],
 };
