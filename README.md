@@ -28,6 +28,7 @@ This should be frequently tested to ensure reliability. Alternatively, link to
 a separate [INSTALL](INSTALL.md) document.
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 First, install the dependencies:
 
@@ -51,7 +52,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Open source licensing info
 
-- [LICENSE](LICENSE)
+- [LICENSE](LICENSE.md)
 
 ---
 
