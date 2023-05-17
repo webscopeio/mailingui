@@ -4,10 +4,10 @@ import { blogDir, getPosts } from "@lib/mdx";
 
 export const metadata: Metadata = {
   title: "Blog",
-  description: "All about Mailing?uI",
+  description: "All about MailingUI",
   openGraph: {
     title: "Blog",
-    description: "All about Mailing?uI",
+    description: "All about MailingUI",
     url: "https://mailingui.com/blog",
     images: [
       {
