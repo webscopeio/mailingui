@@ -96,10 +96,25 @@ export async function getPost(
 ): Promise<CompileMDXResult<PostMeta>> {
   const filename = getFilename(slug);
   const source = readFileSync(join(blogDir, filename), "utf8");
-  return await compileMDX<PostMeta>({
-    source,
-    options: {
-      parseFrontmatter: true,
-    },
+  const { content, frontmatter: inputFrontmatter } =
+    await compileMDX<FrontMatter>({
+      source,
+      options: {
+        parseFrontmatter: true,
+      },
+    });
+  // ⬇️ Parse its frontmatter
+  const { title, date, description, author, github } =
+    frontmatterSchema.parse(inputFrontmatter);
+
+  const frontmatter = metaSchema.parse({
+    title,
+    date,
+    description,
+    author,
+    github,
+    id: filenameToId(filename),
+    slug: slugify(filename, title),
   });
+  return { content, frontmatter };
 }
