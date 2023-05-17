@@ -6,6 +6,10 @@ export const navigationLinks = [
     label: "Components",
   },
   {
+    href: "/blog",
+    label: "Blog",
+  },
+  {
     href: "/feedback",
     label: "Feedback",
   },
