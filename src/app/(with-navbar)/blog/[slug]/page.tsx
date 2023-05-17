@@ -18,7 +18,14 @@ export async function generateMetadata({
     openGraph: {
       title: frontmatter.title,
       description: frontmatter.description,
-      url: `https://mailingui.vercel.app/blog/${frontmatter.slug}`,
+      url: `https://mailingui.com/blog/${frontmatter.slug}`,
+      images: [
+        {
+          url: "/static/images/og/blog.png",
+          width: 1200,
+          height: 630,
+        },
+      ],
       siteName: "MailingUI",
       locale: "en-US",
       type: "website",

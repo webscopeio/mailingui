@@ -1,5 +1,26 @@
 import Link from "next/link";
+import { type Metadata } from "next";
 import { blogDir, getPosts } from "@lib/mdx";
+
+export const metadata: Metadata = {
+  title: "Blog",
+  description: "All about Mailing?uI",
+  openGraph: {
+    title: "Blog",
+    description: "All about Mailing?uI",
+    url: "https://mailingui.com/blog",
+    images: [
+      {
+        url: "/static/images/og/blog.png",
+        width: 1200,
+        height: 630,
+      },
+    ],
+    siteName: "MailingUI",
+    locale: "en-US",
+    type: "website",
+  },
+};
 
 export default async function Blog() {
   const posts = await getPosts(blogDir);
