@@ -73,7 +73,7 @@ const getComponentData = (type: string) => {
   return component;
 };
 
-export const CONTENT_DIR = "src/email-components";
+const CONTENT_DIR = "src/email-components";
 
 type ComponentInfo = {
   id: string;
