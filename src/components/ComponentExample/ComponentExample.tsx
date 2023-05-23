@@ -8,16 +8,17 @@ import { FramePreview } from "@components/FramePreview";
 import { clsx } from "@utils";
 import { IconButton } from "@components/IconButton";
 
-type Code = "mjml" | "html";
+type Code = "mjml" | "react";
 
 const supportedLangs: Record<Code, string> = {
   mjml: "html",
-  html: "html",
+  react: "javascript",
 };
 
 export type ComponentExampleProps = {
   title: string;
   mjml: string;
+  react: string;
   html: string;
   transformedHtml?: {
     light: string;
@@ -28,14 +29,17 @@ export type ComponentExampleProps = {
 export const ComponentExample = ({
   title,
   mjml,
+  react,
   html,
   transformedHtml,
 }: ComponentExampleProps) => {
-  const [codeViewType, setCodeViewType] = useState<Code>("mjml");
+  const [codeViewType, setCodeViewType] = useState<Code>(
+    react ? "react" : "mjml"
+  );
   const [activeTab, setActiveTab] = useState<"preview" | "code">("preview");
   const [colorTheme, setColorTheme] = useState<"light" | "dark">("light");
 
-  const selectedCode = codeViewType === "mjml" ? mjml : html;
+  const selectedCode = codeViewType === "react" ? react : mjml;
 
   return (
     <Tabs.Root
@@ -46,7 +50,7 @@ export const ComponentExample = ({
     >
       <div className="flex min-h-[2.5rem] items-center justify-between">
         <h2 className="truncate text-sm text-neutral-400 md:text-xl">
-          {title}
+          {transformComponentName(title)}
         </h2>
         <div className="ml-4 flex items-center justify-between gap-x-3">
           <Tabs.List aria-label="A label">
@@ -61,15 +65,15 @@ export const ComponentExample = ({
           </Tabs.List>
           <div className="mx-3 hidden h-5 w-px bg-dark-100 sm:block" />
           <select
-            className="h-10 rounded-3xl border border-r-8 border-transparent bg-dark-800 px-3 text-xs font-bold"
+            className="form-select h-10 rounded-3xl border border-transparent bg-dark-800 text-xs font-bold"
             value={codeViewType}
             onChange={(e) => setCodeViewType(e.target.value as Code)}
           >
-            <option value="html">HTML</option>
-            <option value="mjml">MJML</option>
-            {/* Adding React option as a teaser, implementation is pending */}
-            <option disabled value="react">
+            <option disabled={!react} value="react">
               React
+            </option>
+            <option disabled={!mjml} value="mjml">
+              MJML
             </option>
           </select>
           <div className="hidden sm:block">
@@ -116,3 +120,11 @@ export const ComponentExample = ({
     </Tabs.Root>
   );
 };
+
+function transformComponentName(componentName: string): string {
+  const transformedName = componentName
+    .replace(/([a-z])([A-Z])/g, "$1 $2") // Insert space between lowercase and uppercase letters
+    .replace(/([A-Z])([A-Z][a-z])/g, "$1 $2"); // Insert space between uppercase letters followed by lowercase letter
+
+  return transformedName;
+}

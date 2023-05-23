@@ -1,7 +1,9 @@
+import { readFileSync, readdirSync } from "fs";
+import { join } from "path";
 import mjml2html from "mjml";
-import { format } from "prettier";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { render } from "@react-email/render";
 import {
   ComponentExample,
   ComponentExampleProps,
@@ -39,10 +41,10 @@ export function generateMetadata({
   };
 }
 
-export default function ComponentPage({
+export default async function ComponentPage({
   params: { type },
 }: ComponentPageProps) {
-  const component = getComponent(type);
+  const component = await getComponent(type);
 
   return (
     <div className="mx-auto w-full max-w-[900px] overflow-x-hidden px-4">
@@ -71,102 +73,137 @@ const getComponentData = (type: string) => {
   return component;
 };
 
+export const CONTENT_DIR = "src/email-components";
+
+type ComponentInfo = {
+  id: string;
+  mjmlFile?: string;
+  reactFile?: string;
+};
+
 /**
- * Maps over mjml examples, translates them to html, and puts them together.
+ * Maps over examples, translates them to html, and puts them together.
  * @param type - A type of component. Same as `type` param of the page.
- * @returns An object containing component title and array of component examples in mjml and html.
+ * @returns An object containing component title and array of component examples in mjml and React.
  */
-const getComponent = (
+const getComponent = async (
   type: string
-): {
+): Promise<{
   title: string;
   examples: ComponentExampleProps[];
-} => {
+}> => {
+  // Throws if component isn't registered
   const component = getComponentData(type);
 
-  const transformedExamples = component.examples.flatMap(
-    ({ title, mjml: inputMjml }) => {
-      const { preferColorScheme, colorScheme, supportedColorScheme } = regex;
-      try {
-        const htmlOutput = mjml2html(inputMjml, {
-          /** `strict` validation throws if a wrong `mjml` is encountered. */
-          validationLevel: "strict",
-          keepComments: false,
-        });
+  // Create directory path for component type
+  const typePath = join(process.cwd(), CONTENT_DIR, component.type);
 
-        if (htmlOutput.errors.length > 0) {
-          /** If the mjml parsing fails - for whatever reason - we filter the component out. */
-          return [];
+  // Read all the files in that dir
+  const files = readdirSync(typePath);
+
+  const components: ComponentInfo[] = files.reduce(
+    (result: ComponentInfo[], file: string) => {
+      const [id, extension] = file.split(".");
+
+      const componentIndex = result.findIndex(
+        (component: ComponentInfo) => component.id === id
+      );
+
+      if (componentIndex === -1) {
+        // Component doesn't exist in the result array, create a new entry
+        const component: ComponentInfo = {
+          id,
+        };
+
+        if (extension === "mjml") {
+          component.mjmlFile = file;
         }
 
-        /** `mjml` beautify has been deprecated, format using default `prettier` */
-        const html = format(htmlOutput.html, { parser: "html" });
-        const mjml = format(inputMjml, { parser: "html" });
-
-        const hasDarkMode = preferColorScheme.test(inputMjml);
-
-        /** Early return if no media queries were found */
-        if (!hasDarkMode) {
-          return [
-            {
-              title,
-              mjml,
-              html,
-              hasDarkMode: false,
-            },
-          ];
+        if (extension === "tsx" || extension === "jsx") {
+          component.reactFile = file;
         }
 
-        /** To avoid background flashes, find and replace CSS color-schemes */
-        const mjmlLight = inputMjml
-          .replaceAll(colorScheme, "color-scheme: light;")
-          .replaceAll(supportedColorScheme, "supported-color-schemes: light;")
-          .replaceAll(preferColorScheme, "");
-
-        const mjmlDark = inputMjml
-          .replaceAll(colorScheme, "color-scheme: dark;")
-          .replaceAll(supportedColorScheme, "supported-color-schemes: dark;")
-          .replaceAll(preferColorScheme, "$1");
-
-        const htmlLightOutput = mjml2html(mjmlLight, {
-          validationLevel: "strict",
-          keepComments: false,
-        });
-
-        const htmlDarkOutput = mjml2html(mjmlDark, {
-          validationLevel: "strict",
-          keepComments: false,
-        });
-        if (
-          htmlLightOutput.errors.length > 0 ||
-          htmlDarkOutput.errors.length > 0
-        ) {
-          return [];
+        result.push(component);
+      } else {
+        // Component already exists in the result array, update it
+        if (extension === "mjml") {
+          result[componentIndex].mjmlFile = file;
         }
-        const htmlLight = format(htmlLightOutput.html, { parser: "html" });
-        const htmlDark = format(htmlDarkOutput.html, { parser: "html" });
-        return [
-          {
-            title,
-            mjml,
-            html,
-            hasDarkMode: true,
-            transformedHtml: {
-              light: htmlLight,
-              dark: htmlDark,
-            },
-          },
-        ];
-      } catch (error) {
-        /** If the mjml parsing fails - for whatever reason - we filter the component out. */
-        return [];
+        if (extension === "tsx" || extension === "jsx") {
+          result[componentIndex].reactFile = file;
+        }
       }
-    }
+
+      return result;
+    },
+    []
+  );
+
+  const examples: ComponentExampleProps[] = await Promise.all(
+    components.map(async ({ id, mjmlFile, reactFile }) => {
+      const { preferColorScheme, colorScheme, supportedColorScheme } = regex;
+
+      const example: ComponentExampleProps = {
+        title: id,
+        html: "",
+        mjml: "",
+        react: "",
+      };
+
+      if (mjmlFile) {
+        example.mjml = readFileSync(join(typePath, mjmlFile), "utf8");
+
+        example.html = mjml2html(example.mjml, {
+          validationLevel: "strict",
+          keepComments: false,
+        }).html;
+      }
+
+      if (reactFile) {
+        example.react = readFileSync(join(typePath, reactFile), "utf8");
+        const ReactComponent = (
+          await import(
+            `${"src/email-components"}/${component.type}/${reactFile}`
+          )
+        ).default;
+        example.html = render(<ReactComponent />, { pretty: true });
+      }
+
+      const hasDarkMode = preferColorScheme.test(example.html);
+
+      /** Early return if no media queries were found */
+      if (!hasDarkMode) {
+        return {
+          ...example,
+          hasDarkMode: false,
+        };
+      }
+
+      /** To avoid background flashes, find and replace CSS color-schemes */
+      const htmlLight = example.html
+        .replaceAll(colorScheme, "color-scheme: light;")
+        .replaceAll(supportedColorScheme, "supported-color-schemes: light;")
+        .replaceAll(preferColorScheme, "");
+
+      const htmlDark = example.html
+        .replaceAll(colorScheme, "color-scheme: dark;")
+        .replaceAll(supportedColorScheme, "supported-color-schemes: dark;")
+        .replaceAll(preferColorScheme, "$1");
+
+      return {
+        ...example,
+        hasDarkMode: true,
+        transformedHtml: {
+          light: htmlLight,
+          dark: htmlDark,
+        },
+      };
+    })
   );
 
   return {
     title: component.title,
-    examples: transformedExamples,
+    examples,
   };
 };
 
