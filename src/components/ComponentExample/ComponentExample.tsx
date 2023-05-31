@@ -8,11 +8,12 @@ import { FramePreview } from "@components/FramePreview";
 import { clsx } from "@utils";
 import { IconButton } from "@components/IconButton";
 
-type Code = "mjml" | "react";
+type Code = "mjml" | "react" | "html";
 
 const supportedLangs: Record<Code, string> = {
   mjml: "html",
   react: "javascript",
+  html: "html"
 };
 
 export type ComponentExampleProps = {
@@ -39,7 +40,11 @@ export const ComponentExample = ({
   const [activeTab, setActiveTab] = useState<"preview" | "code">("preview");
   const [colorTheme, setColorTheme] = useState<"light" | "dark">("light");
 
-  const selectedCode = codeViewType === "react" ? react : mjml;
+  const selectedCode = codeViewType === "react"
+    ? react
+    : codeViewType === "mjml"
+      ? mjml
+      : html;
 
   return (
     <Tabs.Root
@@ -74,6 +79,9 @@ export const ComponentExample = ({
             </option>
             <option disabled={!mjml} value="mjml">
               MJML
+            </option>
+            <option value="html">
+              HTML
             </option>
           </select>
           <div className="hidden sm:block">
