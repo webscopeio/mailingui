@@ -4,6 +4,7 @@ import mjml2html from "mjml";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { render } from "@react-email/render";
+import { format } from "prettier";
 import {
   ComponentExample,
   ComponentExampleProps,
@@ -153,10 +154,10 @@ const getComponent = async (
       if (mjmlFile) {
         example.mjml = readFileSync(join(typePath, mjmlFile), "utf8");
 
-        example.html = mjml2html(example.mjml, {
+        example.html = format(mjml2html(example.mjml, {
           validationLevel: "strict",
           keepComments: false,
-        }).html;
+        }).html, { parser: "html" });
       }
 
       if (reactFile) {
@@ -166,7 +167,7 @@ const getComponent = async (
             `${"src/email-components"}/${component.type}/${reactFile}`
           )
         ).default;
-        example.html = render(<ReactComponent />, { pretty: true });
+        example.html = format(render(<ReactComponent />, { pretty: true }), { parser: "html" });
       }
 
       const hasDarkMode = preferColorScheme.test(example.html);
