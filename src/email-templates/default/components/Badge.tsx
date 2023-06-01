@@ -1,10 +1,4 @@
-import React, {
-  CSSProperties,
-  FC,
-  ReactChildren,
-  ReactElement,
-  ReactNode,
-} from "react";
+import React, { CSSProperties, FC, ReactNode } from "react";
 
 interface BadgeProps {
   variant: "default" | "danger" | "success" | "info" | "warning";
