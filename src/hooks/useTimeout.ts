@@ -1,34 +1,36 @@
-import React from "react";
+import { useRef, useCallback } from "react";
 
 /**
- * Calls given function after specified amount of milliseconds.
- * Automatically resets on delay change.
- * @param callback - Function called after specified delay.
- * @param delay - Amount of milliseconds after which the callback will get called.
- * @returns Timeout ID reference for imperative timeout cancellation.
+ * Execute a function after a specified delay
+ * using `window.setTimeout()` and `window.clearTimeout()`
+ * ref: [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/setTimeout)
+ * @param callback - Function executed after specified delay
+ * @param delay - The time, in milliseconds before executing the function
+ * @returns Methods to `call` and `cancel` the timeout
  */
-export const useTimeout = (
-  callback: () => void,
-  delay: number | null
-): React.MutableRefObject<number | undefined> => {
-  const timeoutRef = React.useRef<number | undefined>(undefined);
-  const savedCallback = React.useRef(callback);
+export const useTimeout = (callback: ()=>void, delay: number) => {
+	const callbackRef = useRef<typeof callback | null>(null);
+	const timeoutIdRef = useRef<number | null>(null);
 
-  React.useEffect(() => {
-    savedCallback.current = callback;
-  }, [callback]);
+	if (!callbackRef.current) {
+		callbackRef.current = callback;
+	}
 
-  React.useEffect(() => {
-    const tick = () => savedCallback.current();
+	const call = useCallback(() => {
+		if (!timeoutIdRef.current) {
+			timeoutIdRef.current = window.setTimeout(() => {
+				callbackRef.current && callbackRef.current();
+				timeoutIdRef.current = null;
+			}, delay);
+		}
+	}, [delay]);
 
-    if (delay !== null) {
-      timeoutRef.current = window.setTimeout(tick, delay);
+	const cancel = useCallback(() => {
+		if (timeoutIdRef.current) {
+			window.clearTimeout(timeoutIdRef.current);
+			timeoutIdRef.current = null;
+		}
+	}, []);
 
-      return () => {
-        window.clearTimeout(timeoutRef.current);
-      };
-    }
-  }, [delay]);
-
-  return timeoutRef;
+	return { call, cancel };
 };

@@ -1,17 +1,13 @@
 import Image from "next/image";
 import { CTA } from "@components/CTA";
-import { HtmlIcon, MjmlIcon, ReactIcon } from "@components/Icons";
+import { HtmlIcon, ReactIcon } from "@components/Icons";
 import homepageHeroImage from "public/static/images/homepage-hero.png";
 import { StarIcon } from "@components/Icons/StarIcon";
 
 const emailCodeTypes = [
   {
-    name: "React coming soon",
+    name: "React",
     Icon: ReactIcon,
-  },
-  {
-    name: "MJML",
-    Icon: MjmlIcon,
   },
   {
     name: "HTML",
@@ -28,7 +24,7 @@ export const Greeting = () => (
             key={name}
             className="group inline-flex rounded-full p-px first:bg-pink-to-purple-gradient"
           >
-            <div className="inline-flex h-full w-full items-center justify-center gap-x-1.5 rounded-full bg-pink-background py-1 px-2 text-pink-text md:py-2 md:px-4">
+            <div className="inline-flex h-full w-full items-center justify-center gap-x-1.5 rounded-full bg-pink-background px-2 py-1 text-pink-text md:px-4 md:py-2">
               <Icon className="h-4 w-4 md:h-5 md:w-5" />
               <span className="bg-clip-text text-xs font-medium group-first:bg-pink-to-purple-gradient group-first:bg-clip-text group-first:text-transparent md:text-sm">
                 {name}

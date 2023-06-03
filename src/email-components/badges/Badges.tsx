@@ -1,108 +1,68 @@
-import { Body, Container, Head, Html, Preview } from "@react-email/components";
-import * as React from "react";
-import Badge from "../../email-templates/default/components/Badge";
+import React, { CSSProperties, FC, ReactNode } from "react";
 
-export const SmallBadgesPage = () => (
-  <Html>
-    <Head />
-    <Preview>Small Badges</Preview>
-    <Body style={main}>
-      <Container style={container}>
-        <span style={{ padding: 10 }}>
-          <Badge variant="default" size="sm">
-            Badge
-          </Badge>
-        </span>
-        <span style={{ padding: 10 }}>
-          <Badge variant="danger" size="sm">
-            Badge
-          </Badge>
-        </span>
-        <span style={{ padding: 10 }}>
-          <Badge variant="success" size="sm">
-            Badge
-          </Badge>
-        </span>
-        <span style={{ padding: 10 }}>
-          <Badge variant="info" size="sm">
-            Badge
-          </Badge>
-        </span>
-        <span style={{ padding: 10 }}>
-          <Badge variant="warning" size="sm">
-            Badge
-          </Badge>
-        </span>
-      </Container>
-      <Container style={container}>
-        <span style={{ padding: 10 }}>
-          <Badge variant="default" size="md">
-            Badge
-          </Badge>
-        </span>
-        <span style={{ padding: 10 }}>
-          <Badge variant="danger" size="md">
-            Badge
-          </Badge>
-        </span>
-        <span style={{ padding: 10 }}>
-          <Badge variant="success" size="md">
-            Badge
-          </Badge>
-        </span>
-        <span style={{ padding: 10 }}>
-          <Badge variant="info" size="md">
-            Badge
-          </Badge>
-        </span>
-        <span style={{ padding: 10 }}>
-          <Badge variant="warning" size="md">
-            Badge
-          </Badge>
-        </span>
-      </Container>
-      <Container style={container}>
-        <span style={{ padding: 10 }}>
-          <Badge variant="default" size="lg">
-            Badge
-          </Badge>
-        </span>
-        <span style={{ padding: 10 }}>
-          <Badge variant="danger" size="lg">
-            Badge
-          </Badge>
-        </span>
-        <span style={{ padding: 10 }}>
-          <Badge variant="success" size="lg">
-            Badge
-          </Badge>
-        </span>
-        <span style={{ padding: 10 }}>
-          <Badge variant="info" size="lg">
-            Badge
-          </Badge>
-        </span>
-        <span style={{ padding: 10 }}>
-          <Badge variant="warning" size="lg">
-            Badge
-          </Badge>
-        </span>
-      </Container>
-    </Body>
-  </Html>
-);
+interface BadgeProps {
+  variant: "default" | "danger" | "success" | "info" | "warning";
+  size?: "sm" | "md" | "lg";
+  dot?: boolean;
+  children: ReactNode;
+}
 
-export default SmallBadgesPage;
-
-const main = {
-  backgroundColor: "#ffffff",
-  color: "#24292e",
-  fontFamily:
-    '-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji"',
+const Badge: FC<BadgeProps> = ({ variant, size = "md", children }) => {
+  return (
+    <span style={{ ...defaultStyle, ...variants[variant], ...sizes[size] }}>
+      {children}
+    </span>
+  );
 };
 
-const container = {
-  width: "480px",
-  margin: "0 auto",
-  padding: "20px 0 48px",
+const defaultStyle = {
+  border: "1px solid",
 };
+
+const sizes: Record<NonNullable<BadgeProps["size"]>, CSSProperties> = {
+  sm: {
+    borderRadius: 4,
+    padding: "2px 6px",
+    fontSize: "12px",
+  },
+  md: {
+    borderRadius: 4,
+    padding: "4px 10px",
+    fontSize: "14px",
+  },
+  lg: {
+    borderRadius: 4,
+    padding: "6px 12px",
+    fontSize: "16px",
+  },
+};
+
+const variants: Record<BadgeProps["variant"], CSSProperties> = {
+  default: {
+    borderColor: "#ecedef",
+    backgroundColor: "#f9fafb",
+    color: "#4b5563",
+  },
+  danger: {
+    borderColor: "#fbe0e0",
+    backgroundColor: "#fef2f2",
+    color: "#b91c1c",
+  },
+  success: {
+    borderColor: "#d1e7dd",
+    backgroundColor: "#f0fdf4",
+    color: "#059669",
+  },
+  info: {
+    borderColor: "#dbeafe",
+    backgroundColor: "#eff6ff",
+    color: "#1e3a8a",
+  },
+  warning: {
+    borderColor: "#f4e7c1",
+    backgroundColor: "#fffbeb",
+    color: "#b45309",
+  },
+};
+
+export default Badge;

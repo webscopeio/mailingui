@@ -3,7 +3,6 @@ import Link from "next/link";
 import { useState } from "react";
 import { TemplateOptions } from "./TemplateOptions";
 import { ShareIcon } from "@components/Icons";
-import { CodeBlock } from "@components/CodeBlock";
 
 export type TemplatesItemProps = {
   desktopPreview: string;
@@ -47,7 +46,6 @@ export const TemplatesItem = ({
           />
         ) : (
           <div className="inline-grid w-full focus:outline-none">
-            <CodeBlock language="html">{desktopPreview}</CodeBlock>
           </div>
         )}
       </div>

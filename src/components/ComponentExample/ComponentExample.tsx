@@ -1,131 +1,134 @@
 "use client";
-import { useState } from "react";
+import * as React from "react";
+import { Resizable } from "re-resizable";
 import { Tabs } from "@components/Tabs";
-import { CodeIcon, EyeIcon, MoonIcon, SunIcon } from "@components/Icons";
+import { CodeIcon, EyeIcon } from "@components/Icons";
 import { CopyButton } from "@components/CopyButton";
-import { CodeBlock } from "@components/CodeBlock";
-import { FramePreview } from "@components/FramePreview";
-import { clsx } from "@utils";
-import { IconButton } from "@components/IconButton";
-
-type Code = "mjml" | "react" | "html";
-
-const supportedLangs: Record<Code, string> = {
-  mjml: "html",
-  react: "javascript",
-  html: "html"
-};
+import { cn } from "@utils/cn";
+import { TabsContent, TabsList, TabsTrigger } from "@components/Tabs/Tabs";
 
 export type ComponentExampleProps = {
-  title: string;
-  mjml: string;
-  react: string;
-  html: string;
-  transformedHtml?: {
-    light: string;
-    dark: string;
-  };
+  id: string;
+  markup: string;
+  preview: string;
+  source: string;
+  plainText: string;
 };
 
 export const ComponentExample = ({
-  title,
-  mjml,
-  react,
-  html,
-  transformedHtml,
+  id,
+  markup,
+  preview,
+  source,
+  plainText
 }: ComponentExampleProps) => {
-  const [codeViewType, setCodeViewType] = useState<Code>(
-    react ? "react" : "mjml"
-  );
-  const [activeTab, setActiveTab] = useState<"preview" | "code">("preview");
-  const [colorTheme, setColorTheme] = useState<"light" | "dark">("light");
-
-  const selectedCode = codeViewType === "react"
-    ? react
-    : codeViewType === "mjml"
-      ? mjml
-      : html;
+  const [code, setCode] = React.useState('');
+  const [expanded, setExpanded] = React.useState(false);
 
   return (
-    <Tabs.Root
-      value={activeTab}
-      onValueChange={(value) => {
-        setActiveTab(value as "preview" | "code");
-      }}
-    >
-      <div className="flex min-h-[2.5rem] items-center justify-between">
-        <h2 className="truncate text-sm text-neutral-400 md:text-xl">
-          {transformComponentName(title)}
-        </h2>
-        <div className="ml-4 flex items-center justify-between gap-x-3">
-          <Tabs.List aria-label="A label">
-            <Tabs.Trigger value="preview">
-              <EyeIcon />
-              <span className="sr-only md:not-sr-only md:ml-2">Preview</span>
-            </Tabs.Trigger>
-            <Tabs.Trigger value="code">
-              <CodeIcon />
-              <span className="sr-only md:not-sr-only md:ml-2">Code</span>
-            </Tabs.Trigger>
-          </Tabs.List>
-          <div className="mx-3 hidden h-5 w-px bg-dark-100 sm:block" />
-          <select
-            className="form-select h-10 rounded-3xl border border-transparent bg-dark-800 text-xs font-bold"
-            value={codeViewType}
-            onChange={(e) => setCodeViewType(e.target.value as Code)}
-          >
-            <option disabled={!react} value="react">
-              React
-            </option>
-            <option disabled={!mjml} value="mjml">
-              MJML
-            </option>
-            <option value="html">
-              HTML
-            </option>
-          </select>
-          <div className="hidden sm:block">
-            <CopyButton textToCopy={selectedCode} />
-          </div>
-          {transformedHtml && (
-            <IconButton
-              onClick={() =>
-                setColorTheme(colorTheme === "light" ? "dark" : "light")
-              }
-            >
-              {colorTheme === "dark" ? <SunIcon /> : <MoonIcon />}
-            </IconButton>
-          )}
+    <div className="space-y-3">
+      <Tabs defaultValue="preview" orientation='horizontal'>
+        <div className="flex items-center justify-between">
+          <h3 className="text-xl font-semibold text-neutral-500">{transformComponentName(id)}</h3>
+          <TabsList className="rounded-full">
+            <TabsTrigger value="preview" className="rounded-full p-2"><EyeIcon className="h-4 w-4" /><span className="hidden md:inline-flex">Preview</span></TabsTrigger>
+            <TabsTrigger value="code" className="rounded-full p-2"><CodeIcon className="h-4 w-4" /><span className="hidden md:inline-flex">Code</span></TabsTrigger>
+          </TabsList>
         </div>
-      </div>
-      <div className="mt-4 md:mt-6">
-        <Tabs.Content
-          value="preview"
-          /**
-           * The preview tab should always be mounted for 2 reasons:
-           * To avoid flicker when HTML document loads in FrameReview
-           * when switching between tabs;
-           * And to keep track of the Resizable width inside FrameReview
-           * when switching between tabs.
-           */
-          forceMount
-          className={clsx(activeTab === "code" && "hidden")}
-        >
-          <FramePreview
-            title={title}
-            html={transformedHtml ? transformedHtml[colorTheme] : html}
-            className="h-[400px] w-full rounded-3xl border border-dark-100"
-          />
-        </Tabs.Content>
-        <Tabs.Content value="code">
-          <div className=" h-[400px] w-full overflow-auto rounded-3xl border border-transparent bg-[#1e1e1e]">
-            <CodeBlock language={supportedLangs[codeViewType]}>
-              {selectedCode}
-            </CodeBlock>
+        <TabsContent className="relative rounded-md" value="preview">
+          <Resizable
+            bounds="parent"
+            minWidth="320px"
+            handleStyles={{
+              right: {
+                right: "initial",
+                left: "100%",
+                paddingLeft: "0.25rem",
+                paddingRight: "0.25rem",
+                width: "auto",
+                cursor: "ew-resize",
+              },
+            }}
+            handleClasses={{
+              right: "hidden sm:flex items-center bg-black",
+            }}
+            handleComponent={{
+              right: <div className="h-8 w-1.5 rounded-full bg-dark-100" />,
+            }}
+          >
+            <div>
+              <iframe
+                className="min-h-[350px] w-full rounded-md"
+                id={id}
+                title={id}
+                srcDoc={markup}
+              />
+            </div>
+          </Resizable>
+        </TabsContent >
+        <TabsContent className="relative overflow-hidden rounded-md" value="code">
+          <div className={cn("bg-[#011627] min-h-[350px]", !expanded && "max-h-[350px]")}>
+            <Tabs defaultValue="preview">
+              <div className="flex items-center justify-between px-5 pt-3">
+                <TabsList className="grid w-full bg-[#011627] sm:inline-flex">
+                  <TabsTrigger value="preview" className="px-2.5 py-1.5 text-xs hover:bg-slate-700/50 data-[state=active]:bg-slate-700 data-[state=active]:text-slate-200">{id}.preview.tsx</TabsTrigger>
+                  <TabsTrigger value="text" className="px-2.5 py-1.5 text-xs hover:bg-slate-700/50 data-[state=active]:bg-slate-700 data-[state=active]:text-slate-200">{id}.preview.txt</TabsTrigger>
+                  <TabsTrigger value="code" className="px-2.5 py-1.5 text-xs hover:bg-slate-700/50 data-[state=active]:bg-slate-700 data-[state=active]:text-slate-200">{id}.tsx</TabsTrigger>
+                </TabsList>
+                <div className="hidden md:inline-flex">
+                  <CopyButton code={code} />
+                </div>
+              </div>
+              <TabsContent value="preview">
+                <div
+                  tabIndex={-1}
+                  ref={(node) => {
+                    node?.textContent && setCode(node.textContent)
+                  }}
+                  dangerouslySetInnerHTML={{ __html: preview }}
+                />
+              </TabsContent>
+              <TabsContent className="h-full overflow-x-scroll" value="text">
+                <div className="px-8 pb-8"
+                  ref={(node) => {
+                    node?.textContent && setCode(node.textContent)
+                  }}
+                >
+                  <p>
+                    {plainText}
+                  </p>
+                </div>
+              </TabsContent>
+              <TabsContent value="code">
+                <div
+                  tabIndex={-1}
+                  ref={(node) => {
+                    node?.textContent && setCode(node.textContent)
+                  }}
+                  dangerouslySetInnerHTML={{ __html: source }}
+                />
+              </TabsContent>
+            </Tabs>
           </div>
-        </Tabs.Content>
-      </div>
-    </Tabs.Root>
+          <footer
+            className={cn("absolute pointer-events-none rounded-md h-full w-full inset-0 bg-gradient-to-t from-slate-900 flex justify-center items-end pb-8",
+              expanded ? "pb-2 bg-none" : "pb-8")}>
+            <button onClick={() => setExpanded(!expanded)}
+              className={cn([
+                expanded ? "text-xs px-2 py-1" : "text-sm px-3 py-1.5 bg-neutral-200 text-neutral-800",
+                "pointer-events-auto rounded-md font-medium transition-all duration-300",
+                /** Hover styles */
+                expanded ? "hover:bg-slate-800 hover:text-white" : "hover:bg-neutral-400",
+                /** Focus styles */
+                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-dark-400 focus-visible:ring-offset-2 ring-offset-dark-800",
+                /** Disabled styles */
+                "disabled:pointer-events-none disabled:opacity-50"
+              ])}
+            >{!expanded ? "Expand" : "Collapse"}</button>
+          </footer>
+        </TabsContent >
+      </Tabs >
+    </div >
   );
 };
 

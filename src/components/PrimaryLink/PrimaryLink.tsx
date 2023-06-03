@@ -13,7 +13,7 @@ export const PrimaryLink = ({
 }: PrimaryLinkProps) => (
   <Link
     href={href}
-    className={`rounded-xl bg-white py-2 px-3 font-medium text-black hover:opacity-70 md:py-4 md:px-14 ${className}`}
+    className={`rounded-xl bg-white px-3 py-2 font-medium text-black hover:opacity-70 md:px-14 md:py-4 ${className}`}
   >
     {children}
   </Link>

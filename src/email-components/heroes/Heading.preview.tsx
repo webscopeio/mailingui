@@ -1,7 +1,7 @@
 import { Body, Container, Head, Html, Preview } from "@react-email/components";
 import * as React from "react";
-import { theme } from "../../email-templates/default/theme";
-import Header from "../../email-templates/default/components/Header";
+import { theme } from "../theme";
+import Heading from "./Heading";
 
 export const ImageOnlyPage = () => (
   <Html>
@@ -9,7 +9,7 @@ export const ImageOnlyPage = () => (
     <Preview>Small Badges</Preview>
     <Body style={main}>
       <Container style={theme.container}>
-        <Header />
+        <Heading />
       </Container>
     </Body>
   </Html>

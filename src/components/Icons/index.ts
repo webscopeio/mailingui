@@ -7,7 +7,6 @@ export { EyeIcon } from "./EyeIcon";
 export { GitHubIcon } from "./GitHubIcon";
 export { HtmlIcon } from "./HtmlIcon";
 export { MenuIcon } from "./MenuIcon";
-export { MjmlIcon } from "./MjmlIcon";
 export { ReactIcon } from "./ReactIcon";
 export { ShareIcon } from "./ShareIcon";
 export { SunIcon } from "./SunIcon";

@@ -30,14 +30,13 @@ export default function TemplateLayout({
         <ul className="mt-4">
           {templates?.map(({ title, route }) => (
             <li
-              className={`rounded-xl ${
-                scenario === route ? "bg-dark-800" : ""
-              }`}
+              className={`rounded-xl ${scenario === route ? "bg-dark-800" : ""
+                }`}
               key={route}
             >
               <Link
                 href={`/templates/${theme}/${route}`}
-                className="block py-3.5 px-4"
+                className="block px-4 py-3.5"
               >
                 {title}
               </Link>

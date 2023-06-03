@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { clsx } from "@utils";
+import { cn } from "@utils/cn";
 
 const COLORS = {
   white: "bg-white text-black",
@@ -18,7 +18,7 @@ type CTAProps = (AsLinkProps | AsButtonProps) & {
 };
 
 export const CTA: React.FC<CTAProps> = ({ color, className, ...delegated }) => {
-  const mergedClassName = clsx(
+  const mergedClassName = cn(
     "inline-flex items-center justify-center rounded-xl py-4 px-6 font-medium hover:opacity-70",
     COLORS[color],
     className

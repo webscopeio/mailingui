@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import * as Popover from "@radix-ui/react-popover";
 import { CrossIcon, MenuIcon } from "@components/Icons";
 import { navigationLinks, socialLinks } from "@constants";
-import { clsx } from "@utils";
+import { cn } from "@utils/cn";
 import Logo from "public/static/images/logo.png";
 
 export const Navbar = () => {
@@ -26,7 +26,7 @@ export const Navbar = () => {
               {navigationLinks.map(({ href, label }, index) => (
                 <li key={index}>
                   <Link
-                    className={clsx(
+                    className={cn(
                       "font-medium hover:opacity-70",
                       href !== "/" &&
                         pathname?.includes(href) &&
@@ -63,13 +63,13 @@ export const Navbar = () => {
               {isMenuOpen ? <CrossIcon /> : <MenuIcon />}
             </Popover.Trigger>
             <Popover.Portal>
-              <Popover.Content className="w-screen border-b border-solid border-dark-700 bg-black py-6 px-4 md:hidden">
+              <Popover.Content className="w-screen border-b border-solid border-dark-700 bg-black px-4 py-6 md:hidden">
                 <ul className="space-y-8">
                   {navigationLinks.map(({ href, label }, index) => (
                     <li key={index}>
                       <Popover.Close asChild>
                         <Link
-                          className={clsx(
+                          className={cn(
                             "font-medium hover:opacity-70",
                             href !== "/" &&
                               pathname?.includes(href) &&
