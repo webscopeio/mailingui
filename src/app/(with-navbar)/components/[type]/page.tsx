@@ -121,12 +121,14 @@ const getComponent = async (
 
   const examples = await Promise.all(componentsData.map(async (item) => {
     const Component = (await import(`src/email-components/${component.type}/${item.id}.preview`)).default;
-    const markup = format(render(<Component />, { pretty: true }), { parser: "html" });
+    const html = format(render(<Component />, { pretty: true }), { parser: "html" });
+    const markup = await highlight(highlighter, html, "html");
     const preview = await highlight(highlighter, item.preview);
     const source = await highlight(highlighter, item.source);
     const plainText = render(<Component />, { plainText: true });
     return ({
       id: item.id,
+      html,
       markup,
       preview,
       source,

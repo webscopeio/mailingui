@@ -9,6 +9,7 @@ import { TabsContent, TabsList, TabsTrigger } from "@components/Tabs/Tabs";
 
 export type ComponentExampleProps = {
   id: string;
+  html: string;
   markup: string;
   preview: string;
   source: string;
@@ -17,6 +18,7 @@ export type ComponentExampleProps = {
 
 export const ComponentExample = ({
   id,
+  html,
   markup,
   preview,
   source,
@@ -61,7 +63,7 @@ export const ComponentExample = ({
                 className="min-h-[350px] w-full rounded-md"
                 id={id}
                 title={id}
-                srcDoc={markup}
+                srcDoc={html}
               />
             </div>
           </Resizable>
@@ -72,6 +74,7 @@ export const ComponentExample = ({
               <div className="flex items-center justify-between px-5 pt-3">
                 <TabsList className="grid w-full bg-[#011627] sm:inline-flex">
                   <TabsTrigger value="preview" className="px-2.5 py-1.5 text-xs hover:bg-slate-700/50 data-[state=active]:bg-slate-700 data-[state=active]:text-slate-200">{id}.preview.tsx</TabsTrigger>
+                  <TabsTrigger value="markup" className="px-2.5 py-1.5 text-xs hover:bg-slate-700/50 data-[state=active]:bg-slate-700 data-[state=active]:text-slate-200">{id}.preview.html</TabsTrigger>
                   <TabsTrigger value="text" className="px-2.5 py-1.5 text-xs hover:bg-slate-700/50 data-[state=active]:bg-slate-700 data-[state=active]:text-slate-200">{id}.preview.txt</TabsTrigger>
                   <TabsTrigger value="code" className="px-2.5 py-1.5 text-xs hover:bg-slate-700/50 data-[state=active]:bg-slate-700 data-[state=active]:text-slate-200">{id}.tsx</TabsTrigger>
                 </TabsList>
@@ -86,6 +89,15 @@ export const ComponentExample = ({
                     node?.textContent && setCode(node.textContent)
                   }}
                   dangerouslySetInnerHTML={{ __html: preview }}
+                />
+              </TabsContent>
+              <TabsContent value="markup">
+              <div
+                  tabIndex={-1}
+                  ref={(node) => {
+                    node?.textContent && setCode(node.textContent)
+                  }}
+                  dangerouslySetInnerHTML={{ __html: markup }}
                 />
               </TabsContent>
               <TabsContent className="h-full overflow-x-scroll" value="text">

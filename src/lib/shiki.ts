@@ -9,14 +9,13 @@ import {
 /** ✅ Config */
 const theme: Theme = "github-dark";
 const bg: React.CSSProperties["backgroundColor"] = "#011627";
-const lang: Lang = "tsx";
 
 export async function getHighlighter() {
 	/* ✅ Create a highlighter instance with a theme */
 	return await getHighlighterFromShiki({ theme });
 }
 
-export async function highlight(highlighter: Highlighter, code: string) {
+export async function highlight(highlighter: Highlighter, code: string, lang: Lang = 'tsx') {
 	/* ✅ Highlight your code using the right syntax */
 	const tokens = highlighter.codeToThemedTokens(code, lang);
 	/* ⚠️ Optional: Custom rendering of code blocks */
