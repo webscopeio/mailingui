@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { emailComponents } from "@constants";
-import { clsx } from "@utils";
+import { cn } from "@utils/cn";
 
 export type ComponentsPreviewProps = {
   componentsShown?: number;
@@ -19,7 +19,7 @@ export const ComponentsPreview = ({
       .slice(0, componentsShown)
       .map(({ image, title, subtitle, type }, index) => (
         <li
-          className={clsx(
+          className={cn(
             "group relative rounded-2xl hover:opacity-90",
             typeof componentsShownOnMobile === "number" &&
               componentsShownOnMobile > 0 &&

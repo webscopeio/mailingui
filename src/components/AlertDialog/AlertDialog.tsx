@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import * as AlertDialogPrimitive from "@radix-ui/react-alert-dialog";
-import { clsx } from "@utils";
+import { cn } from "@utils/cn";
 
 const AlertDialog = AlertDialogPrimitive.Root;
 
@@ -13,7 +13,7 @@ const AlertDialogPortal = ({
   children,
   ...props
 }: AlertDialogPrimitive.AlertDialogPortalProps) => (
-  <AlertDialogPrimitive.Portal className={clsx(className)} {...props}>
+  <AlertDialogPrimitive.Portal className={cn(className)} {...props}>
     <div className="fixed inset-0 z-50 flex items-end justify-center sm:items-center">
       {children}
     </div>
@@ -26,7 +26,7 @@ const AlertDialogOverlay = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof AlertDialogPrimitive.Overlay>
 >(({ className, ...props }, ref) => (
   <AlertDialogPrimitive.Overlay
-    className={clsx(
+    className={cn(
       "fixed inset-0 z-50 backdrop-blur-sm transition-opacity",
       className
     )}
@@ -44,7 +44,7 @@ const AlertDialogContent = React.forwardRef<
     <AlertDialogOverlay />
     <AlertDialogPrimitive.Content
       ref={ref}
-      className={clsx(
+      className={cn(
         "fixed z-50 grid w-full scale-100 gap-4 border border-dark-100 p-9 opacity-100 shadow-lg sm:max-w-xl sm:rounded-lg md:w-full",
         className
       )}
@@ -58,7 +58,7 @@ const AlertDialogHeader = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
-  <div className={clsx("flex flex-col space-y-3", className)} {...props} />
+  <div className={cn("flex flex-col space-y-3", className)} {...props} />
 );
 AlertDialogHeader.displayName = "AlertDialogHeader";
 
@@ -67,7 +67,7 @@ const AlertDialogFooter = ({
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
-    className={clsx(
+    className={cn(
       "flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-3",
       className
     )}

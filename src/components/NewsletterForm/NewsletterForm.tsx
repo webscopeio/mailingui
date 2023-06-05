@@ -20,7 +20,7 @@ export const NewsletterForm: React.FC<{ compact?: boolean }> = ({
         method="post"
       >
         <input
-          className="w-full rounded-xl rounded-r-none border border-r-0 border-solid border-dark-700 bg-dark-800 py-3 px-4 text-sm font-medium text-white placeholder:text-dark-300"
+          className="w-full rounded-xl rounded-r-none border border-r-0 border-solid border-dark-700 bg-dark-800 px-4 py-3 text-sm font-medium text-white placeholder:text-dark-300"
           type="email"
           name="email_address"
           placeholder="Your email"
@@ -29,7 +29,7 @@ export const NewsletterForm: React.FC<{ compact?: boolean }> = ({
         <CTA
           type="submit"
           color="white"
-          className="w-auto rounded-l-none py-3 px-4 text-sm"
+          className="w-auto rounded-l-none px-4 py-3 text-sm"
         >
           Subscribe
         </CTA>

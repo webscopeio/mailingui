@@ -4,9 +4,9 @@ import { emailTemplates } from "@constants";
 
 export default function Templates() {
   return (
-    <div className="mx-auto max-w-[1344px] px-6 pt-24 pb-10">
+    <div className="mx-auto max-w-[1344px] px-6 pb-10 pt-24">
       <h2 className="text-2xl font-bold xl:text-4xl">Templates</h2>
-      <div className="mt-16 grid grid-cols-3 gap-y-8 gap-x-6 xl:gap-x-10 xl:gap-y-16">
+      <div className="mt-16 grid grid-cols-3 gap-x-6 gap-y-8 xl:gap-x-10 xl:gap-y-16">
         {emailTemplates.map(({ image, title, type }) => (
           <Link
             key={type}

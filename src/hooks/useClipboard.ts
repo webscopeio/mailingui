@@ -1,43 +1,34 @@
-import React from "react";
-import { useTimeout } from "@hooks";
+import { useState } from "react";
+import { useTimeout } from "./useTimeout";
 
-type CopyState = "ready" | "success" | Error;
+type CopyState = "READY" | "SUCCESS" | "ERROR";
 
 /**
- * Hook for copying text to a user's clipboard. Doesn't support Internet Explorer.
- * @param timeout - Amount of milliseconds after which the copy state will be set to `"ready"` after the copy function is ran. Defaults to 2000.
- * @returns Tuple with copy function and the copy state. The copy state can be one of three values:
- * 1. `"ready"` when the copy function is ready to be used;
- * 2. `"success"` if the copying was successful;
- * 3. `Error` if a problem was encountered during the copying.
+ * Writes the specified text string to the system clipboard
+ * using `Clipboard.writeText()`
+ * ref: [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard/writeText)
+ * @param delay - The time, in milliseconds before resetting the clipboard
+ * @returns Method to `copy` and `state` for the clipboard
  */
-export const useClipboard = (
-  timeout = 2000
-): [(value: string | number) => void, CopyState] => {
-  const [copyState, setCopyState] = React.useState<CopyState>("ready");
+export const useClipboard = ({ delay = 2000 } = {}) => {
+	const [state, setState] = useState<CopyState>("READY");
+	const timeout = useTimeout(() => setState("READY"), delay);
 
-  useTimeout(
-    () => {
-      setCopyState("ready");
-    },
-    copyState !== "ready" ? timeout : null
-  );
+	function handleCopyResult(result: CopyState) {
+		setState(result);
+		timeout.call();
+	}
 
-  const copy = React.useCallback(async (value: string | number) => {
-    if (!("clipboard" in navigator)) {
-      setCopyState(new Error("Navigation clipboard is not supported"));
-    }
+	function copy(valueToCopy: string) {
+		if ("clipboard" in navigator) {
+			navigator.clipboard
+				.writeText(valueToCopy)
+				.then(() => handleCopyResult("SUCCESS"))
+				.catch((error) => error instanceof Error && handleCopyResult("ERROR"));
+		} else {
+			handleCopyResult("ERROR");
+		}
+	}
 
-    try {
-      const text = value.toString();
-      await navigator.clipboard.writeText(text);
-      setCopyState("success");
-    } catch (error) {
-      if (error instanceof Error) {
-        setCopyState(error);
-      }
-    }
-  }, []);
-
-  return [copy, copyState];
+	return { copy, state };
 };

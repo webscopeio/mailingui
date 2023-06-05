@@ -71,13 +71,13 @@ export const metadata: Metadata = {
     apple: "/static/favicons/favicon-512.png",
     shortcut: "/static/favicons/favicon-512.png",
   },
-  description: "Easy to build an email with React & MJML",
-  keywords: ["email", "mail", "mjml", "react", "html"],
+  description: "Easy to build an email with React",
+  keywords: ["email", "mail", "react", "html"],
   colorScheme: "dark",
   applicationName: "MailingUI",
   openGraph: {
     title: "MailingUI",
-    description: "Easy to build an email with React & MJML",
+    description: "Easy to build an email with React",
     url: "https://mailingui.com/",
     images: [
       {
