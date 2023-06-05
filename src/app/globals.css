@@ -16,7 +16,7 @@
 }
 
 .shiki {
-	@apply m-0 w-full overflow-x-scroll rounded-b-md pb-5 shadow-lg;
+	@apply m-0 w-full rounded-b-md pb-5 shadow-lg;
 }
 
 .shiki code {

@@ -10,18 +10,16 @@ import { TabsContent, TabsList, TabsTrigger } from "@components/Tabs/Tabs";
 export type ComponentExampleProps = {
   id: string;
   html: string;
-  markup: string;
-  preview: string;
   source: string;
+  markup: string;
   plainText: string;
 };
 
 export const ComponentExample = ({
   id,
   html,
-  markup,
-  preview,
   source,
+  markup,
   plainText
 }: ComponentExampleProps) => {
   const [code, setCode] = React.useState('');
@@ -70,29 +68,28 @@ export const ComponentExample = ({
         </TabsContent >
         <TabsContent className="relative overflow-hidden rounded-md" value="code">
           <div className={cn("bg-[#011627] min-h-[350px]", !expanded && "max-h-[350px]")}>
-            <Tabs defaultValue="preview">
+            <Tabs defaultValue="source">
               <div className="flex items-center justify-between px-5 pt-3">
                 <TabsList className="grid w-full bg-[#011627] sm:inline-flex">
-                  <TabsTrigger value="preview" className="px-2.5 py-1.5 text-xs hover:bg-slate-700/50 data-[state=active]:bg-slate-700 data-[state=active]:text-slate-200">{id}.preview.tsx</TabsTrigger>
-                  <TabsTrigger value="markup" className="px-2.5 py-1.5 text-xs hover:bg-slate-700/50 data-[state=active]:bg-slate-700 data-[state=active]:text-slate-200">{id}.preview.html</TabsTrigger>
-                  <TabsTrigger value="text" className="px-2.5 py-1.5 text-xs hover:bg-slate-700/50 data-[state=active]:bg-slate-700 data-[state=active]:text-slate-200">{id}.preview.txt</TabsTrigger>
-                  <TabsTrigger value="code" className="px-2.5 py-1.5 text-xs hover:bg-slate-700/50 data-[state=active]:bg-slate-700 data-[state=active]:text-slate-200">{id}.tsx</TabsTrigger>
+                  <TabsTrigger value="source" className="px-2.5 py-1.5 text-xs hover:bg-slate-700/50 data-[state=active]:bg-slate-700 data-[state=active]:text-slate-200">{id}.tsx</TabsTrigger>
+                  <TabsTrigger value="markup" className="px-2.5 py-1.5 text-xs hover:bg-slate-700/50 data-[state=active]:bg-slate-700 data-[state=active]:text-slate-200">{id}.html</TabsTrigger>
+                  <TabsTrigger value="text" className="px-2.5 py-1.5 text-xs hover:bg-slate-700/50 data-[state=active]:bg-slate-700 data-[state=active]:text-slate-200">{id}.txt</TabsTrigger>
                 </TabsList>
                 <div className="hidden md:inline-flex">
                   <CopyButton code={code} />
                 </div>
               </div>
-              <TabsContent value="preview">
+              <TabsContent value="source">
                 <div
                   tabIndex={-1}
                   ref={(node) => {
                     node?.textContent && setCode(node.textContent)
                   }}
-                  dangerouslySetInnerHTML={{ __html: preview }}
+                  dangerouslySetInnerHTML={{ __html: source }}
                 />
               </TabsContent>
               <TabsContent value="markup">
-              <div
+                <div
                   tabIndex={-1}
                   ref={(node) => {
                     node?.textContent && setCode(node.textContent)
@@ -100,7 +97,7 @@ export const ComponentExample = ({
                   dangerouslySetInnerHTML={{ __html: markup }}
                 />
               </TabsContent>
-              <TabsContent className="h-full overflow-x-scroll" value="text">
+              <TabsContent className="h-full overscroll-none" value="text">
                 <div className="px-8 pb-8"
                   ref={(node) => {
                     node?.textContent && setCode(node.textContent)
@@ -110,15 +107,6 @@ export const ComponentExample = ({
                     {plainText}
                   </p>
                 </div>
-              </TabsContent>
-              <TabsContent value="code">
-                <div
-                  tabIndex={-1}
-                  ref={(node) => {
-                    node?.textContent && setCode(node.textContent)
-                  }}
-                  dangerouslySetInnerHTML={{ __html: source }}
-                />
               </TabsContent>
             </Tabs>
           </div>

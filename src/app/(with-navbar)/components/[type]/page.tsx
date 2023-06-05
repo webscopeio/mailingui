@@ -8,8 +8,9 @@ import {
   ComponentExample,
   ComponentExampleProps,
 } from "@components/ComponentExample";
-import { emailComponents } from "@constants";
+
 import { getHighlighter, highlight } from "@lib/shiki";
+import { componentTypes } from "@examples/components";
 
 type ComponentPageProps = {
   params: {
@@ -48,7 +49,7 @@ export default async function ComponentPage({
   const component = await getComponent(type);
 
   return (
-    <div className="mx-auto w-full max-w-[900px] overflow-x-hidden px-4">
+    <div className="mx-auto w-full max-w-[900px] overflow-hidden px-4">
       <h1 className="pt-8 text-2xl font-semibold md:pt-16 md:text-4xl">
         {component.title}
       </h1>
@@ -67,14 +68,14 @@ export default async function ComponentPage({
  * @returns an object containing the email component
  */
 const getComponentData = (type: string) => {
-  const component = emailComponents.find((c) => c.type === type);
+  const component = componentTypes.find((c) => c.type === type);
   if (!component) {
     return notFound();
   }
   return component;
 };
 
-const CONTENT_DIR = "src/email-components";
+const CONTENT_DIR = "src/examples/components";
 
 /**
  * Maps over examples, translates them to html, and puts them together.
@@ -96,42 +97,25 @@ const getComponent = async (
   // Read all the files in that dir
   const files = readdirSync(typePath);
 
-  const componentsData = files
-    .reduce((result: { id: string; preview: string, source: string }[], file: string) => {
-      const id = file.replace(/(\.preview)?\.tsx$/, '');
-      const existingItem = result.find(item => item.source === id);
-
-      const fileData = format(readFileSync(join(typePath, file), "utf8"), { parser: "typescript" });
-
-      if (file.includes('.preview.tsx')) {
-        existingItem
-          ? (existingItem.preview = fileData)
-          : result.push({ id, preview: fileData, source: id });
-      } else {
-        existingItem
-          ? (existingItem.source = fileData)
-          : result.push({ id, source: fileData, preview: '' });
-      }
-
-      return result;
-    }, [])
-    .filter(item => item.preview && item.source);
-
+  // Initiate instance of highlighter
   const highlighter = await getHighlighter();
 
-  const examples = await Promise.all(componentsData.map(async (item) => {
-    const Component = (await import(`src/email-components/${component.type}/${item.id}.preview`)).default;
+  const examples = await Promise.all(files.map(async (file) => {
+    const id = file.replace(/(\.preview)?\.tsx$/, '');
+
+    const data = format(readFileSync(join(typePath, file), "utf8"), { parser: "typescript" });
+    const Component = (await import(`src/examples/components/${component.type}/${id}`)).default;
+
     const html = format(render(<Component />, { pretty: true }), { parser: "html" });
-    const markup = await highlight(highlighter, html, "html");
-    const preview = await highlight(highlighter, item.preview);
-    const source = await highlight(highlighter, item.source);
     const plainText = render(<Component />, { plainText: true });
+
+    const source = await highlight(highlighter, data);
+    const markup = await highlight(highlighter, html, "html");
     return ({
-      id: item.id,
+      id,
       html,
-      markup,
-      preview,
       source,
+      markup,
       plainText
     })
   }))
@@ -144,4 +128,4 @@ const getComponent = async (
 };
 
 export const generateStaticParams = () =>
-  emailComponents.map((item) => ({ type: item.type }));
+componentTypes.map((item) => ({ type: item.type }));
