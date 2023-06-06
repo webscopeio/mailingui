@@ -1,5 +1,13 @@
 import * as React from "react";
-import { Body, Container, Head, Html, Preview } from "@react-email/components";
+import {
+  Body,
+  Column,
+  Container,
+  Head,
+  Html,
+  Preview,
+  Section,
+} from "@react-email/components";
 import { Badge } from "@mailingui/components";
 
 const DotBadges = () => (
@@ -8,25 +16,27 @@ const DotBadges = () => (
     <Preview>Medium Badges</Preview>
     <Body style={main}>
       <Container style={container}>
-        <Badge variant="default" size="md" dot>
-          Badge
-        </Badge>
-        <span style={{ padding: 10 }} />
-        <Badge variant="danger" size="md" dot>
-          Badge
-        </Badge>
-        <span style={{ padding: 10 }} />
-        <Badge variant="success" size="md" dot>
-          Badge
-        </Badge>
-        <span style={{ padding: 10 }} />
-        <Badge variant="info" size="md" dot>
-          Badge
-        </Badge>
-        <span style={{ padding: 10 }} />
-        <Badge variant="warning" size="md" dot>
-          Badge
-        </Badge>
+        <Section style={{ textAlign: "center" as const }}>
+          <Badge variant="default" size="md" dot>
+            Badge
+          </Badge>
+          <span style={{ padding: 10 }} />
+          <Badge variant="danger" size="md" dot>
+            Badge
+          </Badge>
+          <span style={{ padding: 10 }} />
+          <Badge variant="success" size="md" dot>
+            Badge
+          </Badge>
+          <span style={{ padding: 10 }} />
+          <Badge variant="info" size="md" dot>
+            Badge
+          </Badge>
+          <span style={{ padding: 10 }} />
+          <Badge variant="warning" size="md" dot>
+            Badge
+          </Badge>
+        </Section>
       </Container>
     </Body>
   </Html>
@@ -42,7 +52,5 @@ const main = {
 };
 
 const container = {
-  width: "480px",
-  margin: "0 auto",
-  padding: "20px 0 48px",
+  padding: "40px 0",
 };

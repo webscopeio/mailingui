@@ -23,19 +23,17 @@ const Badge: FC<BadgeProps> = ({
         border: noBorder ? "none" : "1px solid",
         ...variants[variant],
         ...sizes[size],
-        ...(dot ? dotStyles : {}),
         borderRadius: pill ? 9999 : 4,
       }}
     >
       {dot ? (
         <span
           style={{
-            display: "block",
+            display: "inline-block",
             height: "6px",
             width: "6px",
             marginRight: "6px",
-            marginTop: "auto",
-            marginBottom: "auto",
+            marginBottom: dotMarginBottom[size],
             borderRadius: "9999px",
             backgroundColor: variants[variant].color,
           }}
@@ -46,10 +44,10 @@ const Badge: FC<BadgeProps> = ({
   );
 };
 
-const dotStyles: React.CSSProperties = {
-  display: "inline-flex",
-  justifyContent: "center",
-  alignItems: "center",
+const dotMarginBottom: Record<NonNullable<BadgeProps["size"]>, string> = {
+  sm: "1px",
+  md: "2px",
+  lg: "3px",
 };
 
 const sizes: Record<NonNullable<BadgeProps["size"]>, CSSProperties> = {
