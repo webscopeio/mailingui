@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import { emailComponents } from "@constants";
+
 import { cn } from "@utils/cn";
+import { componentTypes } from "@examples/components";
 
 export type ComponentsPreviewProps = {
   componentsShown?: number;
@@ -15,7 +16,7 @@ export const ComponentsPreview = ({
   preloadImages,
 }: ComponentsPreviewProps) => (
   <ul className="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-10 md:grid-cols-3 md:gap-12 lg:grid-cols-4">
-    {emailComponents
+    {componentTypes
       .slice(0, componentsShown)
       .map(({ image, title, subtitle, type }, index) => (
         <li

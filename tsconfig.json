@@ -26,8 +26,11 @@
       "@constants": ["./src/constants/index.ts"],
 			"@lib/*": ["./src/lib/*"],
 			"@utils/*": ["./src/utils/*"],
+      "@examples/*": ["./src/examples/*"],
+			"@mailingui/components": ["src/mailingui/components/index.ts"],
+			"@mailingui/*/components": ["./src/mailingui/themes/*/components/index.ts"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules", "email-components"]
+  "exclude": ["node_modules"]
 }
