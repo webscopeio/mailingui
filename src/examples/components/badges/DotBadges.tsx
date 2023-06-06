@@ -2,29 +2,29 @@ import * as React from "react";
 import { Body, Container, Head, Html, Preview } from "@react-email/components";
 import { Badge } from "@mailingui/components";
 
-const MediumBadges = () => (
+const DotBadges = () => (
   <Html>
     <Head />
     <Preview>Medium Badges</Preview>
     <Body style={main}>
       <Container style={container}>
-        <Badge variant="default" size="md">
+        <Badge variant="default" size="md" dot>
           Badge
         </Badge>
         <span style={{ padding: 10 }} />
-        <Badge variant="danger" size="md">
+        <Badge variant="danger" size="md" dot>
           Badge
         </Badge>
         <span style={{ padding: 10 }} />
-        <Badge variant="success" size="md">
+        <Badge variant="success" size="md" dot>
           Badge
         </Badge>
         <span style={{ padding: 10 }} />
-        <Badge variant="info" size="md">
+        <Badge variant="info" size="md" dot>
           Badge
         </Badge>
         <span style={{ padding: 10 }} />
-        <Badge variant="warning" size="md">
+        <Badge variant="warning" size="md" dot>
           Badge
         </Badge>
       </Container>
@@ -32,7 +32,7 @@ const MediumBadges = () => (
   </Html>
 );
 
-export default MediumBadges;
+export default DotBadges;
 
 const main = {
   backgroundColor: "#ffffff",

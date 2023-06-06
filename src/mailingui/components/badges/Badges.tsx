@@ -4,35 +4,65 @@ interface BadgeProps {
   variant: "default" | "danger" | "success" | "info" | "warning";
   size?: "sm" | "md" | "lg";
   dot?: boolean;
+  pill?: boolean;
+  noBorder?: boolean;
   children: ReactNode;
 }
 
-const Badge: FC<BadgeProps> = ({ variant, size = "md", children }) => {
+const Badge: FC<BadgeProps> = ({
+  variant,
+  size = "md",
+  pill,
+  dot,
+  noBorder,
+  children,
+}) => {
   return (
-    <span style={{ ...defaultStyle, ...variants[variant], ...sizes[size] }}>
+    <span
+      style={{
+        border: noBorder ? "none" : "1px solid",
+        ...variants[variant],
+        ...sizes[size],
+        ...(dot ? dotStyles : {}),
+        borderRadius: pill ? 9999 : 4,
+      }}
+    >
+      {dot ? (
+        <span
+          style={{
+            display: "block",
+            height: "6px",
+            width: "6px",
+            marginRight: "6px",
+            marginTop: "auto",
+            marginBottom: "auto",
+            borderRadius: "9999px",
+            backgroundColor: variants[variant].color,
+          }}
+        />
+      ) : null}
       {children}
     </span>
   );
 };
 
-const defaultStyle = {
-  border: "1px solid",
+const dotStyles: React.CSSProperties = {
+  display: "inline-flex",
+  justifyContent: "center",
+  alignItems: "center",
 };
 
 const sizes: Record<NonNullable<BadgeProps["size"]>, CSSProperties> = {
   sm: {
-    borderRadius: 4,
     padding: "2px 6px",
     fontSize: "12px",
   },
   md: {
-    borderRadius: 4,
     padding: "4px 10px",
     fontSize: "14px",
   },
   lg: {
-    borderRadius: 4,
-    padding: "6px 12px",
+    padding: "4px 10px",
     fontSize: "16px",
   },
 };

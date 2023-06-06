@@ -8,31 +8,25 @@ const SmallBadges = () => (
     <Preview>Small Badges</Preview>
     <Body style={main}>
       <Container style={container}>
-        <span style={{ padding: 10 }}>
-          <Badge variant="default" size="sm">
-            Badge
-          </Badge>
-        </span>
-        <span style={{ padding: 10 }}>
-          <Badge variant="danger" size="sm">
-            Badge
-          </Badge>
-        </span>
-        <span style={{ padding: 10 }}>
-          <Badge variant="success" size="sm">
-            Badge
-          </Badge>
-        </span>
-        <span style={{ padding: 10 }}>
-          <Badge variant="info" size="sm">
-            Badge
-          </Badge>
-        </span>
-        <span style={{ padding: 10 }}>
-          <Badge variant="warning" size="sm">
-            Badge
-          </Badge>
-        </span>
+        <Badge variant="default" size="sm">
+          Badge
+        </Badge>
+        <span style={{ padding: 10 }} />
+        <Badge variant="danger" size="sm">
+          Badge
+        </Badge>
+        <span style={{ padding: 10 }} />
+        <Badge variant="success" size="sm">
+          Badge
+        </Badge>
+        <span style={{ padding: 10 }} />
+        <Badge variant="info" size="sm">
+          Badge
+        </Badge>
+        <span style={{ padding: 10 }} />
+        <Badge variant="warning" size="sm">
+          Badge
+        </Badge>
       </Container>
     </Body>
   </Html>

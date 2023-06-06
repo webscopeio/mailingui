@@ -8,23 +8,23 @@ const MediumBadges = () => (
     <Preview>Medium Badges</Preview>
     <Body style={main}>
       <Container style={container}>
-        <Badge variant="default" size="md">
+        <Badge variant="default" size="md" noBorder>
           Badge
         </Badge>
         <span style={{ padding: 10 }} />
-        <Badge variant="danger" size="md">
+        <Badge variant="danger" size="md" noBorder>
           Badge
         </Badge>
         <span style={{ padding: 10 }} />
-        <Badge variant="success" size="md">
+        <Badge variant="success" size="md" noBorder>
           Badge
         </Badge>
         <span style={{ padding: 10 }} />
-        <Badge variant="info" size="md">
+        <Badge variant="info" size="md" noBorder>
           Badge
         </Badge>
         <span style={{ padding: 10 }} />
-        <Badge variant="warning" size="md">
+        <Badge variant="warning" size="md" noBorder>
           Badge
         </Badge>
       </Container>
