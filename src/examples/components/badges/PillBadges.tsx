@@ -8,23 +8,23 @@ const PillBadges = () => (
     <Preview>Pill Badges</Preview>
     <Body style={main}>
       <Container style={container}>
-        <Badge variant="default" size="md">
+        <Badge variant="default" size="md" pill>
           Badge
         </Badge>
         <span style={{ padding: 10 }} />
-        <Badge variant="danger" size="md">
+        <Badge variant="danger" size="md" pill>
           Badge
         </Badge>
         <span style={{ padding: 10 }} />
-        <Badge variant="success" size="md">
+        <Badge variant="success" size="md" pill>
           Badge
         </Badge>
         <span style={{ padding: 10 }} />
-        <Badge variant="info" size="md">
+        <Badge variant="info" size="md" pill>
           Badge
         </Badge>
         <span style={{ padding: 10 }} />
-        <Badge variant="warning" size="md">
+        <Badge variant="warning" size="md" pill>
           Badge
         </Badge>
       </Container>
