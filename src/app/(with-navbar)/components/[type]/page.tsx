@@ -55,7 +55,11 @@ export default async function ComponentPage({
       </h1>
       <div className="mt-8 space-y-16 md:mt-16">
         {component.examples.map(({ ...example }, index) => (
-          <ComponentExample key={index} {...example} />
+          <ComponentExample
+            key={index}
+            {...example}
+            height={type === "badges" ? 120 : 350}
+          />
         ))}
       </div>
     </div>
@@ -100,26 +104,33 @@ const getComponent = async (
   // Initiate instance of highlighter
   const highlighter = await getHighlighter();
 
-  const examples = await Promise.all(files.map(async (file) => {
-    const id = file.replace(/(\.preview)?\.tsx$/, '');
+  const examples = await Promise.all(
+    files.map(async (file) => {
+      const id = file.replace(/(\.preview)?\.tsx$/, "");
 
-    const data = format(readFileSync(join(typePath, file), "utf8"), { parser: "typescript" });
-    const Component = (await import(`src/examples/components/${component.type}/${id}`)).default;
+      const data = format(readFileSync(join(typePath, file), "utf8"), {
+        parser: "typescript",
+      });
+      const Component = (
+        await import(`src/examples/components/${component.type}/${id}`)
+      ).default;
 
-    const html = format(render(<Component />, { pretty: true }), { parser: "html" });
-    const plainText = render(<Component />, { plainText: true });
+      const html = format(render(<Component />, { pretty: true }), {
+        parser: "html",
+      });
+      const plainText = render(<Component />, { plainText: true });
 
-    const source = await highlight(highlighter, data);
-    const markup = await highlight(highlighter, html, "html");
-    return ({
-      id,
-      html,
-      source,
-      markup,
-      plainText
+      const source = await highlight(highlighter, data);
+      const markup = await highlight(highlighter, html, "html");
+      return {
+        id,
+        html,
+        source,
+        markup,
+        plainText,
+      };
     })
-  }))
-
+  );
 
   return {
     title: component.title,
@@ -128,4 +139,4 @@ const getComponent = async (
 };
 
 export const generateStaticParams = () =>
-componentTypes.map((item) => ({ type: item.type }));
+  componentTypes.map((item) => ({ type: item.type }));
