@@ -62,7 +62,7 @@ const sizes: Record<NonNullable<BadgeProps["size"]>, CSSProperties> = {
     fontSize: "14px",
   },
   lg: {
-    padding: "4px 10px",
+    padding: "6px 12px",
     fontSize: "16px",
   },
 };
