@@ -1,29 +1,32 @@
-import React, { FC, ReactNode, CSSProperties } from "react";
+import React, { FC, ReactNode, CSSProperties, useContext } from "react";
 import { Button as ReactEmailButton } from "./ReactEmailButtonFork";
+import { ThemeContext } from "@mailingui/components";
 
 type sizes = "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
 
 interface ButtonProps {
   href: string;
   children: ReactNode;
-  backgroundColor?: CSSProperties["color"];
   color?: CSSProperties["color"];
   borderColor?: CSSProperties["color"];
   rounded?: "none" | "sm" | "md" | "lg" | "full";
   size?: sizes;
+  backgroundColor?: CSSProperties["backgroundColor"];
 }
 
 const Button: FC<ButtonProps> = ({
   rounded = "md",
   href,
-  backgroundColor,
   color,
   size = "md",
   borderColor,
   children,
+  backgroundColor,
 }) => {
+  const context = useContext(ThemeContext);
+
   const styles: CSSProperties = {
-    backgroundColor: backgroundColor ?? "#24292e",
+    backgroundColor: backgroundColor ?? context?.primaryColor ?? "#24292e",
     color: color ?? "#ffffff",
     borderRadius: roundedEnum[rounded],
     fontSize: sizesEnum[size].fontSize,
