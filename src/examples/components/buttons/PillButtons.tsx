@@ -17,12 +17,16 @@ const PillButtons = () => {
             fontSize="12px"
             paddingY={5}
             paddingX={10}
-            pill
+            rounded="full"
           >
             Button
           </Button>
           <span style={{ padding: 10 }} />
-          <Button href="#clicked!" backgroundColor={primaryColor} pill>
+          <Button
+            href="#clicked!"
+            backgroundColor={primaryColor}
+            rounded="full"
+          >
             Button
           </Button>
           <span style={{ padding: 10 }} />
@@ -30,7 +34,7 @@ const PillButtons = () => {
             href="#clicked!"
             backgroundColor={primaryColor}
             fontSize="22px"
-            pill
+            rounded="full"
           >
             Button
           </Button>

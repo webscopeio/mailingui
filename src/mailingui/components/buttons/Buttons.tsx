@@ -10,13 +10,13 @@ interface ButtonProps {
   fontSize?: CSSProperties["fontSize"];
   color?: CSSProperties["color"];
   borderColor?: CSSProperties["color"];
-  pill?: boolean;
+  rounded?: "none" | "sm" | "md" | "lg" | "full";
 }
 
 const Button: FC<ButtonProps> = ({
   paddingX,
   paddingY,
-  pill,
+  rounded = "md",
   href,
   backgroundColor,
   color,
@@ -27,7 +27,7 @@ const Button: FC<ButtonProps> = ({
   const styles: CSSProperties = {
     backgroundColor: backgroundColor ?? "#24292e",
     color: color ?? "#ffffff",
-    borderRadius: pill ? 9999 : 4,
+    borderRadius: roundedEnum[rounded],
     fontSize: fontSize,
     border: borderColor ? `1px solid ${borderColor}` : "none",
   };
@@ -42,6 +42,14 @@ const Button: FC<ButtonProps> = ({
       {children}
     </ReactEmailButton>
   );
+};
+
+const roundedEnum: Record<string, number> = {
+  none: 0,
+  sm: 2,
+  md: 4,
+  lg: 8,
+  full: 9999,
 };
 
 export { Button, type ButtonProps };
