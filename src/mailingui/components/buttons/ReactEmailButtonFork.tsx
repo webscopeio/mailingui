@@ -10,9 +10,6 @@ export interface ButtonProps extends RootProps {
 
 export const Button = React.forwardRef<ButtonElement, Readonly<ButtonProps>>(
   ({ children, style, pX, pY, target = "_blank", ...props }, forwardedRef) => {
-    const y = (pY || 0) * 2;
-    const textRaise = pxToPt(y.toString());
-
     return (
       <a
         {...props}
