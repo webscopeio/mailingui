@@ -8,7 +8,7 @@ import { cn } from "@utils/cn";
 import { TabsContent, TabsList, TabsTrigger } from "@components/Tabs/Tabs";
 
 export type ComponentExampleProps = {
-  height?: number;
+  type: string;
   id: string;
   html: string;
   source: string;
@@ -17,7 +17,7 @@ export type ComponentExampleProps = {
 };
 
 export const ComponentExample = ({
-  height = 350,
+  type,
   id,
   html,
   source,
@@ -69,7 +69,7 @@ export const ComponentExample = ({
             <div>
               <iframe
                 className="w-full rounded-md"
-                style={{ height: height }}
+                style={{ height: getIframeHeight(type) }}
                 id={id}
                 title={id}
                 srcDoc={html}
@@ -182,3 +182,10 @@ function transformComponentName(componentName: string): string {
 
   return transformedName;
 }
+
+// Mappings of component name to iframe height
+const getIframeHeight = (type: string): number => {
+  if (type === "badges") return 120;
+  if (type === "buttons") return 140;
+  return 350;
+};
