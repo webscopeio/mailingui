@@ -1,16 +1,15 @@
 import React, { FC, ReactNode, CSSProperties } from "react";
 import { Button as ReactEmailButton } from "@react-email/components";
-import { Property } from "csstype";
 
 interface ButtonProps {
   paddingX?: number;
   paddingY?: number;
   href: string;
   children: ReactNode;
-  backgroundColor?: Property.Color;
-  fontSize?: Property.FontSize<string | number>;
-  color?: Property.Color;
-  borderColor?: Property.Color;
+  backgroundColor?: CSSProperties["color"];
+  fontSize?: CSSProperties["fontSize"];
+  color?: CSSProperties["color"];
+  borderColor?: CSSProperties["color"];
   pill?: boolean;
 }
 
