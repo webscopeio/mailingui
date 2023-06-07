@@ -189,7 +189,7 @@ const getIframeHeight = (type: string): number => {
     case "badges":
       return 120;
     case "buttons":
-      return 140;
+      return 160;
     default:
       return 350;
   }

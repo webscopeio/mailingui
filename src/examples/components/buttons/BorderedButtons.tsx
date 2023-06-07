@@ -13,9 +13,7 @@ const BorderedButtons = () => (
           backgroundColor="white"
           color="black"
           borderColor="#ced4da"
-          fontSize="12px"
-          paddingY={5}
-          paddingX={10}
+          size="xs"
         >
           Button
         </Button>
@@ -25,6 +23,7 @@ const BorderedButtons = () => (
           backgroundColor="white"
           color="black"
           borderColor="#ced4da"
+          size="sm"
         >
           Button
         </Button>
@@ -34,7 +33,37 @@ const BorderedButtons = () => (
           backgroundColor="white"
           color="black"
           borderColor="#ced4da"
-          fontSize="22px"
+          size="md"
+        >
+          Button
+        </Button>
+        <span style={{ padding: 10 }} />
+        <Button
+          href="#clicked!"
+          backgroundColor="white"
+          color="black"
+          borderColor="#ced4da"
+          size="lg"
+        >
+          Button
+        </Button>
+        <span style={{ padding: 10 }} />
+        <Button
+          href="#clicked!"
+          backgroundColor="white"
+          color="black"
+          borderColor="#ced4da"
+          size="xl"
+        >
+          Button
+        </Button>
+        <span style={{ padding: 10 }} />
+        <Button
+          href="#clicked!"
+          backgroundColor="white"
+          color="black"
+          borderColor="#ced4da"
+          size="2xl"
         >
           Button
         </Button>
@@ -55,4 +84,5 @@ const main = {
 const container = {
   padding: "40px 0",
   textAlign: "center" as const,
+  maxWidth: 900,
 };

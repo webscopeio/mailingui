@@ -3,7 +3,7 @@ import { Body, Container, Head, Html, Preview } from "@react-email/components";
 import { Button } from "@mailingui/components";
 
 const PillButtons = () => {
-  const primaryColor = "#C71679";
+  const primaryColor = "#2563EB";
 
   return (
     <Html>
@@ -12,29 +12,55 @@ const PillButtons = () => {
       <Body style={main}>
         <Container style={container}>
           <Button
-            href="#clicked!"
+            href="#"
             backgroundColor={primaryColor}
-            fontSize="12px"
-            paddingY={5}
-            paddingX={10}
             rounded="full"
+            size="xs"
           >
             Button
           </Button>
           <span style={{ padding: 10 }} />
           <Button
-            href="#clicked!"
+            href="#"
             backgroundColor={primaryColor}
             rounded="full"
+            size="sm"
           >
             Button
           </Button>
           <span style={{ padding: 10 }} />
           <Button
-            href="#clicked!"
+            href="#"
             backgroundColor={primaryColor}
-            fontSize="22px"
             rounded="full"
+            size="md"
+          >
+            Button
+          </Button>
+          <span style={{ padding: 10 }} />
+          <Button
+            href="#"
+            backgroundColor={primaryColor}
+            rounded="full"
+            size="lg"
+          >
+            Button
+          </Button>
+          <span style={{ padding: 10 }} />
+          <Button
+            href="#"
+            backgroundColor={primaryColor}
+            rounded="full"
+            size="xl"
+          >
+            Button
+          </Button>
+          <span style={{ padding: 10 }} />
+          <Button
+            href="#"
+            backgroundColor={primaryColor}
+            rounded="full"
+            size="2xl"
           >
             Button
           </Button>
@@ -56,4 +82,5 @@ const main = {
 const container = {
   padding: "40px 0",
   textAlign: "center" as const,
+  maxWidth: 900,
 };
