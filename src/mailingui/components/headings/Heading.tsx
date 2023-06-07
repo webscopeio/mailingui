@@ -1,5 +1,10 @@
-import React, { FC } from "react";
-import { Heading as ReactEmailHeading, Column, Img, Row } from "@react-email/components";
+import React, { CSSProperties, FC } from "react";
+import {
+  Heading as ReactEmailHeading,
+  Column,
+  Img,
+  Row,
+} from "@react-email/components";
 
 interface HeadingProps {
   as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
@@ -15,7 +20,9 @@ const Heading: FC<HeadingProps> = ({ as = "h1" }) => {
             width={120}
             src={`https://www.linkpicture.com/q/company-placeholder-logo-hero.png`}
           />
-          <ReactEmailHeading as={as} style={heading}>New office for your company</ReactEmailHeading>
+          <ReactEmailHeading as={as} style={heading}>
+            New office for your company
+          </ReactEmailHeading>
         </Column>
       </Row>
       <Img
@@ -35,12 +42,12 @@ const logo = {
   paddingBottom: 10,
 };
 
-const header = {
+const header: CSSProperties = {
   borderRadius: "10px 10px 0 0",
   display: "flex",
-  flexDireciont: "column",
+  flexDirection: "column",
 };
 
 const headerContent = { padding: "30px 40px" };
 
-export { Heading, type HeadingProps};
+export { Heading, type HeadingProps };
