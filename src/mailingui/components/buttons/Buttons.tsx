@@ -1,5 +1,5 @@
 import React, { FC, ReactNode, CSSProperties } from "react";
-import { Button as ReactEmailButton } from "@react-email/components";
+import { Button as ReactEmailButton } from "./ReactEmailButtonFork";
 
 type sizes = "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
 
