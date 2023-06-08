@@ -1,5 +1,5 @@
-import { Html } from '@react-email/html';
-import { Text } from '@mailingui/components';
+import { Html } from "@react-email/components";
+import { Text } from "@mailingui/components";
 
 export default function Preview() {
   return (
@@ -7,4 +7,4 @@ export default function Preview() {
       <Text />
     </Html>
   );
-};
+}
