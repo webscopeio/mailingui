@@ -11,21 +11,25 @@ export interface BadgeVariant extends Variant {
 }
 
 export interface Theme {
-  fontFamily: string;
-  borderRadius: number;
-  buttonVariants: {
-    primary: Variant;
-    secondary: Variant;
-    soft: Variant;
-  };
-  badgesVariants: {
-    default: BadgeVariant;
-    danger: BadgeVariant;
-    success: BadgeVariant;
-    info: BadgeVariant;
-    warning: BadgeVariant;
-  };
+  fontFamily?: string;
+  borderRadius?: number;
+  buttonVariants?: ButtonVariants;
+  badgesVariants?: BadgeVariants;
 }
 
-export type ButtonVariant = keyof Theme["buttonVariants"];
-export type BadgeVariants = keyof Theme["badgesVariants"];
+type ButtonVariants = {
+  primary: Variant;
+  secondary: Variant;
+  soft: Variant;
+};
+
+type BadgeVariants = {
+  default: BadgeVariant;
+  danger: BadgeVariant;
+  success: BadgeVariant;
+  info: BadgeVariant;
+  warning: BadgeVariant;
+};
+
+export type ButtonVariantKey = keyof ButtonVariants;
+export type BadgeVariantsKey = keyof BadgeVariants;

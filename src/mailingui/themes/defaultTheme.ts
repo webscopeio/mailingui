@@ -1,6 +1,6 @@
 import { Theme } from "@mailingui/types";
 
-export const theme: Theme = {
+export const defaultTheme: Theme = {
   fontFamily:
     '-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji"',
   borderRadius: 8,

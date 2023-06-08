@@ -1,7 +1,7 @@
 import React, { FC, ReactNode, CSSProperties } from "react";
 import { useTheme } from "../../hooks/useTheme";
 import { Button as ReactEmailButton } from "./ReactEmailButtonFork";
-import { ButtonVariant } from "@mailingui/types";
+import { ButtonVariantKey } from "@mailingui/types";
 
 type sizes = "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
 
@@ -13,7 +13,7 @@ interface ButtonProps {
   rounded?: number;
   size?: sizes;
   backgroundColor?: CSSProperties["backgroundColor"];
-  variant?: ButtonVariant;
+  variant?: ButtonVariantKey;
 }
 
 const Button: FC<ButtonProps> = ({
@@ -30,13 +30,13 @@ const Button: FC<ButtonProps> = ({
 
   const styles: CSSProperties = {
     backgroundColor:
-      backgroundColor ?? theme?.buttonVariants[variant]?.backgroundColor,
-    color: color ?? theme?.buttonVariants[variant]?.color,
+      backgroundColor ?? theme?.buttonVariants?.[variant]?.backgroundColor,
+    color: color ?? theme?.buttonVariants?.[variant]?.color,
     borderRadius: theme?.borderRadius ?? rounded,
     fontSize: sizeVariants[size].fontSize,
     border: borderColor
       ? `1px solid ${borderColor}`
-      : `1px solid ${theme?.buttonVariants[variant]?.borderColor}` ?? "none",
+      : `1px solid ${theme?.buttonVariants?.[variant]?.borderColor}` ?? "none",
   };
 
   return (

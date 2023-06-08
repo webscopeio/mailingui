@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import { Theme } from "@mailingui/types";
-import { theme as defaultTheme, ThemeContext } from "@mailingui/components";
+import { ThemeContext } from "@mailingui/components";
+import { defaultTheme } from "@mailingui/themes";
 
 interface ThemeProviderProps {
   theme?: Theme;
