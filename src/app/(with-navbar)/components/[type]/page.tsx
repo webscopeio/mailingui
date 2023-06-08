@@ -55,11 +55,7 @@ export default async function ComponentPage({
       </h1>
       <div className="mt-8 space-y-16 md:mt-16">
         {component.examples.map(({ ...example }, index) => (
-          <ComponentExample
-            key={index}
-            {...example}
-            height={type === "badges" ? 120 : 350}
-          />
+          <ComponentExample key={index} {...example} type={type} />
         ))}
       </div>
     </div>
@@ -128,6 +124,7 @@ const getComponent = async (
         source,
         markup,
         plainText,
+        type: component.type,
       };
     })
   );
