@@ -2,45 +2,45 @@ import * as React from "react";
 import { Body, Container, Head, Html, Preview } from "@react-email/components";
 import { Button, ThemeProvider } from "@mailingui/components";
 
-const PrimaryButtons = () => {
+const SoftButtons = () => {
   return (
     <Html>
       <Head />
-      <Preview>Primary Buttons</Preview>
+      <Preview>Soft Buttons</Preview>
       <Body style={main}>
-        <Container style={container}>
-          <ThemeProvider>
-            <Button href="#clicked!" size="xs">
+        <ThemeProvider>
+          <Container style={container}>
+            <Button href="#clicked!" variant="soft" size="xs">
               Button
             </Button>
             <span style={{ padding: 10 }} />
-            <Button href="#clicked!" size="sm">
+            <Button href="#clicked!" variant="soft" size="sm">
               Button
             </Button>
             <span style={{ padding: 10 }} />
-            <Button href="#clicked!" size="md">
+            <Button href="#clicked!" variant="soft" size="md">
               Button
             </Button>
             <span style={{ padding: 10 }} />
-            <Button href="#clicked!" size="lg">
+            <Button href="#clicked!" variant="soft" size="lg">
               Button
             </Button>
             <span style={{ padding: 10 }} />
-            <Button href="#clicked!" size="xl">
+            <Button href="#clicked!" variant="soft" size="xl">
               Button
             </Button>
             <span style={{ padding: 10 }} />
-            <Button href="#clicked!" size="2xl" backgroundColor="#d62828">
+            <Button href="#clicked!" variant="soft" size="2xl">
               Button
             </Button>
-          </ThemeProvider>
-        </Container>
+          </Container>
+        </ThemeProvider>
       </Body>
     </Html>
   );
 };
 
-export default PrimaryButtons;
+export default SoftButtons;
 
 const main = {
   backgroundColor: "#ffffff",

@@ -18,7 +18,7 @@ interface ButtonProps {
 }
 
 const Button: FC<ButtonProps> = ({
-  rounded = 8,
+  rounded,
   href,
   color,
   size = "md",
@@ -31,9 +31,11 @@ const Button: FC<ButtonProps> = ({
 
   const styles: CSSProperties = {
     backgroundColor:
-      backgroundColor ?? theme?.buttonVariants?.[variant]?.backgroundColor,
-    color: color ?? theme?.buttonVariants?.[variant]?.color,
-    borderRadius: theme?.borderRadius ?? rounded,
+      backgroundColor ??
+      theme?.buttonVariants?.[variant]?.backgroundColor ??
+      "#2563EB",
+    color: color ?? theme?.buttonVariants?.[variant]?.color ?? "#fff",
+    borderRadius: rounded ?? theme?.borderRadius ?? 8,
     fontSize: sizeVariants[size].fontSize,
     border: borderColor
       ? `1px solid ${borderColor}`
