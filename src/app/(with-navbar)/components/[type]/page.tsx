@@ -102,7 +102,7 @@ const getComponent = async (
 
   const examples = await Promise.all(
     files.map(async (file) => {
-      const id = file.replace(/(\.preview)?\.tsx$/, "");
+      const id = file.replace(/.tsx/, "");
 
       const data = format(readFileSync(join(typePath, file), "utf8"), {
         parser: "typescript",
