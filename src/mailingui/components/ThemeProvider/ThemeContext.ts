@@ -1,6 +1,5 @@
 import { createContext } from "react";
-import { Theme } from "./ThemeProvider";
+import { theme } from "@mailingui/components";
+import { type Theme } from "@mailingui/types";
 
-export const ThemeContext = createContext<Theme>({
-  primaryColor: "#2563EB",
-});
+export const ThemeContext = createContext<Theme>(theme);

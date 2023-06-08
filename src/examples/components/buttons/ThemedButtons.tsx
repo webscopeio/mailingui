@@ -9,7 +9,7 @@ const PrimaryButtons = () => {
       <Preview>Primary Buttons</Preview>
       <Body style={main}>
         <Container style={container}>
-          <ThemeProvider theme={{ primaryColor: "#ff006e" }}>
+          <ThemeProvider>
             <Button href="#clicked!" size="xs">
               Button
             </Button>

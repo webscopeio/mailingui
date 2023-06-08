@@ -1,6 +1,7 @@
-import React, { FC, ReactNode, CSSProperties, useContext } from "react";
+import React, { FC, ReactNode, CSSProperties } from "react";
+import { useTheme } from "../../hooks/useTheme";
 import { Button as ReactEmailButton } from "./ReactEmailButtonFork";
-import { ThemeContext } from "@mailingui/components";
+import { ButtonVariant } from "@mailingui/types";
 
 type sizes = "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
 
@@ -9,34 +10,39 @@ interface ButtonProps {
   children: ReactNode;
   color?: CSSProperties["color"];
   borderColor?: CSSProperties["color"];
-  rounded?: "none" | "sm" | "md" | "lg" | "full";
+  rounded?: number;
   size?: sizes;
   backgroundColor?: CSSProperties["backgroundColor"];
+  variant?: ButtonVariant;
 }
 
 const Button: FC<ButtonProps> = ({
-  rounded = "md",
+  rounded = 8,
   href,
   color,
   size = "md",
   borderColor,
   children,
   backgroundColor,
+  variant = "primary",
 }) => {
-  const context = useContext(ThemeContext);
+  const theme = useTheme();
 
   const styles: CSSProperties = {
-    backgroundColor: backgroundColor ?? context?.primaryColor ?? "#24292e",
-    color: color ?? "#ffffff",
-    borderRadius: roundedEnum[rounded],
-    fontSize: sizesEnum[size].fontSize,
-    border: borderColor ? `1px solid ${borderColor}` : "none",
+    backgroundColor:
+      backgroundColor ?? theme?.buttonVariants[variant]?.backgroundColor,
+    color: color ?? theme?.buttonVariants[variant]?.color,
+    borderRadius: theme?.borderRadius ?? rounded,
+    fontSize: sizeVariants[size].fontSize,
+    border: borderColor
+      ? `1px solid ${borderColor}`
+      : `1px solid ${theme?.buttonVariants[variant]?.borderColor}` ?? "none",
   };
 
   return (
     <ReactEmailButton
-      pX={sizesEnum[size].paddingX}
-      pY={sizesEnum[size].paddingY}
+      pX={sizeVariants[size].paddingX}
+      pY={sizeVariants[size].paddingY}
       href={href}
       style={styles}
     >
@@ -45,7 +51,7 @@ const Button: FC<ButtonProps> = ({
   );
 };
 
-const sizesEnum: Record<
+const sizeVariants: Record<
   sizes,
   { fontSize: number; paddingX: number; paddingY: number }
 > = {
@@ -79,14 +85,6 @@ const sizesEnum: Record<
     paddingX: 24,
     paddingY: 16,
   },
-};
-
-const roundedEnum: Record<string, number> = {
-  none: 0,
-  sm: 4,
-  md: 8,
-  lg: 12,
-  full: 9999,
 };
 
 export { Button, type ButtonProps };

@@ -1,9 +1,6 @@
-import React, { FC, CSSProperties } from "react";
-import { ThemeContext } from "./ThemeContext";
-
-type Theme = {
-  primaryColor: CSSProperties["color"];
-};
+import React, { FC } from "react";
+import { Theme } from "@mailingui/types";
+import { theme as defaultTheme, ThemeContext } from "@mailingui/components";
 
 interface ThemeProviderProps {
   theme?: Theme;
@@ -12,7 +9,7 @@ interface ThemeProviderProps {
 
 const ThemeProvider: FC<ThemeProviderProps> = ({ theme, children }) => {
   if (!theme) {
-    theme = { primaryColor: "#2563EB" };
+    theme = defaultTheme;
   }
 
   return (
@@ -20,4 +17,4 @@ const ThemeProvider: FC<ThemeProviderProps> = ({ theme, children }) => {
   );
 };
 
-export { ThemeProvider, ThemeContext, type Theme };
+export { ThemeProvider, type Theme };
