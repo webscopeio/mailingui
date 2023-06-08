@@ -14,7 +14,7 @@ const PillButtons = () => {
           <Button
             href="#"
             backgroundColor={primaryColor}
-            rounded="full"
+            rounded={9999}
             size="xs"
           >
             Button
@@ -23,7 +23,7 @@ const PillButtons = () => {
           <Button
             href="#"
             backgroundColor={primaryColor}
-            rounded="full"
+            rounded={9999}
             size="sm"
           >
             Button
@@ -32,7 +32,7 @@ const PillButtons = () => {
           <Button
             href="#"
             backgroundColor={primaryColor}
-            rounded="full"
+            rounded={9999}
             size="md"
           >
             Button
@@ -41,7 +41,7 @@ const PillButtons = () => {
           <Button
             href="#"
             backgroundColor={primaryColor}
-            rounded="full"
+            rounded={9999}
             size="lg"
           >
             Button
@@ -50,7 +50,7 @@ const PillButtons = () => {
           <Button
             href="#"
             backgroundColor={primaryColor}
-            rounded="full"
+            rounded={9999}
             size="xl"
           >
             Button
@@ -59,7 +59,7 @@ const PillButtons = () => {
           <Button
             href="#"
             backgroundColor={primaryColor}
-            rounded="full"
+            rounded={9999}
             size="2xl"
           >
             Button

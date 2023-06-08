@@ -9,12 +9,12 @@ interface ButtonProps {
   backgroundColor?: CSSProperties["color"];
   color?: CSSProperties["color"];
   borderColor?: CSSProperties["color"];
-  rounded?: "none" | "sm" | "md" | "lg" | "full";
+  rounded?: number;
   size?: sizes;
 }
 
 const Button: FC<ButtonProps> = ({
-  rounded = "md",
+  rounded = 8,
   href,
   backgroundColor,
   color,
@@ -25,7 +25,7 @@ const Button: FC<ButtonProps> = ({
   const styles: CSSProperties = {
     backgroundColor: backgroundColor ?? "#24292e",
     color: color ?? "#ffffff",
-    borderRadius: roundedEnum[rounded],
+    borderRadius: rounded,
     fontSize: sizesEnum[size].fontSize,
     border: borderColor ? `1px solid ${borderColor}` : "none",
   };
@@ -76,14 +76,6 @@ const sizesEnum: Record<
     paddingX: 24,
     paddingY: 16,
   },
-};
-
-const roundedEnum: Record<string, number> = {
-  none: 0,
-  sm: 4,
-  md: 8,
-  lg: 12,
-  full: 9999,
 };
 
 export { Button, type ButtonProps };
