@@ -16,7 +16,11 @@ const SimpleHero = () => (
           backgroundColor: "black",
         }}
       >
-        <HeroSection overlay={false} centered={false} />
+        <HeroSection
+          overlay={true}
+          centered={true}
+          overlayPadding="40px 40px 150px 40px"
+        />
       </Container>
     </Body>
   </Html>

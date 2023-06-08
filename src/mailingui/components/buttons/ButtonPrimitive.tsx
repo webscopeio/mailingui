@@ -1,3 +1,5 @@
+// Modified implementation from react.email
+// TODO: Create a PR to react.email and fix it there so we can use their Button component
 import * as React from "react";
 
 type ButtonElement = React.ElementRef<"a">;

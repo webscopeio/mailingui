@@ -1,6 +1,7 @@
 import React, { FC, ReactNode, CSSProperties } from "react";
 import { useTheme } from "../../hooks/useTheme";
-import { Button as ReactEmailButton } from "./ReactEmailButtonFork";
+// TODO: ⬇️This is just a temporary solution, create a PR to react.email so we can use their Button component
+import { Button as ReactEmailButton } from "./ButtonPrimitive";
 import { ButtonVariantKey } from "@mailingui/types";
 
 type sizes = "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
