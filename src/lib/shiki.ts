@@ -48,10 +48,5 @@ export async function highlight(
          class=${className}>${children}</span>`;
       },
     },
-    lineOptions: [
-      {
-        line: 2,
-      },
-    ],
   });
 }
