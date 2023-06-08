@@ -7,36 +7,38 @@ import {
   Preview,
   Section,
 } from "@react-email/components";
-import { Badge } from "@mailingui/components";
+import { Badge, ThemeProvider } from "@mailingui/components";
 
 const LargeBadges = () => (
   <Html>
     <Head />
     <Preview>Large Badges</Preview>
     <Body style={main}>
-      <Container style={container}>
-        <Section style={{ textAlign: "center" as const }}>
-          <Badge variant="default" size="lg">
-            Badge
-          </Badge>
-          <span style={{ padding: 10 }} />
-          <Badge variant="danger" size="lg">
-            Badge
-          </Badge>
-          <span style={{ padding: 10 }} />
-          <Badge variant="success" size="lg">
-            Badge
-          </Badge>
-          <span style={{ padding: 10 }} />
-          <Badge variant="info" size="lg">
-            Badge
-          </Badge>
-          <span style={{ padding: 10 }} />
-          <Badge variant="warning" size="lg">
-            Badge
-          </Badge>
-        </Section>
-      </Container>
+      <ThemeProvider>
+        <Container style={container}>
+          <Section style={{ textAlign: "center" as const }}>
+            <Badge variant="default" size="lg">
+              Badge
+            </Badge>
+            <span style={{ padding: 10 }} />
+            <Badge variant="danger" size="lg">
+              Badge
+            </Badge>
+            <span style={{ padding: 10 }} />
+            <Badge variant="success" size="lg">
+              Badge
+            </Badge>
+            <span style={{ padding: 10 }} />
+            <Badge variant="info" size="lg">
+              Badge
+            </Badge>
+            <span style={{ padding: 10 }} />
+            <Badge variant="warning" size="lg">
+              Badge
+            </Badge>
+          </Section>
+        </Container>
+      </ThemeProvider>
     </Body>
   </Html>
 );
