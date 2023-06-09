@@ -10,7 +10,7 @@ const DividerWithoutText = () => {
       <Body style={main}>
         <Container style={container}>
           <Text>Text above</Text>
-          <Divider />
+          <Divider>Divider</Divider>
           <Text>Text below</Text>
         </Container>
       </Body>
