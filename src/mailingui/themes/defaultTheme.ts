@@ -1,4 +1,4 @@
-import { Theme } from "@mailingui/types";
+import { Theme } from "./types";
 
 export const defaultTheme: Theme = {
   fontFamily:

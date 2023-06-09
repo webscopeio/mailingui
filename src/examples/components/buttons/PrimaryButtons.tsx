@@ -4,8 +4,6 @@ import { Button, ThemeProvider } from "@mailingui/components";
 import { defaultTheme } from "@mailingui/themes";
 
 const PrimaryButtons = () => {
-  const primaryColor = "#2563EB";
-
   return (
     <Html>
       <Head />
