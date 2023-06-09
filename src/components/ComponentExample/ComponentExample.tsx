@@ -186,10 +186,12 @@ function transformComponentName(componentName: string): string {
 // Mappings of component name to iframe height
 const getIframeHeight = (type: string): number => {
   switch (type) {
-    case "badges":
+    case "badge":
       return 120;
     case "buttons":
       return 160;
+    case "dividers":
+      return 220;
     default:
       return 350;
   }

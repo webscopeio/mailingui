@@ -30,15 +30,15 @@ export const componentTypes: ComponentType[] = [
     image: Lists,
   },
   {
-    type: "badges",
+    type: "badge",
     title: "Badges",
-    subtitle: "Highlight key information with attention-grabbing badges",
+    subtitle: "Highlight key information with attention-grabbing badge",
     image: Badges,
   },
   {
     type: "buttons",
     title: "Buttons",
-    subtitle: "Drive user action with clickable buttons",
+    subtitle: "Drive user action with clickable button",
     image: Buttons,
   },
   {
