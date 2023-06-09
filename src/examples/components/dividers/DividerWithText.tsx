@@ -30,5 +30,5 @@ const main = {
 const container = {
   padding: "40px 0",
   textAlign: "center" as const,
-  width: 580,
+  width: 700,
 };
