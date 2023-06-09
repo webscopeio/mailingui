@@ -10,7 +10,7 @@ const DividerWithoutText = () => {
       <Body style={main}>
         <Container style={container}>
           <Text>Text above</Text>
-          <Divider>Divider</Divider>
+          <Divider dividerWidth={580}>Divider</Divider>
           <Text>Text below</Text>
         </Container>
       </Body>
@@ -30,5 +30,5 @@ const main = {
 const container = {
   padding: "40px 0",
   textAlign: "center" as const,
-  width: 700,
+  width: 580,
 };

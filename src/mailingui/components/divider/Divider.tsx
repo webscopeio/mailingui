@@ -3,20 +3,64 @@ import { Hr, Section, Row, Column } from "@react-email/components";
 
 interface DividerProps {
   style?: CSSProperties;
+  borderColor?: CSSProperties["borderColor"];
+  textColor?: CSSProperties["color"];
+  dividerWidth?: number;
   children?: ReactNode;
 }
 
-const Divider: FC<DividerProps> = ({ style: styleProp, children }) => {
+const Divider: FC<DividerProps> = ({
+  style: styleProp,
+  borderColor,
+  textColor,
+  dividerWidth,
+  children,
+}) => {
+  const defaultDividerColor = "#CBD5E1";
+
+  const sectionBorder = {
+    width: `${dividerWidth ? Math.round(dividerWidth * 0.4) : 450}px`,
+  };
+
+  const sectionCenter: CSSProperties = {
+    width: `${dividerWidth ? Math.round(dividerWidth * 0.2) : 150}px`,
+    textAlign: "center",
+    fontSize: "14px",
+  };
+
   if (children) {
     return (
-      <Section style={{ ...sectionsBorders, ...styleProp }}>
+      <Section
+        style={{
+          width: "100%",
+          display: "flex",
+          ...styleProp,
+        }}
+      >
         <Row>
           <Column style={sectionBorder}>
-            <hr style={{ border: "none", borderBottom: "1px solid #CBD5E1" }} />
+            <Hr
+              style={{
+                border: "none",
+                borderBottom: `1px solid ${borderColor ?? defaultDividerColor}`,
+              }}
+            />
           </Column>
-          <Column style={sectionCenter}>{children}</Column>
+          <Column
+            style={{
+              color: textColor ?? "#64748B",
+              ...sectionCenter,
+            }}
+          >
+            {children}
+          </Column>
           <Column style={sectionBorder}>
-            <hr style={{ border: "none", borderBottom: "1px solid #CBD5E1" }} />
+            <Hr
+              style={{
+                border: "none",
+                borderBottom: `1px solid ${borderColor ?? defaultDividerColor}`,
+              }}
+            />
           </Column>
         </Row>
       </Section>
@@ -26,29 +70,13 @@ const Divider: FC<DividerProps> = ({ style: styleProp, children }) => {
   return (
     <Hr
       style={{
-        borderTop: "1px solid #CBD5E1",
+        borderTop: `1px solid ${borderColor ?? defaultDividerColor}`,
         margin: "20px",
-        width: undefined,
+        width: dividerWidth ?? "100%",
         ...styleProp,
       }}
     />
   );
-};
-
-const sectionsBorders = {
-  width: "100%",
-  display: "flex",
-};
-
-const sectionBorder = {
-  width: "249px",
-};
-
-const sectionCenter: CSSProperties = {
-  width: "102px",
-  textAlign: "center",
-  fontSize: "14px",
-  color: "#64748B",
 };
 
 export { Divider };
