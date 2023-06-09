@@ -1,5 +1,5 @@
 import React, { createContext, FC, useContext, useState } from "react";
-import { Theme } from "@mailingui/types";
+import { type Theme } from "@mailingui/themes";
 
 const ThemeContext = createContext<Partial<Theme>>({});
 

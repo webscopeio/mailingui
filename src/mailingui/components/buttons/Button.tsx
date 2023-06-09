@@ -2,7 +2,7 @@ import React, { FC, ReactNode, CSSProperties } from "react";
 import { useTheme } from "../ThemeProvider/ThemeProvider";
 // TODO: ⬇️This is just a temporary solution, create a PR to react.email so we can use their Button component
 import { Button as ReactEmailButton } from "./ButtonPrimitive";
-import { Variant } from "@mailingui/types";
+import { type Variant } from "@mailingui/themes";
 
 interface ButtonProps {
   href: string;

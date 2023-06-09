@@ -1,6 +1,6 @@
 import React, { CSSProperties, FC, ReactNode } from "react";
 import { useTheme } from "../ThemeProvider/ThemeProvider";
-import { Variant } from "@mailingui/types";
+import { type Variant } from "@mailingui/themes";
 
 interface BadgeProps {
   variant?: Variant;
