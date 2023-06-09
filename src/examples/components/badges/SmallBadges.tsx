@@ -8,16 +8,25 @@ import {
   Section,
 } from "@react-email/components";
 import { Badge, ThemeProvider } from "@mailingui/components";
+import { defaultTheme } from "@mailingui/themes";
 
 const SmallBadges = () => (
   <Html>
     <Head />
     <Preview>Small Badges</Preview>
     <Body style={main}>
-      <ThemeProvider>
+      <ThemeProvider theme={defaultTheme}>
         <Container style={container}>
           <Section style={{ textAlign: "center" as const }}>
             <Badge variant="default" size="sm">
+              Badge
+            </Badge>
+            <span style={{ padding: 10 }} />
+            <Badge variant="primary" size="sm">
+              Badge
+            </Badge>
+            <span style={{ padding: 10 }} />
+            <Badge variant="secondary" size="sm">
               Badge
             </Badge>
             <span style={{ padding: 10 }} />
@@ -26,10 +35,6 @@ const SmallBadges = () => (
             </Badge>
             <span style={{ padding: 10 }} />
             <Badge variant="success" size="sm">
-              Badge
-            </Badge>
-            <span style={{ padding: 10 }} />
-            <Badge variant="info" size="sm">
               Badge
             </Badge>
             <span style={{ padding: 10 }} />

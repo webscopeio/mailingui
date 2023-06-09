@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Body, Container, Head, Html, Preview } from "@react-email/components";
 import { Button, ThemeProvider } from "@mailingui/components";
+import { defaultTheme } from "@mailingui/themes";
 
 const PrimaryButtons = () => {
   const primaryColor = "#2563EB";
@@ -10,7 +11,7 @@ const PrimaryButtons = () => {
       <Head />
       <Preview>Primary Buttons</Preview>
       <Body style={main}>
-        <ThemeProvider>
+        <ThemeProvider theme={defaultTheme}>
           <Container style={container}>
             <Button href="#clicked!" variant="primary" size="xs">
               Button

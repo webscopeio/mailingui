@@ -1,9 +1,9 @@
 import React, { CSSProperties, FC, ReactNode } from "react";
-import { useTheme } from "../../hooks/useTheme";
-import { BadgeVariantsKey } from "@mailingui/types";
+import { useTheme } from "../ThemeProvider/ThemeProvider";
+import { Variant } from "@mailingui/types";
 
 interface BadgeProps {
-  variant?: BadgeVariantsKey;
+  variant?: Variant;
   size?: keyof typeof sizes;
   dot?: boolean;
   pill?: boolean;
@@ -19,13 +19,14 @@ const Badge: FC<BadgeProps> = ({
   noBorder,
   children,
 }) => {
-  const theme = useTheme();
+  const { variants } = useTheme();
 
   return (
     <span
       style={{
-        border: noBorder ? "none" : "1px solid",
-        ...theme?.badgesVariants?.[variant],
+        border:
+          noBorder || !variants?.[variant]?.borderColor ? "none" : "1px solid",
+        ...variants?.[variant],
         ...sizes[size],
         borderRadius: pill ? 9999 : 4,
       }}
@@ -39,7 +40,7 @@ const Badge: FC<BadgeProps> = ({
             marginRight: "6px",
             marginBottom: sizes[size].dotMarginBottom ?? "0px",
             borderRadius: "9999px",
-            backgroundColor: theme?.badgesVariants?.[variant]?.color,
+            backgroundColor: variants?.[variant]?.color,
           }}
         />
       ) : null}

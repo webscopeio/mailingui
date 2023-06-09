@@ -1,13 +1,14 @@
 import * as React from "react";
 import { Body, Container, Head, Html, Preview } from "@react-email/components";
 import { Button, ThemeProvider } from "@mailingui/components";
+import { defaultTheme } from "@mailingui/themes";
 
 const SecondaryButtons = () => (
   <Html>
     <Head />
     <Preview>Secondary Buttons</Preview>
     <Body style={main}>
-      <ThemeProvider>
+      <ThemeProvider theme={defaultTheme}>
         <Container style={container}>
           <Button href="#clicked!" size="xs" variant="secondary">
             Button

@@ -1,35 +1,23 @@
 import { CSSProperties } from "react";
 
-export interface Variant {
+export interface VariantValue {
   color: CSSProperties["color"];
   backgroundColor: CSSProperties["backgroundColor"];
   borderColor?: CSSProperties["borderColor"];
 }
 
-export interface BadgeVariant extends Variant {
-  dot?: boolean;
-}
-
 export interface Theme {
-  fontFamily?: string;
-  borderRadius?: number;
-  buttonVariants?: ButtonVariants;
-  badgesVariants?: BadgeVariants;
+  fontFamily: CSSProperties["fontFamily"];
+  borderRadius: CSSProperties["borderRadius"];
+  variants: {
+    default: VariantValue;
+    primary: VariantValue;
+    secondary: VariantValue;
+    subtle: VariantValue;
+    success: VariantValue;
+    danger: VariantValue;
+    warning: VariantValue;
+  };
 }
 
-type ButtonVariants = {
-  primary: Variant;
-  secondary: Variant;
-  soft: Variant;
-};
-
-type BadgeVariants = {
-  default: BadgeVariant;
-  danger: BadgeVariant;
-  success: BadgeVariant;
-  info: BadgeVariant;
-  warning: BadgeVariant;
-};
-
-export type ButtonVariantKey = keyof ButtonVariants;
-export type BadgeVariantsKey = keyof BadgeVariants;
+export type Variant = keyof Theme["variants"];

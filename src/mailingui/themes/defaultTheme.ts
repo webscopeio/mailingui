@@ -4,7 +4,7 @@ export const defaultTheme: Theme = {
   fontFamily:
     '-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji"',
   borderRadius: 8,
-  buttonVariants: {
+  variants: {
     primary: {
       backgroundColor: "#2563EB",
       color: "#fff",
@@ -14,12 +14,10 @@ export const defaultTheme: Theme = {
       color: "#1E293B",
       borderColor: "#CBD5E1",
     },
-    soft: {
+    subtle: {
       backgroundColor: "#F1F5F9",
       color: "#2563EB",
     },
-  },
-  badgesVariants: {
     default: {
       borderColor: "#ecedef",
       backgroundColor: "#f9fafb",
@@ -34,11 +32,6 @@ export const defaultTheme: Theme = {
       borderColor: "#d1e7dd",
       backgroundColor: "#f0fdf4",
       color: "#059669",
-    },
-    info: {
-      borderColor: "#dbeafe",
-      backgroundColor: "#eff6ff",
-      color: "#1e3a8a",
     },
     warning: {
       borderColor: "#f4e7c1",

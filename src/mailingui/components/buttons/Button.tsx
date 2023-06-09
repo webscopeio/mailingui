@@ -1,10 +1,8 @@
 import React, { FC, ReactNode, CSSProperties } from "react";
-import { useTheme } from "../../hooks/useTheme";
+import { useTheme } from "../ThemeProvider/ThemeProvider";
 // TODO: ⬇️This is just a temporary solution, create a PR to react.email so we can use their Button component
 import { Button as ReactEmailButton } from "./ButtonPrimitive";
-import { ButtonVariantKey } from "@mailingui/types";
-
-type sizes = "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
+import { Variant } from "@mailingui/types";
 
 interface ButtonProps {
   href: string;
@@ -12,9 +10,9 @@ interface ButtonProps {
   color?: CSSProperties["color"];
   borderColor?: CSSProperties["color"];
   rounded?: number;
-  size?: sizes;
+  size?: keyof typeof sizes;
   backgroundColor?: CSSProperties["backgroundColor"];
-  variant?: ButtonVariantKey;
+  variant?: Variant;
 }
 
 const Button: FC<ButtonProps> = ({
@@ -27,25 +25,25 @@ const Button: FC<ButtonProps> = ({
   backgroundColor,
   variant = "primary",
 }) => {
-  const theme = useTheme();
+  const { variants, borderRadius } = useTheme();
 
   const styles: CSSProperties = {
     backgroundColor:
-      backgroundColor ??
-      theme?.buttonVariants?.[variant]?.backgroundColor ??
-      "#2563EB",
-    color: color ?? theme?.buttonVariants?.[variant]?.color ?? "#fff",
-    borderRadius: rounded ?? theme?.borderRadius ?? 8,
-    fontSize: sizeVariants[size].fontSize,
+      backgroundColor ?? variants?.[variant]?.backgroundColor ?? "#2563EB",
+    color: color ?? variants?.[variant]?.color ?? "#fff",
+    borderRadius: rounded ?? borderRadius ?? 8,
+    fontSize: sizes[size].fontSize,
     border: borderColor
       ? `1px solid ${borderColor}`
-      : `1px solid ${theme?.buttonVariants?.[variant]?.borderColor}` ?? "none",
+      : variants?.[variant].borderColor
+      ? `1px solid ${variants?.[variant]?.borderColor}`
+      : "none",
   };
 
   return (
     <ReactEmailButton
-      pX={sizeVariants[size].paddingX}
-      pY={sizeVariants[size].paddingY}
+      pX={sizes[size].paddingX}
+      pY={sizes[size].paddingY}
       href={href}
       style={styles}
     >
@@ -54,8 +52,8 @@ const Button: FC<ButtonProps> = ({
   );
 };
 
-const sizeVariants: Record<
-  sizes,
+const sizes: Record<
+  NonNullable<string>,
   { fontSize: number; paddingX: number; paddingY: number }
 > = {
   xs: {
