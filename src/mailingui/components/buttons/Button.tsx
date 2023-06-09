@@ -1,40 +1,49 @@
 import React, { FC, ReactNode, CSSProperties } from "react";
-// TODO: This is just a temporary solution, create a PR to react.email so we can use their Button component
+import { useTheme } from "../ThemeProvider/ThemeProvider";
+// TODO: ⬇️This is just a temporary solution, create a PR to react.email so we can use their Button component
 import { Button as ReactEmailButton } from "./ButtonPrimitive";
-
-type sizes = "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
+import { type Variant } from "@mailingui/themes";
 
 interface ButtonProps {
   href: string;
   children: ReactNode;
-  backgroundColor?: CSSProperties["color"];
   color?: CSSProperties["color"];
   borderColor?: CSSProperties["color"];
   rounded?: number;
-  size?: sizes;
+  size?: keyof typeof sizes;
+  backgroundColor?: CSSProperties["backgroundColor"];
+  variant?: Variant;
 }
 
 const Button: FC<ButtonProps> = ({
-  rounded = 8,
+  rounded,
   href,
-  backgroundColor,
   color,
   size = "md",
   borderColor,
   children,
+  backgroundColor,
+  variant = "primary",
 }) => {
+  const { variants, borderRadius } = useTheme();
+
   const styles: CSSProperties = {
-    backgroundColor: backgroundColor ?? "#24292e",
-    color: color ?? "#ffffff",
-    borderRadius: rounded,
-    fontSize: sizesEnum[size].fontSize,
-    border: borderColor ? `1px solid ${borderColor}` : "none",
+    backgroundColor:
+      backgroundColor ?? variants?.[variant]?.backgroundColor ?? "#2563EB",
+    color: color ?? variants?.[variant]?.color ?? "#fff",
+    borderRadius: rounded ?? borderRadius ?? 8,
+    fontSize: sizes[size].fontSize,
+    border: borderColor
+      ? `1px solid ${borderColor}`
+      : variants?.[variant].borderColor
+      ? `1px solid ${variants?.[variant]?.borderColor}`
+      : "none",
   };
 
   return (
     <ReactEmailButton
-      pX={sizesEnum[size].paddingX}
-      pY={sizesEnum[size].paddingY}
+      pX={sizes[size].paddingX}
+      pY={sizes[size].paddingY}
       href={href}
       style={styles}
     >
@@ -43,8 +52,8 @@ const Button: FC<ButtonProps> = ({
   );
 };
 
-const sizesEnum: Record<
-  sizes,
+const sizes: Record<
+  NonNullable<string>,
   { fontSize: number; paddingX: number; paddingY: number }
 > = {
   xs: {

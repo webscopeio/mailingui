@@ -3,35 +3,35 @@ import { Body, Container, Head, Html, Preview } from "@react-email/components";
 import { Button, ThemeProvider } from "@mailingui/components";
 import { defaultTheme } from "@mailingui/themes";
 
-const PrimaryButtons = () => {
+const SubtleButtons = () => {
   return (
     <Html>
       <Head />
-      <Preview>Primary Buttons</Preview>
+      <Preview>Subtle Buttons</Preview>
       <Body style={main}>
         <ThemeProvider theme={defaultTheme}>
           <Container style={container}>
-            <Button href="#clicked!" variant="primary" size="xs">
+            <Button href="#clicked!" variant="subtle" size="xs">
               Button
             </Button>
             <span style={{ padding: 10 }} />
-            <Button href="#clicked!" variant="primary" size="sm">
+            <Button href="#clicked!" variant="subtle" size="sm">
               Button
             </Button>
             <span style={{ padding: 10 }} />
-            <Button href="#clicked!" variant="primary" size="md">
+            <Button href="#clicked!" variant="subtle" size="md">
               Button
             </Button>
             <span style={{ padding: 10 }} />
-            <Button href="#clicked!" variant="primary" size="lg">
+            <Button href="#clicked!" variant="subtle" size="lg">
               Button
             </Button>
             <span style={{ padding: 10 }} />
-            <Button href="#clicked!" variant="primary" size="xl">
+            <Button href="#clicked!" variant="subtle" size="xl">
               Button
             </Button>
             <span style={{ padding: 10 }} />
-            <Button href="#clicked!" variant="primary" size="2xl">
+            <Button href="#clicked!" variant="subtle" size="2xl">
               Button
             </Button>
           </Container>
@@ -41,7 +41,7 @@ const PrimaryButtons = () => {
   );
 };
 
-export default PrimaryButtons;
+export default SubtleButtons;
 
 const main = {
   backgroundColor: "#ffffff",

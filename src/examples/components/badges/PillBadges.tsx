@@ -7,36 +7,43 @@ import {
   Preview,
   Section,
 } from "@react-email/components";
-import { Badge } from "@mailingui/components";
+import { Badge, ThemeProvider } from "@mailingui/components";
+import { defaultTheme } from "@mailingui/themes";
 
 const PillBadges = () => (
   <Html>
     <Head />
     <Preview>Pill Badges</Preview>
     <Body style={main}>
-      <Container style={container}>
-        <Section style={{ textAlign: "center" as const }}>
-          <Badge variant="default" size="md" pill>
-            Badge
-          </Badge>
-          <span style={{ padding: 10 }} />
-          <Badge variant="danger" size="md" pill>
-            Badge
-          </Badge>
-          <span style={{ padding: 10 }} />
-          <Badge variant="success" size="md" pill>
-            Badge
-          </Badge>
-          <span style={{ padding: 10 }} />
-          <Badge variant="info" size="md" pill>
-            Badge
-          </Badge>
-          <span style={{ padding: 10 }} />
-          <Badge variant="warning" size="md" pill>
-            Badge
-          </Badge>
-        </Section>
-      </Container>
+      <ThemeProvider theme={defaultTheme}>
+        <Container style={container}>
+          <Section style={{ textAlign: "center" as const }}>
+            <Badge variant="default" size="md" pill>
+              Badge
+            </Badge>
+            <span style={{ padding: 10 }} />
+            <Badge variant="primary" size="md" pill>
+              Badge
+            </Badge>
+            <span style={{ padding: 10 }} />
+            <Badge variant="secondary" size="md" pill>
+              Badge
+            </Badge>
+            <span style={{ padding: 10 }} />
+            <Badge variant="danger" size="md" pill>
+              Badge
+            </Badge>
+            <span style={{ padding: 10 }} />
+            <Badge variant="success" size="md" pill>
+              Badge
+            </Badge>
+            <span style={{ padding: 10 }} />
+            <Badge variant="warning" size="md" pill>
+              Badge
+            </Badge>
+          </Section>
+        </Container>
+      </ThemeProvider>
     </Body>
   </Html>
 );

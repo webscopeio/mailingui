@@ -1,8 +1,10 @@
 import React, { CSSProperties, FC, ReactNode } from "react";
+import { useTheme } from "../ThemeProvider/ThemeProvider";
+import { type Variant } from "@mailingui/themes";
 
 interface BadgeProps {
-  variant: "default" | "danger" | "success" | "info" | "warning";
-  size?: "sm" | "md" | "lg";
+  variant?: Variant;
+  size?: keyof typeof sizes;
   dot?: boolean;
   pill?: boolean;
   noBorder?: boolean;
@@ -10,18 +12,21 @@ interface BadgeProps {
 }
 
 const Badge: FC<BadgeProps> = ({
-  variant,
+  variant = "default",
   size = "md",
   pill,
   dot,
   noBorder,
   children,
 }) => {
+  const { variants } = useTheme();
+
   return (
     <span
       style={{
-        border: noBorder ? "none" : "1px solid",
-        ...variants[variant],
+        border:
+          noBorder || !variants?.[variant]?.borderColor ? "none" : "1px solid",
+        ...variants?.[variant],
         ...sizes[size],
         borderRadius: pill ? 9999 : 4,
       }}
@@ -33,9 +38,9 @@ const Badge: FC<BadgeProps> = ({
             height: "6px",
             width: "6px",
             marginRight: "6px",
-            marginBottom: dotMarginBottom[size],
+            marginBottom: sizes[size].dotMarginBottom ?? "0px",
             borderRadius: "9999px",
-            backgroundColor: variants[variant].color,
+            backgroundColor: variants?.[variant]?.color,
           }}
         />
       ) : null}
@@ -44,52 +49,24 @@ const Badge: FC<BadgeProps> = ({
   );
 };
 
-const dotMarginBottom: Record<NonNullable<BadgeProps["size"]>, string> = {
-  sm: "1px",
-  md: "2px",
-  lg: "3px",
-};
-
-const sizes: Record<NonNullable<BadgeProps["size"]>, CSSProperties> = {
+const sizes: Record<
+  NonNullable<string>,
+  CSSProperties & { dotMarginBottom: CSSProperties["marginBottom"] }
+> = {
   sm: {
     padding: "2px 6px",
     fontSize: "12px",
+    dotMarginBottom: "1px",
   },
   md: {
     padding: "4px 10px",
     fontSize: "14px",
+    dotMarginBottom: "2px",
   },
   lg: {
     padding: "6px 12px",
     fontSize: "16px",
-  },
-};
-
-const variants: Record<BadgeProps["variant"], CSSProperties> = {
-  default: {
-    borderColor: "#ecedef",
-    backgroundColor: "#f9fafb",
-    color: "#4b5563",
-  },
-  danger: {
-    borderColor: "#fbe0e0",
-    backgroundColor: "#fef2f2",
-    color: "#b91c1c",
-  },
-  success: {
-    borderColor: "#d1e7dd",
-    backgroundColor: "#f0fdf4",
-    color: "#059669",
-  },
-  info: {
-    borderColor: "#dbeafe",
-    backgroundColor: "#eff6ff",
-    color: "#1e3a8a",
-  },
-  warning: {
-    borderColor: "#f4e7c1",
-    backgroundColor: "#fffbeb",
-    color: "#b45309",
+    dotMarginBottom: "3px",
   },
 };
 

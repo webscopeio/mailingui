@@ -7,36 +7,43 @@ import {
   Preview,
   Section,
 } from "@react-email/components";
-import { Badge } from "@mailingui/components";
+import { Badge, ThemeProvider } from "@mailingui/components";
+import { defaultTheme } from "@mailingui/themes";
 
 const MediumBadges = () => (
   <Html>
     <Head />
     <Preview>Medium Badges</Preview>
     <Body style={main}>
-      <Container style={container}>
-        <Section style={{ textAlign: "center" as const }}>
-          <Badge variant="default" size="md">
-            Badge
-          </Badge>
-          <span style={{ padding: 10 }} />
-          <Badge variant="danger" size="md">
-            Badge
-          </Badge>
-          <span style={{ padding: 10 }} />
-          <Badge variant="success" size="md">
-            Badge
-          </Badge>
-          <span style={{ padding: 10 }} />
-          <Badge variant="info" size="md">
-            Badge
-          </Badge>
-          <span style={{ padding: 10 }} />
-          <Badge variant="warning" size="md">
-            Badge
-          </Badge>
-        </Section>
-      </Container>
+      <ThemeProvider theme={defaultTheme}>
+        <Container style={container}>
+          <Section style={{ textAlign: "center" as const }}>
+            <Badge variant="default" size="md">
+              Badge
+            </Badge>
+            <span style={{ padding: 10 }} />
+            <Badge variant="primary" size="md">
+              Badge
+            </Badge>
+            <span style={{ padding: 10 }} />
+            <Badge variant="secondary" size="md">
+              Badge
+            </Badge>
+            <span style={{ padding: 10 }} />
+            <Badge variant="danger" size="md">
+              Badge
+            </Badge>
+            <span style={{ padding: 10 }} />
+            <Badge variant="success" size="md">
+              Badge
+            </Badge>
+            <span style={{ padding: 10 }} />
+            <Badge variant="warning" size="md">
+              Badge
+            </Badge>
+          </Section>
+        </Container>
+      </ThemeProvider>
     </Body>
   </Html>
 );
