@@ -16,8 +16,8 @@ The website is a [Next.js](https://nextjs.org/) project bootstrapped with [`crea
 
 ## Dependencies
 
-- Node.js - recommended version is the LTS 'Hydrogen' - `18.x.x`. (The table of releases: https://nodejs.org/en/download/releases)
-- npm - recommended version is the one described next to Node.js version. For example, recommended npm version for Node.js `18.16.0` is `9.5.1`.
+- **Node.js** - recommended version is the LTS 'Hydrogen' - `18.x.x`. (The table of releases: https://nodejs.org/en/download/releases)
+- **pnpm** - space efficient and faster adaptation of `npm`. The recommended version is `9.5.1`. Can be installed with npm via `npm install -g pnpm`.
 
 ## Installation
 
@@ -31,13 +31,13 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 First, install the dependencies:
 
 ```bash
-npm install
+pnpm i
 ```
 
 Then run the development server:
 
 ```bash
-npm run dev
+pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
