@@ -44,5 +44,5 @@ const main = {
 const container = {
   padding: "55px 0",
   textAlign: "center" as const,
-  width: 580,
+  maxWidth: 580,
 };
