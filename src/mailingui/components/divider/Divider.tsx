@@ -42,7 +42,7 @@ const Divider: FC<DividerProps> = ({
             <Hr
               style={{
                 border: "none",
-                borderBottom: `1px solid ${borderColor ?? defaultDividerColor}`,
+                borderTop: `1px solid ${borderColor ?? defaultDividerColor}`,
               }}
             />
           </Column>
@@ -58,7 +58,7 @@ const Divider: FC<DividerProps> = ({
             <Hr
               style={{
                 border: "none",
-                borderBottom: `1px solid ${borderColor ?? defaultDividerColor}`,
+                borderTop: `1px solid ${borderColor ?? defaultDividerColor}`,
               }}
             />
           </Column>
@@ -71,7 +71,7 @@ const Divider: FC<DividerProps> = ({
     <Hr
       style={{
         borderTop: `1px solid ${borderColor ?? defaultDividerColor}`,
-        margin: "20px",
+        margin: "20px 0",
         width: dividerWidth ?? "100%",
         ...styleProp,
       }}
