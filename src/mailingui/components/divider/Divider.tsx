@@ -1,5 +1,6 @@
 import React, { CSSProperties, FC, ReactNode } from "react";
 import { Hr, Section, Row, Column } from "@react-email/components";
+import { useTheme } from "../ThemeProvider/ThemeProvider";
 
 interface DividerProps {
   style?: CSSProperties;
@@ -17,6 +18,7 @@ const Divider: FC<DividerProps> = ({
   children,
 }) => {
   const defaultDividerColor = "#CBD5E1";
+  const { variants } = useTheme();
 
   const sectionBorder = {
     width: `${dividerWidth ? Math.round(dividerWidth * 0.4) : 450}px`,
@@ -42,13 +44,17 @@ const Divider: FC<DividerProps> = ({
             <Hr
               style={{
                 border: "none",
-                borderTop: `1px solid ${borderColor ?? defaultDividerColor}`,
+                borderTop: `1px solid ${
+                  borderColor ??
+                  variants?.secondary.borderColor ??
+                  defaultDividerColor
+                }`,
               }}
             />
           </Column>
           <Column
             style={{
-              color: textColor ?? "#64748B",
+              color: textColor ?? variants?.secondary.color ?? "#64748B",
               ...sectionCenter,
             }}
           >
@@ -58,7 +64,11 @@ const Divider: FC<DividerProps> = ({
             <Hr
               style={{
                 border: "none",
-                borderTop: `1px solid ${borderColor ?? defaultDividerColor}`,
+                borderTop: `1px solid ${
+                  borderColor ??
+                  variants?.secondary.borderColor ??
+                  defaultDividerColor
+                }`,
               }}
             />
           </Column>
@@ -70,7 +80,9 @@ const Divider: FC<DividerProps> = ({
   return (
     <Hr
       style={{
-        borderTop: `1px solid ${borderColor ?? defaultDividerColor}`,
+        borderTop: `1px solid ${
+          borderColor ?? variants?.secondary.borderColor ?? defaultDividerColor
+        }`,
         margin: "20px 0",
         width: dividerWidth ?? "100%",
         ...styleProp,

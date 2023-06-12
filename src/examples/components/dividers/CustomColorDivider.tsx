@@ -2,11 +2,11 @@ import * as React from "react";
 import { Body, Container, Head, Html, Preview } from "@react-email/components";
 import { Divider, Text } from "@mailingui/components";
 
-const DividerWithoutText = () => {
+const CustomColorDivider = () => {
   return (
     <Html>
       <Head />
-      <Preview>Divider Without Text</Preview>
+      <Preview>Custom Color Divider</Preview>
       <Body style={main}>
         <Container style={container}>
           <Divider dividerWidth={580} borderColor="#c1121f" textColor="#c1121f">
@@ -20,7 +20,7 @@ const DividerWithoutText = () => {
   );
 };
 
-export default DividerWithoutText;
+export default CustomColorDivider;
 
 const main = {
   backgroundColor: "#ffffff",
