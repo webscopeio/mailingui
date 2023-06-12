@@ -17,36 +17,36 @@ export default function EmojisWithBackground() {
       <Body style={main}>
         <Container style={container}>
           <Row>
-            <Column style={{ padding: "5px" }}>
+            <Column>
               <Emoji type="grinning-face" size={32} />
             </Column>
-            <Column style={{ padding: "5px" }}>
+            <Column>
               <Emoji type="grinning-face-with-sweat" size={32} />
             </Column>
-            <Column style={{ padding: "5px" }}>
+            <Column>
               <Emoji type="face-joy-tears" size={32} />
             </Column>
-            <Column style={{ padding: "5px" }}>
+            <Column>
               <Emoji type="slightly-smiling-face" size={32} />
             </Column>
-            <Column style={{ padding: "5px" }}>
+            <Column>
               <Emoji type="heart-eyes-face" size={32} />
             </Column>
           </Row>
           <Row>
-            <Column style={{ padding: "5px" }}>
+            <Column>
               <Emoji type="enraged-face" size={32} />
             </Column>
-            <Column style={{ padding: "5px" }}>
+            <Column>
               <Emoji type="sad-face" size={32} />
             </Column>
-            <Column style={{ padding: "5px" }}>
+            <Column>
               <Emoji type="sobbing-face" size={32} />
             </Column>
-            <Column style={{ padding: "5px" }}>
+            <Column>
               <Emoji type="star-struck-face" size={32} />
             </Column>
-            <Column style={{ padding: "5px" }}>
+            <Column>
               <Emoji type="sunglasses-face" size={32} />
             </Column>
           </Row>
