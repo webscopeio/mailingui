@@ -8,3 +8,4 @@ export {
   useTheme,
 } from "./ThemeProvider/ThemeProvider";
 export { Text } from "./texts/Text";
+export { Emoji } from "./emoji/Emoji";
