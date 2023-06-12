@@ -3,11 +3,12 @@ import { Img } from "@react-email/components";
 
 interface EmojiProps {
   type: EmojiType;
+  size?: number;
   bg?: boolean;
 }
 
-const Emoji: FC<EmojiProps> = ({ type, bg }) => {
-  const size = bg ? "72px" : "44px";
+const Emoji: FC<EmojiProps> = ({ type, size: sizeProp, bg }) => {
+  const size = sizeProp ?? (bg ? "72px" : "44px");
 
   return (
     <Img
