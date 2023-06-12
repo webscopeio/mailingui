@@ -4,15 +4,24 @@ import { Text as ReactEmailText } from "@react-email/components";
 type RootProps = React.ComponentPropsWithoutRef<"p">;
 
 export interface TextProps extends RootProps {
+  centered?: boolean;
   children?: React.ReactNode;
 }
 
-const Text: React.FC<TextProps> = ({ style, children, ...props }) => {
+const Paragraph: React.FC<TextProps> = ({
+  style,
+  centered,
+  children,
+  ...props
+}) => {
   return (
-    <ReactEmailText style={style} {...props}>
+    <ReactEmailText
+      style={{ textAlign: centered ? "center" : undefined, ...style }}
+      {...props}
+    >
       {children}
     </ReactEmailText>
   );
 };
 
-export { Text };
+export { Paragraph };
