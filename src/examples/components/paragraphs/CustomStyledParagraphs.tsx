@@ -2,22 +2,22 @@ import * as React from "react";
 import { Body, Container, Head, Html, Preview } from "@react-email/components";
 import { Paragraph } from "@mailingui/components";
 
-const CustomStyledParagraph = () => {
+const CustomStyledParagraphs = () => {
   return (
     <Html>
       <Head />
       <Preview>Custom Styled Paragraph</Preview>
       <Body style={main}>
         <Container style={container}>
-          <Paragraph style={{ fontSize: "22px", margin: "60px" }}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          <Paragraph>
+            We&apos;ll be here to help you with any step along the way. You can
+            find answers to most questions and get in touch with us on our
+            support site.
           </Paragraph>
-          <Paragraph style={{ fontSize: "22px", margin: "60px" }}>
-            Second centered Paragraph Component. Sed ut perspiciatis unde omnis
-            iste natus error sit voluptatem accusantium doloremque laudantium,
-            totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et
-            quasi architecto beatae vitae dicta sunt explicabo.
+          <Paragraph>— Your Company Team</Paragraph>
+          <Paragraph size="sm" style={{ color: "gray" }}>
+            You&apos;re receiving this email because of your subscription to
+            weekly emails. To unsubscribe, click here.
           </Paragraph>
         </Container>
       </Body>
@@ -25,7 +25,7 @@ const CustomStyledParagraph = () => {
   );
 };
 
-export default CustomStyledParagraph;
+export default CustomStyledParagraphs;
 
 const main = {
   backgroundColor: "#ffffff",
