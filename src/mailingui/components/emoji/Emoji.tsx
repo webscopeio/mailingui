@@ -1,16 +1,17 @@
 import React, { FC } from "react";
-import { Img } from "@react-email/components";
+import { Img, Link } from "@react-email/components";
 
 interface EmojiProps {
   type: EmojiType;
-  size?: number;
+  small?: boolean;
+  href?: string;
   bg?: boolean;
 }
 
-const Emoji: FC<EmojiProps> = ({ type, size: sizeProp, bg }) => {
-  const size = sizeProp ?? (bg ? "72px" : "44px");
+const Emoji: FC<EmojiProps> = ({ type, href, small, bg }) => {
+  const size = small ? "32px" : bg ? "72px" : "44px";
 
-  return (
+  const emoji = (
     <Img
       style={{
         height: size,
@@ -21,6 +22,12 @@ const Emoji: FC<EmojiProps> = ({ type, size: sizeProp, bg }) => {
       alt={type}
     />
   );
+
+  if (href) {
+    return <Link href={href}>{emoji}</Link>;
+  }
+
+  return emoji;
 };
 
 type EmojiType =

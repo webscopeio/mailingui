@@ -9,11 +9,11 @@ import {
 } from "@react-email/components";
 import { Emoji } from "@mailingui/components";
 
-export default function EmojisWithoutBackground() {
+export default function AllEmojis() {
   return (
     <Html>
       <Head />
-      <Preview>Emojis Without Background</Preview>
+      <Preview>All Emojis</Preview>
       <Body style={main}>
         <Container style={container}>
           <Row>

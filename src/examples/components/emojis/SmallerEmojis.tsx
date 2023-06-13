@@ -13,109 +13,75 @@ export default function EmojisWithBackground() {
   return (
     <Html>
       <Head />
-      <Preview>Emojis With Background</Preview>
+      <Preview>Smaller Emojis</Preview>
       <Body style={main}>
         <Container style={container}>
           <Row>
             <Column>
-              <Emoji type="grinning-face" size={32} />
+              <Emoji type="partying-face" small />
             </Column>
             <Column>
-              <Emoji type="grinning-face-with-sweat" size={32} />
+              <Emoji type="sneezing-face" small />
             </Column>
             <Column>
-              <Emoji type="face-joy-tears" size={32} />
+              <Emoji type="cold-face" small />
             </Column>
             <Column>
-              <Emoji type="slightly-smiling-face" size={32} />
+              <Emoji type="hot-face" small />
             </Column>
             <Column>
-              <Emoji type="heart-eyes-face" size={32} />
-            </Column>
-          </Row>
-          <Row>
-            <Column>
-              <Emoji type="enraged-face" size={32} />
-            </Column>
-            <Column>
-              <Emoji type="sad-face" size={32} />
-            </Column>
-            <Column>
-              <Emoji type="sobbing-face" size={32} />
-            </Column>
-            <Column>
-              <Emoji type="star-struck-face" size={32} />
-            </Column>
-            <Column>
-              <Emoji type="sunglasses-face" size={32} />
+              <Emoji type="smiling-face" small />
             </Column>
           </Row>
           <Row>
             <Column>
-              <Emoji type="partying-face" size={32} />
+              <Emoji type="shushing-face" small />
             </Column>
             <Column>
-              <Emoji type="sneezing-face" size={32} />
+              <Emoji type="waving-hand" small />
             </Column>
             <Column>
-              <Emoji type="cold-face" size={32} />
+              <Emoji type="handshake" small />
             </Column>
             <Column>
-              <Emoji type="hot-face" size={32} />
+              <Emoji type="heart-hands" small />
             </Column>
             <Column>
-              <Emoji type="smiling-face" size={32} />
-            </Column>
-          </Row>
-          <Row>
-            <Column>
-              <Emoji type="shushing-face" size={32} />
-            </Column>
-            <Column>
-              <Emoji type="waving-hand" size={32} />
-            </Column>
-            <Column>
-              <Emoji type="handshake" size={32} />
-            </Column>
-            <Column>
-              <Emoji type="heart-hands" size={32} />
-            </Column>
-            <Column>
-              <Emoji type="sleeping-face" size={32} />
+              <Emoji type="sleeping-face" small />
             </Column>
           </Row>
           <Row>
             <Column>
-              <Emoji type="sun-behind-rain-cloud" size={32} />
+              <Emoji type="sun-behind-rain-cloud" small />
             </Column>
             <Column>
-              <Emoji type="sun-behind-small-cloud" size={32} />
+              <Emoji type="sun-behind-small-cloud" small />
             </Column>
             <Column>
-              <Emoji type="snowflake" size={32} />
+              <Emoji type="snowflake" small />
             </Column>
             <Column>
-              <Emoji type="cloud-with-lightning-and-rain" size={32} />
+              <Emoji type="cloud-with-lightning-and-rain" small />
             </Column>
             <Column>
-              <Emoji type="sun" size={32} />
+              <Emoji type="sun" small />
             </Column>
           </Row>
           <Row>
             <Column>
-              <Emoji type="folded-hands" size={32} />
+              <Emoji type="folded-hands" small />
             </Column>
             <Column>
-              <Emoji type="thumbs-up" size={32} />
+              <Emoji type="thumbs-up" small />
             </Column>
             <Column>
-              <Emoji type="thumbs-down" size={32} />
+              <Emoji type="thumbs-down" small />
             </Column>
             <Column>
-              <Emoji type="red-heart" size={32} />
+              <Emoji type="red-heart" small />
             </Column>
             <Column>
-              <Emoji type="star" size={32} />
+              <Emoji type="star" small />
             </Column>
           </Row>
         </Container>
@@ -132,7 +98,7 @@ const main = {
 };
 
 const container = {
-  padding: "55px 0",
+  padding: "45px 0",
   textAlign: "center" as const,
   maxWidth: 350,
 };

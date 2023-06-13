@@ -67,57 +67,6 @@ export default function EmojisWithBackground() {
               <Emoji type="smiling-face" bg />
             </Column>
           </Row>
-          <Row>
-            <Column style={{ padding: "5px" }}>
-              <Emoji type="shushing-face" bg />
-            </Column>
-            <Column style={{ padding: "5px" }}>
-              <Emoji type="waving-hand" bg />
-            </Column>
-            <Column style={{ padding: "5px" }}>
-              <Emoji type="handshake" bg />
-            </Column>
-            <Column style={{ padding: "5px" }}>
-              <Emoji type="heart-hands" bg />
-            </Column>
-            <Column style={{ padding: "5px" }}>
-              <Emoji type="sleeping-face" bg />
-            </Column>
-          </Row>
-          <Row>
-            <Column style={{ padding: "5px" }}>
-              <Emoji type="sun-behind-rain-cloud" bg />
-            </Column>
-            <Column style={{ padding: "5px" }}>
-              <Emoji type="sun-behind-small-cloud" bg />
-            </Column>
-            <Column style={{ padding: "5px" }}>
-              <Emoji type="snowflake" bg />
-            </Column>
-            <Column style={{ padding: "5px" }}>
-              <Emoji type="cloud-with-lightning-and-rain" bg />
-            </Column>
-            <Column style={{ padding: "5px" }}>
-              <Emoji type="sun" bg />
-            </Column>
-          </Row>
-          <Row>
-            <Column style={{ padding: "5px" }}>
-              <Emoji type="folded-hands" bg />
-            </Column>
-            <Column style={{ padding: "5px" }}>
-              <Emoji type="thumbs-up" bg />
-            </Column>
-            <Column style={{ padding: "5px" }}>
-              <Emoji type="thumbs-down" bg />
-            </Column>
-            <Column style={{ padding: "5px" }}>
-              <Emoji type="red-heart" bg />
-            </Column>
-            <Column style={{ padding: "5px" }}>
-              <Emoji type="star" bg />
-            </Column>
-          </Row>
         </Container>
       </Body>
     </Html>
@@ -132,7 +81,7 @@ const main = {
 };
 
 const container = {
-  padding: "55px 0",
+  padding: "40px 0",
   textAlign: "center" as const,
   maxWidth: 400,
 };
