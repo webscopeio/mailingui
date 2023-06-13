@@ -1,6 +1,11 @@
 import * as React from "react";
 import { Body, Container, Head, Html, Preview } from "@react-email/components";
-import { Divider, Text, Theme, ThemeProvider } from "@mailingui/components";
+import {
+  Divider,
+  Paragraph,
+  Theme,
+  ThemeProvider,
+} from "@mailingui/components";
 import { defaultTheme } from "@mailingui/themes";
 
 const ThemedDivider = () => {
@@ -23,7 +28,7 @@ const ThemedDivider = () => {
         <ThemeProvider theme={theme}>
           <Container style={container}>
             <Divider dividerWidth={580}>Divider</Divider>
-            <Text>Some text</Text>
+            <Paragraph>Some text</Paragraph>
             <Divider />
           </Container>
         </ThemeProvider>

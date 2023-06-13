@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Body, Container, Head, Html, Preview } from "@react-email/components";
-import { Divider, Text } from "@mailingui/components";
+import { Divider, Paragraph } from "@mailingui/components";
 
 const DividerWithoutText = () => {
   return (
@@ -9,9 +9,9 @@ const DividerWithoutText = () => {
       <Preview>Divider Without Text</Preview>
       <Body style={main}>
         <Container style={container}>
-          <Text>Text above</Text>
+          <Paragraph>Text above</Paragraph>
           <Divider />
-          <Text>Text below</Text>
+          <Paragraph>Text below</Paragraph>
         </Container>
       </Body>
     </Html>

@@ -8,7 +8,12 @@ export interface TextProps extends RootProps {
   children?: React.ReactNode;
 }
 
-const Text: React.FC<TextProps> = ({ style, centered, children, ...props }) => {
+const Paragraph: React.FC<TextProps> = ({
+  style,
+  centered,
+  children,
+  ...props
+}) => {
   return (
     <ReactEmailText
       style={{ textAlign: centered ? "center" : undefined, ...style }}
@@ -19,4 +24,4 @@ const Text: React.FC<TextProps> = ({ style, centered, children, ...props }) => {
   );
 };
 
-export { Text };
+export { Paragraph };

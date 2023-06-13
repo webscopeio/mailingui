@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Body, Container, Head, Html, Preview } from "@react-email/components";
-import { Text } from "@mailingui/components";
+import { Paragraph } from "@mailingui/components";
 
 const CustomStyledParagraph = () => {
   return (
@@ -9,16 +9,16 @@ const CustomStyledParagraph = () => {
       <Preview>Custom Styled Paragraph</Preview>
       <Body style={main}>
         <Container style={container}>
-          <Text style={{ fontSize: "22px", margin: "60px" }}>
+          <Paragraph style={{ fontSize: "22px", margin: "60px" }}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </Text>
-          <Text style={{ fontSize: "22px", margin: "60px" }}>
+          </Paragraph>
+          <Paragraph style={{ fontSize: "22px", margin: "60px" }}>
             Second centered Paragraph Component. Sed ut perspiciatis unde omnis
             iste natus error sit voluptatem accusantium doloremque laudantium,
             totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et
             quasi architecto beatae vitae dicta sunt explicabo.
-          </Text>
+          </Paragraph>
         </Container>
       </Body>
     </Html>
