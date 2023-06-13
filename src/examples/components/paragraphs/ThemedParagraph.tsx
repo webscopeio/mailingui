@@ -11,15 +11,15 @@ const StandardParagraph = () => {
       ...defaultTheme.variants,
       primary: {
         ...defaultTheme.variants.primary,
-        color: "#3a0ca3",
+        color: "#000000",
+      },
+      secondary: {
+        ...defaultTheme.variants.secondary,
+        color: "#a7abad",
       },
       success: {
         ...defaultTheme.variants.success,
-        color: "#38b000",
-      },
-      warning: {
-        ...defaultTheme.variants.warning,
-        color: "#ff8c00",
+        color: "#2737bb",
       },
     },
   };
@@ -30,26 +30,17 @@ const StandardParagraph = () => {
       <Body style={main}>
         <ThemeProvider theme={theme}>
           <Container style={container}>
+            <Paragraph variant="success" size="lg">
+              You are successfully subscribed to our newsletter!
+            </Paragraph>
             <Paragraph variant="primary">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
-              vestibulum dolor quis aliquet posuere. Donec purus felis, faucibus
-              quis congue venenatis, volutpat vitae enim. Quisque eu ex
-              faucibus, vestibulum neque et, rutrum libero. Sed condimentum
-              efficitur est, sit amet interdum quam tincidunt at.
+              We hope you will enjoy our content. If you have any questions,
+              please contant us on our website. To keep your account secure,
+              please don&apos;t forward this email to anyone. See our Help
+              Center for more security tips.
             </Paragraph>
-            <Paragraph variant="success">
-              Ut finibus leo eget tincidunt fringilla. Cras porta porta magna eu
-              sollicitudin. In nec finibus mi. Sed risus dui, dapibus nec
-              dignissim a, luctus id diam. Maecenas egestas magna at justo
-              consequat pretium.
-            </Paragraph>
-            <Paragraph variant="warning">
-              Pellentesque et justo sagittis, efficitur lectus sit amet,
-              pellentesque sem. Nulla luctus odio quis nulla ornare
-              sollicitudin. Ut rutrum nulla non posuere varius. Vivamus congue
-              interdum sollicitudin. Vivamus a varius turpis. Phasellus risus
-              ligula, iaculis eu quam quis, imperdiet lacinia justo. Cras purus
-              massa, pretium et molestie a, commodo ut dui.
+            <Paragraph variant="secondary">
+              408 Warren Rd - San Mateo, CA 94402
             </Paragraph>
           </Container>
         </ThemeProvider>
