@@ -3,7 +3,7 @@ import { Body, Container, Head, Html, Preview } from "@react-email/components";
 import { Divider, Text, Theme, ThemeProvider } from "@mailingui/components";
 import { defaultTheme } from "@mailingui/themes";
 
-const ThemedDivider = () => {
+const ThemedDividerWithText = () => {
   const theme: Theme = {
     ...defaultTheme,
     variants: {
@@ -18,13 +18,23 @@ const ThemedDivider = () => {
   return (
     <Html>
       <Head />
-      <Preview>Themed Diver</Preview>
+      <Preview>Themed Divider With Text</Preview>
       <Body style={main}>
         <ThemeProvider theme={theme}>
           <Container style={container}>
-            <Divider dividerWidth={580}>Divider</Divider>
-            <Text>Some text</Text>
-            <Divider />
+            <Text>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat.
+            </Text>
+            <Divider>Divider</Divider>
+            <Text>
+              Duis aute irure dolor in reprehenderit in voluptate velit esse
+              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+              cupidatat non proident, sunt in culpa qui officia deserunt mollit
+              anim id est laborum.
+            </Text>
           </Container>
         </ThemeProvider>
       </Body>
@@ -32,7 +42,7 @@ const ThemedDivider = () => {
   );
 };
 
-export default ThemedDivider;
+export default ThemedDividerWithText;
 
 const main = {
   backgroundColor: "#ffffff",
