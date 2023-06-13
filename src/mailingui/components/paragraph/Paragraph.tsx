@@ -26,7 +26,7 @@ const Paragraph: React.FC<TextProps> = ({
   return (
     <ReactEmailText
       style={{
-        textAlign: centered ? "center" : undefined,
+        textAlign: centered ? "center" : "inherit",
         ...(variant ? { color: variants?.[variant]?.color } : null),
         ...sizes[size],
         fontFamily,
