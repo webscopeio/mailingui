@@ -21,11 +21,11 @@ const Divider: FC<DividerProps> = ({
   const { variants } = useTheme();
 
   const sectionBorder = {
-    width: `${dividerWidth ? Math.round(dividerWidth * 0.4) : 450}px`,
+    width: `${dividerWidth ? Math.round(dividerWidth * 0.4) : 232}px`,
   };
 
   const sectionCenter: CSSProperties = {
-    width: `${dividerWidth ? Math.round(dividerWidth * 0.2) : 150}px`,
+    width: `${dividerWidth ? Math.round(dividerWidth * 0.2) : 116}px`,
     textAlign: "center",
     fontSize: "14px",
   };
