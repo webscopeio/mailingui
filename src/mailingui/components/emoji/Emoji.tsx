@@ -60,9 +60,19 @@ type EmojiType =
   | "thumbs-up"
   | "thumbs-down"
   | "red-heart"
-  | "star";
+  | "star"
+  | "neutral-face"
+  | "confounded-face";
 
 const emojiImgMapping: Record<EmojiType, Record<"noBg" | "bg", string>> = {
+  "confounded-face": {
+    noBg: "https://i.ibb.co/W3xxzyp/confounded-face.png",
+    bg: "https://i.ibb.co/9hMPjfc/confounded-face-bg.png",
+  },
+  "neutral-face": {
+    noBg: "https://i.ibb.co/qy348qN/neutral-face.png",
+    bg: "https://i.ibb.co/Rgw5Sc8/neutral-face-bg.png",
+  },
   star: {
     noBg: "https://i.ibb.co/8X0QM4Y/star.png",
     bg: "https://i.ibb.co/VLpF26j/star-bg.png",
