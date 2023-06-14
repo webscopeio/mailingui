@@ -2,30 +2,37 @@ import React, { CSSProperties, FC, ReactNode } from "react";
 import { Hr, Section, Row, Column } from "@react-email/components";
 import { useTheme } from "../ThemeProvider/ThemeProvider";
 
-interface DividerProps {
+type DividerBaseProps = {
   style?: CSSProperties;
   borderColor?: CSSProperties["borderColor"];
   textColor?: CSSProperties["color"];
-  dividerWidth?: number;
-  children?: ReactNode;
-}
+};
+
+type ConditionalDividerProps =
+  | {
+      children: ReactNode;
+      baseWidth?: number;
+    }
+  | { children?: never; baseWidth?: never };
+
+type DividerProps = DividerBaseProps & ConditionalDividerProps;
 
 const Divider: FC<DividerProps> = ({
   style: styleProp,
   borderColor,
   textColor,
-  dividerWidth,
+  baseWidth = 580,
   children,
 }) => {
   const defaultDividerColor = "#CBD5E1";
   const { variants } = useTheme();
 
   const sectionBorder = {
-    width: `${dividerWidth ? Math.round(dividerWidth * 0.4) : 450}px`,
+    width: `${Math.round(baseWidth * 0.4)}px`,
   };
 
   const sectionCenter: CSSProperties = {
-    width: `${dividerWidth ? Math.round(dividerWidth * 0.2) : 150}px`,
+    width: `${Math.round(baseWidth * 0.2)}px`,
     textAlign: "center",
     fontSize: "14px",
   };
@@ -84,7 +91,7 @@ const Divider: FC<DividerProps> = ({
           borderColor ?? variants?.secondary.borderColor ?? defaultDividerColor
         }`,
         margin: "20px 0",
-        width: dividerWidth ?? "100%",
+        width: "100%",
         ...styleProp,
       }}
     />

@@ -9,11 +9,19 @@ const CustomColorDivider = () => {
       <Preview>Custom Color Divider</Preview>
       <Body style={main}>
         <Container style={container}>
-          <Divider dividerWidth={580} borderColor="#c1121f" textColor="#c1121f">
-            Divider
-          </Divider>
-          <Text>Some text</Text>
+          <Text>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat.
+          </Text>
           <Divider borderColor="#c1121f" />
+          <Text>
+            Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+            cupidatat non proident, sunt in culpa qui officia deserunt mollit
+            anim id est laborum.
+          </Text>
         </Container>
       </Body>
     </Html>
@@ -32,5 +40,5 @@ const main = {
 const container = {
   padding: "55px 0",
   textAlign: "center" as const,
-  width: 580,
+  maxWidth: 580,
 };
