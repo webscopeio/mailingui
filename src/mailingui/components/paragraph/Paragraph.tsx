@@ -41,20 +41,20 @@ const Paragraph: React.FC<TextProps> = ({
 
 const sizes: Record<"xs" | "sm" | "md" | "lg", CSSProperties> = {
   xs: {
-    fontSize: 10,
+    fontSize: 12,
     lineHeight: "16px",
   },
   sm: {
-    fontSize: 12,
+    fontSize: 14,
     lineHeight: "20px",
   },
   md: {
-    fontSize: 14,
+    fontSize: 16,
     lineHeight: "24px",
   },
   lg: {
     fontSize: 18,
-    lineHeight: "32px",
+    lineHeight: "28px",
   },
 };
 
