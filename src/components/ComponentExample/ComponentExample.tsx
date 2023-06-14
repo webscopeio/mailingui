@@ -14,6 +14,7 @@ export type ComponentExampleProps = {
   source: string;
   markup: string;
   plainText: string;
+  previewMode?: boolean;
 };
 
 export const ComponentExample = ({
@@ -23,12 +24,13 @@ export const ComponentExample = ({
   source,
   markup,
   plainText,
+  previewMode = false,
 }: ComponentExampleProps) => {
   const [code, setCode] = React.useState("");
-  const [expanded, setExpanded] = React.useState(false);
+  const [expanded, setExpanded] = React.useState(!previewMode ? false : true);
 
   return (
-    <div className="space-y-3">
+    <div className={cn("space-y-3", previewMode && "h-full w-full")}>
       <Tabs defaultValue="preview" orientation="horizontal">
         <div className="flex items-center justify-between">
           <h3 className="text-xl font-semibold text-neutral-500">
@@ -60,7 +62,10 @@ export const ComponentExample = ({
               },
             }}
             handleClasses={{
-              right: "hidden sm:flex items-center bg-black",
+              right: cn(
+                "hidden sm:flex items-center bg-black",
+                previewMode && "sm:hidden"
+              ),
             }}
             handleComponent={{
               right: <div className="h-8 w-1.5 rounded-full bg-dark-100" />,
@@ -69,7 +74,11 @@ export const ComponentExample = ({
             <div>
               <iframe
                 className="w-full rounded-md"
-                style={{ height: getIframeHeight(type) }}
+                style={{
+                  // We need to set this to full width
+                  // And scroll on overflow
+                  height: previewMode ? "100vh" : getIframeHeight(type),
+                }}
                 id={id}
                 title={id}
                 srcDoc={html}

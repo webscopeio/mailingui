@@ -1,3 +1,4 @@
+export { BackIcon } from "./BackIcon";
 export { CheckIcon } from "./CheckIcon";
 export { CodeIcon } from "./CodeIcon";
 export { CopyIcon } from "./CopyIcon";
