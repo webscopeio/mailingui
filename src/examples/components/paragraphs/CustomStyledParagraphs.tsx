@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Body, Container, Head, Html, Preview } from "@react-email/components";
-import { Paragraph } from "@mailingui/components";
+import { Text } from "@mailingui/components";
 
 const CustomStyledParagraphs = () => {
   return (
@@ -9,16 +9,16 @@ const CustomStyledParagraphs = () => {
       <Preview>Custom Styled Paragraph</Preview>
       <Body style={main}>
         <Container style={container}>
-          <Paragraph>
+          <Text>
             We&apos;ll be here to help you with any step along the way. You can
             find answers to most questions and get in touch with us on our
             support site.
-          </Paragraph>
-          <Paragraph>— Your Company Team</Paragraph>
-          <Paragraph size="sm" style={{ color: "gray" }}>
+          </Text>
+          <Text>— Your Company Team</Text>
+          <Text size="sm" style={{ color: "gray" }}>
             You&apos;re receiving this email because of your subscription to
             weekly emails. To unsubscribe, click here.
-          </Paragraph>
+          </Text>
         </Container>
       </Body>
     </Html>

@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Body, Container, Head, Html, Preview } from "@react-email/components";
-import { Paragraph } from "@mailingui/components";
+import { Text } from "@mailingui/components";
 
 const DifferentSizedParagraphs = () => {
   return (
@@ -9,35 +9,35 @@ const DifferentSizedParagraphs = () => {
       <Preview>Different Sized Paragraphs</Preview>
       <Body style={main}>
         <Container style={container}>
-          <Paragraph size="xs">
+          <Text size="xs">
             Pellentesque et justo sagittis, efficitur lectus sit amet,
             pellentesque sem. Nulla luctus odio quis nulla ornare sollicitudin.
             Ut rutrum nulla non posuere varius. Vivamus congue interdum
             sollicitudin. Vivamus a varius turpis. Phasellus risus ligula,
             iaculis eu quam quis, imperdiet lacinia justo. Cras purus massa,
             pretium et molestie a, commodo ut dui.
-          </Paragraph>
-          <Paragraph size="sm">
+          </Text>
+          <Text size="sm">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
             aliquip ex ea commodo consequat. Duis aute irure dolor in
             reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
             pariatur.
-          </Paragraph>
-          <Paragraph size="md">
+          </Text>
+          <Text size="md">
             Sed ut perspiciatis unde omnis iste natus error sit voluptatem
             accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
             quae ab illo inventore veritatis et quasi architecto beatae vitae
             dicta sunt explicabo.
-          </Paragraph>
-          <Paragraph size="lg">
+          </Text>
+          <Text size="lg">
             Suspendisse iaculis ex enim, sit amet iaculis diam bibendum non. Ut
             in lectus et nibh interdum bibendum eget at odio. Nullam volutpat
             consequat mi, id luctus eros iaculis id. Mauris lacinia est
             fermentum, tincidunt tortor ut, ultrices ligula. Suspendisse sit
             amet massa et est sodales dictum ac ac ipsum.
-          </Paragraph>
+          </Text>
         </Container>
       </Body>
     </Html>

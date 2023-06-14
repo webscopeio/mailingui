@@ -13,7 +13,7 @@ export interface TextProps extends RootProps {
   children?: React.ReactNode;
 }
 
-const Paragraph: React.FC<TextProps> = ({
+const Text: React.FC<TextProps> = ({
   style,
   centered,
   variant,
@@ -58,4 +58,4 @@ const sizes: Record<"xs" | "sm" | "md" | "lg", CSSProperties> = {
   },
 };
 
-export { Paragraph };
+export { Text };

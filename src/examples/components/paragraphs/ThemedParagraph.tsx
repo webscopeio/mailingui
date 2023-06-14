@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Body, Container, Head, Html, Preview } from "@react-email/components";
-import { Paragraph, ThemeProvider } from "@mailingui/components";
+import { Text, ThemeProvider } from "@mailingui/components";
 import { defaultTheme, type Theme } from "@mailingui/themes";
 
 const StandardParagraph = () => {
@@ -30,18 +30,16 @@ const StandardParagraph = () => {
       <Body style={main}>
         <ThemeProvider theme={theme}>
           <Container style={container}>
-            <Paragraph variant="success" size="lg">
+            <Text variant="success" size="lg">
               You are successfully subscribed to our newsletter!
-            </Paragraph>
-            <Paragraph variant="primary">
+            </Text>
+            <Text variant="primary">
               We hope you will enjoy our content. If you have any questions,
               please contant us on our website. To keep your account secure,
               please don&apos;t forward this email to anyone. See our Help
               Center for more security tips.
-            </Paragraph>
-            <Paragraph variant="secondary">
-              408 Warren Rd - San Mateo, CA 94402
-            </Paragraph>
+            </Text>
+            <Text variant="secondary">408 Warren Rd - San Mateo, CA 94402</Text>
           </Container>
         </ThemeProvider>
       </Body>

@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Body, Container, Head, Html, Preview } from "@react-email/components";
-import { Divider, Paragraph } from "@mailingui/components";
+import { Divider, Text } from "@mailingui/components";
 
 const CustomColorDivider = () => {
   return (
@@ -12,7 +12,7 @@ const CustomColorDivider = () => {
           <Divider dividerWidth={580} borderColor="#c1121f" textColor="#c1121f">
             Divider
           </Divider>
-          <Paragraph>Some text</Paragraph>
+          <Text>Some text</Text>
           <Divider borderColor="#c1121f" />
         </Container>
       </Body>

@@ -8,4 +8,4 @@ export {
   type Theme,
   useTheme,
 } from "./ThemeProvider/ThemeProvider";
-export { Paragraph } from "./paragraph/Paragraph";
+export { Text } from "./text/Text";
