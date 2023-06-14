@@ -28,7 +28,7 @@ const ThemedDividerWithText = () => {
               enim ad minim veniam, quis nostrud exercitation ullamco laboris
               nisi ut aliquip ex ea commodo consequat.
             </Text>
-            <Divider baseWidth={580}>Divider</Divider>
+            <Divider baseWidth={440}>Divider</Divider>
             <Text>
               Duis aute irure dolor in reprehenderit in voluptate velit esse
               cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
@@ -54,5 +54,5 @@ const main = {
 const container = {
   padding: "55px 0",
   textAlign: "center" as const,
-  maxWidth: 580,
+  maxWidth: 440,
 };
