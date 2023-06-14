@@ -22,7 +22,7 @@ const ThemedDivider = () => {
       <Body style={main}>
         <ThemeProvider theme={theme}>
           <Container style={container}>
-            <Divider dividerWidth={580}>Divider</Divider>
+            <Divider baseWidth={580}>Divider</Divider>
             <Text>Some text</Text>
             <Divider />
           </Container>
