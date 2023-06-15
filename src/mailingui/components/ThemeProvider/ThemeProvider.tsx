@@ -1,3 +1,5 @@
+"use client";
+
 import React, { createContext, FC, useContext, useState } from "react";
 import { type Theme } from "@mailingui/themes";
 
@@ -12,7 +14,7 @@ const ThemeProvider: FC<ThemeProviderProps> = ({
   theme: themeProp,
   children,
 }) => {
-  const [theme, _setTheme] = useState<Theme>(themeProp);
+  const [theme] = useState<Theme>(themeProp);
 
   return (
     <ThemeContext.Provider value={theme}>{children}</ThemeContext.Provider>
