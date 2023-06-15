@@ -72,7 +72,7 @@ const List: FC<ListProps> = ({
 };
 
 type ListItemProps = SharedProps & {
-  title?: string;
+  title?: ReactNode;
 };
 
 const ListItem: FC<ListItemProps> = ({
