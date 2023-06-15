@@ -76,7 +76,7 @@ type ListItemProps = SharedProps & {
 
 const ListItem: FC<ListItemProps> = ({
   style,
-  size: sizeProp,
+  size,
   title,
   centered,
   titleStyle,
@@ -106,7 +106,7 @@ const ListItem: FC<ListItemProps> = ({
       {title ? (
         <Text
           centered={centered ?? centeredContext}
-          size={titleSize ?? titleSizeContext ?? sizeProp ?? sizeContext}
+          size={titleSize ?? titleSizeContext ?? size ?? sizeContext}
           style={{
             fontWeight: 700,
             margin: 0,
@@ -121,7 +121,7 @@ const ListItem: FC<ListItemProps> = ({
       ) : null}
       <Text
         centered={centered ?? centeredContext}
-        size={sizeProp ?? sizeContext}
+        size={size ?? sizeContext}
         style={{
           margin: 0,
           marginBottom: "24px",
