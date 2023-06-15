@@ -1,4 +1,4 @@
-import { readFileSync } from "fs";
+import { readFileSync, readdirSync } from "fs";
 import { join } from "path";
 import { render } from "@react-email/render";
 import { format } from "prettier";
@@ -47,3 +47,17 @@ const getPreviewData = async (id: string) => {
     plainText,
   };
 };
+
+const getFiles = () => {
+  const CONTENT_DIR = "src/emails";
+  const typePath = join(process.cwd(), CONTENT_DIR);
+  const files = readdirSync(typePath);
+  return files.map((file) => ({
+    id: file.replace(/.tsx/, ""),
+  }));
+};
+
+export function generateStaticParams() {
+  const files = getFiles();
+  return files.map(({ id }) => ({ id }));
+}
