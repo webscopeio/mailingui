@@ -10,4 +10,15 @@ export {
 } from "./ThemeProvider/ThemeProvider";
 export { Text, type TextProps } from "./text/Text";
 export { Emoji } from "./emoji/Emoji";
-export * as List from "./list/List";
+export {
+  ListRoot,
+  ListItem,
+  ListItemTitle,
+  ListItemContent,
+  type ListRootProps,
+} from "./list/List";
+export {
+  BulletList,
+  BulletListItem,
+  type BulletListProps,
+} from "./list/BulletList";

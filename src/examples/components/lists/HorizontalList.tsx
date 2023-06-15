@@ -1,6 +1,11 @@
 import * as React from "react";
 import { Body, Container, Head, Html, Preview } from "@react-email/components";
-import { List } from "@mailingui/components";
+import {
+  ListRoot,
+  ListItem,
+  ListItemTitle,
+  ListItemContent,
+} from "@mailingui/components";
 
 export default function CombinedLists() {
   return (
@@ -9,23 +14,26 @@ export default function CombinedLists() {
       <Preview>Centered Paragraph</Preview>
       <Body style={main}>
         <Container style={container}>
-          <List.Root horizontal>
-            <List.Item
-              title="USWNT 2022/23 Stadium Home"
-              style={{ paddingRight: "32px" }}
-            >
-              Women&apos;s Nike Dri-FIT Soccer Jersey
-            </List.Item>
-            <List.Item
-              title="Brazil 2022/23 Stadium Goalkeeper"
-              style={{ paddingRight: "32px" }}
-            >
-              Men&apos;s Nike Dri-FIT Short-Sleeve Football Shirt
-            </List.Item>
-            <List.Item title="FFF">
-              Women&apos;s Nike Pre-Match Football Top
-            </List.Item>
-          </List.Root>
+          <ListRoot horizontal>
+            <ListItem style={{ paddingRight: "32px" }}>
+              <ListItemTitle>USWNT 2022/23 Stadium Home</ListItemTitle>
+              <ListItemContent>
+                Women&apos;s Nike Dri-FIT Soccer Jersey
+              </ListItemContent>
+            </ListItem>
+            <ListItem style={{ paddingRight: "32px" }}>
+              <ListItemTitle>Brazil 2022/23 Stadium Goalkeeper</ListItemTitle>
+              <ListItemContent>
+                Men&apos;s Nike Dri-FIT Short-Sleeve Football Shirt
+              </ListItemContent>
+            </ListItem>
+            <ListItem>
+              <ListItemTitle>FFF</ListItemTitle>
+              <ListItemContent>
+                Women&apos;s Nike Pre-Match Football Top
+              </ListItemContent>
+            </ListItem>
+          </ListRoot>
         </Container>
       </Body>
     </Html>

@@ -6,7 +6,7 @@ import React, {
   useContext,
 } from "react";
 import { Column, Row } from "@react-email/components";
-import { Text, type TextProps, useTheme } from "@mailingui/components";
+import { Text, type TextProps } from "@mailingui/components";
 import { type Variant } from "@mailingui/themes";
 
 type ListContextType = {
@@ -16,7 +16,6 @@ type ListContextType = {
   titleSize?: TextProps["size"];
   titleStyle?: CSSProperties;
   bodyStyle?: CSSProperties;
-  variant: Variant;
 };
 
 const ListContext = createContext<ListContextType>({
@@ -24,30 +23,24 @@ const ListContext = createContext<ListContextType>({
   centered: false,
   size: "md",
   titleSize: undefined,
-  variant: "default",
 });
 
-type SharedProps = {
+export type ListRootProps = {
   centered?: boolean;
   titleSize?: TextProps["size"];
   size?: TextProps["size"];
   style?: CSSProperties;
-  variant?: Variant;
   titleStyle?: CSSProperties;
   bodyStyle?: CSSProperties;
   children?: ReactNode;
-};
-
-export type ListProps = SharedProps & {
   horizontal?: boolean;
 };
 
-const List: FC<ListProps> = ({
+const ListRoot: FC<ListRootProps> = ({
   style,
   size,
   centered,
   titleSize,
-  variant,
   horizontal,
   titleStyle,
   bodyStyle,
@@ -58,7 +51,6 @@ const List: FC<ListProps> = ({
     centered: !!centered,
     size: size ?? "md",
     titleSize,
-    variant: variant ?? "default",
     titleStyle,
     bodyStyle,
   };
@@ -70,70 +62,120 @@ const List: FC<ListProps> = ({
   );
 };
 
-type ListItemProps = SharedProps & {
-  title?: ReactNode;
+type ListItemContextType = {
+  variant: Variant;
+  size: TextProps["size"];
+};
+
+const ListItemContext = createContext<ListItemContextType>({
+  variant: "default",
+  size: "md",
+});
+
+type ListItemProps = {
+  style?: CSSProperties;
+  children?: ReactNode;
+  variant?: Variant;
+  size?: TextProps["size"];
 };
 
 const ListItem: FC<ListItemProps> = ({
   style,
+  variant = "default",
   size,
-  title,
+  children,
+}) => {
+  const { direction, size: sizeContext } = useContext(ListContext);
+  const Wrapper = direction === "vertical" ? Row : Column;
+
+  const itemContextValue: ListItemContextType = {
+    variant,
+    size: size ?? sizeContext,
+  };
+
+  return (
+    <ListItemContext.Provider value={itemContextValue}>
+      <Wrapper style={{ verticalAlign: "top", ...style }}>{children}</Wrapper>
+    </ListItemContext.Provider>
+  );
+};
+
+type ListItemTitleProps = {
+  centered?: boolean;
+  size?: TextProps["size"];
+  style?: CSSProperties;
+  variant?: Variant;
+  children?: ReactNode;
+};
+
+const ListItemTitle: FC<ListItemTitleProps> = ({
   centered,
-  titleStyle,
-  bodyStyle,
-  titleSize,
+  size,
+  style,
   variant,
   children,
 }) => {
   const {
-    direction,
     centered: centeredContext,
-    size: sizeContext,
     titleSize: titleSizeContext,
     titleStyle: titleStyleContext,
-    bodyStyle: bodyStyleContext,
-    variant: variantContext,
   } = useContext(ListContext);
-  const { variants } = useTheme();
-  const sharedStyle: CSSProperties = {
-    ...(variants ? { color: variants[variant ?? variantContext].color } : null),
-  };
-
-  const Wrapper = direction === "vertical" ? Row : Column;
+  const { variant: variantContext, size: sizeContext } =
+    useContext(ListItemContext);
 
   return (
-    <Wrapper style={{ verticalAlign: "top", ...style }}>
-      {title ? (
-        <Text
-          centered={centered ?? centeredContext}
-          size={titleSize ?? titleSizeContext ?? size ?? sizeContext}
-          style={{
-            fontWeight: 700,
-            margin: 0,
-            marginBottom: "4px",
-            ...sharedStyle,
-            ...titleStyleContext,
-            ...titleStyle,
-          }}
-        >
-          {title}
-        </Text>
-      ) : null}
-      <Text
-        centered={centered ?? centeredContext}
-        size={size ?? sizeContext}
-        style={{
-          margin: 0,
-          marginBottom: "24px",
-          ...sharedStyle,
-          ...bodyStyleContext,
-          ...bodyStyle,
-        }}
-      >
-        {children}
-      </Text>
-    </Wrapper>
+    <Text
+      centered={centered ?? centeredContext}
+      size={size ?? titleSizeContext ?? sizeContext}
+      variant={variant ?? variantContext}
+      style={{
+        fontWeight: 700,
+        margin: 0,
+        marginBottom: "4px",
+        ...titleStyleContext,
+        ...style,
+      }}
+    >
+      {children}
+    </Text>
   );
 };
 
-export { List as Root, ListItem as Item };
+type ListItemContentProps = {
+  style?: CSSProperties;
+  size?: TextProps["size"];
+  centered?: boolean;
+  variant?: Variant;
+  children?: ReactNode;
+};
+
+const ListItemContent: FC<ListItemContentProps> = ({
+  style,
+  size,
+  centered,
+  variant,
+  children,
+}) => {
+  const { centered: centeredContext, bodyStyle: bodyStyleContext } =
+    useContext(ListContext);
+  const { variant: variantContext, size: sizeContext } =
+    useContext(ListItemContext);
+
+  return (
+    <Text
+      centered={centered ?? centeredContext}
+      size={size ?? sizeContext}
+      variant={variant ?? variantContext}
+      style={{
+        margin: 0,
+        marginBottom: "24px",
+        ...bodyStyleContext,
+        ...style,
+      }}
+    >
+      {children}
+    </Text>
+  );
+};
+
+export { ListRoot, ListItem, ListItemTitle, ListItemContent };
