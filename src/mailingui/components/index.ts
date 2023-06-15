@@ -1,5 +1,6 @@
-export { Badge, type BadgeProps } from "./badges/Badge";
-export { Button, type ButtonProps } from "./buttons/Button";
+export { Badge, type BadgeProps } from "./badge/Badge";
+export { Button, type ButtonProps } from "./button/Button";
+export { Divider } from "./divider/Divider";
 export { HeroSection, type HeroSectionProps } from "./hero-section/HeroSection";
 export {
   ThemeProvider,
@@ -7,4 +8,5 @@ export {
   type Theme,
   useTheme,
 } from "./ThemeProvider/ThemeProvider";
-export { Text } from "./texts/Text";
+export { Text } from "./text/Text";
+export { Emoji } from "./emoji/Emoji";
