@@ -4,7 +4,6 @@ import React, {
   ReactNode,
   createContext,
   useContext,
-  useState,
 } from "react";
 import { Column, Row } from "@react-email/components";
 import { Text, type TextProps, useTheme } from "@mailingui/components";
@@ -54,7 +53,7 @@ const List: FC<ListProps> = ({
   bodyStyle,
   children,
 }) => {
-  const [state, _setState] = useState<ListContextType>({
+  const contextValue: ListContextType = {
     direction: horizontal ? "horizontal" : "vertical",
     centered: !!centered,
     size: size ?? "md",
@@ -62,10 +61,10 @@ const List: FC<ListProps> = ({
     variant: variant ?? "default",
     titleStyle,
     bodyStyle,
-  });
+  };
 
   return (
-    <ListContext.Provider value={state}>
+    <ListContext.Provider value={contextValue}>
       <Row style={{ ...style }}>{children}</Row>
     </ListContext.Provider>
   );
