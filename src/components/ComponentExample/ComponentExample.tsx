@@ -14,7 +14,6 @@ export type ComponentExampleProps = {
   source: string;
   markup: string;
   plainText: string;
-  previewMode?: boolean;
 };
 
 export const ComponentExample = ({
@@ -24,13 +23,12 @@ export const ComponentExample = ({
   source,
   markup,
   plainText,
-  previewMode = false,
 }: ComponentExampleProps) => {
   const [code, setCode] = React.useState("");
-  const [expanded, setExpanded] = React.useState(!previewMode ? false : true);
+  const [expanded, setExpanded] = React.useState(false);
 
   return (
-    <div className={cn("space-y-3", previewMode && "h-full w-full")}>
+    <div className={cn("space-y-3")}>
       <Tabs defaultValue="preview" orientation="horizontal">
         <div className="flex items-center justify-between">
           <h3 className="text-xl font-semibold text-neutral-500">
@@ -62,10 +60,7 @@ export const ComponentExample = ({
               },
             }}
             handleClasses={{
-              right: cn(
-                "hidden sm:flex items-center bg-black",
-                previewMode && "sm:hidden"
-              ),
+              right: cn("hidden sm:flex items-center bg-black"),
             }}
             handleComponent={{
               right: <div className="h-8 w-1.5 rounded-full bg-dark-100" />,
@@ -77,7 +72,7 @@ export const ComponentExample = ({
                 style={{
                   // We need to set this to full width
                   // And scroll on overflow
-                  height: previewMode ? "100vh" : getIframeHeight(type),
+                  height: getIframeHeight(type),
                 }}
                 id={id}
                 title={id}
@@ -142,13 +137,15 @@ export const ComponentExample = ({
               </TabsContent>
               <TabsContent className="h-full overscroll-none" value="text">
                 <div
-                  className="px-8 pb-8"
+                  className="whitespace-pre-line px-8 pb-8"
+                  tabIndex={-1}
                   ref={(node) => {
                     node?.textContent && setCode(node.textContent);
                   }}
-                >
-                  <p>{plainText}</p>
-                </div>
+                  dangerouslySetInnerHTML={{
+                    __html: plainText,
+                  }}
+                />
               </TabsContent>
             </Tabs>
           </div>

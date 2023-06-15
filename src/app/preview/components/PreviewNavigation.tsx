@@ -4,7 +4,15 @@ import { CTA } from "@components/CTA";
 import { BackIcon } from "@components/Icons";
 import { cn } from "@utils/cn";
 
-export const PreviewNavigation = ({ html }: { html?: string }) => {
+export const PreviewNavigation = ({
+  id,
+  html,
+  children,
+}: {
+  id?: string;
+  html?: string;
+  children?: React.ReactNode;
+}) => {
   // We need to create a popover and a form to submit this
   // For testing please use your email here
   async function handleClick(html?: string) {
@@ -27,17 +35,27 @@ export const PreviewNavigation = ({ html }: { html?: string }) => {
 
   return (
     <nav className="flex items-center justify-between gap-2 p-3">
-      <CTA href="/" color="black" className="flex items-center gap-2 px-4 py-3">
-        <BackIcon />
-        Back Home
-      </CTA>
-      <CTA
-        color="white"
-        className={cn("px-4 py-3", !html && "pointer-events-none opacity-75")}
-        onClick={() => handleClick(html)}
-      >
-        Send Test
-      </CTA>
+      <div className="flex items-center gap-1">
+        <CTA
+          href="/"
+          color="black"
+          className="flex items-center gap-2 px-4 py-3"
+        >
+          <BackIcon />
+          Back Home
+        </CTA>
+        {id && <h2 className="font-semibold">{id}.tsx</h2>}
+      </div>
+      <div className="flex items-center gap-4">
+        {children}
+        <CTA
+          color="white"
+          className={cn("px-4 py-3", !html && "pointer-events-none opacity-75")}
+          onClick={() => handleClick(html)}
+        >
+          Send Test
+        </CTA>
+      </div>
     </nav>
   );
 };

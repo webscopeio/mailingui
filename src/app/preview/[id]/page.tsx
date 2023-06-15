@@ -2,9 +2,8 @@ import { readFileSync, readdirSync } from "fs";
 import { join } from "path";
 import { render } from "@react-email/render";
 import { format } from "prettier";
-import { PreviewNavigation } from "../components/PreviewNavigation";
+import { PreviewPane } from "../components/PreviewPane";
 import { getHighlighter, highlight } from "@lib/shiki";
-import { ComponentExample } from "@components/ComponentExample";
 
 export default async function PreviewId({
   params,
@@ -13,14 +12,7 @@ export default async function PreviewId({
 }) {
   const data = await getPreviewData(params.id);
 
-  return (
-    <>
-      <PreviewNavigation html={data.html} />
-      <div className="flex h-full w-full items-center justify-center bg-white px-8 py-4">
-        <ComponentExample previewMode {...data} type={"button"} />
-      </div>
-    </>
-  );
+  return <PreviewPane id={params.id} data={data} />;
 }
 
 const getPreviewData = async (id: string) => {
