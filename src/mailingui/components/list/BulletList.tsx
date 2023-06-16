@@ -5,7 +5,6 @@ import React, {
   createContext,
   useContext,
 } from "react";
-import { Row } from "@react-email/components";
 import { useTheme } from "@mailingui/components";
 import { type Variant } from "@mailingui/themes";
 
