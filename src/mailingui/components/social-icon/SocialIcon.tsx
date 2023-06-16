@@ -1,18 +1,20 @@
 "use client";
 
-import React, { FC } from "react";
+import React, { FC, CSSProperties } from "react";
 import { Img, Link } from "@react-email/components";
 
 interface SocialIconProps {
   type: SocialIconType;
   size?: number;
   href?: string;
+  style?: CSSProperties;
   bg?: boolean;
 }
 
 const SocialIcon: FC<SocialIconProps> = ({
   type,
   href,
+  style,
   size: sizeProp,
   bg,
 }) => {
@@ -24,9 +26,11 @@ const SocialIcon: FC<SocialIconProps> = ({
         height: size,
         width: size,
         margin: bg ? undefined : "14px",
+        ...style,
       }}
       src={getIconUrl(type, bg)}
       alt={type}
+      width={size}
     />
   );
 

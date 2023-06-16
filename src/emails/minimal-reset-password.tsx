@@ -55,7 +55,17 @@ export const DropboxResetPasswordEmail = () => {
           </Row>
           <Row style={{ marginBottom: "32px" }}>
             <div>
-              <span dangerouslySetInnerHTML={{ __html: "" }} />
+              <span
+                dangerouslySetInnerHTML={{
+                  __html:
+                    "<!--[if mso]>\n" +
+                    '  <v:rect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="http://google.com" style="height:56px;v-text-anchor:middle;width:520px;" strokecolor="#1e3650" fillcolor="#000000">\n' +
+                    "    <w:anchorlock/>\n" +
+                    '    <center style="color:#ffffff;font-family:sans-serif;font-size:13px;font-weight:bold;">Reset password</center>\n' +
+                    "  </v:rect>\n" +
+                    "<![endif]-->",
+                }}
+              />
               <a
                 href="http://google.com"
                 style={{
@@ -99,9 +109,12 @@ export const DropboxResetPasswordEmail = () => {
                 "facebook",
               ] as SocialIconType[]
             ).map((type, i) => (
-              <Column width={44} key={i}>
-                <SocialIcon type={type} />
-              </Column>
+              <>
+                <Column width={24} key={i}>
+                  <SocialIcon type={type} style={{ margin: 0 }} size={24} />
+                </Column>
+                {i < 4 && <Column width={20}>&nbsp;</Column>}
+              </>
             ))}
             <Column width={520 - 196}></Column>
           </Row>
