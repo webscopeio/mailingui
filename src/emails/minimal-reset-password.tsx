@@ -21,7 +21,7 @@ export const MinimalResetPassword = () => {
       <Head />
       <Preview>Dropbox reset your password</Preview>
       <Body style={main}>
-        <Container style={container}>
+        <Container style={container} width={600}>
           <Row style={{ marginBottom: "16px" }}>
             <Column width={46} height={34}>
               <Img src={`${baseUrl}/star.png`} alt="Star" />
