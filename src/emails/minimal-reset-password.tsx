@@ -8,10 +8,10 @@ import {
   Img,
   Row,
 } from "@react-email/components";
-import * as React from "react";
+import React, { CSSProperties } from "react";
 import { Text, SocialIcon, type SocialIconType } from "@mailingui/components";
 
-export const DropboxResetPasswordEmail = () => {
+export const MinimalResetPassword = () => {
   const baseUrl = `${
     process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
   }/static/minimal-theme`;
@@ -68,16 +68,19 @@ export const DropboxResetPasswordEmail = () => {
               />
               <a
                 href="http://google.com"
-                style={{
-                  backgroundColor: "#000000",
-                  border: "1px solid #1e3650",
-                  color: "#ffffff",
-                  display: "inline-block",
-                  lineHeight: "56px",
-                  textAlign: "center",
-                  width: "520px",
-                  textDecoration: "none",
-                }}
+                style={
+                  {
+                    backgroundColor: "#000000",
+                    border: "1px solid #1e3650",
+                    color: "#ffffff",
+                    display: "inline-block",
+                    lineHeight: "56px",
+                    textAlign: "center",
+                    width: "520px",
+                    textDecoration: "none",
+                    msoHide: "all",
+                  } as CSSProperties
+                }
               >
                 Reset password
               </a>
@@ -109,12 +112,12 @@ export const DropboxResetPasswordEmail = () => {
                 "facebook",
               ] as SocialIconType[]
             ).map((type, i) => (
-              <>
-                <Column width={24} key={i}>
+              <div key={i}>
+                <Column width={24}>
                   <SocialIcon type={type} style={{ margin: 0 }} size={24} />
                 </Column>
                 {i < 4 && <Column width={20}>&nbsp;</Column>}
-              </>
+              </div>
             ))}
             <Column width={520 - 196}></Column>
           </Row>
@@ -164,7 +167,7 @@ export const DropboxResetPasswordEmail = () => {
   );
 };
 
-export default DropboxResetPasswordEmail;
+export default MinimalResetPassword;
 
 const main = {
   backgroundColor: "#f6f9fc",
