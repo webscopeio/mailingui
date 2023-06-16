@@ -18,9 +18,9 @@ export default function EmojisAsLink() {
         <Container style={container}>
           <Row>
             <Column>
-              <p style={{ textAlign: "left" }}>
+              <Text style={{ textAlign: "left" }}>
                 Were you satisfied with our Customer Care Service?
-              </p>
+              </Text>
             </Column>
             <Column style={{ paddingRight: "10px" }}>
               <Emoji type="thumbs-up" href="#link-ok" bg />

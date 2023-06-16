@@ -18,9 +18,9 @@ export default function EmojisAsLink() {
         <Container style={container}>
           <Row>
             <Column>
-              <p style={{ textAlign: "center", paddingBottom: "15px" }}>
+              <Text style={{ textAlign: "center", paddingBottom: "15px" }}>
                 How would you rate your stay with us?
-              </p>
+              </Text>
             </Column>
           </Row>
           <Row>

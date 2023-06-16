@@ -7,7 +7,7 @@ import {
   Row,
   Column,
 } from "@react-email/components";
-import { Divider, SocialIcon, Text } from "@mailingui/components";
+import { SocialIcon, Text } from "@mailingui/components";
 
 export default function AllSocialIcons() {
   return (

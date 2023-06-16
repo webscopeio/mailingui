@@ -1,19 +1,11 @@
 import * as React from "react";
-import {
-  Body,
-  Container,
-  Head,
-  Html,
-  Preview,
-  Row,
-} from "@react-email/components";
+import { Body, Container, Head, Html, Preview } from "@react-email/components";
 import {
   BulletList,
   BulletListItem,
   ListRoot,
   ListItem,
   ListItemTitle,
-  ListItemContent,
 } from "@mailingui/components";
 
 export default function NestedBulletLists() {
