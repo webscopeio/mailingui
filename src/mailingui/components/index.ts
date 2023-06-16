@@ -8,6 +8,18 @@ export {
   type Theme,
   useTheme,
 } from "./ThemeProvider/ThemeProvider";
-export { Text } from "./text/Text";
+export { Text, type TextProps } from "./text/Text";
 export { Emoji } from "./emoji/Emoji";
 export { SocialIcon } from "./social-icon/SocialIcon";
+export {
+  ListRoot,
+  ListItem,
+  ListItemTitle,
+  ListItemContent,
+  type ListRootProps,
+} from "./list/List";
+export {
+  BulletList,
+  BulletListItem,
+  type BulletListProps,
+} from "./list/BulletList";
