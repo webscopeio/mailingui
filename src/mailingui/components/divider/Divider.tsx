@@ -1,3 +1,5 @@
+"use client";
+
 import React, { CSSProperties, FC, ReactNode } from "react";
 import { Hr, Section, Row, Column } from "@react-email/components";
 import { useTheme } from "../ThemeProvider/ThemeProvider";

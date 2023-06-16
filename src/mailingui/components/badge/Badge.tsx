@@ -1,3 +1,5 @@
+"use client";
+
 import React, { CSSProperties, FC, ReactNode } from "react";
 import { useTheme } from "../ThemeProvider/ThemeProvider";
 import { type Variant } from "@mailingui/themes";

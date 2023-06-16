@@ -28,7 +28,7 @@ export const ComponentExample = ({
   const [expanded, setExpanded] = React.useState(false);
 
   return (
-    <div className="space-y-3">
+    <div className={cn("space-y-3")}>
       <Tabs defaultValue="preview" orientation="horizontal">
         <div className="flex items-center justify-between">
           <h3 className="text-xl font-semibold text-neutral-500">
@@ -60,7 +60,7 @@ export const ComponentExample = ({
               },
             }}
             handleClasses={{
-              right: "hidden sm:flex items-center bg-black",
+              right: cn("hidden sm:flex items-center bg-black"),
             }}
             handleComponent={{
               right: <div className="h-8 w-1.5 rounded-full bg-dark-100" />,
@@ -69,7 +69,11 @@ export const ComponentExample = ({
             <div>
               <iframe
                 className="w-full rounded-md"
-                style={{ height: getIframeHeight(type) }}
+                style={{
+                  // We need to set this to full width
+                  // And scroll on overflow
+                  height: getIframeHeight(type),
+                }}
                 id={id}
                 title={id}
                 srcDoc={html}
@@ -133,13 +137,15 @@ export const ComponentExample = ({
               </TabsContent>
               <TabsContent className="h-full overscroll-none" value="text">
                 <div
-                  className="px-8 pb-8"
+                  className="whitespace-pre-line px-8 pb-8"
+                  tabIndex={-1}
                   ref={(node) => {
                     node?.textContent && setCode(node.textContent);
                   }}
-                >
-                  <p>{plainText}</p>
-                </div>
+                  dangerouslySetInnerHTML={{
+                    __html: plainText,
+                  }}
+                />
               </TabsContent>
             </Tabs>
           </div>

@@ -1,3 +1,5 @@
+"use client";
+
 import React, { FC, ReactNode, CSSProperties } from "react";
 import { useTheme } from "../ThemeProvider/ThemeProvider";
 // TODO: ⬇️This is just a temporary solution, create a PR to react.email so we can use their Button component

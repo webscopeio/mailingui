@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import * as Popover from "@radix-ui/react-popover";
-import { CrossIcon, MenuIcon } from "@components/Icons";
+import { CrossIcon, DesktopIcon, MenuIcon } from "@components/Icons";
 import { navigationLinks, socialLinks } from "@constants";
 import { cn } from "@utils/cn";
 import Logo from "public/static/images/logo.png";
@@ -41,6 +41,18 @@ export const Navbar = () => {
             </ul>
 
             <ul className="hidden gap-4 md:flex">
+              {/* Preview mode only available for desktop */}
+              <li>
+                <Link
+                  className={cn(
+                    "font-medium hover:opacity-70 flex gap-2 items-center"
+                  )}
+                  href={"/preview"}
+                >
+                  <DesktopIcon className="h-5 w-5" />
+                  Preview Mode
+                </Link>
+              </li>
               {socialLinks.map(({ href, label, Icon }, index) => (
                 <li key={index}>
                   <a
