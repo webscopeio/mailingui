@@ -116,7 +116,12 @@ export const MinimalNews = () => {
             ).map((type, i) => (
               <div key={i}>
                 <Column width={24} style={{ paddingRight: "20px" }}>
-                  <SocialIcon type={type} style={{ margin: 0 }} size={24} />
+                  <SocialIcon
+                    type={type}
+                    style={{ margin: 0 }}
+                    size={24}
+                    href="https://google.com"
+                  />
                 </Column>
               </div>
             ))}

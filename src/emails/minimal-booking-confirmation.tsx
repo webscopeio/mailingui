@@ -8,15 +8,17 @@ import {
   Img,
   Row,
 } from "@react-email/components";
-import React from "react";
+import React, { CSSProperties } from "react";
 import {
   Text,
   SocialIcon,
   type SocialIconType,
+  BulletList,
+  BulletListItem,
   MinimalButton,
 } from "@mailingui/components";
 
-export const MinimalResetPassword = () => {
+export const MinimalNews = () => {
   const baseUrl = `${
     process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
   }/static/minimal-theme`;
@@ -47,34 +49,59 @@ export const MinimalResetPassword = () => {
           </Row>
           <Row style={{ marginBottom: "32px" }}>
             <Text style={{ fontSize: "48px", lineHeight: "52px" }}>
-              Password Reset
+              Your Hotel Booking Confirmation
             </Text>
           </Row>
           <Row style={{ marginBottom: "16px" }}>
             <Text>Dear Jacob,</Text>
             <Text>
-              We recently received a request to reset your password on our
-              platform. To reset your password, please click on the button or
-              link below:
+              Thank you for choosing to stay with us at Viola Hotel. We are
+              pleased to confirm your booking for <b>August 22, 2023</b> to{" "}
+              <b>September 5, 2023</b>.
+            </Text>
+          </Row>
+          <Row style={{ marginBottom: "32px" }}>
+            <Img width={520} src={`${baseUrl}/divider.png`} />
+          </Row>
+          <Row style={{ marginBottom: "16px" }}>
+            <Text>
+              <b>Room Type:</b> Business apartment
+            </Text>
+            <Text>
+              <b>Number of Guests:</b> 3
+            </Text>
+            <Text>
+              <b>Check-in Time:</b> 2 PM
+            </Text>
+            <Text>
+              <b>Check-out Time:</b> 10 AM
+            </Text>
+            <Text>
+              <b>Total Cost:</b> $ 1253.00
             </Text>
           </Row>
           <Row style={{ marginBottom: "32px" }}>
             <MinimalButton href="https://google.com">
-              Reset password
+              Manage your reservation
             </MinimalButton>
           </Row>
           <Row style={{ marginBottom: "16px" }}>
             <Text>
-              If you did not initiate this request or believe it was made in
-              error, please disregard this email and take the necessary steps to
-              secure your account. If you have any concerns or need further
-              assistance, please contact our customer support team.
+              We hope you will enjoy your stay with us and take advantage of the
+              amenities and services we offer. Should you have any special
+              requests or requirements, please do not hesitate to contact our
+              front desk team.
             </Text>
             <Text>
-              Best regards,
-              <br />
-              Minimal Team
+              Please note that a deposit may be required upon check-in and any
+              additional charges will be applied to your final bill upon
+              check-out.
             </Text>
+            <Text>
+              Thank you again for choosing [Hotel Name]. We look forward to
+              welcoming you soon.
+            </Text>
+            <Text>Best regards, Minimal Team</Text>
           </Row>
           <Row style={{ marginBottom: "32px" }}>
             <Img width={520} src={`${baseUrl}/divider.png`} />
@@ -148,7 +175,7 @@ export const MinimalResetPassword = () => {
   );
 };
 
-export default MinimalResetPassword;
+export default MinimalNews;
 
 const main = {
   backgroundColor: "#f6f9fc",
