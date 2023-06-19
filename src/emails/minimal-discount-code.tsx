@@ -8,17 +8,15 @@ import {
   Img,
   Row,
 } from "@react-email/components";
-import React, { CSSProperties } from "react";
+import React from "react";
 import {
   Text,
   SocialIcon,
   type SocialIconType,
-  BulletList,
-  BulletListItem,
   MinimalButton,
 } from "@mailingui/components";
 
-export const MinimalNews = () => {
+export const MinimalDiscoutCode = () => {
   const baseUrl = `${
     process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
   }/static/minimal-theme`;
@@ -26,7 +24,7 @@ export const MinimalNews = () => {
   return (
     <Html>
       <Head />
-      <Preview>Dropbox reset your password</Preview>
+      <Preview>Minimal - don&apos;t miss out on new discounts</Preview>
       <Body style={main}>
         <Container style={container} width={600}>
           <Row style={{ marginBottom: "16px" }}>
@@ -96,7 +94,10 @@ export const MinimalNews = () => {
               Thank you again for your support and we look forward to serving
               you soon.
             </Text>
-            <Text>Sincerely, Minimal Team</Text>
+            <Text>
+              Sincerely,
+              <br /> Minimal Team
+            </Text>
           </Row>
           <Row style={{ marginBottom: "32px" }}>
             <Img width={520} src={`${baseUrl}/divider.png`} />
@@ -170,7 +171,7 @@ export const MinimalNews = () => {
   );
 };
 
-export default MinimalNews;
+export default MinimalDiscoutCode;
 
 const main = {
   backgroundColor: "#f6f9fc",

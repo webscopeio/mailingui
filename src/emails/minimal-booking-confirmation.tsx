@@ -8,13 +8,11 @@ import {
   Img,
   Row,
 } from "@react-email/components";
-import React, { CSSProperties } from "react";
+import React from "react";
 import {
   Text,
   SocialIcon,
   type SocialIconType,
-  BulletList,
-  BulletListItem,
   MinimalButton,
 } from "@mailingui/components";
 
@@ -26,7 +24,7 @@ export const MinimalNews = () => {
   return (
     <Html>
       <Head />
-      <Preview>Dropbox reset your password</Preview>
+      <Preview>Minimal - we&apos;ve received your booking</Preview>
       <Body style={main}>
         <Container style={container} width={600}>
           <Row style={{ marginBottom: "16px" }}>
@@ -101,7 +99,10 @@ export const MinimalNews = () => {
               Thank you again for choosing [Hotel Name]. We look forward to
               welcoming you soon.
             </Text>
-            <Text>Best regards, Minimal Team</Text>
+            <Text>
+              Best regards,
+              <br /> Minimal Team
+            </Text>
           </Row>
           <Row style={{ marginBottom: "32px" }}>
             <Img width={520} src={`${baseUrl}/divider.png`} />

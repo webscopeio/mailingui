@@ -16,7 +16,7 @@ import {
   MinimalButton,
 } from "@mailingui/components";
 
-export const MinimalResetPassword = () => {
+export const MinimalEventInvitation = () => {
   const baseUrl = `${
     process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
   }/static/minimal-theme`;
@@ -24,7 +24,7 @@ export const MinimalResetPassword = () => {
   return (
     <Html>
       <Head />
-      <Preview>Minimal - Reset your password</Preview>
+      <Preview>Minimal - Attend our event</Preview>
       <Body style={main}>
         <Container style={container} width={600}>
           <Row style={{ marginBottom: "16px" }}>
@@ -47,33 +47,45 @@ export const MinimalResetPassword = () => {
           </Row>
           <Row style={{ marginBottom: "32px" }}>
             <Text style={{ fontSize: "48px", lineHeight: "52px" }}>
-              Password Reset
+              Invitation to Minimal Meetup
             </Text>
           </Row>
           <Row style={{ marginBottom: "16px" }}>
             <Text>Dear Jacob,</Text>
             <Text>
-              We recently received a request to reset your password on our
-              platform. To reset your password, please click on the button or
-              link below:
+              We are delighted to invite you to Viola Meetup, which will be held
+              on <b>August 22, 2023</b> at <b>5 PM</b> at{" "}
+              <b>2972 Westheimer Rd. Santa Ana, Illinois 85486</b>. As one of
+              our valued [business partners/clients/ friends], we would be
+              honored if you could join us for this special occasion.
+            </Text>
+            <Text>
+              Viola Meetup promises to be an exciting and memorable event. We
+              have also arranged for awesome food, speakers and performers, so
+              you can enjoy a fun-filled and engaging experience.
+            </Text>
+            <Text>
+              We believe that this event is an excellent opportunity for you to
+              meet like-minded people or learn something new, and we hope that
+              you will be able to join us. Please confirm your attendance by
+              July 31, 2023 to ensure that we can make adequate arrangements for
+              you.
             </Text>
           </Row>
           <Row style={{ marginBottom: "32px" }}>
             <MinimalButton href="https://google.com">
-              Reset password
+              Confirm participation
             </MinimalButton>
           </Row>
           <Row style={{ marginBottom: "16px" }}>
             <Text>
-              If you did not initiate this request or believe it was made in
-              error, please disregard this email and take the necessary steps to
-              secure your account. If you have any concerns or need further
-              assistance, please contact our customer support team.
+              {" "}
+              We look forward to seeing you at Viola Meetup, and we thank you
+              for your continued support.
             </Text>
             <Text>
               Best regards,
-              <br />
-              Minimal Team
+              <br /> Minimal Team
             </Text>
           </Row>
           <Row style={{ marginBottom: "32px" }}>
@@ -148,7 +160,7 @@ export const MinimalResetPassword = () => {
   );
 };
 
-export default MinimalResetPassword;
+export default MinimalEventInvitation;
 
 const main = {
   backgroundColor: "#f6f9fc",

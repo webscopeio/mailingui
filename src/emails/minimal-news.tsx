@@ -8,7 +8,7 @@ import {
   Img,
   Row,
 } from "@react-email/components";
-import React, { CSSProperties } from "react";
+import React from "react";
 import {
   Text,
   SocialIcon,
@@ -26,7 +26,7 @@ export const MinimalNews = () => {
   return (
     <Html>
       <Head />
-      <Preview>Dropbox reset your password</Preview>
+      <Preview>Minimal - New issue of our newsletter</Preview>
       <Body style={main}>
         <Container style={container} width={600}>
           <Row style={{ marginBottom: "16px" }}>

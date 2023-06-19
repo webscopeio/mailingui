@@ -13,10 +13,9 @@ import {
   Text,
   SocialIcon,
   type SocialIconType,
-  MinimalButton,
 } from "@mailingui/components";
 
-export const MinimalResetPassword = () => {
+export const MinimalEventInvitation = () => {
   const baseUrl = `${
     process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
   }/static/minimal-theme`;
@@ -24,7 +23,7 @@ export const MinimalResetPassword = () => {
   return (
     <Html>
       <Head />
-      <Preview>Minimal - Reset your password</Preview>
+      <Preview>Minimal - Join our team</Preview>
       <Body style={main}>
         <Container style={container} width={600}>
           <Row style={{ marginBottom: "16px" }}>
@@ -47,33 +46,42 @@ export const MinimalResetPassword = () => {
           </Row>
           <Row style={{ marginBottom: "32px" }}>
             <Text style={{ fontSize: "48px", lineHeight: "52px" }}>
-              Password Reset
+              Join Our Team as a UI/UX Designer
             </Text>
           </Row>
           <Row style={{ marginBottom: "16px" }}>
-            <Text>Dear Jacob,</Text>
+            <Text> Dear Jacob,</Text>
             <Text>
-              We recently received a request to reset your password on our
-              platform. To reset your password, please click on the button or
-              link below:
+              I hope this message finds you well. I am writing to extend an
+              invitation to join our team here at Viola Studio. We are excited
+              to offer you the opportunity to work alongside a dynamic group of
+              professionals in a challenging and rewarding environment.
             </Text>
-          </Row>
-          <Row style={{ marginBottom: "32px" }}>
-            <MinimalButton href="https://google.com">
-              Reset password
-            </MinimalButton>
-          </Row>
-          <Row style={{ marginBottom: "16px" }}>
             <Text>
-              If you did not initiate this request or believe it was made in
-              error, please disregard this email and take the necessary steps to
-              secure your account. If you have any concerns or need further
-              assistance, please contact our customer support team.
+              As a member of our team, you will have the chance to make a
+              significant impact on our organization and contribute to the
+              success of our mission. We believe in providing our employees with
+              the resources and support they need to achieve their personal and
+              professional goals, and we are committed to fostering a culture of
+              innovation and collaboration.
+            </Text>
+            <Text>
+              We are looking for someone who is passionate about{" "}
+              <b>UI/UX Design</b>, has a strong work ethic, and is eager to
+              learn and grow in their career. Your skills and experience make
+              you an excellent candidate for this position, and we believe that
+              you would be a valuable addition to our team.
+            </Text>
+            <Text>
+              If you are interested in joining us, please reply to this email
+              and let us know. We would be happy to discuss the details of the
+              position further and answer any questions you may have. We look
+              forward to hearing from you soon. Thank you for your time and
+              consideration.
             </Text>
             <Text>
               Best regards,
-              <br />
-              Minimal Team
+              <br /> Minimal Team
             </Text>
           </Row>
           <Row style={{ marginBottom: "32px" }}>
@@ -148,7 +156,7 @@ export const MinimalResetPassword = () => {
   );
 };
 
-export default MinimalResetPassword;
+export default MinimalEventInvitation;
 
 const main = {
   backgroundColor: "#f6f9fc",
