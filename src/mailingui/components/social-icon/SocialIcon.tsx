@@ -25,7 +25,7 @@ const SocialIcon: FC<SocialIconProps> = ({
       style={{
         height: size,
         width: size,
-        margin: bg ? undefined : "14px",
+        margin: bg ? 0 : "14px",
         ...style,
       }}
       src={getIconUrl(type, bg)}
