@@ -8,15 +8,17 @@ import {
   Img,
   Row,
 } from "@react-email/components";
-import React from "react";
+import React, { CSSProperties } from "react";
 import {
   Text,
   SocialIcon,
   type SocialIconType,
+  BulletList,
+  BulletListItem,
   MinimalButton,
 } from "@mailingui/components";
 
-export const MinimalResetPassword = () => {
+export const MinimalNews = () => {
   const baseUrl = `${
     process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
   }/static/minimal-theme`;
@@ -47,33 +49,56 @@ export const MinimalResetPassword = () => {
           </Row>
           <Row style={{ marginBottom: "32px" }}>
             <Text style={{ fontSize: "48px", lineHeight: "52px" }}>
-              Password Reset
+              Stay Up-To-Date
             </Text>
           </Row>
           <Row style={{ marginBottom: "16px" }}>
-            <Text>Dear Jacob,</Text>
+            <Text>Dear Subscriber,</Text>
             <Text>
-              We recently received a request to reset your password on our
-              platform. To reset your password, please click on the button or
-              link below:
+              We are excited to share the latest news and updates from [Your
+              Company/Brand Name]. As a valued member of our community, we want
+              to keep you informed about our recent activities and upcoming
+              plans.
             </Text>
+          </Row>
+          <Row>
+            <Img
+              src={`${baseUrl}/news-main.png`}
+              width={520}
+              style={{ marginBottom: "24px" }}
+            />
+          </Row>
+          <Row style={{ marginBottom: "16px" }}>
+            <Text style={{ fontWeight: 700 }}>
+              In this edition, you&apos;ll find:
+            </Text>
+            <BulletList type="unordered">
+              <BulletListItem>
+                A recap of our latest product launch and customer feedback
+              </BulletListItem>
+              <BulletListItem>
+                A sneak peek of our upcoming events and promotions
+              </BulletListItem>
+              <BulletListItem>
+                An inside look at our team and company culture
+              </BulletListItem>
+              <BulletListItem>
+                Tips and advice related to our industry or area of expertise
+              </BulletListItem>
+            </BulletList>
           </Row>
           <Row style={{ marginBottom: "32px" }}>
-            <MinimalButton href="https://google.com">
-              Reset password
-            </MinimalButton>
+            <MinimalButton href="https://google.com">Read more</MinimalButton>
           </Row>
           <Row style={{ marginBottom: "16px" }}>
             <Text>
-              If you did not initiate this request or believe it was made in
-              error, please disregard this email and take the necessary steps to
-              secure your account. If you have any concerns or need further
-              assistance, please contact our customer support team.
+              We are committed to providing you with valuable content and
+              insights that will help you stay informed and engaged. Thank you
+              for your continued support and loyalty.
             </Text>
             <Text>
-              Best regards,
-              <br />
-              Minimal Team
+              Sincerely,
+              <br /> Minimal Team
             </Text>
           </Row>
           <Row style={{ marginBottom: "32px" }}>
@@ -143,7 +168,7 @@ export const MinimalResetPassword = () => {
   );
 };
 
-export default MinimalResetPassword;
+export default MinimalNews;
 
 const main = {
   backgroundColor: "#f6f9fc",
