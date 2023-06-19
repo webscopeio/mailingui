@@ -78,6 +78,7 @@ export const MinimalResetPassword = () => {
                     textAlign: "center",
                     width: "520px",
                     textDecoration: "none",
+                    fontWeight: 600,
                     msoHide: "all",
                   } as CSSProperties
                 }
@@ -113,10 +114,9 @@ export const MinimalResetPassword = () => {
               ] as SocialIconType[]
             ).map((type, i) => (
               <div key={i}>
-                <Column width={24}>
+                <Column width={24} style={{ paddingRight: "20px" }}>
                   <SocialIcon type={type} style={{ margin: 0 }} size={24} />
                 </Column>
-                {i < 4 && <Column width={20}>&nbsp;</Column>}
               </div>
             ))}
             <Column width={520 - 196}></Column>

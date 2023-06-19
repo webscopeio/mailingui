@@ -30,7 +30,8 @@ const SocialIcon: FC<SocialIconProps> = ({
       }}
       src={getIconUrl(type, bg)}
       alt={type}
-      width={size}
+      width={sizeProp}
+      height={sizeProp}
     />
   );
 
