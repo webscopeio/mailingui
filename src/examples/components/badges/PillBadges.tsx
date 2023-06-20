@@ -7,43 +7,46 @@ import {
   Preview,
   Section,
 } from "@react-email/components";
-import { Badge, ThemeProvider } from "@mailingui/components";
-import { defaultTheme } from "@mailingui/themes";
+import { Badge } from "@mailingui/components";
+import { getCssText } from "@mailingui/themes";
 
 const PillBadges = () => (
   <Html>
-    <Head />
+    <Head>
+      <style
+        type="text/css"
+        dangerouslySetInnerHTML={{
+          __html: getCssText(),
+        }}
+      />
+    </Head>
     <Preview>Pill Badges</Preview>
     <Body style={main}>
-      <ThemeProvider theme={defaultTheme}>
-        <Container style={container}>
-          <Section style={{ textAlign: "center" as const }}>
-            <Badge variant="default" size="md" pill>
-              Badge
-            </Badge>
-            <span style={{ padding: 10 }} />
-            <Badge variant="primary" size="md" pill>
-              Badge
-            </Badge>
-            <span style={{ padding: 10 }} />
-            <Badge variant="secondary" size="md" pill>
-              Badge
-            </Badge>
-            <span style={{ padding: 10 }} />
-            <Badge variant="danger" size="md" pill>
-              Badge
-            </Badge>
-            <span style={{ padding: 10 }} />
-            <Badge variant="success" size="md" pill>
-              Badge
-            </Badge>
-            <span style={{ padding: 10 }} />
-            <Badge variant="warning" size="md" pill>
-              Badge
-            </Badge>
-          </Section>
-        </Container>
-      </ThemeProvider>
+      <Container style={container}>
+        <Section style={{ textAlign: "center" as const }}>
+          <Badge pill>Badge</Badge>
+          <span style={{ padding: 10 }} />
+          <Badge pill variant="primary">
+            Badge
+          </Badge>
+          <span style={{ padding: 10 }} />
+          <Badge pill variant="secondary">
+            Badge
+          </Badge>
+          <span style={{ padding: 10 }} />
+          <Badge pill variant="success">
+            Badge
+          </Badge>
+          <span style={{ padding: 10 }} />
+          <Badge pill variant="warning">
+            Badge
+          </Badge>
+          <span style={{ padding: 10 }} />
+          <Badge pill variant="danger">
+            Badge
+          </Badge>
+        </Section>
+      </Container>
     </Body>
   </Html>
 );

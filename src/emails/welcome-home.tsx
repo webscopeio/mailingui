@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Body, Container, Head, Html, Preview } from "@react-email/components";
 import { Badge, Divider, Text, ThemeProvider } from "@mailingui/components";
-import { defaultTheme } from "@mailingui/themes";
+import { defaultTheme, getCssText } from "@mailingui/themes";
 
 const CustomStyledParagraphs = ({
   firstName = "Jan",
@@ -10,7 +10,15 @@ const CustomStyledParagraphs = ({
 }) => {
   return (
     <Html>
-      <Head />
+      <Head>
+        <style
+          id="stitches"
+          type="text/css"
+          dangerouslySetInnerHTML={{
+            __html: getCssText(),
+          }}
+        />
+      </Head>
       <Preview>Custom Styled Paragraph</Preview>
       <Body style={main}>
         <ThemeProvider theme={defaultTheme}>
@@ -18,7 +26,7 @@ const CustomStyledParagraphs = ({
             <Text variant="default" size="lg" style={{ fontWeight: 700 }}>
               Welcome Home, {firstName}!
             </Text>
-            <Badge dot variant="warning" size="md" noBorder>
+            <Badge dot variant="warning" noBorder>
               Premium Stay
             </Badge>
             <Text style={{ lineHeight: "32px" }}>
