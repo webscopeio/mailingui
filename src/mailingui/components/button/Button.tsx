@@ -6,16 +6,23 @@ import { useTheme } from "../ThemeProvider/ThemeProvider";
 import { Button as ReactEmailButton } from "./ButtonPrimitive";
 import { type Variant } from "@mailingui/themes";
 
-interface ButtonProps {
+type ButtonProps = {
   href: string;
   children: ReactNode;
   color?: CSSProperties["color"];
   borderColor?: CSSProperties["color"];
   rounded?: number;
-  size?: keyof typeof sizes;
   backgroundColor?: CSSProperties["backgroundColor"];
   variant?: Variant;
-}
+  style?: CSSProperties;
+} & (
+  | {
+      size?: keyof typeof sizes;
+      width?: never;
+      height?: never;
+    }
+  | { width: number; height: number; size?: never }
+);
 
 const Button: FC<ButtonProps> = ({
   rounded,
@@ -26,6 +33,9 @@ const Button: FC<ButtonProps> = ({
   children,
   backgroundColor,
   variant = "primary",
+  style: styleProp,
+  width,
+  height,
 }) => {
   const { variants, borderRadius } = useTheme();
 
@@ -40,7 +50,42 @@ const Button: FC<ButtonProps> = ({
       : variants?.[variant].borderColor
       ? `1px solid ${variants?.[variant]?.borderColor}`
       : "none",
+    ...styleProp,
   };
+
+  if (width) {
+    return (
+      <div>
+        <span
+          dangerouslySetInnerHTML={{
+            __html:
+              "<!--[if mso]>\n" +
+              `  <v:rect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="${href}" style="height:${height}px;v-text-anchor:middle;width:${width}px;" fillcolor="${backgroundColor}">\n` +
+              "    <w:anchorlock/>\n" +
+              `    <center style="color:${color};font-family:sans-serif;font-size:13px;font-weight:bold;">Reset password</center>\n` +
+              "  </v:rect>\n" +
+              "<![endif]-->",
+          }}
+        />
+        <a
+          href={href}
+          style={
+            {
+              display: "inline-block",
+              lineHeight: `${height}px`,
+              textAlign: "center",
+              width: `${width}px`,
+              textDecoration: "none",
+              msoHide: "all",
+              ...styles,
+            } as CSSProperties
+          }
+        >
+          {children}
+        </a>
+      </div>
+    );
+  }
 
   return (
     <ReactEmailButton

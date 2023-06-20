@@ -10,7 +10,7 @@ export {
 } from "./ThemeProvider/ThemeProvider";
 export { Text, type TextProps } from "./text/Text";
 export { Emoji } from "./emoji/Emoji";
-export { SocialIcon } from "./social-icon/SocialIcon";
+export { SocialIcon, type SocialIconType } from "./social-icon/SocialIcon";
 export {
   ListRoot,
   ListItem,
