@@ -47,7 +47,7 @@ export const PreviewSend = ({ html }: { html?: string }) => {
         >
           <form onSubmit={onSubmitHandler}>
             <div className="grid w-full gap-4">
-              <div className="grid w-full items-center gap-1.5">
+              <div className="grid w-full items-center gap-2">
                 <label
                   htmlFor="email_address"
                   className="text-sm font-semibold leading-none"
@@ -67,7 +67,7 @@ export const PreviewSend = ({ html }: { html?: string }) => {
                 />
               </div>
 
-              <div className="grid w-full max-w-sm items-center gap-1.5">
+              <div className="grid w-full max-w-sm items-center gap-2">
                 <label
                   htmlFor="subject"
                   className="text-sm font-semibold leading-none"
@@ -85,9 +85,20 @@ export const PreviewSend = ({ html }: { html?: string }) => {
                   aria-label="subject"
                 />
               </div>
-              <CTA color="white" type="submit">
-                Send
-              </CTA>
+              <div className="grid grid-cols-3 items-center">
+                <p className="col-span-2 text-sm">
+                  Powered by{" "}
+                  <a
+                    className="font-semibold hover:opacity-70"
+                    href="https://react.email/"
+                  >
+                    react.email
+                  </a>
+                </p>
+                <CTA color="white" type="submit" className="py-2">
+                  Send
+                </CTA>
+              </div>
             </div>
           </form>
         </Popover.Content>
