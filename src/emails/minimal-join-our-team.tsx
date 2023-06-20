@@ -8,14 +8,18 @@ import {
   Img,
   Row,
 } from "@react-email/components";
-import React from "react";
+import React, { FC } from "react";
 import {
   Text,
   SocialIcon,
   type SocialIconType,
 } from "@mailingui/components";
 
-export const MinimalEventInvitation = () => {
+type MinimalEventInvitationProps = {
+  name: string;
+}
+
+export const MinimalEventInvitation: FC<MinimalEventInvitationProps> = ({ name }) => {
   const baseUrl = `${
     process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
   }/static/minimal-theme`;
@@ -50,7 +54,7 @@ export const MinimalEventInvitation = () => {
             </Text>
           </Row>
           <Row style={{ marginBottom: "16px" }}>
-            <Text> Dear Jacob,</Text>
+            <Text> Dear {name},</Text>
             <Text>
               I hope this message finds you well. I am writing to extend an
               invitation to join our team here at Viola Studio. We are excited

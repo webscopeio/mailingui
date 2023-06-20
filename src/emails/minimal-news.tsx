@@ -8,7 +8,7 @@ import {
   Img,
   Row,
 } from "@react-email/components";
-import React from "react";
+import React, { FC } from "react";
 import {
   Text,
   SocialIcon,
@@ -18,7 +18,20 @@ import {
   MinimalButton,
 } from "@mailingui/components";
 
-export const MinimalNews = () => {
+type MinimalNewsProps = {
+  link: string;
+  items: string[];
+};
+
+export const MinimalNews: FC<MinimalNewsProps> = ({
+  link = "https://google.com",
+  items = [
+    "A recap of our latest product launch and customer feedback",
+    "A sneak peek of our upcoming events and promotions",
+    "An inside look at our team and company culture",
+    "Tips and advice related to our industry or area of expertise",
+  ],
+}) => {
   const baseUrl = `${
     process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
   }/static/minimal-theme`;
@@ -73,22 +86,13 @@ export const MinimalNews = () => {
               In this edition, you&apos;ll find:
             </Text>
             <BulletList type="unordered">
-              <BulletListItem>
-                A recap of our latest product launch and customer feedback
-              </BulletListItem>
-              <BulletListItem>
-                A sneak peek of our upcoming events and promotions
-              </BulletListItem>
-              <BulletListItem>
-                An inside look at our team and company culture
-              </BulletListItem>
-              <BulletListItem>
-                Tips and advice related to our industry or area of expertise
-              </BulletListItem>
+              {items.map((item, i) => (
+                <BulletListItem key={i}>{item}</BulletListItem>
+              ))}
             </BulletList>
           </Row>
           <Row style={{ marginBottom: "32px" }}>
-            <MinimalButton href="https://google.com">Read more</MinimalButton>
+            <MinimalButton href={link}>Read more</MinimalButton>
           </Row>
           <Row style={{ marginBottom: "16px" }}>
             <Text>

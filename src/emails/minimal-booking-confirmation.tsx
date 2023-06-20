@@ -8,7 +8,7 @@ import {
   Img,
   Row,
 } from "@react-email/components";
-import React from "react";
+import React, { FC } from "react";
 import {
   Text,
   SocialIcon,
@@ -16,7 +16,31 @@ import {
   MinimalButton,
 } from "@mailingui/components";
 
-export const MinimalNews = () => {
+type MinimalBookingConfirmationProps = {
+  name: string;
+  checkInDate: string;
+  checkOutDate: string;
+  checkInTime: string;
+  checkOutTime: string;
+  roomType: string;
+  totalCost: string;
+  noOfGuests: number;
+  reservationUrl: string;
+};
+
+export const MinimalBookingConfirmation: FC<
+  MinimalBookingConfirmationProps
+> = ({
+  name = "Jacob",
+  checkInDate = "August 22, 2023",
+  checkOutDate = "September 5, 2023",
+  checkInTime = "2 PM",
+  checkOutTime = "10 AM",
+  roomType = "Business apartment",
+  totalCost = "$ 1253.00",
+  noOfGuests = 3,
+  reservationUrl = "https://google.com",
+}) => {
   const baseUrl = `${
     process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
   }/static/minimal-theme`;
@@ -51,11 +75,11 @@ export const MinimalNews = () => {
             </Text>
           </Row>
           <Row style={{ marginBottom: "16px" }}>
-            <Text>Dear Jacob,</Text>
+            <Text>Dear {name},</Text>
             <Text>
               Thank you for choosing to stay with us at Viola Hotel. We are
-              pleased to confirm your booking for <b>August 22, 2023</b> to{" "}
-              <b>September 5, 2023</b>.
+              pleased to confirm your booking for <b>{checkInDate}</b> to{" "}
+              <b>{checkOutDate}</b>.
             </Text>
           </Row>
           <Row style={{ marginBottom: "32px" }}>
@@ -63,23 +87,23 @@ export const MinimalNews = () => {
           </Row>
           <Row style={{ marginBottom: "16px" }}>
             <Text>
-              <b>Room Type:</b> Business apartment
+              <b>Room Type:</b> {roomType}
             </Text>
             <Text>
-              <b>Number of Guests:</b> 3
+              <b>Number of Guests:</b> {noOfGuests}
             </Text>
             <Text>
-              <b>Check-in Time:</b> 2 PM
+              <b>Check-in Time:</b> {checkInTime}
             </Text>
             <Text>
-              <b>Check-out Time:</b> 10 AM
+              <b>Check-out Time:</b> {checkOutTime}
             </Text>
             <Text>
-              <b>Total Cost:</b> $ 1253.00
+              <b>Total Cost:</b> {totalCost}
             </Text>
           </Row>
           <Row style={{ marginBottom: "32px" }}>
-            <MinimalButton href="https://google.com">
+            <MinimalButton href={reservationUrl}>
               Manage your reservation
             </MinimalButton>
           </Row>
@@ -176,7 +200,7 @@ export const MinimalNews = () => {
   );
 };
 
-export default MinimalNews;
+export default MinimalBookingConfirmation;
 
 const main = {
   backgroundColor: "#f6f9fc",

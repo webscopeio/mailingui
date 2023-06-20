@@ -8,7 +8,7 @@ import {
   Img,
   Row,
 } from "@react-email/components";
-import React from "react";
+import React, { FC } from "react";
 import {
   Text,
   SocialIcon,
@@ -16,7 +16,19 @@ import {
   MinimalButton,
 } from "@mailingui/components";
 
-export const MinimalDiscoutCode = () => {
+type MinimalResetPasswordProps = {
+  code: string;
+  discount: number;
+  link: string;
+  expiration: string;
+};
+
+export const MinimalDiscoutCode: FC<MinimalResetPasswordProps> = ({
+  code = "HAPPY20",
+  discount = 20,
+  link = "https://google.com",
+  expiration = "July 31, 2023",
+}) => {
   const baseUrl = `${
     process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
   }/static/minimal-theme`;
@@ -62,13 +74,11 @@ export const MinimalDiscoutCode = () => {
             <Img width={520} src={`${baseUrl}/divider.png`} />
           </Row>
           <Row style={{ marginBottom: "32px" }}>
-            <Text style={{ fontSize: "48px", lineHeight: "52px" }}>
-              HAPPY20
-            </Text>
+            <Text style={{ fontSize: "48px", lineHeight: "52px" }}>{code}</Text>
             <Text size="sm" style={{ color: "#64748B", paddingRight: "44px" }}>
-              Use the coupon code at checkout to receive 20% off your total
-              order. This offer is valid until [Expiration Date], so be sure to
-              take advantage of it before it expires.
+              Use the coupon code at checkout to receive {discount}% off your
+              total order. This offer is valid until {expiration}, so be
+              sure to take advantage of it before it expires.
             </Text>
           </Row>
           <Row style={{ marginBottom: "32px" }}>
@@ -79,7 +89,7 @@ export const MinimalDiscoutCode = () => {
             them out.
           </Row>
           <Row style={{ marginBottom: "32px" }}>
-            <MinimalButton href="https://google.com">
+            <MinimalButton href={link}>
               View products
             </MinimalButton>
           </Row>

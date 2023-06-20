@@ -8,7 +8,7 @@ import {
   Img,
   Row,
 } from "@react-email/components";
-import React from "react";
+import React, { FC } from "react";
 import {
   Text,
   SocialIcon,
@@ -16,7 +16,11 @@ import {
   Emoji,
 } from "@mailingui/components";
 
-export const MinimalReview = () => {
+type MinimalReviewProps = {
+  name: string;
+};
+
+export const MinimalReview: FC<MinimalReviewProps> = ({ name = "Jacob" }) => {
   const baseUrl = `${
     process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
   }/static/minimal-theme`;
@@ -51,7 +55,7 @@ export const MinimalReview = () => {
             </Text>
           </Row>
           <Row style={{ marginBottom: "16px" }}>
-            <Text>Dear Jacob,</Text>
+            <Text>Dear {name},</Text>
             <Text>
               We hope this email finds you well. We wanted to take a moment to
               check in with you and ask about your recent experience with our
@@ -72,6 +76,7 @@ export const MinimalReview = () => {
               <Emoji
                 type="heart-eyes-face"
                 style={{ paddingLeft: "16px", paddingBottom: "8px" }}
+                href="https://google.com"
                 bg
               />
               Excellent
@@ -80,6 +85,7 @@ export const MinimalReview = () => {
               <Emoji
                 type="smiling-face"
                 style={{ paddingLeft: "16px", paddingBottom: "8px" }}
+                href="https://google.com"
                 bg
               />
               Good
@@ -88,6 +94,7 @@ export const MinimalReview = () => {
               <Emoji
                 type="smiling-face"
                 style={{ paddingLeft: "16px", paddingBottom: "8px" }}
+                href="https://google.com"
                 bg
               />
               Good
@@ -96,6 +103,7 @@ export const MinimalReview = () => {
               <Emoji
                 type="smiling-face"
                 style={{ paddingLeft: "16px", paddingBottom: "8px" }}
+                href="https://google.com"
                 bg
               />
               Good
@@ -104,6 +112,7 @@ export const MinimalReview = () => {
               <Emoji
                 type="smiling-face"
                 style={{ paddingLeft: "16px", paddingBottom: "8px" }}
+                href="https://google.com"
                 bg
               />
               Good

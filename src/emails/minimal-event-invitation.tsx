@@ -8,7 +8,7 @@ import {
   Img,
   Row,
 } from "@react-email/components";
-import React from "react";
+import React, { FC } from "react";
 import {
   Text,
   SocialIcon,
@@ -16,7 +16,23 @@ import {
   MinimalButton,
 } from "@mailingui/components";
 
-export const MinimalEventInvitation = () => {
+type MinimalResetPasswordProps = {
+  name: string;
+  date: string;
+  time: string;
+  location: string;
+  confirmBy: string;
+  confirmUrl: string;
+};
+
+export const MinimalEventInvitation: FC<MinimalResetPasswordProps> = ({
+  name = "Jacob",
+  date = "August 22, 2023",
+  time = "5 PM",
+  location = "2972 Westheimer Rd. Santa Ana, Illinois 85486",
+  confirmBy = "July 31, 2023",
+  confirmUrl = "https://google.com",
+}) => {
   const baseUrl = `${
     process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
   }/static/minimal-theme`;
@@ -51,11 +67,10 @@ export const MinimalEventInvitation = () => {
             </Text>
           </Row>
           <Row style={{ marginBottom: "16px" }}>
-            <Text>Dear Jacob,</Text>
+            <Text>Dear {name},</Text>
             <Text>
               We are delighted to invite you to Viola Meetup, which will be held
-              on <b>August 22, 2023</b> at <b>5 PM</b> at{" "}
-              <b>2972 Westheimer Rd. Santa Ana, Illinois 85486</b>. As one of
+              on <b>{date}</b> at <b>{time}</b> at <b>{location}</b>. As one of
               our valued [business partners/clients/ friends], we would be
               honored if you could join us for this special occasion.
             </Text>
@@ -67,13 +82,13 @@ export const MinimalEventInvitation = () => {
             <Text>
               We believe that this event is an excellent opportunity for you to
               meet like-minded people or learn something new, and we hope that
-              you will be able to join us. Please confirm your attendance by
-              July 31, 2023 to ensure that we can make adequate arrangements for
+              you will be able to join us. Please confirm your attendance by{" "}
+              {confirmBy} to ensure that we can make adequate arrangements for
               you.
             </Text>
           </Row>
           <Row style={{ marginBottom: "32px" }}>
-            <MinimalButton href="https://google.com">
+            <MinimalButton href={confirmUrl}>
               Confirm participation
             </MinimalButton>
           </Row>

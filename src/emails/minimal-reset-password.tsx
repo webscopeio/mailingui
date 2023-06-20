@@ -8,7 +8,7 @@ import {
   Img,
   Row,
 } from "@react-email/components";
-import React from "react";
+import React, { FC } from "react";
 import {
   Text,
   SocialIcon,
@@ -16,7 +16,15 @@ import {
   MinimalButton,
 } from "@mailingui/components";
 
-export const MinimalResetPassword = () => {
+type MinimalResetPasswordProps = {
+  name: string;
+  passwordResetUrl: string;
+};
+
+export const MinimalResetPassword: FC<MinimalResetPasswordProps> = ({
+  name = "Jacob",
+  passwordResetUrl = "https://google.com",
+}) => {
   const baseUrl = `${
     process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
   }/static/minimal-theme`;
@@ -51,7 +59,7 @@ export const MinimalResetPassword = () => {
             </Text>
           </Row>
           <Row style={{ marginBottom: "16px" }}>
-            <Text>Dear Jacob,</Text>
+            <Text>Dear {name},</Text>
             <Text>
               We recently received a request to reset your password on our
               platform. To reset your password, please click on the button or
@@ -59,7 +67,7 @@ export const MinimalResetPassword = () => {
             </Text>
           </Row>
           <Row style={{ marginBottom: "32px" }}>
-            <MinimalButton href="https://google.com">
+            <MinimalButton href={passwordResetUrl}>
               Reset password
             </MinimalButton>
           </Row>
