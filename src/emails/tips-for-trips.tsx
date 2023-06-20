@@ -44,11 +44,11 @@ const defaultTips: Tip[] = [
   }
 ]
 
-export const TipsForTrips: FC<TipsForTripsProps> = ({ name = "Jacob", tips = defaultTips }) => {
-  const baseUrl = `${
-    process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
-  }/static/minimal-theme`;
+const baseUrl = `${
+  process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
+}/static/minimal-theme`;
 
+export const TipsForTrips: FC<TipsForTripsProps> = ({ name = "Jacob", tips = defaultTips }) => {
   return (
     <Html>
       <Head />

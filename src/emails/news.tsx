@@ -20,11 +20,17 @@ import {
 
 type MinimalNewsProps = {
   link: string;
+  company: string;
   items: string[];
 };
 
+const baseUrl = `${
+  process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
+}/static/minimal-theme`;
+
 export const News: FC<MinimalNewsProps> = ({
   link = "https://google.com",
+  company = "Minimal",
   items = [
     "A recap of our latest product launch and customer feedback",
     "A sneak peek of our upcoming events and promotions",
@@ -32,10 +38,6 @@ export const News: FC<MinimalNewsProps> = ({
     "Tips and advice related to our industry or area of expertise",
   ],
 }) => {
-  const baseUrl = `${
-    process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
-  }/static/minimal-theme`;
-
   return (
     <Html>
       <Head />
@@ -68,10 +70,9 @@ export const News: FC<MinimalNewsProps> = ({
           <Row style={{ marginBottom: "16px" }}>
             <Text>Dear Subscriber,</Text>
             <Text>
-              We are excited to share the latest news and updates from [Your
-              Company/Brand Name]. As a valued member of our community, we want
-              to keep you informed about our recent activities and upcoming
-              plans.
+              We are excited to share the latest news and updates from {company}
+              . As a valued member of our community, we want to keep you
+              informed about our recent activities and upcoming plans.
             </Text>
           </Row>
           <Row>

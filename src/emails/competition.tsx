@@ -21,14 +21,14 @@ type CompetitionProps = {
   linkHref: string;
 };
 
+const baseUrl = `${
+  process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
+}/static/minimal-theme`;
+
 export const Competition: FC<CompetitionProps> = ({
   name = "Jacob",
   linkHref = "https://google.com",
 }) => {
-  const baseUrl = `${
-    process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
-  }/static/minimal-theme`;
-
   return (
     <Html>
       <Head />

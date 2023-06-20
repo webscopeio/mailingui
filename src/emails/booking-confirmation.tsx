@@ -25,8 +25,13 @@ type MinimalBookingConfirmationProps = {
   roomType: string;
   totalCost: string;
   noOfGuests: number;
+  hotelName: string;
   reservationUrl: string;
 };
+
+const baseUrl = `${
+  process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
+}/static/minimal-theme`;
 
 export const BookingConfirmation: FC<
   MinimalBookingConfirmationProps
@@ -38,13 +43,10 @@ export const BookingConfirmation: FC<
   checkOutTime = "10 AM",
   roomType = "Business apartment",
   totalCost = "$ 1253.00",
+  hotelName = "Viola Hotel",
   noOfGuests = 3,
   reservationUrl = "https://google.com",
 }) => {
-  const baseUrl = `${
-    process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
-  }/static/minimal-theme`;
-
   return (
     <Html>
       <Head />
@@ -71,13 +73,13 @@ export const BookingConfirmation: FC<
           </Row>
           <Row style={{ marginBottom: "32px" }}>
             <Text style={{ fontSize: "48px", lineHeight: "52px" }}>
-              Your Hotel Booking Confirmation
+              Your {hotelName} Booking Confirmation
             </Text>
           </Row>
           <Row style={{ marginBottom: "16px" }}>
             <Text>Dear {name},</Text>
             <Text>
-              Thank you for choosing to stay with us at Viola Hotel. We are
+              Thank you for choosing to stay with us at {hotelName}. We are
               pleased to confirm your booking for <b>{checkInDate}</b> to{" "}
               <b>{checkOutDate}</b>.
             </Text>
@@ -126,7 +128,7 @@ export const BookingConfirmation: FC<
               check-out.
             </Text>
             <Text>
-              Thank you again for choosing [Hotel Name]. We look forward to
+              Thank you again for choosing {hotelName}. We look forward to
               welcoming you soon.
             </Text>
             <Text>

@@ -21,6 +21,10 @@ type DinnerReservationProps = {
   restaurantPhone: string;
 };
 
+const baseUrl = `${
+  process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
+}/static/minimal-theme`;
+
 export const DinnerReservation: FC<DinnerReservationProps> = ({
   name = "Charlie",
   date = "24.02.2023",
@@ -30,10 +34,6 @@ export const DinnerReservation: FC<DinnerReservationProps> = ({
   restaurantName = "Minimal Restaurant",
   restaurantPhone = "+1 234 567 89",
 }) => {
-  const baseUrl = `${
-    process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
-  }/static/minimal-theme`;
-
   return (
     <Html>
       <Head />

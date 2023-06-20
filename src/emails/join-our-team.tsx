@@ -19,11 +19,11 @@ type MinimalEventInvitationProps = {
   name: string;
 }
 
-export const MinimalEventInvitation: FC<MinimalEventInvitationProps> = ({ name }) => {
-  const baseUrl = `${
-    process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
-  }/static/minimal-theme`;
+const baseUrl = `${
+  process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
+}/static/minimal-theme`;
 
+export const MinimalEventInvitation: FC<MinimalEventInvitationProps> = ({ name }) => {
   return (
     <Html>
       <Head />

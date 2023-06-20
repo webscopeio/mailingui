@@ -23,16 +23,16 @@ type MinimalResetPasswordProps = {
   expiration: string;
 };
 
+const baseUrl = `${
+  process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
+}/static/minimal-theme`;
+
 export const MinimalDiscoutCode: FC<MinimalResetPasswordProps> = ({
   code = "HAPPY20",
   discount = 20,
   link = "https://google.com",
   expiration = "July 31, 2023",
 }) => {
-  const baseUrl = `${
-    process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
-  }/static/minimal-theme`;
-
   return (
     <Html>
       <Head />

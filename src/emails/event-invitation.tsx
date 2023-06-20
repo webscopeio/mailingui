@@ -25,6 +25,10 @@ type MinimalResetPasswordProps = {
   confirmUrl: string;
 };
 
+const baseUrl = `${
+  process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
+}/static/minimal-theme`;
+
 export const EventInvitation: FC<MinimalResetPasswordProps> = ({
   name = "Jacob",
   date = "August 22, 2023",
@@ -33,10 +37,6 @@ export const EventInvitation: FC<MinimalResetPasswordProps> = ({
   confirmBy = "July 31, 2023",
   confirmUrl = "https://google.com",
 }) => {
-  const baseUrl = `${
-    process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
-  }/static/minimal-theme`;
-
   return (
     <Html>
       <Head />
@@ -71,8 +71,8 @@ export const EventInvitation: FC<MinimalResetPasswordProps> = ({
             <Text>
               We are delighted to invite you to Viola Meetup, which will be held
               on <b>{date}</b> at <b>{time}</b> at <b>{location}</b>. As one of
-              our valued [business partners/clients/ friends], we would be
-              honored if you could join us for this special occasion.
+              our valued clients, we would be honored if you could join us for
+              this special occasion.
             </Text>
             <Text>
               Viola Meetup promises to be an exciting and memorable event. We

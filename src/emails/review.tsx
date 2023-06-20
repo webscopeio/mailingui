@@ -20,11 +20,11 @@ type MinimalReviewProps = {
   name: string;
 };
 
-export const Review: FC<MinimalReviewProps> = ({ name = "Jacob" }) => {
-  const baseUrl = `${
-    process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
-  }/static/minimal-theme`;
+const baseUrl = `${
+  process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
+}/static/minimal-theme`;
 
+export const Review: FC<MinimalReviewProps> = ({ name = "Jacob" }) => {
   return (
     <Html>
       <Head />

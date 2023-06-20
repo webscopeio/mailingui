@@ -21,14 +21,14 @@ type MinimalResetPasswordProps = {
   passwordResetUrl: string;
 };
 
+const baseUrl = `${
+  process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
+}/static/minimal-theme`;
+
 export const ResetPassword: FC<MinimalResetPasswordProps> = ({
   name = "Jacob",
   passwordResetUrl = "https://google.com",
 }) => {
-  const baseUrl = `${
-    process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
-  }/static/minimal-theme`;
-
   return (
     <Html>
       <Head />
