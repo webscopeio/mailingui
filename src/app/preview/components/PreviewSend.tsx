@@ -122,12 +122,12 @@ export const PreviewSend = ({ html }: { html?: string }) => {
                   {status === "idle" && "Send"}
                   {status === "error" && (
                     <>
-                      <CrossIcon /> Error
+                      <CrossIcon width="1.2rem" height="1.2rem" /> Error
                     </>
                   )}
                   {status === "success" && (
                     <>
-                      <CheckIcon /> Sent
+                      <CheckIcon width="1.2rem" height="1.2rem" /> Sent
                     </>
                   )}
                   {status === "sending" && (
