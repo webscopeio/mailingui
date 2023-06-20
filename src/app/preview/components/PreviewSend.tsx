@@ -4,14 +4,20 @@ import React from "react";
 import * as Popover from "@radix-ui/react-popover";
 import { CTA } from "@components/CTA";
 import { cn } from "@utils/cn";
+import { CrossIcon, CheckIcon } from "@components/Icons";
 
 export const PreviewSend = ({ html }: { html?: string }) => {
   const [email, setEmail] = React.useState("");
   const [subject, setSubject] = React.useState("Testing from MailingUI");
+  const [status, setStatus] = React.useState<
+    "idle" | "sending" | "error" | "success"
+  >("idle");
 
   async function onSubmitHandler(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    setStatus("sending");
     if (!html) return;
+
     const response = await fetch("https://react.email/api/send/test", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -22,9 +28,12 @@ export const PreviewSend = ({ html }: { html?: string }) => {
       }),
     });
 
-    if (response.status === 429) {
-      const { error } = await response.json();
-      alert(error);
+    if (!response.ok) {
+      // Log error?
+      // const { error } = await response.json();
+      setStatus("error");
+    } else {
+      setStatus("success");
     }
   }
 
@@ -56,13 +65,17 @@ export const PreviewSend = ({ html }: { html?: string }) => {
                 </label>
                 <input
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => {
+                    setStatus("idle");
+                    setEmail(e.target.value);
+                  }}
                   className="w-full rounded-xl border border-solid border-dark-700 bg-dark-800 px-4 py-3 text-sm font-medium text-white placeholder:text-dark-300"
                   type="email"
                   name="email_address"
                   id="email_address"
                   placeholder="Your email"
                   aria-label="email"
+                  disabled={status === "sending"}
                   required
                 />
               </div>
@@ -76,15 +89,20 @@ export const PreviewSend = ({ html }: { html?: string }) => {
                 </label>
                 <input
                   value={subject}
-                  onChange={(e) => setSubject(e.target.value)}
+                  onChange={(e) => {
+                    setStatus("idle");
+                    setSubject(e.target.value);
+                  }}
                   className="w-full rounded-xl border border-solid border-dark-700 bg-dark-800 px-4 py-3 text-sm font-medium text-white placeholder:text-dark-300"
                   type="text"
                   name="subject"
                   id="subject"
                   placeholder="Subject"
                   aria-label="subject"
+                  disabled={status === "sending"}
                 />
               </div>
+
               <div className="grid grid-cols-3 items-center">
                 <p className="col-span-2 text-sm">
                   Powered by{" "}
@@ -95,8 +113,26 @@ export const PreviewSend = ({ html }: { html?: string }) => {
                     react.email
                   </a>
                 </p>
-                <CTA color="white" type="submit" className="py-2">
-                  Send
+                <CTA
+                  color="white"
+                  type="submit"
+                  className="flex items-center justify-center gap-1 px-3 py-2 disabled:opacity-75"
+                  disabled={status !== "idle"}
+                >
+                  {status === "idle" && "Send"}
+                  {status === "error" && (
+                    <>
+                      <CrossIcon /> Error
+                    </>
+                  )}
+                  {status === "success" && (
+                    <>
+                      <CheckIcon /> Sent
+                    </>
+                  )}
+                  {status === "sending" && (
+                    <span className="animate-bounce">...</span>
+                  )}
                 </CTA>
               </div>
             </div>
