@@ -7,6 +7,7 @@ import { cn } from "@utils/cn";
 import { CrossIcon, CheckIcon } from "@components/Icons";
 
 export const PreviewSend = ({ html }: { html?: string }) => {
+  const [isOpen, setIsOpen] = React.useState(false);
   const [email, setEmail] = React.useState("");
   const [subject, setSubject] = React.useState("Testing from MailingUI");
   const [status, setStatus] = React.useState<
@@ -38,13 +39,16 @@ export const PreviewSend = ({ html }: { html?: string }) => {
   }
 
   return (
-    <Popover.Root>
+    <Popover.Root open={isOpen} onOpenChange={setIsOpen}>
       <Popover.Trigger asChild>
         <CTA
           color="white"
-          className={cn("px-4 py-3", !html && "pointer-events-none opacity-75")}
+          className={cn(
+            "px-4 py-3 min-w-[8rem]",
+            !html && "pointer-events-none opacity-75"
+          )}
         >
-          Send Test
+          {isOpen ? "Close Form" : "Send Test"}
         </CTA>
       </Popover.Trigger>
       <Popover.Portal>
@@ -59,7 +63,7 @@ export const PreviewSend = ({ html }: { html?: string }) => {
               <div className="grid w-full items-center gap-2">
                 <label
                   htmlFor="email_address"
-                  className="text-sm font-semibold leading-none"
+                  className="text-sm font-semibold leading-none opacity-75"
                 >
                   Email
                 </label>
@@ -71,10 +75,8 @@ export const PreviewSend = ({ html }: { html?: string }) => {
                   }}
                   className="w-full rounded-xl border border-solid border-dark-700 bg-dark-800 px-4 py-3 text-sm font-medium text-white placeholder:text-dark-300"
                   type="email"
-                  name="email_address"
                   id="email_address"
                   placeholder="Your email"
-                  aria-label="email"
                   disabled={status === "sending"}
                   required
                 />
@@ -83,7 +85,7 @@ export const PreviewSend = ({ html }: { html?: string }) => {
               <div className="grid w-full max-w-sm items-center gap-2">
                 <label
                   htmlFor="subject"
-                  className="text-sm font-semibold leading-none"
+                  className="text-sm font-semibold leading-none opacity-75"
                 >
                   Subject
                 </label>
@@ -95,10 +97,8 @@ export const PreviewSend = ({ html }: { html?: string }) => {
                   }}
                   className="w-full rounded-xl border border-solid border-dark-700 bg-dark-800 px-4 py-3 text-sm font-medium text-white placeholder:text-dark-300"
                   type="text"
-                  name="subject"
                   id="subject"
                   placeholder="Subject"
-                  aria-label="subject"
                   disabled={status === "sending"}
                 />
               </div>
