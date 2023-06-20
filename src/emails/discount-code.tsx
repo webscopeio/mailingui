@@ -13,25 +13,21 @@ import {
   Text,
   SocialIcon,
   type SocialIconType,
-  MinimalButton,
+  Button,
 } from "@mailingui/components";
 
 type MinimalResetPasswordProps = {
-  name: string;
-  date: string;
-  time: string;
-  location: string;
-  confirmBy: string;
-  confirmUrl: string;
+  code: string;
+  discount: number;
+  link: string;
+  expiration: string;
 };
 
-export const MinimalEventInvitation: FC<MinimalResetPasswordProps> = ({
-  name = "Jacob",
-  date = "August 22, 2023",
-  time = "5 PM",
-  location = "2972 Westheimer Rd. Santa Ana, Illinois 85486",
-  confirmBy = "July 31, 2023",
-  confirmUrl = "https://google.com",
+export const MinimalDiscoutCode: FC<MinimalResetPasswordProps> = ({
+  code = "HAPPY20",
+  discount = 20,
+  link = "https://google.com",
+  expiration = "July 31, 2023",
 }) => {
   const baseUrl = `${
     process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
@@ -40,7 +36,7 @@ export const MinimalEventInvitation: FC<MinimalResetPasswordProps> = ({
   return (
     <Html>
       <Head />
-      <Preview>Minimal - Attend our event</Preview>
+      <Preview>Minimal - don&apos;t miss out on new discounts</Preview>
       <Body style={main}>
         <Container style={container} width={600}>
           <Row style={{ marginBottom: "16px" }}>
@@ -63,43 +59,59 @@ export const MinimalEventInvitation: FC<MinimalResetPasswordProps> = ({
           </Row>
           <Row style={{ marginBottom: "32px" }}>
             <Text style={{ fontSize: "48px", lineHeight: "52px" }}>
-              Invitation to Minimal Meetup
+              Special Discount for you
             </Text>
           </Row>
           <Row style={{ marginBottom: "16px" }}>
-            <Text>Dear {name},</Text>
+            <Text>Dear customer,</Text>
             <Text>
-              We are delighted to invite you to Viola Meetup, which will be held
-              on <b>{date}</b> at <b>{time}</b> at <b>{location}</b>. As one of
-              our valued [business partners/clients/ friends], we would be
-              honored if you could join us for this special occasion.
-            </Text>
-            <Text>
-              Viola Meetup promises to be an exciting and memorable event. We
-              have also arranged for awesome food, speakers and performers, so
-              you can enjoy a fun-filled and engaging experience.
-            </Text>
-            <Text>
-              We believe that this event is an excellent opportunity for you to
-              meet like-minded people or learn something new, and we hope that
-              you will be able to join us. Please confirm your attendance by{" "}
-              {confirmBy} to ensure that we can make adequate arrangements for
-              you.
+              As a thank you for your continued support and loyalty, we would
+              like to offer you a special discount on your next purchase from
+              Viola store.
             </Text>
           </Row>
           <Row style={{ marginBottom: "32px" }}>
-            <MinimalButton href={confirmUrl}>
-              Confirm participation
-            </MinimalButton>
+            <Img width={520} src={`${baseUrl}/divider.png`} />
+          </Row>
+          <Row style={{ marginBottom: "32px" }}>
+            <Text style={{ fontSize: "48px", lineHeight: "52px" }}>{code}</Text>
+            <Text size="sm" style={{ color: "#64748B", paddingRight: "44px" }}>
+              Use the coupon code at checkout to receive {discount}% off your
+              total order. This offer is valid until {expiration}, so be sure to
+              take advantage of it before it expires.
+            </Text>
+          </Row>
+          <Row style={{ marginBottom: "32px" }}>
+            <Img width={520} src={`${baseUrl}/divider.png`} />
+          </Row>
+          <Row style={{ marginBottom: "32px" }}>
+            We have recently launched new products and we invite you to check
+            them out.
+          </Row>
+          <Row style={{ marginBottom: "32px" }}>
+            <Button
+              href={link}
+              width={520}
+              height={56}
+              backgroundColor="#000000"
+              rounded={0}
+            >
+              View products
+            </Button>
           </Row>
           <Row style={{ marginBottom: "16px" }}>
             <Text>
-              {" "}
-              We look forward to seeing you at Viola Meetup, and we thank you
-              for your continued support.
+              We appreciate your business and hope that this discount makes your
+              shopping experience with us even better. If you have any questions
+              or need further assistance, please do not hesitate to contact our
+              customer support team.
             </Text>
             <Text>
-              Best regards,
+              Thank you again for your support and we look forward to serving
+              you soon.
+            </Text>
+            <Text>
+              Sincerely,
               <br /> Minimal Team
             </Text>
           </Row>
@@ -175,7 +187,7 @@ export const MinimalEventInvitation: FC<MinimalResetPasswordProps> = ({
   );
 };
 
-export default MinimalEventInvitation;
+export default MinimalDiscoutCode;
 
 const main = {
   backgroundColor: "#f6f9fc",

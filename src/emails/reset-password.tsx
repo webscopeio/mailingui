@@ -13,24 +13,17 @@ import {
   Text,
   SocialIcon,
   type SocialIconType,
-  BulletList,
-  BulletListItem,
-  MinimalButton,
+  Button,
 } from "@mailingui/components";
 
-type MinimalNewsProps = {
-  link: string;
-  items: string[];
+type MinimalResetPasswordProps = {
+  name: string;
+  passwordResetUrl: string;
 };
 
-export const MinimalNews: FC<MinimalNewsProps> = ({
-  link = "https://google.com",
-  items = [
-    "A recap of our latest product launch and customer feedback",
-    "A sneak peek of our upcoming events and promotions",
-    "An inside look at our team and company culture",
-    "Tips and advice related to our industry or area of expertise",
-  ],
+export const ResetPassword: FC<MinimalResetPasswordProps> = ({
+  name = "Jacob",
+  passwordResetUrl = "https://google.com",
 }) => {
   const baseUrl = `${
     process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
@@ -39,7 +32,7 @@ export const MinimalNews: FC<MinimalNewsProps> = ({
   return (
     <Html>
       <Head />
-      <Preview>Minimal - New issue of our newsletter</Preview>
+      <Preview>Minimal - Reset your password</Preview>
       <Body style={main}>
         <Container style={container} width={600}>
           <Row style={{ marginBottom: "16px" }}>
@@ -62,47 +55,39 @@ export const MinimalNews: FC<MinimalNewsProps> = ({
           </Row>
           <Row style={{ marginBottom: "32px" }}>
             <Text style={{ fontSize: "48px", lineHeight: "52px" }}>
-              Stay Up-To-Date
+              Password Reset
             </Text>
           </Row>
           <Row style={{ marginBottom: "16px" }}>
-            <Text>Dear Subscriber,</Text>
+            <Text>Dear {name},</Text>
             <Text>
-              We are excited to share the latest news and updates from [Your
-              Company/Brand Name]. As a valued member of our community, we want
-              to keep you informed about our recent activities and upcoming
-              plans.
+              We recently received a request to reset your password on our
+              platform. To reset your password, please click on the button or
+              link below:
             </Text>
-          </Row>
-          <Row>
-            <Img
-              src={`${baseUrl}/news-main.png`}
-              width={520}
-              style={{ marginBottom: "24px" }}
-            />
-          </Row>
-          <Row style={{ marginBottom: "16px" }}>
-            <Text style={{ fontWeight: 700 }}>
-              In this edition, you&apos;ll find:
-            </Text>
-            <BulletList type="unordered">
-              {items.map((item, i) => (
-                <BulletListItem key={i}>{item}</BulletListItem>
-              ))}
-            </BulletList>
           </Row>
           <Row style={{ marginBottom: "32px" }}>
-            <MinimalButton href={link}>Read more</MinimalButton>
+            <Button
+              href={passwordResetUrl}
+              width={520}
+              height={56}
+              backgroundColor="#000000"
+              rounded={0}
+            >
+              Reset password
+            </Button>
           </Row>
           <Row style={{ marginBottom: "16px" }}>
             <Text>
-              We are committed to providing you with valuable content and
-              insights that will help you stay informed and engaged. Thank you
-              for your continued support and loyalty.
+              If you did not initiate this request or believe it was made in
+              error, please disregard this email and take the necessary steps to
+              secure your account. If you have any concerns or need further
+              assistance, please contact our customer support team.
             </Text>
             <Text>
-              Sincerely,
-              <br /> Minimal Team
+              Best regards,
+              <br />
+              Minimal Team
             </Text>
           </Row>
           <Row style={{ marginBottom: "32px" }}>
@@ -177,7 +162,7 @@ export const MinimalNews: FC<MinimalNewsProps> = ({
   );
 };
 
-export default MinimalNews;
+export default ResetPassword;
 
 const main = {
   backgroundColor: "#f6f9fc",

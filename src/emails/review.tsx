@@ -13,22 +13,14 @@ import {
   Text,
   SocialIcon,
   type SocialIconType,
-  MinimalButton,
+  Emoji,
 } from "@mailingui/components";
 
-type MinimalResetPasswordProps = {
-  code: string;
-  discount: number;
-  link: string;
-  expiration: string;
+type MinimalReviewProps = {
+  name: string;
 };
 
-export const MinimalDiscoutCode: FC<MinimalResetPasswordProps> = ({
-  code = "HAPPY20",
-  discount = 20,
-  link = "https://google.com",
-  expiration = "July 31, 2023",
-}) => {
+export const Review: FC<MinimalReviewProps> = ({ name = "Jacob" }) => {
   const baseUrl = `${
     process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
   }/static/minimal-theme`;
@@ -36,7 +28,7 @@ export const MinimalDiscoutCode: FC<MinimalResetPasswordProps> = ({
   return (
     <Html>
       <Head />
-      <Preview>Minimal - don&apos;t miss out on new discounts</Preview>
+      <Preview>Minimal - How was your experience?</Preview>
       <Body style={main}>
         <Container style={container} width={600}>
           <Row style={{ marginBottom: "16px" }}>
@@ -57,55 +49,91 @@ export const MinimalDiscoutCode: FC<MinimalResetPasswordProps> = ({
           <Row style={{ marginBottom: "32px" }}>
             <Img width={520} src={`${baseUrl}/divider.png`} />
           </Row>
-          <Row style={{ marginBottom: "32px" }}>
+          <Row style={{ marginBottom: "16px" }}>
             <Text style={{ fontSize: "48px", lineHeight: "52px" }}>
-              Special Discount for you
+              How was your experience?
             </Text>
           </Row>
           <Row style={{ marginBottom: "16px" }}>
-            <Text>Dear customer,</Text>
+            <Text>Dear {name},</Text>
             <Text>
-              As a thank you for your continued support and loyalty, we would
-              like to offer you a special discount on your next purchase from
-              Viola store.
+              We hope this email finds you well. We wanted to take a moment to
+              check in with you and ask about your recent experience with our
+              services.
+            </Text>
+            <Text>
+              At Viola Studio, we are committed to providing our customers with
+              the best possible experience, and we want to ensure that we are
+              meeting that goal. We would be grateful if you could take a few
+              minutes to share your thoughts on your experience with us.
             </Text>
           </Row>
           <Row style={{ marginBottom: "32px" }}>
             <Img width={520} src={`${baseUrl}/divider.png`} />
           </Row>
-          <Row style={{ marginBottom: "32px" }}>
-            <Text style={{ fontSize: "48px", lineHeight: "52px" }}>{code}</Text>
-            <Text size="sm" style={{ color: "#64748B", paddingRight: "44px" }}>
-              Use the coupon code at checkout to receive {discount}% off your
-              total order. This offer is valid until {expiration}, so be
-              sure to take advantage of it before it expires.
-            </Text>
+          <Row style={{ marginBottom: "32px", textAlign: "center" }}>
+            <Column>
+              <Emoji
+                type="heart-eyes-face"
+                style={{ paddingLeft: "16px", paddingBottom: "8px" }}
+                href="https://google.com"
+                bg
+              />
+              Excellent
+            </Column>
+            <Column>
+              <Emoji
+                type="smiling-face"
+                style={{ paddingLeft: "16px", paddingBottom: "8px" }}
+                href="https://google.com"
+                bg
+              />
+              Good
+            </Column>
+            <Column>
+              <Emoji
+                type="smiling-face"
+                style={{ paddingLeft: "16px", paddingBottom: "8px" }}
+                href="https://google.com"
+                bg
+              />
+              Good
+            </Column>
+            <Column>
+              <Emoji
+                type="smiling-face"
+                style={{ paddingLeft: "16px", paddingBottom: "8px" }}
+                href="https://google.com"
+                bg
+              />
+              Good
+            </Column>
+            <Column>
+              <Emoji
+                type="smiling-face"
+                style={{ paddingLeft: "16px", paddingBottom: "8px" }}
+                href="https://google.com"
+                bg
+              />
+              Good
+            </Column>
           </Row>
           <Row style={{ marginBottom: "32px" }}>
             <Img width={520} src={`${baseUrl}/divider.png`} />
           </Row>
-          <Row style={{ marginBottom: "32px" }}>
-            We have recently launched new products and we invite you to check
-            them out.
-          </Row>
-          <Row style={{ marginBottom: "32px" }}>
-            <MinimalButton href={link}>
-              View products
-            </MinimalButton>
-          </Row>
           <Row style={{ marginBottom: "16px" }}>
             <Text>
-              We appreciate your business and hope that this discount makes your
-              shopping experience with us even better. If you have any questions
-              or need further assistance, please do not hesitate to contact our
-              customer support team.
+              Your feedback is important to us, and it will help us identify
+              areas where we can improve and better serve our customers. We
+              value your opinion, and we would appreciate any suggestions or
+              comments that you may have.
             </Text>
             <Text>
-              Thank you again for your support and we look forward to serving
-              you soon.
+              Thank you for your time and consideration, and we look forward to
+              hearing from you soon.
             </Text>
             <Text>
-              Sincerely,
+              Best regards,
               <br /> Minimal Team
             </Text>
           </Row>
@@ -181,7 +209,7 @@ export const MinimalDiscoutCode: FC<MinimalResetPasswordProps> = ({
   );
 };
 
-export default MinimalDiscoutCode;
+export default Review;
 
 const main = {
   backgroundColor: "#f6f9fc",

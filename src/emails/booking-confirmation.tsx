@@ -13,7 +13,7 @@ import {
   Text,
   SocialIcon,
   type SocialIconType,
-  MinimalButton,
+  Button,
 } from "@mailingui/components";
 
 type MinimalBookingConfirmationProps = {
@@ -28,7 +28,7 @@ type MinimalBookingConfirmationProps = {
   reservationUrl: string;
 };
 
-export const MinimalBookingConfirmation: FC<
+export const BookingConfirmation: FC<
   MinimalBookingConfirmationProps
 > = ({
   name = "Jacob",
@@ -103,9 +103,15 @@ export const MinimalBookingConfirmation: FC<
             </Text>
           </Row>
           <Row style={{ marginBottom: "32px" }}>
-            <MinimalButton href={reservationUrl}>
+            <Button
+              href={reservationUrl}
+              width={520}
+              height={56}
+              backgroundColor="#000000"
+              rounded={0}
+            >
               Manage your reservation
-            </MinimalButton>
+            </Button>
           </Row>
           <Row style={{ marginBottom: "16px" }}>
             <Text>
@@ -200,7 +206,7 @@ export const MinimalBookingConfirmation: FC<
   );
 };
 
-export default MinimalBookingConfirmation;
+export default BookingConfirmation;
 
 const main = {
   backgroundColor: "#f6f9fc",

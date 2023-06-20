@@ -23,4 +23,3 @@ export {
   BulletListItem,
   type BulletListProps,
 } from "./list/BulletList";
-export { MinimalButton } from "./button/MinimalButton";

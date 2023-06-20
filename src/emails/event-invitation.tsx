@@ -13,14 +13,26 @@ import {
   Text,
   SocialIcon,
   type SocialIconType,
-  Emoji,
+  Button,
 } from "@mailingui/components";
 
-type MinimalReviewProps = {
+type MinimalResetPasswordProps = {
   name: string;
+  date: string;
+  time: string;
+  location: string;
+  confirmBy: string;
+  confirmUrl: string;
 };
 
-export const MinimalReview: FC<MinimalReviewProps> = ({ name = "Jacob" }) => {
+export const EventInvitation: FC<MinimalResetPasswordProps> = ({
+  name = "Jacob",
+  date = "August 22, 2023",
+  time = "5 PM",
+  location = "2972 Westheimer Rd. Santa Ana, Illinois 85486",
+  confirmBy = "July 31, 2023",
+  confirmUrl = "https://google.com",
+}) => {
   const baseUrl = `${
     process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
   }/static/minimal-theme`;
@@ -28,7 +40,7 @@ export const MinimalReview: FC<MinimalReviewProps> = ({ name = "Jacob" }) => {
   return (
     <Html>
       <Head />
-      <Preview>Minimal - How was your experience?</Preview>
+      <Preview>Minimal - Attend our event</Preview>
       <Body style={main}>
         <Container style={container} width={600}>
           <Row style={{ marginBottom: "16px" }}>
@@ -49,88 +61,48 @@ export const MinimalReview: FC<MinimalReviewProps> = ({ name = "Jacob" }) => {
           <Row style={{ marginBottom: "32px" }}>
             <Img width={520} src={`${baseUrl}/divider.png`} />
           </Row>
-          <Row style={{ marginBottom: "16px" }}>
+          <Row style={{ marginBottom: "32px" }}>
             <Text style={{ fontSize: "48px", lineHeight: "52px" }}>
-              How was your experience?
+              Invitation to Minimal Meetup
             </Text>
           </Row>
           <Row style={{ marginBottom: "16px" }}>
             <Text>Dear {name},</Text>
             <Text>
-              We hope this email finds you well. We wanted to take a moment to
-              check in with you and ask about your recent experience with our
-              services.
+              We are delighted to invite you to Viola Meetup, which will be held
+              on <b>{date}</b> at <b>{time}</b> at <b>{location}</b>. As one of
+              our valued [business partners/clients/ friends], we would be
+              honored if you could join us for this special occasion.
             </Text>
             <Text>
-              At Viola Studio, we are committed to providing our customers with
-              the best possible experience, and we want to ensure that we are
-              meeting that goal. We would be grateful if you could take a few
-              minutes to share your thoughts on your experience with us.
+              Viola Meetup promises to be an exciting and memorable event. We
+              have also arranged for awesome food, speakers and performers, so
+              you can enjoy a fun-filled and engaging experience.
+            </Text>
+            <Text>
+              We believe that this event is an excellent opportunity for you to
+              meet like-minded people or learn something new, and we hope that
+              you will be able to join us. Please confirm your attendance by{" "}
+              {confirmBy} to ensure that we can make adequate arrangements for
+              you.
             </Text>
           </Row>
           <Row style={{ marginBottom: "32px" }}>
-            <Img width={520} src={`${baseUrl}/divider.png`} />
-          </Row>
-          <Row style={{ marginBottom: "32px", textAlign: "center" }}>
-            <Column>
-              <Emoji
-                type="heart-eyes-face"
-                style={{ paddingLeft: "16px", paddingBottom: "8px" }}
-                href="https://google.com"
-                bg
-              />
-              Excellent
-            </Column>
-            <Column>
-              <Emoji
-                type="smiling-face"
-                style={{ paddingLeft: "16px", paddingBottom: "8px" }}
-                href="https://google.com"
-                bg
-              />
-              Good
-            </Column>
-            <Column>
-              <Emoji
-                type="smiling-face"
-                style={{ paddingLeft: "16px", paddingBottom: "8px" }}
-                href="https://google.com"
-                bg
-              />
-              Good
-            </Column>
-            <Column>
-              <Emoji
-                type="smiling-face"
-                style={{ paddingLeft: "16px", paddingBottom: "8px" }}
-                href="https://google.com"
-                bg
-              />
-              Good
-            </Column>
-            <Column>
-              <Emoji
-                type="smiling-face"
-                style={{ paddingLeft: "16px", paddingBottom: "8px" }}
-                href="https://google.com"
-                bg
-              />
-              Good
-            </Column>
-          </Row>
-          <Row style={{ marginBottom: "32px" }}>
-            <Img width={520} src={`${baseUrl}/divider.png`} />
+            <Button
+              href={confirmUrl}
+              width={520}
+              height={56}
+              backgroundColor="#000000"
+              rounded={0}
+            >
+              Confirm participation
+            </Button>
           </Row>
           <Row style={{ marginBottom: "16px" }}>
             <Text>
-              Your feedback is important to us, and it will help us identify
-              areas where we can improve and better serve our customers. We
-              value your opinion, and we would appreciate any suggestions or
-              comments that you may have.
-            </Text>
-            <Text>
-              Thank you for your time and consideration, and we look forward to
-              hearing from you soon.
+              {" "}
+              We look forward to seeing you at Viola Meetup, and we thank you
+              for your continued support.
             </Text>
             <Text>
               Best regards,
@@ -209,7 +181,7 @@ export const MinimalReview: FC<MinimalReviewProps> = ({ name = "Jacob" }) => {
   );
 };
 
-export default MinimalReview;
+export default EventInvitation;
 
 const main = {
   backgroundColor: "#f6f9fc",

@@ -13,17 +13,24 @@ import {
   Text,
   SocialIcon,
   type SocialIconType,
-  MinimalButton,
+  BulletList,
+  BulletListItem,
+  Button,
 } from "@mailingui/components";
 
-type MinimalResetPasswordProps = {
-  name: string;
-  passwordResetUrl: string;
+type MinimalNewsProps = {
+  link: string;
+  items: string[];
 };
 
-export const MinimalResetPassword: FC<MinimalResetPasswordProps> = ({
-  name = "Jacob",
-  passwordResetUrl = "https://google.com",
+export const News: FC<MinimalNewsProps> = ({
+  link = "https://google.com",
+  items = [
+    "A recap of our latest product launch and customer feedback",
+    "A sneak peek of our upcoming events and promotions",
+    "An inside look at our team and company culture",
+    "Tips and advice related to our industry or area of expertise",
+  ],
 }) => {
   const baseUrl = `${
     process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
@@ -32,7 +39,7 @@ export const MinimalResetPassword: FC<MinimalResetPasswordProps> = ({
   return (
     <Html>
       <Head />
-      <Preview>Minimal - Reset your password</Preview>
+      <Preview>Minimal - New issue of our newsletter</Preview>
       <Body style={main}>
         <Container style={container} width={600}>
           <Row style={{ marginBottom: "16px" }}>
@@ -55,33 +62,55 @@ export const MinimalResetPassword: FC<MinimalResetPasswordProps> = ({
           </Row>
           <Row style={{ marginBottom: "32px" }}>
             <Text style={{ fontSize: "48px", lineHeight: "52px" }}>
-              Password Reset
+              Stay Up-To-Date
             </Text>
           </Row>
           <Row style={{ marginBottom: "16px" }}>
-            <Text>Dear {name},</Text>
+            <Text>Dear Subscriber,</Text>
             <Text>
-              We recently received a request to reset your password on our
-              platform. To reset your password, please click on the button or
-              link below:
+              We are excited to share the latest news and updates from [Your
+              Company/Brand Name]. As a valued member of our community, we want
+              to keep you informed about our recent activities and upcoming
+              plans.
             </Text>
+          </Row>
+          <Row>
+            <Img
+              src={`${baseUrl}/news-main.png`}
+              width={520}
+              style={{ marginBottom: "24px" }}
+            />
+          </Row>
+          <Row style={{ marginBottom: "16px" }}>
+            <Text style={{ fontWeight: 700 }}>
+              In this edition, you&apos;ll find:
+            </Text>
+            <BulletList type="unordered">
+              {items.map((item, i) => (
+                <BulletListItem key={i}>{item}</BulletListItem>
+              ))}
+            </BulletList>
           </Row>
           <Row style={{ marginBottom: "32px" }}>
-            <MinimalButton href={passwordResetUrl}>
-              Reset password
-            </MinimalButton>
+            <Button
+              href={link}
+              width={520}
+              height={56}
+              backgroundColor="#000000"
+              rounded={0}
+            >
+              Read more
+            </Button>
           </Row>
           <Row style={{ marginBottom: "16px" }}>
             <Text>
-              If you did not initiate this request or believe it was made in
-              error, please disregard this email and take the necessary steps to
-              secure your account. If you have any concerns or need further
-              assistance, please contact our customer support team.
+              We are committed to providing you with valuable content and
+              insights that will help you stay informed and engaged. Thank you
+              for your continued support and loyalty.
             </Text>
             <Text>
-              Best regards,
-              <br />
-              Minimal Team
+              Sincerely,
+              <br /> Minimal Team
             </Text>
           </Row>
           <Row style={{ marginBottom: "32px" }}>
@@ -156,7 +185,7 @@ export const MinimalResetPassword: FC<MinimalResetPasswordProps> = ({
   );
 };
 
-export default MinimalResetPassword;
+export default News;
 
 const main = {
   backgroundColor: "#f6f9fc",
