@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { render } from "@react-email/render";
 import { format } from "prettier";
+import juice from "juice";
 import {
   ComponentExample,
   ComponentExampleProps,
@@ -116,8 +117,10 @@ const getComponent = async (
       });
       const plainText = render(<Component />, { plainText: true });
 
+      const htmlWithInlineStyles = juice(html, { removeStyleTags: false });
+
       const source = await highlight(highlighter, data);
-      const markup = await highlight(highlighter, html, "html");
+      const markup = await highlight(highlighter, htmlWithInlineStyles, "html");
       return {
         id,
         html,
