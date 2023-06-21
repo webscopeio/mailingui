@@ -129,7 +129,7 @@ export const BookingConfirmation: FC<MinimalBookingConfirmationProps> = ({
               Thank you again for choosing {hotelName}. We look forward to
               welcoming you soon.
             </Text>
-            <Text>Okay let&apos;s see.</Text>
+            <Text>Okay let&apos;s seya.</Text>
             <Text>
               Best regards,
               <br /> Minimal Team
