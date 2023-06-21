@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { cn } from "@utils/cn";
-import { componentTypes } from "@examples/components";
+import { componentTypes } from "@examples";
 
 export type ComponentsPreviewProps = {
   componentsShown?: number;
