@@ -3,6 +3,7 @@ const nextConfig = {
   experimental: {
     appDir: true,
   },
+  staticPageGenerationTimeout: 1000,
 
   images: {
     remotePatterns: [
