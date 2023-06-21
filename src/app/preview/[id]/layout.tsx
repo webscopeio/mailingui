@@ -1,7 +1,7 @@
 import { readdirSync } from "fs";
 import { join } from "path";
 import * as React from "react";
-import { PreviewShell } from "../components/PreviewShell";
+import { PreviewShell } from "@components/EmailPreview";
 
 export default function Layout({
   children,

@@ -2,7 +2,7 @@ import { readFileSync, readdirSync } from "fs";
 import { join } from "path";
 import { render } from "@react-email/render";
 import { format } from "prettier";
-import { PreviewPane } from "../components/PreviewPane";
+import { PreviewPane } from "@components/EmailPreview";
 import { getHighlighter, highlight } from "@lib/shiki";
 
 export default async function PreviewId({
