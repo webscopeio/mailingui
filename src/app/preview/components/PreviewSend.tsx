@@ -1,10 +1,10 @@
 "use client";
 
 import React from "react";
-import * as Popover from "@radix-ui/react-popover";
 import { CTA } from "@components/CTA";
 import { cn } from "@utils/cn";
 import { CrossIcon, CheckIcon } from "@components/Icons";
+import { Popover, PopoverContent, PopoverTrigger } from "@components/Popover";
 
 export const PreviewSend = ({ html }: { html?: string }) => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -39,8 +39,8 @@ export const PreviewSend = ({ html }: { html?: string }) => {
   }
 
   return (
-    <Popover.Root open={isOpen} onOpenChange={setIsOpen}>
-      <Popover.Trigger asChild>
+    <Popover open={isOpen} onOpenChange={setIsOpen}>
+      <PopoverTrigger asChild>
         <CTA
           color="white"
           className={cn(
@@ -50,95 +50,88 @@ export const PreviewSend = ({ html }: { html?: string }) => {
         >
           {isOpen ? "Close Form" : "Send Test"}
         </CTA>
-      </Popover.Trigger>
-      <Popover.Portal>
-        <Popover.Content
-          align="end"
-          alignOffset={8}
-          sideOffset={16}
-          className="w-80 rounded-xl bg-black p-4 text-white"
-        >
-          <form onSubmit={onSubmitHandler}>
-            <div className="grid w-full gap-4">
-              <div className="grid w-full items-center gap-2">
-                <label
-                  htmlFor="email_address"
-                  className="text-sm font-semibold leading-none opacity-75"
-                >
-                  Email
-                </label>
-                <input
-                  value={email}
-                  onChange={(e) => {
-                    setStatus("idle");
-                    setEmail(e.target.value);
-                  }}
-                  className="w-full rounded-xl border border-solid border-dark-700 bg-dark-800 px-4 py-3 text-sm font-medium text-white placeholder:text-dark-300"
-                  type="email"
-                  id="email_address"
-                  placeholder="Your email"
-                  disabled={status === "sending"}
-                  required
-                />
-              </div>
-
-              <div className="grid w-full max-w-sm items-center gap-2">
-                <label
-                  htmlFor="subject"
-                  className="text-sm font-semibold leading-none opacity-75"
-                >
-                  Subject
-                </label>
-                <input
-                  value={subject}
-                  onChange={(e) => {
-                    setStatus("idle");
-                    setSubject(e.target.value);
-                  }}
-                  className="w-full rounded-xl border border-solid border-dark-700 bg-dark-800 px-4 py-3 text-sm font-medium text-white placeholder:text-dark-300"
-                  type="text"
-                  id="subject"
-                  placeholder="Subject"
-                  disabled={status === "sending"}
-                />
-              </div>
-
-              <div className="grid grid-cols-3 items-center">
-                <p className="col-span-2 text-sm">
-                  Powered by{" "}
-                  <a
-                    className="font-semibold hover:opacity-70"
-                    href="https://react.email/"
-                  >
-                    react.email
-                  </a>
-                </p>
-                <CTA
-                  color="white"
-                  type="submit"
-                  className="flex items-center justify-center gap-1 px-3 py-2 disabled:opacity-75"
-                  disabled={status !== "idle"}
-                >
-                  {status === "idle" && "Send"}
-                  {status === "error" && (
-                    <>
-                      <CrossIcon width="1.2rem" height="1.2rem" /> Error
-                    </>
-                  )}
-                  {status === "success" && (
-                    <>
-                      <CheckIcon width="1.2rem" height="1.2rem" /> Sent
-                    </>
-                  )}
-                  {status === "sending" && (
-                    <span className="animate-bounce">...</span>
-                  )}
-                </CTA>
-              </div>
+      </PopoverTrigger>
+      <PopoverContent align="end" sideOffset={16} color="black">
+        <form onSubmit={onSubmitHandler}>
+          <div className="grid w-full gap-4">
+            <div className="grid w-full items-center gap-2">
+              <label
+                htmlFor="email_address"
+                className="text-sm font-semibold leading-none opacity-75"
+              >
+                Email
+              </label>
+              <input
+                value={email}
+                onChange={(e) => {
+                  setStatus("idle");
+                  setEmail(e.target.value);
+                }}
+                className="w-full rounded-xl border border-solid border-dark-700 bg-dark-800 px-4 py-3 text-sm font-medium text-white placeholder:text-dark-300"
+                type="email"
+                id="email_address"
+                placeholder="Your email"
+                disabled={status === "sending"}
+                required
+              />
             </div>
-          </form>
-        </Popover.Content>
-      </Popover.Portal>
-    </Popover.Root>
+
+            <div className="grid w-full max-w-sm items-center gap-2">
+              <label
+                htmlFor="subject"
+                className="text-sm font-semibold leading-none opacity-75"
+              >
+                Subject
+              </label>
+              <input
+                value={subject}
+                onChange={(e) => {
+                  setStatus("idle");
+                  setSubject(e.target.value);
+                }}
+                className="w-full rounded-xl border border-solid border-dark-700 bg-dark-800 px-4 py-3 text-sm font-medium text-white placeholder:text-dark-300"
+                type="text"
+                id="subject"
+                placeholder="Subject"
+                disabled={status === "sending"}
+              />
+            </div>
+
+            <div className="grid grid-cols-3 items-center">
+              <p className="col-span-2 text-sm">
+                Powered by{" "}
+                <a
+                  className="font-semibold hover:opacity-70"
+                  href="https://react.email/"
+                >
+                  react.email
+                </a>
+              </p>
+              <CTA
+                color="white"
+                type="submit"
+                className="flex items-center justify-center gap-1 px-3 py-2 disabled:opacity-75"
+                disabled={status !== "idle"}
+              >
+                {status === "idle" && "Send"}
+                {status === "error" && (
+                  <>
+                    <CrossIcon width="1.2rem" height="1.2rem" /> Error
+                  </>
+                )}
+                {status === "success" && (
+                  <>
+                    <CheckIcon width="1.2rem" height="1.2rem" /> Sent
+                  </>
+                )}
+                {status === "sending" && (
+                  <span className="animate-bounce">...</span>
+                )}
+              </CTA>
+            </div>
+          </div>
+        </form>
+      </PopoverContent>
+    </Popover>
   );
 };
