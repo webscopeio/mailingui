@@ -4,7 +4,7 @@ import { PreviewSend } from "./PreviewSend";
 import { CTA } from "@components/CTA";
 import { BackIcon } from "@components/Icons";
 
-export const PreviewNavigation = ({
+const PreviewNavigation = ({
   id,
   html,
   children,
@@ -33,3 +33,5 @@ export const PreviewNavigation = ({
     </nav>
   );
 };
+
+export { PreviewNavigation };

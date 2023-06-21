@@ -4,7 +4,7 @@ import { compileMDX, type CompileMDXResult } from "next-mdx-remote/rsc";
 import { z } from "zod";
 
 // ⚙️ Config settings
-export const blogDir = "src/blog";
+export const blogDir = "src/docs/blog";
 const fileExtension = ".mdx";
 
 // ⚙️ Type definitions
