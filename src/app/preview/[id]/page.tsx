@@ -29,8 +29,13 @@ const getPreviewData = async (id: string) => {
   });
   const plainText = render(<Component />, { plainText: true });
 
+  const startTime = performance.now();
+
   const source = await highlight(highlighter, data);
   const markup = await highlight(highlighter, html, "html");
+  const endTime = performance.now();
+  // eslint-disable-next-line no-console
+  console.log(`Preview Page id: ${id} - Highlighting took ${endTime - startTime}ms`);
   return {
     id,
     html,
