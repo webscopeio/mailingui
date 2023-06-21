@@ -10,13 +10,18 @@ export default async function PreviewId({
 }: {
   params: { id: string };
 }) {
+  const startTime = performance.now();
   const data = await getPreviewData(params.id);
 
-  return <PreviewPane id={params.id} data={data} />;
+  const retVal = <PreviewPane id={params.id} data={data} />;
+  const endTime = performance.now();
+  // eslint-disable-next-line no-console
+  console.log(`Preview Page id: ${params.id} - 'rendering' took ${endTime - startTime}ms`);
+
+  return retVal;
 }
 
 const getPreviewData = async (id: string) => {
-  const startTime = performance.now();
   const highlighter = await getHighlighter();
   const CONTENT_DIR = "src/emails";
   const typePath = join(process.cwd(), CONTENT_DIR);
@@ -33,9 +38,6 @@ const getPreviewData = async (id: string) => {
 
   const source = await highlight(highlighter, data);
   const markup = await highlight(highlighter, html, "html");
-  const endTime = performance.now();
-  // eslint-disable-next-line no-console
-  console.log(`Preview Page id: ${id} - getPreviewData took ${endTime - startTime}ms`);
   return {
     id,
     html,
