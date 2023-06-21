@@ -16,6 +16,7 @@ export default async function PreviewId({
 }
 
 const getPreviewData = async (id: string) => {
+  const startTime = performance.now();
   const highlighter = await getHighlighter();
   const CONTENT_DIR = "src/emails";
   const typePath = join(process.cwd(), CONTENT_DIR);
@@ -29,13 +30,12 @@ const getPreviewData = async (id: string) => {
   });
   const plainText = render(<Component />, { plainText: true });
 
-  const startTime = performance.now();
 
   const source = await highlight(highlighter, data);
   const markup = await highlight(highlighter, html, "html");
   const endTime = performance.now();
   // eslint-disable-next-line no-console
-  console.log(`Preview Page id: ${id} - Highlighting took ${endTime - startTime}ms`);
+  console.log(`Preview Page id: ${id} - getPreviewData took ${endTime - startTime}ms`);
   return {
     id,
     html,
