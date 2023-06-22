@@ -2,9 +2,9 @@ import { readFileSync, readdirSync } from "fs";
 import { join } from "path";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { render } from "@react-email/render";
 import { format } from "prettier";
 import juice from "juice";
+import { render } from "@mailingui/utils";
 import {
   ComponentExample,
   ComponentExampleProps,
@@ -117,10 +117,8 @@ const getComponent = async (
       });
       const plainText = render(<Component />, { plainText: true });
 
-      const htmlWithInlineStyles = juice(html, { removeStyleTags: false });
-
       const source = await highlight(highlighter, data);
-      const markup = await highlight(highlighter, htmlWithInlineStyles, "html");
+      const markup = await highlight(highlighter, html, "html");
       return {
         id,
         html,
