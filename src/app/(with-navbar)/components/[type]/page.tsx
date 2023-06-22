@@ -3,7 +3,6 @@ import { join } from "path";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { format } from "prettier";
-import juice from "juice";
 import { render } from "@mailingui/utils";
 import {
   ComponentExample,

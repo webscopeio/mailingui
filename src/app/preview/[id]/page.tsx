@@ -1,7 +1,6 @@
 import { readFileSync, readdirSync } from "fs";
 import { join } from "path";
 import { format } from "prettier";
-import juice from "juice";
 import { render } from "@mailingui/utils";
 import { PreviewPane } from "@components/EmailPreview";
 import { getHighlighter, highlight } from "@lib/shiki";
@@ -29,7 +28,6 @@ const getPreviewData = async (id: string) => {
     parser: "html",
   });
   const plainText = render(<Component />, { plainText: true });
-
 
   const source = await highlight(highlighter, data);
   const markup = await highlight(highlighter, html, "html");
