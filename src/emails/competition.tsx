@@ -2,7 +2,6 @@ import {
   Body,
   Column,
   Container,
-  Head,
   Html,
   Preview,
   Img,
@@ -14,6 +13,7 @@ import {
   SocialIcon,
   type SocialIconType,
   Button,
+  Head,
 } from "@mailingui/components";
 
 type CompetitionProps = {

@@ -2,7 +2,6 @@ import {
   Body,
   Column,
   Container,
-  Head,
   Html,
   Preview,
   Img,
@@ -14,6 +13,7 @@ import {
   SocialIcon,
   type SocialIconType,
   Button,
+  Head,
 } from "@mailingui/components";
 
 type MinimalBookingConfirmationProps = {
@@ -33,9 +33,7 @@ const baseUrl = `${
   process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
 }/static/minimal-theme`;
 
-export const BookingConfirmation: FC<
-  MinimalBookingConfirmationProps
-> = ({
+export const BookingConfirmation: FC<MinimalBookingConfirmationProps> = ({
   name = "Jacob",
   checkInDate = "August 22, 2023",
   checkOutDate = "September 5, 2023",
