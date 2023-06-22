@@ -3,9 +3,9 @@ import * as React from "react";
 import { Resizable } from "re-resizable";
 import { Tabs } from "@components/Tabs";
 import { CodeIcon, EyeIcon } from "@components/Icons";
-import { CopyButton } from "@components/CopyButton";
 import { cn } from "@utils/cn";
 import { TabsContent, TabsList, TabsTrigger } from "@components/Tabs/Tabs";
+import { TabbedCode, TabbedCodeItem } from "@components/Code";
 
 export type ComponentExampleProps = {
   type: string;
@@ -24,8 +24,21 @@ export const ComponentExample = ({
   markup,
   plainText,
 }: ComponentExampleProps) => {
-  const [code, setCode] = React.useState("");
-  const [expanded, setExpanded] = React.useState(false);
+  const tabData: TabbedCodeItem[] = [
+    {
+      id: `${id}.tsx`,
+      htmlCode: source,
+    },
+    {
+      id: `${id}.html`,
+      htmlCode: markup,
+    },
+    {
+      id: `${id}.txt`,
+      htmlCode: plainText,
+      isPlainText: true,
+    },
+  ];
 
   return (
     <div className={cn("space-y-3")}>
@@ -85,96 +98,11 @@ export const ComponentExample = ({
           className="relative overflow-hidden rounded-md"
           value="code"
         >
-          <div
-            className={cn(
-              "bg-[#011627] min-h-[350px]",
-              !expanded && "max-h-[350px]"
-            )}
-          >
-            <Tabs defaultValue="source">
-              <div className="flex items-center justify-between px-5 pt-3">
-                <TabsList className="grid w-full bg-[#011627] sm:inline-flex">
-                  <TabsTrigger
-                    value="source"
-                    className="px-2.5 py-1.5 text-xs hover:bg-slate-700/50 data-[state=active]:bg-slate-700 data-[state=active]:text-slate-200"
-                  >
-                    {id}.tsx
-                  </TabsTrigger>
-                  <TabsTrigger
-                    value="markup"
-                    className="px-2.5 py-1.5 text-xs hover:bg-slate-700/50 data-[state=active]:bg-slate-700 data-[state=active]:text-slate-200"
-                  >
-                    {id}.html
-                  </TabsTrigger>
-                  <TabsTrigger
-                    value="text"
-                    className="px-2.5 py-1.5 text-xs hover:bg-slate-700/50 data-[state=active]:bg-slate-700 data-[state=active]:text-slate-200"
-                  >
-                    {id}.txt
-                  </TabsTrigger>
-                </TabsList>
-                <div className="hidden md:inline-flex">
-                  <CopyButton code={code} />
-                </div>
-              </div>
-              <TabsContent value="source">
-                <div
-                  tabIndex={-1}
-                  ref={(node) => {
-                    node?.textContent && setCode(node.textContent);
-                  }}
-                  dangerouslySetInnerHTML={{ __html: source }}
-                />
-              </TabsContent>
-              <TabsContent value="markup">
-                <div
-                  tabIndex={-1}
-                  ref={(node) => {
-                    node?.textContent && setCode(node.textContent);
-                  }}
-                  dangerouslySetInnerHTML={{ __html: markup }}
-                />
-              </TabsContent>
-              <TabsContent className="h-full overscroll-none" value="text">
-                <div
-                  className="whitespace-pre-line px-8 pb-8"
-                  tabIndex={-1}
-                  ref={(node) => {
-                    node?.textContent && setCode(node.textContent);
-                  }}
-                  dangerouslySetInnerHTML={{
-                    __html: plainText,
-                  }}
-                />
-              </TabsContent>
-            </Tabs>
-          </div>
-          <footer
-            className={cn(
-              "absolute pointer-events-none rounded-md h-full w-full inset-0 bg-gradient-to-t from-slate-900 flex justify-center items-end pb-8",
-              expanded ? "pb-2 bg-none" : "pb-8"
-            )}
-          >
-            <button
-              onClick={() => setExpanded(!expanded)}
-              className={cn([
-                expanded
-                  ? "text-xs px-2 py-1"
-                  : "text-sm px-3 py-1.5 bg-neutral-200 text-neutral-800",
-                "pointer-events-auto rounded-md font-medium transition-all duration-300",
-                /** Hover styles */
-                expanded
-                  ? "hover:bg-slate-800 hover:text-white"
-                  : "hover:bg-neutral-400",
-                /** Focus styles */
-                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-dark-400 focus-visible:ring-offset-2 ring-offset-dark-800",
-                /** Disabled styles */
-                "disabled:pointer-events-none disabled:opacity-50",
-              ])}
-            >
-              {!expanded ? "Expand" : "Collapse"}
-            </button>
-          </footer>
+          <TabbedCode
+            tabs={tabData}
+            collapsedClassName="max-h-[350px]"
+            className="min-h-[350px]"
+          />
         </TabsContent>
       </Tabs>
     </div>

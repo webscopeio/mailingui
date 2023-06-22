@@ -9,8 +9,7 @@ import {
   TabsTrigger,
 } from "@components/Tabs/Tabs";
 import { CodeIcon, EyeIcon } from "@components/Icons";
-import { cn } from "@utils/cn";
-import { CopyButton } from "@components/CopyButton";
+import { TabbedCode, TabbedCodeItem } from "@components/Code";
 
 export const PreviewPane = ({
   id,
@@ -25,10 +24,25 @@ export const PreviewPane = ({
     plainText: string;
   };
 }) => {
-  const [code, setCode] = React.useState("");
+  const tabData: TabbedCodeItem[] = [
+    {
+      id: `${data.id}.tsx`,
+      htmlCode: data.source,
+    },
+    {
+      id: `${data.id}.html`,
+      htmlCode: data.markup,
+    },
+    {
+      id: `${data.id}.txt`,
+      htmlCode: data.plainText,
+      isPlainText: true,
+    },
+  ];
+
   return (
     <Tabs
-      className="h-full w-full overflow-hidden"
+      className="flex h-full w-full flex-col overflow-hidden"
       defaultValue="preview"
       orientation="horizontal"
     >
@@ -45,7 +59,7 @@ export const PreviewPane = ({
         </TabsList>
       </PreviewNavigation>
       <TabsContent
-        className="relative h-full w-full overflow-y-scroll data-[orientation=horizontal]:mt-0"
+        className="relative w-full overflow-y-scroll data-[orientation=horizontal]:mt-0"
         value="preview"
       >
         <iframe
@@ -59,68 +73,10 @@ export const PreviewPane = ({
         />
       </TabsContent>
       <TabsContent
-        className="relative h-full w-full overflow-y-scroll data-[orientation=horizontal]:mt-0"
+        className="relative w-full overflow-y-scroll data-[orientation=horizontal]:mt-0"
         value="code"
       >
-        <div className={cn("bg-[#011627] min-h-full")}>
-          <Tabs defaultValue="source">
-            <div className="flex items-center justify-between px-5 pt-3">
-              <TabsList className="grid w-full bg-[#011627] sm:inline-flex">
-                <TabsTrigger
-                  value="source"
-                  className="px-2.5 py-1.5 text-xs hover:bg-slate-700/50 data-[state=active]:bg-slate-700 data-[state=active]:text-slate-200"
-                >
-                  {id}.tsx
-                </TabsTrigger>
-                <TabsTrigger
-                  value="markup"
-                  className="px-2.5 py-1.5 text-xs hover:bg-slate-700/50 data-[state=active]:bg-slate-700 data-[state=active]:text-slate-200"
-                >
-                  {id}.html
-                </TabsTrigger>
-                <TabsTrigger
-                  value="text"
-                  className="px-2.5 py-1.5 text-xs hover:bg-slate-700/50 data-[state=active]:bg-slate-700 data-[state=active]:text-slate-200"
-                >
-                  {id}.txt
-                </TabsTrigger>
-              </TabsList>
-              <div className="hidden md:inline-flex">
-                <CopyButton code={code} />
-              </div>
-            </div>
-            <TabsContent value="source">
-              <div
-                tabIndex={-1}
-                ref={(node) => {
-                  node?.textContent && setCode(node.textContent);
-                }}
-                dangerouslySetInnerHTML={{ __html: data.source }}
-              />
-            </TabsContent>
-            <TabsContent value="markup">
-              <div
-                tabIndex={-1}
-                ref={(node) => {
-                  node?.textContent && setCode(node.textContent);
-                }}
-                dangerouslySetInnerHTML={{ __html: data.markup }}
-              />
-            </TabsContent>
-            <TabsContent value="text">
-              <div
-                className="whitespace-pre-line px-8 pb-8"
-                tabIndex={-1}
-                ref={(node) => {
-                  node?.textContent && setCode(node.textContent);
-                }}
-                dangerouslySetInnerHTML={{
-                  __html: data.plainText,
-                }}
-              />
-            </TabsContent>
-          </Tabs>
-        </div>
+        <TabbedCode className="min-h-full" tabs={tabData} />
       </TabsContent>
     </Tabs>
   );
