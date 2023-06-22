@@ -7,43 +7,36 @@ import {
   Preview,
   Section,
 } from "@react-email/components";
-import { Badge, ThemeProvider } from "@mailingui/components";
-import { defaultTheme } from "@mailingui/themes";
+import { Badge } from "@mailingui/components";
+import { getCssText } from "@mailingui/utils";
 
 const MediumBadges = () => (
   <Html>
-    <Head />
+    <Head>
+      <style
+        type="text/css"
+        dangerouslySetInnerHTML={{
+          __html: getCssText(),
+        }}
+      />
+    </Head>
     <Preview>Medium Badges</Preview>
     <Body style={main}>
-      <ThemeProvider theme={defaultTheme}>
-        <Container style={container}>
-          <Section style={{ textAlign: "center" as const }}>
-            <Badge variant="default" size="md">
-              Badge
-            </Badge>
-            <span style={{ padding: 10 }} />
-            <Badge variant="primary" size="md">
-              Badge
-            </Badge>
-            <span style={{ padding: 10 }} />
-            <Badge variant="secondary" size="md">
-              Badge
-            </Badge>
-            <span style={{ padding: 10 }} />
-            <Badge variant="danger" size="md">
-              Badge
-            </Badge>
-            <span style={{ padding: 10 }} />
-            <Badge variant="success" size="md">
-              Badge
-            </Badge>
-            <span style={{ padding: 10 }} />
-            <Badge variant="warning" size="md">
-              Badge
-            </Badge>
-          </Section>
-        </Container>
-      </ThemeProvider>
+      <Container style={container}>
+        <Section style={{ textAlign: "center" as const }}>
+          <Badge>Badge</Badge>
+          <span style={{ padding: 10 }} />
+          <Badge variant="primary">Badge</Badge>
+          <span style={{ padding: 10 }} />
+          <Badge variant="secondary">Badge</Badge>
+          <span style={{ padding: 10 }} />
+          <Badge variant="success">Badge</Badge>
+          <span style={{ padding: 10 }} />
+          <Badge variant="warning">Badge</Badge>
+          <span style={{ padding: 10 }} />
+          <Badge variant="danger">Badge</Badge>
+        </Section>
+      </Container>
     </Body>
   </Html>
 );

@@ -2,8 +2,8 @@ import { readFileSync, readdirSync } from "fs";
 import { join } from "path";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { render } from "@react-email/render";
 import { format } from "prettier";
+import { render } from "@mailingui/utils";
 import {
   ComponentExample,
   ComponentExampleProps,

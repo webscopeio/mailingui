@@ -1,7 +1,7 @@
 import { readFileSync, readdirSync } from "fs";
 import { join } from "path";
-import { render } from "@react-email/render";
 import { format } from "prettier";
+import { render } from "@mailingui/utils";
 import { PreviewPane } from "@components/EmailPreview";
 import { getHighlighter, highlight } from "@lib/shiki";
 

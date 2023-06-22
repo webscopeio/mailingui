@@ -9,21 +9,19 @@ import {
   Row,
 } from "@react-email/components";
 import React, { FC } from "react";
-import {
-  Text,
-  SocialIcon,
-  type SocialIconType,
-} from "@mailingui/components";
+import { Text, SocialIcon, type SocialIconType } from "@mailingui/components";
 
 type MinimalEventInvitationProps = {
   name: string;
-}
+};
 
 const baseUrl = `${
   process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
 }/static/minimal-theme`;
 
-export const MinimalEventInvitation: FC<MinimalEventInvitationProps> = ({ name }) => {
+export const MinimalEventInvitation: FC<MinimalEventInvitationProps> = ({
+  name = "Jacob",
+}) => {
   return (
     <Html>
       <Head />
