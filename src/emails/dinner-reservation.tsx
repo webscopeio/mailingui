@@ -2,14 +2,18 @@ import {
   Body,
   Column,
   Container,
-  Head,
   Html,
   Preview,
   Img,
   Row,
 } from "@react-email/components";
 import React, { FC } from "react";
-import { Text, SocialIcon, type SocialIconType } from "@mailingui/components";
+import {
+  Text,
+  SocialIcon,
+  type SocialIconType,
+  Head,
+} from "@mailingui/components";
 
 type DinnerReservationProps = {
   name: string;

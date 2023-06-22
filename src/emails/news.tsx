@@ -2,7 +2,6 @@ import {
   Body,
   Column,
   Container,
-  Head,
   Html,
   Preview,
   Img,
@@ -16,6 +15,7 @@ import {
   BulletList,
   BulletListItem,
   Button,
+  Head,
 } from "@mailingui/components";
 
 type MinimalNewsProps = {

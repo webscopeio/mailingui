@@ -23,3 +23,4 @@ export {
   BulletListItem,
   type BulletListProps,
 } from "./list/BulletList";
+export { Head } from "./head/Head";

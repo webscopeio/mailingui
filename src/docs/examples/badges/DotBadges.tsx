@@ -2,25 +2,15 @@ import * as React from "react";
 import {
   Body,
   Container,
-  Head,
   Html,
   Preview,
   Section,
 } from "@react-email/components";
-import { Badge } from "@mailingui/components";
-import { getCssText } from "@mailingui/utils";
+import { Badge, Head } from "@mailingui/components";
 
 const DotBadges = () => (
   <Html>
-    <Head>
-      <style
-        id="stitches"
-        type="text/css"
-        dangerouslySetInnerHTML={{
-          __html: getCssText(),
-        }}
-      />
-    </Head>
+    <Head />
     <Preview>Medium Badges</Preview>
     <Body style={main}>
       <Container style={container}>
