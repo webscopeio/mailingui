@@ -6,42 +6,42 @@ import "./globals.css";
 const basierCircle = localFont({
   src: [
     {
-      path: "fonts/BasierCircle-Regular.otf",
+      path: "../../public/static/fonts/BasierCircle-Regular.otf",
       weight: "400",
       style: "normal",
     },
     {
-      path: "fonts/BasierCircle-RegularItalic.otf",
+      path: "../../public/static/fonts/BasierCircle-RegularItalic.otf",
       weight: "400",
       style: "italic",
     },
     {
-      path: "fonts/BasierCircle-Medium.otf",
+      path: "../../public/static/fonts/BasierCircle-Medium.otf",
       weight: "500",
       style: "normal",
     },
     {
-      path: "fonts/BasierCircle-MediumItalic.otf",
+      path: "../../public/static/fonts/BasierCircle-MediumItalic.otf",
       weight: "500",
       style: "italic",
     },
     {
-      path: "fonts/BasierCircle-SemiBold.otf",
+      path: "../../public/static/fonts/BasierCircle-SemiBold.otf",
       weight: "600",
       style: "normal",
     },
     {
-      path: "fonts/BasierCircle-SemiBoldItalic.otf",
+      path: "../../public/static/fonts/BasierCircle-SemiBoldItalic.otf",
       weight: "600",
       style: "italic",
     },
     {
-      path: "fonts/BasierCircle-Bold.otf",
+      path: "../../public/static/fonts/BasierCircle-Bold.otf",
       weight: "700",
       style: "normal",
     },
     {
-      path: "fonts/BasierCircle-BoldItalic.otf",
+      path: "../../public/static/fonts/BasierCircle-BoldItalic.otf",
       weight: "700",
       style: "italic",
     },

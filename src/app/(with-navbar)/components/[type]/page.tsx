@@ -11,7 +11,7 @@ import {
 } from "@components/ComponentExample";
 
 import { getHighlighter, highlight } from "@lib/shiki";
-import { componentTypes } from "@examples/components";
+import { componentTypes } from "@examples";
 
 type ComponentPageProps = {
   params: {
@@ -76,7 +76,7 @@ const getComponentData = (type: string) => {
   return component;
 };
 
-const CONTENT_DIR = "src/examples/components";
+const CONTENT_DIR = "src/docs/examples";
 
 /**
  * Maps over examples, translates them to html, and puts them together.
@@ -109,7 +109,7 @@ const getComponent = async (
         parser: "typescript",
       });
       const Component = (
-        await import(`src/examples/components/${component.type}/${id}`)
+        await import(`src/docs/examples/${component.type}/${id}`)
       ).default;
 
       const html = format(render(<Component />, { pretty: true }), {

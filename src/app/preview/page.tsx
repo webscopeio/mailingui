@@ -1,8 +1,7 @@
 import { readdirSync } from "fs";
 import { join } from "path";
 import * as React from "react";
-import { PreviewShell } from "./components/PreviewShell";
-import { PreviewNavigation } from "./components/PreviewNavigation";
+import { PreviewNavigation, PreviewShell } from "@components/EmailPreview";
 
 export default async function Preview() {
   const files = getFiles();
