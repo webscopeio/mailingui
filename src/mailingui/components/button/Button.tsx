@@ -3,7 +3,7 @@
 import React, { FC, ReactNode, CSSProperties } from "react";
 import { VariantProps } from "@stitches/react";
 // TODO: ⬇️This is just a temporary solution, create a PR to react.email so we can use their Button component
-import { Button as ReactEmailButton } from "./ButtonPrimitive";
+import { Button as ReactEmailButton } from "@react-email/components";
 import { theme } from "@mailingui/themes";
 import { css } from "@mailingui/utils";
 
@@ -65,7 +65,7 @@ const Button: FC<ButtonProps> = ({
   borderColor,
   children,
   backgroundColor,
-  variant = "primary",
+  variant = "default",
   style: styleProp,
   width,
   height,
@@ -80,16 +80,19 @@ const Button: FC<ButtonProps> = ({
   };
 
   if (width) {
+    const rectString = rounded ? "roundrect" : "rect";
+    const arcSize = rounded ? `arcsize="${Math.round(rounded / height * 100)}%" ` : " ";
+
     return (
       <div>
         <span
           dangerouslySetInnerHTML={{
             __html:
-              "<!--[if mso]>\n" +
-              `  <v:rect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="${href}" style="height:${height}px;v-text-anchor:middle;width:${width}px;" fillcolor="${backgroundColor}">\n` +
+              "<!--[if mso]>\n" +                                                                                                                                                                                  // if this is undefined (not passed as prop), we cannot get it from the theme
+              `  <v:${rectString} xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" ${arcSize}href="${href}" style="height:${height}px;v-text-anchor:middle;width:${width}px;" fillcolor="${backgroundColor}">\n` +
               "    <w:anchorlock/>\n" +
               `    <center style="color:${color};font-family:sans-serif;font-size:13px;font-weight:bold;">Reset password</center>\n` +
-              "  </v:rect>\n" +
+              `  </v:${rectString}>\n` +
               "<![endif]-->",
           }}
         />

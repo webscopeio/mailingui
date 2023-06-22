@@ -18,33 +18,15 @@ const DifferentColorButtons = () => {
         <Container style={container}>
           <Row>
             <Column>
-              <Button href="#clicked!" backgroundColor="#003049">
+              <Button href="#clicked!" variant="primary" width={200} height={40} rounded={9999}>
                 Button
               </Button>
             </Column>
             <Column width={16} />
             <Column>
-              <Button href="#clicked!" backgroundColor="#d62828">
+              <Button href="#clicked!" variant="secondary" width={200} height={40} rounded={9999}>
                 Button
               </Button>
-            </Column>
-            <Column width={16} />
-            <Column>
-            <Button href="#clicked!" backgroundColor="#f77f00">
-              Button
-            </Button>
-            </Column>
-            <Column width={16} />
-            <Column>
-            <Button href="#clicked!" backgroundColor="#fcbf49" color="black">
-              Button
-            </Button>
-            </Column>
-            <Column width={16} />
-            <Column>
-            <Button href="#clicked!" backgroundColor="#f77f00" color="black">
-              Button
-            </Button>
             </Column>
           </Row>
         </Container>

@@ -111,9 +111,7 @@ const getComponent = async (
         await import(`src/docs/examples/${component.type}/${id}`)
       ).default;
 
-      const html = format(render(<Component />, { pretty: true }), {
-        parser: "html",
-      });
+      const html = render(<Component />, { pretty: true })
       const plainText = render(<Component />, { plainText: true });
 
       const source = await highlight(highlighter, data);
