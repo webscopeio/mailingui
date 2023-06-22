@@ -1,6 +1,6 @@
 import * as React from "react";
-import { Body, Container, Head, Html, Preview } from "@react-email/components";
-import { Button, ThemeProvider } from "@mailingui/components";
+import { Body, Container, Html, Preview } from "@react-email/components";
+import { Head, Button, ThemeProvider } from "@mailingui/components";
 import { defaultTheme } from "@mailingui/themes";
 
 const SecondaryButtons = () => (

@@ -1,28 +1,61 @@
 "use client";
 
 import React, { FC, ReactNode, CSSProperties } from "react";
-import { useTheme } from "../ThemeProvider/ThemeProvider";
+import { VariantProps } from "@stitches/react";
 // TODO: ⬇️This is just a temporary solution, create a PR to react.email so we can use their Button component
 import { Button as ReactEmailButton } from "./ButtonPrimitive";
-import { type Variant } from "@mailingui/themes";
+import { theme } from "@mailingui/themes";
+import { css } from "@mailingui/utils";
 
-type ButtonProps = {
+const { bg, text, border } = theme;
+
+const buttonStyles = css({
+  /** Default Styles */
+  borderRadius: 8,
+  border: border.default,
+  /** Component Props */
+  variants: {
+    variant: {
+      default: {
+        backgroundColor: bg.default,
+        color: text.default,
+      },
+      primary: {
+        backgroundColor: bg.primary,
+        color: text.primary,
+      },
+      secondary: {
+        backgroundColor: bg.secondary,
+        color: text.secondary,
+        border: border.secondary,
+      },
+      subtle: {
+        backgroundColor: bg.subtle,
+        color: text.subtle,
+      },
+    },
+  },
+  defaultVariants: {
+    variant: "default",
+  },
+});
+
+type ButtonProps = VariantProps<typeof buttonStyles> & {
   href: string;
   children: ReactNode;
   color?: CSSProperties["color"];
   borderColor?: CSSProperties["color"];
   rounded?: number;
   backgroundColor?: CSSProperties["backgroundColor"];
-  variant?: Variant;
   style?: CSSProperties;
 } & (
-  | {
-      size?: keyof typeof sizes;
-      width?: never;
-      height?: never;
-    }
-  | { width: number; height: number; size?: never }
-);
+    | {
+        size?: keyof typeof sizes;
+        width?: never;
+        height?: never;
+      }
+    | { width: number; height: number; size?: never }
+  );
 
 const Button: FC<ButtonProps> = ({
   rounded,
@@ -37,19 +70,12 @@ const Button: FC<ButtonProps> = ({
   width,
   height,
 }) => {
-  const { variants, borderRadius } = useTheme();
-
   const styles: CSSProperties = {
-    backgroundColor:
-      backgroundColor ?? variants?.[variant]?.backgroundColor ?? "#2563EB",
-    color: color ?? variants?.[variant]?.color ?? "#fff",
-    borderRadius: rounded ?? borderRadius ?? 8,
+    backgroundColor: backgroundColor,
+    color: color,
+    borderRadius: rounded,
     fontSize: sizes[size].fontSize,
-    border: borderColor
-      ? `1px solid ${borderColor}`
-      : variants?.[variant].borderColor
-      ? `1px solid ${variants?.[variant]?.borderColor}`
-      : "none",
+    border: borderColor,
     ...styleProp,
   };
 
@@ -69,6 +95,7 @@ const Button: FC<ButtonProps> = ({
         />
         <a
           href={href}
+          className={buttonStyles({ variant, size })}
           style={
             {
               display: "inline-block",
@@ -91,6 +118,7 @@ const Button: FC<ButtonProps> = ({
     <ReactEmailButton
       pX={sizes[size].paddingX}
       pY={sizes[size].paddingY}
+      className={buttonStyles({ variant, size })}
       href={href}
       style={styles}
     >

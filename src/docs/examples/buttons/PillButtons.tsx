@@ -1,6 +1,6 @@
 import * as React from "react";
-import { Body, Container, Head, Html, Preview } from "@react-email/components";
-import { Button } from "@mailingui/components";
+import { Body, Container, Html, Preview } from "@react-email/components";
+import { Head, Button } from "@mailingui/components";
 
 const PillButtons = () => {
   const primaryColor = "#2563EB";

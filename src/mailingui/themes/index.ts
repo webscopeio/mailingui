@@ -17,6 +17,10 @@ export const theme = {
     warning: "#b45309",
     danger: "#b91c1c",
   },
+  border: {
+    default: "none",
+    secondary: "1px solid #cbd5e1"
+  },
   rounded: {
     md: "4px",
     full: "9999px",
