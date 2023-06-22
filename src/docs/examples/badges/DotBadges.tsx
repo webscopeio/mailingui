@@ -8,7 +8,7 @@ import {
   Section,
 } from "@react-email/components";
 import { Badge } from "@mailingui/components";
-import { getCssText } from "@mailingui/themes";
+import { getCssText } from "@mailingui/utils";
 
 const DotBadges = () => (
   <Html>

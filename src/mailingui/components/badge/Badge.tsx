@@ -2,7 +2,8 @@
 
 import * as React from "react";
 import { VariantProps } from "@stitches/react";
-import { theme, css } from "@mailingui/themes";
+import { theme } from "@mailingui/themes";
+import { css } from "@mailingui/utils";
 
 /** First we consume the tokens we need from our theme */
 const { text, bg, rounded } = theme;

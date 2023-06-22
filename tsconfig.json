@@ -31,6 +31,7 @@
       "@mailingui/components": ["src/mailingui/components/index.ts"],
       "@mailingui/types": ["src/mailingui/types/index.ts"],
       "@mailingui/themes": ["src/mailingui/themes/index.ts"],
+      "@mailingui/utils": ["src/mailingui/utils/index.ts"],
       "@mailingui/*/components": ["./src/mailingui/themes/*/components/index.ts"],
     }
   },
