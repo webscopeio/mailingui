@@ -13,7 +13,7 @@ const PillButtons = () => {
         <Container style={container}>
           <Button
             href="#"
-            backgroundColor={primaryColor}
+            variant="primary"
             rounded={9999}
             size="xs"
           >
@@ -22,7 +22,7 @@ const PillButtons = () => {
           <span style={{ padding: 10 }} />
           <Button
             href="#"
-            backgroundColor={primaryColor}
+            variant="primary"
             rounded={9999}
             size="sm"
           >
@@ -31,7 +31,7 @@ const PillButtons = () => {
           <span style={{ padding: 10 }} />
           <Button
             href="#"
-            backgroundColor={primaryColor}
+            variant="primary"
             rounded={9999}
             size="md"
           >
@@ -40,7 +40,7 @@ const PillButtons = () => {
           <span style={{ padding: 10 }} />
           <Button
             href="#"
-            backgroundColor={primaryColor}
+            variant="primary"
             rounded={9999}
             size="lg"
           >
@@ -49,7 +49,7 @@ const PillButtons = () => {
           <span style={{ padding: 10 }} />
           <Button
             href="#"
-            backgroundColor={primaryColor}
+            variant="primary"
             rounded={9999}
             size="xl"
           >
@@ -58,7 +58,7 @@ const PillButtons = () => {
           <span style={{ padding: 10 }} />
           <Button
             href="#"
-            backgroundColor={primaryColor}
+            variant="primary"
             rounded={9999}
             size="2xl"
           >
