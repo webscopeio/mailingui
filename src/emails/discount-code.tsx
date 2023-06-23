@@ -94,7 +94,6 @@ export const MinimalDiscoutCode: FC<MinimalResetPasswordProps> = ({
               width={520}
               height={56}
               backgroundColor="#000000"
-              rounded={0}
             >
               View products
             </Button>

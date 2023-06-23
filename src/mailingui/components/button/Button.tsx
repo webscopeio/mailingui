@@ -7,28 +7,28 @@ import { undefined } from "zod";
 import { theme } from "@mailingui/themes";
 
 const {
-  color: { base, foreground, brand },
+  color: { background, foreground, brand },
   rounded: roundedTheme,
 } = theme;
 
 const variants = {
   default: {
     backgroundColor: foreground["100"],
-    color: base["100"],
+    color: background["100"],
     border: "none",
   },
   brand: {
     backgroundColor: brand,
-    color: base["100"],
+    color: background["100"],
     border: "none",
   },
   subtle: {
-    backgroundColor: base["400"],
+    backgroundColor: background["400"],
     color: brand,
     border: "none",
   },
   outline: {
-    backgroundColor: base["100"],
+    backgroundColor: background["100"],
     color: foreground["100"],
     border: foreground["100"],
   },
@@ -73,7 +73,7 @@ type ButtonProps = {
   children: ReactNode;
   color?: CSSProperties["color"];
   borderColor?: CSSProperties["color"];
-  rounded?: keyof typeof roundedTheme | number;
+  rounded?: keyof typeof roundedTheme;
   backgroundColor?: CSSProperties["backgroundColor"];
   style?: CSSProperties;
 } & (
@@ -100,7 +100,7 @@ const Button: FC<ButtonProps> = ({
 }) => {
   const styles: CSSProperties = {
     ...variants[variant],
-    borderRadius: typeof rounded === "number" ? rounded : roundedTheme[rounded],
+    borderRadius: roundedTheme[rounded],
     ...(backgroundColor ? { backgroundColor: backgroundColor } : {}),
     ...(color ? { color: color } : {}),
     fontSize: sizes[size].fontSize,
@@ -111,11 +111,7 @@ const Button: FC<ButtonProps> = ({
   if (width) {
     const rectString = rounded ? "roundrect" : "rect";
     const arcSize = rounded
-      ? `arcsize="${Math.round(
-          (typeof rounded === "number"
-            ? rounded
-            : roundedTheme[rounded] / height) * 100
-        )}%" `
+      ? `arcsize="${Math.round(roundedTheme[rounded] / height) * 100}%" `
       : " ";
 
     return (

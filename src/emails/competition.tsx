@@ -74,7 +74,6 @@ export const Competition: FC<CompetitionProps> = ({
               width={520}
               height={56}
               backgroundColor="#000000"
-              rounded={0}
             >
               I want to join the competition
             </Button>

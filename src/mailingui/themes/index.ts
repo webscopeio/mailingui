@@ -1,6 +1,6 @@
 export const theme = {
   color: {
-    base: {
+    background: {
       "100": "#ffffff",
       "200": "#ffffff",
       "300": "#ffffff",

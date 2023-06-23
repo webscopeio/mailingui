@@ -7,7 +7,7 @@ import { css } from "@mailingui/utils";
 
 /** First we consume the tokens we need from our theme */
 const {
-  color: { base, foreground, brand },
+  color: { background, foreground, brand },
   rounded,
 } = theme;
 
@@ -21,21 +21,21 @@ const badgeStyles = css({
     variant: {
       default: {
         backgroundColor: foreground["100"],
-        color: base["100"],
+        color: background["100"],
         border: "none",
       },
       brand: {
         backgroundColor: brand,
-        color: base["100"],
+        color: background["100"],
         border: "none",
       },
       subtle: {
-        backgroundColor: base["400"],
+        backgroundColor: background["400"],
         color: brand,
         border: "none",
       },
       outline: {
-        backgroundColor: base["100"],
+        backgroundColor: background["100"],
         color: foreground["100"],
         border: `1px solid ${foreground["100"]}`,
       },
@@ -78,10 +78,10 @@ const pillSyles = css({
   variants: {
     variant: {
       default: {
-        backgroundColor: base["100"],
+        backgroundColor: background["100"],
       },
       brand: {
-        backgroundColor: base["100"],
+        backgroundColor: background["100"],
       },
       subtle: {
         backgroundColor: brand,

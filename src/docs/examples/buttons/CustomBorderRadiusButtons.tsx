@@ -10,27 +10,27 @@ const CustomBorderRadiusButtons = () => (
     <Body style={main}>
       <ThemeProvider theme={defaultTheme}>
         <Container style={container}>
-          <Button href="#clicked!" size="xs" rounded={10}>
+          <Button href="#clicked!" size="xs" style={{ borderRadius: 10 }}>
             Button
           </Button>
           <span style={{ padding: 10 }} />
-          <Button href="#clicked!" size="sm" rounded={12}>
+          <Button href="#clicked!" size="sm" style={{ borderRadius: 12 }}>
             Button
           </Button>
           <span style={{ padding: 10 }} />
-          <Button href="#clicked!" size="md" rounded={12}>
+          <Button href="#clicked!" size="md" style={{ borderRadius: 12 }}>
             Button
           </Button>
           <span style={{ padding: 10 }} />
-          <Button href="#clicked!" size="lg" rounded={14}>
+          <Button href="#clicked!" size="lg" style={{ borderRadius: 14 }}>
             Button
           </Button>
           <span style={{ padding: 10 }} />
-          <Button href="#clicked!" size="xl" rounded={14}>
+          <Button href="#clicked!" size="xl" style={{ borderRadius: 14 }}>
             Button
           </Button>
           <span style={{ padding: 10 }} />
-          <Button href="#clicked!" size="2xl" rounded={16}>
+          <Button href="#clicked!" size="2xl" style={{ borderRadius: 16 }}>
             Button
           </Button>
         </Container>
