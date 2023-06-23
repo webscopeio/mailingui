@@ -3,34 +3,34 @@ import { Body, Container, Html, Preview } from "@react-email/components";
 import { Head, Button, ThemeProvider } from "@mailingui/components";
 import { defaultTheme } from "@mailingui/themes";
 
-const SecondaryButtons = () => (
+const CustomBorderRadiusButtons = () => (
   <Html>
     <Head />
-    <Preview>Secondary Buttons</Preview>
+    <Preview>Custom Border Radius Buttons</Preview>
     <Body style={main}>
       <ThemeProvider theme={defaultTheme}>
         <Container style={container}>
-          <Button href="#clicked!" size="xs" variant="secondary">
+          <Button href="#clicked!" size="xs" rounded={10}>
             Button
           </Button>
           <span style={{ padding: 10 }} />
-          <Button href="#clicked!" variant="secondary" size="sm">
+          <Button href="#clicked!" size="sm" rounded={12}>
             Button
           </Button>
           <span style={{ padding: 10 }} />
-          <Button href="#clicked!" variant="secondary" size="md">
+          <Button href="#clicked!" size="md" rounded={12}>
             Button
           </Button>
           <span style={{ padding: 10 }} />
-          <Button href="#clicked!" variant="secondary" size="lg">
+          <Button href="#clicked!" size="lg" rounded={14}>
             Button
           </Button>
           <span style={{ padding: 10 }} />
-          <Button href="#clicked!" variant="secondary" size="xl">
+          <Button href="#clicked!" size="xl" rounded={14}>
             Button
           </Button>
           <span style={{ padding: 10 }} />
-          <Button href="#clicked!" variant="secondary" size="2xl">
+          <Button href="#clicked!" size="2xl" rounded={16}>
             Button
           </Button>
         </Container>
@@ -39,7 +39,7 @@ const SecondaryButtons = () => (
   </Html>
 );
 
-export default SecondaryButtons;
+export default CustomBorderRadiusButtons;
 
 const main = {
   backgroundColor: "#ffffff",

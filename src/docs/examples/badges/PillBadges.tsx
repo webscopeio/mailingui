@@ -17,23 +17,15 @@ const PillBadges = () => (
         <Section style={{ textAlign: "center" as const }}>
           <Badge pill>Badge</Badge>
           <span style={{ padding: 10 }} />
-          <Badge pill variant="primary">
+          <Badge pill variant="brand">
             Badge
           </Badge>
           <span style={{ padding: 10 }} />
-          <Badge pill variant="secondary">
+          <Badge pill variant="subtle">
             Badge
           </Badge>
           <span style={{ padding: 10 }} />
-          <Badge pill variant="success">
-            Badge
-          </Badge>
-          <span style={{ padding: 10 }} />
-          <Badge pill variant="warning">
-            Badge
-          </Badge>
-          <span style={{ padding: 10 }} />
-          <Badge pill variant="danger">
+          <Badge pill variant="outline">
             Badge
           </Badge>
         </Section>

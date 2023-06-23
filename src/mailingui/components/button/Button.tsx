@@ -1,139 +1,40 @@
 "use client";
 
 import React, { FC, ReactNode, CSSProperties } from "react";
-import { VariantProps } from "@stitches/react";
 // TODO: ⬇️This is just a temporary solution, create a PR to react.email so we can use their Button component
 import { Button as ReactEmailButton } from "@react-email/components";
+import { undefined } from "zod";
 import { theme } from "@mailingui/themes";
-import { css } from "@mailingui/utils";
 
-const { bg, text, border } = theme;
+const {
+  color: { base, foreground, brand },
+  rounded: roundedTheme,
+} = theme;
 
-const buttonStyles = css({
-  /** Default Styles */
-  borderRadius: 8,
-  border: border.default,
-  /** Component Props */
-  variants: {
-    variant: {
-      default: {
-        backgroundColor: bg.default,
-        color: text.default,
-      },
-      primary: {
-        backgroundColor: bg.primary,
-        color: text.primary,
-      },
-      secondary: {
-        backgroundColor: bg.secondary,
-        color: text.secondary,
-        border: border.secondary,
-      },
-      subtle: {
-        backgroundColor: bg.subtle,
-        color: text.subtle,
-      },
-    },
+const variants = {
+  default: {
+    backgroundColor: foreground["100"],
+    color: base["100"],
+    border: "none",
   },
-  defaultVariants: {
-    variant: "default",
+  brand: {
+    backgroundColor: brand,
+    color: base["100"],
+    border: "none",
   },
-});
+  subtle: {
+    backgroundColor: base["400"],
+    color: brand,
+    border: "none",
+  },
+  outline: {
+    backgroundColor: base["100"],
+    color: foreground["100"],
+    border: foreground["100"],
+  },
+} as const;
 
-type ButtonProps = VariantProps<typeof buttonStyles> & {
-  href: string;
-  children: ReactNode;
-  color?: CSSProperties["color"];
-  borderColor?: CSSProperties["color"];
-  rounded?: number;
-  backgroundColor?: CSSProperties["backgroundColor"];
-  style?: CSSProperties;
-} & (
-    | {
-        size?: keyof typeof sizes;
-        width?: never;
-        height?: never;
-      }
-    | { width: number; height: number; size?: never }
-  );
-
-const Button: FC<ButtonProps> = ({
-  rounded,
-  href,
-  color,
-  size = "md",
-  borderColor,
-  children,
-  backgroundColor,
-  variant = "default",
-  style: styleProp,
-  width,
-  height,
-}) => {
-  const styles: CSSProperties = {
-    backgroundColor: backgroundColor,
-    color: color,
-    borderRadius: rounded,
-    fontSize: sizes[size].fontSize,
-    border: borderColor,
-    ...styleProp,
-  };
-
-  if (width) {
-    const rectString = rounded ? "roundrect" : "rect";
-    const arcSize = rounded ? `arcsize="${Math.round(rounded / height * 100)}%" ` : " ";
-
-    return (
-      <div>
-        <span
-          dangerouslySetInnerHTML={{
-            __html:
-              "<!--[if mso]>\n" +                                                                                                                                                                                  // if this is undefined (not passed as prop), we cannot get it from the theme
-              `  <v:${rectString} xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" ${arcSize}href="${href}" style="height:${height}px;v-text-anchor:middle;width:${width}px;" fillcolor="${backgroundColor}">\n` +
-              "    <w:anchorlock/>\n" +
-              `    <center style="color:${color};font-family:sans-serif;font-size:13px;font-weight:bold;">Reset password</center>\n` +
-              `  </v:${rectString}>\n` +
-              "<![endif]-->",
-          }}
-        />
-        <a
-          href={href}
-          className={buttonStyles({ variant, size })}
-          style={
-            {
-              display: "inline-block",
-              lineHeight: `${height}px`,
-              textAlign: "center",
-              width: `${width}px`,
-              textDecoration: "none",
-              msoHide: "all",
-              ...styles,
-            } as CSSProperties
-          }
-        >
-          {children}
-        </a>
-      </div>
-    );
-  }
-
-  return (
-    <ReactEmailButton
-      pX={sizes[size].paddingX}
-      pY={sizes[size].paddingY}
-      className={buttonStyles({ variant, size })}
-      href={href}
-      style={styles}
-    >
-      {children}
-    </ReactEmailButton>
-  );
-};
-
-const sizes: Record<
-  NonNullable<string>,
-  { fontSize: number; paddingX: number; paddingY: number }
-> = {
+const sizes = {
   xs: {
     fontSize: 14,
     paddingX: 12,
@@ -164,6 +65,104 @@ const sizes: Record<
     paddingX: 24,
     paddingY: 16,
   },
+} as const;
+
+type ButtonProps = {
+  variant?: keyof typeof variants;
+  href: string;
+  children: ReactNode;
+  color?: CSSProperties["color"];
+  borderColor?: CSSProperties["color"];
+  rounded?: keyof typeof roundedTheme | number;
+  backgroundColor?: CSSProperties["backgroundColor"];
+  style?: CSSProperties;
+} & (
+  | {
+      size?: keyof typeof sizes;
+      width?: never;
+      height?: never;
+    }
+  | { width: number; height: number; size?: never }
+);
+
+const Button: FC<ButtonProps> = ({
+  rounded = "base",
+  href,
+  color,
+  size = "md",
+  borderColor,
+  children,
+  backgroundColor,
+  variant = "default",
+  style: styleProp,
+  width,
+  height,
+}) => {
+  const styles: CSSProperties = {
+    ...variants[variant],
+    borderRadius: typeof rounded === "number" ? rounded : roundedTheme[rounded],
+    ...(backgroundColor ? { backgroundColor: backgroundColor } : {}),
+    ...(color ? { color: color } : {}),
+    fontSize: sizes[size].fontSize,
+    ...(borderColor ? { border: borderColor } : {}),
+    ...styleProp,
+  };
+
+  if (width) {
+    const rectString = rounded ? "roundrect" : "rect";
+    const arcSize = rounded
+      ? `arcsize="${Math.round(
+          (typeof rounded === "number"
+            ? rounded
+            : roundedTheme[rounded] / height) * 100
+        )}%" `
+      : " ";
+
+    return (
+      <div>
+        <span
+          dangerouslySetInnerHTML={{
+            __html:
+              "<!--[if mso]>\n" + // if this is undefined (not passed as prop), we cannot get it from the theme
+              `  <v:${rectString} xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" ${arcSize}href="${href}" style="height:${height}px;v-text-anchor:middle;width:${width}px;" fillcolor="${
+                backgroundColor ?? variants[variant].backgroundColor
+              }">\n` +
+              "    <w:anchorlock/>\n" +
+              `    <center style="color:${color};font-family:sans-serif;font-size:13px;font-weight:bold;">Reset password</center>\n` +
+              `  </v:${rectString}>\n` +
+              "<![endif]-->",
+          }}
+        />
+        <a
+          href={href}
+          style={
+            {
+              display: "inline-block",
+              lineHeight: `${height}px`,
+              textAlign: "center",
+              width: `${width}px`,
+              textDecoration: "none",
+              msoHide: "all",
+              ...styles,
+            } as CSSProperties
+          }
+        >
+          {children}
+        </a>
+      </div>
+    );
+  }
+
+  return (
+    <ReactEmailButton
+      pX={sizes[size].paddingX}
+      pY={sizes[size].paddingY}
+      href={href}
+      style={styles}
+    >
+      {children}
+    </ReactEmailButton>
+  );
 };
 
 export { Button, type ButtonProps };

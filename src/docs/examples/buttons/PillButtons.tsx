@@ -11,57 +11,27 @@ const PillButtons = () => {
       <Preview>Pill Buttons</Preview>
       <Body style={main}>
         <Container style={container}>
-          <Button
-            href="#"
-            variant="primary"
-            rounded={9999}
-            size="xs"
-          >
+          <Button href="#" variant="brand" rounded={9999} size="xs">
             Button
           </Button>
           <span style={{ padding: 10 }} />
-          <Button
-            href="#"
-            variant="primary"
-            rounded={9999}
-            size="sm"
-          >
+          <Button href="#" variant="brand" rounded={9999} size="sm">
             Button
           </Button>
           <span style={{ padding: 10 }} />
-          <Button
-            href="#"
-            variant="primary"
-            rounded={9999}
-            size="md"
-          >
+          <Button href="#" variant="brand" rounded={9999} size="md">
             Button
           </Button>
           <span style={{ padding: 10 }} />
-          <Button
-            href="#"
-            variant="primary"
-            rounded={9999}
-            size="lg"
-          >
+          <Button href="#" variant="brand" rounded={9999} size="lg">
             Button
           </Button>
           <span style={{ padding: 10 }} />
-          <Button
-            href="#"
-            variant="primary"
-            rounded={9999}
-            size="xl"
-          >
+          <Button href="#" variant="brand" rounded={9999} size="xl">
             Button
           </Button>
           <span style={{ padding: 10 }} />
-          <Button
-            href="#"
-            variant="primary"
-            rounded={9999}
-            size="2xl"
-          >
+          <Button href="#" variant="brand" rounded={9999} size="2xl">
             Button
           </Button>
         </Container>

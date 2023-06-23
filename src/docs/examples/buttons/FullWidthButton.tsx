@@ -18,14 +18,8 @@ const DifferentColorButtons = () => {
         <Container style={container}>
           <Row>
             <Column>
-              <Button href="#clicked!" variant="primary" width={200} height={40} rounded={9999}>
-                Button
-              </Button>
-            </Column>
-            <Column width={16} />
-            <Column>
-              <Button href="#clicked!" variant="secondary" width={200} height={40} rounded={9999}>
-                Button
+              <Button href="#clicked!" width={520} height={56}>
+                Full Width Button
               </Button>
             </Column>
           </Row>
@@ -41,7 +35,7 @@ const main = {
   backgroundColor: "#ffffff",
   color: "#24292e",
   fontFamily:
-    '-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji"',
+    'helvetica,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji"',
 };
 
 const container = {

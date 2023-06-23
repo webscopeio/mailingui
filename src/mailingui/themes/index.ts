@@ -1,29 +1,22 @@
 export const theme = {
-  bg: {
-    default: "#f9fafb",
-    subtle: "#F1F5F9",
-    primary: "#2563EB",
-    secondary: "#fff",
-    success: "#f0fdf4",
-    warning: "#fffbeb",
-    danger: "#fef2f2",
-  },
-  text: {
-    default: "#4b5563",
-    subtle: "#2563EB",
-    primary: "#fff",
-    secondary: "#1E293B",
-    success: "#059669",
-    warning: "#b45309",
-    danger: "#b91c1c",
-  },
-  border: {
-    default: "none",
-    secondary: "1px solid #cbd5e1"
+  color: {
+    base: {
+      "100": "#ffffff",
+      "200": "#ffffff",
+      "300": "#ffffff",
+      "400": "#ffffff",
+    },
+    foreground: {
+      "100": "#000000",
+      "200": "#000000",
+      "300": "#000000",
+      "400": "#000000",
+    },
+    brand: "#000000",
   },
   rounded: {
-    md: "4px",
-    full: "9999px",
+    base: 0,
+    full: 9999,
   },
 } as const;
 

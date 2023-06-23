@@ -19,23 +19,15 @@ const LargeBadges = () => (
             Badge
           </Badge>
           <span style={{ padding: 5 }} />
-          <Badge variant="primary" size="lg" dot>
+          <Badge variant="brand" size="lg" dot>
             Badge
           </Badge>
           <span style={{ padding: 5 }} />
-          <Badge variant="secondary" size="lg" dot>
+          <Badge variant="subtle" size="lg" dot>
             Badge
           </Badge>
           <span style={{ padding: 5 }} />
-          <Badge variant="success" size="lg" dot>
-            Badge
-          </Badge>
-          <span style={{ padding: 5 }} />
-          <Badge variant="warning" size="lg" dot>
-            Badge
-          </Badge>
-          <span style={{ padding: 5 }} />
-          <Badge variant="danger" size="lg" dot>
+          <Badge variant="outline" size="lg" dot>
             Badge
           </Badge>
         </Section>
