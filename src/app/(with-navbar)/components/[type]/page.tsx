@@ -10,6 +10,8 @@ import {
 } from "@components/ComponentExample";
 
 import { getHighlighter, highlight } from "@lib/shiki";
+import { getInstallationDoc } from "@lib/mdx";
+import { InstallationDemo } from "@components/InstallationDemo";
 import { componentTypes } from "@examples";
 
 type ComponentPageProps = {
@@ -48,8 +50,21 @@ export default async function ComponentPage({
 }: ComponentPageProps) {
   const component = await getComponent(type);
 
+  const installationDoc = await getInstallationDoc({
+    key: type,
+    // TODO discuss approach, it works but probably not allowed to use async component by TS here
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    components: { InstallationDemo },
+  });
+
   return (
     <div className="mx-auto w-full max-w-[900px] overflow-hidden px-4">
+      {installationDoc && (
+        <article className="prose prose-invert mx-auto my-8 max-w-none lg:prose-lg prose-headings:font-medium prose-p:font-light prose-p:text-neutral-300">
+          {installationDoc.content}
+        </article>
+      )}
       <h1 className="pt-8 text-2xl font-semibold md:pt-16 md:text-4xl">
         {component.title}
       </h1>
@@ -95,7 +110,9 @@ const getComponent = async (
   const typePath = join(process.cwd(), CONTENT_DIR, component.type);
 
   // Read all the files in that dir
-  const files = readdirSync(typePath);
+  const files = readdirSync(typePath).filter(
+    (file) => file.endsWith(".tsx") && !file.startsWith("Demo")
+  );
 
   // Initiate instance of highlighter
   const highlighter = await getHighlighter();
@@ -108,7 +125,7 @@ const getComponent = async (
         parser: "typescript",
       });
       const Component = (
-        await import(`src/docs/examples/${component.type}/${id}`)
+        await import(`src/docs/examples/${component.type}/${id}.tsx`)
       ).default;
 
       const html = format(render(<Component />, { pretty: true }), {

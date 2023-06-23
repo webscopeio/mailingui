@@ -5,6 +5,7 @@ import { z } from "zod";
 
 // ⚙️ Config settings
 export const blogDir = "src/docs/blog";
+const examplesDir = "src/docs/examples";
 const fileExtension = ".mdx";
 
 // ⚙️ Type definitions
@@ -38,6 +39,15 @@ const metaSchema = frontmatterSchema.extend({
 });
 
 type PostMeta = z.infer<typeof metaSchema>;
+
+const installationFrontmatterSchema = z.object({
+  title: z.string({
+    required_error: "Title is required",
+  }),
+  description: z.string().optional(),
+});
+
+type InstallationFrontMatter = z.infer<typeof installationFrontmatterSchema>;
 
 // 🧪 Helper functions
 
@@ -117,4 +127,30 @@ export async function getPost(
     slug: slugify(filename, title),
   });
   return { content, frontmatter };
+}
+
+export async function getInstallationDoc({
+  components = {},
+  key,
+}: {
+  components?: Parameters<typeof compileMDX>[0]["components"];
+  key?: string;
+} = {}): Promise<CompileMDXResult<InstallationFrontMatter> | null> {
+  const filename = "installation.mdx";
+  try {
+    const path = key
+      ? join(examplesDir, key, filename)
+      : join(examplesDir, filename);
+    const source = readFileSync(path, "utf8");
+    const { content, frontmatter } = await compileMDX<InstallationFrontMatter>({
+      source,
+      options: {
+        parseFrontmatter: true,
+      },
+      components,
+    });
+    return { content, frontmatter };
+  } catch (error) {
+    return null;
+  }
 }
