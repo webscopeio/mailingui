@@ -29,6 +29,7 @@
     "react-dom": "^18.2.0",
     "react-email": "1.9.3",
     "react-use-measure": "^2.1.1",
+    "rehype-pretty-code": "^0.9.11",
     "shiki": "^0.14.2",
     "tailwind-merge": "1.10.0",
     "typescript": "4.9.5",

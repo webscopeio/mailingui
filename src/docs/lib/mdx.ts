@@ -2,6 +2,8 @@ import { readdirSync, readFileSync } from "fs";
 import { join } from "path";
 import { compileMDX, type CompileMDXResult } from "next-mdx-remote/rsc";
 import { z } from "zod";
+import rehypePrettyCode from "rehype-pretty-code";
+import { getHighlighter } from "./shiki";
 
 // ⚙️ Config settings
 export const blogDir = "src/docs/blog";
@@ -146,6 +148,9 @@ export async function getInstallationDoc({
       source,
       options: {
         parseFrontmatter: true,
+        mdxOptions: {
+          rehypePlugins: [[rehypePrettyCode, { getHighlighter }]],
+        },
       },
       components,
     });
