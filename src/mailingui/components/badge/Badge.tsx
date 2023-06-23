@@ -1,12 +1,12 @@
 "use client";
 
 import * as React from "react";
-import {CSSProperties} from "react";
+import { CSSProperties } from "react";
 import { theme } from "@mailingui/themes";
 
 /** First we consume the tokens we need from our theme */
 const {
-  color: { background, foreground, brand }
+  color: { background, foreground, brand },
 } = theme;
 
 /** Then we start creating default and prop-specific styles */
@@ -70,24 +70,52 @@ const Badge: React.FC<BadgeProps> = ({
     ...sizes[size],
     borderRadius: pill ? "9999px" : "4px",
     ...(noBorder ? { border: "none" } : {}),
-  }
+  };
 
   return (
     <span style={style}>
       {dot ? (
-        <span
-          style={{
-            display: "inline-block",
-            height: "8px",
-            width: "8px",
-            marginRight: "6px",
-            marginBottom: "1px",
-            borderRadius: "9999px",
-            backgroundColor: variants[variant].color,
-          }}
-        />
+        <>
+          <span
+            dangerouslySetInnerHTML={{
+              __html: `<!--[if mso]><i style="letter-spacing: 10px;mso-font-width:-100%;mso-text-raise:3" hidden>&nbsp;</i><![endif]-->`,
+            }}
+          />
+          <span
+            dangerouslySetInnerHTML={{
+              __html:
+                "<!--[if mso]>\n" +
+                `  <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" style="height:6px;v-text-anchor:middle;width:8px;" arcsize="167%" strokecolor="${variants[variant].color}" fillcolor="${variants[variant].color}">\n` +
+                "    <w:anchorlock/>\n" +
+                '    <center style="color:#ffffff;font-family:sans-serif;font-size:13px;font-weight:bold;">&nbsp;</center>\n' +
+                "  </v:roundrect>\n" +
+                "<![endif]-->",
+            }}
+          />
+          <span
+            style={{
+              display: "inline-block",
+              height: "8px",
+              width: "8px",
+              marginRight: "6px",
+              marginBottom: "1px",
+              borderRadius: "9999px",
+              backgroundColor: variants[variant].color,
+            }}
+          />
+          <span
+            dangerouslySetInnerHTML={{
+              __html: `<!--[if mso]><i style="letter-spacing: 6px;mso-font-width:-100%" hidden>&nbsp;</i><![endif]-->`,
+            }}
+          />
+        </>
       ) : null}
       {children}
+      <span
+        dangerouslySetInnerHTML={{
+          __html: `<!--[if mso]><i style="letter-spacing: 10px;mso-font-width:-100%" hidden>&nbsp;</i><![endif]-->`,
+        }}
+      />
     </span>
   );
 };

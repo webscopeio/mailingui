@@ -5,6 +5,8 @@ import {
   Html,
   Preview,
   Section,
+  Row,
+  Column,
   Head,
 } from "@react-email/components";
 import { Badge } from "@mailingui/components";
@@ -16,19 +18,29 @@ const DotBadges = () => (
     <Body style={main}>
       <Container style={container}>
         <Section style={{ textAlign: "center" as const }}>
-          <Badge dot>Badge</Badge>
-          <span style={{ padding: 10 }} />
-          <Badge variant="brand" dot>
-            Badge
-          </Badge>
-          <span style={{ padding: 10 }} />
-          <Badge variant="subtle" dot>
-            Badge
-          </Badge>
-          <span style={{ padding: 10 }} />
-          <Badge variant="outline" dot>
-            Badge
-          </Badge>
+          <Row>
+            <Column>
+              <Badge dot>Badge</Badge>
+            </Column>
+            <Column width={10} />
+            <Column>
+              <Badge variant="brand" dot>
+                Badge
+              </Badge>
+            </Column>
+            <Column width={10} />
+            <Column>
+              <Badge variant="subtle" dot>
+                Badge
+              </Badge>
+            </Column>
+            <Column width={10} />
+            <Column>
+              <Badge variant="outline" dot>
+                Badge
+              </Badge>
+            </Column>
+          </Row>
         </Section>
       </Container>
     </Body>
@@ -46,4 +58,5 @@ const main = {
 
 const container = {
   padding: "40px 0",
+  maxWidth: "380px",
 };
