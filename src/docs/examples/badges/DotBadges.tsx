@@ -17,23 +17,15 @@ const DotBadges = () => (
         <Section style={{ textAlign: "center" as const }}>
           <Badge dot>Badge</Badge>
           <span style={{ padding: 10 }} />
-          <Badge variant="primary" dot>
+          <Badge variant="brand" dot>
             Badge
           </Badge>
           <span style={{ padding: 10 }} />
-          <Badge variant="secondary" dot>
+          <Badge variant="subtle" dot>
             Badge
           </Badge>
           <span style={{ padding: 10 }} />
-          <Badge variant="success" dot>
-            Badge
-          </Badge>
-          <span style={{ padding: 10 }} />
-          <Badge variant="warning" dot>
-            Badge
-          </Badge>
-          <span style={{ padding: 10 }} />
-          <Badge variant="danger" dot>
+          <Badge variant="outline" dot>
             Badge
           </Badge>
         </Section>

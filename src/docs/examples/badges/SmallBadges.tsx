@@ -17,23 +17,15 @@ const SmallBadges = () => (
         <Section style={{ textAlign: "center" as const }}>
           <Badge size="sm">Badge</Badge>
           <span style={{ padding: 10 }} />
-          <Badge size="sm" variant="primary">
+          <Badge size="sm" variant="brand">
             Badge
           </Badge>
           <span style={{ padding: 10 }} />
-          <Badge size="sm" variant="secondary">
+          <Badge size="sm" variant="subtle">
             Badge
           </Badge>
           <span style={{ padding: 10 }} />
-          <Badge size="sm" variant="success">
-            Badge
-          </Badge>
-          <span style={{ padding: 10 }} />
-          <Badge size="sm" variant="warning">
-            Badge
-          </Badge>
-          <span style={{ padding: 10 }} />
-          <Badge size="sm" variant="danger">
+          <Badge size="sm" variant="outline">
             Badge
           </Badge>
         </Section>

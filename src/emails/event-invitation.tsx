@@ -93,7 +93,6 @@ export const EventInvitation: FC<MinimalResetPasswordProps> = ({
               width={520}
               height={56}
               backgroundColor="#000000"
-              rounded={0}
             >
               Confirm participation
             </Button>

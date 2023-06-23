@@ -6,44 +6,38 @@ import { theme } from "@mailingui/themes";
 import { css } from "@mailingui/utils";
 
 /** First we consume the tokens we need from our theme */
-const { text, bg, rounded } = theme;
+const {
+  color: { background, foreground, brand },
+  rounded,
+} = theme;
 
 /** Then we start creating default and prop-specific styles */
 const badgeStyles = css({
   /** Default Styles */
-  borderRadius: rounded.md,
+  borderRadius: 4,
   border: "1px solid currentColor",
   /** Component Props */
   variants: {
     variant: {
       default: {
-        // You can hover over a var and know its literal value
-        color: text.default,
-        backgroundColor: bg.default,
+        backgroundColor: foreground["100"],
+        color: background["100"],
+        border: "none",
+      },
+      brand: {
+        backgroundColor: brand,
+        color: background["100"],
+        border: "none",
       },
       subtle: {
-        color: text.subtle,
-        backgroundColor: bg.subtle,
+        backgroundColor: background["400"],
+        color: brand,
+        border: "none",
       },
-      primary: {
-        color: text.primary,
-        backgroundColor: bg.primary,
-      },
-      secondary: {
-        color: text.secondary,
-        backgroundColor: bg.secondary,
-      },
-      success: {
-        color: text.success,
-        backgroundColor: bg.success,
-      },
-      warning: {
-        color: text.warning,
-        backgroundColor: bg.warning,
-      },
-      danger: {
-        color: text.danger,
-        backgroundColor: bg.danger,
+      outline: {
+        backgroundColor: background["100"],
+        color: foreground["100"],
+        border: `1px solid ${foreground["100"]}`,
       },
     },
     size: {
@@ -84,25 +78,16 @@ const pillSyles = css({
   variants: {
     variant: {
       default: {
-        backgroundColor: text.default,
+        backgroundColor: background["100"],
+      },
+      brand: {
+        backgroundColor: background["100"],
       },
       subtle: {
-        backgroundColor: text.subtle,
+        backgroundColor: brand,
       },
-      primary: {
-        backgroundColor: text.primary,
-      },
-      secondary: {
-        backgroundColor: text.secondary,
-      },
-      success: {
-        backgroundColor: text.success,
-      },
-      warning: {
-        backgroundColor: text.warning,
-      },
-      danger: {
-        backgroundColor: text.danger,
+      outline: {
+        backgroundColor: foreground["100"],
       },
     },
   },

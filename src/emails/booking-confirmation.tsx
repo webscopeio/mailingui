@@ -108,7 +108,6 @@ export const BookingConfirmation: FC<MinimalBookingConfirmationProps> = ({
               width={520}
               height={56}
               backgroundColor="#000000"
-              rounded={0}
             >
               Manage your reservation
             </Button>

@@ -17,23 +17,15 @@ const MediumBadges = () => (
         <Section style={{ textAlign: "center" as const }}>
           <Badge noBorder>Badge</Badge>
           <span style={{ padding: 10 }} />
-          <Badge noBorder variant="primary">
+          <Badge noBorder variant="brand">
             Badge
           </Badge>
           <span style={{ padding: 10 }} />
-          <Badge noBorder variant="secondary">
+          <Badge noBorder variant="subtle">
             Badge
           </Badge>
           <span style={{ padding: 10 }} />
-          <Badge noBorder variant="success">
-            Badge
-          </Badge>
-          <span style={{ padding: 10 }} />
-          <Badge noBorder variant="warning">
-            Badge
-          </Badge>
-          <span style={{ padding: 10 }} />
-          <Badge noBorder variant="danger">
+          <Badge noBorder variant="outline">
             Badge
           </Badge>
         </Section>

@@ -72,7 +72,6 @@ export const ResetPassword: FC<MinimalResetPasswordProps> = ({
               width={520}
               height={56}
               backgroundColor="#000000"
-              rounded={0}
             >
               Reset password
             </Button>
