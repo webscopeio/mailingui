@@ -133,15 +133,15 @@ export async function getPost(
 
 export async function getInstallationDoc({
   components = {},
-  key,
+  componentType,
 }: {
   components?: Parameters<typeof compileMDX>[0]["components"];
-  key?: string;
+  componentType?: string;
 } = {}): Promise<CompileMDXResult<InstallationFrontMatter> | null> {
   const filename = "installation.mdx";
   try {
-    const path = key
-      ? join(examplesDir, key, filename)
+    const path = componentType
+      ? join(examplesDir, componentType, filename)
       : join(examplesDir, filename);
     const source = readFileSync(path, "utf8");
     const { content, frontmatter } = await compileMDX<InstallationFrontMatter>({
@@ -149,7 +149,15 @@ export async function getInstallationDoc({
       options: {
         parseFrontmatter: true,
         mdxOptions: {
-          rehypePlugins: [[rehypePrettyCode, { getHighlighter }]],
+          rehypePlugins: [
+            [
+              rehypePrettyCode,
+              {
+                getHighlighter: () =>
+                  getHighlighter({ langs: ["html", "tsx", "bash"] }),
+              },
+            ],
+          ],
         },
       },
       components,

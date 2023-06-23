@@ -1,1 +1,0 @@
-export { InstallationDemo } from "./InstallationDemo";

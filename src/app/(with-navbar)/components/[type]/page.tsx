@@ -11,7 +11,10 @@ import {
 
 import { getHighlighter, highlight } from "@lib/shiki";
 import { getInstallationDoc } from "@lib/mdx";
-import { InstallationDemo } from "@components/InstallationDemo";
+import {
+  InstallationDocsMdxComponents,
+  ProseArticle,
+} from "@components/InstallationDocs";
 import { componentTypes } from "@examples";
 
 type ComponentPageProps = {
@@ -50,21 +53,17 @@ export default async function ComponentPage({
 }: ComponentPageProps) {
   const component = await getComponent(type);
 
-  const installationDoc = await getInstallationDoc({
-    key: type,
+  const mdxDoc = await getInstallationDoc({
+    componentType: type,
     // TODO discuss approach, it works but probably not allowed to use async component by TS here
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    components: { InstallationDemo },
+    components: InstallationDocsMdxComponents,
   });
 
   return (
     <div className="mx-auto w-full max-w-[900px] overflow-hidden px-4">
-      {installationDoc && (
-        <article className="prose prose-invert mx-auto my-8 max-w-none lg:prose-lg prose-headings:font-medium prose-p:font-light prose-p:text-neutral-300">
-          {installationDoc.content}
-        </article>
-      )}
+      {mdxDoc && <ProseArticle>{mdxDoc.content}</ProseArticle>}
       <h1 className="pt-8 text-2xl font-semibold md:pt-16 md:text-4xl">
         {component.title}
       </h1>
