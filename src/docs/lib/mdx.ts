@@ -130,12 +130,15 @@ export async function getPost(
   });
   return { content, frontmatter };
 }
-
+type MDXOptions = Parameters<typeof compileMDX>[0]["options"];
+type MDXScope = Extract<MDXOptions, object>["scope"];
 export async function getInstallationDoc({
   components = {},
   componentType,
+  scope,
 }: {
   components?: Parameters<typeof compileMDX>[0]["components"];
+  scope?: MDXScope;
   componentType?: string;
 } = {}): Promise<CompileMDXResult<InstallationFrontMatter> | null> {
   const filename = "installation.mdx";
@@ -159,6 +162,7 @@ export async function getInstallationDoc({
             ],
           ],
         },
+        scope,
       },
       components,
     });

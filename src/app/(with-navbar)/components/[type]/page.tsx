@@ -55,10 +55,10 @@ export default async function ComponentPage({
 
   const mdxDoc = await getInstallationDoc({
     componentType: type,
-    // TODO discuss approach, it works but probably not allowed to use async component by TS here
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
     components: InstallationDocsMdxComponents,
+    scope: {
+      demoData: component.demo,
+    },
   });
 
   return (
@@ -100,6 +100,7 @@ const getComponent = async (
   type: string
 ): Promise<{
   title: string;
+  demo?: ComponentExampleProps;
   examples: ComponentExampleProps[];
 }> => {
   // Throws if component isn't registered
@@ -109,14 +110,12 @@ const getComponent = async (
   const typePath = join(process.cwd(), CONTENT_DIR, component.type);
 
   // Read all the files in that dir
-  const files = readdirSync(typePath).filter(
-    (file) => file.endsWith(".tsx") && !file.startsWith("Demo")
-  );
+  const files = readdirSync(typePath).filter((file) => file.endsWith(".tsx"));
 
   // Initiate instance of highlighter
   const highlighter = await getHighlighter();
 
-  const examples = await Promise.all(
+  const allExamples = await Promise.all(
     files.map(async (file) => {
       const id = file.replace(/.tsx/, "");
 
@@ -145,9 +144,18 @@ const getComponent = async (
     })
   );
 
+  if (files.includes("Demo.tsx")) {
+    const demoIndex = files.indexOf("Demo.tsx");
+    const demo = allExamples.splice(demoIndex, 1)[0];
+    return {
+      title: component.title,
+      demo,
+      examples: allExamples,
+    };
+  }
   return {
     title: component.title,
-    examples,
+    examples: allExamples,
   };
 };
 
