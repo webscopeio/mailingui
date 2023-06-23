@@ -6,8 +6,9 @@ import {
   Preview,
   Row,
   Column,
+  Head,
 } from "@react-email/components";
-import { Button, Head } from "@mailingui/components";
+import { Button } from "@mailingui/components";
 
 const DifferentColorButtons = () => {
   return (

@@ -5,15 +5,11 @@ import {
   Html,
   Preview,
   Img,
+  Head,
   Row,
 } from "@react-email/components";
 import React, { FC } from "react";
-import {
-  Text,
-  SocialIcon,
-  type SocialIconType,
-  Head,
-} from "@mailingui/components";
+import { Text, SocialIcon, type SocialIconType } from "@mailingui/components";
 
 type MinimalEventInvitationProps = {
   name: string;

@@ -7,8 +7,9 @@ import {
   Row,
   Column,
   Section,
+  Head,
 } from "@react-email/components";
-import { Badge, Head } from "@mailingui/components";
+import { Badge } from "@mailingui/components";
 
 const MediumBadges = () => (
   <Html>
