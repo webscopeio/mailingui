@@ -19,6 +19,8 @@ const SimpleHero = () => (
         <HeroSection
           overlay={true}
           centered={true}
+          bgImg="https://www.linkpicture.com/q/new-company-office-hero-placeholder.png"
+          logoSrc="https://www.linkpicture.com/q/company-placeholder-logo-hero.png"
           overlayPadding="40px 40px 150px 40px"
         />
       </Container>

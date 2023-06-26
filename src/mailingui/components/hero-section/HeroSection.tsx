@@ -36,8 +36,8 @@ interface HeroSectionProps {
   overlay?: boolean;
   centered?: boolean;
   variant?: keyof typeof variants;
-  bgImg?: string;
-  logoSrc?: string;
+  bgImg: string;
+  logoSrc: string;
   overlayPadding?: CSSProperties["padding"];
 }
 
@@ -45,8 +45,8 @@ const HeroSection: FC<HeroSectionProps> = ({
   overlay = false,
   centered = false,
   variant = "default",
-  bgImg = "https://www.linkpicture.com/q/new-company-office-hero-placeholder.png",
-  logoSrc = "https://www.linkpicture.com/q/company-placeholder-logo-hero.png",
+  bgImg,
+  logoSrc,
   overlayPadding = "40px",
 }) => {
   const heading = {
@@ -56,9 +56,9 @@ const HeroSection: FC<HeroSectionProps> = ({
 
   return (
     <>
-      <Row style={header({ overlay, overlayPadding, bgImg })}>
+      <Row style={header(overlayPadding, overlay, bgImg)}>
         <Column style={headerContent(centered, variant)}>
-          <Img style={logo({ centered })} width={120} src={logoSrc} />
+          <Img style={logo(centered)} width={120} src={logoSrc} />
           <ReactEmailHeading style={heading}>
             New office for your company
           </ReactEmailHeading>
@@ -69,16 +69,16 @@ const HeroSection: FC<HeroSectionProps> = ({
   );
 };
 
-const logo = ({ centered }: HeroSectionProps): CSSProperties => ({
+const logo = (centered: boolean): CSSProperties => ({
   paddingBottom: 10,
   margin: centered ? "0 auto" : undefined,
 });
 
-const header = ({
-  overlay,
-  overlayPadding,
-  bgImg,
-}: HeroSectionProps): CSSProperties => ({
+const header = (
+  overlayPadding: CSSProperties["padding"],
+  overlay: boolean,
+  bgImg: string
+): CSSProperties => ({
   borderRadius: "10px 10px 0 0",
   background: overlay ? `url('${bgImg}')` : "none",
   padding: overlay ? overlayPadding : undefined,
