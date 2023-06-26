@@ -1,12 +1,12 @@
 import { InstallationSource, ComponentSourceProps } from "./InstallationSource";
 import { ComponentExampleList } from "./ComponentExampleList";
+import { ComponentExampleItem } from "./ComponentExampleItem";
 import { ProsePre } from "./ProsePre";
-import { ComponentExample } from "@components/ComponentExample";
 import { CTA } from "@components/CTA";
 
 export const InstallationDocsMdxComponents = {
   InstallationSource,
-  ComponentExample,
+  ComponentExampleItem,
   ComponentExampleList,
   CTA,
   pre: ProsePre,

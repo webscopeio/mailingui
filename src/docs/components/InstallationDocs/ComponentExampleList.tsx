@@ -25,7 +25,7 @@ export const ComponentExampleList = ({
     : filteredExamples;
 
   return (
-    <div className="mt-8 space-y-16 md:mt-16">
+    <div className="not-prose mt-8 space-y-16 md:mt-16">
       {orderedExamples.map(({ ...example }, index) => (
         <ComponentExample key={index} {...example} />
       ))}
