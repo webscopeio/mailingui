@@ -5,6 +5,7 @@ import {
   Html,
   Preview,
   Img,
+  Head,
   Row,
 } from "@react-email/components";
 import React, { FC } from "react";
@@ -15,7 +16,6 @@ import {
   BulletList,
   BulletListItem,
   Button,
-  Head,
 } from "@mailingui/components";
 
 type MinimalNewsProps = {

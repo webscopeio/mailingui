@@ -6,8 +6,9 @@ import {
   Preview,
   Row,
   Column,
+  Head,
 } from "@react-email/components";
-import { Button, Head } from "@mailingui/components";
+import { Button } from "@mailingui/components";
 
 const DifferentColorButtons = () => {
   return (
@@ -30,21 +31,21 @@ const DifferentColorButtons = () => {
             </Column>
             <Column width={16} />
             <Column>
-            <Button href="#clicked!" backgroundColor="#f77f00">
-              Button
-            </Button>
+              <Button href="#clicked!" backgroundColor="#f77f00">
+                Button
+              </Button>
             </Column>
             <Column width={16} />
             <Column>
-            <Button href="#clicked!" backgroundColor="#fcbf49" color="black">
-              Button
-            </Button>
+              <Button href="#clicked!" backgroundColor="#fcbf49" color="black">
+                Button
+              </Button>
             </Column>
             <Column width={16} />
             <Column>
-            <Button href="#clicked!" backgroundColor="#f77f00" color="black">
-              Button
-            </Button>
+              <Button href="#clicked!" backgroundColor="#f77f00" color="black">
+                Button
+              </Button>
             </Column>
           </Row>
         </Container>

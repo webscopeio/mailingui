@@ -1,130 +1,120 @@
 "use client";
 
-import * as React from "react";
-import { VariantProps } from "@stitches/react";
+import React, { CSSProperties } from "react";
 import { theme } from "@mailingui/themes";
-import { css } from "@mailingui/utils";
 
-/** First we consume the tokens we need from our theme */
+/** Here we consume the tokens we need from our theme */
 const {
   color: { background, foreground, brand },
-  rounded,
 } = theme;
 
-/** Then we start creating default and prop-specific styles */
-const badgeStyles = css({
-  /** Default Styles */
-  borderRadius: 4,
-  border: "1px solid currentColor",
-  /** Component Props */
-  variants: {
-    variant: {
-      default: {
-        backgroundColor: foreground["100"],
-        color: background["100"],
-        border: "none",
-      },
-      brand: {
-        backgroundColor: brand,
-        color: background["100"],
-        border: "none",
-      },
-      subtle: {
-        backgroundColor: background["400"],
-        color: brand,
-        border: "none",
-      },
-      outline: {
-        backgroundColor: background["100"],
-        color: foreground["100"],
-        border: `1px solid ${foreground["100"]}`,
-      },
-    },
-    size: {
-      sm: {
-        padding: "2px 6px",
-        fontSize: "12px",
-      },
-      md: {
-        padding: "4px 10px",
-        fontSize: "14px",
-      },
-      lg: {
-        padding: "6px 12px",
-        fontSize: "16px",
-      },
-    },
-    pill: {
-      true: {
-        borderRadius: rounded.full,
-      },
-    },
-    noBorder: {
-      true: {
-        border: "none",
-      },
-    },
+/** Then we create default and prop-specific styles */
+const variants = {
+  default: {
+    backgroundColor: foreground["100"],
+    color: background["100"],
+    border: "none",
   },
-  defaultVariants: {
-    variant: "default",
-    size: "md",
-    pill: false,
-    noBorder: false,
+  brand: {
+    backgroundColor: brand,
+    color: background["100"],
+    border: "none",
   },
-});
+  subtle: {
+    backgroundColor: background["400"],
+    color: brand,
+    border: "none",
+  },
+  outline: {
+    backgroundColor: background["100"],
+    color: foreground["100"],
+    border: `1px solid ${foreground["100"]}`,
+  },
+} as const;
 
-/** If any additional styles will be coupled they need to match the same variants as the main ones */
-const pillSyles = css({
-  variants: {
-    variant: {
-      default: {
-        backgroundColor: background["100"],
-      },
-      brand: {
-        backgroundColor: background["100"],
-      },
-      subtle: {
-        backgroundColor: brand,
-      },
-      outline: {
-        backgroundColor: foreground["100"],
-      },
-    },
+const sizes = {
+  sm: {
+    padding: "2px 6px",
+    fontSize: "12px",
   },
-  defaultVariants: {
-    variant: "default",
+  md: {
+    padding: "4px 10px",
+    fontSize: "14px",
   },
-});
+  lg: {
+    padding: "6px 12px",
+    fontSize: "16px",
+  },
+} as const;
 
-type BadgeProps = VariantProps<typeof badgeStyles> & {
+type BadgeProps = {
+  variant?: keyof typeof variants;
+  size?: keyof typeof sizes;
   dot?: boolean;
+  pill?: boolean;
+  noBorder?: boolean;
   children: React.ReactNode;
 };
 
 const Badge: React.FC<BadgeProps> = ({
-  variant,
-  size,
+  variant = "default",
+  size = "md",
   pill,
   noBorder,
   dot,
   children,
 }) => {
+  const style: CSSProperties = {
+    ...variants[variant],
+    ...sizes[size],
+    borderRadius: pill ? "9999px" : "4px",
+    ...(noBorder ? { border: "none" } : {}),
+  };
+
   return (
-    <span className={badgeStyles({ variant, size, pill, noBorder })}>
+    <span style={style}>
+      <span
+        dangerouslySetInnerHTML={{
+          __html: `<!--[if mso]><i style="letter-spacing: 10px;mso-font-width:-100%;mso-text-raise:3" hidden>&nbsp;</i><![endif]-->`,
+        }}
+      />
       {dot ? (
-        <span
-          className={pillSyles({ variant })}
-          style={{
-            display: "inline-block",
-            height: "8px",
-            width: "8px",
-            marginRight: "6px",
-            marginBottom: "1px",
-            borderRadius: "9999px",
-          }}
-        />
+        <>
+          <span
+            dangerouslySetInnerHTML={{
+              __html:
+                "<!--[if mso]>\n" +
+                `  <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" style="height:6px;v-text-anchor:middle;width:8px;" arcsize="167%" strokecolor="${variants[variant].color}" fillcolor="${variants[variant].color}">\n` +
+                "    <w:anchorlock/>\n" +
+                '    <center style="color:#ffffff;font-family:sans-serif;font-size:13px;font-weight:bold;mso-text-raise:2">&nbsp;</center>\n' +
+                "  </v:roundrect>\n" +
+                "<![endif]-->",
+            }}
+          />
+          <span
+            style={{
+              display: "inline-block",
+              height: "8px",
+              width: "8px",
+              marginRight: "6px",
+              marginBottom: "1px",
+              borderRadius: "9999px",
+              backgroundColor: variants[variant].color,
+            }}
+          />
+          <span
+            dangerouslySetInnerHTML={{
+              __html: `<!--[if mso]><i style="letter-spacing: 6px;mso-font-width:-100%" hidden>&nbsp;</i><![endif]-->`,
+            }}
+          />
+        </>
       ) : null}
       {children}
+      <span
+        dangerouslySetInnerHTML={{
+          __html: `<!--[if mso]><i style="letter-spacing: 10px;mso-font-width:-100%" hidden>&nbsp;</i><![endif]-->`,
+        }}
+      />
     </span>
   );
 };

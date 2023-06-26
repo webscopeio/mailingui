@@ -5,6 +5,7 @@ import {
   Html,
   Preview,
   Img,
+  Head,
   Row,
 } from "@react-email/components";
 import React, { FC } from "react";
@@ -13,7 +14,6 @@ import {
   SocialIcon,
   type SocialIconType,
   Button,
-  Head,
 } from "@mailingui/components";
 
 type MinimalResetPasswordProps = {
