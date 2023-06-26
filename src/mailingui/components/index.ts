@@ -8,7 +8,7 @@ export {
   type Theme,
   useTheme,
 } from "./ThemeProvider/ThemeProvider";
-export { Text, type TextProps } from "./text/Text";
+export { Text, type TextProps, type TextVariant } from "./text/Text";
 export { Emoji } from "./emoji/Emoji";
 export { SocialIcon, type SocialIconType } from "./social-icon/SocialIcon";
 export {
