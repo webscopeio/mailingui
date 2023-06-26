@@ -74,20 +74,20 @@ const Badge: React.FC<BadgeProps> = ({
 
   return (
     <span style={style}>
+      <span
+        dangerouslySetInnerHTML={{
+          __html: `<!--[if mso]><i style="letter-spacing: 10px;mso-font-width:-100%;mso-text-raise:3" hidden>&nbsp;</i><![endif]-->`,
+        }}
+      />
       {dot ? (
         <>
-          <span
-            dangerouslySetInnerHTML={{
-              __html: `<!--[if mso]><i style="letter-spacing: 10px;mso-font-width:-100%;mso-text-raise:3" hidden>&nbsp;</i><![endif]-->`,
-            }}
-          />
           <span
             dangerouslySetInnerHTML={{
               __html:
                 "<!--[if mso]>\n" +
                 `  <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" style="height:6px;v-text-anchor:middle;width:8px;" arcsize="167%" strokecolor="${variants[variant].color}" fillcolor="${variants[variant].color}">\n` +
                 "    <w:anchorlock/>\n" +
-                '    <center style="color:#ffffff;font-family:sans-serif;font-size:13px;font-weight:bold;">&nbsp;</center>\n' +
+                '    <center style="color:#ffffff;font-family:sans-serif;font-size:13px;font-weight:bold;mso-text-raise:2">&nbsp;</center>\n' +
                 "  </v:roundrect>\n" +
                 "<![endif]-->",
             }}
