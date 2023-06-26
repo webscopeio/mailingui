@@ -13,13 +13,12 @@ npx create-next-app
 2. Install MailingUI dependencies
 
 ```bash
-npm install @react-email/components @react-email/render @stitches/react juice
+npm install @react-email/components @react-email/render
 ```
 
-TODO: update with themes
 TODO: specify versions?
 
-3. Copy common MailingUI utilities
+3. Copy common MailingUI utilities to your project (@mailingui/themes)
 
 ```bash
 cp something
@@ -27,18 +26,14 @@ cp something
 
 TODO: How to do this with full folder?
 
-4. (Recommended) Setup tsconfig aliases
+4. (Recommended) Setup tsconfig.json aliases
 
 ```json
 {
   "compilerOptions": {
-    "baseUrl": ".",
     "paths": {
       "@mailingui/components": ["src/mailingui/components/index.ts"],
-      "@mailingui/utils": ["src/mailingui/utils/index.ts"],
-      "@mailingui/*/components": [
-        "./src/mailingui/themes/*/components/index.ts"
-      ]
+      "@mailingui/themes": ["src/mailingui/themes/index.ts"]
     }
   }
 }

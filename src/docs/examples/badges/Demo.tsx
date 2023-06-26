@@ -2,29 +2,27 @@ import * as React from "react";
 import {
   Body,
   Container,
-  Head,
   Html,
   Preview,
+  Row,
+  Column,
   Section,
+  Head,
 } from "@react-email/components";
 import { Badge } from "@mailingui/components";
-import { getCssText } from "@mailingui/utils";
 
 const MediumBadges = () => (
   <Html>
-    <Head>
-      <style
-        type="text/css"
-        dangerouslySetInnerHTML={{
-          __html: getCssText(),
-        }}
-      />
-    </Head>
+    <Head />
     <Preview>Medium Badges</Preview>
     <Body style={main}>
       <Container style={container}>
         <Section style={{ textAlign: "center" as const }}>
-          <Badge>Badge</Badge>
+          <Row>
+            <Column>
+              <Badge>Badge</Badge>
+            </Column>
+          </Row>
         </Section>
       </Container>
     </Body>
@@ -42,4 +40,5 @@ const main = {
 
 const container = {
   padding: "40px 0",
+  maxWidth: 350,
 };
