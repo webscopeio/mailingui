@@ -1,15 +1,14 @@
 "use client";
 
-import * as React from "react";
-import { CSSProperties } from "react";
+import React, { CSSProperties } from "react";
 import { theme } from "@mailingui/themes";
 
-/** First we consume the tokens we need from our theme */
+/** Here we consume the tokens we need from our theme */
 const {
   color: { background, foreground, brand },
 } = theme;
 
-/** Then we start creating default and prop-specific styles */
+/** Then we create default and prop-specific styles */
 const variants = {
   default: {
     backgroundColor: foreground["100"],
