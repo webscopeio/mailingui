@@ -1,6 +1,6 @@
 import { cn } from "@utils/cn";
 
-export const ProseArticle = (props: React.HTMLAttributes<HTMLDivElement>) => (
+export const DocArticle = (props: React.HTMLAttributes<HTMLDivElement>) => (
   <article
     {...props}
     className={cn(

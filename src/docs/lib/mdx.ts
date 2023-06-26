@@ -157,7 +157,7 @@ export async function getInstallationDoc({
               rehypePrettyCode,
               {
                 getHighlighter: () =>
-                  getHighlighter({ langs: ["html", "tsx", "bash"] }),
+                  getHighlighter({ langs: ["html", "tsx", "bash", "json"] }),
               },
             ],
           ],

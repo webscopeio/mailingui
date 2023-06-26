@@ -13,7 +13,8 @@ import { getHighlighter, highlight } from "@lib/shiki";
 import { getInstallationDoc } from "@lib/mdx";
 import {
   InstallationDocsMdxComponents,
-  ProseArticle,
+  DocArticle,
+  ComponentSourceProps,
 } from "@components/InstallationDocs";
 import { componentTypes } from "@examples";
 
@@ -52,21 +53,35 @@ export default async function ComponentPage({
   params: { type },
 }: ComponentPageProps) {
   const component = await getComponent(type);
+  const componentsSource = await getComponentSource(type);
 
   const mdxDoc = await getInstallationDoc({
     componentType: type,
     components: InstallationDocsMdxComponents,
     scope: {
       demoData: component.demo,
+      componentsSource: componentsSource.sources,
     },
   });
 
   return (
-    <div className="mx-auto w-full max-w-[900px] overflow-hidden px-4">
-      {mdxDoc && <ProseArticle>{mdxDoc.content}</ProseArticle>}
-      <h1 className="pt-8 text-2xl font-semibold md:pt-16 md:text-4xl">
+    <div className="mx-auto w-full max-w-[900px] overflow-hidden p-4">
+      {mdxDoc && (
+        <>
+          <header className="grid gap-y-4 py-8">
+            <h1 className="text-2xl font-semibold md:text-6xl">
+              {mdxDoc.frontmatter.title}
+            </h1>
+            <p className="font-semibold text-neutral-500 md:text-xl">
+              {mdxDoc.frontmatter.description}
+            </p>
+          </header>
+          <DocArticle>{mdxDoc.content}</DocArticle>
+        </>
+      )}
+      <h2 className="pt-8 text-2xl font-semibold md:pt-16 md:text-4xl">
         {component.title}
-      </h1>
+      </h2>
       <div className="mt-8 space-y-16 md:mt-16">
         {component.examples.map(({ ...example }, index) => (
           <ComponentExample key={index} {...example} type={type} />
@@ -90,6 +105,7 @@ const getComponentData = (type: string) => {
 };
 
 const CONTENT_DIR = "src/docs/examples";
+const SOURCE_DIR = "src/mailingui/components";
 
 /**
  * Maps over examples, translates them to html, and puts them together.
@@ -156,6 +172,39 @@ const getComponent = async (
   return {
     title: component.title,
     examples: allExamples,
+  };
+};
+
+const getComponentSource = async (
+  componentType: string
+): Promise<{
+  title: string;
+  sources: ComponentSourceProps[];
+}> => {
+  const component = getComponentData(componentType);
+  const typePath = join(process.cwd(), SOURCE_DIR, component.sourceFolder);
+  const files = readdirSync(typePath).filter((file) => file.endsWith(".tsx"));
+  const highlighter = await getHighlighter();
+
+  const allSources = await Promise.all(
+    files.map(async (file) => {
+      const id = file.replace(/.tsx/, "");
+
+      const data = format(readFileSync(join(typePath, file), "utf8"), {
+        parser: "typescript",
+      });
+      const source = await highlight(highlighter, data);
+      return {
+        id,
+        source,
+        type: component.type,
+      };
+    })
+  );
+
+  return {
+    title: component.title,
+    sources: allSources,
   };
 };
 
