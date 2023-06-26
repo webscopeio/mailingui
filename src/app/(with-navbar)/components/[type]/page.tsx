@@ -61,6 +61,7 @@ export default async function ComponentPage({
     scope: {
       demoData: component.demo,
       componentsSource: componentsSource.sources,
+      dependenciesSource: componentsSource.dependencies,
     },
   });
 
@@ -178,6 +179,7 @@ const getComponentSource = async (
 ): Promise<{
   title: string;
   sources: ComponentSourceProps[];
+  dependencies: ComponentSourceProps[];
 }> => {
   const component = getComponentData(componentType);
   const typePath = join(process.cwd(), SOURCE_DIR, component.sourceFolder);
@@ -188,9 +190,7 @@ const getComponentSource = async (
     files.map(async (file) => {
       const id = file.replace(/.tsx/, "");
 
-      const data = format(readFileSync(join(typePath, file), "utf8"), {
-        parser: "typescript",
-      });
+      const data = readFileSync(join(typePath, file), "utf8");
       const source = await highlight(highlighter, data);
       return {
         id,
@@ -200,9 +200,31 @@ const getComponentSource = async (
     })
   );
 
+  const dependenciesList = component.dependencies ?? [];
+  const allDependencies = await Promise.all(
+    dependenciesList.map(async (dependency) => {
+      const [dependencyType, dependencyFile] = dependency.split("/");
+      const dependencyPath = join(
+        process.cwd(),
+        SOURCE_DIR,
+        dependencyType,
+        dependencyFile + ".tsx"
+      );
+
+      const data = readFileSync(dependencyPath, "utf8");
+      const source = await highlight(highlighter, data);
+      return {
+        id: dependency,
+        source,
+        type: component.type,
+      };
+    })
+  );
+
   return {
     title: component.title,
     sources: allSources,
+    dependencies: allDependencies,
   };
 };
 

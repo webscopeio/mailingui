@@ -15,6 +15,7 @@ interface ComponentType {
   subtitle: string;
   image: StaticImageData;
   sourceFolder: string;
+  dependencies?: string[];
 }
 
 export const componentTypes: ComponentType[] = [
@@ -38,6 +39,7 @@ export const componentTypes: ComponentType[] = [
     subtitle: "Highlight key information with attention-grabbing badges",
     image: Badges,
     sourceFolder: "badge",
+    dependencies: ["button/Button"],
   },
   {
     type: "buttons",
