@@ -19,6 +19,3 @@ export const theme = {
     full: 9999,
   },
 } as const;
-
-export * from "./defaultTheme";
-export * from "./types";
