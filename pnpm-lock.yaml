@@ -7930,6 +7930,16 @@ packages:
     engines: { node: ">=12" }
     dev: true
 
+  /sort-keys@5.0.0:
+    resolution:
+      {
+        integrity: sha512-Pdz01AvCAottHTPQGzndktFNdbRA75BgOfeT1hH+AMnJFv8lynkPi42rfeEhpx1saTEI3YNMWxfqu0sFD1G8pw==,
+      }
+    engines: { node: ">=12" }
+    dependencies:
+      is-plain-obj: 4.1.0
+    dev: false
+
   /source-map-js@1.0.2:
     resolution:
       {
