@@ -9,5 +9,5 @@ export const InstallationDemo = ({
   demoData?: ComponentExampleProps;
 }) => {
   if (!demoData) return null;
-  return <ComponentExample {...demoData} />;
+  return <ComponentExample {...demoData} headline="Basic usage" />;
 };
