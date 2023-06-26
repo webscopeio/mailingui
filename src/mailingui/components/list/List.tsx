@@ -8,8 +8,7 @@ import React, {
   useContext,
 } from "react";
 import { Column, Row } from "@react-email/components";
-import { Text, type TextProps } from "@mailingui/components";
-import { type Variant } from "@mailingui/themes";
+import { Text, type TextProps, type TextVariant } from "@mailingui/components";
 
 type ListContextType = {
   direction: "vertical" | "horizontal";
@@ -65,7 +64,7 @@ const ListRoot: FC<ListRootProps> = ({
 };
 
 type ListItemContextType = {
-  variant: Variant;
+  variant: TextVariant;
   size: TextProps["size"];
 };
 
@@ -77,7 +76,7 @@ const ListItemContext = createContext<ListItemContextType>({
 type ListItemProps = {
   style?: CSSProperties;
   children?: ReactNode;
-  variant?: Variant;
+  variant?: TextVariant;
   size?: TextProps["size"];
 };
 
@@ -106,7 +105,7 @@ type ListItemTitleProps = {
   centered?: boolean;
   size?: TextProps["size"];
   style?: CSSProperties;
-  variant?: Variant;
+  variant?: TextVariant;
   children?: ReactNode;
 };
 
@@ -147,7 +146,7 @@ type ListItemContentProps = {
   style?: CSSProperties;
   size?: TextProps["size"];
   centered?: boolean;
-  variant?: Variant;
+  variant?: TextVariant;
   children?: ReactNode;
 };
 

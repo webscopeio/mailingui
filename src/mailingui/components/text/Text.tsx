@@ -2,46 +2,27 @@
 
 import * as React from "react";
 import { Text as ReactEmailText } from "@react-email/components";
-import { CSSProperties } from "react";
-import { useTheme } from "../ThemeProvider/ThemeProvider";
-import { type Variant } from "@mailingui/themes";
+import { theme } from "@mailingui/themes";
 
-type RootProps = React.ComponentPropsWithoutRef<"p">;
+const {
+  color: { foreground, brand },
+} = theme;
 
-export interface TextProps extends RootProps {
-  centered?: boolean;
-  variant?: Variant;
-  size?: keyof typeof sizes;
-  children?: React.ReactNode;
-}
+const variants = {
+  default: {
+    color: foreground["100"],
+  },
+  subtle: {
+    color: foreground["200"],
+  },
+  brand: {
+    color: brand,
+  },
+} as const;
 
-const Text: React.FC<TextProps> = ({
-  style,
-  centered,
-  variant,
-  size = "md",
-  children,
-  ...props
-}) => {
-  const { fontFamily, variants } = useTheme();
+type TextVariant = keyof typeof variants;
 
-  return (
-    <ReactEmailText
-      style={{
-        textAlign: centered ? "center" : "inherit",
-        ...(variant ? { color: variants?.[variant]?.color } : null),
-        ...sizes[size],
-        fontFamily,
-        ...style,
-      }}
-      {...props}
-    >
-      {children}
-    </ReactEmailText>
-  );
-};
-
-const sizes: Record<"xs" | "sm" | "md" | "lg", CSSProperties> = {
+const sizes = {
   xs: {
     fontSize: 12,
     lineHeight: "16px",
@@ -58,6 +39,38 @@ const sizes: Record<"xs" | "sm" | "md" | "lg", CSSProperties> = {
     fontSize: 18,
     lineHeight: "28px",
   },
+} as const;
+
+type RootProps = React.ComponentPropsWithoutRef<"p">;
+
+interface TextProps extends RootProps {
+  centered?: boolean;
+  variant?: TextVariant;
+  size?: keyof typeof sizes;
+  children?: React.ReactNode;
+}
+
+const Text: React.FC<TextProps> = ({
+  style,
+  centered,
+  variant = "default",
+  size = "md",
+  children,
+  ...props
+}) => {
+  return (
+    <ReactEmailText
+      style={{
+        textAlign: centered ? "center" : "inherit",
+        ...variants[variant],
+        ...sizes[size],
+        ...style,
+      }}
+      {...props}
+    >
+      {children}
+    </ReactEmailText>
+  );
 };
 
-export { Text };
+export { Text, type TextVariant, type TextProps };

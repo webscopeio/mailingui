@@ -1,9 +1,7 @@
 "use client";
 
 import React, { FC, ReactNode, CSSProperties } from "react";
-// TODO: ⬇️This is just a temporary solution, create a PR to react.email so we can use their Button component
 import { Button as ReactEmailButton } from "@react-email/components";
-import { undefined } from "zod";
 import { theme } from "@mailingui/themes";
 
 const {
