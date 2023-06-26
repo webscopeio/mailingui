@@ -2,7 +2,6 @@ import { readFileSync, readdirSync } from "fs";
 import { join } from "path";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { format } from "prettier";
 import { render } from "@react-email/render";
 import {
   ComponentExample,
@@ -59,15 +58,16 @@ export default async function ComponentPage({
     componentType: type,
     components: InstallationDocsMdxComponents,
     scope: {
-      demoData: component.demo,
       componentsSource: componentsSource.sources,
       dependenciesSource: componentsSource.dependencies,
+      examples: component.examplesRecord,
+      examplesList: component.examplesList,
     },
   });
 
   return (
     <div className="mx-auto w-full max-w-[900px] overflow-hidden p-4">
-      {mdxDoc && (
+      {mdxDoc ? (
         <>
           <header className="grid gap-y-4 py-8">
             <h1 className="text-2xl font-semibold md:text-6xl">
@@ -79,15 +79,18 @@ export default async function ComponentPage({
           </header>
           <DocArticle>{mdxDoc.content}</DocArticle>
         </>
+      ) : (
+        <>
+          <h2 className="pt-8 text-2xl font-semibold md:pt-16 md:text-4xl">
+            {component.title}
+          </h2>
+          <div className="mt-8 space-y-16 md:mt-16">
+            {component.examplesList.map(({ ...example }, index) => (
+              <ComponentExample key={index} {...example} type={type} />
+            ))}
+          </div>
+        </>
       )}
-      <h2 className="pt-8 text-2xl font-semibold md:pt-16 md:text-4xl">
-        {component.title}
-      </h2>
-      <div className="mt-8 space-y-16 md:mt-16">
-        {component.examples.map(({ ...example }, index) => (
-          <ComponentExample key={index} {...example} type={type} />
-        ))}
-      </div>
     </div>
   );
 }
@@ -117,8 +120,8 @@ const getComponent = async (
   type: string
 ): Promise<{
   title: string;
-  demo?: ComponentExampleProps;
-  examples: ComponentExampleProps[];
+  examplesList: ComponentExampleProps[];
+  examplesRecord: Record<string, ComponentExampleProps>;
 }> => {
   // Throws if component isn't registered
   const component = getComponentData(type);
@@ -136,9 +139,7 @@ const getComponent = async (
     files.map(async (file) => {
       const id = file.replace(/.tsx/, "");
 
-      const data = format(readFileSync(join(typePath, file), "utf8"), {
-        parser: "typescript",
-      });
+      const data = readFileSync(join(typePath, file), "utf8");
       const Component = (
         await import(`src/docs/examples/${component.type}/${id}.tsx`)
       ).default;
@@ -159,18 +160,15 @@ const getComponent = async (
     })
   );
 
-  if (files.includes("Demo.tsx")) {
-    const demoIndex = files.indexOf("Demo.tsx");
-    const demo = allExamples.splice(demoIndex, 1)[0];
-    return {
-      title: component.title,
-      demo,
-      examples: allExamples,
-    };
-  }
+  const examplesRecord = allExamples.reduce((acc, example) => {
+    acc[example.id] = example;
+    return acc;
+  }, {} as Record<string, ComponentExampleProps>);
+
   return {
     title: component.title,
-    examples: allExamples,
+    examplesList: allExamples,
+    examplesRecord,
   };
 };
 
@@ -214,7 +212,7 @@ const getComponentSource = async (
       const data = readFileSync(dependencyPath, "utf8");
       const source = await highlight(highlighter, data);
       return {
-        id: dependency,
+        id: dependencyFile,
         source,
         type: component.type,
       };

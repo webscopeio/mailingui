@@ -3,7 +3,7 @@ title: Badges
 description: Badge like component
 ---
 
-<InstallationDemo demoData={demoData} />
+<ComponentExample {...examples["Demo"]} headline="Basic usage" />
 
 ## Installation
 
@@ -16,3 +16,30 @@ Its recommended to copy source code into folder aliased with **'@mailingui/compo
 As Badge has mailingui dependency, you need to install it as well.
 
 <InstallationSource componentsSource={dependenciesSource} />
+
+## Examples
+
+### Manual, example one by one (could be useful if extra content inbetween needed)
+
+<ComponentExample {...examples["LargeBadges"]} />
+
+<ComponentExample {...examples["MediumBadges"]} />
+
+<ComponentExample {...examples["SmallBadges"]} />
+
+<ComponentExample {...examples["PillBadges"]} />
+
+<ComponentExample {...examples["DotBadges"]} />
+
+<ComponentExample {...examples["NoBorderBadges"]} />
+
+### Automatic, copy of current page.tsx list solution
+
+<ComponentExampleList examples={examplesList} />
+
+### Controlled, current page.tsx list solution with filter and sort
+
+<ComponentExampleList
+  examples={examplesList}
+  order={["SmallBadges", "LargeBadges"]}
+/>
