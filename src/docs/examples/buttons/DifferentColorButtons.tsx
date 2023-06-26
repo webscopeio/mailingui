@@ -1,5 +1,13 @@
 import * as React from "react";
-import { Body, Container, Head, Html, Preview } from "@react-email/components";
+import {
+  Body,
+  Container,
+  Html,
+  Preview,
+  Row,
+  Column,
+  Head,
+} from "@react-email/components";
 import { Button } from "@mailingui/components";
 
 const DifferentColorButtons = () => {
@@ -9,25 +17,37 @@ const DifferentColorButtons = () => {
       <Preview>Different Color Buttons</Preview>
       <Body style={main}>
         <Container style={container}>
-          <Button href="#clicked!" backgroundColor="#003049">
-            Button
-          </Button>
-          <span style={{ padding: 10 }} />
-          <Button href="#clicked!" backgroundColor="#d62828">
-            Button
-          </Button>
-          <span style={{ padding: 10 }} />
-          <Button href="#clicked!" backgroundColor="#f77f00">
-            Button
-          </Button>
-          <span style={{ padding: 10 }} />
-          <Button href="#clicked!" backgroundColor="#fcbf49" color="black">
-            Button
-          </Button>
-          <span style={{ padding: 10 }} />
-          <Button href="#clicked!" backgroundColor="#f77f00" color="black">
-            Button
-          </Button>
+          <Row>
+            <Column>
+              <Button href="#clicked!" backgroundColor="#003049">
+                Button
+              </Button>
+            </Column>
+            <Column width={16} />
+            <Column>
+              <Button href="#clicked!" backgroundColor="#d62828">
+                Button
+              </Button>
+            </Column>
+            <Column width={16} />
+            <Column>
+              <Button href="#clicked!" backgroundColor="#f77f00">
+                Button
+              </Button>
+            </Column>
+            <Column width={16} />
+            <Column>
+              <Button href="#clicked!" backgroundColor="#fcbf49" color="black">
+                Button
+              </Button>
+            </Column>
+            <Column width={16} />
+            <Column>
+              <Button href="#clicked!" backgroundColor="#f77f00" color="black">
+                Button
+              </Button>
+            </Column>
+          </Row>
         </Container>
       </Body>
     </Html>

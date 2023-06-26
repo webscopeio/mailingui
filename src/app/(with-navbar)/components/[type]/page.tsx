@@ -3,7 +3,7 @@ import { join } from "path";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { format } from "prettier";
-import { render } from "@mailingui/utils";
+import { render } from "@react-email/render";
 import {
   ComponentExample,
   ComponentExampleProps,
@@ -142,9 +142,7 @@ const getComponent = async (
         await import(`src/docs/examples/${component.type}/${id}.tsx`)
       ).default;
 
-      const html = format(render(<Component />, { pretty: true }), {
-        parser: "html",
-      });
+      const html = render(<Component />, { pretty: true });
       const plainText = render(<Component />, { plainText: true });
 
       const source = await highlight(highlighter, data);

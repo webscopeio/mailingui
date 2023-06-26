@@ -2,10 +2,10 @@ import {
   Body,
   Column,
   Container,
-  Head,
   Html,
   Preview,
   Img,
+  Head,
   Row,
 } from "@react-email/components";
 import React, { FC } from "react";

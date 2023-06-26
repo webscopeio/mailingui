@@ -2,10 +2,10 @@ import {
   Body,
   Column,
   Container,
-  Head,
   Html,
   Preview,
   Img,
+  Head,
   Row,
 } from "@react-email/components";
 import React, { FC } from "react";
@@ -93,7 +93,6 @@ export const EventInvitation: FC<MinimalResetPasswordProps> = ({
               width={520}
               height={56}
               backgroundColor="#000000"
-              rounded={0}
             >
               Confirm participation
             </Button>

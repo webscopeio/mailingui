@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Body, Container, Head, Html, Preview } from "@react-email/components";
+import { Head, Body, Container, Html, Preview } from "@react-email/components";
 import { Button } from "@mailingui/components";
 
 const PillButtons = () => {
@@ -11,57 +11,27 @@ const PillButtons = () => {
       <Preview>Pill Buttons</Preview>
       <Body style={main}>
         <Container style={container}>
-          <Button
-            href="#"
-            backgroundColor={primaryColor}
-            rounded={9999}
-            size="xs"
-          >
+          <Button href="#" variant="brand" rounded="full" size="xs">
             Button
           </Button>
           <span style={{ padding: 10 }} />
-          <Button
-            href="#"
-            backgroundColor={primaryColor}
-            rounded={9999}
-            size="sm"
-          >
+          <Button href="#" variant="brand" rounded="full" size="sm">
             Button
           </Button>
           <span style={{ padding: 10 }} />
-          <Button
-            href="#"
-            backgroundColor={primaryColor}
-            rounded={9999}
-            size="md"
-          >
+          <Button href="#" variant="brand" rounded="full" size="md">
             Button
           </Button>
           <span style={{ padding: 10 }} />
-          <Button
-            href="#"
-            backgroundColor={primaryColor}
-            rounded={9999}
-            size="lg"
-          >
+          <Button href="#" variant="brand" rounded="full" size="lg">
             Button
           </Button>
           <span style={{ padding: 10 }} />
-          <Button
-            href="#"
-            backgroundColor={primaryColor}
-            rounded={9999}
-            size="xl"
-          >
+          <Button href="#" variant="brand" rounded="full" size="xl">
             Button
           </Button>
           <span style={{ padding: 10 }} />
-          <Button
-            href="#"
-            backgroundColor={primaryColor}
-            rounded={9999}
-            size="2xl"
-          >
+          <Button href="#" variant="brand" rounded="full" size="2xl">
             Button
           </Button>
         </Container>

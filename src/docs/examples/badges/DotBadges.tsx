@@ -2,50 +2,45 @@ import * as React from "react";
 import {
   Body,
   Container,
-  Head,
   Html,
   Preview,
   Section,
+  Row,
+  Column,
+  Head,
 } from "@react-email/components";
 import { Badge } from "@mailingui/components";
-import { getCssText } from "@mailingui/utils";
 
 const DotBadges = () => (
   <Html>
-    <Head>
-      <style
-        id="stitches"
-        type="text/css"
-        dangerouslySetInnerHTML={{
-          __html: getCssText(),
-        }}
-      />
-    </Head>
+    <Head />
     <Preview>Medium Badges</Preview>
     <Body style={main}>
       <Container style={container}>
         <Section style={{ textAlign: "center" as const }}>
-          <Badge dot>Badge</Badge>
-          <span style={{ padding: 10 }} />
-          <Badge variant="primary" dot>
-            Badge
-          </Badge>
-          <span style={{ padding: 10 }} />
-          <Badge variant="secondary" dot>
-            Badge
-          </Badge>
-          <span style={{ padding: 10 }} />
-          <Badge variant="success" dot>
-            Badge
-          </Badge>
-          <span style={{ padding: 10 }} />
-          <Badge variant="warning" dot>
-            Badge
-          </Badge>
-          <span style={{ padding: 10 }} />
-          <Badge variant="danger" dot>
-            Badge
-          </Badge>
+          <Row>
+            <Column>
+              <Badge dot>Badge</Badge>
+            </Column>
+            <Column width={10} />
+            <Column>
+              <Badge variant="brand" dot>
+                Badge
+              </Badge>
+            </Column>
+            <Column width={10} />
+            <Column>
+              <Badge variant="subtle" dot>
+                Badge
+              </Badge>
+            </Column>
+            <Column width={10} />
+            <Column>
+              <Badge variant="outline" dot>
+                Badge
+              </Badge>
+            </Column>
+          </Row>
         </Section>
       </Container>
     </Body>
@@ -63,4 +58,5 @@ const main = {
 
 const container = {
   padding: "40px 0",
+  maxWidth: "380px",
 };

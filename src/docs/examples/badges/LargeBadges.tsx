@@ -2,24 +2,16 @@ import * as React from "react";
 import {
   Body,
   Container,
-  Head,
   Html,
   Preview,
   Section,
+  Head,
 } from "@react-email/components";
 import { Badge } from "@mailingui/components";
-import { getCssText } from "@mailingui/utils";
 
 const LargeBadges = () => (
   <Html>
-    <Head>
-      <style
-        type="text/css"
-        dangerouslySetInnerHTML={{
-          __html: getCssText(),
-        }}
-      />
-    </Head>
+    <Head />
     <Preview>Large Badges</Preview>
     <Body style={main}>
       <Container style={container}>
@@ -28,23 +20,15 @@ const LargeBadges = () => (
             Badge
           </Badge>
           <span style={{ padding: 5 }} />
-          <Badge variant="primary" size="lg" dot>
+          <Badge variant="brand" size="lg" dot>
             Badge
           </Badge>
           <span style={{ padding: 5 }} />
-          <Badge variant="secondary" size="lg" dot>
+          <Badge variant="subtle" size="lg" dot>
             Badge
           </Badge>
           <span style={{ padding: 5 }} />
-          <Badge variant="success" size="lg" dot>
-            Badge
-          </Badge>
-          <span style={{ padding: 5 }} />
-          <Badge variant="warning" size="lg" dot>
-            Badge
-          </Badge>
-          <span style={{ padding: 5 }} />
-          <Badge variant="danger" size="lg" dot>
+          <Badge variant="outline" size="lg" dot>
             Badge
           </Badge>
         </Section>

@@ -2,24 +2,20 @@ import {
   Body,
   Column,
   Container,
-  Head,
   Html,
   Preview,
   Img,
+  Head,
   Row,
 } from "@react-email/components";
 import React, { FC } from "react";
-import {
-  Text,
-  SocialIcon,
-  type SocialIconType,
-} from "@mailingui/components";
+import { Text, SocialIcon, type SocialIconType } from "@mailingui/components";
 
 type Tip = {
   title: string;
   description: string;
   imageUrl: string;
-}
+};
 
 type TipsForTripsProps = {
   name?: string;
@@ -29,26 +25,32 @@ type TipsForTripsProps = {
 const defaultTips: Tip[] = [
   {
     title: "1. Japan",
-    description: "Japan is a country of contrasts, where ancient traditions and modern technology coexist. From exploring the bustling city of Tokyo to soaking in hot springs and admiring the cherry blossoms, Japan has something for everyone.",
-    imageUrl: "/japan-trip-tip.png"
+    description:
+      "Japan is a country of contrasts, where ancient traditions and modern technology coexist. From exploring the bustling city of Tokyo to soaking in hot springs and admiring the cherry blossoms, Japan has something for everyone.",
+    imageUrl: "/japan-trip-tip.png",
   },
   {
     title: "2. Italy",
-    description: "Italy is a country of romance, art, and exquisite cuisine. Whether you're strolling through the streets of Rome, admiring the art in Florence, or savoring the delicious food in Naples, Italy is a destination that should be on everyone's bucket list.",
-    imageUrl: "/italy-trip-tip.png"
+    description:
+      "Italy is a country of romance, art, and exquisite cuisine. Whether you're strolling through the streets of Rome, admiring the art in Florence, or savoring the delicious food in Naples, Italy is a destination that should be on everyone's bucket list.",
+    imageUrl: "/italy-trip-tip.png",
   },
   {
     title: "3. Iceland",
-    description: "Iceland is a country of otherworldly landscapes, with hot springs, glaciers, and geysers. You can hike on glaciers, swim in hot springs, and chase the Northern Lights in this unique destination.",
-    imageUrl: "/iceland-trip-tip.png"
-  }
-]
+    description:
+      "Iceland is a country of otherworldly landscapes, with hot springs, glaciers, and geysers. You can hike on glaciers, swim in hot springs, and chase the Northern Lights in this unique destination.",
+    imageUrl: "/iceland-trip-tip.png",
+  },
+];
 
 const baseUrl = `${
   process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
 }/static/minimal-theme`;
 
-export const TipsForTrips: FC<TipsForTripsProps> = ({ name = "Jacob", tips = defaultTips }) => {
+export const TipsForTrips: FC<TipsForTripsProps> = ({
+  name = "Jacob",
+  tips = defaultTips,
+}) => {
   return (
     <Html>
       <Head />
@@ -91,13 +93,14 @@ export const TipsForTrips: FC<TipsForTripsProps> = ({ name = "Jacob", tips = def
           </Row>
           {tips.map((tip, i) => (
             <Row key={i} style={{ marginBottom: "32px" }}>
-              <Text style={{ fontWeight: 700 }}>
-                {tip.title}
-              </Text>
+              <Text style={{ fontWeight: 700 }}>{tip.title}</Text>
               <Text>{tip.description}</Text>
-              <Img src={`${baseUrl}/${tip.imageUrl}`} style={{ borderRadius: "16px" }}/>
+              <Img
+                src={`${baseUrl}/${tip.imageUrl}`}
+                style={{ borderRadius: "16px" }}
+              />
             </Row>
-            ))}
+          ))}
           <Row style={{ marginBottom: "16px" }}>
             <Text>
               I hope these suggestions inspire you to plan your next trip. Each
