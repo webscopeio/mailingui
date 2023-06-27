@@ -1,12 +1,16 @@
-import mjml2html from "mjml";
-import { format } from "prettier";
+import { readFileSync, readdirSync } from "fs";
+import { join } from "path";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { format } from "prettier";
+import { render } from "@react-email/render";
 import {
   ComponentExample,
   ComponentExampleProps,
 } from "@components/ComponentExample";
-import { emailComponents, regex } from "@constants";
+
+import { getHighlighter, highlight } from "@lib/shiki";
+import { componentTypes } from "@examples";
 
 type ComponentPageProps = {
   params: {
@@ -39,19 +43,19 @@ export function generateMetadata({
   };
 }
 
-export default function ComponentPage({
+export default async function ComponentPage({
   params: { type },
 }: ComponentPageProps) {
-  const component = getComponent(type);
+  const component = await getComponent(type);
 
   return (
-    <div className="mx-auto w-full max-w-[900px] overflow-x-hidden px-4">
+    <div className="mx-auto w-full max-w-[900px] overflow-hidden px-4">
       <h1 className="pt-8 text-2xl font-semibold md:pt-16 md:text-4xl">
         {component.title}
       </h1>
       <div className="mt-8 space-y-16 md:mt-16">
         {component.examples.map(({ ...example }, index) => (
-          <ComponentExample key={index} {...example} />
+          <ComponentExample key={index} {...example} type={type} />
         ))}
       </div>
     </div>
@@ -64,111 +68,70 @@ export default function ComponentPage({
  * @returns an object containing the email component
  */
 const getComponentData = (type: string) => {
-  const component = emailComponents.find((c) => c.type === type);
+  const component = componentTypes.find((c) => c.type === type);
   if (!component) {
     return notFound();
   }
   return component;
 };
 
+const CONTENT_DIR = "src/docs/examples";
+
 /**
- * Maps over mjml examples, translates them to html, and puts them together.
+ * Maps over examples, translates them to html, and puts them together.
  * @param type - A type of component. Same as `type` param of the page.
- * @returns An object containing component title and array of component examples in mjml and html.
+ * @returns An object containing component title and array of component examples in React.
  */
-const getComponent = (
+const getComponent = async (
   type: string
-): {
+): Promise<{
   title: string;
   examples: ComponentExampleProps[];
-} => {
+}> => {
+  // Throws if component isn't registered
   const component = getComponentData(type);
 
-  const transformedExamples = component.examples.flatMap(
-    ({ title, mjml: inputMjml }) => {
-      const { preferColorScheme, colorScheme, supportedColorScheme } = regex;
-      try {
-        const htmlOutput = mjml2html(inputMjml, {
-          /** `strict` validation throws if a wrong `mjml` is encountered. */
-          validationLevel: "strict",
-          keepComments: false,
-        });
+  // Create directory path for component type
+  const typePath = join(process.cwd(), CONTENT_DIR, component.type);
 
-        if (htmlOutput.errors.length > 0) {
-          /** If the mjml parsing fails - for whatever reason - we filter the component out. */
-          return [];
-        }
+  // Read all the files in that dir
+  const files = readdirSync(typePath);
 
-        /** `mjml` beautify has been deprecated, format using default `prettier` */
-        const html = format(htmlOutput.html, { parser: "html" });
-        const mjml = format(inputMjml, { parser: "html" });
+  // Initiate instance of highlighter
+  const highlighter = await getHighlighter();
 
-        const hasDarkMode = preferColorScheme.test(inputMjml);
+  const examples = await Promise.all(
+    files.map(async (file) => {
+      const id = file.replace(/.tsx/, "");
 
-        /** Early return if no media queries were found */
-        if (!hasDarkMode) {
-          return [
-            {
-              title,
-              mjml,
-              html,
-              hasDarkMode: false,
-            },
-          ];
-        }
+      const data = format(readFileSync(join(typePath, file), "utf8"), {
+        parser: "typescript",
+      });
+      const Component = (
+        await import(`src/docs/examples/${component.type}/${id}`)
+      ).default;
 
-        /** To avoid background flashes, find and replace CSS color-schemes */
-        const mjmlLight = inputMjml
-          .replaceAll(colorScheme, "color-scheme: light;")
-          .replaceAll(supportedColorScheme, "supported-color-schemes: light;")
-          .replaceAll(preferColorScheme, "");
+      const html = render(<Component />, { pretty: true });
+      const plainText = render(<Component />, { plainText: true });
 
-        const mjmlDark = inputMjml
-          .replaceAll(colorScheme, "color-scheme: dark;")
-          .replaceAll(supportedColorScheme, "supported-color-schemes: dark;")
-          .replaceAll(preferColorScheme, "$1");
-
-        const htmlLightOutput = mjml2html(mjmlLight, {
-          validationLevel: "strict",
-          keepComments: false,
-        });
-
-        const htmlDarkOutput = mjml2html(mjmlDark, {
-          validationLevel: "strict",
-          keepComments: false,
-        });
-        if (
-          htmlLightOutput.errors.length > 0 ||
-          htmlDarkOutput.errors.length > 0
-        ) {
-          return [];
-        }
-        const htmlLight = format(htmlLightOutput.html, { parser: "html" });
-        const htmlDark = format(htmlDarkOutput.html, { parser: "html" });
-        return [
-          {
-            title,
-            mjml,
-            html,
-            hasDarkMode: true,
-            transformedHtml: {
-              light: htmlLight,
-              dark: htmlDark,
-            },
-          },
-        ];
-      } catch (error) {
-        /** If the mjml parsing fails - for whatever reason - we filter the component out. */
-        return [];
-      }
-    }
+      const source = await highlight(highlighter, data);
+      const markup = await highlight(highlighter, html, "html");
+      return {
+        id,
+        html,
+        source,
+        markup,
+        plainText,
+        type: component.type,
+      };
+    })
   );
 
   return {
     title: component.title,
-    examples: transformedExamples,
+    examples,
   };
 };
 
 export const generateStaticParams = () =>
-  emailComponents.map((item) => ({ type: item.type }));
+  componentTypes.map((item) => ({ type: item.type }));

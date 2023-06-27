@@ -8,3 +8,25 @@
     color-scheme: dark;
   }
 }
+
+* {
+	scroll-behavior: smooth;
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+}
+
+.shiki {
+	@apply m-0 w-full rounded-b-md pb-5 shadow-lg;
+}
+
+.shiki code {
+	@apply grid;
+}
+
+.shiki .line {
+	@apply relative px-12 text-sm leading-6 [&>span]:whitespace-pre-wrap;
+}
+
+.shiki .line[data-line]:before {
+	@apply -ml-7 mr-5 inline-flex min-w-[2ch] justify-end text-slate-500 opacity-40 content-[attr(data-line)];
+}

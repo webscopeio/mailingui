@@ -1,48 +1,47 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { ReactNode } from "react";
-import { Footer } from "@components/Footer";
 import "./globals.css";
 
 const basierCircle = localFont({
   src: [
     {
-      path: "fonts/BasierCircle-Regular.otf",
+      path: "../../public/static/fonts/BasierCircle-Regular.otf",
       weight: "400",
       style: "normal",
     },
     {
-      path: "fonts/BasierCircle-RegularItalic.otf",
+      path: "../../public/static/fonts/BasierCircle-RegularItalic.otf",
       weight: "400",
       style: "italic",
     },
     {
-      path: "fonts/BasierCircle-Medium.otf",
+      path: "../../public/static/fonts/BasierCircle-Medium.otf",
       weight: "500",
       style: "normal",
     },
     {
-      path: "fonts/BasierCircle-MediumItalic.otf",
+      path: "../../public/static/fonts/BasierCircle-MediumItalic.otf",
       weight: "500",
       style: "italic",
     },
     {
-      path: "fonts/BasierCircle-SemiBold.otf",
+      path: "../../public/static/fonts/BasierCircle-SemiBold.otf",
       weight: "600",
       style: "normal",
     },
     {
-      path: "fonts/BasierCircle-SemiBoldItalic.otf",
+      path: "../../public/static/fonts/BasierCircle-SemiBoldItalic.otf",
       weight: "600",
       style: "italic",
     },
     {
-      path: "fonts/BasierCircle-Bold.otf",
+      path: "../../public/static/fonts/BasierCircle-Bold.otf",
       weight: "700",
       style: "normal",
     },
     {
-      path: "fonts/BasierCircle-BoldItalic.otf",
+      path: "../../public/static/fonts/BasierCircle-BoldItalic.otf",
       weight: "700",
       style: "italic",
     },
@@ -71,13 +70,13 @@ export const metadata: Metadata = {
     apple: "/static/favicons/favicon-512.png",
     shortcut: "/static/favicons/favicon-512.png",
   },
-  description: "Easy to build an email with React & MJML",
-  keywords: ["email", "mail", "mjml", "react", "html"],
+  description: "Easy to build an email with React",
+  keywords: ["email", "mail", "react", "html"],
   colorScheme: "dark",
   applicationName: "MailingUI",
   openGraph: {
     title: "MailingUI",
-    description: "Easy to build an email with React & MJML",
+    description: "Easy to build an email with React",
     url: "https://mailingui.com/",
     images: [
       {
@@ -106,9 +105,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       </head>
       <body className="flex min-h-screen flex-col bg-black text-white">
         {children}
-        <div className="mt-auto pt-16 md:pt-32">
-          <Footer />
-        </div>
       </body>
     </html>
   );
