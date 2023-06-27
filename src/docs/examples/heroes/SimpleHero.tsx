@@ -16,7 +16,12 @@ const SimpleHero = () => (
           backgroundColor: "black",
         }}
       >
-        <HeroSection overlay={false} centered={false} />
+        <HeroSection
+          overlay={false}
+          centered={false}
+          bgImg="https://www.linkpicture.com/q/new-company-office-hero-placeholder.png"
+          logoSrc="https://www.linkpicture.com/q/company-placeholder-logo-hero.png"
+        />
       </Container>
     </Body>
   </Html>

@@ -2,12 +2,29 @@
 
 import React, { CSSProperties, FC, ReactNode } from "react";
 import { Hr, Section, Row, Column } from "@react-email/components";
-import { useTheme } from "../ThemeProvider/ThemeProvider";
+import { theme } from "@mailingui/themes";
+
+const {
+  color: { foreground, brand },
+} = theme;
+
+const variants = {
+  default: {
+    color: foreground["100"],
+  },
+  secondary: {
+    color: foreground["200"],
+  },
+  brand: {
+    color: brand,
+  },
+};
 
 type DividerBaseProps = {
   style?: CSSProperties;
-  borderColor?: CSSProperties["borderColor"];
+  dividerColor?: CSSProperties["borderColor"];
   textColor?: CSSProperties["color"];
+  variant?: keyof typeof variants;
 };
 
 type ConditionalDividerProps =
@@ -21,14 +38,12 @@ type DividerProps = DividerBaseProps & ConditionalDividerProps;
 
 const Divider: FC<DividerProps> = ({
   style: styleProp,
-  borderColor,
+  dividerColor,
   textColor,
   baseWidth = 580,
+  variant = "default",
   children,
 }) => {
-  const defaultDividerColor = "#CBD5E1";
-  const { variants } = useTheme();
-
   const sectionBorder = {
     width: `${Math.round(baseWidth * 0.4)}px`,
   };
@@ -54,16 +69,14 @@ const Divider: FC<DividerProps> = ({
               style={{
                 border: "none",
                 borderTop: `1px solid ${
-                  borderColor ??
-                  variants?.secondary.borderColor ??
-                  defaultDividerColor
+                  dividerColor ?? variants[variant].color
                 }`,
               }}
             />
           </Column>
           <Column
             style={{
-              color: textColor ?? variants?.secondary.color ?? "#64748B",
+              color: textColor ?? variants[variant].color,
               ...sectionCenter,
             }}
           >
@@ -74,9 +87,7 @@ const Divider: FC<DividerProps> = ({
               style={{
                 border: "none",
                 borderTop: `1px solid ${
-                  borderColor ??
-                  variants?.secondary.borderColor ??
-                  defaultDividerColor
+                  dividerColor ?? variants[variant].color
                 }`,
               }}
             />
@@ -89,9 +100,7 @@ const Divider: FC<DividerProps> = ({
   return (
     <Hr
       style={{
-        borderTop: `1px solid ${
-          borderColor ?? variants?.secondary.borderColor ?? defaultDividerColor
-        }`,
+        borderTop: `1px solid ${dividerColor ?? variants[variant].color}`,
         margin: "20px 0",
         width: "100%",
         ...styleProp,

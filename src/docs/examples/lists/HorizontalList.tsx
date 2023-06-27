@@ -48,6 +48,6 @@ const main = {
 };
 
 const container = {
-  padding: "30px 0",
+  padding: "105px 0",
   maxWidth: 580,
 };

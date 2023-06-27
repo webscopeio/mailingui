@@ -1,7 +1,6 @@
 import * as React from "react";
 import { Body, Head, Container, Html, Preview } from "@react-email/components";
-import { Button, ThemeProvider } from "@mailingui/components";
-import { defaultTheme } from "@mailingui/themes";
+import { Button } from "@mailingui/components";
 
 const BrandThemedButtons = () => {
   return (
@@ -9,33 +8,31 @@ const BrandThemedButtons = () => {
       <Head />
       <Preview>Brand Buttons</Preview>
       <Body style={main}>
-        <ThemeProvider theme={defaultTheme}>
-          <Container style={container}>
-            <Button href="#clicked!" variant="brand" size="xs">
-              Button
-            </Button>
-            <span style={{ padding: 10 }} />
-            <Button href="#clicked!" variant="brand" size="sm">
-              Button
-            </Button>
-            <span style={{ padding: 10 }} />
-            <Button href="#clicked!" variant="brand" size="md">
-              Button
-            </Button>
-            <span style={{ padding: 10 }} />
-            <Button href="#clicked!" variant="brand" size="lg">
-              Button
-            </Button>
-            <span style={{ padding: 10 }} />
-            <Button href="#clicked!" variant="brand" size="xl">
-              Button
-            </Button>
-            <span style={{ padding: 10 }} />
-            <Button href="#clicked!" variant="brand" size="2xl">
-              Button
-            </Button>
-          </Container>
-        </ThemeProvider>
+        <Container style={container}>
+          <Button href="#clicked!" variant="brand" size="xs">
+            Button
+          </Button>
+          <span style={{ padding: 10 }} />
+          <Button href="#clicked!" variant="brand" size="sm">
+            Button
+          </Button>
+          <span style={{ padding: 10 }} />
+          <Button href="#clicked!" variant="brand" size="md">
+            Button
+          </Button>
+          <span style={{ padding: 10 }} />
+          <Button href="#clicked!" variant="brand" size="lg">
+            Button
+          </Button>
+          <span style={{ padding: 10 }} />
+          <Button href="#clicked!" variant="brand" size="xl">
+            Button
+          </Button>
+          <span style={{ padding: 10 }} />
+          <Button href="#clicked!" variant="brand" size="2xl">
+            Button
+          </Button>
+        </Container>
       </Body>
     </Html>
   );

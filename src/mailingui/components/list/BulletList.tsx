@@ -7,8 +7,42 @@ import React, {
   createContext,
   useContext,
 } from "react";
-import { useTheme } from "@mailingui/components";
-import { type Variant } from "@mailingui/themes";
+import { theme } from "@mailingui/themes";
+
+const {
+  color: { foreground, brand },
+} = theme;
+
+const variants = {
+  default: {
+    color: foreground["100"],
+  },
+  subtle: {
+    color: foreground["200"],
+  },
+  brand: {
+    color: brand,
+  },
+};
+
+const sizes: Record<"xs" | "sm" | "md" | "lg", CSSProperties> = {
+  xs: {
+    fontSize: 12,
+    lineHeight: "16px",
+  },
+  sm: {
+    fontSize: 14,
+    lineHeight: "20px",
+  },
+  md: {
+    fontSize: 16,
+    lineHeight: "24px",
+  },
+  lg: {
+    fontSize: 18,
+    lineHeight: "28px",
+  },
+};
 
 type BulletListContextType = {
   size: keyof typeof sizes;
@@ -46,7 +80,7 @@ const BulletList: FC<BulletListProps> = ({ type, size, style, children }) => {
 };
 
 type BulletListItemProps = {
-  variant?: Variant;
+  variant?: keyof typeof variants;
   children?: ReactNode;
   style?: CSSProperties;
   size?: keyof typeof sizes;
@@ -59,36 +93,15 @@ const BulletListItem: FC<BulletListItemProps> = ({
   children,
 }) => {
   const { size: sizeContext } = useContext(BulletListContext);
-  const { fontFamily, variants } = useTheme();
 
   const style: CSSProperties = {
     padding: "2px 0",
-    fontFamily,
-    ...(variants ? variants[variant] : {}),
+    ...variants[variant],
     ...sizes[size ?? sizeContext],
     ...styleProp,
   };
 
   return <li style={style}>{children}</li>;
-};
-
-const sizes: Record<"xs" | "sm" | "md" | "lg", CSSProperties> = {
-  xs: {
-    fontSize: 12,
-    lineHeight: "16px",
-  },
-  sm: {
-    fontSize: 14,
-    lineHeight: "20px",
-  },
-  md: {
-    fontSize: 16,
-    lineHeight: "24px",
-  },
-  lg: {
-    fontSize: 18,
-    lineHeight: "28px",
-  },
 };
 
 export { BulletList, type BulletListProps, BulletListItem };
