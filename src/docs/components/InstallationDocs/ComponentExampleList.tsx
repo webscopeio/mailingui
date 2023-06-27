@@ -6,21 +6,21 @@ import {
 export const ComponentExampleList = ({
   examples,
   hideDemo = true,
-  order,
+  items,
 }: {
   examples: ComponentExampleProps[];
   hideDemo?: boolean;
-  order?: ComponentExampleProps["id"][];
+  items?: ComponentExampleProps["id"][];
 }) => {
   const filteredExamples = examples.filter((example) => {
     if (hideDemo && example.id === "Demo") return false;
-    if (order) return order.includes(example.id);
+    if (items) return items.includes(example.id);
     return true;
   });
 
-  const orderedExamples = order
+  const orderedExamples = items
     ? filteredExamples.sort((a, b) => {
-        return order.indexOf(a.id) - order.indexOf(b.id);
+        return items.indexOf(a.id) - items.indexOf(b.id);
       })
     : filteredExamples;
 

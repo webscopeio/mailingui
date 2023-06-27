@@ -61,12 +61,13 @@ export default async function ComponentPage({
       componentsSource: componentsSource.sources,
       dependenciesSource: componentsSource.dependencies,
       examples: componentExamples.examples,
+      demo: componentExamples.demo,
     },
   });
 
   return (
     <div className="mx-auto w-full max-w-[900px] overflow-hidden p-4">
-      {mdxDoc ? (
+      {mdxDoc && (
         <>
           <header className="grid gap-y-4 py-8">
             <h1 className="text-2xl font-semibold md:text-6xl">
@@ -78,18 +79,15 @@ export default async function ComponentPage({
           </header>
           <DocArticle>{mdxDoc.content}</DocArticle>
         </>
-      ) : (
-        <>
-          <h2 className="pt-8 text-2xl font-semibold md:pt-16 md:text-4xl">
-            {componentExamples.title}
-          </h2>
-          <div className="mt-8 space-y-16 md:mt-16">
-            {componentExamples.examples.map(({ ...example }, index) => (
-              <ComponentExample key={index} {...example} type={type} />
-            ))}
-          </div>
-        </>
       )}
+      <h2 className="pt-8 text-2xl font-semibold md:pt-16 md:text-4xl">
+        {componentExamples.title}
+      </h2>
+      <div className="mt-8 space-y-16 md:mt-16">
+        {componentExamples.examples.map(({ ...example }, index) => (
+          <ComponentExample key={index} {...example} type={type} />
+        ))}
+      </div>
     </div>
   );
 }
@@ -120,6 +118,7 @@ const getComponent = async (
 ): Promise<{
   title: string;
   examples: ComponentExampleProps[];
+  demo: ComponentExampleProps;
 }> => {
   // Throws if component isn't registered
   const component = getComponentData(type);
@@ -158,9 +157,13 @@ const getComponent = async (
     })
   );
 
+  const demoIndex = examples.findIndex((example) => example.id === "Demo");
+  const demo = examples.splice(demoIndex, 1)[0]; // Remove demo example from the list and save it
+
   return {
     title: component.title,
     examples,
+    demo,
   };
 };
 
