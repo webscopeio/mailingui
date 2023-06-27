@@ -158,6 +158,7 @@ export async function getInstallationDoc({
               {
                 getHighlighter: () =>
                   getHighlighter({ langs: ["html", "tsx", "bash", "json"] }),
+                keepBackground: false,
               },
             ],
           ],
