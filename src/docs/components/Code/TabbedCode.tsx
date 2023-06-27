@@ -75,7 +75,7 @@ export const TabbedCode = ({
           className,
           isExpanded ? expandedClassName : collapsedClassName
         )}
-        defaultValue={tabs[0].id}
+        defaultValue={tabs[0]?.id}
       >
         <div className="flex items-center justify-between px-5 pt-3">
           <TabsList className="grid w-full bg-[#011627] sm:inline-flex">

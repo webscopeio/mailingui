@@ -6,9 +6,11 @@ import {
 export const ComponentExampleItem = ({
   examples,
   example,
+  headline,
 }: {
   examples: ComponentExampleProps[];
   example: ComponentExampleProps["id"];
+  headline?: string;
 }) => {
   const selectedExample = examples.find(
     (exampleItem) => exampleItem.id === example
@@ -17,7 +19,7 @@ export const ComponentExampleItem = ({
 
   return (
     <div className="not-prose mt-16">
-      <ComponentExample {...selectedExample} />
+      <ComponentExample {...selectedExample} headline={headline} />
     </div>
   );
 };

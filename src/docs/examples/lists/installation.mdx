@@ -1,0 +1,56 @@
+---
+title: Lists
+description: All lists componets
+---
+
+<ComponentExampleItem
+  examples={examples}
+  example={"VerticalList"}
+  headline="Basic usage"
+/>
+
+## Installation
+
+You can reuse components from this library by copying them to your project.
+Its recommended to copy source code into folder aliased with **'@mailingui/components'**
+For **BulletList** suppport you have to copy that one too.
+
+<ComponentSourceTabs
+  sources={componentsSource}
+  order={["List", "BulletList"]}
+/>
+
+Common BulletList depends on Paragpraph component, so you have to copy that one too.
+
+<ComponentSourceTabs sources={dependenciesSource} />
+
+## Examples
+
+### List
+
+<ComponentExampleList
+  examples={examples}
+  order={[
+    "VerticalList",
+    "CenteredVerticalList",
+    "HorizontalList",
+    "CombinedLists",
+    "SmallList",
+    "DifferentSizedItems",
+    "StyledTitleList",
+    "ThemedList",
+  ]}
+/>
+
+### BulletList
+
+<ComponentExampleItem
+  examples={examples}
+  example={"BulletListExample"}
+  headline="Basic usage"
+/>
+
+<ComponentExampleList
+  examples={examples}
+  order={["NestedBulletLists", "DifferentSizedBulletList"]}
+/>

@@ -32,6 +32,7 @@ export const componentTypes: ComponentType[] = [
     subtitle: "Organize information with simple lists",
     image: Lists,
     sourceFolder: "list",
+    dependencies: ["text/Text"],
   },
   {
     type: "badges",
@@ -39,7 +40,6 @@ export const componentTypes: ComponentType[] = [
     subtitle: "Highlight key information with attention-grabbing badges",
     image: Badges,
     sourceFolder: "badge",
-    dependencies: ["button/Button"],
   },
   {
     type: "buttons",
