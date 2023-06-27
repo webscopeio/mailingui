@@ -14,24 +14,21 @@ interface ComponentType {
   title: string;
   subtitle: string;
   image: StaticImageData;
-  sourceFolder: string;
   dependencies?: string[];
 }
 
 export const componentTypes: ComponentType[] = [
   {
-    type: "heroes",
+    type: "hero-sections",
     title: "Hero section",
     subtitle: "Beautiful headers to showcase your message",
     image: Heroes,
-    sourceFolder: "hero-section",
   },
   {
     type: "lists",
     title: "Lists",
     subtitle: "Organize information with simple lists",
     image: Lists,
-    sourceFolder: "list",
     dependencies: ["text/Text"],
   },
   {
@@ -39,41 +36,35 @@ export const componentTypes: ComponentType[] = [
     title: "Badges",
     subtitle: "Highlight key information with attention-grabbing badges",
     image: Badges,
-    sourceFolder: "badge",
   },
   {
     type: "buttons",
     title: "Buttons",
     subtitle: "Drive user action with clickable buttons",
     image: Buttons,
-    sourceFolder: "button",
   },
   {
     type: "emojis",
     title: "Emojis",
     subtitle: "Add personality and emotion to your messages",
     image: Emojis,
-    sourceFolder: "emoji",
   },
   {
     type: "social-icons",
     title: "Social icons",
     subtitle: "Increase engagement with clickable social icons",
     image: SocialIcons,
-    sourceFolder: "social-icon",
   },
   {
-    type: "paragraphs",
+    type: "texts",
     title: "Paragraphs",
     subtitle: "Craft compelling content with easy-to-read paragraphs",
     image: Paragraphs,
-    sourceFolder: "text",
   },
   {
     type: "dividers",
     title: "Dividers",
     subtitle: "Create visual separation for a clean, professional look",
     image: Dividers,
-    sourceFolder: "divider",
   },
 ];

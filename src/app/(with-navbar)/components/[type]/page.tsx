@@ -175,7 +175,8 @@ const getComponentSource = async (
   dependencies: ComponentSourceProps[];
 }> => {
   const component = getComponentData(componentType);
-  const typePath = join(process.cwd(), SOURCE_DIR, component.sourceFolder);
+  const componentTypeSingular = component.type.replace(/s$/, "");
+  const typePath = join(process.cwd(), SOURCE_DIR, componentTypeSingular);
   const files = readdirSync(typePath).filter((file) => file.endsWith(".tsx"));
   const highlighter = await getHighlighter();
 
