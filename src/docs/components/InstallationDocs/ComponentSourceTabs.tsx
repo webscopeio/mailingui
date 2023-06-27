@@ -6,12 +6,20 @@ export type ComponentSourceProps = {
   source: string;
 };
 
-export const InstallationSource = ({
-  componentsSource,
+export const ComponentSourceTabs = ({
+  sources,
+  order,
 }: {
-  componentsSource: ComponentSourceProps[];
+  sources: ComponentSourceProps[];
+  order?: ComponentSourceProps["id"][];
 }) => {
-  const tabs: TabbedCodeItem[] = componentsSource.map((component) => ({
+  const localSources = order
+    ? sources
+        .filter((source) => order.includes(source.id))
+        .sort((a, b) => order.indexOf(a.id) - order.indexOf(b.id))
+    : sources;
+
+  const tabs: TabbedCodeItem[] = localSources.map((component) => ({
     id: `${component.id}.tsx`,
     htmlCode: component.source,
   }));

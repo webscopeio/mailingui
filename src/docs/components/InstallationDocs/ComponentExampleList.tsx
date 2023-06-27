@@ -10,7 +10,7 @@ export const ComponentExampleList = ({
 }: {
   examples: ComponentExampleProps[];
   hideDemo?: boolean;
-  order?: string[];
+  order?: ComponentExampleProps["id"][];
 }) => {
   const filteredExamples = examples.filter((example) => {
     if (hideDemo && example.id === "Demo") return false;

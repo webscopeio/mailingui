@@ -4,13 +4,20 @@ import {
 } from "@components/ComponentExample";
 
 export const ComponentExampleItem = ({
+  examples,
   example,
 }: {
-  example: ComponentExampleProps;
+  examples: ComponentExampleProps[];
+  example: ComponentExampleProps["id"];
 }) => {
+  const selectedExample = examples.find(
+    (exampleItem) => exampleItem.id === example
+  );
+  if (!selectedExample) return null;
+
   return (
     <div className="not-prose mt-16">
-      <ComponentExample {...example} />
+      <ComponentExample {...selectedExample} />
     </div>
   );
 };

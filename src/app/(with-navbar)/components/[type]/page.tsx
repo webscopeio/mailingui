@@ -51,7 +51,7 @@ export function generateMetadata({
 export default async function ComponentPage({
   params: { type },
 }: ComponentPageProps) {
-  const component = await getComponent(type);
+  const componentExamples = await getComponent(type);
   const componentsSource = await getComponentSource(type);
 
   const mdxDoc = await getInstallationDoc({
@@ -60,8 +60,7 @@ export default async function ComponentPage({
     scope: {
       componentsSource: componentsSource.sources,
       dependenciesSource: componentsSource.dependencies,
-      examples: component.examplesRecord,
-      examplesList: component.examplesList,
+      examples: componentExamples.examples,
     },
   });
 
@@ -82,10 +81,10 @@ export default async function ComponentPage({
       ) : (
         <>
           <h2 className="pt-8 text-2xl font-semibold md:pt-16 md:text-4xl">
-            {component.title}
+            {componentExamples.title}
           </h2>
           <div className="mt-8 space-y-16 md:mt-16">
-            {component.examplesList.map(({ ...example }, index) => (
+            {componentExamples.examples.map(({ ...example }, index) => (
               <ComponentExample key={index} {...example} type={type} />
             ))}
           </div>
@@ -120,8 +119,7 @@ const getComponent = async (
   type: string
 ): Promise<{
   title: string;
-  examplesList: ComponentExampleProps[];
-  examplesRecord: Record<string, ComponentExampleProps>;
+  examples: ComponentExampleProps[];
 }> => {
   // Throws if component isn't registered
   const component = getComponentData(type);
@@ -135,7 +133,7 @@ const getComponent = async (
   // Initiate instance of highlighter
   const highlighter = await getHighlighter();
 
-  const allExamples = await Promise.all(
+  const examples = await Promise.all(
     files.map(async (file) => {
       const id = file.replace(/.tsx/, "");
 
@@ -160,15 +158,9 @@ const getComponent = async (
     })
   );
 
-  const examplesRecord = allExamples.reduce((acc, example) => {
-    acc[example.id] = example;
-    return acc;
-  }, {} as Record<string, ComponentExampleProps>);
-
   return {
     title: component.title,
-    examplesList: allExamples,
-    examplesRecord,
+    examples,
   };
 };
 
