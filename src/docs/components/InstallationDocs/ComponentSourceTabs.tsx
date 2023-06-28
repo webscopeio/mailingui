@@ -24,7 +24,7 @@ export const ComponentSourceTabs = ({
     htmlCode: component.source,
   }));
   return (
-    <div className="not-prose relative overflow-hidden rounded-md">
+    <div className="relative overflow-hidden rounded-md">
       <TabbedCode
         tabs={tabs}
         collapsedClassName="max-h-[350px]"

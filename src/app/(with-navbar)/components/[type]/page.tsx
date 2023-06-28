@@ -13,6 +13,7 @@ import { getInstallationDoc } from "@lib/mdx";
 import {
   InstallationDocsMdxComponents,
   DocArticle,
+  DocTypography,
   ComponentSourceProps,
 } from "@components/InstallationDocs";
 import { componentTypes } from "@examples";
@@ -69,13 +70,9 @@ export default async function ComponentPage({
     <div className="mx-auto w-full max-w-[900px] overflow-hidden p-4">
       {mdxDoc && (
         <>
-          <header className="grid gap-y-4 py-8">
-            <h1 className="text-2xl font-semibold md:text-6xl">
-              {mdxDoc.frontmatter.title}
-            </h1>
-            <p className="font-semibold text-neutral-500 md:text-xl">
-              {mdxDoc.frontmatter.description}
-            </p>
+          <header className="my-8 grid gap-y-4">
+            <DocTypography.H1>{mdxDoc.frontmatter.title}</DocTypography.H1>
+            <DocTypography.P>{mdxDoc.frontmatter.description}</DocTypography.P>
           </header>
           <DocArticle>{mdxDoc.content}</DocArticle>
         </>

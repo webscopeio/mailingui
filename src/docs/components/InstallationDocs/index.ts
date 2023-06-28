@@ -6,6 +6,7 @@ import { ComponentDemo } from "./ComponentDemo";
 import { ComponentExampleList } from "./ComponentExampleList";
 import { ComponentExampleItem } from "./ComponentExampleItem";
 import { ProsePre } from "./ProsePre";
+import * as DocTypography from "./DocTypography";
 import { CTA } from "@components/CTA";
 
 export const InstallationDocsMdxComponents = {
@@ -15,6 +16,10 @@ export const InstallationDocsMdxComponents = {
   ComponentExampleList,
   CTA,
   pre: ProsePre,
+  h1: DocTypography.H1,
+  h2: DocTypography.H2,
+  h3: DocTypography.H3,
+  p: DocTypography.P,
 };
-export { ProsePre, type ComponentSourceProps };
+export { DocTypography, ProsePre, type ComponentSourceProps };
 export { DocArticle } from "./DocArticle";

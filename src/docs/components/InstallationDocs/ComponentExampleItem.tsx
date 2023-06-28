@@ -18,7 +18,7 @@ export const ComponentExampleItem = ({
   if (!selectedExample) return null;
 
   return (
-    <div className="not-prose mt-16">
+    <div className="mt-16">
       <ComponentExample {...selectedExample} headline={headline} />
     </div>
   );

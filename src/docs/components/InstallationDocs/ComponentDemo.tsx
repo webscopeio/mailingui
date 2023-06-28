@@ -5,7 +5,7 @@ import {
 
 export const ComponentDemo = ({ demo }: { demo: ComponentExampleProps }) => {
   return (
-    <div className="not-prose mt-16">
+    <div className="mt-16">
       <ComponentExample {...demo} headline="Basic usage" />
     </div>
   );
