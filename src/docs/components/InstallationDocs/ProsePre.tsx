@@ -7,7 +7,7 @@ import { cn } from "@utils/cn";
 export const ProsePre = (props: React.HTMLAttributes<HTMLPreElement>) => {
   const [code, setCode] = React.useState("");
   return (
-    <div className="flex items-center justify-between rounded-xl border border-solid border-dark-700 bg-[#011627] px-5 py-3 text-sm">
+    <div className="flex items-center justify-between overflow-x-auto rounded-xl border border-solid border-dark-700 bg-[#011627] px-5 py-3 text-sm">
       <pre
         {...props}
         ref={(node) => {
