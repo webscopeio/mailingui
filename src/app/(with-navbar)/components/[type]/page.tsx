@@ -57,6 +57,7 @@ export default async function ComponentPage({
 
   const mdxDoc = await getInstallationDoc({
     componentType: type,
+    // @ts-expect-error async component
     components: InstallationDocsMdxComponents,
     scope: {
       componentsSource: componentsSource.sources,

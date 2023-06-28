@@ -5,6 +5,7 @@ import {
 import { ComponentDemo } from "./ComponentDemo";
 import { ComponentExampleList } from "./ComponentExampleList";
 import { ComponentExampleItem } from "./ComponentExampleItem";
+import { DocTabbedCode } from "./DocTabbedCode";
 import { ProsePre } from "./ProsePre";
 import * as DocTypography from "./DocTypography";
 import { CTA } from "@components/CTA";
@@ -14,6 +15,7 @@ export const InstallationDocsMdxComponents = {
   ComponentSourceTabs,
   ComponentExampleItem,
   ComponentExampleList,
+  DocTabbedCode,
   CTA,
   pre: ProsePre,
   h1: DocTypography.H1,

@@ -8,14 +8,20 @@ description: All lists componets
 ## Installation
 
 You can reuse components from this library by copying them to your project.
-Its recommended to copy source code into folder aliased with **'@mailingui/components'**
-For **BulletList** suppport you have to copy that one too.
+Its recommended to copy source code into folder aliased with **'@mailingui/components'**  
+For **BulletList** suppport you have to copy that one too.  
+Common List depends on Text component, so you have to copy that one too.
 
-<ComponentSourceTabs
-  sources={componentsSource}
-  order={["List", "BulletList"]}
+<DocTabbedCode
+  tabs={[
+    { id: "List.tsx", path: "mailingui/components/list/List.tsx" },
+    {
+      id: "BulletList.tsx",
+      path: "mailingui/components/list/BulletList.tsx",
+    },
+    {
+      id: "Paragraph.tsx",
+      path: "mailingui/components/text/Text.tsx",
+    },
+  ]}
 />
-
-Common BulletList depends on Paragpraph component, so you have to copy that one too.
-
-<ComponentSourceTabs sources={dependenciesSource} />
