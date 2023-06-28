@@ -28,6 +28,7 @@ export const metadata: Metadata = {
 
 const Components = async () => {
   const mdxDoc = await getInstallationDoc({
+    // @ts-expect-error async component
     components: InstallationDocsMdxComponents,
   });
 
