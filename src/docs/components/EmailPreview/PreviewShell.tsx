@@ -1,5 +1,15 @@
+"use client";
+
 import * as React from "react";
 import { PreviewList } from "./PreviewList";
+import { MenuIcon, CrossIcon } from "@components/Icons";
+import {
+  Popover,
+  PopoverAnchor,
+  PopoverClose,
+  PopoverContent,
+  PopoverTrigger,
+} from "@components/Popover";
 
 export const PreviewShell = ({
   children,
@@ -13,12 +23,44 @@ export const PreviewShell = ({
   }[];
   paramsId?: string;
 }) => {
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+
   return (
     <section className="flex h-screen overflow-hidden">
       <aside className="hidden min-w-[300px] overflow-y-scroll p-8 md:block">
         <PreviewList files={files} activeFileId={paramsId}></PreviewList>
       </aside>
-      <div className="flex h-full flex-1 flex-col">{children}</div>
+      <div className="flex h-full flex-1 flex-col">
+        <Popover open={isMenuOpen} onOpenChange={setIsMenuOpen}>
+          <PopoverAnchor></PopoverAnchor>
+          <div className="absolute right-0 top-0 z-10 p-3 md:hidden">
+            <PopoverTrigger
+              className="md:hidden"
+              aria-label={isMenuOpen ? "Close" : "Open"}
+            >
+              <MenuIcon />
+            </PopoverTrigger>
+          </div>
+          <PopoverContent
+            className="max-h-screen w-screen overflow-y-scroll rounded-none p-3 md:hidden"
+            color="black"
+          >
+            <div>
+              <div className="mb-4 flex justify-between">
+                <h2 className="font-bold">Select email</h2>
+                <PopoverClose asChild>
+                  <CrossIcon />
+                </PopoverClose>
+              </div>
+              <PopoverClose asChild>
+                <PreviewList files={files} activeFileId={paramsId} />
+              </PopoverClose>
+            </div>
+          </PopoverContent>
+        </Popover>
+
+        {children}
+      </div>
     </section>
   );
 };

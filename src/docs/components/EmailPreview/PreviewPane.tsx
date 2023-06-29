@@ -14,7 +14,6 @@ import { TabbedCode, TabbedCodeItem } from "@components/Code";
 export const PreviewPane = ({
   id,
   data,
-  files,
 }: {
   id: string;
   data: {
@@ -24,7 +23,6 @@ export const PreviewPane = ({
     markup: string;
     plainText: string;
   };
-  files: { id: string; fileName: string }[];
 }) => {
   const tabData: TabbedCodeItem[] = [
     {
@@ -48,7 +46,7 @@ export const PreviewPane = ({
       defaultValue="preview"
       orientation="horizontal"
     >
-      <PreviewNavigation id={id} html={data.html} files={files}>
+      <PreviewNavigation id={id} html={data.html}>
         <TabsList className="rounded-full">
           <TabsTrigger value="preview" className="rounded-full p-2">
             <EyeIcon className="h-4 w-4" />

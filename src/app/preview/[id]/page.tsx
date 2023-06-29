@@ -15,7 +15,7 @@ export default async function PreviewId({
 
   return (
     <PreviewShell files={files} paramsId={params.id}>
-      <PreviewPane id={params.id} data={data} files={files} />
+      <PreviewPane id={params.id} data={data} />
     </PreviewShell>
   );
 }
