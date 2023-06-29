@@ -13,6 +13,18 @@ export const Navbar = () => {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
+  const PreviewNavItem = (
+    <li>
+      <Link
+        className={cn("font-medium hover:opacity-70 flex gap-2 items-center")}
+        href={"/preview"}
+      >
+        <DesktopIcon className="h-5 w-5" />
+        Preview Mode
+      </Link>
+    </li>
+  );
+
   return (
     <nav className="border-b border-solid border-dark-700">
       <Popover.Root open={isMenuOpen} onOpenChange={setIsMenuOpen}>
@@ -41,18 +53,7 @@ export const Navbar = () => {
             </ul>
 
             <ul className="hidden gap-4 md:flex">
-              {/* Preview mode only available for desktop */}
-              <li>
-                <Link
-                  className={cn(
-                    "font-medium hover:opacity-70 flex gap-2 items-center"
-                  )}
-                  href={"/preview"}
-                >
-                  <DesktopIcon className="h-5 w-5" />
-                  Preview Mode
-                </Link>
-              </li>
+              {PreviewNavItem}
               {socialLinks.map(({ href, label, Icon }, index) => (
                 <li key={index}>
                   <a
@@ -94,6 +95,7 @@ export const Navbar = () => {
                       </Popover.Close>
                     </li>
                   ))}
+                  {PreviewNavItem}
                 </ul>
               </Popover.Content>
             </Popover.Portal>
