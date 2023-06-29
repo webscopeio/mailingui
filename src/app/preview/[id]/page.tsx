@@ -2,7 +2,7 @@ import { readFileSync, readdirSync } from "fs";
 import { join } from "path";
 import { format } from "prettier";
 import { render } from "@react-email/render";
-import { PreviewPane } from "@components/EmailPreview";
+import { PreviewPane, PreviewShell } from "@components/EmailPreview";
 import { getHighlighter, highlight } from "@lib/shiki";
 
 export default async function PreviewId({
@@ -10,9 +10,14 @@ export default async function PreviewId({
 }: {
   params: { id: string };
 }) {
+  const files = getFiles();
   const data = await getPreviewData(params.id);
 
-  return <PreviewPane id={params.id} data={data} />;
+  return (
+    <PreviewShell files={files} paramsId={params.id}>
+      <PreviewPane id={params.id} data={data} files={files} />
+    </PreviewShell>
+  );
 }
 
 const getPreviewData = async (id: string) => {
@@ -44,6 +49,7 @@ const getFiles = () => {
   const files = readdirSync(typePath);
   return files.map((file) => ({
     id: file.replace(/.tsx/, ""),
+    fileName: file,
   }));
 };
 
