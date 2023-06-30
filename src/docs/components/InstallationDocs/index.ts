@@ -15,7 +15,6 @@ export const InstallationDocsMdxComponents = {
   ComponentExampleItem,
   ComponentExampleList,
   CTA,
-  pre: ProsePre,
   h1: DocTypography.H1,
   h2: DocTypography.H2,
   h3: DocTypography.H3,
