@@ -1,15 +1,17 @@
 import { readFileSync, readdirSync } from "fs";
 import { join } from "path";
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 import { notFound } from "next/navigation";
 import { render } from "@react-email/render";
+import { MDXComponents, MDXProps } from "mdx/types";
+import { ComponentType } from "react";
 import {
   ComponentExample,
   ComponentExampleProps,
 } from "@components/ComponentExample";
 
 import { getHighlighter, highlight } from "@lib/shiki";
-import { getInstallationDoc } from "@lib/mdx";
 import {
   InstallationDocsMdxComponents,
   DocArticle,
@@ -55,28 +57,25 @@ export default async function ComponentPage({
   const componentExamples = await getComponent(type);
   const componentsSource = await getComponentSource(type);
 
-  const mdxDoc = await getInstallationDoc({
-    componentType: type,
-    components: InstallationDocsMdxComponents,
-    scope: {
-      componentsSource: componentsSource.sources,
-      dependenciesSource: componentsSource.dependencies,
-      examples: componentExamples.examples,
-      demo: componentExamples.demo,
-    },
-  });
+  const docs: Record<string, ComponentType<MDXProps>> = {
+    badges: dynamic(() => import(`src/docs/examples/badges/installation.mdx`)),
+    lists: dynamic(() => import(`src/docs/examples/lists/installation.mdx`)),
+  };
+
+  const MdxDoc = docs?.[type];
+  const Docs = MdxDoc ? (
+    <DocArticle>
+      <MdxDoc
+        demo={componentExamples.demo}
+        componentsSource={componentsSource.sources}
+        dependenciesSource={componentsSource.dependencies}
+      />
+    </DocArticle>
+  ) : null;
 
   return (
     <div className="mx-auto w-full max-w-[900px] overflow-hidden p-4">
-      {mdxDoc && (
-        <>
-          <header className="my-8 grid gap-y-4">
-            <DocTypography.H1>{mdxDoc.frontmatter.title}</DocTypography.H1>
-            <DocTypography.P>{mdxDoc.frontmatter.description}</DocTypography.P>
-          </header>
-          <DocArticle>{mdxDoc.content}</DocArticle>
-        </>
-      )}
+      {Docs}
       <h2 className="pt-8 text-2xl font-semibold md:pt-16 md:text-4xl">
         {componentExamples.title}
       </h2>

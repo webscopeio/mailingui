@@ -22,3 +22,6 @@ export const InstallationDocsMdxComponents = {
 };
 export { DocTypography, ProsePre, type ComponentSourceProps };
 export { DocArticle } from "./DocArticle";
+
+export { ComponentDemo } from "./ComponentDemo";
+export { ComponentSourceTabs } from "./ComponentSourceTabs";

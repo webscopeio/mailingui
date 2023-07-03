@@ -1,9 +1,11 @@
----
-title: Lists
-description: All lists componets
----
+# Lists
 
-<ComponentDemo demo={demo} />
+description: All lists componets
+
+import { ComponentDemo } from "@components/InstallationDocs";
+import { ComponentSourceTabs } from "@components/InstallationDocs";
+
+<ComponentDemo demo={props.demo} />
 
 ## Installation
 
@@ -12,10 +14,10 @@ Its recommended to copy source code into folder aliased with **'@mailingui/compo
 For **BulletList** suppport you have to copy that one too.
 
 <ComponentSourceTabs
-  sources={componentsSource}
+  sources={props.componentsSource}
   order={["List", "BulletList"]}
 />
 
 Common BulletList depends on Paragpraph component, so you have to copy that one too.
 
-<ComponentSourceTabs sources={dependenciesSource} />
+<ComponentSourceTabs sources={props.dependenciesSource} />
