@@ -1,23 +1,11 @@
 import rehypePrettyCode from "rehype-pretty-code";
-import nextMDX from '@next/mdx'
-import { getHighlighter as getHighlighterFromShiki } from "shiki";
+import nextMDX from "@next/mdx";
 
-/** ✅ Config */
-const theme = "github-dark";
-const defaultlangs = ["html", "tsx"];
-
-async function getHighlighter({
-  langs = defaultlangs,
-} = {}) {
-  /** Preload NO languages in development */
-  const isDevelopment = process.env.NODE_ENV === "development";
-
-  /* ✅ Create a highlighter instance with a theme */
-  return await getHighlighterFromShiki({
-    theme,
-    langs: isDevelopment ? [] : langs,
-  });
-}
+/** @type {import('rehype-pretty-code').Options} */
+const options = {
+  theme: "github-dark",
+  keepBackground: false,
+};
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -48,14 +36,7 @@ const nextConfig = {
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const withMDX = nextMDX({
   options: {
-    rehypePlugins: [
-      rehypePrettyCode,
-      {
-        getHighlighter: () =>
-          getHighlighter({ langs: ["html", "tsx", "bash", "json"] }),
-        keepBackground: false,
-      },
-    ],
+    rehypePlugins: [[rehypePrettyCode, options]],
   },
 });
 
