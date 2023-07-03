@@ -5,14 +5,16 @@ import { render } from "@react-email/render";
 import { getHighlighter, highlight } from "@lib/shiki";
 import { ComponentExampleProps } from "@components/ComponentExample";
 import { componentTypes } from "@examples";
-import { ComponentSourceTabsProps } from "@components/InstallationDocs/ComponentSourceTabs";
+
+export const CONTENT_DIR = "src/docs/examples";
+export const SOURCE_DIR = "src/mailingui/components";
 
 /**
  * Finds a match for the component type or calls a navigation error
  * @param type - A type of component. Same as `type` param of the page.
  * @returns an object containing the email component
  */
-const getComponentData = (type: string) => {
+export const getComponentData = (type: string) => {
   const component = componentTypes.find((c) => c.type === type);
   if (!component) {
     return notFound();
@@ -20,29 +22,20 @@ const getComponentData = (type: string) => {
   return component;
 };
 
-const CONTENT_DIR = "src/docs/examples";
-const SOURCE_DIR = "src/mailingui/components";
-
-/**
- * Maps over examples, translates them to html, and puts them together.
- * @param type - A type of component. Same as `type` param of the page.
- * @returns An object containing component title and array of component examples in React.
- */
-export const getDemo = async (type: string): Promise<ComponentExampleProps> => {
-  // Throws if component isn't registered
-  const component = getComponentData(type);
-
+export const getComponentExampleProps = async (
+  type: string,
+  id: string
+): Promise<ComponentExampleProps> => {
   // Create directory path for component type
-  const demoPath = join(process.cwd(), CONTENT_DIR, component.type, "Demo.tsx");
+  const examplePath = join(process.cwd(), CONTENT_DIR, type, `${id}.tsx`);
 
   // Initiate instance of highlighter
   const highlighter = await getHighlighter();
 
-  const data = readFileSync(demoPath, "utf8");
+  const data = readFileSync(examplePath, "utf8");
 
-  const Component = (
-    await import(`src/docs/examples/${component.type}/Demo.tsx`)
-  ).default;
+  const Component = (await import(`src/docs/examples/${type}/${id}.tsx`))
+    .default;
 
   const html = render(<Component />, { pretty: true });
   const plainText = render(<Component />, { plainText: true });
@@ -50,7 +43,7 @@ export const getDemo = async (type: string): Promise<ComponentExampleProps> => {
   const source = await highlight(highlighter, data);
   const markup = await highlight(highlighter, html, "html");
 
-  return { id: "Demo", html, source, markup, plainText, type: component.type };
+  return { id, html, source, markup, plainText, type: type };
 };
 
 export const getComponentSource = async (componentType: string) => {

@@ -1,8 +1,8 @@
 import { ComponentExample } from "@components/ComponentExample";
-import { getDemo } from "@components/InstallationDocs/utils";
+import { getComponentExampleProps } from "@components/InstallationDocs/utils";
 
 export const ComponentDemo = async ({ type }: { type: string }) => {
-  const demo = await getDemo(type);
+  const demo = await getComponentExampleProps(type, "Demo");
 
   return (
     <div className="mt-16">
