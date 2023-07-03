@@ -2,22 +2,21 @@
 
 description: All lists componets
 
-import { ComponentDemo } from "@components/InstallationDocs";
-import { ComponentSourceTabs } from "@components/InstallationDocs";
+import {
+  ComponentDemo,
+  ComponentSourceTabs,
+} from "src/docs/components/InstallationDocs";
 
-<ComponentDemo demo={props.demo} />
+<ComponentDemo type="lists" />
 
 ## Installation
 
 You can reuse components from this library by copying them to your project.
-Its recommended to copy source code into folder aliased with **'@mailingui/components'**
-For **BulletList** suppport you have to copy that one too.
+It's recommended to copy source code into folder aliased with **'@mailingui/components'**
+For **BulletList** support you have to copy that one too.
 
-<ComponentSourceTabs
-  sources={props.componentsSource}
-  order={["List", "BulletList"]}
-/>
+<ComponentSourceTabs type="lists" />
 
-Common BulletList depends on Paragpraph component, so you have to copy that one too.
+Common BulletList depends on a Paragraph component, so you have to copy that one too.
 
-<ComponentSourceTabs sources={props.dependenciesSource} />
+<ComponentSourceTabs type="texts" />

@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import { notFound } from "next/navigation";
 import { render } from "@react-email/render";
-import { MDXComponents, MDXProps } from "mdx/types";
+import { MDXProps } from "mdx/types";
 import { ComponentType } from "react";
 import {
   ComponentExample,
@@ -12,12 +12,7 @@ import {
 } from "@components/ComponentExample";
 
 import { getHighlighter, highlight } from "@lib/shiki";
-import {
-  InstallationDocsMdxComponents,
-  DocArticle,
-  DocTypography,
-  ComponentSourceProps,
-} from "@components/InstallationDocs";
+import { DocArticle } from "@components/InstallationDocs";
 import { componentTypes } from "@examples";
 
 type ComponentPageProps = {
@@ -55,7 +50,6 @@ export default async function ComponentPage({
   params: { type },
 }: ComponentPageProps) {
   const componentExamples = await getComponent(type);
-  const componentsSource = await getComponentSource(type);
 
   const docs: Record<string, ComponentType<MDXProps>> = {
     badges: dynamic(() => import(`src/docs/examples/badges/installation.mdx`)),
@@ -65,11 +59,7 @@ export default async function ComponentPage({
   const MdxDoc = docs?.[type];
   const Docs = MdxDoc ? (
     <DocArticle>
-      <MdxDoc
-        demo={componentExamples.demo}
-        componentsSource={componentsSource.sources}
-        dependenciesSource={componentsSource.dependencies}
-      />
+      <MdxDoc />
     </DocArticle>
   ) : null;
 
@@ -102,7 +92,6 @@ const getComponentData = (type: string) => {
 };
 
 const CONTENT_DIR = "src/docs/examples";
-const SOURCE_DIR = "src/mailingui/components";
 
 /**
  * Maps over examples, translates them to html, and puts them together.
@@ -160,61 +149,6 @@ const getComponent = async (
     title: component.title,
     examples,
     demo,
-  };
-};
-
-const getComponentSource = async (
-  componentType: string
-): Promise<{
-  title: string;
-  sources: ComponentSourceProps[];
-  dependencies: ComponentSourceProps[];
-}> => {
-  const component = getComponentData(componentType);
-  const componentTypeSingular = component.type.replace(/s$/, "");
-  const typePath = join(process.cwd(), SOURCE_DIR, componentTypeSingular);
-  const files = readdirSync(typePath).filter((file) => file.endsWith(".tsx"));
-  const highlighter = await getHighlighter();
-
-  const allSources = await Promise.all(
-    files.map(async (file) => {
-      const id = file.replace(/.tsx/, "");
-
-      const data = readFileSync(join(typePath, file), "utf8");
-      const source = await highlight(highlighter, data);
-      return {
-        id,
-        source,
-        type: component.type,
-      };
-    })
-  );
-
-  const dependenciesList = component.dependencies ?? [];
-  const allDependencies = await Promise.all(
-    dependenciesList.map(async (dependency) => {
-      const [dependencyType, dependencyFile] = dependency.split("/");
-      const dependencyPath = join(
-        process.cwd(),
-        SOURCE_DIR,
-        dependencyType,
-        dependencyFile + ".tsx"
-      );
-
-      const data = readFileSync(dependencyPath, "utf8");
-      const source = await highlight(highlighter, data);
-      return {
-        id: dependencyFile,
-        source,
-        type: component.type,
-      };
-    })
-  );
-
-  return {
-    title: component.title,
-    sources: allSources,
-    dependencies: allDependencies,
   };
 };
 

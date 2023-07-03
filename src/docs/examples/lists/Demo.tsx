@@ -7,7 +7,7 @@ import {
   ListItemContent,
 } from "@mailingui/components";
 
-export default function VerticalList() {
+export default function Demo() {
   return (
     <Html>
       <Head />
