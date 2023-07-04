@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
 import { ComponentsPreview } from "@components/ComponentsPreview";
-import { getInstallationDoc } from "@lib/mdx";
-import {
-  InstallationDocsMdxComponents,
-  DocArticle,
-} from "@components/InstallationDocs";
+import { DocArticle } from "@components/InstallationDocs";
+import MdxDoc from "@examples/installation.mdx";
 
 export const metadata: Metadata = {
   title: "Components",
@@ -27,24 +24,12 @@ export const metadata: Metadata = {
 };
 
 const Components = async () => {
-  const mdxDoc = await getInstallationDoc({
-    components: InstallationDocsMdxComponents,
-  });
-
   return (
     <div className="mx-auto w-full max-w-6xl px-4">
-      {mdxDoc && (
-        <>
-          <header className="grid gap-y-4 py-8">
-            <h1 className="text-2xl font-semibold md:text-6xl">
-              {mdxDoc.frontmatter.title}
-            </h1>
-            <p className="font-semibold text-neutral-500 md:text-xl">
-              {mdxDoc.frontmatter.description}
-            </p>
-          </header>
-          <DocArticle>{mdxDoc.content}</DocArticle>
-        </>
+      {MdxDoc && (
+        <DocArticle>
+          <MdxDoc />
+        </DocArticle>
       )}
       <h2 className="pt-8 text-2xl font-semibold md:pt-16 md:text-4xl">
         Explore components

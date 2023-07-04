@@ -1,21 +1,18 @@
 import { readFileSync, readdirSync } from "fs";
 import { join } from "path";
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 import { notFound } from "next/navigation";
 import { render } from "@react-email/render";
+import { MDXProps } from "mdx/types";
+import { ComponentType } from "react";
 import {
   ComponentExample,
   ComponentExampleProps,
 } from "@components/ComponentExample";
 
 import { getHighlighter, highlight } from "@lib/shiki";
-import { getInstallationDoc } from "@lib/mdx";
-import {
-  InstallationDocsMdxComponents,
-  DocArticle,
-  DocTypography,
-  ComponentSourceProps,
-} from "@components/InstallationDocs";
+import { DocArticle } from "@components/InstallationDocs";
 import { componentTypes } from "@examples";
 
 type ComponentPageProps = {
@@ -53,30 +50,22 @@ export default async function ComponentPage({
   params: { type },
 }: ComponentPageProps) {
   const componentExamples = await getComponent(type);
-  const componentsSource = await getComponentSource(type);
 
-  const mdxDoc = await getInstallationDoc({
-    componentType: type,
-    components: InstallationDocsMdxComponents,
-    scope: {
-      componentsSource: componentsSource.sources,
-      dependenciesSource: componentsSource.dependencies,
-      examples: componentExamples.examples,
-      demo: componentExamples.demo,
-    },
-  });
+  const docs: Record<string, ComponentType<MDXProps>> = {
+    badges: dynamic(() => import(`src/docs/examples/badges/installation.mdx`)),
+    lists: dynamic(() => import(`src/docs/examples/lists/installation.mdx`)),
+  };
+
+  const MdxDoc = docs?.[type];
+  const Docs = MdxDoc ? (
+    <DocArticle>
+      <MdxDoc />
+    </DocArticle>
+  ) : null;
 
   return (
     <div className="mx-auto w-full max-w-[900px] overflow-hidden p-4">
-      {mdxDoc && (
-        <>
-          <header className="my-8 grid gap-y-4">
-            <DocTypography.H1>{mdxDoc.frontmatter.title}</DocTypography.H1>
-            <DocTypography.P>{mdxDoc.frontmatter.description}</DocTypography.P>
-          </header>
-          <DocArticle>{mdxDoc.content}</DocArticle>
-        </>
-      )}
+      {Docs}
       <h2 className="pt-8 text-2xl font-semibold md:pt-16 md:text-4xl">
         {componentExamples.title}
       </h2>
@@ -103,7 +92,6 @@ const getComponentData = (type: string) => {
 };
 
 const CONTENT_DIR = "src/docs/examples";
-const SOURCE_DIR = "src/mailingui/components";
 
 /**
  * Maps over examples, translates them to html, and puts them together.
@@ -115,7 +103,6 @@ const getComponent = async (
 ): Promise<{
   title: string;
   examples: ComponentExampleProps[];
-  demo: ComponentExampleProps;
 }> => {
   // Throws if component isn't registered
   const component = getComponentData(type);
@@ -124,7 +111,9 @@ const getComponent = async (
   const typePath = join(process.cwd(), CONTENT_DIR, component.type);
 
   // Read all the files in that dir
-  const files = readdirSync(typePath).filter((file) => file.endsWith(".tsx"));
+  const files = readdirSync(typePath)
+    .filter((file) => file.endsWith(".tsx"))
+    .filter((file) => file !== "Demo.tsx");
 
   // Initiate instance of highlighter
   const highlighter = await getHighlighter();
@@ -154,68 +143,9 @@ const getComponent = async (
     })
   );
 
-  const demoIndex = examples.findIndex((example) => example.id === "Demo");
-  const demo = examples.splice(demoIndex, 1)[0]; // Remove demo example from the list and save it
-
   return {
     title: component.title,
     examples,
-    demo,
-  };
-};
-
-const getComponentSource = async (
-  componentType: string
-): Promise<{
-  title: string;
-  sources: ComponentSourceProps[];
-  dependencies: ComponentSourceProps[];
-}> => {
-  const component = getComponentData(componentType);
-  const componentTypeSingular = component.type.replace(/s$/, "");
-  const typePath = join(process.cwd(), SOURCE_DIR, componentTypeSingular);
-  const files = readdirSync(typePath).filter((file) => file.endsWith(".tsx"));
-  const highlighter = await getHighlighter();
-
-  const allSources = await Promise.all(
-    files.map(async (file) => {
-      const id = file.replace(/.tsx/, "");
-
-      const data = readFileSync(join(typePath, file), "utf8");
-      const source = await highlight(highlighter, data);
-      return {
-        id,
-        source,
-        type: component.type,
-      };
-    })
-  );
-
-  const dependenciesList = component.dependencies ?? [];
-  const allDependencies = await Promise.all(
-    dependenciesList.map(async (dependency) => {
-      const [dependencyType, dependencyFile] = dependency.split("/");
-      const dependencyPath = join(
-        process.cwd(),
-        SOURCE_DIR,
-        dependencyType,
-        dependencyFile + ".tsx"
-      );
-
-      const data = readFileSync(dependencyPath, "utf8");
-      const source = await highlight(highlighter, data);
-      return {
-        id: dependencyFile,
-        source,
-        type: component.type,
-      };
-    })
-  );
-
-  return {
-    title: component.title,
-    sources: allSources,
-    dependencies: allDependencies,
   };
 };
 

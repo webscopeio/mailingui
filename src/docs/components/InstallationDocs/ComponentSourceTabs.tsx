@@ -1,23 +1,14 @@
 import { TabbedCode, TabbedCodeItem } from "@components/Code";
+import { getComponentSource } from "@components/InstallationDocs/utils";
 
-export type ComponentSourceProps = {
+export type ComponentSourceTabsProps = {
   type: string;
-  id: string;
-  source: string;
 };
 
-export const ComponentSourceTabs = ({
-  sources,
-  order,
-}: {
-  sources: ComponentSourceProps[];
-  order?: ComponentSourceProps["id"][];
-}) => {
-  const localSources = order
-    ? sources
-        .filter((source) => order.includes(source.id))
-        .sort((a, b) => order.indexOf(a.id) - order.indexOf(b.id))
-    : sources;
+export const ComponentSourceTabs = async ({
+  type,
+}: ComponentSourceTabsProps) => {
+  const localSources = await getComponentSource(type);
 
   const tabs: TabbedCodeItem[] = localSources.map((component) => ({
     id: `${component.id}.tsx`,
