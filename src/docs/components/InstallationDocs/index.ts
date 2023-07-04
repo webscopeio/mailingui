@@ -1,12 +1,7 @@
-import {
-  ComponentSourceTabs,
-  ComponentSourceTabsProps,
-} from "./ComponentSourceTabs";
-import { ComponentDemo } from "./ComponentDemo";
+import { ComponentSourceTabsProps } from "./ComponentSourceTabs";
 import { ProsePre } from "./ProsePre";
-import * as DocTypography from "./DocTypography";
 
-export { DocTypography, ProsePre, type ComponentSourceTabsProps };
+export { ProsePre, type ComponentSourceTabsProps };
 export { DocArticle } from "./DocArticle";
 export { ComponentDemo } from "./ComponentDemo";
 export { ComponentSourceTabs } from "./ComponentSourceTabs";

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import dynamic from "next/dynamic";
 import { ComponentsPreview } from "@components/ComponentsPreview";
 import { DocArticle } from "@components/InstallationDocs";
 import MdxDoc from "@examples/installation.mdx";

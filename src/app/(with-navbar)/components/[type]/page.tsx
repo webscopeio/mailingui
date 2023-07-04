@@ -103,7 +103,6 @@ const getComponent = async (
 ): Promise<{
   title: string;
   examples: ComponentExampleProps[];
-  demo: ComponentExampleProps;
 }> => {
   // Throws if component isn't registered
   const component = getComponentData(type);
@@ -112,7 +111,9 @@ const getComponent = async (
   const typePath = join(process.cwd(), CONTENT_DIR, component.type);
 
   // Read all the files in that dir
-  const files = readdirSync(typePath).filter((file) => file.endsWith(".tsx"));
+  const files = readdirSync(typePath)
+    .filter((file) => file.endsWith(".tsx"))
+    .filter((file) => file !== "Demo.tsx");
 
   // Initiate instance of highlighter
   const highlighter = await getHighlighter();
@@ -142,13 +143,9 @@ const getComponent = async (
     })
   );
 
-  const demoIndex = examples.findIndex((example) => example.id === "Demo");
-  const demo = examples.splice(demoIndex, 1)[0]; // Remove demo example from the list and save it
-
   return {
     title: component.title,
     examples,
-    demo,
   };
 };
 

@@ -5,7 +5,6 @@ import { render } from "@react-email/render";
 import { getHighlighter, highlight } from "@lib/shiki";
 import { ComponentExampleProps } from "@components/ComponentExample";
 import { componentTypes } from "@examples";
-import { ComponentSourceTabsProps } from "@components/InstallationDocs/ComponentSourceTabs";
 
 /**
  * Finds a match for the component type or calls a navigation error
@@ -24,7 +23,7 @@ export const CONTENT_DIR = "src/docs/examples";
 export const SOURCE_DIR = "src/mailingui/components";
 
 /**
- * Maps over examples, translates them to html, and puts them together.
+ * Fids `Demo.tsx` in examples of a given type, translates it to html, and puts it together.
  * @param type - A type of component. Same as `type` param of the page.
  * @returns An object containing component title and array of component examples in React.
  */
