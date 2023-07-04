@@ -2,12 +2,9 @@ import { readdirSync, readFileSync } from "fs";
 import { join } from "path";
 import { compileMDX, type CompileMDXResult } from "next-mdx-remote/rsc";
 import { z } from "zod";
-import rehypePrettyCode from "rehype-pretty-code";
-import { getHighlighter } from "./shiki";
 
 // ⚙️ Config settings
 export const blogDir = "src/docs/blog";
-const examplesDir = "src/docs/examples";
 const fileExtension = ".mdx";
 
 // ⚙️ Type definitions
@@ -41,15 +38,6 @@ const metaSchema = frontmatterSchema.extend({
 });
 
 type PostMeta = z.infer<typeof metaSchema>;
-
-const installationFrontmatterSchema = z.object({
-  title: z.string({
-    required_error: "Title is required",
-  }),
-  description: z.string().optional(),
-});
-
-type InstallationFrontMatter = z.infer<typeof installationFrontmatterSchema>;
 
 // 🧪 Helper functions
 
@@ -129,46 +117,4 @@ export async function getPost(
     slug: slugify(filename, title),
   });
   return { content, frontmatter };
-}
-type MDXOptions = Parameters<typeof compileMDX>[0]["options"];
-type MDXScope = Extract<MDXOptions, object>["scope"];
-export async function getInstallationDoc({
-  components = {},
-  componentType,
-  scope,
-}: {
-  components?: Parameters<typeof compileMDX>[0]["components"];
-  scope?: MDXScope;
-  componentType?: string;
-} = {}): Promise<CompileMDXResult<InstallationFrontMatter> | null> {
-  const filename = "installation.mdx";
-  try {
-    const path = componentType
-      ? join(examplesDir, componentType, filename)
-      : join(examplesDir, filename);
-    const source = readFileSync(path, "utf8");
-    const { content, frontmatter } = await compileMDX<InstallationFrontMatter>({
-      source,
-      options: {
-        parseFrontmatter: true,
-        mdxOptions: {
-          rehypePlugins: [
-            [
-              rehypePrettyCode,
-              {
-                getHighlighter: () =>
-                  getHighlighter({ langs: ["html", "tsx", "bash", "json"] }),
-                keepBackground: false,
-              },
-            ],
-          ],
-        },
-        scope,
-      },
-      components,
-    });
-    return { content, frontmatter };
-  } catch (error) {
-    return null;
-  }
 }

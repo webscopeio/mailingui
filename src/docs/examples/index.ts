@@ -29,7 +29,6 @@ export const componentTypes: ComponentType[] = [
     title: "Lists",
     subtitle: "Organize information with simple lists",
     image: Lists,
-    dependencies: ["text/Text"],
   },
   {
     type: "badges",
