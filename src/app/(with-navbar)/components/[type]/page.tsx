@@ -1,18 +1,19 @@
-import { readdirSync } from "fs";
+import { readFileSync, readdirSync } from "fs";
 import { join } from "path";
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
+import { notFound } from "next/navigation";
+import { render } from "@react-email/render";
+import { MDXProps } from "mdx/types";
+import { ComponentType } from "react";
 import {
   ComponentExample,
   ComponentExampleProps,
 } from "@components/ComponentExample";
 
-import {
-  CONTENT_DIR,
-  DocArticle,
-  getComponentData,
-  getComponentExampleProps,
-} from "@components/InstallationDocs";
-import { componentTypes, mdxDocs } from "@examples";
+import { getHighlighter, highlight } from "@lib/shiki";
+import { DocArticle } from "@components/InstallationDocs";
+import { componentTypes } from "@examples";
 
 type ComponentPageProps = {
   params: {
@@ -50,7 +51,12 @@ export default async function ComponentPage({
 }: ComponentPageProps) {
   const componentExamples = await getComponent(type);
 
-  const MdxDoc = mdxDocs?.[type];
+  const docs: Record<string, ComponentType<MDXProps>> = {
+    badges: dynamic(() => import(`src/docs/examples/badges/installation.mdx`)),
+    lists: dynamic(() => import(`src/docs/examples/lists/installation.mdx`)),
+  };
+
+  const MdxDoc = docs?.[type];
   const Docs = MdxDoc ? (
     <DocArticle>
       <MdxDoc />
@@ -73,6 +79,21 @@ export default async function ComponentPage({
 }
 
 /**
+ * Finds a match for the component type or calls a navigation error
+ * @param type - A type of component. Same as `type` param of the page.
+ * @returns an object containing the email component
+ */
+const getComponentData = (type: string) => {
+  const component = componentTypes.find((c) => c.type === type);
+  if (!component) {
+    return notFound();
+  }
+  return component;
+};
+
+const CONTENT_DIR = "src/docs/examples";
+
+/**
  * Maps over examples, translates them to html, and puts them together.
  * @param type - A type of component. Same as `type` param of the page.
  * @returns An object containing component title and array of component examples in React.
@@ -82,6 +103,7 @@ const getComponent = async (
 ): Promise<{
   title: string;
   examples: ComponentExampleProps[];
+  demo: ComponentExampleProps;
 }> => {
   // Throws if component isn't registered
   const component = getComponentData(type);
@@ -90,18 +112,43 @@ const getComponent = async (
   const typePath = join(process.cwd(), CONTENT_DIR, component.type);
 
   // Read all the files in that dir
-  const files = readdirSync(typePath)
-    .filter((file) => file.endsWith(".tsx"))
-    .filter((file) => file !== "Demo.tsx")
-    .map((file) => file.replace(".tsx", ""));
+  const files = readdirSync(typePath).filter((file) => file.endsWith(".tsx"));
+
+  // Initiate instance of highlighter
+  const highlighter = await getHighlighter();
 
   const examples = await Promise.all(
-    files.map((file) => getComponentExampleProps(type, file))
+    files.map(async (file) => {
+      const id = file.replace(/.tsx/, "");
+
+      const data = readFileSync(join(typePath, file), "utf8");
+      const Component = (
+        await import(`src/docs/examples/${component.type}/${id}.tsx`)
+      ).default;
+
+      const html = render(<Component />, { pretty: true });
+      const plainText = render(<Component />, { plainText: true });
+
+      const source = await highlight(highlighter, data);
+      const markup = await highlight(highlighter, html, "html");
+      return {
+        id,
+        html,
+        source,
+        markup,
+        plainText,
+        type: component.type,
+      };
+    })
   );
+
+  const demoIndex = examples.findIndex((example) => example.id === "Demo");
+  const demo = examples.splice(demoIndex, 1)[0]; // Remove demo example from the list and save it
 
   return {
     title: component.title,
     examples,
+    demo,
   };
 };
 

@@ -1,7 +1,4 @@
 import { type StaticImageData } from "next/image";
-import { ComponentType as ReactComponentType } from "react";
-import { MDXProps } from "mdx/types";
-import dynamic from "next/dynamic";
 
 import SocialIcons from "public/static/images/components-preview/social_icons.png";
 import Paragraphs from "public/static/images/components-preview/paragraphs.png";
@@ -17,6 +14,7 @@ interface ComponentType {
   title: string;
   subtitle: string;
   image: StaticImageData;
+  dependencies?: string[];
 }
 
 export const componentTypes: ComponentType[] = [
@@ -31,6 +29,7 @@ export const componentTypes: ComponentType[] = [
     title: "Lists",
     subtitle: "Organize information with simple lists",
     image: Lists,
+    dependencies: ["text/Text"],
   },
   {
     type: "badges",
@@ -69,8 +68,3 @@ export const componentTypes: ComponentType[] = [
     image: Dividers,
   },
 ];
-
-export const mdxDocs: Record<string, ReactComponentType<MDXProps>> = {
-  badges: dynamic(() => import(`src/docs/examples/badges/installation.mdx`)),
-  lists: dynamic(() => import(`src/docs/examples/lists/installation.mdx`)),
-};

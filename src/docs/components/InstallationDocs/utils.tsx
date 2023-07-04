@@ -5,9 +5,7 @@ import { render } from "@react-email/render";
 import { getHighlighter, highlight } from "@lib/shiki";
 import { ComponentExampleProps } from "@components/ComponentExample";
 import { componentTypes } from "@examples";
-
-export const CONTENT_DIR = "src/docs/examples";
-export const SOURCE_DIR = "src/mailingui/components";
+import { ComponentSourceTabsProps } from "@components/InstallationDocs/ComponentSourceTabs";
 
 /**
  * Finds a match for the component type or calls a navigation error
@@ -22,20 +20,29 @@ export const getComponentData = (type: string) => {
   return component;
 };
 
-export const getComponentExampleProps = async (
-  type: string,
-  id: string
-): Promise<ComponentExampleProps> => {
+export const CONTENT_DIR = "src/docs/examples";
+export const SOURCE_DIR = "src/mailingui/components";
+
+/**
+ * Maps over examples, translates them to html, and puts them together.
+ * @param type - A type of component. Same as `type` param of the page.
+ * @returns An object containing component title and array of component examples in React.
+ */
+export const getDemo = async (type: string): Promise<ComponentExampleProps> => {
+  // Throws if component isn't registered
+  const component = getComponentData(type);
+
   // Create directory path for component type
-  const examplePath = join(process.cwd(), CONTENT_DIR, type, `${id}.tsx`);
+  const demoPath = join(process.cwd(), CONTENT_DIR, component.type, "Demo.tsx");
 
   // Initiate instance of highlighter
   const highlighter = await getHighlighter();
 
-  const data = readFileSync(examplePath, "utf8");
+  const data = readFileSync(demoPath, "utf8");
 
-  const Component = (await import(`src/docs/examples/${type}/${id}.tsx`))
-    .default;
+  const Component = (
+    await import(`src/docs/examples/${component.type}/Demo.tsx`)
+  ).default;
 
   const html = render(<Component />, { pretty: true });
   const plainText = render(<Component />, { plainText: true });
@@ -43,7 +50,7 @@ export const getComponentExampleProps = async (
   const source = await highlight(highlighter, data);
   const markup = await highlight(highlighter, html, "html");
 
-  return { id, html, source, markup, plainText, type: type };
+  return { id: "Demo", html, source, markup, plainText, type: component.type };
 };
 
 export const getComponentSource = async (componentType: string) => {
