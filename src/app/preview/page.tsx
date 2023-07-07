@@ -1,7 +1,25 @@
-import { readdirSync } from "fs";
-import { join } from "path";
-import * as React from "react";
 import { PreviewNavigation, PreviewShell } from "@components/EmailPreview";
+import { readdirSync } from "fs";
+import { Metadata } from "next";
+import { join } from "path";
+import { sharedOpenGraphMetadata } from "../shared-metadata";
+
+export const metadata: Metadata = {
+  title: "Preview",
+  description: "Preview email templates",
+  openGraph: {
+    ...sharedOpenGraphMetadata,
+    title: "Preview",
+    description: "Preview email templates",
+    url: "https://mailingui.com/preview",
+    // images: [ TODO: Image
+    //   {
+    //     ...openGraphImageSize,
+    //     url: "/static/images/og/",
+    //   },
+    // ],
+  },
+};
 
 export default async function Preview() {
   const files = getFiles();

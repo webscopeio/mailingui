@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { ReactNode } from "react";
 import "./globals.css";
+import { openGraphImageSize, sharedOpenGraphMetadata } from "./shared-metadata";
 
 const basierCircle = localFont({
   src: [
@@ -75,19 +76,16 @@ export const metadata: Metadata = {
   colorScheme: "dark",
   applicationName: "MailingUI",
   openGraph: {
+    ...sharedOpenGraphMetadata,
     title: "MailingUI",
     description: "Easy to build an email with React",
     url: "https://mailingui.com/",
     images: [
       {
+        ...openGraphImageSize,
         url: "/static/images/og/homepage.png",
-        width: 1200,
-        height: 630,
       },
     ],
-    siteName: "MailingUI",
-    locale: "en-US",
-    type: "website",
   },
 };
 

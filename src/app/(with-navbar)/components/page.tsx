@@ -1,23 +1,24 @@
 import type { Metadata } from "next";
 import { ComponentsPreview } from "@components/ComponentsPreview";
+import {
+  openGraphImageSize,
+  sharedOpenGraphMetadata,
+} from "src/app/shared-metadata";
 
 export const metadata: Metadata = {
   title: "Components",
   description: "Explore components",
   openGraph: {
+    ...sharedOpenGraphMetadata,
     title: "Components",
     description: "Explore components",
     url: "https://mailingui.com/components",
     images: [
       {
+        ...openGraphImageSize,
         url: "/static/images/og/components.png",
-        width: 1200,
-        height: 630,
       },
     ],
-    siteName: "MailingUI",
-    locale: "en-US",
-    type: "website",
   },
 };
 
