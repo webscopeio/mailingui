@@ -2,7 +2,7 @@ import { PreviewNavigation, PreviewShell } from "@components/EmailPreview";
 import { readdirSync } from "fs";
 import { Metadata } from "next";
 import { join } from "path";
-import { sharedOpenGraphMetadata } from "../shared-metadata";
+import { sharedOpenGraphMetadata } from "../../docs/constants";
 
 export const metadata: Metadata = {
   title: "Preview",

@@ -5,7 +5,7 @@ import feedbackImage from "public/static/images/feedback/feedback.png";
 import {
   openGraphImageSize,
   sharedOpenGraphMetadata,
-} from "src/app/shared-metadata";
+} from "src/docs/constants";
 
 export const metadata: Metadata = {
   title: "Feedback",

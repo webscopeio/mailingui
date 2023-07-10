@@ -14,7 +14,7 @@ import { componentTypes } from "@examples";
 import {
   openGraphImageSize,
   sharedOpenGraphMetadata,
-} from "src/app/shared-metadata";
+} from "src/docs/constants";
 
 type ComponentPageProps = {
   params: {

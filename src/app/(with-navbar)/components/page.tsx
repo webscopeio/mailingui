@@ -3,7 +3,7 @@ import { ComponentsPreview } from "@components/ComponentsPreview";
 import {
   openGraphImageSize,
   sharedOpenGraphMetadata,
-} from "src/app/shared-metadata";
+} from "src/docs/constants";
 
 export const metadata: Metadata = {
   title: "Components",

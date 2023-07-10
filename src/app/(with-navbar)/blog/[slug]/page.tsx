@@ -4,7 +4,7 @@ import { blogDir, getPost, getPosts } from "@lib/mdx";
 import {
   openGraphImageSize,
   sharedOpenGraphMetadata,
-} from "src/app/shared-metadata";
+} from "src/docs/constants";
 
 type BlogPostProps = {
   params: {
