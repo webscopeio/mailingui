@@ -2,7 +2,7 @@ import { PreviewNavigation, PreviewShell } from "@components/EmailPreview";
 import { readdirSync } from "fs";
 import { Metadata } from "next";
 import { join } from "path";
-import { sharedOpenGraphMetadata } from "../../docs/constants";
+import { openGraphImageSize, sharedOpenGraphMetadata } from "../../docs/constants";
 
 export const metadata: Metadata = {
   title: "Preview",
@@ -12,12 +12,12 @@ export const metadata: Metadata = {
     title: "Preview",
     description: "Preview email templates",
     url: "https://mailingui.com/preview",
-    // images: [ TODO: Image
-    //   {
-    //     ...openGraphImageSize,
-    //     url: "/static/images/og/",
-    //   },
-    // ],
+    images: [
+      {
+        ...openGraphImageSize,
+        url: "/static/images/og/preview.png",
+      },
+    ],
   },
 };
 
