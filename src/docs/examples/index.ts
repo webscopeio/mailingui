@@ -23,6 +23,10 @@ interface ComponentMetadataType {
 export const mdxDocs: Record<string, ComponentType<MDXProps>> = {
   badges: dynamic(() => import(`src/docs/examples/badges/installation.mdx`)),
   lists: dynamic(() => import(`src/docs/examples/lists/installation.mdx`)),
+  buttons: dynamic(() => import(`src/docs/examples/buttons/installation.mdx`)),
+  dividers: dynamic(
+    () => import(`src/docs/examples/dividers/installation.mdx`)
+  ),
 };
 
 export const componentTypes: ComponentMetadataType[] = [
