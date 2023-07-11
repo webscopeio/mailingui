@@ -1,0 +1,46 @@
+# MailingUI components
+
+## Installation
+
+MailingUI components are intended to be used as copy and paste components.
+Some common setup steps are required in your project for individual components to work.
+
+1. Initialize NextJs app (if not already done)
+
+```bash
+npx create-next-app
+```
+
+2. Install MailingUI dependencies
+
+```bash
+npm install @react-email/components @react-email/render
+```
+
+TODO: specify versions?
+
+3. Copy common MailingUI utilities to your project (@mailingui/themes)
+
+```bash
+cp something
+```
+
+TODO: How to do this with full folder?
+
+4. (Recommended) Setup tsconfig.json aliases
+
+```json
+{
+  "compilerOptions": {
+    "paths": {
+      "@mailingui/components": ["src/mailingui/components/index.ts"],
+      "@mailingui/themes": ["src/mailingui/themes/index.ts"]
+    }
+  }
+}
+```
+
+---
+
+Now you should be able to use MailingUI components in your project.  
+It might be necessary to update paths to match your project structure.

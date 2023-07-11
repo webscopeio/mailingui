@@ -2,7 +2,6 @@ import { readFileSync, readdirSync } from "fs";
 import { join } from "path";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { format } from "prettier";
 import { render } from "@react-email/render";
 import {
   ComponentExample,
@@ -10,7 +9,8 @@ import {
 } from "@components/ComponentExample";
 
 import { getHighlighter, highlight } from "@lib/shiki";
-import { componentTypes } from "@examples";
+import { CONTENT_DIR, DocArticle } from "@components/InstallationDocs";
+import { componentTypes, mdxDocs } from "@examples";
 
 type ComponentPageProps = {
   params: {
@@ -46,15 +46,23 @@ export function generateMetadata({
 export default async function ComponentPage({
   params: { type },
 }: ComponentPageProps) {
-  const component = await getComponent(type);
+  const componentExamples = await getComponent(type);
+
+  const MdxDoc = mdxDocs?.[type];
+  const Docs = MdxDoc ? (
+    <DocArticle>
+      <MdxDoc />
+    </DocArticle>
+  ) : null;
 
   return (
-    <div className="mx-auto w-full max-w-[900px] overflow-hidden px-4">
-      <h1 className="pt-8 text-2xl font-semibold md:pt-16 md:text-4xl">
-        {component.title}
-      </h1>
+    <div className="mx-auto w-full max-w-[900px] overflow-hidden p-4">
+      {Docs}
+      <h2 className="pt-8 text-2xl font-semibold md:pt-16 md:text-4xl">
+        {componentExamples.title}
+      </h2>
       <div className="mt-8 space-y-16 md:mt-16">
-        {component.examples.map(({ ...example }, index) => (
+        {componentExamples.examples.map(({ ...example }, index) => (
           <ComponentExample key={index} {...example} type={type} />
         ))}
       </div>
@@ -75,8 +83,6 @@ const getComponentData = (type: string) => {
   return component;
 };
 
-const CONTENT_DIR = "src/docs/examples";
-
 /**
  * Maps over examples, translates them to html, and puts them together.
  * @param type - A type of component. Same as `type` param of the page.
@@ -95,7 +101,9 @@ const getComponent = async (
   const typePath = join(process.cwd(), CONTENT_DIR, component.type);
 
   // Read all the files in that dir
-  const files = readdirSync(typePath);
+  const files = readdirSync(typePath)
+    .filter((file) => file.endsWith(".tsx"))
+    .filter((file) => file !== "Demo.tsx");
 
   // Initiate instance of highlighter
   const highlighter = await getHighlighter();
@@ -104,11 +112,9 @@ const getComponent = async (
     files.map(async (file) => {
       const id = file.replace(/.tsx/, "");
 
-      const data = format(readFileSync(join(typePath, file), "utf8"), {
-        parser: "typescript",
-      });
+      const data = readFileSync(join(typePath, file), "utf8");
       const Component = (
-        await import(`src/docs/examples/${component.type}/${id}`)
+        await import(`src/docs/examples/${component.type}/${id}.tsx`)
       ).default;
 
       const html = render(<Component />, { pretty: true });
