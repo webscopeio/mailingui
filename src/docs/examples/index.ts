@@ -23,6 +23,18 @@ interface ComponentMetadataType {
 export const mdxDocs: Record<string, ComponentType<MDXProps>> = {
   badges: dynamic(() => import(`src/docs/examples/badges/installation.mdx`)),
   lists: dynamic(() => import(`src/docs/examples/lists/installation.mdx`)),
+  buttons: dynamic(() => import(`src/docs/examples/buttons/installation.mdx`)),
+  dividers: dynamic(
+    () => import(`src/docs/examples/dividers/installation.mdx`)
+  ),
+  emojis: dynamic(() => import(`src/docs/examples/emojis/installation.mdx`)),
+  "hero-sections": dynamic(
+    () => import(`src/docs/examples/hero-sections/installation.mdx`)
+  ),
+  "social-icons": dynamic(
+    () => import(`src/docs/examples/social-icons/installation.mdx`)
+  ),
+  texts: dynamic(() => import(`src/docs/examples/texts/installation.mdx`)),
 };
 
 export const componentTypes: ComponentMetadataType[] = [
