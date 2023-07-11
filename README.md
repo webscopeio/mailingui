@@ -18,7 +18,7 @@ from there. Keep in mind that for the templates to work you need to have the use
 
 ## Contributing
 
-[Contribution Guide](contributing.md)
+- [Contribution Guide](contributing.md)
 
 ### Technology stack
 
@@ -55,5 +55,3 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ## Open source licensing info
 
 - [LICENSE](LICENSE.md)
-
----
