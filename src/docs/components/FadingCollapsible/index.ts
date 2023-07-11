@@ -1,0 +1,1 @@
+export { FadingCollapsible } from "./FadingCollapsible";
