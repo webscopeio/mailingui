@@ -3,18 +3,20 @@
 import * as React from "react";
 import { cn } from "@utils/cn";
 
-type FadingCollapsibleProps = {
+export type FadingCollapsibleProps = {
   children: React.ReactNode;
+  expandButtonEl?: React.ReactNode;
+  collapseButtonEl?: React.ReactNode;
   className?: string;
   collapsedSizeClassName?: string;
 };
 
-const COLLAPSED_SIZE_CLASS_NAME = "max-h-[260px]";
-
 export const FadingCollapsible = ({
   children,
-  className = "space-y-8 md:space-y-12",
-  collapsedSizeClassName = COLLAPSED_SIZE_CLASS_NAME,
+  expandButtonEl = "Expand",
+  collapseButtonEl = "Collapse",
+  className,
+  collapsedSizeClassName = "max-h-[350px]",
 }: FadingCollapsibleProps) => {
   const [isCollapsed, setIsCollapsed] = React.useState(true);
   return (
@@ -28,9 +30,7 @@ export const FadingCollapsible = ({
       <div
         className={cn(
           isCollapsed && "bg-gradient-to-t from-stone-950",
-          isCollapsed
-            ? "pointer-events-none absolute inset-0 h-full w-full"
-            : "",
+          isCollapsed && "pointer-events-none absolute inset-0 h-full w-full",
           "flex flex-col items-center justify-end p-4"
         )}
       >
@@ -51,7 +51,7 @@ export const FadingCollapsible = ({
             "disabled:pointer-events-none disabled:opacity-50",
           ])}
         >
-          {isCollapsed ? "Show more" : "Hide section"}
+          {isCollapsed ? expandButtonEl : collapseButtonEl}
         </button>
       </div>
     </div>
