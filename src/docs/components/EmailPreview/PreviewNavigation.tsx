@@ -13,7 +13,7 @@ const PreviewNavigation = ({
   children?: React.ReactNode;
 }) => {
   return (
-    <nav className="flex flex-wrap items-center justify-between gap-2 p-3 md:flex-nowrap">
+    <nav className="flex flex-wrap items-center justify-between gap-4 p-3 md:flex-nowrap">
       <div className="flex w-full items-center justify-between md:w-fit md:gap-8">
         <CTA href="/" color="black" className="flex items-center gap-2 p-0">
           <BackIcon />
@@ -22,9 +22,11 @@ const PreviewNavigation = ({
         {id && <h2 className="font-semibold">{id}.tsx</h2>}
         <div className="w-4 md:hidden">{/*Nav button placeholder*/}</div>
       </div>
-      <div className="flex w-full items-center justify-between gap-4 self-end md:w-fit">
-        {children}
-        <PreviewSend html={html} />
+      <div className="grid w-full grid-cols-2 items-center gap-4 self-end md:w-fit">
+        <div>{children}</div>
+        <div className="justify-self-end">
+          <PreviewSend html={html} />
+        </div>
       </div>
     </nav>
   );
