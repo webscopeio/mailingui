@@ -1,12 +1,10 @@
 import * as React from "react";
-import { Head, Body, Container, Html, Preview } from "@react-email/components";
+import { Body, Container, Html } from "@react-email/components";
 import { Button } from "@mailingui/components";
 
 export default function Demo() {
   return (
     <Html>
-      <Head />
-      <Preview>Pill Buttons</Preview>
       <Body style={main}>
         <Container style={container}>
           <Button href="#">Button</Button>

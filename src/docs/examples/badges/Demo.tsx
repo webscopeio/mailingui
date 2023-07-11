@@ -1,35 +1,18 @@
 import * as React from "react";
-import {
-  Body,
-  Container,
-  Html,
-  Preview,
-  Row,
-  Column,
-  Section,
-  Head,
-} from "@react-email/components";
+import { Body, Container, Html } from "@react-email/components";
 import { Badge } from "@mailingui/components";
 
-const MediumBadges = () => (
-  <Html>
-    <Head />
-    <Preview>Medium Badges</Preview>
-    <Body style={main}>
-      <Container style={container}>
-        <Section style={{ textAlign: "center" as const }}>
-          <Row>
-            <Column>
-              <Badge>Badge</Badge>
-            </Column>
-          </Row>
-        </Section>
-      </Container>
-    </Body>
-  </Html>
-);
-
-export default MediumBadges;
+export default function Demo() {
+  return (
+    <Html>
+      <Body style={main}>
+        <Container style={container}>
+          <Badge>Badge</Badge>
+        </Container>
+      </Body>
+    </Html>
+  );
+}
 
 const main = {
   backgroundColor: "#ffffff",
@@ -40,5 +23,5 @@ const main = {
 
 const container = {
   padding: "40px 0",
-  maxWidth: 350,
+  width: "60px",
 };

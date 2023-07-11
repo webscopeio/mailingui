@@ -1,12 +1,10 @@
 import * as React from "react";
-import { Body, Container, Head, Html, Preview } from "@react-email/components";
+import { Body, Container, Html } from "@react-email/components";
 import { Text } from "@mailingui/components";
 
-const Demo = () => {
+export default function Demo() {
   return (
     <Html>
-      <Head />
-      <Preview>Standard Paragraph</Preview>
       <Body style={main}>
         <Container style={container}>
           <Text>
@@ -18,9 +16,7 @@ const Demo = () => {
       </Body>
     </Html>
   );
-};
-
-export default Demo;
+}
 
 const main = {
   backgroundColor: "#ffffff",

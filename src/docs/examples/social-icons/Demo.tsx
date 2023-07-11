@@ -1,11 +1,9 @@
-import { Body, Container, Head, Html, Preview } from "@react-email/components";
+import { Body, Container, Html } from "@react-email/components";
 import { SocialIcon } from "@mailingui/components";
 
-export default function AllSocialIcons() {
+export default function Demo() {
   return (
     <Html>
-      <Head />
-      <Preview>All Social Icons</Preview>
       <Body style={main}>
         <Container style={container}>
           <SocialIcon type="slack" />

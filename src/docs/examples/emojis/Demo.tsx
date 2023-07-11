@@ -1,11 +1,9 @@
-import { Body, Container, Head, Html, Preview } from "@react-email/components";
+import { Body, Container, Html } from "@react-email/components";
 import { Emoji } from "@mailingui/components";
 
-export default function AllEmojis() {
+export default function Demo() {
   return (
     <Html>
-      <Head />
-      <Preview>All Emojis</Preview>
       <Body style={main}>
         <Container style={container}>
           <Emoji type="grinning-face" />

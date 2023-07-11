@@ -1,12 +1,10 @@
 import * as React from "react";
-import { Body, Container, Head, Html, Preview } from "@react-email/components";
+import { Body, Container, Html } from "@react-email/components";
 import { Divider, Text } from "@mailingui/components";
 
 export default function Demo() {
   return (
     <Html>
-      <Head />
-      <Preview>Divider Without Text</Preview>
       <Body style={main}>
         <Container style={container}>
           <Text>
