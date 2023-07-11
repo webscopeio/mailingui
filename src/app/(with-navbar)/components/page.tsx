@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { ComponentsPreview } from "@components/ComponentsPreview";
+import { DocArticle } from "@components/InstallationDocs";
+import MdxDoc from "@examples/installation.mdx";
 
 export const metadata: Metadata = {
   title: "Components",
@@ -21,15 +23,22 @@ export const metadata: Metadata = {
   },
 };
 
-const Components = () => (
-  <div className="mx-auto w-full max-w-6xl px-4">
-    <h1 className="pt-8 text-2xl font-semibold md:pt-16 md:text-4xl">
-      Explore components
-    </h1>
-    <div className="mt-8 md:mt-16">
-      <ComponentsPreview preloadImages={true} />
+const Components = async () => {
+  return (
+    <div className="mx-auto w-full max-w-6xl px-4">
+      {MdxDoc && (
+        <DocArticle>
+          <MdxDoc />
+        </DocArticle>
+      )}
+      <h2 className="pt-8 text-2xl font-semibold md:pt-16 md:text-4xl">
+        Explore components
+      </h2>
+      <div className="mt-8 md:mt-16">
+        <ComponentsPreview preloadImages={true} />
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default Components;
