@@ -2,7 +2,7 @@ import * as React from "react";
 import { Body, Container, Head, Html, Preview } from "@react-email/components";
 import { HeroSection } from "@mailingui/components";
 
-const SimpleHero = () => (
+const Demo = () => (
   <Html>
     <Head />
     <Preview>Simple Hero</Preview>
@@ -27,7 +27,7 @@ const SimpleHero = () => (
   </Html>
 );
 
-export default SimpleHero;
+export default Demo;
 
 const main = {
   backgroundColor: "#fff",
