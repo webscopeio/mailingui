@@ -1,5 +1,8 @@
 import { type StaticImageData } from "next/image";
 
+import { MDXProps } from "mdx/types";
+import dynamic from "next/dynamic";
+import { ComponentType } from "react";
 import SocialIcons from "public/static/images/components-preview/social_icons.png";
 import Paragraphs from "public/static/images/components-preview/paragraphs.png";
 import Lists from "public/static/images/components-preview/listing.png";
@@ -9,7 +12,7 @@ import Dividers from "public/static/images/components-preview/dividers.png";
 import Buttons from "public/static/images/components-preview/buttons.png";
 import Badges from "public/static/images/components-preview/badges.png";
 
-interface ComponentType {
+interface ComponentMetadataType {
   type: string;
   title: string;
   subtitle: string;
@@ -17,7 +20,12 @@ interface ComponentType {
   dependencies?: string[];
 }
 
-export const componentTypes: ComponentType[] = [
+export const mdxDocs: Record<string, ComponentType<MDXProps>> = {
+  badges: dynamic(() => import(`src/docs/examples/badges/installation.mdx`)),
+  lists: dynamic(() => import(`src/docs/examples/lists/installation.mdx`)),
+};
+
+export const componentTypes: ComponentMetadataType[] = [
   {
     type: "hero-sections",
     title: "Hero section",

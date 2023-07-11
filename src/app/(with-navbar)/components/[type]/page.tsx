@@ -12,8 +12,8 @@ import {
 } from "@components/ComponentExample";
 
 import { getHighlighter, highlight } from "@lib/shiki";
-import { DocArticle } from "@components/InstallationDocs";
-import { componentTypes } from "@examples";
+import { CONTENT_DIR, DocArticle } from "@components/InstallationDocs";
+import { componentTypes, mdxDocs } from "@examples";
 
 type ComponentPageProps = {
   params: {
@@ -51,12 +51,7 @@ export default async function ComponentPage({
 }: ComponentPageProps) {
   const componentExamples = await getComponent(type);
 
-  const docs: Record<string, ComponentType<MDXProps>> = {
-    badges: dynamic(() => import(`src/docs/examples/badges/installation.mdx`)),
-    lists: dynamic(() => import(`src/docs/examples/lists/installation.mdx`)),
-  };
-
-  const MdxDoc = docs?.[type];
+  const MdxDoc = mdxDocs?.[type];
   const Docs = MdxDoc ? (
     <DocArticle>
       <MdxDoc />
@@ -90,8 +85,6 @@ const getComponentData = (type: string) => {
   }
   return component;
 };
-
-const CONTENT_DIR = "src/docs/examples";
 
 /**
  * Maps over examples, translates them to html, and puts them together.
