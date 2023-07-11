@@ -1,11 +1,8 @@
 import { readFileSync, readdirSync } from "fs";
 import { join } from "path";
 import type { Metadata } from "next";
-import dynamic from "next/dynamic";
 import { notFound } from "next/navigation";
 import { render } from "@react-email/render";
-import { MDXProps } from "mdx/types";
-import { ComponentType } from "react";
 import {
   ComponentExample,
   ComponentExampleProps,
