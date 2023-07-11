@@ -25,13 +25,17 @@ export const SubscriptionDialog: React.FC<{
           <AlertDialogTitle className="text-center text-xl font-semibold md:text-3xl">
             Thanks for subscribing to <br /> MailingUI&apos;s newsletter!
           </AlertDialogTitle>
-          {!success && (
-            <AlertDialogDescription className="text-center text-lg text-neutral-500 md:mt-6 md:text-xl">
-              Don&apos;t forget to check your email to confirm your
-              subscription. If you don&apos;t see the email in a few minutes,
-              please check your <b>spam</b> folder.
-            </AlertDialogDescription>
-          )}
+          <AlertDialogDescription className="text-center text-lg text-neutral-500 md:mt-6 md:text-xl">
+            {success ? (
+              <>Thank you for signing up for the Mailingui newsletter.</>
+            ) : (
+              <>
+                Don&apos;t forget to check your email to confirm your
+                subscription. If you don&apos;t see the email in a few minutes,
+                please check your <b>spam</b> + folder.
+              </>
+            )}
+          </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogAction asChild>

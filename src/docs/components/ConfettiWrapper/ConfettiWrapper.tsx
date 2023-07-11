@@ -15,14 +15,14 @@ export const ConfettiWrapper: React.FC<{ children: React.ReactNode }> = ({
 
   const sub = searchParams.get("sub");
   React.useEffect(() => {
-    if (sub === "true" || sub === "success") {
+    if (sub === "pending" || sub === "success") {
       setIsOpen(true);
     }
   }, [searchParams]);
 
   return (
     <div ref={ref}>
-      {isOpen && <Confetti width={width} height={height} />}
+      {sub === "success" && <Confetti width={width} height={height} />}
       <SubscriptionDialog
         isOpen={isOpen}
         onOpenChange={(isOpen) => {
