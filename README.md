@@ -18,18 +18,18 @@ from there. Keep in mind that for the templates to work you need to have the use
 
 ## Contributing
 
-This section contains information on how to contribute to the project.
+[Contribution Guide](contributing.md)
 
-#### Technology stack
+### Technology stack
 
 The website is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). We use the experimental (beta) [app](https://beta.nextjs.org/docs/routing/defining-routes) directory. The email components are showcased on the website.
 
-### Dependencies
+## Dependencies
 
 - **Node.js** - recommended version is the LTS 'Hydrogen' - `18.x.x`. (The table of releases: https://nodejs.org/en/download/releases)
 - **pnpm** - space efficient and faster adaptation of `npm`. The recommended version is `9.5.1`. Can be installed with npm via `npm install -g pnpm`.
 
-### Installation
+## Installation
 
 Detailed instructions on how to install, configure, and get the project running.
 This should be frequently tested to ensure reliability. Alternatively, link to
@@ -52,7 +52,7 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-### Open source licensing info
+## Open source licensing info
 
 - [LICENSE](LICENSE.md)
 
