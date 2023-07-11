@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Body, Container, Head, Html, Preview } from "@react-email/components";
-import { Divider } from "@mailingui/components";
+import { Divider, Text } from "@mailingui/components";
 
 export default function Demo() {
   return (
@@ -9,7 +9,15 @@ export default function Demo() {
       <Preview>Divider Without Text</Preview>
       <Body style={main}>
         <Container style={container}>
+          <Text>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </Text>
           <Divider />
+          <Text>
+            Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur.
+          </Text>
         </Container>
       </Body>
     </Html>
@@ -24,7 +32,7 @@ const main = {
 };
 
 const container = {
-  paddingTop: "90px",
+  paddingTop: "25px",
   textAlign: "center" as const,
   maxWidth: 580,
 };
