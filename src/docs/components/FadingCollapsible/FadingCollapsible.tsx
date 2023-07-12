@@ -7,6 +7,7 @@ export type FadingCollapsibleProps = {
   children: React.ReactNode;
   expandButtonEl?: React.ReactNode;
   collapseButtonEl?: React.ReactNode;
+  buttonOverlayClassName?: string | ((isCollapsed: boolean) => string);
   className?: string;
   collapsedSizeClassName?: string;
 };
@@ -15,6 +16,7 @@ export const FadingCollapsible = ({
   children,
   expandButtonEl = "Expand",
   collapseButtonEl = "Collapse",
+  buttonOverlayClassName,
   className,
   collapsedSizeClassName = "max-h-[350px]",
 }: FadingCollapsibleProps) => {
@@ -29,9 +31,12 @@ export const FadingCollapsible = ({
       <div className={className}>{children}</div>
       <div
         className={cn(
+          "flex flex-col items-center justify-end p-4",
           isCollapsed && "bg-gradient-to-t from-stone-950",
           isCollapsed && "pointer-events-none absolute inset-0 h-full w-full",
-          "flex flex-col items-center justify-end p-4"
+          typeof buttonOverlayClassName === "function"
+            ? buttonOverlayClassName(isCollapsed)
+            : buttonOverlayClassName
         )}
       >
         <button
