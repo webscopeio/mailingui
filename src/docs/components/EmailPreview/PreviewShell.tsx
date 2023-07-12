@@ -3,6 +3,7 @@
 import * as React from "react";
 import { PreviewList } from "./PreviewList";
 import { MenuIcon, CrossIcon } from "@components/Icons";
+import { CTA } from "@components/CTA";
 import {
   Popover,
   PopoverAnchor,
@@ -32,33 +33,35 @@ export const PreviewShell = ({
       </aside>
       <div className="flex h-full flex-1 flex-col">
         <Popover open={isMenuOpen} onOpenChange={setIsMenuOpen}>
-          <PopoverAnchor></PopoverAnchor>
-          <div className="absolute right-0 top-0 z-10 p-3 md:hidden">
-            <PopoverTrigger
-              className="md:hidden"
-              aria-label={isMenuOpen ? "Close" : "Open"}
-            >
-              <MenuIcon />
-            </PopoverTrigger>
-          </div>
-          <PopoverContent
-            className="max-h-screen w-screen overflow-y-scroll rounded-none p-3 md:hidden"
-            color="black"
+          <PopoverAnchor />
+          <PopoverTrigger
+            aria-label={isMenuOpen ? "Close" : "Open"}
+            className="absolute bottom-2 left-2 z-10 md:hidden"
+            asChild
           >
-            <div>
-              <div className="mb-4 flex justify-between">
-                <h2 className="font-bold">Select email</h2>
-                <PopoverClose asChild>
-                  <CrossIcon />
-                </PopoverClose>
-              </div>
+            <CTA color="black">
+              <MenuIcon className="mr-2 rotate-180" />
+              Emails
+            </CTA>
+          </PopoverTrigger>
+          <PopoverContent
+            className="absolute left-0 h-screen w-80 overflow-y-scroll rounded-none p-0 shadow-lg shadow-slate-900"
+            color="black"
+            align="start"
+          >
+            <div className="sticky top-0 flex justify-between bg-black p-4">
+              <h2 className="font-bold">Select email</h2>
+              <PopoverClose asChild>
+                <CrossIcon />
+              </PopoverClose>
+            </div>
+            <div className="px-4">
               <PopoverClose asChild>
                 <PreviewList files={files} activeFileId={paramsId} />
               </PopoverClose>
             </div>
           </PopoverContent>
         </Popover>
-
         {children}
       </div>
     </section>
