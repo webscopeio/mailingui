@@ -29,15 +29,39 @@ MailingUI builds on top of [react-email](https://react.email), you have to insta
 npm install @react-email/components @react-email/render
 ```
 
-### Copy common MailingUI utilities into your project (@mailingui/themes)
+### Create a theme file
 
-Currently, the only shared utility we use in the components are **themes**.
-Themes allow you to easily change the look of your emails by changing only a few lines of code.
+To allow quick and easy customization of the components, our components consume a theme that you can change
+to fit your needs.
 
-Create a folder called `themes` somewhere in your project (we recommend `src/mailingui/themes`) and copy
-[this file](https://github.com/webscopeio/mailingui-web/blob/main/src/mailingui/themes/index.ts) into it.
-This file holds the theme that we then import in our components.
-Feel free to change the variables inside the theme.
+To set up theming create a folder called `themes` somewhere in your project (we recommend `src/mailingui/themes`),
+create a file named `index.ts` inside the folder and paste the following code into it.
+
+```typescript
+export const theme = {
+  color: {
+    background: {
+      "100": "#ffffff",
+      "200": "#ffffff",
+      "300": "#ffffff",
+      "400": "#ffffff",
+    },
+    foreground: {
+      "100": "#000000",
+      "200": "#000000",
+      "300": "#000000",
+      "400": "#000000",
+    },
+    brand: "#000000",
+  },
+  rounded: {
+    base: 0,
+    full: 9999,
+  },
+} as const;
+````
+
+You can change the variables to whatever you like, just do not add or remove any variables.
 
 ### (Recommended) Setup tsconfig.json aliases
 
