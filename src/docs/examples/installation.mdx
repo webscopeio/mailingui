@@ -1,33 +1,48 @@
 # MailingUI components
 
+MailingUI is a set of _opinionated_ React components designed to make the creation of emails easier.
+All of our
+components are intended to be used as copy-and-paste snippets.
+Right now, we are not planning on releasing an npm package for the components.
+
 ## Installation
 
-MailingUI components are intended to be used as copy and paste components.
-Some common setup steps are required in your project for individual components to work.
+To start using MailingUI in your project, you have to set up a few things.
+Follow the steps below to get started.<br />
+_Note:_ For the best experience, we recommend using MailingUI in a **Next.js** project with **TypeScript**.
 
-1. Initialize NextJs app (if not already done)
+### (Optional) 1. Bootstrap a new Next.js project
+
+If you already have a Next.js project, you can skip this step.
+Also, if you intend to use MailingUI in a different project, you can skip this step.
 
 ```bash
-npx create-next-app
+npx create-next-app@latest --typescript
 ```
 
-2. Install MailingUI dependencies
+### Install MailingUI dependencies
+
+MailingUI builds on top of [react-email](https://react.email), you have to install it into your project.
+
 
 ```bash
 npm install @react-email/components @react-email/render
 ```
 
-TODO: specify versions?
+### Copy common MailingUI utilities into your project (@mailingui/themes)
 
-3. Copy common MailingUI utilities to your project (@mailingui/themes)
+Currently, the only shared utility we use in the components are **themes**.
+Themes allow you to easily change the look of your emails by changing only a few lines of code.
 
-```bash
-cp something
-```
+Create a folder called `themes` somewhere in your project (we recommend `src/mailingui/themes`) and copy
+[this file](https://github.com/webscopeio/mailingui-web/blob/main/src/mailingui/themes/index.ts) into it.
+This file holds the theme that we then import in our components.
+Feel free to change the variables inside the theme.
 
-TODO: How to do this with full folder?
+### (Recommended) Setup tsconfig.json aliases
 
-4. (Recommended) Setup tsconfig.json aliases
+If `tsconfig.json` aliases are not set up, you will have to manually change all the imports in all the components.
+Add the following lines to your `tsconfig.json` file:
 
 ```json
 {
@@ -40,7 +55,7 @@ TODO: How to do this with full folder?
 }
 ```
 
----
+_Note:_ If you are using a different folder structure, you will have to change the paths in the `tsconfig.json` file.
 
-Now you should be able to use MailingUI components in your project.  
-It might be necessary to update paths to match your project structure.
+Now you should be able to use MailingUI components in your project.
+Just click on one of the components below and follow the instructions on how to include it in your project.
