@@ -8,10 +8,14 @@ import {
 
 /** ✅ Config */
 const theme: Theme = "github-dark";
-const langs: Lang[] = ["html", "tsx"];
+const defaultlangs: Lang[] = ["html", "tsx"];
 const bg: React.CSSProperties["backgroundColor"] = "#011627";
 
-export async function getHighlighter() {
+export async function getHighlighter({
+  langs = defaultlangs,
+}: {
+  langs?: Lang[];
+} = {}) {
   /** Preload NO languages in development */
   const isDevelopment = process.env.NODE_ENV === "development";
 

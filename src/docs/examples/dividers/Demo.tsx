@@ -1,34 +1,26 @@
 import * as React from "react";
-import { Body, Container, Head, Html, Preview } from "@react-email/components";
+import { Body, Container, Html } from "@react-email/components";
 import { Divider, Text } from "@mailingui/components";
 
-const DividerWithoutText = () => {
+export default function Demo() {
   return (
     <Html>
-      <Head />
-      <Preview>Divider Without Text</Preview>
       <Body style={main}>
         <Container style={container}>
           <Text>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
+            eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </Text>
           <Divider />
           <Text>
             Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-            cupidatat non proident, sunt in culpa qui officia deserunt mollit
-            anim id est laborum.
+            cillum dolore eu fugiat nulla pariatur.
           </Text>
         </Container>
       </Body>
     </Html>
   );
-};
-
-export default DividerWithoutText;
+}
 
 const main = {
   backgroundColor: "#ffffff",
@@ -38,7 +30,7 @@ const main = {
 };
 
 const container = {
-  padding: "40px 0",
+  paddingTop: "25px",
   textAlign: "center" as const,
   maxWidth: 580,
 };
