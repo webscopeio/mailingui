@@ -1,6 +1,10 @@
 import Image from "next/image";
 import { type Metadata } from "next";
 import { blogDir, getPost, getPosts } from "@lib/mdx";
+import {
+  openGraphImageSize,
+  sharedOpenGraphMetadata,
+} from "src/docs/constants";
 
 type BlogPostProps = {
   params: {
@@ -16,19 +20,16 @@ export async function generateMetadata({
     title: frontmatter.title,
     description: frontmatter.description,
     openGraph: {
+      ...sharedOpenGraphMetadata,
       title: frontmatter.title,
       description: frontmatter.description,
       url: `https://mailingui.com/blog/${frontmatter.slug}`,
       images: [
         {
+          ...openGraphImageSize,
           url: "/static/images/og/blog.png",
-          width: 1200,
-          height: 630,
         },
       ],
-      siteName: "MailingUI",
-      locale: "en-US",
-      type: "website",
     },
   };
 }
