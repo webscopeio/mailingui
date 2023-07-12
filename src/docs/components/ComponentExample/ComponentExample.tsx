@@ -23,7 +23,8 @@ export const ComponentExample = ({
   source,
   markup,
   plainText,
-}: ComponentExampleProps) => {
+  headline,
+}: ComponentExampleProps & { headline?: React.ReactNode }) => {
   const tabData: TabbedCodeItem[] = [
     {
       id: `${id}.tsx`,
@@ -45,7 +46,7 @@ export const ComponentExample = ({
       <Tabs defaultValue="preview" orientation="horizontal">
         <div className="flex items-center justify-between">
           <h3 className="text-xl font-semibold text-neutral-500">
-            {transformComponentName(id)}
+            {headline || transformComponentName(id)}
           </h3>
           <TabsList className="rounded-full">
             <TabsTrigger value="preview" className="rounded-full p-2">

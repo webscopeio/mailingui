@@ -1,5 +1,8 @@
 import { type StaticImageData } from "next/image";
 
+import { MDXProps } from "mdx/types";
+import dynamic from "next/dynamic";
+import { ComponentType } from "react";
 import SocialIcons from "public/static/images/components-preview/social_icons.png";
 import Paragraphs from "public/static/images/components-preview/paragraphs.png";
 import Lists from "public/static/images/components-preview/listing.png";
@@ -9,16 +12,34 @@ import Dividers from "public/static/images/components-preview/dividers.png";
 import Buttons from "public/static/images/components-preview/buttons.png";
 import Badges from "public/static/images/components-preview/badges.png";
 
-interface ComponentType {
+interface ComponentMetadataType {
   type: string;
   title: string;
   subtitle: string;
   image: StaticImageData;
+  dependencies?: string[];
 }
 
-export const componentTypes: ComponentType[] = [
+export const mdxDocs: Record<string, ComponentType<MDXProps>> = {
+  badges: dynamic(() => import(`src/docs/examples/badges/installation.mdx`)),
+  lists: dynamic(() => import(`src/docs/examples/lists/installation.mdx`)),
+  buttons: dynamic(() => import(`src/docs/examples/buttons/installation.mdx`)),
+  dividers: dynamic(
+    () => import(`src/docs/examples/dividers/installation.mdx`)
+  ),
+  emojis: dynamic(() => import(`src/docs/examples/emojis/installation.mdx`)),
+  "hero-sections": dynamic(
+    () => import(`src/docs/examples/hero-sections/installation.mdx`)
+  ),
+  "social-icons": dynamic(
+    () => import(`src/docs/examples/social-icons/installation.mdx`)
+  ),
+  texts: dynamic(() => import(`src/docs/examples/texts/installation.mdx`)),
+};
+
+export const componentTypes: ComponentMetadataType[] = [
   {
-    type: "heroes",
+    type: "hero-sections",
     title: "Hero section",
     subtitle: "Beautiful headers to showcase your message",
     image: Heroes,
@@ -54,7 +75,7 @@ export const componentTypes: ComponentType[] = [
     image: SocialIcons,
   },
   {
-    type: "paragraphs",
+    type: "texts",
     title: "Paragraphs",
     subtitle: "Craft compelling content with easy-to-read paragraphs",
     image: Paragraphs,
