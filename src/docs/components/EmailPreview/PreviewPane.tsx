@@ -73,7 +73,7 @@ export const PreviewPane = ({
         />
       </TabsContent>
       <TabsContent
-        className="relative w-full overflow-y-scroll data-[orientation=horizontal]:mt-0"
+        className="relative h-full w-full overflow-y-scroll data-[orientation=horizontal]:mt-0"
         value="code"
       >
         <TabbedCode className="min-h-full" tabs={tabData} />
