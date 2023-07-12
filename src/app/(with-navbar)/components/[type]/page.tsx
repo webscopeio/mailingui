@@ -56,7 +56,7 @@ export default async function ComponentPage({
   ) : null;
 
   return (
-    <div className="mx-auto w-full max-w-[900px] overflow-hidden p-4">
+    <div className="mx-auto w-full max-w-6xl overflow-hidden px-4">
       {Docs}
       <h2 className="pt-8 text-2xl font-semibold md:pt-16 md:text-4xl">
         {componentExamples.title}
