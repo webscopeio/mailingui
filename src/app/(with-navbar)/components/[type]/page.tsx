@@ -9,6 +9,10 @@ import {
 } from "@components/ComponentExample";
 
 import { getHighlighter, highlight } from "@lib/shiki";
+import {
+  openGraphImageSize,
+  sharedOpenGraphMetadata,
+} from "src/docs/constants";
 import { CONTENT_DIR, DocArticle } from "@components/InstallationDocs";
 import { componentTypes, mdxDocs } from "@examples";
 
@@ -23,6 +27,7 @@ export function generateMetadata({
 }: ComponentPageProps): Metadata {
   const component = getComponentData(type);
   return {
+    ...sharedOpenGraphMetadata,
     title: component?.title ?? "Components",
     description: "Explore components",
     openGraph: {
@@ -31,14 +36,10 @@ export function generateMetadata({
       url: "https://mailingui.com/components",
       images: [
         {
+          ...openGraphImageSize,
           url: "/static/images/og/components.png",
-          width: 1200,
-          height: 630,
         },
       ],
-      siteName: "MailingUI",
-      locale: "en-US",
-      type: "website",
     },
   };
 }
