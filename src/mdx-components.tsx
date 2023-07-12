@@ -28,6 +28,17 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </h3>
     ),
     pre: ({ children }) => <ProsePre>{children}</ProsePre>,
+    a: ({ children, ...props }) => (
+      <a
+        className="underline decoration-neutral-500/40 underline-offset-4"
+        {...props}
+      >
+        {children}
+      </a>
+    ),
+    code: ({ children }) => (
+      <code className="text-neutral-300">{children}</code>
+    ),
     ...components,
   };
 }
