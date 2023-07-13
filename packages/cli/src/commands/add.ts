@@ -2,7 +2,7 @@ import chalk from "chalk";
 import { Command } from "commander";
 import fs from "fs";
 import { createFile } from "../utils/createFile";
-import { getAvailableComponents } from "../utils/get-components";
+import { getAvailableComponents } from "../utils/getComponents";
 import { SETTINGS_FILE_NAME } from "../constants";
 
 export const add = new Command()

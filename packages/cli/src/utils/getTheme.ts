@@ -1,4 +1,4 @@
-const baseUrl = process.env.COMPONENTS_BASE_URL ?? "https://mailingui.com";
+const baseUrl = process.env.COMPONENTS_BASE_URL ?? "http://localhost:3000";
 
 type ThemeAPIResponse = {
   theme: string;
