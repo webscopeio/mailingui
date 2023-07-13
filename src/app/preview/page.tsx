@@ -9,7 +9,7 @@ export default async function Preview() {
     <PreviewShell files={files}>
       <PreviewNavigation />
       <div className="flex h-full w-full flex-col items-center justify-center gap-2 bg-dark-300">
-        <p className="text-center">
+        <p className="p-4 text-center">
           Create email templates in{" "}
           <code className="mx-2 inline-flex">`src/emails`</code> and get started
         </p>
