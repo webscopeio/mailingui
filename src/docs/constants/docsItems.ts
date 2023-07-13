@@ -42,12 +42,12 @@ const componentTypes = [
 
 export const docsItems: DocsItem[] = [
   {
-    label: "Overview",
-    href: "/components",
-  },
-  {
     label: "Documentation",
     items: [
+      {
+        href: "/components",
+        label: "Overview",
+      },
       {
         href: "/docs/getting-started",
         label: "Getting Started",
