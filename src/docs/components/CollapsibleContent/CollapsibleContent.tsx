@@ -5,28 +5,25 @@ import { cn } from "@utils/cn";
 
 export type CollapsibleContentProps = {
   children: React.ReactNode;
-  expandButtonEl?: React.ReactNode;
-  collapseButtonEl?: React.ReactNode;
-  buttonOverlayClassName?: string | ((isCollapsed: boolean) => string);
+  expandLabel?: string;
+  collapseLabel?: string;
+  expandedButtonInset?: boolean;
   className?: string;
-  collapsedSizeClassName?: string;
+  collapsedSize?: string;
 };
 
 export const CollapsibleContent = ({
   children,
-  expandButtonEl = "Expand",
-  collapseButtonEl = "Collapse",
-  buttonOverlayClassName,
+  expandLabel = "Expand",
+  collapseLabel = "Collapse",
+  expandedButtonInset = false,
   className,
-  collapsedSizeClassName = "max-h-[350px]",
+  collapsedSize = "max-h-[350px]",
 }: CollapsibleContentProps) => {
   const [isCollapsed, setIsCollapsed] = React.useState(true);
   return (
     <div
-      className={cn(
-        "relative overflow-hidden",
-        isCollapsed && collapsedSizeClassName
-      )}
+      className={cn("relative overflow-hidden", isCollapsed && collapsedSize)}
     >
       <div className={className}>{children}</div>
       <div
@@ -34,9 +31,7 @@ export const CollapsibleContent = ({
           "flex flex-col items-center justify-end p-4",
           isCollapsed && "bg-gradient-to-t from-stone-950",
           isCollapsed && "pointer-events-none absolute inset-0 h-full w-full",
-          typeof buttonOverlayClassName === "function"
-            ? buttonOverlayClassName(isCollapsed)
-            : buttonOverlayClassName
+          !isCollapsed && (expandedButtonInset ? "absolute inset-0 p-2" : "p-8")
         )}
       >
         <button
@@ -56,7 +51,7 @@ export const CollapsibleContent = ({
             "disabled:pointer-events-none disabled:opacity-50",
           ])}
         >
-          {isCollapsed ? expandButtonEl : collapseButtonEl}
+          {isCollapsed ? expandLabel : collapseLabel}
         </button>
       </div>
     </div>

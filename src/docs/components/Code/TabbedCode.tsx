@@ -33,9 +33,8 @@ export const TabbedCode = ({
   const Wrapper = isExpandable ? CollapsibleContent : React.Fragment;
   const wrapperProps: Omit<CollapsibleContentProps, "children"> = isExpandable
     ? {
-        collapsedSizeClassName: collapsedClassName,
-        buttonOverlayClassName: (isCollapsed) =>
-          !isCollapsed ? "absolute inset-0 p-2" : "p-8",
+        collapsedSize: collapsedClassName,
+        expandedButtonInset: true,
       }
     : {};
 
