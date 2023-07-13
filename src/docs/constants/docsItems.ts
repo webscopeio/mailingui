@@ -1,10 +1,44 @@
-import { componentTypes } from "@examples";
-
 export type DocsItem = {
   label: string;
   href?: string;
   items?: DocsItem[];
 };
+
+// Temp fix duplication, when imported from src/docs/examples/index.ts it cause import errors through dynamic import of examples
+const componentTypes = [
+  {
+    type: "hero-sections",
+    title: "Hero section",
+  },
+  {
+    type: "lists",
+    title: "Lists",
+  },
+  {
+    type: "badges",
+    title: "Badges",
+  },
+  {
+    type: "buttons",
+    title: "Buttons",
+  },
+  {
+    type: "emojis",
+    title: "Emojis",
+  },
+  {
+    type: "social-icons",
+    title: "Social icons",
+  },
+  {
+    type: "texts",
+    title: "Paragraphs",
+  },
+  {
+    type: "dividers",
+    title: "Dividers",
+  },
+];
 
 export const docsItems: DocsItem[] = [
   {
