@@ -50,11 +50,11 @@ export const PreviewPane = ({
         <TabsList className="rounded-full">
           <TabsTrigger value="preview" className="rounded-full p-2">
             <EyeIcon className="h-4 w-4" />
-            <span className="hidden md:inline-flex">Preview</span>
+            <span className="hidden sm:inline-flex">Preview</span>
           </TabsTrigger>
           <TabsTrigger value="code" className="rounded-full p-2">
             <CodeIcon className="h-4 w-4" />
-            <span className="hidden md:inline-flex">Code</span>
+            <span className="hidden sm:inline-flex">Code</span>
           </TabsTrigger>
         </TabsList>
       </PreviewNavigation>
