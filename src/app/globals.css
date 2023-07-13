@@ -24,7 +24,7 @@
 }
 
 .shiki .line {
-	@apply relative px-12 text-sm leading-6 [&>span]:whitespace-pre-wrap;
+	@apply relative px-12 text-sm leading-6 [&>span]:whitespace-pre-wrap w-full [&>span]:max-sm:break-all;
 }
 
 .shiki .line[data-line]:before {
