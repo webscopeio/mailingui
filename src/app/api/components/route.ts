@@ -5,43 +5,51 @@ const getFileProps = (path: string) => ({
   file: fs.readFileSync(path, "utf8"),
 });
 
-const components: Record<
-  "badge" | "divider" | "heroSection" | "list" | "themeProvider",
+type SupportedComponents =
+  | "emoji"
+  | "badge"
+  | "divider"
+  | "heroSection"
+  | "list";
+
+const getComponents = (): Record<
+  SupportedComponents,
   {
-    dependencies: string[];
+    dependencies: SupportedComponents[];
     path: string;
   }
-> = {
-  badge: {
-    dependencies: ["themeProvider"],
-    ...getFileProps("./src/mailingui/components/badge/Badge.tsx"),
-  },
-  divider: {
-    dependencies: [],
-    ...getFileProps("./src/mailingui/components/divider/Divider.tsx"),
-  },
-  heroSection: {
-    dependencies: [],
-    ...getFileProps("./src/mailingui/components/hero-section/HeroSection.tsx"),
-  },
-  list: {
-    dependencies: [],
-    ...getFileProps("./src/mailingui/components/list/List.tsx"),
-  },
-  themeProvider: {
-    dependencies: [],
-    ...getFileProps(
-      "./src/mailingui/components/ThemeProvider/ThemeProvider.tsx"
-    ),
-  },
+> => {
+  return {
+    emoji: {
+      dependencies: [],
+      ...getFileProps("./src/mailingui/components/emoji/Emoji.tsx"),
+    },
+    badge: {
+      dependencies: [],
+      ...getFileProps("./src/mailingui/components/badge/Badge.tsx"),
+    },
+    divider: {
+      dependencies: [],
+      ...getFileProps("./src/mailingui/components/divider/Divider.tsx"),
+    },
+    heroSection: {
+      dependencies: [],
+      ...getFileProps(
+        "./src/mailingui/components/hero-section/HeroSection.tsx"
+      ),
+    },
+    list: {
+      dependencies: [],
+      ...getFileProps("./src/mailingui/components/list/List.tsx"),
+    },
+  };
 };
 
 export const GET = async (req: Request, res: Response) => {
   try {
-    return NextResponse.json({ components });
+    return NextResponse.json({ components: getComponents() });
   } catch (error) {
-    console.error("Error:", error);
-    // return NextResponse.error();
+    return NextResponse.error();
   }
 };
 
