@@ -45,21 +45,18 @@ export const PreviewShell = ({
             </CTA>
           </PopoverTrigger>
           <PopoverContent
-            className="absolute left-0 h-screen w-80 overflow-y-scroll rounded-none p-0 shadow-lg shadow-slate-900"
+            className="absolute left-0 h-screen w-80 overflow-y-scroll rounded-none p-4 shadow-lg shadow-slate-900"
             color="black"
             align="start"
           >
-            <div className="sticky top-0 flex justify-between bg-black p-4">
-              <h2 className="font-bold">Select email</h2>
+            <div className="absolute right-4">
               <PopoverClose asChild>
                 <CrossIcon />
               </PopoverClose>
             </div>
-            <div className="px-4">
-              <PopoverClose asChild>
-                <PreviewList files={files} activeFileId={paramsId} />
-              </PopoverClose>
-            </div>
+            <PopoverClose asChild>
+              <PreviewList files={files} activeFileId={paramsId} />
+            </PopoverClose>
           </PopoverContent>
         </Popover>
         {children}
