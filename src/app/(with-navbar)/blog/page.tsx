@@ -1,24 +1,25 @@
 import Link from "next/link";
 import { type Metadata } from "next";
 import { blogDir, getPosts } from "@lib/mdx";
+import {
+  openGraphImageSize,
+  sharedOpenGraphMetadata,
+} from "src/docs/constants";
 
 export const metadata: Metadata = {
   title: "Blog",
   description: "All about MailingUI",
   openGraph: {
+    ...sharedOpenGraphMetadata,
     title: "Blog",
     description: "All about MailingUI",
     url: "https://mailingui.com/blog",
     images: [
       {
+        ...openGraphImageSize,
         url: "/static/images/og/blog.png",
-        width: 1200,
-        height: 630,
       },
     ],
-    siteName: "MailingUI",
-    locale: "en-US",
-    type: "website",
   },
 };
 

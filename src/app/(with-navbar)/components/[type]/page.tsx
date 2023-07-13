@@ -1,19 +1,20 @@
 import { readFileSync, readdirSync } from "fs";
 import { join } from "path";
 import type { Metadata } from "next";
-import dynamic from "next/dynamic";
 import { notFound } from "next/navigation";
 import { render } from "@react-email/render";
-import { MDXProps } from "mdx/types";
-import { ComponentType } from "react";
 import {
   ComponentExample,
   ComponentExampleProps,
 } from "@components/ComponentExample";
 
 import { getHighlighter, highlight } from "@lib/shiki";
-import { DocArticle } from "@components/InstallationDocs";
-import { componentTypes } from "@examples";
+import {
+  openGraphImageSize,
+  sharedOpenGraphMetadata,
+} from "src/docs/constants";
+import { CONTENT_DIR, DocArticle } from "@components/InstallationDocs";
+import { componentTypes, mdxDocs } from "@examples";
 
 type ComponentPageProps = {
   params: {
@@ -26,6 +27,7 @@ export function generateMetadata({
 }: ComponentPageProps): Metadata {
   const component = getComponentData(type);
   return {
+    ...sharedOpenGraphMetadata,
     title: component?.title ?? "Components",
     description: "Explore components",
     openGraph: {
@@ -34,14 +36,10 @@ export function generateMetadata({
       url: "https://mailingui.com/components",
       images: [
         {
+          ...openGraphImageSize,
           url: "/static/images/og/components.png",
-          width: 1200,
-          height: 630,
         },
       ],
-      siteName: "MailingUI",
-      locale: "en-US",
-      type: "website",
     },
   };
 }
@@ -51,12 +49,7 @@ export default async function ComponentPage({
 }: ComponentPageProps) {
   const componentExamples = await getComponent(type);
 
-  const docs: Record<string, ComponentType<MDXProps>> = {
-    badges: dynamic(() => import(`src/docs/examples/badges/installation.mdx`)),
-    lists: dynamic(() => import(`src/docs/examples/lists/installation.mdx`)),
-  };
-
-  const MdxDoc = docs?.[type];
+  const MdxDoc = mdxDocs?.[type];
   const Docs = MdxDoc ? (
     <DocArticle>
       <MdxDoc />
@@ -64,7 +57,7 @@ export default async function ComponentPage({
   ) : null;
 
   return (
-    <div className="mx-auto w-full max-w-[900px] overflow-hidden p-4">
+    <div className="mx-auto w-full max-w-6xl overflow-hidden px-4">
       {Docs}
       <h2 className="pt-8 text-2xl font-semibold md:pt-16 md:text-4xl">
         {componentExamples.title}
@@ -90,8 +83,6 @@ const getComponentData = (type: string) => {
   }
   return component;
 };
-
-const CONTENT_DIR = "src/docs/examples";
 
 /**
  * Maps over examples, translates them to html, and puts them together.

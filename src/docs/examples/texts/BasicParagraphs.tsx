@@ -2,7 +2,7 @@ import * as React from "react";
 import { Body, Container, Head, Html, Preview } from "@react-email/components";
 import { Text } from "@mailingui/components";
 
-const StandardParagraph = () => {
+const BasicParagraphs = () => {
   return (
     <Html>
       <Head />
@@ -28,7 +28,7 @@ const StandardParagraph = () => {
   );
 };
 
-export default StandardParagraph;
+export default BasicParagraphs;
 
 const main = {
   backgroundColor: "#ffffff",
@@ -38,6 +38,6 @@ const main = {
 };
 
 const container = {
-  padding: "25px 0",
+  padding: "50px 0",
   maxWidth: 580,
 };

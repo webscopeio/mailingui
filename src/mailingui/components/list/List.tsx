@@ -1,20 +1,53 @@
 "use client";
 
-import React, {
-  FC,
-  CSSProperties,
-  ReactNode,
-  createContext,
-  useContext,
-} from "react";
-import { Column, Row } from "@react-email/components";
-import { Text, type TextProps, type TextVariant } from "@mailingui/components";
+import { FC, CSSProperties, ReactNode, createContext, useContext } from "react";
+import { Column, Row, Text } from "@react-email/components";
+import { theme } from "@mailingui/themes";
+
+const {
+  color: { foreground, brand },
+} = theme;
+
+const sizes = {
+  xs: {
+    fontSize: 12,
+    lineHeight: "16px",
+  },
+  sm: {
+    fontSize: 14,
+    lineHeight: "20px",
+  },
+  md: {
+    fontSize: 16,
+    lineHeight: "24px",
+  },
+  lg: {
+    fontSize: 18,
+    lineHeight: "28px",
+  },
+} as const;
+
+type SizeType = keyof typeof sizes;
+
+const variants = {
+  default: {
+    color: foreground["100"],
+  },
+  subtle: {
+    color: foreground["200"],
+  },
+  brand: {
+    color: brand,
+  },
+} as const;
+
+type TextVariant = keyof typeof variants;
 
 type ListContextType = {
   direction: "vertical" | "horizontal";
   centered: boolean;
-  size: TextProps["size"];
-  titleSize?: TextProps["size"];
+  size: SizeType;
+  titleSize?: SizeType;
   titleStyle?: CSSProperties;
   bodyStyle?: CSSProperties;
 };
@@ -28,8 +61,8 @@ const ListContext = createContext<ListContextType>({
 
 export type ListRootProps = {
   centered?: boolean;
-  titleSize?: TextProps["size"];
-  size?: TextProps["size"];
+  titleSize?: SizeType;
+  size?: SizeType;
   style?: CSSProperties;
   titleStyle?: CSSProperties;
   bodyStyle?: CSSProperties;
@@ -65,7 +98,7 @@ const ListRoot: FC<ListRootProps> = ({
 
 type ListItemContextType = {
   variant: TextVariant;
-  size: TextProps["size"];
+  size: SizeType;
 };
 
 const ListItemContext = createContext<ListItemContextType>({
@@ -77,7 +110,7 @@ type ListItemProps = {
   style?: CSSProperties;
   children?: ReactNode;
   variant?: TextVariant;
-  size?: TextProps["size"];
+  size?: SizeType;
 };
 
 const ListItem: FC<ListItemProps> = ({
@@ -103,7 +136,7 @@ const ListItem: FC<ListItemProps> = ({
 
 type ListItemTitleProps = {
   centered?: boolean;
-  size?: TextProps["size"];
+  size?: SizeType;
   style?: CSSProperties;
   variant?: TextVariant;
   children?: ReactNode;
@@ -126,10 +159,10 @@ const ListItemTitle: FC<ListItemTitleProps> = ({
 
   return (
     <Text
-      centered={centered ?? centeredContext}
-      size={size ?? titleSizeContext ?? sizeContext}
-      variant={variant ?? variantContext}
       style={{
+        textAlign: centered ?? centeredContext ? "center" : "inherit",
+        ...variants[variant ?? variantContext],
+        ...sizes[size ?? titleSizeContext ?? sizeContext],
         fontWeight: 700,
         margin: 0,
         marginBottom: "4px",
@@ -144,7 +177,7 @@ const ListItemTitle: FC<ListItemTitleProps> = ({
 
 type ListItemContentProps = {
   style?: CSSProperties;
-  size?: TextProps["size"];
+  size?: SizeType;
   centered?: boolean;
   variant?: TextVariant;
   children?: ReactNode;
@@ -164,10 +197,10 @@ const ListItemContent: FC<ListItemContentProps> = ({
 
   return (
     <Text
-      centered={centered ?? centeredContext}
-      size={size ?? sizeContext}
-      variant={variant ?? variantContext}
       style={{
+        textAlign: centered ?? centeredContext ? "center" : "inherit",
+        ...variants[variant ?? variantContext],
+        ...sizes[size ?? sizeContext],
         margin: 0,
         marginBottom: "24px",
         ...bodyStyleContext,

@@ -23,11 +23,20 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       <p className="text-lg text-neutral-500 md:text-xl">{children}</p>
     ),
     h3: ({ children }) => (
-      <h3 className="text-xl font-semibold text-neutral-500 md:text-2xl">
-        {children}
-      </h3>
+      <h3 className="text-xl font-semibold md:text-2xl">{children}</h3>
     ),
     pre: ({ children }) => <ProsePre>{children}</ProsePre>,
+    a: ({ children, ...props }) => (
+      <a
+        className="underline decoration-neutral-500/40 underline-offset-4"
+        {...props}
+      >
+        {children}
+      </a>
+    ),
+    code: ({ children }) => (
+      <code className="text-neutral-300">{children}</code>
+    ),
     ...components,
   };
 }

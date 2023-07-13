@@ -1,13 +1,17 @@
 import * as React from "react";
 import { Body, Container, Html } from "@react-email/components";
-import { Badge } from "@mailingui/components";
+import { Text } from "@mailingui/components";
 
 export default function Demo() {
   return (
     <Html>
       <Body style={main}>
         <Container style={container}>
-          <Badge>Badge</Badge>
+          <Text>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
+            vestibulum dolor quis aliquet posuere. Donec purus felis, faucibus
+            quis congue venenatis, volutpat vitae enim.
+          </Text>
         </Container>
       </Body>
     </Html>
@@ -22,6 +26,6 @@ const main = {
 };
 
 const container = {
-  padding: "40px 0",
-  width: "60px",
+  padding: "110px 0",
+  maxWidth: 580,
 };

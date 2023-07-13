@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Body, Container, Head, Html, Preview } from "@react-email/components";
+import { Body, Container, Html } from "@react-email/components";
 import {
   ListRoot,
   ListItem,
@@ -10,8 +10,6 @@ import {
 export default function Demo() {
   return (
     <Html>
-      <Head />
-      <Preview>Centered Paragraph</Preview>
       <Body style={main}>
         <Container style={container}>
           <ListRoot>

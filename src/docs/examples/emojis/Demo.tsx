@@ -1,13 +1,12 @@
-import * as React from "react";
 import { Body, Container, Html } from "@react-email/components";
-import { Badge } from "@mailingui/components";
+import { Emoji } from "@mailingui/components";
 
 export default function Demo() {
   return (
     <Html>
       <Body style={main}>
         <Container style={container}>
-          <Badge>Badge</Badge>
+          <Emoji type="grinning-face" />
         </Container>
       </Body>
     </Html>
@@ -22,6 +21,7 @@ const main = {
 };
 
 const container = {
-  padding: "40px 0",
-  width: "60px",
+  paddingTop: "120px",
+  textAlign: "center" as const,
+  width: "72px",
 };

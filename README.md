@@ -2,13 +2,23 @@
 
 ## Description
 
-Mailing UI is an _open source_ collection of email components (templates coming soon!) that can help you save time and improve your email campaigns.
+Mailing UI is an _open source_ collection of email components and templates that can help you save time and improve your email campaigns.
 
-All of the components are designed to be visually appealing and easy to use.
+All the components are designed to be visually appealing and easy to use.
 
 Since the Mailing UI is open source, you can use any part of it for free and modify it to suit your needs!
 
-The project is an MVP. We plan on adding new features in the near future.
+> The project is an MVP. We plan on adding new features in the near future.
+
+## Documentation
+
+To learn how to use our components, please visit [mailingui.com/components](https://mailingui.com/components).
+To use our free templates navigate to [mailingui.com/preview](https://mailingui.com/preview) and copy the templates
+from there. Keep in mind that for the templates to work you need to have the used components installed and set up.
+
+## Contributing
+
+- [Contribution Guide](contributing.md)
 
 ### Technology stack
 
@@ -42,14 +52,6 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Contributing
-
-- [Contribution Guide](contributing.md)
-
----
-
 ## Open source licensing info
 
 - [LICENSE](LICENSE.md)
-
----
