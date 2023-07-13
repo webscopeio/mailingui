@@ -1,1 +1,78 @@
 # Installation
+
+To start using MailingUI in your project, you have to set up a few things.
+Follow the steps below to get started.<br />
+_Note:_ For the best experience, we recommend using MailingUI in a **Next.js** project with **TypeScript**.
+
+### (Optional) 1. Bootstrap a new Next.js project
+
+If you already have a Next.js project, you can skip this step.
+Also, if you intend to use MailingUI in a different project, you can skip this step.
+
+```bash
+npx create-next-app@latest --typescript
+```
+
+### Install MailingUI dependencies
+
+MailingUI builds on top of [react-email](https://react.email), you have to install it into your project.
+
+```bash
+npm install @react-email/components @react-email/render
+```
+
+### Create a theme file
+
+To allow quick and easy customization of the components, our components consume a theme that you can change
+to fit your needs.
+
+To set up theming create a folder called `themes` somewhere in your project (we recommend `src/mailingui/themes`),
+create a file named `index.ts` inside the folder and paste the following code into it.
+
+```typescript
+export const theme = {
+  color: {
+    background: {
+      "100": "#ffffff",
+      "200": "#ffffff",
+      "300": "#ffffff",
+      "400": "#ffffff",
+    },
+    foreground: {
+      "100": "#000000",
+      "200": "#000000",
+      "300": "#000000",
+      "400": "#000000",
+    },
+    brand: "#000000",
+  },
+  rounded: {
+    base: 0,
+    full: 9999,
+  },
+} as const;
+```
+
+This theme object is completely arbitrary, feel free to modify it to fit your needs.
+**If you add or remove any of these keys-values** you will need to update the components as well.
+
+### (Recommended) Setup tsconfig.json aliases
+
+If `tsconfig.json` aliases are not set up, you will have to manually change all the imports in all the components.
+Add the following lines to your `tsconfig.json` file:
+
+```json
+{
+  "compilerOptions": {
+    "paths": {
+      "@mailingui/components": ["src/mailingui/components/index.ts"],
+      "@mailingui/themes": ["src/mailingui/themes/index.ts"]
+    }
+  }
+}
+```
+
+_Note:_ If you are using a different folder structure, you will have to change the paths in the `tsconfig.json` file.
+
+Now you should be able to use MailingUI components in your project.
+Just click on one of the components below and follow the instructions on how to include it in your project.

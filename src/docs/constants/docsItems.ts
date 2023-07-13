@@ -45,7 +45,7 @@ export const docsItems: DocsItem[] = [
     label: "Documentation",
     items: [
       {
-        href: "/components",
+        href: "/docs/overview",
         label: "Overview",
       },
       {

@@ -12,6 +12,7 @@ type DocsPageProps = {
 };
 
 const docs: Record<string, ComponentType<MDXProps>> = {
+  overview: dynamic(() => import(`src/docs/pages/Overview.mdx`)),
   "getting-started": dynamic(() => import(`src/docs/pages/GettingStarted.mdx`)),
   installation: dynamic(() => import(`src/docs/pages/Installation.mdx`)),
   theming: dynamic(() => import(`src/docs/pages/Theming.mdx`)),
@@ -50,9 +51,7 @@ export default async function ComponentPage({
   ) : null;
 
   return (
-    <div className="mx-auto w-full max-w-[900px] overflow-hidden p-4">
-      {Docs}
-    </div>
+    <div className="mx-auto w-full max-w-6xl overflow-hidden p-4">{Docs}</div>
   );
 }
 
