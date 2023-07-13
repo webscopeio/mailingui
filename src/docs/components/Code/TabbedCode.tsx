@@ -7,9 +7,9 @@ import { TabsContent, TabsList, TabsTrigger } from "@components/Tabs/Tabs";
 import { CopyButton } from "@components/CopyButton";
 import { cn } from "@utils/cn";
 import {
-  FadingCollapsible,
-  FadingCollapsibleProps,
-} from "@components/FadingCollapsible";
+  CollapsibleContent,
+  CollapsibleContentProps,
+} from "@components/CollapsibleContent";
 
 export interface TabbedCodeItem {
   id: string;
@@ -30,8 +30,8 @@ export const TabbedCode = ({
   tabs,
 }: TabbedCodeProps) => {
   const isExpandable = typeof collapsedClassName === "string";
-  const Wrapper = isExpandable ? FadingCollapsible : React.Fragment;
-  const wrapperProps: Omit<FadingCollapsibleProps, "children"> = isExpandable
+  const Wrapper = isExpandable ? CollapsibleContent : React.Fragment;
+  const wrapperProps: Omit<CollapsibleContentProps, "children"> = isExpandable
     ? {
         collapsedSizeClassName: collapsedClassName,
         buttonOverlayClassName: (isCollapsed) =>

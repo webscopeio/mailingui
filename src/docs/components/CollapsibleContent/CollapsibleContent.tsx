@@ -3,7 +3,7 @@
 import * as React from "react";
 import { cn } from "@utils/cn";
 
-export type FadingCollapsibleProps = {
+export type CollapsibleContentProps = {
   children: React.ReactNode;
   expandButtonEl?: React.ReactNode;
   collapseButtonEl?: React.ReactNode;
@@ -12,14 +12,14 @@ export type FadingCollapsibleProps = {
   collapsedSizeClassName?: string;
 };
 
-export const FadingCollapsible = ({
+export const CollapsibleContent = ({
   children,
   expandButtonEl = "Expand",
   collapseButtonEl = "Collapse",
   buttonOverlayClassName,
   className,
   collapsedSizeClassName = "max-h-[350px]",
-}: FadingCollapsibleProps) => {
+}: CollapsibleContentProps) => {
   const [isCollapsed, setIsCollapsed] = React.useState(true);
   return (
     <div
