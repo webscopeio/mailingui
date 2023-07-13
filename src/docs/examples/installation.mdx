@@ -1,3 +1,5 @@
+import { DocCollapsible } from "src/docs/components/InstallationDocs";
+
 # MailingUI components
 
 MailingUI is a set of _opinionated_ React components designed to make the creation of emails easier.
@@ -7,6 +9,7 @@ Right now, we are not planning on releasing an npm package for the components.
 
 ## Installation
 
+<DocCollapsible>
 To start using MailingUI in your project, you have to set up a few things.
 Follow the steps below to get started.<br />
 _Note:_ For the best experience, we recommend using MailingUI in a **Next.js** project with **TypeScript**.
@@ -23,7 +26,6 @@ npx create-next-app@latest --typescript
 ### Install MailingUI dependencies
 
 MailingUI builds on top of [react-email](https://react.email), you have to install it into your project.
-
 
 ```bash
 npm install @react-email/components @react-email/render
@@ -59,7 +61,7 @@ export const theme = {
     full: 9999,
   },
 } as const;
-````
+```
 
 This theme object is completely arbitrary, feel free to modify it to fit your needs.
 **If you add or remove any of these keys-values** you will need to update the components as well.
@@ -84,3 +86,5 @@ _Note:_ If you are using a different folder structure, you will have to change t
 
 Now you should be able to use MailingUI components in your project.
 Just click on one of the components below and follow the instructions on how to include it in your project.
+
+</DocCollapsible>
