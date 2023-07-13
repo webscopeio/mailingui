@@ -8,13 +8,14 @@ import { SETTINGS_FILE_NAME } from "../constants";
 export const add = new Command()
   .name("add")
   .description("add components and templates to your project")
-  .argument("components...", "name of the item")
+  .argument("[components...]", "name of the components to add")
   .option(
     "-o, --overwrite",
     "automatically overwrite existing components",
     false
   )
-  .action(async (components: string[], options) => {
+  .option("-a, --all", "download all available components", false)
+  .action(async (components, options) => {
     if (!fs.existsSync(SETTINGS_FILE_NAME)) {
       console.error(
         `Missing ${chalk.yellow(
@@ -26,11 +27,26 @@ export const add = new Command()
       process.exit(1);
     }
 
+    if (!components.length) {
+      if (!options.all) {
+        console.error(
+          `No components selected. Please select at least one component or use ${chalk.yellow(
+            "--all"
+          )} to download all components.`
+        );
+        process.exit(1);
+      }
+    }
+
     const config = fs.readFileSync(SETTINGS_FILE_NAME, "utf8");
     const { basePath } = JSON.parse(config);
 
     const { components: availableComponents } = await getAvailableComponents();
-    for (const component of components) {
+    const componentsToDownload = options.all
+      ? Object.keys(availableComponents)
+      : components;
+
+    for (const component of componentsToDownload) {
       if (!availableComponents[component]) {
         console.error(chalk.red("Not a valid choice."));
       } else {

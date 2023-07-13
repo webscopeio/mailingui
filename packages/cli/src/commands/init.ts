@@ -20,11 +20,7 @@ export const init = new Command()
     "define base path to your MailingUI components",
     "./src/@mailingui"
   )
-  .option(
-    "-o, --overwrite",
-    "overwrite existing configuration",
-    false
-  )
+  .option("-o, --overwrite", "overwrite existing configuration", false)
   .action(async (options) => {
     const packageFile = fs.readFileSync("package.json", "utf8");
     const { dependencies: installedDependecies } = JSON.parse(packageFile);
@@ -37,7 +33,7 @@ export const init = new Command()
             "Some of the required dependencies are missing. Do you want to install them?",
         });
         if (!response.confirmation) {
-          process.exit(0);
+          break;
         }
 
         const spinner = ora("Installing dependencies...").start();
