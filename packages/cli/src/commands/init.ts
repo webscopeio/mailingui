@@ -4,6 +4,7 @@ import path from "path";
 import prompts from "prompts";
 import fs from "fs";
 import { getTheme } from "../utils/get-theme";
+import { SETTINGS_FILE_NAME } from "../constants";
 
 export const init = new Command()
   .name("init")
@@ -14,12 +15,12 @@ export const init = new Command()
     "./src/@mailingui"
   )
   .action(async (args) => {
-    if (fs.existsSync("./settings.json")) {
+    if (fs.existsSync(SETTINGS_FILE_NAME)) {
       const response = await prompts({
         type: "confirm",
         name: "confirmation",
         message: `${chalk.yellow(
-          "Settings.json"
+          SETTINGS_FILE_NAME
         )} already exist, do you want to overwrite the configuration?`,
       });
       if (!response.confirmation) {
@@ -30,7 +31,7 @@ export const init = new Command()
     const settings = {
       basePath: args.path,
     };
-    fs.writeFileSync("settings.json", JSON.stringify(settings));
+    fs.writeFileSync(SETTINGS_FILE_NAME, JSON.stringify(settings));
 
     const componentsPath = `${args.path}/components`;
     if (!fs.existsSync(path.resolve(componentsPath))) {

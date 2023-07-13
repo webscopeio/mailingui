@@ -3,6 +3,7 @@ import { Command } from "commander";
 import fs from "fs";
 import { createFile } from "../utils/createFile";
 import { getAvailableComponents } from "../utils/get-components";
+import { SETTINGS_FILE_NAME } from "../constants";
 
 export const add = new Command()
   .name("add")
@@ -14,10 +15,10 @@ export const add = new Command()
     false
   )
   .action(async (components: string[], options) => {
-    if (!fs.existsSync("./settings.json")) {
+    if (!fs.existsSync(SETTINGS_FILE_NAME)) {
       console.error(
         `Missing ${chalk.yellow(
-          "settings.json"
+          SETTINGS_FILE_NAME
         )} file, please run ${chalk.green(
           "init"
         )} to create a configuration file.`
@@ -25,7 +26,7 @@ export const add = new Command()
       process.exit(1);
     }
 
-    const config = fs.readFileSync("./settings.json", "utf8");
+    const config = fs.readFileSync(SETTINGS_FILE_NAME, "utf8");
     const { basePath } = JSON.parse(config);
 
     const { components: availableComponents } = await getAvailableComponents();
