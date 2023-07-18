@@ -6,6 +6,7 @@ import ora from "ora";
 import path from "path";
 import prompts from "prompts";
 import {
+  BASE_URL,
   DEPENDENCIES as REQUIRED_DEPENDENCIES,
   SETTINGS_FILE_NAME,
 } from "../constants";
@@ -61,11 +62,6 @@ export const init = new Command()
       }
     }
 
-    const settings = {
-      basePath: options.path,
-    };
-    fs.writeFileSync(SETTINGS_FILE_NAME, JSON.stringify(settings));
-
     const componentsPath = `${options.path}/components`;
     if (!fs.existsSync(path.resolve(componentsPath))) {
       fs.mkdirSync(path.resolve(componentsPath), { recursive: true });
@@ -77,6 +73,11 @@ export const init = new Command()
       fs.mkdirSync(path.resolve(themePath), { recursive: true });
     }
     fs.writeFileSync(`${themePath}/index.ts`, theme);
+
+    const settings = {
+      basePath: options.path,
+    };
+    fs.writeFileSync(SETTINGS_FILE_NAME, JSON.stringify(settings));
 
     console.log(`\n${chalk.green("Project initializated successfully!")}`);
   });
