@@ -14,7 +14,7 @@ const Home = () => (
       <FeaturePreview
         cta={{
           href: "/components",
-          title: "Explore Components",
+          title: "Explore All Components",
         }}
         title="Build an eye-catching email with pre-made components"
         previewType="components"

@@ -3,9 +3,10 @@ import { DocCollapsible } from "src/docs/components/InstallationDocs";
 # MailingUI components
 
 MailingUI is a set of _opinionated_ React components designed to make the creation of emails easier.
-All of our
-components are intended to be used as copy-and-paste snippets.
-Right now, we are not planning on releasing an npm package for the components.
+
+All of our components are intended to be used as copy-and-paste snippets, you **cannot install MailingUI
+as a dependency**.
+Right now, we have no plans on creating an npm package for the components.
 
 ## Installation
 
@@ -14,7 +15,7 @@ To start using MailingUI in your project, you have to set up a few things.
 Follow the steps below to get started.<br />
 _Note:_ For the best experience, we recommend using MailingUI in a **Next.js** project with **TypeScript**.
 
-### (Optional) 1. Bootstrap a new Next.js project
+### (Optional) Bootstrap a new Next.js project
 
 If you already have a Next.js project, you can skip this step.
 Also, if you intend to use MailingUI in a different project, you can skip this step.
@@ -33,10 +34,10 @@ npm install @react-email/components @react-email/render
 
 ### Create a theme file
 
-To allow quick and easy customization of the components, our components consume a theme that you can change
+To allow quick and easy customization of the components, our components consume a theme that you can modify
 to fit your needs.
 
-To set up theming create a folder called `themes` somewhere in your project (we recommend `src/mailingui/themes`),
+To set up theming create a folder called `themes` in your project (we recommend `src/mailingui/themes`),
 create a file named `index.ts` inside the folder and paste the following code into it.
 
 ```typescript
@@ -82,7 +83,20 @@ Add the following lines to your `tsconfig.json` file:
 }
 ```
 
-_Note:_ If you are using a different folder structure, you will have to change the paths in the `tsconfig.json` file.
+> _Note:_ If you are using a different folder structure, you will have to change the paths in the `tsconfig.json` file.
+
+If you used the same naming as us, your file structure should include the following files:
+
+```tree
+├── /src
+│   ├── /mailingui
+│   │   ├── /themes
+│   │   │   ├── /index.ts
+│   │   ├── /components
+├── package.json
+├── tsconfig.json
+└── ...
+```
 
 Now you should be able to use MailingUI components in your project.
 Just click on one of the components below and follow the instructions on how to include it in your project.
