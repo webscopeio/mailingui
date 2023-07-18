@@ -1,8 +1,16 @@
 "use client";
 
 import * as React from "react";
-import Link from "next/link";
-import { cn } from "@utils/cn";
+import { PreviewList } from "./PreviewList";
+import { MenuIcon, CrossIcon } from "@components/Icons";
+import { CTA } from "@components/CTA";
+import {
+  Popover,
+  PopoverAnchor,
+  PopoverClose,
+  PopoverContent,
+  PopoverTrigger,
+} from "@components/Popover";
 
 export const PreviewShell = ({
   children,
@@ -16,32 +24,43 @@ export const PreviewShell = ({
   }[];
   paramsId?: string;
 }) => {
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+
   return (
     <section className="flex h-screen overflow-hidden">
-      <aside className="min-w-[300px] overflow-y-scroll p-8">
-        <div>
-          <h1 className="text-base font-bold uppercase text-dark-300">
-            Preview Mode
-          </h1>
-          <span className="text-xl font-bold">src/emails</span>
-        </div>
-        <ul className="mt-4">
-          {files.map(({ id, fileName }) => (
-            <li key={id}>
-              <Link
-                href={`preview/${id}`}
-                className={cn(
-                  "rounded-xl px-4 py-3.5 block w-full font-medium text-sm",
-                  paramsId === id && "bg-dark-700"
-                )}
-              >
-                /{fileName}
-              </Link>
-            </li>
-          ))}
-        </ul>
+      <aside className="hidden min-w-[300px] overflow-y-scroll p-8 md:block">
+        <PreviewList files={files} activeFileId={paramsId}></PreviewList>
       </aside>
-      <div className="flex h-full flex-1 flex-col">{children}</div>
+      <div className="flex h-full flex-1 flex-col">
+        <Popover open={isMenuOpen} onOpenChange={setIsMenuOpen}>
+          <PopoverAnchor />
+          <PopoverTrigger
+            aria-label={isMenuOpen ? "Close" : "Open"}
+            className="absolute bottom-2 left-2 z-10 md:hidden"
+            asChild
+          >
+            <CTA color="black">
+              <MenuIcon className="mr-2 rotate-180" />
+              Emails
+            </CTA>
+          </PopoverTrigger>
+          <PopoverContent
+            className="absolute left-0 h-screen w-80 overflow-y-scroll rounded-none p-4 shadow-lg shadow-slate-900"
+            color="black"
+            align="start"
+          >
+            <div className="absolute right-4">
+              <PopoverClose asChild>
+                <CrossIcon />
+              </PopoverClose>
+            </div>
+            <PopoverClose asChild>
+              <PreviewList files={files} activeFileId={paramsId} />
+            </PopoverClose>
+          </PopoverContent>
+        </Popover>
+        {children}
+      </div>
     </section>
   );
 };
