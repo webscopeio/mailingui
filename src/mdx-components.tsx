@@ -1,5 +1,6 @@
 import type { MDXComponents } from "mdx/types";
 import { ProsePre } from "@components/InstallationDocs";
+import { slugifyTitle } from "@utils/slugify";
 
 // This file allows you to provide custom React components
 // to be used in MDX files. You can import and use any
@@ -14,7 +15,12 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     //   <h1 className="text-2xl font-semibold md:text-6xl">{children}</h1>
     // ),
     h1: ({ children }) => (
-      <h1 className="text-3xl font-semibold  md:text-5xl">{children}</h1>
+      <h1
+        className="text-3xl font-semibold  md:text-5xl"
+        id={slugifyTitle(children as string)}
+      >
+        {children}
+      </h1>
     ),
     h2: ({ children }) => (
       <h2 className=" text-2xl font-semibold md:text-4xl">{children}</h2>

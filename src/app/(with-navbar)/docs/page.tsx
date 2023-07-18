@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { ComponentsPreview } from "@components/ComponentsPreview";
 import {
   openGraphImageSize,
@@ -6,6 +7,7 @@ import {
 } from "src/docs/constants";
 import { DocArticle } from "@components/InstallationDocs";
 import MdxDoc from "@examples/installation.mdx";
+import { LinkIcon } from "@components/Icons";
 
 export const metadata: Metadata = {
   title: "Components",
@@ -32,9 +34,15 @@ const Components = async () => {
           <MdxDoc />
         </DocArticle>
       )}
-      <h2 className="pt-8 text-2xl font-semibold md:pt-16 md:text-4xl">
-        Explore components
-      </h2>
+      <Link href="/docs#components">
+        <h2
+          className="group flex items-center gap-4 pt-8 text-2xl font-semibold md:pt-16 md:text-4xl"
+          id="components"
+        >
+          Components
+          <LinkIcon className="h-5 w-5 opacity-0 transition-all duration-300 group-hover:opacity-100" />
+        </h2>
+      </Link>
       <div className="mt-8 md:mt-16">
         <ComponentsPreview preloadImages={true} />
       </div>

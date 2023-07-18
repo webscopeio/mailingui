@@ -37,7 +37,10 @@ export const ComponentsPreview = ({
             priority={preloadImages}
           />
           <h3 className="mt-4 text-base font-medium text-white">
-            <Link href={`/components/${type}`} className="hover:opacity-70">
+            <Link
+              href={`/docs/components/${type}`}
+              className="hover:opacity-70"
+            >
               <span className="absolute -inset-2.5 z-10 cursor-pointer" />
               <span>{title}</span>
             </Link>
