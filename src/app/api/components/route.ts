@@ -45,7 +45,7 @@ const getComponents = (): Record<
   };
 };
 
-export const GET = async (req: Request, res: Response) => {
+export const GET = async () => {
   try {
     return NextResponse.json({ components: getComponents() });
   } catch (error) {
