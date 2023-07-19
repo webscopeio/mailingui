@@ -4,7 +4,7 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import nextMDX from "@next/mdx";
 
 /** @type {import("rehype-pretty-code").Options} */
-const options = {
+const prettyCodeOptions = {
   theme: "github-dark",
   keepBackground: false
 };
@@ -47,7 +47,11 @@ const nextConfig = {
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const withMDX = nextMDX({
   options: {
-    rehypePlugins: [[rehypePrettyCode, options], [rehypeSlug, {}], [rehypeAutolinkHeadings, { behaviour: 'wrap' }]]
+    rehypePlugins: [
+      [rehypePrettyCode, prettyCodeOptions],
+      [rehypeSlug, {}],
+      [rehypeAutolinkHeadings, { behaviour: "wrap" }]
+    ],
   }
 });
 
