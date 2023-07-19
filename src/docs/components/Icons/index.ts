@@ -13,4 +13,3 @@ export { ShareIcon } from "./ShareIcon";
 export { SunIcon } from "./SunIcon";
 export { MoonIcon } from "./MoonIcon";
 export { TwitterIcon } from "./TwitterIcon";
-export { LinkIcon } from "./LinkIcon";

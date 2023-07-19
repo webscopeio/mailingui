@@ -7,7 +7,6 @@ import {
 } from "src/docs/constants";
 import { DocArticle } from "@components/InstallationDocs";
 import MdxDoc from "@examples/installation.mdx";
-import { LinkIcon } from "@components/Icons";
 
 export const metadata: Metadata = {
   title: "Components",
@@ -34,15 +33,17 @@ const Components = async () => {
           <MdxDoc />
         </DocArticle>
       )}
-      <Link href="/docs#components">
-        <h2
-          className="group flex items-center gap-4 pt-8 text-2xl font-semibold md:pt-16 md:text-4xl"
-          id="components"
+      <h2
+        className="group flex items-center gap-4 pt-8 text-2xl font-semibold md:pt-16 md:text-4xl"
+        id="components"
+      >
+        <Link
+          href="/docs#components"
+          className="underline decoration-neutral-500/40 underline-offset-4"
         >
           Components
-          <LinkIcon className="h-5 w-5 opacity-0 transition-all duration-300 group-hover:opacity-100" />
-        </h2>
-      </Link>
+        </Link>
+      </h2>
       <div className="mt-8 md:mt-16">
         <ComponentsPreview preloadImages={true} />
       </div>
