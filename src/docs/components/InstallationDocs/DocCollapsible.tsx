@@ -8,6 +8,7 @@ const defaultOptions: Omit<CollapsibleContentProps, "children"> = {
   collapseLabel: "Hide section",
   className: "space-y-8 md:space-y-12",
   collapsedSize: "max-h-[260px]",
+  fromBlack: true,
 };
 
 export const DocCollapsible = (props: CollapsibleContentProps) => {

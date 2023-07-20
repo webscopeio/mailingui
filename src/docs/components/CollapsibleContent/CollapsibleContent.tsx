@@ -10,6 +10,7 @@ export type CollapsibleContentProps = {
   expandedButtonInset?: boolean;
   className?: string;
   collapsedSize?: string;
+  fromBlack?: boolean;
 };
 
 export const CollapsibleContent = ({
@@ -19,6 +20,7 @@ export const CollapsibleContent = ({
   expandedButtonInset = false,
   className,
   collapsedSize = "max-h-[350px]",
+  fromBlack = false,
 }: CollapsibleContentProps) => {
   const [isCollapsed, setIsCollapsed] = React.useState(true);
   return (
@@ -29,7 +31,8 @@ export const CollapsibleContent = ({
       <div
         className={cn(
           "flex flex-col items-center justify-end p-4",
-          isCollapsed && "bg-gradient-to-t from-stone-950",
+          isCollapsed &&
+            `bg-gradient-to-t ${fromBlack ? "from-black" : "from-stone-950"}`,
           isCollapsed && "pointer-events-none absolute inset-0 h-full w-full",
           !isCollapsed && (expandedButtonInset ? "absolute inset-0 p-2" : "p-8")
         )}
