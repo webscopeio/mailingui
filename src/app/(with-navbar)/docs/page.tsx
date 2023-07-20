@@ -32,8 +32,16 @@ const Components = async () => {
           <MdxDoc />
         </DocArticle>
       )}
-      <h2 className="pt-8 text-2xl font-semibold md:pt-16 md:text-4xl">
-        Explore components
+      <h2
+        className="group flex items-center gap-4 pt-8 text-2xl font-semibold md:pt-16 md:text-4xl"
+        id="components"
+      >
+        <a
+          href="#components"
+          className="after:ml-3 after:inline-block after:opacity-80 hover:after:content-['#']"
+        >
+          Components
+        </a>
       </h2>
       <div className="mt-8 md:mt-16">
         <ComponentsPreview preloadImages={true} />
