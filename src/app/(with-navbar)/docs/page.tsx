@@ -39,7 +39,7 @@ const Components = async () => {
       >
         <Link
           href="/docs#components"
-          className="underline decoration-neutral-500/40 underline-offset-4"
+          className="underline decoration-neutral-500/40 underline-offset-4 after:ml-2 after:inline-block after:opacity-80 hover:after:content-['#']"
         >
           Components
         </Link>

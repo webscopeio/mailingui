@@ -34,7 +34,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     pre: ({ children }) => <ProsePre>{children}</ProsePre>,
     a: ({ children, ...props }) => (
       <a
-        className="underline decoration-neutral-500/40 underline-offset-4"
+        className="underline decoration-neutral-500/40 underline-offset-4 after:ml-2 after:inline-block after:opacity-80 hover:after:content-['#']"
         {...props}
       >
         {children}
