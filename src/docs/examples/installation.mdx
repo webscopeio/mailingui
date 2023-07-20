@@ -24,13 +24,45 @@ Also, if you intend to use MailingUI in a different project, you can skip this s
 npx create-next-app@latest --typescript
 ```
 
-### Install MailingUI dependencies
+## Automatic Install with `@mailingui/cli`
+
+### Initialize MailingUI
+
+Initialize MailingUI in your projects. The command downloads all the necessary files for you to start working with MailingUI.
+
+```shell
+npx @mailingui/cli init [options]
+
+# Options
+-p, --path <path>  define base path to your MailingUI components (default: "./src/@mailingui")
+-o, --overwrite    overwrite existing configuration (default: false)
+-h, --help         display help for command
+```
+
+### Adding Component(s)
+
+Add all or specific components to your project. Refer to the list of components on [our website](https://mailingui.com/components).
+
+```shell
+npx @mailingui/cli add [options] [components...]
+
+# Options
+-o, --overwrite  automatically overwrite existing components (default: false)
+-a, --all        download all available components (default: false)
+-h, --help       display help for command
+```
+
+## Manual Install
+
+### Install MailingUI dependencies and components
 
 MailingUI builds on top of [react-email](https://react.email), you have to install it into your project.
 
 ```bash
 npm install @react-email/components @react-email/render
 ```
+
+Once you've install these dependencies you can copy and paste the components you need. Please visit [mailingui.com/components](https://mailingui.com/components) to see all of our components.
 
 ### Create a theme file
 
@@ -67,7 +99,7 @@ export const theme = {
 This theme object is completely arbitrary, feel free to modify it to fit your needs.
 **If you add or remove any of these keys-values** you will need to update the components as well.
 
-### (Recommended) Setup tsconfig.json aliases
+## Final Steps - Setup tsconfig.json path aliases
 
 If `tsconfig.json` aliases are not set up, you will have to manually change all the imports in all the components.
 Add the following lines to your `tsconfig.json` file:
@@ -76,8 +108,7 @@ Add the following lines to your `tsconfig.json` file:
 {
   "compilerOptions": {
     "paths": {
-      "@mailingui/components": ["src/mailingui/components/index.ts"],
-      "@mailingui/themes": ["src/mailingui/themes/index.ts"]
+      "@mailingui/components": ["src/mailingui/components/index.ts"]
     }
   }
 }
