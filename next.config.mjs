@@ -1,6 +1,5 @@
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import nextMDX from "@next/mdx";
 
 /** @type {import("rehype-pretty-code").Options} */
@@ -50,7 +49,6 @@ const withMDX = nextMDX({
     rehypePlugins: [
       [rehypePrettyCode, prettyCodeOptions],
       [rehypeSlug, {}],
-      [rehypeAutolinkHeadings, { behaviour: "wrap" }]
     ],
   }
 });

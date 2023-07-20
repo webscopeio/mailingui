@@ -37,12 +37,12 @@ const Components = async () => {
         className="group flex items-center gap-4 pt-8 text-2xl font-semibold md:pt-16 md:text-4xl"
         id="components"
       >
-        <Link
-          href="/docs#components"
-          className="underline decoration-neutral-500/40 underline-offset-4 after:ml-2 after:inline-block after:opacity-80 hover:after:content-['#']"
+        <a
+          href="#components"
+          className="after:ml-3 after:inline-block after:opacity-80 hover:after:content-['#']"
         >
           Components
-        </Link>
+        </a>
       </h2>
       <div className="mt-8 md:mt-16">
         <ComponentsPreview preloadImages={true} />
