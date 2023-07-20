@@ -1,4 +1,6 @@
 import { DocCollapsible } from "src/docs/components/InstallationDocs";
+import { Tabs } from "@components/Tabs";
+import { TabsContent, TabsList, TabsTrigger } from "@components/Tabs/Tabs";
 
 # Getting started
 
@@ -11,125 +13,138 @@ Right now, we have no plans on creating an npm package for the components.
 ## Installation
 
 <DocCollapsible>
-To start using MailingUI in your project, you have to set up a few things.
-Follow the steps below to get started.<br />
-_Note:_ For the best experience, we recommend using MailingUI in a **Next.js** project with **TypeScript**.
 
-### (Optional) Bootstrap a new Next.js project
+  To start using MailingUI in your project, you have to set up a few things.
+  Follow the steps below to get started.<br />
+  _Note:_ For the best experience, we recommend using MailingUI in a **Next.js** project with **TypeScript**.
 
-If you already have a Next.js project, you can skip this step.
-Also, if you intend to use MailingUI in a different project, you can skip this step.
+  ### (Optional) Bootstrap a new Next.js project
 
-```bash
-npx create-next-app@latest --typescript
-```
+  If you already have a Next.js project, you can skip this step.
+  Also, if you intend to use MailingUI in a different project, you can skip this step.
 
-## Automatic Install with `@mailingui/cli`
+  ```bash
+  npx create-next-app@latest --typescript
+  ```
 
-### Initialize MailingUI
+  <Tabs defaultValue="automatic">
+    <div className="flex items-center justify-start w-full mb-8">
+      <TabsList className="mt-8 rounded-2xl">
+        <TabsTrigger value="automatic" className="px-7 py-2 rounded-[10px]">Automatic Install</TabsTrigger>
+        <TabsTrigger value="manual" className="px-7 py-2 rounded-[10px]">Manual Install</TabsTrigger>
+      </TabsList>
+    </div>
 
-Initialize MailingUI in your projects. The command downloads all the necessary files for you to start working with MailingUI.
+    <TabsContent value="automatic" className="md:space-y-12 rounded-2xl bg-dark-950 p-6">
+      ## Automatic Install with `@mailingui/cli`
 
-```shell
-npx @mailingui/cli init [options]
+      ### Initialize MailingUI
 
-# Options
--p, --path <path>  define base path to your MailingUI components (default: "./src/@mailingui")
--o, --overwrite    overwrite existing configuration (default: false)
--h, --help         display help for command
-```
+      Initialize MailingUI in your projects. The command downloads all the necessary files for you to start working with MailingUI.
 
-### Adding Component(s)
+      ```shell
+      npx @mailingui/cli init [options]
 
-Add all or specific components to your project. Refer to the list of components on [our website](/docs).
+      # Options
+      -p, --path <path>  define base path to your MailingUI components (default: "./src/@mailingui")
+      -o, --overwrite    overwrite existing configuration (default: false)
+      -h, --help         display help for command
+      ```
 
-```shell
-npx @mailingui/cli add [options] [components...]
+      ### Adding Component(s)
 
-# Options
--o, --overwrite  automatically overwrite existing components (default: false)
--a, --all        download all available components (default: false)
--h, --help       display help for command
-```
+      Add all or specific components to your project. Refer to the list of components on [our website](/docs).
 
-## Manual Install
+      ```shell
+      npx @mailingui/cli add [options] [components...]
 
-### Install MailingUI dependencies and components
+      # Options
+      -o, --overwrite  automatically overwrite existing components (default: false)
+      -a, --all        download all available components (default: false)
+      -h, --help       display help for command
+      ```
+    </TabsContent>
+    <TabsContent value="manual" className="md:space-y-12 rounded-2xl bg-dark-950 p-6">
+      ## Manual Install
 
-MailingUI builds on top of [react-email](https://react.email), you have to install it into your project.
+      ### Install MailingUI dependencies and components
 
-```bash
-npm install @react-email/components @react-email/render
-```
+      MailingUI builds on top of [react-email](https://react.email), you have to install it into your project.
 
-Once you've install these dependencies you can copy and paste the components you need. Please visit [mailingui.com/components](https://mailingui.com/components) to see all of our components.
+      ```bash
+      npm install @react-email/components @react-email/render
+      ```
 
-### Create a theme file
+      Once you've install these dependencies you can copy and paste the components you need. Please visit [mailingui.com/components](https://mailingui.com/components) to see all of our components.
 
-To allow quick and easy customization of the components, our components consume a theme that you can modify
-to fit your needs.
+      ### Create a theme file
 
-To set up theming create a folder called `themes` in your project (we recommend `src/mailingui/themes`),
-create a file named `index.ts` inside the folder and paste the following code into it.
+      To allow quick and easy customization of the components, our components consume a theme that you can modify
+      to fit your needs.
 
-```typescript
-export const theme = {
-  color: {
-    background: {
+      To set up theming create a folder called `themes` in your project (we recommend `src/mailingui/themes`),
+      create a file named `index.ts` inside the folder and paste the following code into it.
+
+      ```typescript
+      export const theme = {
+      color: {
+      background: {
       "100": "#ffffff",
       "200": "#ffffff",
       "300": "#ffffff",
       "400": "#ffffff",
-    },
-    foreground: {
-      "100": "#000000",
-      "200": "#000000",
-      "300": "#000000",
-      "400": "#000000",
-    },
-    brand: "#000000",
-  },
-  rounded: {
-    base: 0,
-    full: 9999,
-  },
-} as const;
-```
+      },
+        foreground: {
+        "100": "#000000",
+        "200": "#000000",
+        "300": "#000000",
+        "400": "#000000",
+      },
+        brand: "#000000",
+      },
+        rounded: {
+        base: 0,
+        full: 9999,
+      },
+      } as const;
+      ```
 
-This theme object is completely arbitrary, feel free to modify it to fit your needs.
-**If you add or remove any of these keys-values** you will need to update the components as well.
+      This theme object is completely arbitrary, feel free to modify it to fit your needs.
+      **If you add or remove any of these keys-values** you will need to update the components as well.
 
-## Final Steps - Setup tsconfig.json path aliases
+      ### Final Steps - Setup tsconfig.json path aliases
 
-If `tsconfig.json` aliases are not set up, you will have to manually change all the imports in all the components.
-Add the following lines to your `tsconfig.json` file:
+      If `tsconfig.json` aliases are not set up, you will have to manually change all the imports in all the components.
+      Add the following lines to your `tsconfig.json` file:
 
-```json
-{
-  "compilerOptions": {
-    "paths": {
-      "@mailingui/components": ["src/mailingui/components/index.ts"]
-    }
-  }
-}
-```
+      ```json
+      {
+        "compilerOptions": {
+        "paths": {
+        "@mailingui/components": ["src/mailingui/components/index.ts"]
+      }
+      }
+      }
+      ```
 
-> _Note:_ If you are using a different folder structure, you will have to change the paths in the `tsconfig.json` file.
+      > _Note:_ If you are using a different folder structure, you will have to change the paths in the `tsconfig.json` file.
 
-If you used the same naming as us, your file structure should include the following files:
+      If you used the same naming as us, your file structure should include the following files:
 
-```tree
-├── /src
-│   ├── /mailingui
-│   │   ├── /themes
-│   │   │   ├── /index.ts
-│   │   ├── /components
-├── package.json
-├── tsconfig.json
-└── ...
-```
+      ```tree
+      ├── /src
+      │   ├── /mailingui
+      │   │   ├── /themes
+      │   │   │   ├── /index.ts
+      │   │   ├── /components
+      ├── package.json
+      ├── tsconfig.json
+      └── ...
+      ```
+    </TabsContent>
+  </Tabs>
 
-Now you should be able to use MailingUI components in your project.
-Just click on one of the components below and follow the instructions on how to include it in your project.
+  Now you should be able to use MailingUI components in your project.
+  Just click on one of the components below and follow the instructions on how to include it in your project.
 
 </DocCollapsible>
