@@ -1,16 +1,26 @@
 import rehypePrettyCode from "rehype-pretty-code";
+import rehypeSlug from "rehype-slug";
 import nextMDX from "@next/mdx";
 
-/** @type {import('rehype-pretty-code').Options} */
-const options = {
+/** @type {import("rehype-pretty-code").Options} */
+const prettyCodeOptions = {
   theme: "github-dark",
-  keepBackground: false,
+  keepBackground: false
 };
 
-/** @type {import('next').NextConfig} */
+/** @type {import("next").NextConfig} */
 const nextConfig = {
+  async redirects() {
+    return [
+      {
+        source: "/docs/components",
+        destination: "/docs#components",
+        permanent: true
+      }
+    ];
+  },
   experimental: {
-    appDir: true,
+    appDir: true
   },
   staticPageGenerationTimeout: 300,
 
@@ -20,24 +30,27 @@ const nextConfig = {
         protocol: "http",
         hostname: "avatars.githubusercontent.com",
         port: "",
-        pathname: "/**",
+        pathname: "/**"
       },
       {
         protocol: "https",
         hostname: "github.com",
         port: "",
-        pathname: "/**",
-      },
-    ],
-  },
+        pathname: "/**"
+      }
+    ]
+  }
 };
 
 // Following the docs instruction: https://nextjs.org/docs/app/building-your-application/configuring/mdx#getting-started
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const withMDX = nextMDX({
   options: {
-    rehypePlugins: [[rehypePrettyCode, options]],
-  },
+    rehypePlugins: [
+      [rehypePrettyCode, prettyCodeOptions],
+      [rehypeSlug, {}],
+    ],
+  }
 });
 
 export default withMDX(nextConfig);

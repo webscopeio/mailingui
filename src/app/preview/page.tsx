@@ -1,10 +1,7 @@
 import { readdirSync } from "fs";
 import { join } from "path";
 import { Metadata } from "next";
-import {
-  openGraphImageSize,
-  sharedOpenGraphMetadata,
-} from "../../docs/constants";
+import { openGraphImageSize, sharedOpenGraphMetadata } from "@constants";
 import { PreviewNavigation, PreviewShell } from "@components/EmailPreview";
 
 export const metadata: Metadata = {
