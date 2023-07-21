@@ -14,18 +14,18 @@ Right now, we have no plans on creating an npm package for the components.
 
 <DocCollapsible>
 
-  To start using MailingUI in your project, you have to set up a few things.
-  Follow the steps below to get started.<br />
-  _Note:_ For the best experience, we recommend using MailingUI in a **Next.js** project with **TypeScript**.
+To start using MailingUI in your project, you have to set up a few things.
+Follow the steps below to get started.<br />
+_Note:_ For the best experience, we recommend using MailingUI in a **Next.js** project with **TypeScript**.
 
-  ### (Optional) Bootstrap a new Next.js project
+### (Optional) Bootstrap a new Next.js project
 
-  If you already have a Next.js project, you can skip this step.
-  Also, if you intend to use MailingUI in a different project, you can skip this step.
+If you already have a Next.js project, you can skip this step.
+Also, if you intend to use MailingUI in a different project, you can skip this step.
 
-  ```bash
-  npx create-next-app@latest --typescript
-  ```
+```bash
+npx create-next-app@latest --typescript
+```
 
   <Tabs defaultValue="automatic">
     <div className="flex items-center justify-start w-full mb-8">
@@ -35,7 +35,7 @@ Right now, we have no plans on creating an npm package for the components.
       </TabsList>
     </div>
 
-    <TabsContent value="automatic" className="md:space-y-12 rounded-2xl bg-dark-950 p-6">
+    <TabsContent value="automatic" className="md:space-y-12 space-y-8 rounded-2xl bg-dark-950 p-6">
       ## Automatic Install with `@mailingui/cli`
 
       ### Initialize MailingUI
@@ -112,39 +112,41 @@ Right now, we have no plans on creating an npm package for the components.
       This theme object is completely arbitrary, feel free to modify it to fit your needs.
       **If you add or remove any of these keys-values** you will need to update the components as well.
 
-      ### Final Steps - Setup tsconfig.json path aliases
+    </TabsContent>
+
+  </Tabs>
+
+        ### Final Steps - Setup tsconfig.json path aliases
 
       If `tsconfig.json` aliases are not set up, you will have to manually change all the imports in all the components.
       Add the following lines to your `tsconfig.json` file:
 
-      ```json
-      {
-        "compilerOptions": {
-        "paths": {
-        "@mailingui/components": ["src/mailingui/components/index.ts"]
-      }
-      }
-      }
-      ```
+```json
+{
+  "compilerOptions": {
+    "paths": {
+      "@mailingui/components": ["src/mailingui/components/index.ts"]
+    }
+  }
+}
+```
 
-      > _Note:_ If you are using a different folder structure, you will have to change the paths in the `tsconfig.json` file.
+> _Note:_ If you are using a different folder structure, you will have to change the paths in the `tsconfig.json` file.
 
-      If you used the same naming as us, your file structure should include the following files:
+If you used the same naming as us, your file structure should include the following files:
 
-      ```tree
-      ├── /src
-      │   ├── /mailingui
-      │   │   ├── /themes
-      │   │   │   ├── /index.ts
-      │   │   ├── /components
-      ├── package.json
-      ├── tsconfig.json
-      └── ...
-      ```
-    </TabsContent>
-  </Tabs>
+```tree
+├── /src
+│   ├── /mailingui
+│   │   ├── /themes
+│   │   │   ├── /index.ts
+│   │   ├── /components
+├── package.json
+├── tsconfig.json
+└── ...
+```
 
-  Now you should be able to use MailingUI components in your project.
-  Just click on one of the components below and follow the instructions on how to include it in your project.
+Now you should be able to use MailingUI components in your project.
+Just click on one of the components below and follow the instructions on how to include it in your project.
 
 </DocCollapsible>
