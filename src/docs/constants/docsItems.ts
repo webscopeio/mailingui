@@ -1,7 +1,11 @@
-export type DocsItem = {
+export type DocItems = DocItemGroup[];
+export type DocItemGroup = {
   label: string;
-  href?: string;
-  items?: DocsItem[];
+  items: DocItem[];
+};
+export type DocItem = {
+  href: string;
+  label: string;
 };
 
 // Temp fix duplication, when imported from src/docs/examples/index.ts it cause import errors through dynamic import of examples
@@ -40,7 +44,7 @@ const componentTypes = [
   },
 ];
 
-export const docsItems: DocsItem[] = [
+export const docsItems: DocItems = [
   {
     label: "Documentation",
     items: [
