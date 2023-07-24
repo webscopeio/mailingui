@@ -17,7 +17,7 @@ export const navigationLinks = [
 
 export const socialLinks = [
   {
-    href: "https://github.com/webscopeio/mailingui-web",
+    href: "https://github.com/webscopeio/mailingui",
     label: "GitHub",
     Icon: GitHubIcon,
   },
