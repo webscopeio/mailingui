@@ -7,7 +7,7 @@ import { DocArticle } from "@components/InstallationDocs";
 
 type DocsPageProps = {
   params: {
-    slug?: string[];
+    slug: string[];
   };
 };
 
@@ -43,7 +43,7 @@ export function generateMetadata(): Metadata {
 export default async function ComponentPage({
   params: { slug },
 }: DocsPageProps) {
-  const resolvedSlug = slug ? slug.join("/") : "overview";
+  const resolvedSlug = slug.join("/");
   const MdxDoc = docs?.[resolvedSlug];
   const Docs = MdxDoc ? (
     <DocArticle>
@@ -57,6 +57,6 @@ export default async function ComponentPage({
 }
 
 export const generateStaticParams = () =>
-  [null, ...Object.keys(docs)].map((item) =>
-    item ? { slug: item.split("/") } : {}
-  );
+  Object.keys(docs).map((item) => ({
+    slug: item.split("/"),
+  }));

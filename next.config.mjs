@@ -13,8 +13,13 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        source: "/docs",
+        destination: "/docs/overview",
+        permanent: false
+      },
+      {
         source: "/docs/components",
-        destination: "/docs#components",
+        destination: "/docs/overview#components",
         permanent: true
       }
     ];
