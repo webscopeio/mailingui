@@ -1,9 +1,9 @@
+import fs from "fs";
+import path from "path";
 import chalk from "chalk";
 import { Command } from "commander";
 import execa from "execa";
-import fs from "fs";
 import ora from "ora";
-import path from "path";
 import prompts from "prompts";
 import {
   BASE_URL,
@@ -24,7 +24,14 @@ export const init = new Command()
   .option("-o, --overwrite", "overwrite existing configuration", false)
   .action(async (options) => {
     const packageFile = fs.readFileSync("package.json", "utf8");
-    const { dependencies: installedDependecies } = JSON.parse(packageFile);
+    const packageObj = JSON.parse(packageFile);
+
+    // don't throw if dependencies are not in package.json
+    if (!("depencies" in packageObj)) {
+      packageObj.dependencies = {};
+    }
+    const { dependencies: installedDependecies } = packageObj;
+
     for (const dependency of REQUIRED_DEPENDENCIES) {
       if (!installedDependecies[dependency]) {
         const response = await prompts({
