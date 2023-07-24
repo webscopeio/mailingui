@@ -2,8 +2,8 @@ import { GitHubIcon, TwitterIcon } from "@components/Icons";
 
 export const navigationLinks = [
   {
-    href: "/components",
-    label: "Components",
+    href: "/docs",
+    label: "Docs",
   },
   {
     href: "/blog",

@@ -18,7 +18,7 @@ export const ConfettiWrapper: React.FC<{ children: React.ReactNode }> = ({
     if (sub === "pending" || sub === "success") {
       setIsOpen(true);
     }
-  }, [searchParams]);
+  }, [sub]);
 
   return (
     <div ref={ref}>

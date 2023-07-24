@@ -41,8 +41,8 @@ export const Greeting = () => (
         templates
       </p>
       <div className="mt-6 space-y-3 md:mt-12 md:inline-flex md:gap-x-3 md:space-y-0">
-        <CTA href="/components" color="white" className="w-full md:w-auto">
-          Explore components
+        <CTA href="/docs" color="white" className="w-full md:w-auto">
+          Get started
         </CTA>
         <CTA
           href="https://github.com/webscopeio/mailingui-web/stargazers"
