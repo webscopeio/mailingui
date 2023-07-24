@@ -8,26 +8,19 @@ import { cn } from "@utils/cn";
 const SideNavItem = ({ item, level }: { item: DocsItem; level: number }) => {
   const pathname = usePathname();
   const { href, label, items } = item;
-  const textClass = level === 0 ? "text-lg font-bold" : "text-base opacity-90";
+  const isActive = href && pathname?.includes(href);
   return (
-    <li className="space-y-2">
-      {href ? (
-        <Link
-          className={cn(
-            level === 0 ? "text-lg font-bold" : "text-base opacity-90",
-            "hover:opacity-70",
-            href !== "/" &&
-              pathname?.includes(href) &&
-              (level !== 0 || href === pathname) &&
-              "text-pink-text"
-          )}
-          href={href}
-        >
-          {label}
-        </Link>
-      ) : (
-        <span className={textClass}>{label}</span>
+    <li
+      className={cn(
+        "space-y-4 p-2 rounded-lg",
+        level === 0 ? "text-lg font-bold" : "text-base font-normal",
+        level === 1 &&
+          "text-neutral-500 hover:text-neutral-200 hover:bg-neutral-200/20 hover:cursor-pointer",
+        isActive && " bg-pink-text/20 hover:bg-pink-text/20",
+        isActive && "text-pink-text hover:text-pink-text font-semibold"
       )}
+    >
+      {href ? <Link href={href}>{label}</Link> : <span>{label}</span>}
 
       {items && <SideNavList items={items} level={level + 1} />}
     </li>
@@ -41,9 +34,8 @@ const SideNavList = ({
   items: DocsItem[];
   level: number;
 }) => {
-  const spaceClass = level === 0 ? "space-y-4" : "space-y-2";
   return (
-    <ul className={spaceClass}>
+    <ul>
       {items.map((item, index) => (
         <SideNavItem key={index} item={item} level={level} />
       ))}
