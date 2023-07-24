@@ -45,7 +45,7 @@ export const docsItems: DocsItem[] = [
     label: "Documentation",
     items: [
       {
-        href: "/docs/overview",
+        href: "/docs",
         label: "Overview",
       },
       {
@@ -66,7 +66,7 @@ export const docsItems: DocsItem[] = [
     label: "Components",
     items: componentTypes
       .map((componentType) => ({
-        href: `/components/${componentType.type}`,
+        href: `/docs/components/${componentType.type}`,
         label: componentType.title,
       }))
       .sort((a, b) => a.label.localeCompare(b.label)),
