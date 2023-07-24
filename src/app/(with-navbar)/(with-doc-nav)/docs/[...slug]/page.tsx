@@ -12,10 +12,12 @@ type DocsPageProps = {
 };
 
 const docs: Record<string, ComponentType<MDXProps>> = {
-  overview: dynamic(() => import(`src/docs/pages/Overview.mdx`)),
-  "getting-started": dynamic(() => import(`src/docs/pages/GettingStarted.mdx`)),
-  installation: dynamic(() => import(`src/docs/pages/Installation.mdx`)),
-  theming: dynamic(() => import(`src/docs/pages/Theming.mdx`)),
+  overview: dynamic(() => import(`src/docs/content/Overview.mdx`)),
+  "getting-started": dynamic(
+    () => import(`src/docs/content/GettingStarted.mdx`)
+  ),
+  installation: dynamic(() => import(`src/docs/content/Installation.mdx`)),
+  theming: dynamic(() => import(`src/docs/content/Theming.mdx`)),
 };
 
 export function generateMetadata(): Metadata {

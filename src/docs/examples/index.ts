@@ -21,20 +21,18 @@ interface ComponentMetadataType {
 }
 
 export const mdxDocs: Record<string, ComponentType<MDXProps>> = {
-  badges: dynamic(() => import(`src/docs/examples/badges/installation.mdx`)),
-  lists: dynamic(() => import(`src/docs/examples/lists/installation.mdx`)),
-  buttons: dynamic(() => import(`src/docs/examples/buttons/installation.mdx`)),
-  dividers: dynamic(
-    () => import(`src/docs/examples/dividers/installation.mdx`)
-  ),
-  emojis: dynamic(() => import(`src/docs/examples/emojis/installation.mdx`)),
+  badges: dynamic(() => import(`src/docs/content/components/badges.mdx`)),
+  lists: dynamic(() => import(`src/docs/content/components/lists.mdx`)),
+  buttons: dynamic(() => import(`src/docs/content/components/buttons.mdx`)),
+  dividers: dynamic(() => import(`src/docs/content/components/dividers.mdx`)),
+  emojis: dynamic(() => import(`src/docs/content/components/emojis.mdx`)),
   "hero-sections": dynamic(
-    () => import(`src/docs/examples/hero-sections/installation.mdx`)
+    () => import(`src/docs/content/components/hero-sections.mdx`)
   ),
   "social-icons": dynamic(
-    () => import(`src/docs/examples/social-icons/installation.mdx`)
+    () => import(`src/docs/content/components/social-icons.mdx`)
   ),
-  texts: dynamic(() => import(`src/docs/examples/texts/installation.mdx`)),
+  texts: dynamic(() => import(`src/docs/content/components/texts.mdx`)),
 };
 
 export const componentTypes: ComponentMetadataType[] = [
