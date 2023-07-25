@@ -14,7 +14,8 @@ import {
   sharedOpenGraphMetadata,
 } from "src/docs/constants";
 import { CONTENT_DIR, DocArticle } from "@components/InstallationDocs";
-import { componentTypes, mdxDocs } from "@examples";
+import { mdxDocs } from "src/docs/content/components";
+import { componentTypes } from "@examples";
 
 type ComponentPageProps = {
   params: {

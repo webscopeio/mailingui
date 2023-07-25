@@ -1,23 +1,12 @@
 import type { Metadata } from "next";
-import dynamic from "next/dynamic";
-import { MDXProps } from "mdx/types";
-import { ComponentType } from "react";
 
+import { mdxDocs } from "src/docs/content";
 import { DocArticle } from "@components/InstallationDocs";
 
 type DocsPageProps = {
   params: {
     slug: string[];
   };
-};
-
-const docs: Record<string, ComponentType<MDXProps>> = {
-  overview: dynamic(() => import(`src/docs/content/Overview.mdx`)),
-  "getting-started": dynamic(
-    () => import(`src/docs/content/GettingStarted.mdx`)
-  ),
-  installation: dynamic(() => import(`src/docs/content/Installation.mdx`)),
-  theming: dynamic(() => import(`src/docs/content/Theming.mdx`)),
 };
 
 export function generateMetadata(): Metadata {
@@ -46,7 +35,7 @@ export default async function ComponentPage({
   params: { slug },
 }: DocsPageProps) {
   const resolvedSlug = slug.join("/");
-  const MdxDoc = docs?.[resolvedSlug];
+  const MdxDoc = mdxDocs?.[resolvedSlug];
   const Docs = MdxDoc ? (
     <DocArticle>
       <MdxDoc />
@@ -59,6 +48,6 @@ export default async function ComponentPage({
 }
 
 export const generateStaticParams = () =>
-  Object.keys(docs).map((item) => ({
+  Object.keys(mdxDocs).map((item) => ({
     slug: item.split("/"),
   }));
