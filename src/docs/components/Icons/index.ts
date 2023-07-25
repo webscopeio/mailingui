@@ -7,6 +7,7 @@ export { DesktopIcon } from "./DesktopIcon";
 export { EyeIcon } from "./EyeIcon";
 export { GitHubIcon } from "./GitHubIcon";
 export { HtmlIcon } from "./HtmlIcon";
+export { LibraryIcon } from "./LibraryIcon";
 export { MenuIcon } from "./MenuIcon";
 export { ReactIcon } from "./ReactIcon";
 export { ShareIcon } from "./ShareIcon";

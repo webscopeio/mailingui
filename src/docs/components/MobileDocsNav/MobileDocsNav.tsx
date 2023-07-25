@@ -7,7 +7,7 @@ import {
   SheetContent,
   SheetClose,
 } from "@components/Sheet";
-import { CrossIcon, CodeIcon } from "@components/Icons";
+import { CrossIcon, LibraryIcon } from "@components/Icons";
 import { SideNav } from "@components/SideNav";
 import type { DocItems } from "@constants";
 
@@ -26,7 +26,7 @@ export const MobileDocsNav = ({ items }: { items: DocItems }) => {
     <nav className="flex gap-6 border-b border-solid border-dark-700 p-4">
       <Sheet open={isOpen} onOpenChange={setIsOpen}>
         <SheetTrigger>
-          <CodeIcon className="h-6 w-6" />
+          <LibraryIcon className="h-6 w-6" />
         </SheetTrigger>
         <SheetContent
           side="left"
