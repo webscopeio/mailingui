@@ -6,11 +6,14 @@ const getFileProps = (path: string) => ({
 });
 
 type SupportedComponents =
-  | "emoji"
   | "badge"
+  | "button"
   | "divider"
+  | "emoji"
   | "heroSection"
-  | "list";
+  | "list"
+  | "socialIcon"
+  | "text";
 
 const getComponents = (): Record<
   SupportedComponents,
@@ -20,17 +23,21 @@ const getComponents = (): Record<
   }
 > => {
   return {
-    emoji: {
-      dependencies: [],
-      ...getFileProps("./src/mailingui/components/emoji/Emoji.tsx"),
-    },
     badge: {
       dependencies: [],
       ...getFileProps("./src/mailingui/components/badge/Badge.tsx"),
     },
+    button: {
+      dependencies: [],
+      ...getFileProps("./src/mailingui/components/button/Button.tsx"),
+    },
     divider: {
       dependencies: [],
       ...getFileProps("./src/mailingui/components/divider/Divider.tsx"),
+    },
+    emoji: {
+      dependencies: [],
+      ...getFileProps("./src/mailingui/components/emoji/Emoji.tsx"),
     },
     heroSection: {
       dependencies: [],
@@ -41,6 +48,14 @@ const getComponents = (): Record<
     list: {
       dependencies: [],
       ...getFileProps("./src/mailingui/components/list/List.tsx"),
+    },
+    socialIcon: {
+      dependencies: [],
+      ...getFileProps("./src/mailingui/components/social-icon/SocialIcon.tsx"),
+    },
+    text: {
+      dependencies: [],
+      ...getFileProps("./src/mailingui/components/text/Text.tsx"),
     },
   };
 };
