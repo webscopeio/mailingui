@@ -8,7 +8,7 @@ interface LayoutProps {
 
 export default function Layout({ children }: LayoutProps) {
   return (
-    <div className="h-full w-full flex-row pb-16 lg:flex lg:pb-32 lg:pt-16">
+    <div className="mx-auto h-full w-full max-w-6xl flex-row pb-16 lg:flex lg:pb-32 lg:pt-16">
       <div className="block lg:hidden">
         <MobileDocsNav items={docsItems} />
       </div>
