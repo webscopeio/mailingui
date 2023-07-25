@@ -12,12 +12,14 @@ const SideNavItem = ({ item }: { item: DocItem }) => {
   return (
     <li
       className={cn(
-        "p-2 rounded-lg text-neutral-500 hover:text-neutral-200 hover:bg-neutral-200/20 hover:cursor-pointer",
+        "relative rounded-lg text-neutral-500 hover:text-neutral-200 hover:bg-neutral-200/20 hover:cursor-pointer",
         isActive &&
           " bg-pink-text/20 hover:bg-pink-text/20 text-pink-text hover:text-pink-text font-semibold"
       )}
     >
-      <Link href={href}>{label}</Link>
+      <Link className="block w-full p-2" href={href}>
+        {label}
+      </Link>
     </li>
   );
 };
@@ -36,9 +38,15 @@ const SideNavGroup = ({ group }: { group: DocItemGroup }) => {
   );
 };
 
-export const SideNav = ({ items }: { items: DocItems }) => {
+export const SideNav = ({
+  items,
+  className,
+}: {
+  items: DocItems;
+  className?: string;
+}) => {
   return (
-    <nav className="p-4">
+    <nav className={cn("p-4", className)}>
       <ul>
         {items.map((group, index) => (
           <SideNavGroup key={index} group={group} />

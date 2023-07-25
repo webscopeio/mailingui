@@ -1,4 +1,5 @@
 import { SideNav } from "@components/SideNav";
+import { MobileDocsNav } from "@components/MobileDocsNav";
 import { docsItems } from "@constants";
 
 interface LayoutProps {
@@ -7,7 +8,10 @@ interface LayoutProps {
 
 export default function Layout({ children }: LayoutProps) {
   return (
-    <div className="flex h-full w-full flex-row">
+    <div className="h-full w-full flex-row pb-16 lg:flex lg:pb-32 lg:pt-16">
+      <div className="block lg:hidden">
+        <MobileDocsNav items={docsItems} />
+      </div>
       <div className="hidden w-60 shrink-0 border-r border-solid border-dark-700 lg:block">
         <SideNav items={docsItems} />
       </div>
