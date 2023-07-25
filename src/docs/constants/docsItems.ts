@@ -8,6 +8,7 @@ export type DocItemGroup = {
 export type DocItem = {
   href: string;
   label: string;
+  description?: string;
 };
 
 export const docsItems: DocItems = [
@@ -17,18 +18,22 @@ export const docsItems: DocItems = [
       {
         href: "/docs/overview",
         label: "Overview",
+        description: "Learn about the MailingUI",
       },
       {
         href: "/docs/getting-started",
         label: "Getting Started",
+        description: "How to use MailingUI",
       },
       {
         href: "/docs/installation",
         label: "Installation",
+        description: "How to install MailingUI",
       },
       {
         href: "/docs/theming",
         label: "Theming",
+        description: "Theming MailingUI",
       },
     ],
   },

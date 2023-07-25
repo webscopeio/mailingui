@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { docsItems } from "@constants";
 import { mdxDocs } from "src/docs/content";
 import { DocArticle } from "@components/InstallationDocs";
 
@@ -9,14 +10,35 @@ type DocsPageProps = {
   };
 };
 
-export function generateMetadata(): Metadata {
+type MetadataProps = {
+  params: {
+    slug: string[];
+  };
+};
+
+function findPageDocItem(slug: string[]) {
+  const resolvedHref = ["/docs", ...slug].join("/");
+  const flattenedDocsItems = docsItems.reduce((acc, item) => {
+    if (item.items) acc.push(...item.items);
+    return acc;
+  }, [] as (typeof docsItems)[0]["items"]);
+  const docItem = flattenedDocsItems.find((item) => item.href === resolvedHref);
+  return docItem;
+}
+
+export function generateMetadata({ params }: MetadataProps): Metadata {
+  const doc = findPageDocItem(params.slug);
+
+  const title = doc?.label ?? "Documentation";
+  const description = doc?.description ?? "Explore docs";
+
   return {
-    title: "Components",
-    description: "Explore components",
+    title,
+    description,
     openGraph: {
-      title: "Components",
-      description: "Explore components",
-      url: "https://mailingui.com/components",
+      title,
+      description,
+      url: "https://mailingui.com/docs",
       images: [
         {
           url: "/static/images/og/components.png",
