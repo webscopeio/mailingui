@@ -12,7 +12,7 @@ export default function Layout({ children }: LayoutProps) {
       <div className="block lg:hidden">
         <MobileDocsNav items={docsItems} />
       </div>
-      <div className="sticky top-4 hidden max-h-[calc(100vh-1rem)] w-60 shrink-0 border-r border-solid border-dark-700 lg:block">
+      <div className="sticky top-8 hidden h-fit max-h-[calc(100vh-1rem)] w-60 shrink-0 border-r border-solid border-dark-700 lg:block">
         <SideNav items={docsItems} />
       </div>
       <div className="grow overflow-auto">{children}</div>

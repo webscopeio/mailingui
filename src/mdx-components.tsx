@@ -30,7 +30,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         <h1
           id={id}
           className={cn(
-            "text-3xl font-semibold  md:text-5xl mt-8 scroll-m-20 tracking-tight lg:text-5xl after:ml-4 after:opacity-80 hover:after:content-['#']",
+            "text-3xl font-semibold md:text-5xl scroll-m-20 tracking-tight lg:text-5xl after:ml-4 after:opacity-80 hover:after:content-['#']",
             className
           )}
           {...otherProps}
@@ -49,7 +49,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         <h2
           id={id}
           className={cn(
-            "text-2xl font-semibold md:text-4xl mt-8 scroll-m-20 tracking-tight after:ml-3 after:opacity-80 hover:after:content-['#']",
+            "text-2xl font-semibold md:text-4xl scroll-m-20 tracking-tight after:ml-3 after:opacity-80 hover:after:content-['#']",
             className
           )}
           {...otherProps}
@@ -71,7 +71,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         <h3
           id={id}
           className={cn(
-            "text-xl font-semibold md:text-2xl mt-8 scroll-m-20 tracking-tight after:ml-2 after:opacity-80 hover:after:content-['#']",
+            "text-xl font-semibold md:text-2xl scroll-m-20 tracking-tight after:ml-2 after:opacity-80 hover:after:content-['#']",
             className
           )}
           {...otherProps}

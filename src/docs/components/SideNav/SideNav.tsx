@@ -46,7 +46,7 @@ export const SideNav = ({
   className?: string;
 }) => {
   return (
-    <nav className={cn("p-4", className)}>
+    <nav className={className}>
       <ul>
         {items.map((group, index) => (
           <SideNavGroup key={index} group={group} />
