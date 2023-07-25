@@ -30,7 +30,7 @@ export const MobileDocsNav = ({ items }: { items: DocItems }) => {
         </SheetTrigger>
         <SheetContent
           side="left"
-          className="overflow-y-auto border-neutral-500 bg-black"
+          className="overflow-y-auto border-neutral-500"
         >
           <SheetClose asChild>
             <CrossIcon className="absolute right-6 top-6 h-6 w-6" />
