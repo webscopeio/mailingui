@@ -15,13 +15,15 @@ export const MobileDocsNav = ({ items }: { items: DocItems }) => {
   const [isOpen, setIsOpen] = React.useState(false);
   const pathname = usePathname();
 
+  const currentDocItem = findCurrentItem(items, pathname);
+
   // Close the sheet when navigating (did not work as expected automatically)
   useEffect(() => {
     setIsOpen(false);
   }, [pathname]);
 
   return (
-    <nav className="flex gap-4 border-b border-solid border-dark-700 p-4">
+    <nav className="flex gap-6 border-b border-solid border-dark-700 p-4">
       <Sheet open={isOpen} onOpenChange={setIsOpen}>
         <SheetTrigger>
           <CodeIcon className="h-6 w-6" />
@@ -38,11 +40,28 @@ export const MobileDocsNav = ({ items }: { items: DocItems }) => {
           </SheetClose>
         </SheetContent>
       </Sheet>
-      <p className="flex gap-2">
-        <span>Getting Started</span>
-        <span>{">"}</span>
-        <span>Overview</span>
-      </p>
+      {currentDocItem && (
+        <p className="flex gap-3">
+          <span className="text-neutral-500">{currentDocItem.groupLabel}</span>
+          <span>{">"}</span>
+          <span className="font-semibold">{currentDocItem.itemLabel}</span>
+        </p>
+      )}
     </nav>
   );
 };
+
+function findCurrentItem(items: DocItems, pathname: string) {
+  for (const group of items) {
+    for (const item of group.items) {
+      if (item.href === pathname) {
+        return {
+          groupLabel: group.label,
+          itemLabel: item.label,
+          href: item.href,
+        };
+      }
+    }
+  }
+  return null;
+}
