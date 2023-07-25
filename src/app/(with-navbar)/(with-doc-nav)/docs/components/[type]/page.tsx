@@ -79,7 +79,7 @@ export default async function ComponentPage({
   const { prev, next } = findNeighbours(["components", type]);
 
   return (
-    <div className="mx-auto w-full max-w-6xl overflow-hidden px-4">
+    <div className="mx-auto w-full max-w-6xl overflow-hidden p-4 lg:py-0">
       {Docs}
       <h2 className="pt-8 text-2xl font-semibold md:pt-16 md:text-4xl">
         {componentExamples.title}

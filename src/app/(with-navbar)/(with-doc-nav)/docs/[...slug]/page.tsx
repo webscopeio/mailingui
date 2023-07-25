@@ -80,7 +80,7 @@ export default async function ComponentPage({
   const { prev, next } = findNeighbours(slug);
 
   return (
-    <div className="mx-auto w-full max-w-6xl overflow-hidden p-4">
+    <div className="mx-auto w-full max-w-6xl overflow-hidden p-4 lg:py-0">
       {Docs}
       <PagingNav prev={prev} next={next} className="mt-8" />
     </div>
