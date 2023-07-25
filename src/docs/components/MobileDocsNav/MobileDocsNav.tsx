@@ -1,5 +1,6 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
+import { usePathname } from "next/navigation";
 import {
   Sheet,
   SheetTrigger,
@@ -11,9 +12,17 @@ import { SideNav } from "@components/SideNav";
 import type { DocItems } from "@constants";
 
 export const MobileDocsNav = ({ items }: { items: DocItems }) => {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const pathname = usePathname();
+
+  // Close the sheet when navigating (did not work as expected automatically)
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
+
   return (
     <nav className="flex gap-4 border-b border-solid border-dark-700 p-4">
-      <Sheet>
+      <Sheet open={isOpen} onOpenChange={setIsOpen}>
         <SheetTrigger>
           <CodeIcon className="h-6 w-6" />
         </SheetTrigger>
@@ -24,7 +33,6 @@ export const MobileDocsNav = ({ items }: { items: DocItems }) => {
           <SheetClose asChild>
             <CrossIcon className="absolute right-6 top-6 h-6 w-6" />
           </SheetClose>
-          {/* Todo - Navigating does not close the sheet */}
           <SheetClose asChild>
             <SideNav items={items} className="p-6" />
           </SheetClose>
