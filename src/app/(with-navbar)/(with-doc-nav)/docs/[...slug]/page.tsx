@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
-import { docsItems } from "@constants";
+import { PagingNav } from "@components/PagingNav";
+import { flattenedDocsItems } from "@constants";
 import { mdxDocs } from "src/docs/content";
 import { DocArticle } from "@components/InstallationDocs";
 
@@ -18,12 +19,24 @@ type MetadataProps = {
 
 function findPageDocItem(slug: string[]) {
   const resolvedHref = ["/docs", ...slug].join("/");
-  const flattenedDocsItems = docsItems.reduce((acc, item) => {
-    if (item.items) acc.push(...item.items);
-    return acc;
-  }, [] as (typeof docsItems)[0]["items"]);
   const docItem = flattenedDocsItems.find((item) => item.href === resolvedHref);
   return docItem;
+}
+
+function findNeighbours(slug: string[]) {
+  const resolvedHref = ["/docs", ...slug].join("/");
+  const currentIndex = flattenedDocsItems.findIndex(
+    (item) => item.href === resolvedHref
+  );
+  const prev = currentIndex !== 0 ? flattenedDocsItems[currentIndex - 1] : null;
+  const next =
+    currentIndex !== flattenedDocsItems.length - 1
+      ? flattenedDocsItems[currentIndex + 1]
+      : null;
+  return {
+    prev,
+    next,
+  };
 }
 
 export function generateMetadata({ params }: MetadataProps): Metadata {
@@ -64,8 +77,13 @@ export default async function ComponentPage({
     </DocArticle>
   ) : null;
 
+  const { prev, next } = findNeighbours(slug);
+
   return (
-    <div className="mx-auto w-full max-w-6xl overflow-hidden p-4">{Docs}</div>
+    <div className="mx-auto w-full max-w-6xl overflow-hidden p-4">
+      {Docs}
+      <PagingNav prev={prev} next={next} className="mt-8" />
+    </div>
   );
 }
 

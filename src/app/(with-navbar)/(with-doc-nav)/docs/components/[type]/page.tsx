@@ -3,6 +3,8 @@ import { join } from "path";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { render } from "@react-email/render";
+
+import { PagingNav } from "@components/PagingNav";
 import {
   ComponentExample,
   ComponentExampleProps,
@@ -12,6 +14,7 @@ import { getHighlighter, highlight } from "@lib/shiki";
 import {
   openGraphImageSize,
   sharedOpenGraphMetadata,
+  flattenedDocsItems,
 } from "src/docs/constants";
 import { CONTENT_DIR, DocArticle } from "@components/InstallationDocs";
 import { mdxDocs } from "src/docs/content/components";
@@ -22,6 +25,22 @@ type ComponentPageProps = {
     type: string;
   };
 };
+
+function findNeighbours(slug: string[]) {
+  const resolvedHref = ["/docs", ...slug].join("/");
+  const currentIndex = flattenedDocsItems.findIndex(
+    (item) => item.href === resolvedHref
+  );
+  const prev = currentIndex !== 0 ? flattenedDocsItems[currentIndex - 1] : null;
+  const next =
+    currentIndex !== flattenedDocsItems.length - 1
+      ? flattenedDocsItems[currentIndex + 1]
+      : null;
+  return {
+    prev,
+    next,
+  };
+}
 
 export function generateMetadata({
   params: { type },
@@ -57,6 +76,8 @@ export default async function ComponentPage({
     </DocArticle>
   ) : null;
 
+  const { prev, next } = findNeighbours(["components", type]);
+
   return (
     <div className="mx-auto w-full max-w-6xl overflow-hidden px-4">
       {Docs}
@@ -68,6 +89,7 @@ export default async function ComponentPage({
           <ComponentExample key={index} {...example} type={type} />
         ))}
       </div>
+      <PagingNav prev={prev} next={next} className="mt-8" />
     </div>
   );
 }

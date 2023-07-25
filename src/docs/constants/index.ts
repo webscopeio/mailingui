@@ -1,6 +1,7 @@
 export { navigationLinks, socialLinks } from "./links";
 export {
   docsItems,
+  flattenedDocsItems,
   type DocItems,
   type DocItem,
   type DocItemGroup,

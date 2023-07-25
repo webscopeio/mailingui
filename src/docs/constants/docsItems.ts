@@ -47,3 +47,8 @@ export const docsItems: DocItems = [
       .sort((a, b) => a.label.localeCompare(b.label)),
   },
 ];
+
+export const flattenedDocsItems = docsItems.reduce((acc, item) => {
+  if (item.items) acc.push(...item.items);
+  return acc;
+}, [] as DocItem[]);
