@@ -17,7 +17,7 @@ const SideNavItem = ({ item }: { item: DocItem }) => {
           " bg-pink-text/20 hover:bg-pink-text/20 text-pink-text hover:text-pink-text font-semibold"
       )}
     >
-      <Link className="block w-full p-2" href={href}>
+      <Link className="block w-full px-3 py-2" href={href}>
         {label}
       </Link>
     </li>
@@ -28,7 +28,7 @@ const SideNavGroup = ({ group }: { group: DocItemGroup }) => {
   const { label, items } = group;
   return (
     <li className="mb-4 space-y-4">
-      <span className="text-lg font-bold">{label}</span>
+      <span className="px-3 text-lg font-bold">{label}</span>
       <ul>
         {items.map((item, index) => (
           <SideNavItem key={index} item={item} />
