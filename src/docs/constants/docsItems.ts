@@ -13,7 +13,7 @@ export type DocItem = {
 
 export const docsItems: DocItems = [
   {
-    label: "Documentation",
+    label: "Getting Started",
     items: [
       {
         href: "/docs/overview",
@@ -21,14 +21,14 @@ export const docsItems: DocItems = [
         description: "Learn about the MailingUI",
       },
       {
-        href: "/docs/getting-started",
-        label: "Getting Started",
-        description: "How to use MailingUI",
-      },
-      {
         href: "/docs/installation",
         label: "Installation",
         description: "How to install MailingUI",
+      },
+      {
+        href: "/docs/usage",
+        label: "Usage",
+        description: "How to use MailingUI",
       },
       {
         href: "/docs/theming",
