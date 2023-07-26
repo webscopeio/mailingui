@@ -2,7 +2,11 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { PagingNav } from "@components/PagingNav";
-import { flattenedDocsItems } from "@constants";
+import {
+  openGraphImageSize,
+  sharedOpenGraphMetadata,
+  flattenedDocsItems,
+} from "@constants";
 import { mdxDocs } from "src/docs/content";
 import { DocArticle } from "@components/MdxComponents";
 
@@ -50,19 +54,16 @@ export function generateMetadata({ params }: MetadataProps): Metadata {
     title,
     description,
     openGraph: {
+      ...sharedOpenGraphMetadata,
       title,
       description,
       url: "https://mailingui.com/docs",
       images: [
         {
+          ...openGraphImageSize,
           url: "/static/images/og/components.png",
-          width: 1200,
-          height: 630,
         },
       ],
-      siteName: "MailingUI",
-      locale: "en-US",
-      type: "website",
     },
   };
 }

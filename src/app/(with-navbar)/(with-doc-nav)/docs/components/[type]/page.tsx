@@ -6,7 +6,7 @@ import {
   openGraphImageSize,
   sharedOpenGraphMetadata,
   flattenedDocsItems,
-} from "src/docs/constants";
+} from "@constants";
 import { DocArticle } from "@components/MdxComponents";
 import { mdxDocs } from "src/docs/content/components";
 import { componentTypes } from "@examples";
@@ -16,6 +16,12 @@ type ComponentPageProps = {
     type: string;
   };
 };
+
+function findPageDocItem(slug: string[]) {
+  const resolvedHref = ["/docs", ...slug].join("/");
+  const docItem = flattenedDocsItems.find((item) => item.href === resolvedHref);
+  return docItem;
+}
 
 function findNeighbours(slug: string[]) {
   const resolvedHref = ["/docs", ...slug].join("/");
@@ -36,14 +42,18 @@ function findNeighbours(slug: string[]) {
 export function generateMetadata({
   params: { type },
 }: ComponentPageProps): Metadata {
-  const component = getComponentData(type);
+  const doc = findPageDocItem(["components", type]);
+
+  const title = doc?.label ?? "Components";
+  const description = doc?.description ?? "Explore components";
+
   return {
-    ...sharedOpenGraphMetadata,
-    title: component?.title ?? "Components",
-    description: "Explore components",
+    title,
+    description,
     openGraph: {
-      title: component?.title ?? "Components",
-      description: "Explore components",
+      ...sharedOpenGraphMetadata,
+      title,
+      description,
       url: "https://mailingui.com/components",
       images: [
         {
@@ -72,19 +82,6 @@ export default async function ComponentPage({
     </div>
   );
 }
-
-/**
- * Finds a match for the component type or calls a navigation error
- * @param type - A type of component. Same as `type` param of the page.
- * @returns an object containing the email component
- */
-const getComponentData = (type: string) => {
-  const component = componentTypes.find((c) => c.type === type);
-  if (!component) {
-    return notFound();
-  }
-  return component;
-};
 
 export const generateStaticParams = () =>
   componentTypes.map((item) => ({ type: item.type }));
