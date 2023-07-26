@@ -8,7 +8,7 @@ import { cn } from "@utils/cn";
 const SideNavItem = ({ item }: { item: DocItem }) => {
   const pathname = usePathname();
   const { href, label } = item;
-  const isActive = pathname?.includes(href);
+  const isActive = pathname === href;
   return (
     <li
       className={cn(
