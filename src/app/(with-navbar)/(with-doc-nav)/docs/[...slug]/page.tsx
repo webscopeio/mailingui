@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 import { PagingNav } from "@components/PagingNav";
 import { flattenedDocsItems } from "@constants";
@@ -71,17 +72,15 @@ export default async function ComponentPage({
 }: DocsPageProps) {
   const resolvedSlug = slug.join("/");
   const MdxDoc = mdxDocs?.[resolvedSlug];
-  const Docs = MdxDoc ? (
-    <DocArticle>
-      <MdxDoc />
-    </DocArticle>
-  ) : null;
+  if (!MdxDoc) notFound();
 
   const { prev, next } = findNeighbours(slug);
 
   return (
     <div className="mx-auto w-full max-w-6xl overflow-hidden p-4 lg:py-0">
-      {Docs}
+      <DocArticle>
+        <MdxDoc />
+      </DocArticle>
       <PagingNav prev={prev} next={next} className="mt-8" />
     </div>
   );

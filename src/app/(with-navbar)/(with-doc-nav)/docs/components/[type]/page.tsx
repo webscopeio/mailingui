@@ -67,20 +67,17 @@ export function generateMetadata({
 export default async function ComponentPage({
   params: { type },
 }: ComponentPageProps) {
-  const componentExamples = await getComponent(type);
-
   const MdxDoc = mdxDocs?.[type];
-  const Docs = MdxDoc ? (
-    <DocArticle>
-      <MdxDoc />
-    </DocArticle>
-  ) : null;
+  if (!MdxDoc) notFound();
 
+  const componentExamples = await getComponent(type);
   const { prev, next } = findNeighbours(["components", type]);
 
   return (
     <div className="mx-auto w-full max-w-6xl overflow-hidden p-4 lg:py-0">
-      {Docs}
+      <DocArticle>
+        <MdxDoc />
+      </DocArticle>
       <h2 className="pt-8 text-2xl font-semibold md:pt-16 md:text-4xl">
         {componentExamples.title}
       </h2>
