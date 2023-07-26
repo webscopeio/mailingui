@@ -1,5 +1,5 @@
 import { ComponentExample } from "@components/ComponentExample";
-import { getDemo } from "@components/InstallationDocs/utils";
+import { getDemo } from "@components/MdxComponents/utils";
 
 export const ComponentDemo = async ({ type }: { type: string }) => {
   const demo = await getDemo(type);

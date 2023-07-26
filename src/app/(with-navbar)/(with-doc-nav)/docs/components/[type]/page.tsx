@@ -16,7 +16,7 @@ import {
   sharedOpenGraphMetadata,
   flattenedDocsItems,
 } from "src/docs/constants";
-import { CONTENT_DIR, DocArticle } from "@components/InstallationDocs";
+import { CONTENT_DIR, DocArticle } from "@components/MdxComponents";
 import { mdxDocs } from "src/docs/content/components";
 import { componentTypes } from "@examples";
 

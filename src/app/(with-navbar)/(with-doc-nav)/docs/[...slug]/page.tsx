@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { PagingNav } from "@components/PagingNav";
 import { flattenedDocsItems } from "@constants";
 import { mdxDocs } from "src/docs/content";
-import { DocArticle } from "@components/InstallationDocs";
+import { DocArticle } from "@components/MdxComponents";
 
 type DocsPageProps = {
   params: {
