@@ -16,8 +16,8 @@ export const docsItems: DocItems = [
     label: "Getting Started",
     items: [
       {
-        href: "/docs/introduction",
-        label: "Introduction",
+        href: "/docs/installation",
+        label: "Installation",
         description: "Learn about the MailingUI",
       },
     ],
