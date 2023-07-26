@@ -45,7 +45,7 @@ export const Greeting = () => (
           Get started
         </CTA>
         <CTA
-          href="https://github.com/webscopeio/mailingui-web/stargazers"
+          href="https://github.com/webscopeio/mailingui/stargazers"
           target="_blank"
           rel="noopener"
           color="black"

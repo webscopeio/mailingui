@@ -40,14 +40,14 @@ export default function FeedbackPage() {
         </p>
         <div className="mt-8 w-full md:flex md:gap-4">
           <CTA
-            href={"https://github.com/webscopeio/mailingui-web/issues"}
+            href={"https://github.com/webscopeio/mailingui/issues"}
             color="white"
             className="w-full md:w-auto"
           >
             Report an issue
           </CTA>
           <CTA
-            href={"https://github.com/webscopeio/mailingui-web/discussions"}
+            href={"https://github.com/webscopeio/mailingui/discussions"}
             color="black"
             className="w-full md:w-auto"
           >
