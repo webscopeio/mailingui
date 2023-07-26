@@ -16,12 +16,6 @@ type DocsPageProps = {
   };
 };
 
-type MetadataProps = {
-  params: {
-    slug: string[];
-  };
-};
-
 function findPageDocItem(slug: string[]) {
   const resolvedHref = ["/docs", ...slug].join("/");
   const docItem = flattenedDocsItems.find((item) => item.href === resolvedHref);
@@ -44,11 +38,14 @@ function findNeighbours(slug: string[]) {
   };
 }
 
-export function generateMetadata({ params }: MetadataProps): Metadata {
+export function generateMetadata({ params }: DocsPageProps): Metadata {
   const doc = findPageDocItem(params.slug);
+  const isComponents =
+    params.slug[0] === "components" && params.slug.length === 2;
 
-  const title = doc?.label ?? "Documentation";
-  const description = doc?.description ?? "Explore docs";
+  const title = doc?.label ?? (isComponents ? "Components" : "Documentation");
+  const description =
+    doc?.description ?? (isComponents ? "Explore components" : "Explore docs");
 
   return {
     title,
@@ -88,6 +85,6 @@ export default async function ComponentPage({
 }
 
 export const generateStaticParams = () =>
-  Object.keys(mdxDocs).map((item) => ({
-    slug: item.split("/"),
+  flattenedDocsItems.map((item) => ({
+    slug: item.href.split("/").slice(1), // remove the first empty string from href
   }));
