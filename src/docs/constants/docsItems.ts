@@ -16,35 +16,27 @@ export const docsItems: DocItems = [
     label: "Getting Started",
     items: [
       {
-        href: "/docs/overview",
-        label: "Overview",
+        href: "/docs/introduction",
+        label: "Introduction",
         description: "Learn about the MailingUI",
-      },
-      {
-        href: "/docs/installation",
-        label: "Installation",
-        description: "How to install MailingUI",
-      },
-      {
-        href: "/docs/usage",
-        label: "Usage",
-        description: "How to use MailingUI",
-      },
-      {
-        href: "/docs/theming",
-        label: "Theming",
-        description: "Theming MailingUI",
       },
     ],
   },
   {
     label: "Components",
-    items: componentTypes
-      .map((componentType) => ({
-        href: `/docs/components/${componentType.type}`,
-        label: componentType.title,
-      }))
-      .sort((a, b) => a.label.localeCompare(b.label)),
+    items: [
+      {
+        href: "/docs/components",
+        label: "Overview",
+        description: "Explore MailingUI components",
+      },
+      ...componentTypes
+        .map((componentType) => ({
+          href: `/docs/components/${componentType.type}`,
+          label: componentType.title,
+        }))
+        .sort((a, b) => a.label.localeCompare(b.label)),
+    ],
   },
 ];
 
