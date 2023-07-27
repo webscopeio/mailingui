@@ -1,6 +1,13 @@
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@components/Tabs/Tabs";
+
 # Lists
 
-All lists components
+Organize information with simple lists
 
 import {
   ComponentDemo,
@@ -11,8 +18,28 @@ import {
 
 ## Installation
 
-You can reuse components from this library by copying them to your project.
-It's recommended to copy source code into folder aliased with **'@mailingui/components'**.
-For **BulletList** support you have to copy that one too.
+If you haven't initialized MailingUI in your project, please refer to [Installation]("/docs/installation) docs first.
 
-<ComponentSourceTabs type="lists" />
+  <Tabs defaultValue="automatic">
+    <div className="flex items-center justify-start w-full mb-8">
+      <TabsList className="mt-8 rounded-2xl">
+        <TabsTrigger value="automatic" className="px-7 py-2 rounded-[10px]">Automatic Install</TabsTrigger>
+        <TabsTrigger value="manual" className="px-7 py-2 rounded-[10px]">Manual Install</TabsTrigger>
+      </TabsList>
+    </div>
+
+    <TabsContent value="automatic" className="md:space-y-12 space-y-8 rounded-2xl bg-dark-950">
+      ```shell
+      npx @mailingui/cli add [options] list
+
+      # Options
+      -o, --overwrite  automatically overwrite existing components (default: false)
+      -a, --all        download all available components (default: false)
+      -h, --help       display help for command
+      ```
+    </TabsContent>
+    <TabsContent value="manual" className="md:space-y-12 rounded-2xl bg-dark-950">
+    <ComponentSourceTabs type="lists" />
+    </TabsContent>
+
+  </Tabs>
