@@ -3,6 +3,8 @@ import { join } from "path";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { render } from "@react-email/render";
+
+import { PagingNav } from "@components/PagingNav";
 import {
   ComponentExample,
   ComponentExampleProps,
@@ -12,15 +14,33 @@ import { getHighlighter, highlight } from "@lib/shiki";
 import {
   openGraphImageSize,
   sharedOpenGraphMetadata,
+  flattenedDocsItems,
 } from "src/docs/constants";
-import { CONTENT_DIR, DocArticle } from "@components/InstallationDocs";
-import { componentTypes, mdxDocs } from "@examples";
+import { CONTENT_DIR, DocArticle } from "@components/MdxComponents";
+import { mdxDocs } from "src/docs/content/components";
+import { componentTypes } from "@examples";
 
 type ComponentPageProps = {
   params: {
     type: string;
   };
 };
+
+function findNeighbours(slug: string[]) {
+  const resolvedHref = ["/docs", ...slug].join("/");
+  const currentIndex = flattenedDocsItems.findIndex(
+    (item) => item.href === resolvedHref
+  );
+  const prev = currentIndex !== 0 ? flattenedDocsItems[currentIndex - 1] : null;
+  const next =
+    currentIndex !== flattenedDocsItems.length - 1
+      ? flattenedDocsItems[currentIndex + 1]
+      : null;
+  return {
+    prev,
+    next,
+  };
+}
 
 export function generateMetadata({
   params: { type },
@@ -47,18 +67,17 @@ export function generateMetadata({
 export default async function ComponentPage({
   params: { type },
 }: ComponentPageProps) {
-  const componentExamples = await getComponent(type);
-
   const MdxDoc = mdxDocs?.[type];
-  const Docs = MdxDoc ? (
-    <DocArticle>
-      <MdxDoc />
-    </DocArticle>
-  ) : null;
+  if (!MdxDoc) notFound();
+
+  const componentExamples = await getComponent(type);
+  const { prev, next } = findNeighbours(["components", type]);
 
   return (
-    <div className="mx-auto w-full max-w-6xl overflow-hidden px-4">
-      {Docs}
+    <div className="mx-auto w-full max-w-6xl overflow-hidden p-4 lg:py-0">
+      <DocArticle>
+        <MdxDoc />
+      </DocArticle>
       <h2 className="pt-8 text-2xl font-semibold md:pt-16 md:text-4xl">
         {componentExamples.title}
       </h2>
@@ -67,6 +86,7 @@ export default async function ComponentPage({
           <ComponentExample key={index} {...example} type={type} />
         ))}
       </div>
+      <PagingNav prev={prev} next={next} className="mt-8" />
     </div>
   );
 }

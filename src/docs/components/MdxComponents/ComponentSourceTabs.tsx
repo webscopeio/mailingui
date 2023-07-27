@@ -1,5 +1,5 @@
 import { TabbedCode, TabbedCodeItem } from "@components/Code";
-import { getComponentSource } from "@components/InstallationDocs/utils";
+import { getComponentSource } from "@components/MdxComponents/utils";
 
 export type ComponentSourceTabsProps = {
   type: string;

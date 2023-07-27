@@ -13,9 +13,9 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: "/docs/components",
-        destination: "/docs#components",
-        permanent: true
+        source: "/docs",
+        destination: "/docs/installation",
+        permanent: false
       }
     ];
   },

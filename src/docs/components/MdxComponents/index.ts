@@ -1,9 +1,10 @@
 import { ComponentSourceTabsProps } from "./ComponentSourceTabs";
-import { ProsePre } from "./ProsePre";
 
-export { ProsePre, type ComponentSourceTabsProps };
+export { type ComponentSourceTabsProps };
+export { MdxH1, MdxH2, MdxH3, MdxP, MdxA, MdxCode } from "./DocElements";
 export { DocArticle } from "./DocArticle";
 export { DocCollapsible } from "./DocCollapsible";
+export { DocPre } from "./DocPre";
 export { ComponentDemo } from "./ComponentDemo";
 export { ComponentSourceTabs } from "./ComponentSourceTabs";
 export {

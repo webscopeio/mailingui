@@ -1,8 +1,5 @@
 import { type StaticImageData } from "next/image";
 
-import { MDXProps } from "mdx/types";
-import dynamic from "next/dynamic";
-import { ComponentType } from "react";
 import SocialIcons from "public/static/images/components-preview/social_icons.png";
 import Paragraphs from "public/static/images/components-preview/paragraphs.png";
 import Lists from "public/static/images/components-preview/listing.png";
@@ -19,23 +16,6 @@ interface ComponentMetadataType {
   image: StaticImageData;
   dependencies?: string[];
 }
-
-export const mdxDocs: Record<string, ComponentType<MDXProps>> = {
-  badges: dynamic(() => import(`src/docs/examples/badges/installation.mdx`)),
-  lists: dynamic(() => import(`src/docs/examples/lists/installation.mdx`)),
-  buttons: dynamic(() => import(`src/docs/examples/buttons/installation.mdx`)),
-  dividers: dynamic(
-    () => import(`src/docs/examples/dividers/installation.mdx`)
-  ),
-  emojis: dynamic(() => import(`src/docs/examples/emojis/installation.mdx`)),
-  "hero-sections": dynamic(
-    () => import(`src/docs/examples/hero-sections/installation.mdx`)
-  ),
-  "social-icons": dynamic(
-    () => import(`src/docs/examples/social-icons/installation.mdx`)
-  ),
-  texts: dynamic(() => import(`src/docs/examples/texts/installation.mdx`)),
-};
 
 export const componentTypes: ComponentMetadataType[] = [
   {
