@@ -119,8 +119,5 @@ export const getComponentExamples = async (componentType: string) => {
     })
   );
 
-  return {
-    title: component.title,
-    examples,
-  };
+  return examples;
 };
