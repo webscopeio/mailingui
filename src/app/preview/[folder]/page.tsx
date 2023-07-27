@@ -20,10 +20,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function Preview() {
+export default async function PreviewFolder({
+  params,
+}: {
+  params: { folder: string };
+}) {
   const fileTree = getPreviewTree();
   return (
-    <PreviewShell fileTree={fileTree}>
+    <PreviewShell fileTree={fileTree} folderId={params.folder}>
       <PreviewNavigation />
       <div className="flex h-full w-full flex-col items-center justify-center gap-2 bg-dark-300">
         <p className="p-4 text-center">
