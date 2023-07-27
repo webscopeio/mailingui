@@ -44,6 +44,8 @@ const getPreviewData = async (folder: string, file: string) => {
 };
 
 export function generateStaticParams() {
-  const files = [{ id: "general" }];
-  return files.map(({ id }) => ({ id }));
+  const fileTree = getPreviewTree();
+  return fileTree.flatMap(({ files, id: folderId }) =>
+    files.map((file) => ({ file: file.id, folder: folderId }))
+  );
 }

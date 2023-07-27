@@ -38,3 +38,8 @@ export default async function PreviewFolder({
     </PreviewShell>
   );
 }
+
+export function generateStaticParams() {
+  const fileTree = getPreviewTree();
+  return fileTree.map(({ id: folderId }) => ({ folder: folderId }));
+}
