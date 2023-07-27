@@ -37,7 +37,7 @@ const loadFolder = (folderName: string): PreviewFolder => {
     id: folderName,
     name: folderName,
     files: files
-      .filter((file) => file.isFile())
+      .filter((file) => file.isFile() && file.name.endsWith(".tsx"))
       .map((file) => ({
         id: file.name.replace(/.tsx/, ""),
         name: file.name,
