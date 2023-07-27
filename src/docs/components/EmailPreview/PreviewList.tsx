@@ -19,6 +19,7 @@ const PreviewListFolder = ({
           "rounded-xl px-4 py-3.5 block w-full font-medium text-sm",
           activeFolderId === folder.id && "bg-dark-700"
         )}
+        prefetch={false}
       >
         /{folder.name}
       </Link>
@@ -55,6 +56,7 @@ const PreviewListFile = ({
           "rounded-xl px-4 py-3.5 block w-full font-medium text-sm",
           activeFileId === file.id && "bg-dark-700"
         )}
+        prefetch={false}
       >
         {file.name}
       </Link>
