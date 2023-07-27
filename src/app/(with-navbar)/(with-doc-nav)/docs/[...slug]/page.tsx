@@ -86,5 +86,5 @@ export default async function ComponentPage({
 
 export const generateStaticParams = () =>
   flattenedDocsItems.map((item) => ({
-    slug: item.href.split("/").slice(1), // remove the first empty string from href
+    slug: item.href.split("/").slice(2), // remove the first empty string and docs from href (only rest of href relevant for slug)
   }));
