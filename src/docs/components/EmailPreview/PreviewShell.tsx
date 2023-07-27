@@ -11,25 +11,29 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@components/Popover";
+import type { PreviewTree } from "@utils/preview";
 
 export const PreviewShell = ({
   children,
-  files,
-  paramsId,
+  fileTree,
+  folderId,
+  fileId,
 }: {
   children: React.ReactNode;
-  files: {
-    id: string;
-    fileName: string;
-  }[];
-  paramsId?: string;
+  fileTree: PreviewTree;
+  folderId?: string;
+  fileId?: string;
 }) => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   return (
     <section className="flex h-screen overflow-hidden">
       <aside className="hidden min-w-[300px] overflow-y-scroll p-8 md:block">
-        <PreviewList files={files} activeFileId={paramsId}></PreviewList>
+        <PreviewList
+          fileTree={fileTree}
+          activeFileId={fileId}
+          activeFolderId={folderId}
+        ></PreviewList>
       </aside>
       <div className="flex h-full flex-1 flex-col">
         <Popover open={isMenuOpen} onOpenChange={setIsMenuOpen}>
@@ -55,7 +59,11 @@ export const PreviewShell = ({
               </PopoverClose>
             </div>
             <PopoverClose asChild>
-              <PreviewList files={files} activeFileId={paramsId} />
+              <PreviewList
+                fileTree={fileTree}
+                activeFileId={fileId}
+                activeFolderId={folderId}
+              />
             </PopoverClose>
           </PopoverContent>
         </Popover>
