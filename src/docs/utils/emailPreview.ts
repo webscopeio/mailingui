@@ -51,10 +51,18 @@ const loadFolderFiles = (folderName: string): PreviewFolder => {
 
 export const getEmailContent = (folder: string, file: string) => {
   const filePath = join(process.cwd(), CONTENT_DIR, folder, file + ".tsx");
-  return format(readFileSync(filePath, "utf8"), {
-    parser: "typescript",
-  });
+  try {
+    const content = format(readFileSync(filePath, "utf8"), {
+      parser: "typescript",
+    });
+    return content;
+  } catch (error) {
+    return null;
+  }
 };
+
+export const hasFolderInFileTree = (tree: PreviewTree, folder: string) =>
+  tree.some((item) => item.id === folder);
 
 const firstLetterToUpperCase = (str: string) =>
   str.charAt(0).toUpperCase() + str.slice(1);

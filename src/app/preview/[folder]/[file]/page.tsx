@@ -1,4 +1,5 @@
 import { render } from "@react-email/render";
+import { notFound } from "next/navigation";
 import { PreviewPane, PreviewShell } from "@components/EmailPreview";
 import { getHighlighter, highlight } from "@lib/shiki";
 import { getPreviewFileTree, getEmailContent } from "@utils/emailPreview";
@@ -10,6 +11,8 @@ export default async function PreviewFile({
 }) {
   const fileTree = getPreviewFileTree();
   const data = await getPreviewData(params.folder, params.file);
+  if (!data) notFound();
+
   const id = `${params.folder}/${params.file}`;
 
   return (
@@ -24,8 +27,9 @@ export default async function PreviewFile({
 }
 
 const getPreviewData = async (folder: string, file: string) => {
-  const highlighter = await getHighlighter();
   const emailContent = getEmailContent(folder, file);
+  if (!emailContent) return;
+  const highlighter = await getHighlighter();
   const Component = (await import(`src/emails/${folder}/${file + ".tsx"}`))
     .default;
 

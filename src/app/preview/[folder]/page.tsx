@@ -1,7 +1,8 @@
 import { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { openGraphImageSize, sharedOpenGraphMetadata } from "@constants";
 import { PreviewNavigation, PreviewShell } from "@components/EmailPreview";
-import { getPreviewFileTree } from "@utils/emailPreview";
+import { getPreviewFileTree, hasFolderInFileTree } from "@utils/emailPreview";
 
 export const metadata: Metadata = {
   title: "Preview",
@@ -26,6 +27,9 @@ export default async function PreviewFolder({
   params: { folder: string };
 }) {
   const fileTree = getPreviewFileTree();
+  const isFound = hasFolderInFileTree(fileTree, params.folder);
+  if (!isFound) notFound();
+
   return (
     <PreviewShell fileTree={fileTree} folderId={params.folder}>
       <PreviewNavigation />
