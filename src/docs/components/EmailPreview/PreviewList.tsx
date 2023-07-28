@@ -86,12 +86,12 @@ export const PreviewList = ({
 }) => {
   return (
     <>
-      <div className="mb-4">
-        <h1 className="text-base font-bold uppercase text-dark-300">
+      <Link href={`/preview`} prefetch={false}>
+        <h1 className="mb-4 text-base font-medium uppercase hover:opacity-70">
           Preview Mode
         </h1>
-        <span className="text-xl font-bold">Categories</span>
-      </div>
+      </Link>
+      <span className="text-lg font-bold text-neutral-500">Categories</span>
 
       <ul className="">
         {fileTree.map((folder) => (
