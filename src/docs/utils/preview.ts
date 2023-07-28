@@ -7,12 +7,14 @@ export type PreviewTree = PreviewFolder[];
 export type PreviewFolder = {
   id: string;
   name: string;
+  label?: string;
   files: PreviewFile[];
 };
 
 export type PreviewFile = {
   id: string;
   name: string;
+  label?: string;
 };
 
 const CONTENT_DIR = "src/emails";
@@ -36,11 +38,13 @@ const loadFolder = (folderName: string): PreviewFolder => {
   return {
     id: folderName,
     name: folderName,
+    label: createLabel(folderName),
     files: files
       .filter((file) => file.isFile() && file.name.endsWith(".tsx"))
       .map((file) => ({
         id: file.name.replace(/.tsx/, ""),
         name: file.name,
+        label: createLabel(file.name),
       })),
   };
 };
@@ -51,3 +55,11 @@ export const getPreviewEmail = (folder: string, file: string) => {
     parser: "typescript",
   });
 };
+
+const firstLetterToUpperCase = (str: string) =>
+  str.charAt(0).toUpperCase() + str.slice(1);
+const hyphensToSpaces = (str: string) => str.replace(/-/g, " ");
+
+function createLabel(fileName: string) {
+  return firstLetterToUpperCase(hyphensToSpaces(fileName.replace(/.tsx/, "")));
+}

@@ -24,11 +24,13 @@ export const PreviewShell = ({
   folderId?: string;
   fileId?: string;
 }) => {
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const [isMenuOpen, setIsMenuOpen] = React.useState(
+    folderId === undefined || fileId === undefined
+  );
 
   return (
     <section className="flex h-screen overflow-hidden">
-      <aside className="hidden min-w-[300px] overflow-y-scroll p-8 md:block">
+      <aside className="hidden w-80 max-w-[75%] overflow-y-scroll p-8 md:block">
         <PreviewList
           fileTree={fileTree}
           activeFileId={fileId}
@@ -49,7 +51,7 @@ export const PreviewShell = ({
             </CTA>
           </PopoverTrigger>
           <PopoverContent
-            className="absolute left-0 h-screen w-80 overflow-y-scroll rounded-none p-4 shadow-lg shadow-slate-900"
+            className="absolute left-0 h-screen w-80 overflow-y-scroll rounded-none p-4 shadow-lg shadow-slate-900 md:hidden"
             color="black"
             align="start"
           >

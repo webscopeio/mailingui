@@ -17,22 +17,23 @@ const PreviewListFolder = ({
   return (
     <li className={cn(isActive && "mb-4")}>
       <Link
-        href={`preview/${folder.name}`}
+        href={`/preview/${folder.name}`}
         className={cn(
           "tracking-wide flex px-3 py-2 w-full font-medium text-lg text-neutral-500 hover:text-neutral-200",
           isActive && "font-bold text-pink-text hover:text-pink-text"
         )}
         prefetch={false}
       >
-        <ChevronRightIcon className="h-6 w-6" />/{folder.name}
+        <ChevronRightIcon className="h-6 w-6" />
+        {folder.label ?? folder.name}
       </Link>
       {isActive && (
         <ul>
-          {folder.files.map(({ id: fileId, name: fileName }) => (
+          {folder.files.map((file) => (
             <PreviewListFile
-              key={fileId}
+              key={file.id}
               folder={folder}
-              file={{ id: fileId, name: fileName }}
+              file={file}
               activeFileId={activeFileId}
             />
           ))}
@@ -56,7 +57,7 @@ const PreviewListFile = ({
   return (
     <li>
       <Link
-        href={`preview/${folder.name}/${file.id}`}
+        href={`/preview/${folder.name}/${file.id}`}
         className={cn(
           "tracking-wide block w-full relative rounded-lg px-3 py-2 text-neutral-500 hover:text-neutral-200 hover:bg-neutral-200/20 hover:cursor-pointer",
           isActive &&
@@ -64,7 +65,7 @@ const PreviewListFile = ({
         )}
         prefetch={false}
       >
-        {file.name}
+        {file.label ?? file.name}
       </Link>
     </li>
   );
@@ -80,7 +81,7 @@ export const PreviewList = ({
   activeFolderId?: string;
 }) => {
   return (
-    <aside className="max-w-[300px]">
+    <>
       <div className="mb-4">
         <h1 className="text-base font-bold uppercase text-dark-300">
           Preview Mode
@@ -98,6 +99,6 @@ export const PreviewList = ({
           />
         ))}
       </ul>
-    </aside>
+    </>
   );
 };
