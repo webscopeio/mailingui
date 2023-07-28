@@ -24,9 +24,14 @@ export const PreviewShell = ({
   folderId?: string;
   fileId?: string;
 }) => {
-  const [isMenuOpen, setIsMenuOpen] = React.useState(
-    folderId === undefined || fileId === undefined
-  );
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+
+  // (useEffect prevents hydration error)
+  React.useEffect(() => {
+    if (!folderId || !fileId) {
+      setIsMenuOpen(true);
+    }
+  }, [folderId, fileId]);
 
   return (
     <section className="flex h-screen overflow-hidden">
