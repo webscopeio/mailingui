@@ -61,7 +61,7 @@ export const PreviewShell = ({
             align="start"
           >
             <div className="absolute right-4">
-              <PopoverClose asChild>
+              <PopoverClose>
                 <CrossIcon />
               </PopoverClose>
             </div>
