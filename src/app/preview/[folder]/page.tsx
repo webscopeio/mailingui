@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { openGraphImageSize, sharedOpenGraphMetadata } from "@constants";
 import { PreviewNavigation, PreviewShell } from "@components/EmailPreview";
-import { getPreviewTree } from "@utils/preview";
+import { getPreviewFileTree } from "@utils/emailPreview";
 
 export const metadata: Metadata = {
   title: "Preview",
@@ -25,7 +25,7 @@ export default async function PreviewFolder({
 }: {
   params: { folder: string };
 }) {
-  const fileTree = getPreviewTree();
+  const fileTree = getPreviewFileTree();
   return (
     <PreviewShell fileTree={fileTree} folderId={params.folder}>
       <PreviewNavigation />
@@ -39,6 +39,6 @@ export default async function PreviewFolder({
 }
 
 export function generateStaticParams() {
-  const fileTree = getPreviewTree();
+  const fileTree = getPreviewFileTree();
   return fileTree.map(({ id: folderId }) => ({ folder: folderId }));
 }

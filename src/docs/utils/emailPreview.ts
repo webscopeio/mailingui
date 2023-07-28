@@ -19,9 +19,9 @@ export type PreviewFile = {
 
 const CONTENT_DIR = "src/emails";
 
-export const getPreviewTree = (): PreviewTree => {
+export const getPreviewFileTree = (): PreviewTree => {
   const folders = getFolderList();
-  return folders.map((folder) => loadFolder(folder));
+  return folders.map((folder) => loadFolderFiles(folder));
 };
 
 const getFolderList = (): string[] => {
@@ -32,7 +32,7 @@ const getFolderList = (): string[] => {
     .map((folder) => folder.name);
 };
 
-const loadFolder = (folderName: string): PreviewFolder => {
+const loadFolderFiles = (folderName: string): PreviewFolder => {
   const folderPath = join(process.cwd(), CONTENT_DIR, folderName);
   const files = readdirSync(folderPath, { withFileTypes: true });
   return {
@@ -49,7 +49,7 @@ const loadFolder = (folderName: string): PreviewFolder => {
   };
 };
 
-export const getPreviewEmail = (folder: string, file: string) => {
+export const getEmailContent = (folder: string, file: string) => {
   const filePath = join(process.cwd(), CONTENT_DIR, folder, file + ".tsx");
   return format(readFileSync(filePath, "utf8"), {
     parser: "typescript",

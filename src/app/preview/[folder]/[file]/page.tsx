@@ -1,14 +1,14 @@
 import { render } from "@react-email/render";
 import { PreviewPane, PreviewShell } from "@components/EmailPreview";
 import { getHighlighter, highlight } from "@lib/shiki";
-import { getPreviewTree, getPreviewEmail } from "@utils/preview";
+import { getPreviewFileTree, getEmailContent } from "@utils/emailPreview";
 
 export default async function PreviewFile({
   params,
 }: {
   params: { file: string; folder: string };
 }) {
-  const fileTree = getPreviewTree();
+  const fileTree = getPreviewFileTree();
   const data = await getPreviewData(params.folder, params.file);
   const id = `${params.folder}/${params.file}`;
 
@@ -25,7 +25,7 @@ export default async function PreviewFile({
 
 const getPreviewData = async (folder: string, file: string) => {
   const highlighter = await getHighlighter();
-  const emailContent = getPreviewEmail(folder, file);
+  const emailContent = getEmailContent(folder, file);
   const Component = (await import(`src/emails/${folder}/${file + ".tsx"}`))
     .default;
 
@@ -44,7 +44,7 @@ const getPreviewData = async (folder: string, file: string) => {
 };
 
 export function generateStaticParams() {
-  const fileTree = getPreviewTree();
+  const fileTree = getPreviewFileTree();
   return fileTree.flatMap(({ files, id: folderId }) =>
     files.map((file) => ({ file: file.id, folder: folderId }))
   );

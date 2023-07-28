@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { openGraphImageSize, sharedOpenGraphMetadata } from "@constants";
 import { PreviewNavigation, PreviewShell } from "@components/EmailPreview";
-import { getPreviewTree } from "@utils/preview";
+import { getPreviewFileTree } from "@utils/emailPreview";
 
 export const metadata: Metadata = {
   title: "Preview",
@@ -20,8 +20,8 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function Preview() {
-  const fileTree = getPreviewTree();
+export default async function PreviewIndex() {
+  const fileTree = getPreviewFileTree();
   return (
     <PreviewShell fileTree={fileTree}>
       <PreviewNavigation />

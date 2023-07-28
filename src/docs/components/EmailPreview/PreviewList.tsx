@@ -1,6 +1,10 @@
 import Link from "next/link";
 import { ChevronRightIcon } from "@components/Icons";
-import type { PreviewTree, PreviewFolder, PreviewFile } from "@utils/preview";
+import type {
+  PreviewTree,
+  PreviewFolder,
+  PreviewFile,
+} from "@utils/emailPreview";
 import { cn } from "@utils/cn";
 
 const PreviewListFolder = ({

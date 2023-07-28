@@ -11,7 +11,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@components/Popover";
-import type { PreviewTree } from "@utils/preview";
+import type { PreviewTree } from "@utils/emailPreview";
 
 export const PreviewShell = ({
   children,
