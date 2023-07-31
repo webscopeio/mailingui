@@ -34,6 +34,7 @@ export const docsItems: DocItems = [
         .map((componentType) => ({
           href: `/docs/components/${componentType.type}`,
           label: componentType.title,
+          description: componentType.subtitle,
         }))
         .sort((a, b) => a.label.localeCompare(b.label)),
     ],

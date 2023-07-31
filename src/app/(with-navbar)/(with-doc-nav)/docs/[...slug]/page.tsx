@@ -2,17 +2,15 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import { PagingNav } from "@components/PagingNav";
-import { flattenedDocsItems } from "@constants";
+import {
+  openGraphImageSize,
+  sharedOpenGraphMetadata,
+  flattenedDocsItems,
+} from "@constants";
 import { mdxDocs } from "src/docs/content";
 import { DocArticle } from "@components/MdxComponents";
 
 type DocsPageProps = {
-  params: {
-    slug: string[];
-  };
-};
-
-type MetadataProps = {
   params: {
     slug: string[];
   };
@@ -40,29 +38,29 @@ function findNeighbours(slug: string[]) {
   };
 }
 
-export function generateMetadata({ params }: MetadataProps): Metadata {
+export function generateMetadata({ params }: DocsPageProps): Metadata {
   const doc = findPageDocItem(params.slug);
+  const isComponents =
+    params.slug[0] === "components" && params.slug.length === 2;
 
-  const title = doc?.label ?? "Documentation";
-  const description = doc?.description ?? "Explore docs";
+  const title = doc?.label ?? (isComponents ? "Components" : "Documentation");
+  const description =
+    doc?.description ?? (isComponents ? "Explore components" : "Explore docs");
 
   return {
     title,
     description,
     openGraph: {
+      ...sharedOpenGraphMetadata,
       title,
       description,
       url: "https://mailingui.com/docs",
       images: [
         {
+          ...openGraphImageSize,
           url: "/static/images/og/components.png",
-          width: 1200,
-          height: 630,
         },
       ],
-      siteName: "MailingUI",
-      locale: "en-US",
-      type: "website",
     },
   };
 }
@@ -87,6 +85,6 @@ export default async function ComponentPage({
 }
 
 export const generateStaticParams = () =>
-  Object.keys(mdxDocs).map((item) => ({
-    slug: item.split("/"),
+  flattenedDocsItems.map((item) => ({
+    slug: item.href.split("/").slice(2), // remove the first empty string and docs from href (only rest of href relevant for slug)
   }));
