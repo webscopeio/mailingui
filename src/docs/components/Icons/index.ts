@@ -6,6 +6,7 @@ export { CrossIcon } from "./CrossIcon";
 export { DesktopIcon } from "./DesktopIcon";
 export { EyeIcon } from "./EyeIcon";
 export { GitHubIcon } from "./GitHubIcon";
+export { ChevronDownIcon } from "./ChevronDownIcon";
 export { ChevronLeftIcon } from "./ChevronLeftIcon";
 export { ChevronRightIcon } from "./ChevronRightIcon";
 export { HtmlIcon } from "./HtmlIcon";

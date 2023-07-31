@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ChevronRightIcon } from "@components/Icons";
+import { ChevronRightIcon, ChevronDownIcon } from "@components/Icons";
 import type {
   PreviewTree,
   PreviewFolder,
@@ -23,16 +23,20 @@ const PreviewListFolder = ({
       <Link
         href={`/preview/${folder.name}`}
         className={cn(
-          "tracking-wide flex px-3 py-2 w-full font-medium text-lg text-neutral-500 hover:text-neutral-200",
+          "gap-2 tracking-wide flex py-2 items-center w-full font-medium text-lg text-neutral-500 hover:text-neutral-200",
           isActive && "font-bold text-pink-text hover:text-pink-text"
         )}
         prefetch={false}
       >
-        <ChevronRightIcon className="h-6 w-6" />
-        {folder.label ?? folder.name}
+        {isActive ? (
+          <ChevronDownIcon className="h-6 w-6" />
+        ) : (
+          <ChevronRightIcon className="h-6 w-6" />
+        )}
+        <span>{folder.label ?? folder.name}</span>
       </Link>
       {isActive && (
-        <ul>
+        <ul className="ml-2.5 border-l border-neutral-700 pl-2.5">
           {folder.files.map((file) => (
             <PreviewListFile
               key={file.id}
