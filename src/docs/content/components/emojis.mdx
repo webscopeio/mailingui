@@ -1,3 +1,10 @@
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@components/Tabs/Tabs";
+
 # Emojis
 
 Add personality and emotion to your messages
@@ -11,7 +18,30 @@ import {
 
 ## Installation
 
-You can use components from this library by copying them to your project.
-It's recommended to copy source code into folder aliased with **'@mailingui/components'**
+If you haven't initialized MailingUI in your project, please refer to [Installation](/docs/installation) docs first.
 
-<ComponentSourceTabs type="emojis" />
+Choose an a) automatic install by running our `@mailingui/cli` following the commands/options provided or b) install manually by copying and pasting directly into your `src/mailingui/components` directory.
+
+  <Tabs defaultValue="automatic">
+    <div className="flex items-center justify-start w-full mb-8">
+      <TabsList className="mt-8 rounded-2xl">
+        <TabsTrigger value="automatic" className="px-7 py-2 rounded-[10px]">Automatic Install</TabsTrigger>
+        <TabsTrigger value="manual" className="px-7 py-2 rounded-[10px]">Manual Install</TabsTrigger>
+      </TabsList>
+    </div>
+
+    <TabsContent value="automatic">
+      ```shell
+      npx @mailingui/cli add [options] emoji
+
+      # Options
+      -o, --overwrite  automatically overwrite existing components (default: false)
+      -a, --all        download all available components (default: false)
+      -h, --help       display help for command
+      ```
+    </TabsContent>
+    <TabsContent value="manual">
+    <ComponentSourceTabs type="emojis" />
+    </TabsContent>
+
+  </Tabs>
