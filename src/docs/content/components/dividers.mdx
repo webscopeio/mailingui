@@ -20,6 +20,8 @@ import {
 
 If you haven't initialized MailingUI in your project, please refer to [Installation](/docs/installation) docs first.
 
+Choose an a) automatic Install by running our `@mailingui/cli` following the commands/options provided or b) install manually by copying and pasting directly into your `src/mailingui/components` directory.
+
   <Tabs defaultValue="automatic">
     <div className="flex items-center justify-start w-full mb-8">
       <TabsList className="mt-8 rounded-2xl">
@@ -28,7 +30,7 @@ If you haven't initialized MailingUI in your project, please refer to [Installat
       </TabsList>
     </div>
 
-    <TabsContent value="automatic" className="md:space-y-12 space-y-8 rounded-2xl bg-dark-950">
+    <TabsContent value="automatic">
       ```shell
       npx @mailingui/cli add [options] divider
 
@@ -38,7 +40,7 @@ If you haven't initialized MailingUI in your project, please refer to [Installat
       -h, --help       display help for command
       ```
     </TabsContent>
-    <TabsContent value="manual" className="md:space-y-12 rounded-2xl bg-dark-950">
+    <TabsContent value="manual">
     <ComponentSourceTabs type="dividers" />
     </TabsContent>
 
