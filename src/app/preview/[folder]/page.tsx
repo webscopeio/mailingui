@@ -1,7 +1,8 @@
 import { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { openGraphImageSize, sharedOpenGraphMetadata } from "@constants";
 import { PreviewNavigation, PreviewShell } from "@components/EmailPreview";
-import { getPreviewFileTree } from "@utils/emailPreview";
+import { getPreviewFileTree, hasFolderInFileTree } from "@utils/emailPreview";
 
 export const metadata: Metadata = {
   title: "Preview",
@@ -20,16 +21,28 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function PreviewIndex() {
+export default async function PreviewFolder({
+  params,
+}: {
+  params: { folder: string };
+}) {
   const fileTree = getPreviewFileTree();
+  const isFound = hasFolderInFileTree(fileTree, params.folder);
+  if (!isFound) notFound();
+
   return (
-    <PreviewShell fileTree={fileTree}>
+    <PreviewShell fileTree={fileTree} folderId={params.folder}>
       <PreviewNavigation />
       <div className="flex h-full w-full flex-col items-center justify-center gap-2 bg-dark-300">
         <p className="p-4 text-center">
-          Select email template <b>category</b> and get started
+          Select <b>email template</b> from category and get started
         </p>
       </div>
     </PreviewShell>
   );
+}
+
+export function generateStaticParams() {
+  const fileTree = getPreviewFileTree();
+  return fileTree.map(({ id: folderId }) => ({ folder: folderId }));
 }

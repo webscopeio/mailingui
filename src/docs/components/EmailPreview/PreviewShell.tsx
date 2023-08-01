@@ -11,25 +11,36 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@components/Popover";
+import type { PreviewTree } from "@utils/emailPreview";
 
 export const PreviewShell = ({
   children,
-  files,
-  paramsId,
+  fileTree,
+  folderId,
+  fileId,
 }: {
   children: React.ReactNode;
-  files: {
-    id: string;
-    fileName: string;
-  }[];
-  paramsId?: string;
+  fileTree: PreviewTree;
+  folderId?: string;
+  fileId?: string;
 }) => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
+  // (useEffect prevents hydration error)
+  React.useEffect(() => {
+    if (!folderId || !fileId) {
+      setIsMenuOpen(true);
+    }
+  }, [folderId, fileId]);
+
   return (
     <section className="flex h-screen overflow-hidden">
-      <aside className="hidden min-w-[300px] overflow-y-scroll p-8 md:block">
-        <PreviewList files={files} activeFileId={paramsId}></PreviewList>
+      <aside className="hidden w-80 max-w-[75%] overflow-y-scroll p-8 md:block">
+        <PreviewList
+          fileTree={fileTree}
+          activeFileId={fileId}
+          activeFolderId={folderId}
+        ></PreviewList>
       </aside>
       <div className="flex h-full flex-1 flex-col">
         <Popover open={isMenuOpen} onOpenChange={setIsMenuOpen}>
@@ -45,17 +56,21 @@ export const PreviewShell = ({
             </CTA>
           </PopoverTrigger>
           <PopoverContent
-            className="absolute left-0 h-screen w-80 overflow-y-scroll rounded-none p-4 shadow-lg shadow-slate-900"
+            className="absolute left-0 h-screen w-80 overflow-y-scroll rounded-none p-4 shadow-lg shadow-slate-900 md:hidden"
             color="black"
             align="start"
           >
             <div className="absolute right-4">
-              <PopoverClose asChild>
+              <PopoverClose>
                 <CrossIcon />
               </PopoverClose>
             </div>
             <PopoverClose asChild>
-              <PreviewList files={files} activeFileId={paramsId} />
+              <PreviewList
+                fileTree={fileTree}
+                activeFileId={fileId}
+                activeFolderId={folderId}
+              />
             </PopoverClose>
           </PopoverContent>
         </Popover>
