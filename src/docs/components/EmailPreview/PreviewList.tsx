@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { ChevronRightIcon, ChevronDownIcon } from "@components/Icons";
 import type {
   PreviewTree,
   PreviewFolder,
@@ -19,24 +18,20 @@ const PreviewListFolder = ({
   const isActive = activeFolderId === folder.id;
 
   return (
-    <li className={cn(isActive && "mb-4")}>
+    <li>
       <Link
         href={`/preview/${folder.name}`}
         className={cn(
           "gap-2 tracking-wide flex py-2 items-center w-full font-medium text-lg text-neutral-500 hover:text-neutral-200",
-          isActive && "font-bold text-pink-text hover:text-pink-text"
+          isActive && "font-bold text-pink-text hover:text-pink-text",
+          "before:content-['├──'] before:opacity-70"
         )}
         prefetch={false}
       >
-        {isActive ? (
-          <ChevronDownIcon className="h-6 w-6" />
-        ) : (
-          <ChevronRightIcon className="h-6 w-6" />
-        )}
         <span>{folder.label ?? folder.name}</span>
       </Link>
       {isActive && (
-        <ul className="ml-2.5 border-l border-neutral-700 pl-2.5">
+        <ul>
           {folder.files.map((file) => (
             <PreviewListFile
               key={file.id}
@@ -67,13 +62,14 @@ const PreviewListFile = ({
       <Link
         href={`/preview/${folder.name}/${file.id}`}
         className={cn(
-          "tracking-wide block w-full relative rounded-lg px-3 py-2 text-neutral-500 hover:text-neutral-200 hover:bg-neutral-200/20 hover:cursor-pointer",
+          "gap-2 tracking-wide flex items-center w-full relative rounded-lg px-2 py-2 text-neutral-500 hover:text-neutral-200 hover:bg-neutral-200/20 hover:cursor-pointer",
           isActive &&
-            "bg-pink-text/20 hover:bg-pink-text/20 text-pink-text hover:text-pink-text font-semibold"
+            "bg-pink-text/20 hover:bg-pink-text/20 text-pink-text hover:text-pink-text font-semibold",
+          "before:content-['└──'] before:opacity-70"
         )}
         prefetch={false}
       >
-        {file.label ?? file.name}
+        <span>{file.label ?? file.name}</span>
       </Link>
     </li>
   );
