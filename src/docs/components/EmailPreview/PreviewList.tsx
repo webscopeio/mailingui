@@ -22,13 +22,13 @@ const PreviewListFolder = ({
       <Link
         href={`/preview/${folder.name}`}
         className={cn(
-          "gap-2 tracking-wide flex py-2 items-center w-full font-medium text-lg text-neutral-500 hover:text-neutral-200",
+          "gap-3 tracking-wide flex py-2 items-center w-full font-medium text-lg text-neutral-500 hover:text-neutral-200",
           isActive && "font-bold text-pink-text hover:text-pink-text",
           "before:content-['├──'] before:opacity-70"
         )}
         prefetch={false}
       >
-        <span>{folder.label ?? folder.name}</span>
+        <span>{folder.name}</span>
       </Link>
       {isActive && (
         <ul>
@@ -62,14 +62,14 @@ const PreviewListFile = ({
       <Link
         href={`/preview/${folder.name}/${file.id}`}
         className={cn(
-          "gap-2 tracking-wide flex items-center w-full relative rounded-lg px-2 py-2 text-neutral-500 hover:text-neutral-200 hover:bg-neutral-200/20 hover:cursor-pointer",
+          "gap-3 tracking-wide flex items-center w-full relative rounded-lg px-3 ml-1 pl-3 py-2 text-neutral-500 hover:text-neutral-200 hover:bg-neutral-200/20 hover:cursor-pointer",
           isActive &&
             "bg-pink-text/20 hover:bg-pink-text/20 text-pink-text hover:text-pink-text font-semibold",
           "before:content-['└──'] before:opacity-70"
         )}
         prefetch={false}
       >
-        <span>{file.label ?? file.name}</span>
+        <span>{file.name}</span>
       </Link>
     </li>
   );
@@ -86,7 +86,7 @@ export const PreviewList = ({
 }) => {
   return (
     <>
-      <h1 className="mb-4 text-base font-medium uppercase text-neutral-500">
+      <h1 className="mb-4 text-base font-bold uppercase text-neutral-500">
         Preview Mode
       </h1>
       <Link href={`/preview`} prefetch={false}>
