@@ -10,14 +10,11 @@ type TemplatePageProps = {
   };
 };
 
-const loadTemplate = async (templateId: string) => {
+async function loadTemplate(templateId: string) {
   const template = templates.find((t) => t.id === templateId);
   if (!template) return null;
   return template;
-};
-
-// For unknown reason default auto caused SSR rendering setting
-export const dynamic = "force-static";
+}
 
 export default async function TemplatePage({ params }: TemplatePageProps) {
   const template = await loadTemplate(params.template);
@@ -76,3 +73,8 @@ export default async function TemplatePage({ params }: TemplatePageProps) {
     </div>
   );
 }
+
+export const generateStaticParams = () =>
+  templates.map((template) => ({
+    template: template.id,
+  }));
