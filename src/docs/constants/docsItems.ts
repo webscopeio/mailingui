@@ -39,6 +39,16 @@ export const docsItems: DocItems = [
         .sort((a, b) => a.label.localeCompare(b.label)),
     ],
   },
+  {
+    label: "Templates",
+    items: [
+      {
+        href: "/docs/templates/minimal",
+        label: "Minimal",
+        description: "A minimal template",
+      },
+    ],
+  },
 ];
 
 export const flattenedDocsItems = docsItems.reduce((acc, item) => {
