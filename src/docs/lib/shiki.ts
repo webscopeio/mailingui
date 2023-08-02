@@ -14,7 +14,7 @@ const bg: React.CSSProperties["backgroundColor"] = "#011627";
 
 export async function getHighlighter() {
   /** Preload NO languages in development */
-  const isDevelopment = process.env.NODE_ENV === "development";
+  const isDevelopment = true || process.env.NODE_ENV === "development";
 
   if (isDevelopment) {
     return await getHighlighterFromShiki({
@@ -61,7 +61,7 @@ export async function highlight(
   lang: Lang = "tsx"
 ) {
   /** Request NO languages in development */
-  const isDevelopment = process.env.NODE_ENV === "development";
+  const isDevelopment = true || process.env.NODE_ENV === "development";
 
   /* ✅ Highlight your code using the right syntax */
   const tokens = highlighter.codeToThemedTokens(
