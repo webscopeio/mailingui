@@ -68,17 +68,20 @@ export default async function TemplatePage({ params }: TemplatePageProps) {
                   </CTA>
                 </div>
               </div>
-              <div className="flex gap-4 overflow-x-scroll">
-                {category.imageUrl.map((url, i) => (
-                  <Image
-                    key={i}
-                    src={url}
-                    height={240}
-                    width={200}
-                    alt="Category image preview"
-                    className="rounded-md"
-                  ></Image>
-                ))}
+              <div className="overflow-x-scroll">
+                <div className="relative flex w-max gap-4">
+                  {category.imageUrl.map((url, i) => (
+                    <Image
+                      key={i}
+                      src={url}
+                      height={240}
+                      width={200}
+                      alt="Category image preview"
+                      className="rounded-md"
+                    ></Image>
+                  ))}
+                  <div className="absolute bottom-0 h-1/2 w-full bg-[linear-gradient(to_bottom,transparent,#000000)]" />
+                </div>
               </div>
             </li>
           ))}
