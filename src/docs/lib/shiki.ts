@@ -1,29 +1,58 @@
+import { readFileSync } from "fs";
 import {
   getHighlighter as getHighlighterFromShiki,
   renderToHtml,
   type Highlighter,
   type Lang,
   type Theme,
+  type ILanguageRegistration,
 } from "shiki";
 
 /** ✅ Config */
 const theme: Theme = "github-dark";
-const defaultlangs: Lang[] = ["html", "tsx"];
 const bg: React.CSSProperties["backgroundColor"] = "#011627";
 
-export async function getHighlighter({
-  langs = defaultlangs,
-}: {
-  langs?: Lang[];
-} = {}) {
+export async function getHighlighter() {
   /** Preload NO languages in development */
   const isDevelopment = process.env.NODE_ENV === "development";
 
+  if (isDevelopment) {
+    return await getHighlighterFromShiki({
+      theme,
+      langs: [],
+    });
+  }
+
+  const typescriptGrammar = JSON.parse(
+    readFileSync("./src/docs/lib/langs/TypeScriptReact.tmLanguage.json", "utf8")
+  );
+  const htmlGrammer = JSON.parse(
+    readFileSync("./src/docs/lib/langs/html.json", "utf8")
+  );
+
+  const localTypescript: ILanguageRegistration = {
+    id: "typescript-react",
+    scopeName: "source.tsx",
+    aliases: ["tsx"],
+    grammar: typescriptGrammar,
+    path: "./langs/TypeScriptReact.tmLanguage.json",
+  };
+
+  const localHtml: ILanguageRegistration = {
+    id: "html",
+    scopeName: "text.html.basic",
+    aliases: ["html"],
+    grammar: htmlGrammer,
+    path: "./langs/html.json",
+  };
+
   /* ✅ Create a highlighter instance with a theme */
-  return await getHighlighterFromShiki({
+  const highlighter = await getHighlighterFromShiki({
     theme,
-    langs: isDevelopment ? [] : langs,
   });
+  await highlighter.loadLanguage(localTypescript);
+  await highlighter.loadLanguage(localHtml);
+  return highlighter;
 }
 
 export async function highlight(
@@ -31,7 +60,7 @@ export async function highlight(
   code: string,
   lang: Lang = "tsx"
 ) {
-  /** Request NO languages in development */
+  /** Preload NO languages in development */
   const isDevelopment = process.env.NODE_ENV === "development";
 
   /* ✅ Highlight your code using the right syntax */
