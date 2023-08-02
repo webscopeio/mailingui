@@ -26,8 +26,8 @@ The website is a [Next.js](https://nextjs.org/) project bootstrapped with [`crea
 
 ## Dependencies
 
-- **Node.js** - recommended version is the LTS 'Hydrogen' - `18.x.x`. (The table of releases: https://nodejs.org/en/download/releases)
-- **pnpm** - space efficient and faster adaptation of `npm`. The recommended version is `9.5.1`. Can be installed with npm via `npm install -g pnpm`.
+- **Node.js** - recommended and tested version is the current latest version -  `v20.5.0`. (The table of releases: https://nodejs.org/en/download/releases)
+- **pnpm** - space efficient and faster adaptation of `npm`. The recommended version is current latest version - `8.6.11`. Can be installed with npm via `npm install -g pnpm` or with corepack via `corepack prepare pnpm@8.6.11 --activate`.
 
 ## Installation
 
