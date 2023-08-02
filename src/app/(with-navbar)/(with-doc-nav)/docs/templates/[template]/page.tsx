@@ -1,22 +1,8 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
+import { templates } from "@templates";
 import { DocArticle, MdxH1, MdxH2, MdxP } from "@components/MdxComponents";
 import { CTA } from "@components/CTA";
-
-type Template = {
-  id: string;
-  name: string;
-  shortDescription: string;
-  description: string;
-  categories: TemplateCategory[];
-};
-
-type TemplateCategory = {
-  name: string;
-  description: string;
-  imageUrl: string[];
-  href: string;
-};
 
 type TemplatePageProps = {
   params: {
@@ -24,53 +10,14 @@ type TemplatePageProps = {
   };
 };
 
-const DEFAULT_TEMPLATE: Template = {
-  id: "minimal",
-  name: "Minimal",
-  shortDescription: "Free email template",
-  description:
-    "Minimal is a simple and clean email template. It comes with three different email categories.",
-  categories: [
-    {
-      name: "Events",
-      description:
-        "Events are a great way to get people together. Can be conference, a meetup, or a party.",
-      href: "/preview/events",
-      imageUrl: [
-        "/static/images/templates-docs/test.png",
-        "/static/images/templates-docs/test.png",
-        "/static/images/templates-docs/test.png",
-      ],
-    },
-    {
-      name: "Marketing",
-      description:
-        "Marketing emails are a great way to promote your business with product announcement or a special offer.",
-      href: "/preview/marketing",
-      imageUrl: [
-        "/static/images/templates-docs/test.png",
-        "/static/images/templates-docs/test.png",
-        "/static/images/templates-docs/test.png",
-      ],
-    },
-    {
-      name: "Newsletter",
-      description:
-        "Newsletters are a great way to keep your audience up-to-date with what's going on in your business.",
-      href: "/preview/newsletter",
-      imageUrl: [
-        "/static/images/templates-docs/test.png",
-        "/static/images/templates-docs/test.png",
-        "/static/images/templates-docs/test.png",
-      ],
-    },
-  ],
+const loadTemplate = async (templateId: string) => {
+  const template = templates.find((t) => t.id === templateId);
+  if (!template) return null;
+  return template;
 };
 
-const loadTemplate = async (template: string): Promise<Template | null> => {
-  if (template !== DEFAULT_TEMPLATE.id) return null;
-  return DEFAULT_TEMPLATE;
-};
+// For unknown reason default auto caused SSR rendering setting
+export const dynamic = "force-static";
 
 export default async function TemplatePage({ params }: TemplatePageProps) {
   const template = await loadTemplate(params.template);

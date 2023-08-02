@@ -1,4 +1,5 @@
 import { componentTypes } from "@examples";
+import { templates } from "@templates";
 
 export type DocItems = DocItemGroup[];
 export type DocItemGroup = {
@@ -41,13 +42,11 @@ export const docsItems: DocItems = [
   },
   {
     label: "Templates",
-    items: [
-      {
-        href: "/docs/templates/minimal",
-        label: "Minimal",
-        description: "A minimal template",
-      },
-    ],
+    items: templates.map((template) => ({
+      href: `/docs/templates/${template.id}`,
+      label: template.name,
+      description: template.shortDescription,
+    })),
   },
 ];
 
