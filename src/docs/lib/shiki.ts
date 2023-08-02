@@ -60,7 +60,7 @@ export async function highlight(
   code: string,
   lang: Lang = "tsx"
 ) {
-  /** Preload NO languages in development */
+  /** Request NO languages in development */
   const isDevelopment = process.env.NODE_ENV === "development";
 
   /* ✅ Highlight your code using the right syntax */
