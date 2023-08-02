@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import { templates } from "@templates";
 import { DocArticle, MdxH1, MdxH2, MdxP } from "@components/MdxComponents";
+import { DownloadIcon, OpenBlankIcon } from "@components/Icons";
 import { CTA } from "@components/CTA";
 
 type TemplatePageProps = {
@@ -27,32 +28,45 @@ export default async function TemplatePage({ params }: TemplatePageProps) {
           <MdxP className="mb-2">{template.shortDescription}</MdxP>
           <MdxH1>{template.name}</MdxH1>
           <MdxP>{template.description}</MdxP>
-          <CTA color="white" className="w-fit py-2">
-            <a href="#template-categories" className="h-full w-full">
-              Explore categories
-            </a>
-          </CTA>
+          <div className="grid grid-cols-2 gap-2">
+            <CTA color="white" className="grid place-content-center py-2">
+              <a href="#template-categories" className="h-full w-full">
+                Explore categories
+              </a>
+            </CTA>
+            <CTA color="black">
+              <DownloadIcon className="mr-2" />
+              Download all
+            </CTA>
+          </div>
         </div>
         <div className="w-full border-t border-neutral-800"></div>
         <ul className="grid" id="template-categories">
           {template.categories.map((category) => (
             <li
               key={category.name}
-              className="grid min-h-[16rem] grid-cols-[20rem_1fr] gap-4 py-8"
+              className="grid min-h-[16rem] grid-cols-[24rem_1fr] gap-4 py-8"
             >
               <div className="flex flex-col gap-4">
                 <MdxH2>{category.name}</MdxH2>
                 <MdxP>{category.description}</MdxP>
-                {category.href && (
-                  <CTA
-                    color="white"
-                    className="w-fit py-2"
-                    target="_blank"
-                    href={category.href}
-                  >
-                    See preview
+                <div className="grid grid-cols-2 gap-2">
+                  {category.href && (
+                    <CTA
+                      color="white"
+                      className="w-full py-2"
+                      target="_blank"
+                      href={category.href}
+                    >
+                      <OpenBlankIcon className="mr-2" />
+                      See preview
+                    </CTA>
+                  )}
+                  <CTA color="black" className="w-full py-2">
+                    <DownloadIcon className="mr-2" />
+                    Download
                   </CTA>
-                )}
+                </div>
               </div>
               <div className="flex gap-4 overflow-x-scroll">
                 {category.imageUrl.map((url, i) => (
