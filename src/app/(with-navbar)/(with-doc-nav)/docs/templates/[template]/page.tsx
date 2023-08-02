@@ -84,11 +84,13 @@ export default async function TemplatePage({ params }: TemplatePageProps) {
           <MdxH1>{template.name}</MdxH1>
           <MdxP>{template.description}</MdxP>
           <CTA color="white" className="w-fit py-2">
-            Explore categories
+            <a href="#template-categories" className="h-full w-full">
+              Explore categories
+            </a>
           </CTA>
         </div>
         <div className="w-full border-t border-neutral-800"></div>
-        <ul className="grid">
+        <ul className="grid" id="template-categories">
           {template.categories.map((category) => (
             <li
               key={category.name}
