@@ -16,16 +16,13 @@ import {
   Button,
 } from "@mailingui/components";
 
-type MinimalBookingConfirmationProps = {
+type EventConfirmationProps = {
   name: string;
-  checkInDate: string;
-  checkOutDate: string;
-  checkInTime: string;
-  checkOutTime: string;
-  roomType: string;
+  date: string;
+  startTime: string;
+  endTime: string;
   totalCost: string;
-  noOfGuests: number;
-  hotelName: string;
+  eventName: string;
   reservationUrl: string;
 };
 
@@ -33,22 +30,19 @@ const baseUrl = `${
   process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
 }/static/minimal-theme`;
 
-export const BookingConfirmation: FC<MinimalBookingConfirmationProps> = ({
+export const EventConfirmation: FC<EventConfirmationProps> = ({
   name = "Jacob",
-  checkInDate = "August 22, 2023",
-  checkOutDate = "September 5, 2023",
-  checkInTime = "2 PM",
-  checkOutTime = "10 AM",
-  roomType = "Business apartment",
-  totalCost = "$ 1253.00",
-  hotelName = "Viola Hotel",
-  noOfGuests = 3,
+  startTime = "4 PM",
+  endTime = "9 PM",
+  date = "September 5, 2023",
+  totalCost = "$ 14.00",
+  eventName = "Minimal Meetup",
   reservationUrl = "https://google.com",
 }) => {
   return (
     <Html>
       <Head />
-      <Preview>Minimal - we&apos;ve received your booking</Preview>
+      <Preview>Minimal - we&apos;ve confirmed your participation</Preview>
       <Body style={main}>
         <Container style={container} width={600}>
           <Row style={{ marginBottom: "16px" }}>
@@ -71,15 +65,14 @@ export const BookingConfirmation: FC<MinimalBookingConfirmationProps> = ({
           </Row>
           <Row style={{ marginBottom: "32px" }}>
             <Text style={{ fontSize: "48px", lineHeight: "52px" }}>
-              Your {hotelName} Booking Confirmation
+              Your {eventName} Event Confirmation
             </Text>
           </Row>
           <Row style={{ marginBottom: "16px" }}>
             <Text>Dear {name},</Text>
             <Text>
-              Thank you for choosing to stay with us at {hotelName}. We are
-              pleased to confirm your booking for <b>{checkInDate}</b> to{" "}
-              <b>{checkOutDate}</b>.
+              Thank you for signing up for the {eventName}. Via this email we
+              are confirming your participation.
             </Text>
           </Row>
           <Row style={{ marginBottom: "32px" }}>
@@ -87,19 +80,16 @@ export const BookingConfirmation: FC<MinimalBookingConfirmationProps> = ({
           </Row>
           <Row style={{ marginBottom: "16px" }}>
             <Text>
-              <b>Room Type:</b> {roomType}
+              <b>Date:</b> {date}
             </Text>
             <Text>
-              <b>Number of Guests:</b> {noOfGuests}
+              <b>Start Time:</b> {startTime}
             </Text>
             <Text>
-              <b>Check-in Time:</b> {checkInTime}
+              <b>End Time:</b> {endTime}
             </Text>
             <Text>
-              <b>Check-out Time:</b> {checkOutTime}
-            </Text>
-            <Text>
-              <b>Total Cost:</b> {totalCost}
+              <b>Entry Fee:</b> {totalCost}
             </Text>
           </Row>
           <Row style={{ marginBottom: "32px" }}>
@@ -109,24 +99,24 @@ export const BookingConfirmation: FC<MinimalBookingConfirmationProps> = ({
               height={56}
               backgroundColor="#000000"
             >
-              Manage your reservation
+              Change Attendance
             </Button>
           </Row>
           <Row style={{ marginBottom: "16px" }}>
             <Text>
-              We hope you will enjoy your stay with us and take advantage of the
-              amenities and services we offer. Should you have any special
-              requests or requirements, please do not hesitate to contact our
-              front desk team.
+              We hope you see you at the event and don&apos;t forget to take
+              advantage of the amenities and services we offer. Should you have
+              any special requests or requirements, please do not hesitate to
+              contact us.
             </Text>
             <Text>
-              Please note that a deposit may be required upon check-in and any
-              additional charges will be applied to your final bill upon
-              check-out.
+              Please note there will be a photographer at the event and we will
+              be taking photos for promotional purposes. If you do not wish to
+              be photographed, please let us know.
             </Text>
             <Text>
-              Thank you again for choosing {hotelName}. We look forward to
-              welcoming you soon.
+              Thank you again for your interest. We look forward to seeing you
+              there.
             </Text>
             <Text>
               Best regards,
@@ -205,7 +195,7 @@ export const BookingConfirmation: FC<MinimalBookingConfirmationProps> = ({
   );
 };
 
-export default BookingConfirmation;
+export default EventConfirmation;
 
 const main = {
   backgroundColor: "#f6f9fc",

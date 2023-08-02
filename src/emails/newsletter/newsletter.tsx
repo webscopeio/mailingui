@@ -9,52 +9,39 @@ import {
   Row,
 } from "@react-email/components";
 import React, { FC } from "react";
-import { Text, SocialIcon, type SocialIconType } from "@mailingui/components";
+import {
+  Text,
+  SocialIcon,
+  type SocialIconType,
+  BulletList,
+  BulletListItem,
+  Button,
+} from "@mailingui/components";
 
-type Tip = {
-  title: string;
-  description: string;
-  imageUrl: string;
+type MinimalNewsProps = {
+  link: string;
+  company: string;
+  items: string[];
 };
-
-type TipsForTripsProps = {
-  name?: string;
-  tips: Tip[];
-};
-
-const defaultTips: Tip[] = [
-  {
-    title: "1. Japan",
-    description:
-      "Japan is a country of contrasts, where ancient traditions and modern technology coexist. From exploring the bustling city of Tokyo to soaking in hot springs and admiring the cherry blossoms, Japan has something for everyone.",
-    imageUrl: "/japan-trip-tip.png",
-  },
-  {
-    title: "2. Italy",
-    description:
-      "Italy is a country of romance, art, and exquisite cuisine. Whether you're strolling through the streets of Rome, admiring the art in Florence, or savoring the delicious food in Naples, Italy is a destination that should be on everyone's bucket list.",
-    imageUrl: "/italy-trip-tip.png",
-  },
-  {
-    title: "3. Iceland",
-    description:
-      "Iceland is a country of otherworldly landscapes, with hot springs, glaciers, and geysers. You can hike on glaciers, swim in hot springs, and chase the Northern Lights in this unique destination.",
-    imageUrl: "/iceland-trip-tip.png",
-  },
-];
 
 const baseUrl = `${
   process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
 }/static/minimal-theme`;
 
-export const TipsForTrips: FC<TipsForTripsProps> = ({
-  name = "Jacob",
-  tips = defaultTips,
+export const News: FC<MinimalNewsProps> = ({
+  link = "https://google.com",
+  company = "Minimal",
+  items = [
+    "A recap of our latest product launch and customer feedback",
+    "A sneak peek of our upcoming events and promotions",
+    "An inside look at our team and company culture",
+    "Tips and advice related to our industry or area of expertise",
+  ],
 }) => {
   return (
     <Html>
       <Head />
-      <Preview>Minimal - Tips for Trips</Preview>
+      <Preview>Minimal - New issue of our newsletter</Preview>
       <Body style={main}>
         <Container style={container} width={600}>
           <Row style={{ marginBottom: "16px" }}>
@@ -75,47 +62,55 @@ export const TipsForTrips: FC<TipsForTripsProps> = ({
           <Row style={{ marginBottom: "32px" }}>
             <Img width={520} src={`${baseUrl}/divider.png`} />
           </Row>
-          <Row style={{ marginBottom: "16px" }}>
+          <Row style={{ marginBottom: "32px" }}>
             <Text style={{ fontSize: "48px", lineHeight: "52px" }}>
-              3 Countries to Consider for Your Next Trip
+              Latest Issue of our Newsletter
             </Text>
           </Row>
           <Row style={{ marginBottom: "16px" }}>
-            <Text>Dear {name},</Text>
+            <Text>Dear Subscriber,</Text>
             <Text>
-              If you&apos;re looking for inspiration for your next trip, I
-              wanted to suggest five countries that offer a unique and memorable
-              travel experience:
+              We are excited to share the latest news and updates from {company}
+              . As a valued member of our community, we want to keep you
+              informed about our recent activities and upcoming plans.
             </Text>
+          </Row>
+          <Row>
+            <Img
+              src={`${baseUrl}/cozy-newsletter.png`}
+              width={520}
+              style={{ marginBottom: "24px", borderRadius: "4px" }}
+            />
+          </Row>
+          <Row style={{ marginBottom: "16px" }}>
+            <Text style={{ fontWeight: 700 }}>
+              In this edition, you&apos;ll find:
+            </Text>
+            <BulletList type="unordered">
+              {items.map((item, i) => (
+                <BulletListItem key={i}>{item}</BulletListItem>
+              ))}
+            </BulletList>
           </Row>
           <Row style={{ marginBottom: "32px" }}>
-            <Img width={520} src={`${baseUrl}/divider.png`} />
+            <Button
+              href={link}
+              width={520}
+              height={56}
+              backgroundColor="#000000"
+            >
+              Read more
+            </Button>
           </Row>
-          {tips.map((tip, i) => (
-            <Row key={i} style={{ marginBottom: "32px" }}>
-              <Text style={{ fontWeight: 700 }}>{tip.title}</Text>
-              <Text>{tip.description}</Text>
-              <Img
-                src={`${baseUrl}/${tip.imageUrl}`}
-                style={{ borderRadius: "16px" }}
-              />
-            </Row>
-          ))}
           <Row style={{ marginBottom: "16px" }}>
             <Text>
-              I hope these suggestions inspire you to plan your next trip. Each
-              of these countries offers something unique and special, and
-              I&apos;m sure you&apos;ll have a wonderful time no matter which
-              one you choose.
+              We are committed to providing you with valuable content and
+              insights that will help you stay informed and engaged. Thank you
+              for your continued support and loyalty.
             </Text>
             <Text>
-              If you have any further questions or need more advice, please
-              don&apos;t hesitate to reach out to me.
-            </Text>
-            <Text>
-              Best regards,
-              <br />
-              Minimal Team
+              Sincerely,
+              <br /> Minimal Team
             </Text>
           </Row>
           <Row style={{ marginBottom: "32px" }}>
@@ -190,7 +185,7 @@ export const TipsForTrips: FC<TipsForTripsProps> = ({
   );
 };
 
-export default TipsForTrips;
+export default News;
 
 const main = {
   backgroundColor: "#f6f9fc",

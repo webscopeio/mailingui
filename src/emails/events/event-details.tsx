@@ -11,33 +11,33 @@ import {
 import React, { FC } from "react";
 import { Text, SocialIcon, type SocialIconType } from "@mailingui/components";
 
-type DinnerReservationProps = {
+type EventDetailsProps = {
   name: string;
+  eventName: string;
   date: string;
   time: string;
   noOfGuests: string;
-  tableNo: string;
-  restaurantName: string;
-  restaurantPhone: string;
+  seatNumbers: string;
+  companyName: string;
 };
 
 const baseUrl = `${
   process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
 }/static/minimal-theme`;
 
-export const DinnerReservation: FC<DinnerReservationProps> = ({
+export const EventDetails: FC<EventDetailsProps> = ({
   name = "Charlie",
+  eventName = "Minimal Meetup",
   date = "24.02.2023",
   time = "6 PM",
   noOfGuests = "2 Adults",
-  tableNo = "Table 13",
-  restaurantName = "Minimal Restaurant",
-  restaurantPhone = "+1 234 567 89",
+  seatNumbers = "13, 14",
+  companyName = "Minimal",
 }) => {
   return (
     <Html>
       <Head />
-      <Preview>Minimal - Dinner Reservation Confirmation</Preview>
+      <Preview>Minimal - Upcoming Event Details</Preview>
       <Body style={main}>
         <Container style={container} width={600}>
           <Row style={{ marginBottom: "16px" }}>
@@ -60,21 +60,21 @@ export const DinnerReservation: FC<DinnerReservationProps> = ({
           </Row>
           <Row style={{ marginBottom: "16px" }}>
             <Text style={{ fontSize: "48px", lineHeight: "52px" }}>
-              Dinner Reservation Confirmation
+              Your Upcoming Event Details
             </Text>
           </Row>
           <Row style={{ marginBottom: "16px" }}>
             <Text>Dear {name},</Text>
             <Text>
-              Thank you for choosing Olive Grove for your upcoming dinner. We
-              are pleased to confirm your reservation as follows:
+              Thank you for signing up for the {eventName}. We wanted to follow
+              up and send you the details about the upcoming event.
             </Text>
           </Row>
           <Row style={{ marginBottom: "32px" }}>
             <Img width={520} src={`${baseUrl}/divider.png`} />
           </Row>
           <Row style={{ marginBottom: "32px" }}>
-            <Text style={{ fontWeight: 700 }}>Reservation details:</Text>
+            <Text style={{ fontWeight: 700 }}>Event details:</Text>
             <Text>
               <b>Date:</b> {date}
             </Text>
@@ -85,7 +85,7 @@ export const DinnerReservation: FC<DinnerReservationProps> = ({
               <b>Number of guests:</b> {noOfGuests}
             </Text>
             <Text>
-              <b>Table number:</b> {tableNo}
+              <b>Your seats:</b> {seatNumbers}
             </Text>
           </Row>
           <Row style={{ marginBottom: "32px" }}>
@@ -93,18 +93,17 @@ export const DinnerReservation: FC<DinnerReservationProps> = ({
           </Row>
           <Row style={{ marginBottom: "16px" }}>
             <Text>
-              We look forward to providing you with an unforgettable dining
-              experience. If you have any dietary requirements or special
-              requests, please let us know in advance.
+              We look forward to providing you with an unforgettable evening. If
+              special requests, please let us know in advance.
             </Text>
             <Text>
-              Please note that your reservation will be held for 15 minutes past
-              the reserved time. If you anticipate arriving later than the
-              reserved time, please call {restaurantPhone} to inform us.
+              Please arrive 15 minutes before the start of the event to make
+              sure you don&apos;t miss anything. We cannot ensure that there
+              will be no queues at the entrance.
             </Text>
             <Text>
-              Thank you for choosing {restaurantName}. We look forward to
-              welcoming you soon.
+              Thank you for choosing {companyName}. We look forward to welcoming
+              you soon.
             </Text>
             <Text>
               Best regards,
@@ -184,7 +183,7 @@ export const DinnerReservation: FC<DinnerReservationProps> = ({
   );
 };
 
-export default DinnerReservation;
+export default EventDetails;
 
 const main = {
   backgroundColor: "#f6f9fc",

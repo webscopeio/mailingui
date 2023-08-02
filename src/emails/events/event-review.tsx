@@ -13,26 +13,26 @@ import {
   Text,
   SocialIcon,
   type SocialIconType,
-  Button,
+  Emoji,
 } from "@mailingui/components";
 
-type MinimalResetPasswordProps = {
+type EventReviewProps = {
   name: string;
-  passwordResetUrl: string;
+  eventName: string;
 };
 
 const baseUrl = `${
   process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
 }/static/minimal-theme`;
 
-export const ResetPassword: FC<MinimalResetPasswordProps> = ({
+export const EventReview: FC<EventReviewProps> = ({
   name = "Jacob",
-  passwordResetUrl = "https://google.com",
+  eventName = "Minimal Meetup",
 }) => {
   return (
     <Html>
       <Head />
-      <Preview>Minimal - Reset your password</Preview>
+      <Preview>Minimal - How was it?</Preview>
       <Body style={main}>
         <Container style={container} width={600}>
           <Row style={{ marginBottom: "16px" }}>
@@ -53,40 +53,92 @@ export const ResetPassword: FC<MinimalResetPasswordProps> = ({
           <Row style={{ marginBottom: "32px" }}>
             <Img width={520} src={`${baseUrl}/divider.png`} />
           </Row>
-          <Row style={{ marginBottom: "32px" }}>
+          <Row style={{ marginBottom: "16px" }}>
             <Text style={{ fontSize: "48px", lineHeight: "52px" }}>
-              Password Reset
+              How was it?
             </Text>
           </Row>
           <Row style={{ marginBottom: "16px" }}>
             <Text>Dear {name},</Text>
             <Text>
-              We recently received a request to reset your password on our
-              platform. To reset your password, please click on the button or
-              link below:
+              We hope this email finds you well. We wanted to take a moment to
+              check in with you and ask about your recent experience at the{" "}
+              {eventName}!
+            </Text>
+            <Text>
+              At Viola Studio, we are committed to providing our customers with
+              the best possible experience, and we want to ensure that we are
+              meeting that goal. We would be grateful if you could take a few
+              minutes to share your thoughts on your experience with us.
             </Text>
           </Row>
           <Row style={{ marginBottom: "32px" }}>
-            <Button
-              href={passwordResetUrl}
-              width={520}
-              height={56}
-              backgroundColor="#000000"
-            >
-              Reset password
-            </Button>
+            <Img width={520} src={`${baseUrl}/divider.png`} />
+          </Row>
+          <Row style={{ marginBottom: "32px", textAlign: "center" }}>
+            <Column>
+              <Emoji
+                type="heart-eyes-face"
+                style={{ paddingLeft: "16px", paddingBottom: "8px" }}
+                href="https://google.com"
+                bg
+              />
+              Excellent
+            </Column>
+            <Column>
+              <Emoji
+                type="smiling-face"
+                style={{ paddingLeft: "16px", paddingBottom: "8px" }}
+                href="https://google.com"
+                bg
+              />
+              Good
+            </Column>
+            <Column>
+              <Emoji
+                type="smiling-face"
+                style={{ paddingLeft: "16px", paddingBottom: "8px" }}
+                href="https://google.com"
+                bg
+              />
+              Good
+            </Column>
+            <Column>
+              <Emoji
+                type="smiling-face"
+                style={{ paddingLeft: "16px", paddingBottom: "8px" }}
+                href="https://google.com"
+                bg
+              />
+              Good
+            </Column>
+            <Column>
+              <Emoji
+                type="smiling-face"
+                style={{ paddingLeft: "16px", paddingBottom: "8px" }}
+                href="https://google.com"
+                bg
+              />
+              Good
+            </Column>
+          </Row>
+          <Row style={{ marginBottom: "32px" }}>
+            <Img width={520} src={`${baseUrl}/divider.png`} />
           </Row>
           <Row style={{ marginBottom: "16px" }}>
             <Text>
-              If you did not initiate this request or believe it was made in
-              error, please disregard this email and take the necessary steps to
-              secure your account. If you have any concerns or need further
-              assistance, please contact our customer support team.
+              Your feedback is important to us, and it will help us identify
+              areas where we can improve and better serve our customers. We
+              value your opinion, and we would appreciate any suggestions or
+              comments that you may have.
+            </Text>
+            <Text>
+              Thank you for your time and consideration, and we look forward to
+              hearing from you soon.
             </Text>
             <Text>
               Best regards,
-              <br />
-              Minimal Team
+              <br /> Minimal Team
             </Text>
           </Row>
           <Row style={{ marginBottom: "32px" }}>
@@ -161,7 +213,7 @@ export const ResetPassword: FC<MinimalResetPasswordProps> = ({
   );
 };
 
-export default ResetPassword;
+export default EventReview;
 
 const main = {
   backgroundColor: "#f6f9fc",

@@ -13,22 +13,26 @@ import {
   Text,
   SocialIcon,
   type SocialIconType,
-  Emoji,
+  Button,
 } from "@mailingui/components";
 
-type MinimalReviewProps = {
+type CampaignAnnouncementProps = {
   name: string;
+  linkHref: string;
 };
 
 const baseUrl = `${
   process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
 }/static/minimal-theme`;
 
-export const Review: FC<MinimalReviewProps> = ({ name = "Jacob" }) => {
+export const CampaignAnnouncement: FC<CampaignAnnouncementProps> = ({
+  name = "Jacob",
+  linkHref = "https://google.com",
+}) => {
   return (
     <Html>
       <Head />
-      <Preview>Minimal - How was your experience?</Preview>
+      <Preview>Minimal - Campaign Announcement</Preview>
       <Body style={main}>
         <Container style={container} width={600}>
           <Row style={{ marginBottom: "16px" }}>
@@ -51,90 +55,46 @@ export const Review: FC<MinimalReviewProps> = ({ name = "Jacob" }) => {
           </Row>
           <Row style={{ marginBottom: "16px" }}>
             <Text style={{ fontSize: "48px", lineHeight: "52px" }}>
-              How was your experience?
+              Join our new Campaign and win exciting prizes!
             </Text>
           </Row>
           <Row style={{ marginBottom: "16px" }}>
             <Text>Dear {name},</Text>
             <Text>
-              We hope this email finds you well. We wanted to take a moment to
-              check in with you and ask about your recent experience with our
-              services.
-            </Text>
-            <Text>
-              At Viola Studio, we are committed to providing our customers with
-              the best possible experience, and we want to ensure that we are
-              meeting that goal. We would be grateful if you could take a few
-              minutes to share your thoughts on your experience with us.
+              We are thrilled to invite you to participate in our new Campaign!
+              This is a great opportunity to win valuable prizes and showcase
+              your skills. If you are interested, please click the button below
+              and follow the instructions.
             </Text>
           </Row>
           <Row style={{ marginBottom: "32px" }}>
-            <Img width={520} src={`${baseUrl}/divider.png`} />
-          </Row>
-          <Row style={{ marginBottom: "32px", textAlign: "center" }}>
-            <Column>
-              <Emoji
-                type="heart-eyes-face"
-                style={{ paddingLeft: "16px", paddingBottom: "8px" }}
-                href="https://google.com"
-                bg
-              />
-              Excellent
-            </Column>
-            <Column>
-              <Emoji
-                type="smiling-face"
-                style={{ paddingLeft: "16px", paddingBottom: "8px" }}
-                href="https://google.com"
-                bg
-              />
-              Good
-            </Column>
-            <Column>
-              <Emoji
-                type="smiling-face"
-                style={{ paddingLeft: "16px", paddingBottom: "8px" }}
-                href="https://google.com"
-                bg
-              />
-              Good
-            </Column>
-            <Column>
-              <Emoji
-                type="smiling-face"
-                style={{ paddingLeft: "16px", paddingBottom: "8px" }}
-                href="https://google.com"
-                bg
-              />
-              Good
-            </Column>
-            <Column>
-              <Emoji
-                type="smiling-face"
-                style={{ paddingLeft: "16px", paddingBottom: "8px" }}
-                href="https://google.com"
-                bg
-              />
-              Good
-            </Column>
-          </Row>
-          <Row style={{ marginBottom: "32px" }}>
-            <Img width={520} src={`${baseUrl}/divider.png`} />
+            <Button
+              href={linkHref}
+              width={520}
+              height={56}
+              backgroundColor="#000000"
+            >
+              I want to join the competition
+            </Button>
           </Row>
           <Row style={{ marginBottom: "16px" }}>
             <Text>
-              Your feedback is important to us, and it will help us identify
-              areas where we can improve and better serve our customers. We
-              value your opinion, and we would appreciate any suggestions or
-              comments that you may have.
+              We are offering a range of exciting prizes for the top performers,
+              including 6-month traineeship in our company. Additionally, all
+              participants will receive discount coupon for various courses.
             </Text>
             <Text>
-              Thank you for your time and consideration, and we look forward to
-              hearing from you soon.
+              Don&apos;t miss out on this opportunity to develop your skills and
+              showcase your talent! Please let us know if you have any questions
+              or need more information.
+            </Text>
+            <Text>
+              Thank you for your time, and we hope to hear from you soon.
             </Text>
             <Text>
               Best regards,
-              <br /> Minimal Team
+              <br />
+              Minimal Team
             </Text>
           </Row>
           <Row style={{ marginBottom: "32px" }}>
@@ -209,7 +169,7 @@ export const Review: FC<MinimalReviewProps> = ({ name = "Jacob" }) => {
   );
 };
 
-export default Review;
+export default CampaignAnnouncement;
 
 const main = {
   backgroundColor: "#f6f9fc",

@@ -16,23 +16,23 @@ import {
   Button,
 } from "@mailingui/components";
 
-type CompetitionProps = {
+type SubscriptionConfirmationProps = {
   name: string;
-  linkHref: string;
+  confirmationUrl: string;
 };
 
 const baseUrl = `${
   process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
 }/static/minimal-theme`;
 
-export const Competition: FC<CompetitionProps> = ({
+export const SubscriptionConfirmation: FC<SubscriptionConfirmationProps> = ({
   name = "Jacob",
-  linkHref = "https://google.com",
+  confirmationUrl = "https://google.com",
 }) => {
   return (
     <Html>
       <Head />
-      <Preview>Minimal - Competition announcement</Preview>
+      <Preview>Minimal - Confirm you email address</Preview>
       <Body style={main}>
         <Container style={container} width={600}>
           <Row style={{ marginBottom: "16px" }}>
@@ -53,44 +53,34 @@ export const Competition: FC<CompetitionProps> = ({
           <Row style={{ marginBottom: "32px" }}>
             <Img width={520} src={`${baseUrl}/divider.png`} />
           </Row>
-          <Row style={{ marginBottom: "16px" }}>
+          <Row style={{ marginBottom: "32px" }}>
             <Text style={{ fontSize: "48px", lineHeight: "52px" }}>
-              Join our competition and win exciting prizes!
+              Confirm Your Email Address
             </Text>
           </Row>
           <Row style={{ marginBottom: "16px" }}>
             <Text>Dear {name},</Text>
             <Text>
-              We are thrilled to invite you to participate in our competition!
-              This is a fantastic opportunity to showcase your skills and
-              creativity, and win some amazing prizes. To participate, simply
-              create a design for a product. Once you have completed the task,
-              submit your entry to us for review.
+              Recently you requested to join our newsletter. We require that you
+              verify your email address before we can add you to our list.
+              Please click on the link below to confirm your email address:
             </Text>
           </Row>
           <Row style={{ marginBottom: "32px" }}>
             <Button
-              href={linkHref}
+              href={confirmationUrl}
               width={520}
               height={56}
               backgroundColor="#000000"
             >
-              I want to join the competition
+              Confirm Email Address
             </Button>
           </Row>
           <Row style={{ marginBottom: "16px" }}>
             <Text>
-              We are offering a range of exciting prizes for the top performers,
-              including 6-month traineeship in our company. Additionally, all
-              participants will receive discount coupon for various courses.
-            </Text>
-            <Text>
-              Don&apos;t miss out on this opportunity to develop your skills and
-              showcase your talent! Please let us know if you have any questions
-              or need more information.
-            </Text>
-            <Text>
-              Thank you for your time, and we hope to hear from you soon.
+              If you did not initiate this request or believe it was made in
+              error, please disregard this email. If you have any concerns or
+              need further assistance, please contact our customer support team.
             </Text>
             <Text>
               Best regards,
@@ -170,7 +160,7 @@ export const Competition: FC<CompetitionProps> = ({
   );
 };
 
-export default Competition;
+export default SubscriptionConfirmation;
 
 const main = {
   backgroundColor: "#f6f9fc",
