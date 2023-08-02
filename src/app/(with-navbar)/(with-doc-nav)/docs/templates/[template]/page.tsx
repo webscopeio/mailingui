@@ -24,7 +24,7 @@ export default async function TemplatePage({ params }: TemplatePageProps) {
   return (
     <div className="mx-auto w-full max-w-6xl overflow-hidden p-4 lg:py-0">
       <DocArticle>
-        <div className="flex w-1/2 flex-col gap-4">
+        <div className="flex w-full md:w-2/3 lg:w-1/2 flex-col gap-4">
           <MdxP className="mb-2">{template.shortDescription}</MdxP>
           <MdxH1>{template.name}</MdxH1>
           <MdxP>{template.description}</MdxP>
@@ -41,16 +41,16 @@ export default async function TemplatePage({ params }: TemplatePageProps) {
           </div>
         </div>
         <div className="w-full border-t border-neutral-800"></div>
-        <ul className="grid" id="template-categories">
+        <ul className="grid gap-16 py-4" id="template-categories">
           {template.categories.map((category) => (
             <li
               key={category.name}
-              className="grid min-h-[16rem] grid-cols-[24rem_1fr] gap-4 py-8"
+              className="grid min-h-[16rem] gap-8 lg:grid-cols-[24rem_1fr] lg:gap-4"
             >
               <div className="flex flex-col gap-4">
                 <MdxH2>{category.name}</MdxH2>
                 <MdxP>{category.description}</MdxP>
-                <div className="grid grid-cols-2 gap-2">
+                <div className="grid max-w-[32rem] grid-cols-2 gap-2">
                   {category.href && (
                     <CTA
                       color="white"
