@@ -94,12 +94,12 @@ export const EventDetails: FC<EventDetailsProps> = ({
           <Row style={{ marginBottom: "16px" }}>
             <Text>
               We look forward to providing you with an unforgettable evening. If
-              special requests, please let us know in advance.
+              you have any special requests, please let us know in advance.
             </Text>
             <Text>
-              Please arrive 15 minutes before the start of the event to make
-              sure you don&apos;t miss anything. We cannot ensure that there
-              will be no queues at the entrance.
+              Please arrive at least 15 minutes before the start of the event to
+              make sure you don&apos;t miss anything. We cannot ensure that
+              there will be no queues at the entrance.
             </Text>
             <Text>
               Thank you for choosing {companyName}. We look forward to welcoming

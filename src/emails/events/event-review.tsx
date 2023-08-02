@@ -32,7 +32,7 @@ export const EventReview: FC<EventReviewProps> = ({
   return (
     <Html>
       <Head />
-      <Preview>Minimal - How was it?</Preview>
+      <Preview>Minimal - How Was It?</Preview>
       <Body style={main}>
         <Container style={container} width={600}>
           <Row style={{ marginBottom: "16px" }}>
@@ -55,15 +55,14 @@ export const EventReview: FC<EventReviewProps> = ({
           </Row>
           <Row style={{ marginBottom: "16px" }}>
             <Text style={{ fontSize: "48px", lineHeight: "52px" }}>
-              How was it?
+              How Was It?
             </Text>
           </Row>
           <Row style={{ marginBottom: "16px" }}>
             <Text>Dear {name},</Text>
             <Text>
-              We hope this email finds you well. We wanted to take a moment to
-              check in with you and ask about your recent experience at the{" "}
-              {eventName}!
+              We hope you enjoyed yourself at the {eventName}. We wanted to take
+              a moment to check in with you and ask about your experience!
             </Text>
             <Text>
               At Viola Studio, we are committed to providing our customers with

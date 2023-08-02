@@ -24,6 +24,7 @@ type EventConfirmationProps = {
   totalCost: string;
   eventName: string;
   reservationUrl: string;
+  noOfPeople: string;
 };
 
 const baseUrl = `${
@@ -35,9 +36,10 @@ export const EventConfirmation: FC<EventConfirmationProps> = ({
   startTime = "4 PM",
   endTime = "9 PM",
   date = "September 5, 2023",
-  totalCost = "$ 14.00",
+  totalCost = "$ 28.00",
   eventName = "Minimal Meetup",
   reservationUrl = "https://google.com",
+  noOfPeople = "2",
 }) => {
   return (
     <Html>
@@ -87,6 +89,9 @@ export const EventConfirmation: FC<EventConfirmationProps> = ({
             </Text>
             <Text>
               <b>End Time:</b> {endTime}
+            </Text>
+            <Text>
+              <b>Number of People:</b> {noOfPeople}
             </Text>
             <Text>
               <b>Entry Fee:</b> {totalCost}
