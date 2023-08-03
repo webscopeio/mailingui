@@ -74,7 +74,7 @@ export default async function TemplatePage({ params }: TemplatePageProps) {
                     <Image
                       key={i}
                       src={url}
-                      height={245}
+                      height={232}
                       width={260}
                       alt={`Minimal - ${category.name} image preview`}
                       className="rounded-md"
