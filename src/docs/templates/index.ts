@@ -16,9 +16,9 @@ export const templates: Template[] = [
           "Events are a great way to get people together. Can be conference, a meetup, or a party.",
         href: "/preview/events",
         imageUrl: [
-          "/static/images/templates-docs/test.png",
-          "/static/images/templates-docs/test.png",
-          "/static/images/templates-docs/test.png",
+          "/static/images/templates-docs/events-1.png",
+          "/static/images/templates-docs/events-2.png",
+          "/static/images/templates-docs/events-3.png",
         ],
       },
       {
@@ -27,9 +27,9 @@ export const templates: Template[] = [
           "Marketing emails are a great way to promote your business with product announcement or a special offer.",
         href: "/preview/marketing",
         imageUrl: [
-          "/static/images/templates-docs/test.png",
-          "/static/images/templates-docs/test.png",
-          "/static/images/templates-docs/test.png",
+          "/static/images/templates-docs/marketing-1.png",
+          "/static/images/templates-docs/marketing-2.png",
+          "/static/images/templates-docs/marketing-3.png",
         ],
       },
       {
@@ -38,9 +38,9 @@ export const templates: Template[] = [
           "Newsletters are a great way to keep your audience up-to-date with what's going on in your business.",
         href: "/preview/newsletter",
         imageUrl: [
-          "/static/images/templates-docs/test.png",
-          "/static/images/templates-docs/test.png",
-          "/static/images/templates-docs/test.png",
+          "/static/images/templates-docs/newsletter-1.png",
+          "/static/images/templates-docs/newsletter-2.png",
+          "/static/images/templates-docs/newsletter-3.png",
         ],
       },
     ],
