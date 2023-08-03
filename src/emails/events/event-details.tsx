@@ -9,30 +9,35 @@ import {
   Row,
 } from "@react-email/components";
 import React, { FC } from "react";
-import {
-  Text,
-  SocialIcon,
-  type SocialIconType,
-  Button,
-} from "@mailingui/components";
+import { Text, SocialIcon, type SocialIconType } from "@mailingui/components";
 
-type CompetitionProps = {
+type EventDetailsProps = {
   name: string;
-  linkHref: string;
+  eventName: string;
+  date: string;
+  time: string;
+  noOfGuests: string;
+  seatNumbers: string;
+  companyName: string;
 };
 
 const baseUrl = `${
   process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
 }/static/minimal-theme`;
 
-export const Competition: FC<CompetitionProps> = ({
-  name = "Jacob",
-  linkHref = "https://google.com",
+export const EventDetails: FC<EventDetailsProps> = ({
+  name = "Charlie",
+  eventName = "Minimal Meetup",
+  date = "24.02.2023",
+  time = "6 PM",
+  noOfGuests = "2 Adults",
+  seatNumbers = "13, 14",
+  companyName = "Minimal",
 }) => {
   return (
     <Html>
       <Head />
-      <Preview>Minimal - Competition announcement</Preview>
+      <Preview>Minimal - Upcoming Event Details</Preview>
       <Body style={main}>
         <Container style={container} width={600}>
           <Row style={{ marginBottom: "16px" }}>
@@ -55,42 +60,50 @@ export const Competition: FC<CompetitionProps> = ({
           </Row>
           <Row style={{ marginBottom: "16px" }}>
             <Text style={{ fontSize: "48px", lineHeight: "52px" }}>
-              Join our competition and win exciting prizes!
+              Your Upcoming Event Details
             </Text>
           </Row>
           <Row style={{ marginBottom: "16px" }}>
             <Text>Dear {name},</Text>
             <Text>
-              We are thrilled to invite you to participate in our competition!
-              This is a fantastic opportunity to showcase your skills and
-              creativity, and win some amazing prizes. To participate, simply
-              create a design for a product. Once you have completed the task,
-              submit your entry to us for review.
+              Thank you for signing up for the {eventName}. We wanted to follow
+              up and send you the details about the upcoming event.
             </Text>
           </Row>
           <Row style={{ marginBottom: "32px" }}>
-            <Button
-              href={linkHref}
-              width={520}
-              height={56}
-              backgroundColor="#000000"
-            >
-              I want to join the competition
-            </Button>
+            <Img width={520} src={`${baseUrl}/divider.png`} />
+          </Row>
+          <Row style={{ marginBottom: "32px" }}>
+            <Text style={{ fontWeight: 700 }}>Event details:</Text>
+            <Text>
+              <b>Date:</b> {date}
+            </Text>
+            <Text>
+              <b>Time:</b> {time}
+            </Text>
+            <Text>
+              <b>Number of guests:</b> {noOfGuests}
+            </Text>
+            <Text>
+              <b>Your seats:</b> {seatNumbers}
+            </Text>
+          </Row>
+          <Row style={{ marginBottom: "32px" }}>
+            <Img width={520} src={`${baseUrl}/divider.png`} />
           </Row>
           <Row style={{ marginBottom: "16px" }}>
             <Text>
-              We are offering a range of exciting prizes for the top performers,
-              including 6-month traineeship in our company. Additionally, all
-              participants will receive discount coupon for various courses.
+              We look forward to providing you with an unforgettable evening. If
+              you have any special requests, please let us know in advance.
             </Text>
             <Text>
-              Don&apos;t miss out on this opportunity to develop your skills and
-              showcase your talent! Please let us know if you have any questions
-              or need more information.
+              Please arrive at least 15 minutes before the start of the event to
+              make sure you don&apos;t miss anything. We cannot ensure that
+              there will be no queues at the entrance.
             </Text>
             <Text>
-              Thank you for your time, and we hope to hear from you soon.
+              Thank you for choosing {companyName}. We look forward to welcoming
+              you soon.
             </Text>
             <Text>
               Best regards,
@@ -170,7 +183,7 @@ export const Competition: FC<CompetitionProps> = ({
   );
 };
 
-export default Competition;
+export default EventDetails;
 
 const main = {
   backgroundColor: "#f6f9fc",

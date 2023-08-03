@@ -31,11 +31,9 @@
       "@templates": ["./src/docs/templates/index.ts"],
       "@mailingui/components": ["src/mailingui/components/index.ts"],
       "@mailingui/types": ["src/mailingui/types/index.ts"],
-      "@mailingui/themes": ["src/mailingui/themes/index.ts"],
-      "@mailingui/utils": ["src/mailingui/utils/index.ts"],
-      "@mailingui/*/components": ["./src/mailingui/themes/*/components/index.ts"],
+      "@mailingui/themes": ["src/mailingui/themes/index.ts"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "packages"]
 }

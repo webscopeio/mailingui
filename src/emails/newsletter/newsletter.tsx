@@ -13,42 +13,35 @@ import {
   Text,
   SocialIcon,
   type SocialIconType,
+  BulletList,
+  BulletListItem,
   Button,
 } from "@mailingui/components";
 
-type MinimalBookingConfirmationProps = {
-  name: string;
-  checkInDate: string;
-  checkOutDate: string;
-  checkInTime: string;
-  checkOutTime: string;
-  roomType: string;
-  totalCost: string;
-  noOfGuests: number;
-  hotelName: string;
-  reservationUrl: string;
+type MinimalNewsProps = {
+  link: string;
+  company: string;
+  items: string[];
 };
 
 const baseUrl = `${
   process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
 }/static/minimal-theme`;
 
-export const BookingConfirmation: FC<MinimalBookingConfirmationProps> = ({
-  name = "Jacob",
-  checkInDate = "August 22, 2023",
-  checkOutDate = "September 5, 2023",
-  checkInTime = "2 PM",
-  checkOutTime = "10 AM",
-  roomType = "Business apartment",
-  totalCost = "$ 1253.00",
-  hotelName = "Viola Hotel",
-  noOfGuests = 3,
-  reservationUrl = "https://google.com",
+export const News: FC<MinimalNewsProps> = ({
+  link = "https://google.com",
+  company = "Minimal",
+  items = [
+    "A recap of our latest product launch and customer feedback",
+    "A sneak peek of our upcoming events and promotions",
+    "An inside look at our team and company culture",
+    "Tips and advice related to our industry or area of expertise",
+  ],
 }) => {
   return (
     <Html>
       <Head />
-      <Preview>Minimal - we&apos;ve received your booking</Preview>
+      <Preview>Minimal - New issue of our newsletter</Preview>
       <Body style={main}>
         <Container style={container} width={600}>
           <Row style={{ marginBottom: "16px" }}>
@@ -71,65 +64,52 @@ export const BookingConfirmation: FC<MinimalBookingConfirmationProps> = ({
           </Row>
           <Row style={{ marginBottom: "32px" }}>
             <Text style={{ fontSize: "48px", lineHeight: "52px" }}>
-              Your {hotelName} Booking Confirmation
+              Latest Issue of our Newsletter
             </Text>
           </Row>
           <Row style={{ marginBottom: "16px" }}>
-            <Text>Dear {name},</Text>
+            <Text>Dear Subscriber,</Text>
             <Text>
-              Thank you for choosing to stay with us at {hotelName}. We are
-              pleased to confirm your booking for <b>{checkInDate}</b> to{" "}
-              <b>{checkOutDate}</b>.
+              We are excited to share the latest news and updates from {company}
+              . As a valued member of our community, we want to keep you
+              informed about our recent activities and upcoming plans.
             </Text>
           </Row>
-          <Row style={{ marginBottom: "32px" }}>
-            <Img width={520} src={`${baseUrl}/divider.png`} />
+          <Row>
+            <Img
+              src={`${baseUrl}/cozy-newsletter.png`}
+              width={520}
+              style={{ marginBottom: "24px", borderRadius: "4px" }}
+            />
           </Row>
           <Row style={{ marginBottom: "16px" }}>
-            <Text>
-              <b>Room Type:</b> {roomType}
+            <Text style={{ fontWeight: 700 }}>
+              In this edition, you&apos;ll find:
             </Text>
-            <Text>
-              <b>Number of Guests:</b> {noOfGuests}
-            </Text>
-            <Text>
-              <b>Check-in Time:</b> {checkInTime}
-            </Text>
-            <Text>
-              <b>Check-out Time:</b> {checkOutTime}
-            </Text>
-            <Text>
-              <b>Total Cost:</b> {totalCost}
-            </Text>
+            <BulletList type="unordered">
+              {items.map((item, i) => (
+                <BulletListItem key={i}>{item}</BulletListItem>
+              ))}
+            </BulletList>
           </Row>
           <Row style={{ marginBottom: "32px" }}>
             <Button
-              href={reservationUrl}
+              href={link}
               width={520}
               height={56}
               backgroundColor="#000000"
             >
-              Manage your reservation
+              Read more
             </Button>
           </Row>
           <Row style={{ marginBottom: "16px" }}>
             <Text>
-              We hope you will enjoy your stay with us and take advantage of the
-              amenities and services we offer. Should you have any special
-              requests or requirements, please do not hesitate to contact our
-              front desk team.
+              We are committed to providing you with valuable content and
+              insights that will help you stay informed and engaged. Thank you
+              for your continued support and loyalty.
             </Text>
             <Text>
-              Please note that a deposit may be required upon check-in and any
-              additional charges will be applied to your final bill upon
-              check-out.
-            </Text>
-            <Text>
-              Thank you again for choosing {hotelName}. We look forward to
-              welcoming you soon.
-            </Text>
-            <Text>
-              Best regards,
+              Sincerely,
               <br /> Minimal Team
             </Text>
           </Row>
@@ -205,7 +185,7 @@ export const BookingConfirmation: FC<MinimalBookingConfirmationProps> = ({
   );
 };
 
-export default BookingConfirmation;
+export default News;
 
 const main = {
   backgroundColor: "#f6f9fc",

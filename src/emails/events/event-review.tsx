@@ -9,35 +9,30 @@ import {
   Row,
 } from "@react-email/components";
 import React, { FC } from "react";
-import { Text, SocialIcon, type SocialIconType } from "@mailingui/components";
+import {
+  Text,
+  SocialIcon,
+  type SocialIconType,
+  Emoji,
+} from "@mailingui/components";
 
-type DinnerReservationProps = {
+type EventReviewProps = {
   name: string;
-  date: string;
-  time: string;
-  noOfGuests: string;
-  tableNo: string;
-  restaurantName: string;
-  restaurantPhone: string;
+  eventName: string;
 };
 
 const baseUrl = `${
   process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
 }/static/minimal-theme`;
 
-export const DinnerReservation: FC<DinnerReservationProps> = ({
-  name = "Charlie",
-  date = "24.02.2023",
-  time = "6 PM",
-  noOfGuests = "2 Adults",
-  tableNo = "Table 13",
-  restaurantName = "Minimal Restaurant",
-  restaurantPhone = "+1 234 567 89",
+export const EventReview: FC<EventReviewProps> = ({
+  name = "Jacob",
+  eventName = "Minimal Meetup",
 }) => {
   return (
     <Html>
       <Head />
-      <Preview>Minimal - Dinner Reservation Confirmation</Preview>
+      <Preview>Minimal - How Was It?</Preview>
       <Body style={main}>
         <Container style={container} width={600}>
           <Row style={{ marginBottom: "16px" }}>
@@ -60,56 +55,89 @@ export const DinnerReservation: FC<DinnerReservationProps> = ({
           </Row>
           <Row style={{ marginBottom: "16px" }}>
             <Text style={{ fontSize: "48px", lineHeight: "52px" }}>
-              Dinner Reservation Confirmation
+              How Was It?
             </Text>
           </Row>
           <Row style={{ marginBottom: "16px" }}>
             <Text>Dear {name},</Text>
             <Text>
-              Thank you for choosing Olive Grove for your upcoming dinner. We
-              are pleased to confirm your reservation as follows:
+              We hope you enjoyed yourself at the {eventName}. We wanted to take
+              a moment to check in with you and ask about your experience!
+            </Text>
+            <Text>
+              At Viola Studio, we are committed to providing our customers with
+              the best possible experience, and we want to ensure that we are
+              meeting that goal. We would be grateful if you could take a few
+              minutes to share your thoughts on your experience with us.
             </Text>
           </Row>
           <Row style={{ marginBottom: "32px" }}>
             <Img width={520} src={`${baseUrl}/divider.png`} />
           </Row>
-          <Row style={{ marginBottom: "32px" }}>
-            <Text style={{ fontWeight: 700 }}>Reservation details:</Text>
-            <Text>
-              <b>Date:</b> {date}
-            </Text>
-            <Text>
-              <b>Time:</b> {time}
-            </Text>
-            <Text>
-              <b>Number of guests:</b> {noOfGuests}
-            </Text>
-            <Text>
-              <b>Table number:</b> {tableNo}
-            </Text>
+          <Row style={{ marginBottom: "32px", textAlign: "center" }}>
+            <Column>
+              <Emoji
+                type="heart-eyes-face"
+                style={{ paddingLeft: "16px", paddingBottom: "8px" }}
+                href="https://google.com"
+                bg
+              />
+              Excellent
+            </Column>
+            <Column>
+              <Emoji
+                type="smiling-face"
+                style={{ paddingLeft: "16px", paddingBottom: "8px" }}
+                href="https://google.com"
+                bg
+              />
+              Good
+            </Column>
+            <Column>
+              <Emoji
+                type="smiling-face"
+                style={{ paddingLeft: "16px", paddingBottom: "8px" }}
+                href="https://google.com"
+                bg
+              />
+              Good
+            </Column>
+            <Column>
+              <Emoji
+                type="smiling-face"
+                style={{ paddingLeft: "16px", paddingBottom: "8px" }}
+                href="https://google.com"
+                bg
+              />
+              Good
+            </Column>
+            <Column>
+              <Emoji
+                type="smiling-face"
+                style={{ paddingLeft: "16px", paddingBottom: "8px" }}
+                href="https://google.com"
+                bg
+              />
+              Good
+            </Column>
           </Row>
           <Row style={{ marginBottom: "32px" }}>
             <Img width={520} src={`${baseUrl}/divider.png`} />
           </Row>
           <Row style={{ marginBottom: "16px" }}>
             <Text>
-              We look forward to providing you with an unforgettable dining
-              experience. If you have any dietary requirements or special
-              requests, please let us know in advance.
+              Your feedback is important to us, and it will help us identify
+              areas where we can improve and better serve our customers. We
+              value your opinion, and we would appreciate any suggestions or
+              comments that you may have.
             </Text>
             <Text>
-              Please note that your reservation will be held for 15 minutes past
-              the reserved time. If you anticipate arriving later than the
-              reserved time, please call {restaurantPhone} to inform us.
-            </Text>
-            <Text>
-              Thank you for choosing {restaurantName}. We look forward to
-              welcoming you soon.
+              Thank you for your time and consideration, and we look forward to
+              hearing from you soon.
             </Text>
             <Text>
               Best regards,
-              <br />
-              Minimal Team
+              <br /> Minimal Team
             </Text>
           </Row>
           <Row style={{ marginBottom: "32px" }}>
@@ -184,7 +212,7 @@ export const DinnerReservation: FC<DinnerReservationProps> = ({
   );
 };
 
-export default DinnerReservation;
+export default EventReview;
 
 const main = {
   backgroundColor: "#f6f9fc",
