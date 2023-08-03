@@ -30,10 +30,10 @@ export const CollapsibleContent = ({
       <div className={className}>{children}</div>
       <div
         className={cn(
-          "flex flex-col items-center justify-end p-4",
+          "flex flex-col items-center justify-end p-4 pointer-events-none",
           isCollapsed &&
             `bg-gradient-to-t ${fromBlack ? "from-black" : "from-stone-950"}`,
-          isCollapsed && "pointer-events-none absolute inset-0 h-full w-full",
+          isCollapsed && "absolute inset-0 h-full w-full",
           !isCollapsed && (expandedButtonInset ? "absolute inset-0 p-2" : "p-8")
         )}
       >
