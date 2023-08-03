@@ -24,7 +24,7 @@ export default async function TemplatePage({ params }: TemplatePageProps) {
   return (
     <div className="mx-auto w-full max-w-6xl overflow-hidden p-4 lg:py-0">
       <DocArticle>
-        <div className="flex w-full md:w-2/3 lg:w-1/2 flex-col gap-4">
+        <div className="flex w-full flex-col gap-4 md:w-2/3 lg:w-1/2">
           <MdxP className="mb-2">{template.shortDescription}</MdxP>
           <MdxH1>{template.name}</MdxH1>
           <MdxP>{template.description}</MdxP>
