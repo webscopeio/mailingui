@@ -16,23 +16,23 @@ import {
   Button,
 } from "@mailingui/components";
 
-type MinimalResetPasswordProps = {
+type SubscriptionConfirmationProps = {
   name: string;
-  passwordResetUrl: string;
+  confirmationUrl: string;
 };
 
 const baseUrl = `${
   process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
 }/static/minimal-theme`;
 
-export const ResetPassword: FC<MinimalResetPasswordProps> = ({
+export const SubscriptionConfirmation: FC<SubscriptionConfirmationProps> = ({
   name = "Jacob",
-  passwordResetUrl = "https://google.com",
+  confirmationUrl = "https://google.com",
 }) => {
   return (
     <Html>
       <Head />
-      <Preview>Minimal - Reset your password</Preview>
+      <Preview>Minimal - Confirm you email address</Preview>
       <Body style={main}>
         <Container style={container} width={600}>
           <Row style={{ marginBottom: "16px" }}>
@@ -55,33 +55,32 @@ export const ResetPassword: FC<MinimalResetPasswordProps> = ({
           </Row>
           <Row style={{ marginBottom: "32px" }}>
             <Text style={{ fontSize: "48px", lineHeight: "52px" }}>
-              Password Reset
+              Confirm Your Email Address
             </Text>
           </Row>
           <Row style={{ marginBottom: "16px" }}>
             <Text>Dear {name},</Text>
             <Text>
-              We recently received a request to reset your password on our
-              platform. To reset your password, please click on the button or
-              link below:
+              Recently you requested to join our newsletter. We require that you
+              verify your email address before we can add you to our list.
+              Please click on the link below to confirm your email address:
             </Text>
           </Row>
           <Row style={{ marginBottom: "32px" }}>
             <Button
-              href={passwordResetUrl}
+              href={confirmationUrl}
               width={520}
               height={56}
               backgroundColor="#000000"
             >
-              Reset password
+              Confirm Email Address
             </Button>
           </Row>
           <Row style={{ marginBottom: "16px" }}>
             <Text>
               If you did not initiate this request or believe it was made in
-              error, please disregard this email and take the necessary steps to
-              secure your account. If you have any concerns or need further
-              assistance, please contact our customer support team.
+              error, please disregard this email. If you have any concerns or
+              need further assistance, please contact our customer support team.
             </Text>
             <Text>
               Best regards,
@@ -161,7 +160,7 @@ export const ResetPassword: FC<MinimalResetPasswordProps> = ({
   );
 };
 
-export default ResetPassword;
+export default SubscriptionConfirmation;
 
 const main = {
   backgroundColor: "#f6f9fc",

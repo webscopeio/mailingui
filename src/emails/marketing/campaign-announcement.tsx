@@ -9,23 +9,30 @@ import {
   Row,
 } from "@react-email/components";
 import React, { FC } from "react";
-import { Text, SocialIcon, type SocialIconType } from "@mailingui/components";
+import {
+  Text,
+  SocialIcon,
+  type SocialIconType,
+  Button,
+} from "@mailingui/components";
 
-type MinimalEventInvitationProps = {
+type CampaignAnnouncementProps = {
   name: string;
+  linkHref: string;
 };
 
 const baseUrl = `${
   process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
 }/static/minimal-theme`;
 
-export const MinimalEventInvitation: FC<MinimalEventInvitationProps> = ({
+export const CampaignAnnouncement: FC<CampaignAnnouncementProps> = ({
   name = "Jacob",
+  linkHref = "https://google.com",
 }) => {
   return (
     <Html>
       <Head />
-      <Preview>Minimal - Join our team</Preview>
+      <Preview>Minimal - Campaign Announcement</Preview>
       <Body style={main}>
         <Container style={container} width={600}>
           <Row style={{ marginBottom: "16px" }}>
@@ -46,44 +53,48 @@ export const MinimalEventInvitation: FC<MinimalEventInvitationProps> = ({
           <Row style={{ marginBottom: "32px" }}>
             <Img width={520} src={`${baseUrl}/divider.png`} />
           </Row>
-          <Row style={{ marginBottom: "32px" }}>
+          <Row style={{ marginBottom: "16px" }}>
             <Text style={{ fontSize: "48px", lineHeight: "52px" }}>
-              Join Our Team as a UI/UX Designer
+              Join our new Campaign and win exciting prizes!
             </Text>
           </Row>
           <Row style={{ marginBottom: "16px" }}>
-            <Text> Dear {name},</Text>
+            <Text>Dear {name},</Text>
             <Text>
-              I hope this message finds you well. I am writing to extend an
-              invitation to join our team here at Viola Studio. We are excited
-              to offer you the opportunity to work alongside a dynamic group of
-              professionals in a challenging and rewarding environment.
+              We are thrilled to invite you to participate in our new Campaign!
+              This is a great opportunity to win valuable prizes and showcase
+              your skills. If you are interested, please click the button below
+              and follow the instructions.
+            </Text>
+          </Row>
+          <Row style={{ marginBottom: "32px" }}>
+            <Button
+              href={linkHref}
+              width={520}
+              height={56}
+              backgroundColor="#000000"
+            >
+              I want to join the competition
+            </Button>
+          </Row>
+          <Row style={{ marginBottom: "16px" }}>
+            <Text>
+              We are offering a range of exciting prizes for the top performers,
+              including 6-month traineeship in our company. Additionally, all
+              participants will receive discount coupon for various courses.
             </Text>
             <Text>
-              As a member of our team, you will have the chance to make a
-              significant impact on our organization and contribute to the
-              success of our mission. We believe in providing our employees with
-              the resources and support they need to achieve their personal and
-              professional goals, and we are committed to fostering a culture of
-              innovation and collaboration.
+              Don&apos;t miss out on this opportunity to develop your skills and
+              showcase your talent! Please let us know if you have any questions
+              or need more information.
             </Text>
             <Text>
-              We are looking for someone who is passionate about{" "}
-              <b>UI/UX Design</b>, has a strong work ethic, and is eager to
-              learn and grow in their career. Your skills and experience make
-              you an excellent candidate for this position, and we believe that
-              you would be a valuable addition to our team.
-            </Text>
-            <Text>
-              If you are interested in joining us, please reply to this email
-              and let us know. We would be happy to discuss the details of the
-              position further and answer any questions you may have. We look
-              forward to hearing from you soon. Thank you for your time and
-              consideration.
+              Thank you for your time, and we hope to hear from you soon.
             </Text>
             <Text>
               Best regards,
-              <br /> Minimal Team
+              <br />
+              Minimal Team
             </Text>
           </Row>
           <Row style={{ marginBottom: "32px" }}>
@@ -158,7 +169,7 @@ export const MinimalEventInvitation: FC<MinimalEventInvitationProps> = ({
   );
 };
 
-export default MinimalEventInvitation;
+export default CampaignAnnouncement;
 
 const main = {
   backgroundColor: "#f6f9fc",

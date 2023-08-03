@@ -13,22 +13,38 @@ import {
   Text,
   SocialIcon,
   type SocialIconType,
-  Emoji,
+  Button,
 } from "@mailingui/components";
 
-type MinimalReviewProps = {
+type EventConfirmationProps = {
   name: string;
+  date: string;
+  startTime: string;
+  endTime: string;
+  totalCost: string;
+  eventName: string;
+  reservationUrl: string;
+  noOfPeople: string;
 };
 
 const baseUrl = `${
   process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
 }/static/minimal-theme`;
 
-export const Review: FC<MinimalReviewProps> = ({ name = "Jacob" }) => {
+export const EventConfirmation: FC<EventConfirmationProps> = ({
+  name = "Jacob",
+  startTime = "4 PM",
+  endTime = "9 PM",
+  date = "September 5, 2023",
+  totalCost = "$ 28.00",
+  eventName = "Minimal Meetup",
+  reservationUrl = "https://google.com",
+  noOfPeople = "2",
+}) => {
   return (
     <Html>
       <Head />
-      <Preview>Minimal - How was your experience?</Preview>
+      <Preview>Minimal - we&apos;ve confirmed your participation</Preview>
       <Body style={main}>
         <Container style={container} width={600}>
           <Row style={{ marginBottom: "16px" }}>
@@ -49,88 +65,63 @@ export const Review: FC<MinimalReviewProps> = ({ name = "Jacob" }) => {
           <Row style={{ marginBottom: "32px" }}>
             <Img width={520} src={`${baseUrl}/divider.png`} />
           </Row>
-          <Row style={{ marginBottom: "16px" }}>
+          <Row style={{ marginBottom: "32px" }}>
             <Text style={{ fontSize: "48px", lineHeight: "52px" }}>
-              How was your experience?
+              Your {eventName} Event Confirmation
             </Text>
           </Row>
           <Row style={{ marginBottom: "16px" }}>
             <Text>Dear {name},</Text>
             <Text>
-              We hope this email finds you well. We wanted to take a moment to
-              check in with you and ask about your recent experience with our
-              services.
+              Thank you for signing up for the {eventName}. Via this email we
+              are confirming your participation.
             </Text>
-            <Text>
-              At Viola Studio, we are committed to providing our customers with
-              the best possible experience, and we want to ensure that we are
-              meeting that goal. We would be grateful if you could take a few
-              minutes to share your thoughts on your experience with us.
-            </Text>
-          </Row>
-          <Row style={{ marginBottom: "32px" }}>
-            <Img width={520} src={`${baseUrl}/divider.png`} />
-          </Row>
-          <Row style={{ marginBottom: "32px", textAlign: "center" }}>
-            <Column>
-              <Emoji
-                type="heart-eyes-face"
-                style={{ paddingLeft: "16px", paddingBottom: "8px" }}
-                href="https://google.com"
-                bg
-              />
-              Excellent
-            </Column>
-            <Column>
-              <Emoji
-                type="smiling-face"
-                style={{ paddingLeft: "16px", paddingBottom: "8px" }}
-                href="https://google.com"
-                bg
-              />
-              Good
-            </Column>
-            <Column>
-              <Emoji
-                type="smiling-face"
-                style={{ paddingLeft: "16px", paddingBottom: "8px" }}
-                href="https://google.com"
-                bg
-              />
-              Good
-            </Column>
-            <Column>
-              <Emoji
-                type="smiling-face"
-                style={{ paddingLeft: "16px", paddingBottom: "8px" }}
-                href="https://google.com"
-                bg
-              />
-              Good
-            </Column>
-            <Column>
-              <Emoji
-                type="smiling-face"
-                style={{ paddingLeft: "16px", paddingBottom: "8px" }}
-                href="https://google.com"
-                bg
-              />
-              Good
-            </Column>
           </Row>
           <Row style={{ marginBottom: "32px" }}>
             <Img width={520} src={`${baseUrl}/divider.png`} />
           </Row>
           <Row style={{ marginBottom: "16px" }}>
             <Text>
-              Your feedback is important to us, and it will help us identify
-              areas where we can improve and better serve our customers. We
-              value your opinion, and we would appreciate any suggestions or
-              comments that you may have.
+              <b>Date:</b> {date}
             </Text>
             <Text>
-              Thank you for your time and consideration, and we look forward to
-              hearing from you soon.
+              <b>Start Time:</b> {startTime}
+            </Text>
+            <Text>
+              <b>End Time:</b> {endTime}
+            </Text>
+            <Text>
+              <b>Number of People:</b> {noOfPeople}
+            </Text>
+            <Text>
+              <b>Entry Fee:</b> {totalCost}
+            </Text>
+          </Row>
+          <Row style={{ marginBottom: "32px" }}>
+            <Button
+              href={reservationUrl}
+              width={520}
+              height={56}
+              backgroundColor="#000000"
+            >
+              Change Attendance
+            </Button>
+          </Row>
+          <Row style={{ marginBottom: "16px" }}>
+            <Text>
+              We hope you see you at the event and don&apos;t forget to take
+              advantage of the amenities and services we offer. Should you have
+              any special requests or requirements, please do not hesitate to
+              contact us.
+            </Text>
+            <Text>
+              Please note there will be a photographer at the event and we will
+              be taking photos for promotional purposes. If you do not wish to
+              be photographed, please let us know.
+            </Text>
+            <Text>
+              Thank you again for your interest. We look forward to seeing you
+              there.
             </Text>
             <Text>
               Best regards,
@@ -209,7 +200,7 @@ export const Review: FC<MinimalReviewProps> = ({ name = "Jacob" }) => {
   );
 };
 
-export default Review;
+export default EventConfirmation;
 
 const main = {
   backgroundColor: "#f6f9fc",
