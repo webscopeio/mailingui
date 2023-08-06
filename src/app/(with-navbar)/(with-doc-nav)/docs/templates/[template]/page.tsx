@@ -1,9 +1,11 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { templates } from "@templates";
 import { DocArticle, MdxH1, MdxH2, MdxP } from "@components/MdxComponents";
 import { DownloadIcon, OpenBlankIcon } from "@components/Icons";
 import { CTA } from "@components/CTA";
+import { openGraphImageSize, sharedOpenGraphMetadata } from "@constants";
 
 type TemplatePageProps = {
   params: {
@@ -11,10 +13,37 @@ type TemplatePageProps = {
   };
 };
 
+function findPageTemplateItem(templateId: string) {
+  return templates.find((template) => template.id === templateId);
+}
+
 async function loadTemplate(templateId: string) {
   const template = templates.find((t) => t.id === templateId);
   if (!template) return null;
   return template;
+}
+
+export function generateMetadata({ params }: TemplatePageProps): Metadata {
+  const doc = findPageTemplateItem(params.template);
+  const title = doc?.name ?? "Templates";
+  const description = doc?.description ?? "Explore templates";
+
+  return {
+    title,
+    description,
+    openGraph: {
+      ...sharedOpenGraphMetadata,
+      title,
+      description,
+      url: "https://mailingui.com/docs",
+      images: [
+        {
+          ...openGraphImageSize,
+          url: "/static/images/og/components.png",
+        },
+      ],
+    },
+  };
 }
 
 export default async function TemplatePage({ params }: TemplatePageProps) {
