@@ -1,3 +1,4 @@
+import { join } from "path";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
@@ -13,6 +14,9 @@ type TemplatePageProps = {
   };
 };
 
+const SERVICE_URL = "https://download-directory.github.io/?url=";
+const REPO_URL = "https://github.com/webscopeio/mailingui/tree/main/src/emails";
+
 function findPageTemplateItem(templateId: string) {
   return templates.find((template) => template.id === templateId);
 }
@@ -21,6 +25,10 @@ async function loadTemplate(templateId: string) {
   const template = templates.find((t) => t.id === templateId);
   if (!template) return null;
   return template;
+}
+
+function getDownloadUrl(folder: string) {
+  return `${SERVICE_URL}${join(REPO_URL, folder)}`;
 }
 
 export function generateMetadata({ params }: TemplatePageProps): Metadata {
@@ -63,7 +71,11 @@ export default async function TemplatePage({ params }: TemplatePageProps) {
                 Explore categories
               </a>
             </CTA>
-            <CTA color="black">
+            <CTA
+              color="black"
+              href={getDownloadUrl(template.downloadFolder)}
+              target="_blank"
+            >
               <DownloadIcon className="mr-2" />
               Download all
             </CTA>
@@ -91,7 +103,12 @@ export default async function TemplatePage({ params }: TemplatePageProps) {
                       See preview
                     </CTA>
                   )}
-                  <CTA color="black" className="w-full py-2">
+                  <CTA
+                    color="black"
+                    className="w-full py-2"
+                    href={getDownloadUrl(category.downloadFolder)}
+                    target="_blank"
+                  >
                     <DownloadIcon className="mr-2" />
                     Download
                   </CTA>

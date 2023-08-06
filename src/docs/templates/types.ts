@@ -4,6 +4,7 @@ export type Template = {
   shortDescription: string;
   description: string;
   categories: TemplateCategory[];
+  downloadFolder: string;
 };
 
 type TemplateCategory = {
@@ -11,4 +12,5 @@ type TemplateCategory = {
   description: string;
   imageUrl: string[];
   href: string;
+  downloadFolder: string;
 };

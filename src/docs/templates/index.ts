@@ -9,6 +9,7 @@ export const templates: Template[] = [
     shortDescription: "Free email template",
     description:
       "Minimal is a simple and clean email template. It comes with three different email categories.",
+    downloadFolder: "",
     categories: [
       {
         name: "Events",
@@ -20,6 +21,7 @@ export const templates: Template[] = [
           "/static/images/templates-docs/events-2.png",
           "/static/images/templates-docs/events-3.png",
         ],
+        downloadFolder: "events",
       },
       {
         name: "Marketing",
@@ -31,6 +33,7 @@ export const templates: Template[] = [
           "/static/images/templates-docs/marketing-2.png",
           "/static/images/templates-docs/marketing-3.png",
         ],
+        downloadFolder: "marketing",
       },
       {
         name: "Newsletter",
@@ -42,6 +45,7 @@ export const templates: Template[] = [
           "/static/images/templates-docs/newsletter-2.png",
           "/static/images/templates-docs/newsletter-3.png",
         ],
+        downloadFolder: "newsletter",
       },
     ],
   },
