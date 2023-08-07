@@ -40,11 +40,13 @@ pre.mdx-code {
 }
 
 .mdx-code > code {
-  counter-reset: line;
+    font-size: .875rem;
+    line-height: 1.5rem;
+    counter-reset: line;
 }
 
 .mdx-code > code > [data-line] {
-  position: relative;
+    position: relative;
 }
 
 .mdx-code > code > [data-line]::before {
@@ -62,9 +64,9 @@ pre.mdx-code {
 }
 
 .mdx-code > code[data-line-numbers-max-digits='2'] > [data-line]::before {
-  width: 2rem;
+    width: 2rem;
 }
 
 .mdx-code > code[data-line-numbers-max-digits='3'] > [data-line]::before {
-  width: 3rem;
+    width: 3rem;
 }
