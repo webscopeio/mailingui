@@ -4,16 +4,17 @@ import {
   TabsList,
   TabsTrigger,
 } from "@components/Tabs/Tabs";
-
+import { DynamicCode } from "./DynamicCode";
 import {
   ComponentDemo,
   ComponentSourceTabs,
-  ComponentExamples, DocPre
+  ComponentExamples, DocPre, MdxP
 } from "src/docs/components/MdxComponents";
+
 
 # {props.title}
 
- {props.description}
+<MdxP>{props.description}</MdxP>
 
 <ComponentDemo type={props.slug} />
 
@@ -32,19 +33,19 @@ Choose an a) automatic install by running our `@mailingui/cli` following the com
     </div>
 
     <TabsContent value="automatic">
-      <pre>
-        <code>
-<DocPre children={`npx @mailingui/cli add [options] ${props.installName}
+      <DynamicCode replaceBy={props.installName}>
+        ```shell
+        npx @mailingui/cli add [options] installName
 
-# Options
--o, --overwrite  automatically overwrite existing components (default: false)
--a, --all        download all available components (default: false)
--h, --help       display help for command`} />
-        </code>
-      </pre>
+        # Options
+        -o, --overwrite  automatically overwrite existing components (default: false)
+        -a, --all        download all available components (default: false)
+        -h, --help       display help for command
+        ```
+      </DynamicCode>
     </TabsContent>
     <TabsContent value="manual">
-    <ComponentSourceTabs type={props.slug} />
+      <ComponentSourceTabs type={props.slug} />
     </TabsContent>
 
   </Tabs>
