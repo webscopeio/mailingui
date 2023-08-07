@@ -13,6 +13,10 @@ const bg: React.CSSProperties["backgroundColor"] = "#011627";
 
 const highlighterCache = new Map<string, Promise<Highlighter>>();
 
+/**
+ * Get a shiki highlighter instance.
+ * Cached by theme and languages.
+ */
 export async function getHighlighter({
   langs = defaultlangs,
 }: {
@@ -34,6 +38,10 @@ export async function getHighlighter({
   return await promise;
 }
 
+/**
+ * Highlight code string with provided shiki highlighter.
+ * includeExplanation turned off to increase performance.
+ */
 export async function highlight(
   highlighter: Highlighter,
   code: string,
