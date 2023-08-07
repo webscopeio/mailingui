@@ -1,4 +1,5 @@
 import { componentTypes } from "@examples";
+import { templates } from "@templates";
 
 export type DocItems = DocItemGroup[];
 export type DocItemGroup = {
@@ -38,6 +39,14 @@ export const docsItems: DocItems = [
         }))
         .sort((a, b) => a.label.localeCompare(b.label)),
     ],
+  },
+  {
+    label: "Templates",
+    items: templates.map((template) => ({
+      href: `/docs/templates/${template.id}`,
+      label: template.name,
+      description: template.shortDescription,
+    })),
   },
 ];
 
