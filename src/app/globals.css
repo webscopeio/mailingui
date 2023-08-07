@@ -31,23 +31,23 @@
 	@apply -ml-7 mr-5 inline-flex min-w-[2ch] justify-end text-slate-500 opacity-40 content-[attr(data-line)];
 }
 
-pre {
-    white-space: pre-wrap;       /* css-3 */
- white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
- white-space: -pre-wrap;      /* Opera 4-6 */
- white-space: -o-pre-wrap;    /* Opera 7 */
- word-wrap: break-word;       /* Internet Explorer 5.5+ */;
+pre.mdx-code {
+  white-space: pre-wrap;       /* css-3 */
+  white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+  white-space: -pre-wrap;      /* Opera 4-6 */
+  white-space: -o-pre-wrap;    /* Opera 7 */
+  word-wrap: break-word;       /* Internet Explorer 5.5+ */;
 }
 
-code {
+.mdx-code > code {
   counter-reset: line;
 }
 
-code > [data-line] {
+.mdx-code > code > [data-line] {
   position: relative;
 }
 
-code > [data-line]::before {
+.mdx-code > code > [data-line]::before {
     counter-increment: line;
     content: counter(line);
 
@@ -61,10 +61,10 @@ code > [data-line]::before {
     opacity: 40%;
 }
 
-code[data-line-numbers-max-digits='2'] > [data-line]::before {
+.mdx-code > code[data-line-numbers-max-digits='2'] > [data-line]::before {
   width: 2rem;
 }
 
-code[data-line-numbers-max-digits='3'] > [data-line]::before {
+.mdx-code > code[data-line-numbers-max-digits='3'] > [data-line]::before {
   width: 3rem;
 }

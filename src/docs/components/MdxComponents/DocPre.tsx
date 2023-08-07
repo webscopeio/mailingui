@@ -12,7 +12,7 @@ export const DocPre = ({ children }: { children: React.ReactNode }) => {
         ref={(node) => {
           node?.textContent && setCode(node.textContent);
         }}
-        className={cn("border-0 my-0 pl-7 bg-transparent")}
+        className={cn("mdx-code border-0 my-0 pl-7 bg-transparent")}
       >
         {children}
       </pre>
