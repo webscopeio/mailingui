@@ -30,3 +30,41 @@
 .shiki .line[data-line]:before {
 	@apply -ml-7 mr-5 inline-flex min-w-[2ch] justify-end text-slate-500 opacity-40 content-[attr(data-line)];
 }
+
+pre {
+    white-space: pre-wrap;       /* css-3 */
+ white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+ white-space: -pre-wrap;      /* Opera 4-6 */
+ white-space: -o-pre-wrap;    /* Opera 7 */
+ word-wrap: break-word;       /* Internet Explorer 5.5+ */;
+}
+
+code {
+  counter-reset: line;
+}
+
+code > [data-line] {
+  position: relative;
+}
+
+code > [data-line]::before {
+    counter-increment: line;
+    content: counter(line);
+
+    /* Other styling */
+    display: inline-block;
+    width: 1rem;
+    margin-left: -1.75rem;
+    margin-right: 1.25rem;
+    text-align: right;
+    color: rgb(100 116 139);
+    opacity: 40%;
+}
+
+code[data-line-numbers-max-digits='2'] > [data-line]::before {
+  width: 2rem;
+}
+
+code[data-line-numbers-max-digits='3'] > [data-line]::before {
+  width: 3rem;
+}
