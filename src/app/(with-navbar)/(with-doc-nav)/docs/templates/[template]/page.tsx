@@ -3,10 +3,15 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { templates } from "@templates";
+import { PagingNav } from "@components/PagingNav";
 import { DocArticle, MdxH1, MdxH2, MdxP } from "@components/MdxComponents";
 import { DownloadIcon, OpenBlankIcon } from "@components/Icons";
 import { CTA } from "@components/CTA";
-import { openGraphImageSize, sharedOpenGraphMetadata } from "@constants";
+import {
+  openGraphImageSize,
+  sharedOpenGraphMetadata,
+  flattenedDocsItems,
+} from "@constants";
 
 type TemplatePageProps = {
   params: {
@@ -29,6 +34,22 @@ async function loadTemplate(templateId: string) {
 
 function getDownloadUrl(folder: string) {
   return `${SERVICE_URL}${join(REPO_URL, folder)}`;
+}
+
+function findNeighbours(slug: string[]) {
+  const resolvedHref = ["/docs", ...slug].join("/");
+  const currentIndex = flattenedDocsItems.findIndex(
+    (item) => item.href === resolvedHref
+  );
+  const prev = currentIndex !== 0 ? flattenedDocsItems[currentIndex - 1] : null;
+  const next =
+    currentIndex !== flattenedDocsItems.length - 1
+      ? flattenedDocsItems[currentIndex + 1]
+      : null;
+  return {
+    prev,
+    next,
+  };
 }
 
 export function generateMetadata({ params }: TemplatePageProps): Metadata {
@@ -56,8 +77,9 @@ export function generateMetadata({ params }: TemplatePageProps): Metadata {
 
 export default async function TemplatePage({ params }: TemplatePageProps) {
   const template = await loadTemplate(params.template);
-
   if (!template) notFound();
+
+  const { prev, next } = findNeighbours(["templates", params.template]);
   return (
     <div className="mx-auto w-full max-w-6xl overflow-hidden p-4 lg:py-0">
       <DocArticle>
@@ -135,6 +157,7 @@ export default async function TemplatePage({ params }: TemplatePageProps) {
           ))}
         </ul>
       </DocArticle>
+      <PagingNav prev={prev} next={next} className="mt-8" />
     </div>
   );
 }
