@@ -9,7 +9,7 @@ export function DynamicCode({ replaceBy, children }) {
   useEffect(() => {
     if (ref.current) {
       const token = [...ref.current.querySelectorAll("code span")].find(
-        (el) => el.innerText === " [options] {installName}"
+        (el) => el.innerText === " [options] installName"
       );
       if (token) token.innerText = ` [options] ${replaceBy}`;
     }
