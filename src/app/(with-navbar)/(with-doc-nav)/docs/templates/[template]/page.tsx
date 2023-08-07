@@ -63,7 +63,7 @@ export default async function TemplatePage({ params }: TemplatePageProps) {
       <DocArticle>
         <div className="flex w-full flex-col gap-4 md:w-2/3 lg:w-1/2">
           <MdxP className="mb-2">{template.shortDescription}</MdxP>
-          <MdxH1>{template.name}</MdxH1>
+          <MdxH1 id={`template-${template.id}`}>{template.name}</MdxH1>
           <MdxP>{template.description}</MdxP>
           <div className="grid grid-cols-2 gap-2">
             <CTA color="white" className="grid place-content-center py-2">
@@ -89,7 +89,9 @@ export default async function TemplatePage({ params }: TemplatePageProps) {
               className="grid min-h-[16rem] gap-8 lg:grid-cols-[24rem_1fr] lg:gap-4"
             >
               <div className="flex flex-col gap-4">
-                <MdxH2>{category.name}</MdxH2>
+                <MdxH2 id={`template-${template.id}-${category.name}`}>
+                  {category.name}
+                </MdxH2>
                 <MdxP>{category.description}</MdxP>
                 <div className="grid max-w-[32rem] grid-cols-2 gap-2">
                   {category.href && (
