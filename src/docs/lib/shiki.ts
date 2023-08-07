@@ -18,9 +18,6 @@ export async function getHighlighter({
 }: {
   langs?: Lang[];
 } = {}): Promise<Highlighter> {
-  /** Preload NO languages in development */
-  const isDevelopment = process.env.NODE_ENV === "development";
-
   const key = [theme, ...langs].join(",");
   if (!highlighterCache.has(key))
     highlighterCache.set(
@@ -28,7 +25,7 @@ export async function getHighlighter({
       /* ✅ Create a highlighter instance with a theme */
       getHighlighterFromShiki({
         theme,
-        langs: isDevelopment ? [] : langs,
+        langs,
       })
     );
 
@@ -42,16 +39,10 @@ export async function highlight(
   code: string,
   lang: Lang = "tsx"
 ) {
-  /** Request NO languages in development */
-  const isDevelopment = process.env.NODE_ENV === "development";
-
   /* ✅ Highlight your code using the right syntax */
-  const tokens = highlighter.codeToThemedTokens(
-    code,
-    isDevelopment ? "" : lang,
-    theme,
-    { includeExplanation: false }
-  );
+  const tokens = highlighter.codeToThemedTokens(code, lang, theme, {
+    includeExplanation: false,
+  });
   /* ⚠️ Optional: Custom rendering of code blocks */
   return renderToHtml(tokens, {
     bg,
