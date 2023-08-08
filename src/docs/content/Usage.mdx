@@ -13,7 +13,7 @@ As **MailingUI** is set of email components built with help of [react-email](htt
 
 Here we present quick guide how to use **MailingUI** with [Resend](https://resend.com/) or [Nodemailer](https://nodemailer.com/about/) libraries.
 
-## Install dependencies
+## 1. Install dependencies
 
 For **MailingUI** install [see Installation section](/installation).
 
@@ -38,13 +38,13 @@ For **MailingUI** install [see Installation section](/installation).
 
   </Tabs>
 
-## Create email template
+## 2. Create email template
 
-You can use both **MailingUI** components installed and and any other **react-email** components to create email template. For example:
+You can use both **MailingUI** components installed and and any other _react-email_ components to create email template. For example:
 
 <EmailSourceTabs emailId="hello-world" />
 
-## Send email
+## 3. Send email
 
 <Tabs defaultValue="resend">
     <div className="flex items-center justify-start w-full mb-8">
@@ -55,7 +55,7 @@ You can use both **MailingUI** components installed and and any other **react-em
     </div>
 
     <TabsContent value="resend">
-      Given **Resend** is operated by same team as **react-email**, email rendering is built-in in **Resend's SDK**. Thus you can use its sendEmail method directly.
+      Given _Resend_ is operated by same team as _react-email_, email rendering is built-in in _Resend's SDK_. Thus you can use its sendEmail method directly.
 
       <br/>
 
@@ -104,3 +104,10 @@ You can use both **MailingUI** components installed and and any other **react-em
     </TabsContent>
 
   </Tabs>
+
+# Usefull links
+
+To gain a deeper understanding of how to utilize the rendering utility, please refer to the React Email documentation. Within the same resource, you'll also discover additional examples showcasing integrations with various email sending services.
+
+- [render utility](https://react.email/docs/utilities/render)
+- [react-email integrations](https://react.email/docs/integrations/overview)
