@@ -1,41 +1,106 @@
 import { EmailSourceTabs } from "src/docs/components/MdxComponents";
 
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@components/Tabs/Tabs";
+
 # Usage
 
 As **MailingUI** is set of email components built with help of [react-email](https://react.email) library, it reuse its rendering capabilities for preparing correct HTML markup for email clients. With rendered HTML markup you can send emails with help of any email sending service or library.
 
 Here we present quick guide how to use **MailingUI** with [Resend](https://resend.com/) or [Nodemailer](https://nodemailer.com/about/) libraries.
 
-## Using Resend
-
-### Install dependencies
+## Install dependencies
 
 For **MailingUI** install [see Installation section](/installation).
 
-```bash
-npm install resend
-```
+<Tabs defaultValue="resend">
+    <div className="flex items-center justify-start w-full mb-8">
+      <TabsList className="rounded-2xl">
+        <TabsTrigger value="resend" className="px-7 py-2 rounded-[10px]">Using Resend</TabsTrigger>
+        <TabsTrigger value="nodemailer" className="px-7 py-2 rounded-[10px]">Using Nodemailer</TabsTrigger>
+      </TabsList>
+    </div>
 
-### Create email template
+    <TabsContent value="resend">
+      ```bash
+      npm install resend
+      ```
+    </TabsContent>
+    <TabsContent value="nodemailer">
+    ```bash
+    npm install nodemailer
+    ```
+    </TabsContent>
+
+  </Tabs>
+
+## Create email template
 
 You can use both **MailingUI** components installed and and any other **react-email** components to create email template. For example:
 
 <EmailSourceTabs emailId="hello-world" />
 
-### Send email
+## Send email
 
-Given **Resend** is operated by same team as **react-email**, email rendering is built-in in **Resend's SDK**. Thus you can use its sendEmail method directly.
+<Tabs defaultValue="resend">
+    <div className="flex items-center justify-start w-full mb-8">
+      <TabsList className="rounded-2xl">
+        <TabsTrigger value="resend" className="px-7 py-2 rounded-[10px]">Using Resend</TabsTrigger>
+        <TabsTrigger value="nodemailer" className="px-7 py-2 rounded-[10px]">Using Nodemailer</TabsTrigger>
+      </TabsList>
+    </div>
 
-```js
-import { Resend } from "resend";
-import { HelloWorldEmail } from "./hello-world";
+    <TabsContent value="resend">
+      Given **Resend** is operated by same team as **react-email**, email rendering is built-in in **Resend's SDK**. Thus you can use its sendEmail method directly.
 
-const resend = new Resend("resend-api-key");
+      <br/>
 
-resend.sendEmail({
-  from: "mailingui@example.com",
-  to: "user@mail.com",
-  subject: "hello world",
-  react: <HelloWorldEmail />,
-});
-```
+      ```js
+      import { Resend } from "resend";
+      import { HelloWorldEmail } from "./hello-world";
+
+      const resend = new Resend("resend-api-key");
+
+      resend.sendEmail({
+        from: "mailingui@example.com",
+        to: "user@mail.com",
+        subject: "hello world",
+        react: <HelloWorldEmail />,
+      });
+      ```
+
+    </TabsContent>
+    <TabsContent value="nodemailer">
+      With Nodemailer (and generally most others providers) you need to render email template first and then send it with provider's API.
+      <br/>
+      ```js
+      import { render } from "@react-email/render";
+      import nodemailer from "nodemailer";
+      import { HelloWorldEmail } from "./hello-world";
+
+      const emailHtml = render(<HelloWorldEmail />);
+
+      const transporter = nodemailer.createTransport({
+        host: "smtp.forwardemail.net",
+        port: 465,
+        secure: true,
+        auth: {
+          user: "my_user",
+          pass: "my_password",
+        },
+      });
+      const options = {
+        from: 'mailingui@example.com',
+        to: 'user@mail.com',
+        subject: 'hello world',
+        html: emailHtml,
+      };
+      await transporter.sendMail(options);
+      ```
+    </TabsContent>
+
+  </Tabs>
