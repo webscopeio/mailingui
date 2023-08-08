@@ -22,20 +22,18 @@ export async function getHighlighter({
 }: {
   langs?: Lang[];
 } = {}): Promise<Highlighter> {
-  const key = [theme, ...langs].join(",");
-  if (!highlighterCache.has(key))
-    highlighterCache.set(
-      key,
-      /* ✅ Create a highlighter instance with a theme */
-      getHighlighterFromShiki({
-        theme,
-        langs,
-      })
-    );
+  const key = [theme, ...langs].join("-");
 
-  const promise = highlighterCache.get(key);
-  if (!promise) throw new Error("Promise not found");
-  return await promise;
+  const highlighter = highlighterCache.get(key);
+  if (highlighter) return await highlighter;
+
+  /* ✅ Create a highlighter instance with a theme */
+  const highlighterPromise = getHighlighterFromShiki({
+    theme,
+    langs,
+  });
+  highlighterCache.set(key, highlighterPromise);
+  return await highlighterPromise;
 }
 
 /**
