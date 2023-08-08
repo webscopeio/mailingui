@@ -8,6 +8,7 @@ export { DocPre } from "./DocPre";
 export { ComponentDemo } from "./ComponentDemo";
 export { ComponentSourceTabs } from "./ComponentSourceTabs";
 export { ComponentExamples } from "./ComponentExamples";
+export { EmailSourceTabs } from "./EmailSourceTabs";
 export {
   getComponentSource,
   getComponentData,

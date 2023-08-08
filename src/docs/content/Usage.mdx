@@ -1,1 +1,41 @@
+import { EmailSourceTabs } from "src/docs/components/MdxComponents";
+
 # Usage
+
+As **MailingUI** is set of email components built with help of [react-email](https://react.email) library, it reuse its rendering capabilities for preparing correct HTML markup for email clients. With rendered HTML markup you can send emails with help of any email sending service or library.
+
+Here we present quick guide how to use **MailingUI** with [Resend](https://resend.com/) or [Nodemailer](https://nodemailer.com/about/) libraries.
+
+## Using Resend
+
+### Install dependencies
+
+For **MailingUI** install [see Installation section](/installation).
+
+```bash
+npm install resend
+```
+
+### Create email template
+
+You can use both **MailingUI** components installed and and any other **react-email** components to create email template. For example:
+
+<EmailSourceTabs emailId="hello-world" />
+
+### Send email
+
+Given **Resend** is operated by same team as **react-email**, email rendering is built-in in **Resend's SDK**. Thus you can use its sendEmail method directly.
+
+```js
+import { Resend } from "resend";
+import { HelloWorldEmail } from "./hello-world";
+
+const resend = new Resend("resend-api-key");
+
+resend.sendEmail({
+  from: "mailingui@example.com",
+  to: "user@mail.com",
+  subject: "hello world",
+  react: <HelloWorldEmail />,
+});
+```

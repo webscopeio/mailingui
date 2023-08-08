@@ -19,7 +19,8 @@ export const getComponentData = (type: string) => {
   return component;
 };
 
-export const CONTENT_DIR = "src/docs/examples";
+export const CONTENT_DIR = "src/docs/content";
+export const EXAMPLES_DIR = "src/docs/examples";
 export const SOURCE_DIR = "src/mailingui/components";
 
 /**
@@ -32,7 +33,12 @@ export const getDemo = async (type: string): Promise<ComponentExampleProps> => {
   const component = getComponentData(type);
 
   // Create directory path for component type
-  const demoPath = join(process.cwd(), CONTENT_DIR, component.type, "Demo.tsx");
+  const demoPath = join(
+    process.cwd(),
+    EXAMPLES_DIR,
+    component.type,
+    "Demo.tsx"
+  );
 
   // Initiate instance of highlighter
   const highlighter = await getHighlighter();
@@ -84,7 +90,7 @@ export const getComponentExamples = async (componentType: string) => {
   const component = getComponentData(componentType);
 
   // Create directory path for component type
-  const typePath = join(process.cwd(), CONTENT_DIR, component.type);
+  const typePath = join(process.cwd(), EXAMPLES_DIR, component.type);
 
   // Read all the files in that dir
   const files = readdirSync(typePath)
@@ -120,4 +126,21 @@ export const getComponentExamples = async (componentType: string) => {
   );
 
   return examples;
+};
+
+export const getContentEmail = async (emailId: string) => {
+  const emailPath = join(
+    process.cwd(),
+    CONTENT_DIR,
+    "emails-data",
+    `${emailId}.tsx`
+  );
+  const highlighter = await getHighlighter();
+  const data = readFileSync(emailPath, "utf8");
+  const source = await highlight(highlighter, data);
+
+  return {
+    id: emailId,
+    source,
+  };
 };
