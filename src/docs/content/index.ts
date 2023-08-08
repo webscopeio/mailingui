@@ -4,6 +4,7 @@ import { ComponentType } from "react";
 
 export const mdxDocs: Record<string, ComponentType<MDXProps>> = {
   installation: dynamic(() => import(`src/docs/content/Installation.mdx`)),
+  usage: dynamic(() => import(`src/docs/content/Usage.mdx`)),
   components: dynamic(() => import(`src/docs/content/Components.mdx`)),
   "components/badges": dynamic(
     () => import(`src/docs/content/components/badges.mdx`)

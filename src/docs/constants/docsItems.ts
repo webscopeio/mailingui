@@ -23,6 +23,11 @@ export const docsItems: DocItems = [
         label: "Installation",
         description: "Learn about the MailingUI",
       },
+      {
+        href: "/docs/usage",
+        label: "Usage",
+        description: "Learn how to use MailingUI",
+      },
     ],
   },
   {
