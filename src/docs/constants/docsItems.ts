@@ -4,6 +4,7 @@ import { templates } from "@templates";
 export type DocItems = DocItemGroup[];
 export type DocItemGroup = {
   label: string;
+  href: string;
   items: DocItem[];
 };
 export type DocItem = {
@@ -15,6 +16,7 @@ export type DocItem = {
 export const docsItems: DocItems = [
   {
     label: "Getting Started",
+    href: "/docs/installation",
     items: [
       {
         href: "/docs/installation",
@@ -25,6 +27,7 @@ export const docsItems: DocItems = [
   },
   {
     label: "Components",
+    href: "/docs/components",
     items: [
       {
         href: "/docs/components",
@@ -42,6 +45,7 @@ export const docsItems: DocItems = [
   },
   {
     label: "Templates",
+    href: "/docs/templates",
     items: templates.map((template) => ({
       href: `/docs/templates/${template.id}`,
       label: template.name,
