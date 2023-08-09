@@ -27,12 +27,12 @@ For **MailingUI** install [see Installation section](/docs/installation).
 
   <TabsContent value="resend">
     ```bash
-      npm install resend
+    npm install resend
     ```
   </TabsContent>
   <TabsContent value="nodemailer">
     ```bash
-      npm install nodemailer
+    npm install nodemailer
     ```
   </TabsContent>
 </Tabs>
@@ -60,15 +60,15 @@ You can use both **MailingUI** components installed and and any other _react-ema
 
     ```js
       import { Resend } from "resend";
-      import { HelloWorldEmail } from "./hello-world";
+      import HelloWorldEmail from "./hello-world";
 
       const resend = new Resend("resend-api-key");
 
-      resend.sendEmail({
+      resend.emails.send({
         from: "mailingui@example.com",
         to: "user@mail.com",
         subject: "hello world",
-        react: <HelloWorldEmail />,
+        react: HelloWorldEmail(),
       });
     ```
 
@@ -81,9 +81,7 @@ You can use both **MailingUI** components installed and and any other _react-ema
     ```js
       import { render } from "@react-email/render";
       import nodemailer from "nodemailer";
-      import { HelloWorldEmail } from "./hello-world";
-
-      const emailHtml = render(<HelloWorldEmail />);
+      import HelloWorldEmail from "./hello-world";
 
       const transporter = nodemailer.createTransport({
         host: "smtp.forwardemail.net",
@@ -95,6 +93,7 @@ You can use both **MailingUI** components installed and and any other _react-ema
         },
       });
 
+      const emailHtml = render(HelloWorldEmail());
       const options = {
         from: 'mailingui@example.com',
         to: 'user@mail.com',
