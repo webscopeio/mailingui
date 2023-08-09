@@ -18,25 +18,24 @@ Here we present quick guide how to use **MailingUI** with [Resend](https://resen
 For **MailingUI** install [see Installation section](/docs/installation).
 
 <Tabs defaultValue="resend">
-    <div className="flex items-center justify-start w-full mb-8">
-      <TabsList className="rounded-2xl">
-        <TabsTrigger value="resend" className="px-7 py-2 rounded-[10px]">Using Resend</TabsTrigger>
-        <TabsTrigger value="nodemailer" className="px-7 py-2 rounded-[10px]">Using Nodemailer</TabsTrigger>
-      </TabsList>
-    </div>
+  <div className="flex items-center justify-start w-full mb-8">
+    <TabsList className="rounded-2xl">
+      <TabsTrigger value="resend" className="px-7 py-2 rounded-[10px]">Using Resend</TabsTrigger>
+      <TabsTrigger value="nodemailer" className="px-7 py-2 rounded-[10px]">Using Nodemailer</TabsTrigger>
+    </TabsList>
+  </div>
 
-    <TabsContent value="resend">
-      ```bash
-      npm install resend
-      ```
-    </TabsContent>
-    <TabsContent value="nodemailer">
+  <TabsContent value="resend">
     ```bash
-    npm install nodemailer
+      npm install resend
     ```
-    </TabsContent>
-
-  </Tabs>
+  </TabsContent>
+  <TabsContent value="nodemailer">
+    ```bash
+      npm install nodemailer
+    ```
+  </TabsContent>
+</Tabs>
 
 ## 2. Create email template
 
@@ -47,19 +46,19 @@ You can use both **MailingUI** components installed and and any other _react-ema
 ## 3. Send email
 
 <Tabs defaultValue="resend">
-    <div className="flex items-center justify-start w-full mb-8">
-      <TabsList className="rounded-2xl">
-        <TabsTrigger value="resend" className="px-7 py-2 rounded-[10px]">Using Resend</TabsTrigger>
-        <TabsTrigger value="nodemailer" className="px-7 py-2 rounded-[10px]">Using Nodemailer</TabsTrigger>
-      </TabsList>
-    </div>
+  <div className="flex items-center justify-start w-full mb-8">
+    <TabsList className="rounded-2xl">
+      <TabsTrigger value="resend" className="px-7 py-2 rounded-[10px]">Using Resend</TabsTrigger>
+      <TabsTrigger value="nodemailer" className="px-7 py-2 rounded-[10px]">Using Nodemailer</TabsTrigger>
+    </TabsList>
+  </div>
 
-    <TabsContent value="resend">
-      Given _Resend_ is operated by same team as _react-email_, email rendering is built-in in _Resend's SDK_. Thus you can use its sendEmail method directly.
+  <TabsContent value="resend">
+    Given _Resend_ is operated by same team as _react-email_, email rendering is built-in in _Resend's SDK_. Thus you can use its sendEmail method directly.
 
-      <br/>
+    <br/>
 
-      ```js
+    ```js
       import { Resend } from "resend";
       import { HelloWorldEmail } from "./hello-world";
 
@@ -71,13 +70,15 @@ You can use both **MailingUI** components installed and and any other _react-ema
         subject: "hello world",
         react: <HelloWorldEmail />,
       });
-      ```
+    ```
 
-    </TabsContent>
-    <TabsContent value="nodemailer">
-      With Nodemailer (and generally most others providers) you need to render email template first and then send it with provider's API.
-      <br/>
-      ```js
+  </TabsContent>
+  <TabsContent value="nodemailer">
+    With Nodemailer (and generally most others providers) you need to render email template first and then send it with provider's API.
+    
+    <br/>
+    
+    ```js
       import { render } from "@react-email/render";
       import nodemailer from "nodemailer";
       import { HelloWorldEmail } from "./hello-world";
@@ -93,6 +94,7 @@ You can use both **MailingUI** components installed and and any other _react-ema
           pass: "my_password",
         },
       });
+
       const options = {
         from: 'mailingui@example.com',
         to: 'user@mail.com',
@@ -100,10 +102,10 @@ You can use both **MailingUI** components installed and and any other _react-ema
         html: emailHtml,
       };
       await transporter.sendMail(options);
-      ```
-    </TabsContent>
+    ```
 
-  </Tabs>
+  </TabsContent>
+</Tabs>
 
 # Usefull links
 
