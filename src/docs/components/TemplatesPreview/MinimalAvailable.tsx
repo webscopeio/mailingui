@@ -36,7 +36,7 @@ export const TemplatesMinimalAvailable = () => {
             color="white"
             className="w-full md:w-auto"
           >
-            Browse Minimal templates
+            Explore Minimal templates
           </CTA>
         </div>
       </div>
@@ -48,7 +48,7 @@ export const TemplatesMinimalAvailable = () => {
           className="w-full"
           priority={true}
         />
-        <div className="absolute bottom-0 h-1/3 w-full bg-[linear-gradient(to_bottom,transparent,#000000_80%)]" />
+        <div className="absolute bottom-0 h-1/3 w-full bg-[linear-gradient(to_bottom,transparent,#000000_100%)]" />
       </div>
     </div>
   );

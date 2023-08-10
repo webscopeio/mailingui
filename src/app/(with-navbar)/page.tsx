@@ -21,10 +21,7 @@ const Home = () => (
         <ComponentsPreview componentsShown={8} componentsShownOnMobile={3} />
       </FeaturePreview>
 
-      <FeaturePreview
-        title="Explore the templates and choose yours"
-        previewType="templates"
-      >
+      <FeaturePreview title="Choose yours templates" previewType="templates">
         <TemplatesPreview />
       </FeaturePreview>
     </main>
