@@ -16,7 +16,17 @@ const GradientBadge = ({ children }: { children: React.ReactNode }) => {
 
 export const TemplatesMinimalAvailable = () => {
   return (
-    <div className="flex-row-reverse gap-4 md:flex md:items-center md:gap-12 lg:gap-24">
+    <div className="flex flex-col items-center gap-12 md:flex-row lg:gap-24">
+      <div className="relative overflow-hidden md:flex-1">
+        <Image
+          src={minimalHeroImage}
+          alt="Homepage hero image"
+          quality={100}
+          className="w-full"
+          priority={true}
+        />
+        <div className="absolute bottom-0 h-1/3 w-full bg-[linear-gradient(to_bottom,transparent,#000000_100%)]" />
+      </div>
       <div className="flex flex-col gap-3 md:flex-1 md:gap-4">
         <div className="flex gap-2 md:gap-4">
           <GradientBadge>New</GradientBadge>
@@ -40,16 +50,6 @@ export const TemplatesMinimalAvailable = () => {
             Explore Minimal templates
           </CTA>
         </div>
-      </div>
-      <div className="relative mt-8 overflow-hidden md:flex-1">
-        <Image
-          src={minimalHeroImage}
-          alt="Homepage hero image"
-          quality={100}
-          className="w-full"
-          priority={true}
-        />
-        <div className="absolute bottom-0 h-1/3 w-full bg-[linear-gradient(to_bottom,transparent,#000000_100%)]" />
       </div>
     </div>
   );
