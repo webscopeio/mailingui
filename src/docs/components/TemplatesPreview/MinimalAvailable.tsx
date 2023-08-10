@@ -31,8 +31,9 @@ export const TemplatesMinimalAvailable = () => {
           free templates
         </p>
         <div className="mt-2 md:mt-4 md:inline-flex">
+          {/* ! Href to /docs/templates which has redirect rule leads to /docs/templates/minimal 404 error, cause unknown */}
           <CTA
-            href="/docs/templates"
+            href="/docs/templates/minimal"
             color="white"
             className="w-full md:w-auto"
           >
