@@ -91,3 +91,7 @@ export const MdxCode = ({
 }: React.ComponentPropsWithoutRef<"code">) => (
   <code className="text-neutral-300">{children}</code>
 );
+
+export const MdxUl = ({ children }: React.ComponentPropsWithoutRef<"ul">) => (
+  <ul className="list-inside list-disc pl-2 text-neutral-500">{children}</ul>
+);
