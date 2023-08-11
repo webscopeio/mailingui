@@ -92,6 +92,14 @@ export const MdxCode = ({
   <code className="text-neutral-300">{children}</code>
 );
 
+export const MdxOl = ({ children }: React.ComponentPropsWithoutRef<"ol">) => (
+  <ol className="list-inside list-decimal pl-2 text-lg text-neutral-500 md:text-xl">
+    {children}
+  </ol>
+);
+
 export const MdxUl = ({ children }: React.ComponentPropsWithoutRef<"ul">) => (
-  <ul className="list-inside list-disc pl-2 text-neutral-500">{children}</ul>
+  <ul className="list-inside list-disc pl-2 text-lg text-neutral-500 md:text-xl">
+    {children}
+  </ul>
 );

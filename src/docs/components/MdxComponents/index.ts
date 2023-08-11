@@ -1,7 +1,16 @@
 import { ComponentSourceTabsProps } from "./ComponentSourceTabs";
 
 export { type ComponentSourceTabsProps };
-export { MdxH1, MdxH2, MdxH3, MdxP, MdxA, MdxCode, MdxUl } from "./DocElements";
+export {
+  MdxH1,
+  MdxH2,
+  MdxH3,
+  MdxP,
+  MdxA,
+  MdxCode,
+  MdxUl,
+  MdxOl,
+} from "./DocElements";
 export { DocArticle } from "./DocArticle";
 export { DocCollapsible } from "./DocCollapsible";
 export { DocPre } from "./DocPre";
