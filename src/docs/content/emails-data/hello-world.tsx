@@ -1,19 +1,33 @@
 import { Body, Container, Html, Row } from "@react-email/components";
 import { Text } from "@mailingui/components";
 
-const HelloWorld = () => {
+type EmailProps = {
+  welcomeMessage?: string;
+  farewellMessage?: string;
+};
+
+const HelloWorld = (props?: EmailProps) => {
+  const { welcomeMessage, farewellMessage } = {
+    welcomeMessage: "Hello World!",
+    ...props,
+  };
   return (
     <Html>
       <Body style={main}>
         <Container style={container} width={600}>
           <Row style={{ marginBottom: "16px" }}>
-            <Text style={{ fontSize: "32px" }}>Hello World!</Text>
+            <Text style={{ fontSize: "32px" }}>{welcomeMessage}</Text>
           </Row>
           <Row>
             <Text>
               I am email written in React utilizing MailingUI components.
             </Text>
           </Row>
+          {farewellMessage && (
+            <Row style={{ marginTop: "16px" }}>
+              <Text>{farewellMessage}</Text>
+            </Row>
+          )}
         </Container>
       </Body>
     </Html>

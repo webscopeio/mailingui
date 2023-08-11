@@ -45,6 +45,8 @@ You can use both **MailingUI** components installed and and any other _react-ema
 
 ## 3. Send email
 
+Usually you would place email integration on server side of your Next.js application like API route handler or similar. Our example uses Next.js app router _route handlers_ to send email.
+
 <Tabs defaultValue="resend">
   <div className="flex items-center justify-start w-full mb-8">
     <TabsList className="rounded-2xl">
@@ -55,52 +57,67 @@ You can use both **MailingUI** components installed and and any other _react-ema
 
   <TabsContent value="resend">
     Given _Resend_ is operated by same team as _react-email_, email rendering is built-in in _Resend's SDK_. Thus you can use its sendEmail method directly.
-
     <br/>
 
-    ```js
-      import { Resend } from "resend";
-      import HelloWorldEmail from "./hello-world";
+    ```ts
+    import { NextResponse } from 'next/server';
+    import { Resend } from "resend";
+    import HelloWorldEmail from "@/emails/test";
 
-      const resend = new Resend("resend-api-key");
+    const resend = new Resend(process.env.RESEND_API_KEY);
 
-      resend.emails.send({
-        from: "mailingui@example.com",
-        to: "user@mail.com",
-        subject: "hello world",
-        react: HelloWorldEmail(),
-      });
+    export async function POST() {
+      try {
+        const data = await resend.emails.send({
+          from: process.env.RESEND_SENDER,
+          to: "user@email.com",
+          subject: "hello world",
+          react: HelloWorldEmail({farewellMessage: "Goodbye from MailingUI team!"}),
+        });
+        return NextResponse.json(data);
+      } catch (error) {
+        return NextResponse.json({ error });
+      }
+    }
     ```
 
   </TabsContent>
   <TabsContent value="nodemailer">
     With Nodemailer (and generally most others providers) you need to render email template first and then send it with provider's API.
-    
     <br/>
     
-    ```js
-      import { render } from "@react-email/render";
-      import nodemailer from "nodemailer";
-      import HelloWorldEmail from "./hello-world";
+    ```ts
+    import { NextResponse } from 'next/server';
+    import { render } from "@react-email/render";
+    import Nodemailer from "nodemailer";
+    import HelloWorldEmail from "@/emails/test";
 
-      const transporter = nodemailer.createTransport({
-        host: "smtp.forwardemail.net",
-        port: 465,
-        secure: true,
-        auth: {
-          user: "my_user",
-          pass: "my_password",
-        },
-      });
+    const nodemailer = Nodemailer.createTransport({
+      host: process.env.NODEMAILER_HOST,
+      port: 465,
+      secure: true,
+      auth: {
+        user: process.env.NODEMAILER_USER,
+        pass: process.env.NODEMAILER_PASS,
+      },
+    });
 
-      const emailHtml = render(HelloWorldEmail());
-      const options = {
-        from: 'mailingui@example.com',
-        to: 'user@mail.com',
-        subject: 'hello world',
-        html: emailHtml,
-      };
-      await transporter.sendMail(options);
+    export async function POST() {
+      try {
+        const emailHtml = render(HelloWorldEmail({
+          farewellMessage: "Goodbye from MailingUI team!"
+        }));
+        const data = await nodemailer.sendMail({
+          from: process.env.NODEMAILER_SENDER,
+          to: "user@email.com",
+          subject: "hello world",
+          html: emailHtml,
+        });
+        return NextResponse.json(data);
+      } catch (error) {
+        return NextResponse.json({ error });
+      }
+    }
     ```
 
   </TabsContent>
