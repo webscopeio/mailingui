@@ -7,7 +7,7 @@ import { Component } from "../types";
 export async function createFile(
   componentName: string,
   components: Record<string, Component>,
-  basePath?: string,
+  basePath: string,
   overwrite?: boolean
 ) {
   const component = components[componentName];
@@ -16,9 +16,9 @@ export async function createFile(
     await createFile(dependency, components, basePath, overwrite);
   }
 
-  const directoryPath = basePath
-    ? `${basePath}/components/${path.basename(path.dirname(component.path))}`
-    : path.dirname(component.path);
+  const directoryPath = `${basePath}/components/${path.basename(
+    path.dirname(component.path)
+  )}`;
 
   if (!fs.existsSync(directoryPath)) {
     fs.mkdirSync(directoryPath, { recursive: true });
