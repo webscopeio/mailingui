@@ -16,6 +16,11 @@ const nextConfig = {
         source: "/docs",
         destination: "/docs/installation",
         permanent: false
+      },
+      {
+        source: "/docs/templates",
+        destination: "/docs/templates/minimal",
+        permanent: false
       }
     ];
   },

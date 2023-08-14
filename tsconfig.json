@@ -28,6 +28,7 @@
       "@utils/*": ["./src/docs/utils/*"],
       "@examples": ["./src/docs/examples/index.ts"],
       "@examples/*": ["./src/docs/examples/*"],
+      "@templates": ["./src/docs/templates/index.ts"],
       "@mailingui/components": ["src/mailingui/components/index.ts"],
       "@mailingui/types": ["src/mailingui/types/index.ts"],
       "@mailingui/themes": ["src/mailingui/themes/index.ts"]

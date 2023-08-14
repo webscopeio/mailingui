@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect } from "react";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   Sheet,
@@ -42,9 +43,13 @@ export const MobileDocsNav = ({ items }: { items: DocItems }) => {
       </Sheet>
       {currentDocItem && (
         <p className="flex gap-3">
-          <span className="text-neutral-500">{currentDocItem.groupLabel}</span>
+          <Link href={currentDocItem.group.href} className="text-neutral-500">
+            {currentDocItem.group.label}
+          </Link>
           <span>{">"}</span>
-          <span className="font-semibold">{currentDocItem.itemLabel}</span>
+          <Link href={currentDocItem.item.href} className="font-semibold">
+            {currentDocItem.item.label}
+          </Link>
         </p>
       )}
     </nav>
@@ -56,9 +61,8 @@ function findCurrentItem(items: DocItems, pathname: string) {
     for (const item of group.items) {
       if (item.href === pathname) {
         return {
-          groupLabel: group.label,
-          itemLabel: item.label,
-          href: item.href,
+          group,
+          item,
         };
       }
     }

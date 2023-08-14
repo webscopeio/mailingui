@@ -7,6 +7,8 @@ import {
   MdxA,
   MdxCode,
   DocPre,
+  MdxUl,
+  MdxOl,
 } from "@components/MdxComponents";
 
 // This file allows you to provide custom React components
@@ -23,12 +25,13 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     // ),
     h1: MdxH1,
     h2: MdxH2,
-
     h3: MdxH3,
     p: MdxP,
     pre: ({ children }) => <DocPre>{children}</DocPre>,
     a: MdxA,
     code: MdxCode,
+    ol: MdxOl,
+    ul: MdxUl,
     ...components,
   };
 }
