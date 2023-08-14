@@ -1,4 +1,5 @@
 import fs from "fs";
+import { NextResponse } from "next/server";
 
 const getFileProps = (path: string) => ({
   path,
@@ -12,6 +13,7 @@ type SupportedComponents =
   | "emoji"
   | "heroSection"
   | "list"
+  | "bulletList"
   | "socialIcon"
   | "text";
 
@@ -49,6 +51,10 @@ const getComponents = (): Record<
       dependencies: [],
       ...getFileProps("./src/mailingui/components/list/List.tsx"),
     },
+    bulletList: {
+      dependencies: [],
+      ...getFileProps("./src/mailingui/components/list/BulletList.tsx"),
+    },
     socialIcon: {
       dependencies: [],
       ...getFileProps("./src/mailingui/components/social-icon/SocialIcon.tsx"),
@@ -67,5 +73,3 @@ export const GET = async () => {
     return NextResponse.error();
   }
 };
-
-import { NextResponse } from "next/server";

@@ -6,7 +6,6 @@ import execa from "execa";
 import ora from "ora";
 import prompts from "prompts";
 import {
-  BASE_URL,
   DEPENDENCIES as REQUIRED_DEPENDENCIES,
   SETTINGS_FILE_NAME,
 } from "../constants";
@@ -19,7 +18,7 @@ export const init = new Command()
   .option(
     "-p, --path <path>",
     "define base path to your MailingUI components",
-    "./src/@mailingui"
+    "./src/mailingui"
   )
   .option("-o, --overwrite", "overwrite existing configuration", false)
   .action(async (options) => {
