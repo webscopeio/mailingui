@@ -7,7 +7,7 @@ import { cn } from "@utils/cn";
 export const DocPre = ({ children }: { children: React.ReactNode }) => {
   const [code, setCode] = React.useState("");
   return (
-    <div className="flex items-center justify-between overflow-x-auto rounded-md bg-[#011627] px-5 py-3 text-sm">
+    <div className="flex items-center justify-between overflow-x-auto rounded-md bg-[#011627] px-5 py-6 text-sm">
       <pre
         ref={(node) => {
           node?.textContent && setCode(node.textContent);
@@ -16,7 +16,7 @@ export const DocPre = ({ children }: { children: React.ReactNode }) => {
       >
         {children}
       </pre>
-      <div className="hidden self-start md:inline-flex">
+      <div className="-mt-2.5 hidden self-start md:inline-flex">
         <CopyButton code={code} />
       </div>
     </div>
