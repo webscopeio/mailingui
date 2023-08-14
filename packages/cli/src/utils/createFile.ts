@@ -24,9 +24,7 @@ export async function createFile(
     fs.mkdirSync(directoryPath, { recursive: true });
   }
 
-  const filepath = `${directoryPath}/${path.basename(
-    path.dirname(component.path)
-  )}/${path.basename(component.path)}`;
+  const filepath = `${directoryPath}/${path.basename(component.path)}`;
   const pathToThemes = path.relative(directoryPath, `${basePath}/themes`);
   const componentFileWithUpdateTheme = component.file.replace(
     "@mailingui/themes",
