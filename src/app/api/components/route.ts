@@ -12,6 +12,7 @@ type SupportedComponents =
   | "emoji"
   | "heroSection"
   | "list"
+  | "bulletList"
   | "socialIcon"
   | "text";
 
@@ -48,6 +49,10 @@ const getComponents = (): Record<
     list: {
       dependencies: [],
       ...getFileProps("./src/mailingui/components/list/List.tsx"),
+    },
+    bulletList: {
+      dependencies: [],
+      ...getFileProps("./src/mailingui/components/list/BulletList.tsx"),
     },
     socialIcon: {
       dependencies: [],
