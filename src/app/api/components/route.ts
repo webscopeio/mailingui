@@ -1,4 +1,5 @@
 import fs from "fs";
+import { NextResponse } from "next/server";
 
 const getFileProps = (path: string) => ({
   path,
@@ -72,5 +73,3 @@ export const GET = async () => {
     return NextResponse.error();
   }
 };
-
-import { NextResponse } from "next/server";

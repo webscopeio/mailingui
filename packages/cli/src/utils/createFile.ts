@@ -1,8 +1,8 @@
 import path from "path";
-import { Component } from "../types";
 import fs from "fs";
 import prompts from "prompts";
 import chalk from "chalk";
+import { Component } from "../types";
 
 export async function createFile(
   componentName: string,
@@ -17,14 +17,16 @@ export async function createFile(
   }
 
   const directoryPath = basePath
-    ? `${basePath}/components/${componentName}`
+    ? `${basePath}/components/${path.basename(path.dirname(component.path))}`
     : path.dirname(component.path);
 
   if (!fs.existsSync(directoryPath)) {
     fs.mkdirSync(directoryPath, { recursive: true });
   }
 
-  const filepath = `${directoryPath}/${path.basename(component.path)}`;
+  const filepath = `${directoryPath}/${path.basename(
+    path.dirname(component.path)
+  )}/${path.basename(component.path)}`;
   const pathToThemes = path.relative(directoryPath, `${basePath}/themes`);
   const componentFileWithUpdateTheme = component.file.replace(
     "@mailingui/themes",
