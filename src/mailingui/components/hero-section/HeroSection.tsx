@@ -1,5 +1,3 @@
-"use client";
-
 import React, { CSSProperties, FC } from "react";
 import {
   Heading as ReactEmailHeading,
