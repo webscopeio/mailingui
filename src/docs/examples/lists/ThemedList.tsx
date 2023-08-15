@@ -23,20 +23,20 @@ export default function VerticalList() {
                 Now you can start using your account! Log in on our website.
               </ListItemContent>
             </ListItem>
-            <ListItem variant="brand">
-              <ListItemTitle>
+            <ListItem>
+              <ListItemTitle variant="brand">
                 Somebody tried to get into your account!
               </ListItemTitle>
-              <ListItemContent size="sm">
+              <ListItemContent variant="brand" size="sm">
                 You can ignore this message if you were the one who tried to get
                 into your account.
               </ListItemContent>
             </ListItem>
-            <ListItem size="xs" variant="subtle">
-              <ListItemTitle>
+            <ListItem>
+              <ListItemTitle size="xs" variant="subtle">
                 We are happy to help anytime you need
               </ListItemTitle>
-              <ListItemContent>
+              <ListItemContent size="xs" variant="subtle">
                 You can find us at our website, send us an email or in our
                 offices at 420 Wick Way New York, NY 10001 United States.
               </ListItemContent>

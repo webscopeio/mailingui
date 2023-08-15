@@ -14,8 +14,8 @@ export default function CombinedLists() {
       <Preview>Centered Paragraph</Preview>
       <Body style={main}>
         <Container style={container}>
-          <ListRoot horizontal>
-            <ListItem style={{ paddingRight: "32px" }}>
+          <ListRoot>
+            <ListItem direction="horizontal" style={{ paddingRight: "32px" }}>
               <ListItemTitle>
                 Advanced syntax highlighting solution
               </ListItemTitle>
@@ -24,7 +24,7 @@ export default function CombinedLists() {
                 by Shiki(opens in a new tab).
               </ListItemContent>
             </ListItem>
-            <ListItem>
+            <ListItem direction="horizontal">
               <ListItemTitle>I18n as easy as creating new files</ListItemTitle>
               <ListItemContent>
                 Name your page files with locales suffixed, Nextra and Next.js

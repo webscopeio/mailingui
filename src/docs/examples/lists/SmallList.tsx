@@ -14,30 +14,30 @@ export default function VerticalList() {
       <Preview>Centered Paragraph</Preview>
       <Body style={main}>
         <Container style={container}>
-          <ListRoot size="xs">
+          <ListRoot>
             <ListItem>
-              <ListItemTitle>
+              <ListItemTitle size="xs">
                 Using content you’ve shared publicly
               </ListItemTitle>
-              <ListItemContent>
+              <ListItemContent size="xs">
                 For example, to promote a Google app, we might quote a review
                 you wrote. Or to promote Google Play, we might show a screenshot
                 of the app you offer in the Play Store.
               </ListItemContent>
             </ListItem>
             <ListItem>
-              <ListItemTitle>
+              <ListItemTitle size="xs">
                 Developing new technologies and services
               </ListItemTitle>
-              <ListItemContent>
+              <ListItemContent size="xs">
                 For Google consistent with these terms
               </ListItemContent>
             </ListItem>
             <ListItem>
-              <ListItemTitle>
+              <ListItemTitle size="xs">
                 Operating and improving the services
               </ListItemTitle>
-              <ListItemContent>
+              <ListItemContent size="xs">
                 Which means allowing the services to work as designed and
                 creating new features and functionalities. This includes using
                 automated systems and algorithms to analyze your content

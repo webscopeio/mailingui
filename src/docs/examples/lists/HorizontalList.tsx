@@ -14,20 +14,20 @@ export default function CombinedLists() {
       <Preview>Centered Paragraph</Preview>
       <Body style={main}>
         <Container style={container}>
-          <ListRoot horizontal>
-            <ListItem style={{ paddingRight: "32px" }}>
+          <ListRoot>
+            <ListItem direction="horizontal" style={{ paddingRight: "32px" }}>
               <ListItemTitle>USWNT 2022/23 Stadium Home</ListItemTitle>
               <ListItemContent>
                 Women&apos;s Nike Dri-FIT Soccer Jersey
               </ListItemContent>
             </ListItem>
-            <ListItem style={{ paddingRight: "32px" }}>
+            <ListItem direction="horizontal" style={{ paddingRight: "32px" }}>
               <ListItemTitle>Brazil 2022/23 Stadium Goalkeeper</ListItemTitle>
               <ListItemContent>
                 Men&apos;s Nike Dri-FIT Short-Sleeve Football Shirt
               </ListItemContent>
             </ListItem>
-            <ListItem>
+            <ListItem direction="horizontal">
               <ListItemTitle>FFF</ListItemTitle>
               <ListItemContent>
                 Women&apos;s Nike Pre-Match Football Top
