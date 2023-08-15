@@ -53,15 +53,15 @@ const ListRoot: FC<ListRootProps> = ({ style, children }) => {
 type ListItemProps = {
   style?: CSSProperties;
   children?: ReactNode;
-  direction?: "vertical" | "horizontal";
+  horizontal?: boolean;
 };
 
 const ListItem: FC<ListItemProps> = ({
   style,
-  direction = "vertical",
+  horizontal = false,
   children,
 }) => {
-  const Wrapper = direction === "vertical" ? Row : Column;
+  const Wrapper = !horizontal ? Row : Column;
   return (
     <Wrapper style={{ verticalAlign: "top", ...style }}>{children}</Wrapper>
   );
