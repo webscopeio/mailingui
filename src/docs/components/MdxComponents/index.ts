@@ -5,6 +5,7 @@ export {
   MdxH1,
   MdxH2,
   MdxH3,
+  MdxH4,
   MdxP,
   MdxA,
   MdxCode,

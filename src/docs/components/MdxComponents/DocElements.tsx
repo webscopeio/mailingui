@@ -103,3 +103,22 @@ export const MdxUl = ({ children }: React.ComponentPropsWithoutRef<"ul">) => (
     {children}
   </ul>
 );
+export const MdxH4 = (props: React.ComponentPropsWithoutRef<"h4">) => {
+  const { children, id, className, ...otherProps } = props;
+  return (
+    <h3
+      id={id}
+      className={cn(
+        "text-lg font-semibold md:text-xl scroll-m-4 tracking-tight after:ml-1.5 after:opacity-80 hover:after:content-['#']",
+        className
+      )}
+      {...otherProps}
+    >
+      {id ? (
+        <HeadingAnchor href={`#${id}`}>{children}</HeadingAnchor>
+      ) : (
+        children
+      )}
+    </h3>
+  );
+};

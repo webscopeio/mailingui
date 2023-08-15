@@ -36,13 +36,15 @@ Choose an a) automatic install by running our `@mailingui/cli` following the com
       <DynamicCode replaceBy={props.installName}>
         ```shell
         npx @mailingui/cli add [options] installName
-
-        # Options
-        -o, --overwrite  automatically overwrite existing components (default: false)
-        -a, --all        download all available components (default: false)
-        -h, --help       display help for command
         ```
       </DynamicCode>
+
+      <h3 className="text-xl font-semibold md:text-2xl mt-6 mb-4 tracking-tight">Options</h3>
+
+      - `-o, --overwrite` - automatically overwrite existing components (default: false)
+      - `-a, --all` - download all available components (default: false)
+      - `-h, --help` - display help for command
+
     </TabsContent>
     <TabsContent value="manual">
       <ComponentSourceTabs type={props.slug} />
