@@ -33,7 +33,7 @@ Choose an a) automatic install by running our `@mailingui/cli` following the com
     </div>
 
     <TabsContent value="automatic">
-      <DynamicCode replaceBy={props.installName}>
+      <DynamicCode textContent=" [options] installName" replaceBy={` [options] ${props.installName}`}>
         ```shell
         npx @mailingui/cli add [options] installName
         ```

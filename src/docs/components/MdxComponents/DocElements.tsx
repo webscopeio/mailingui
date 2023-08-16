@@ -109,7 +109,7 @@ export const MdxUl = ({ children }: React.ComponentPropsWithoutRef<"ul">) => (
 export const MdxH4 = (props: React.ComponentPropsWithoutRef<"h4">) => {
   const { children, id, className, ...otherProps } = props;
   return (
-    <h3
+    <h4
       id={id}
       className={cn(
         "text-lg font-semibold md:text-xl scroll-m-4 tracking-tight after:ml-1.5 after:opacity-80 hover:after:content-['#']",
@@ -122,6 +122,6 @@ export const MdxH4 = (props: React.ComponentPropsWithoutRef<"h4">) => {
       ) : (
         children
       )}
-    </h3>
+    </h4>
   );
 };
