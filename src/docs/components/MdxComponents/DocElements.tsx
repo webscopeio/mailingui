@@ -88,8 +88,11 @@ export const MdxA = ({
 
 export const MdxCode = ({
   children,
+  ...props
 }: React.ComponentPropsWithoutRef<"code">) => (
-  <code className="text-neutral-300">{children}</code>
+  <code className="text-neutral-300" {...props}>
+    {children}
+  </code>
 );
 
 export const MdxOl = ({ children }: React.ComponentPropsWithoutRef<"ol">) => (

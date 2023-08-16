@@ -48,6 +48,7 @@ npx create-next-app@latest --typescript
       ```
 
       #### Init Options
+
       - `-p, --path <path>` - define base path to your MailingUI components (default: "./src/@mailingui")
       - `-o, --overwrite` - overwrite existing configuration (default: false)
       - `-h, --help` - display help for command
@@ -62,8 +63,8 @@ npx create-next-app@latest --typescript
 
       #### Add Options
 
-      - -o, --overwrite` - automatically overwrite existing components (default: false)
-      - -a, --all` - download all available components (default: false)
+      - `-o, --overwrite` - automatically overwrite existing components (default: false)
+      - `-a, --all` - download all available components (default: false)
       - `-h, --help` - display help for command
 
     </TabsContent>
@@ -88,27 +89,26 @@ npx create-next-app@latest --typescript
       To set up theming create a folder called `themes` in your project (we recommend `src/mailingui/themes`),
       create a file named `index.ts` inside the folder and paste the following code into it.
 
-      ```typescript
+      ```typescript showLineNumbers
       export const theme = {
-      color: {
-      background: {
-      "100": "#ffffff",
-      "200": "#ffffff",
-      "300": "#ffffff",
-      "400": "#ffffff",
-      },
-        foreground: {
-        "100": "#000000",
-        "200": "#000000",
-        "300": "#000000",
-        "400": "#000000",
-      },
-        brand: "#000000",
-      },
+        color: {
+          background: {
+            "100": "#ffffff",
+            "200": "#ffffff",
+            "300": "#ffffff",
+            "400": "#ffffff",
+          },
+          foreground: {
+            "100": "#000000",
+            "200": "#000000",
+            "300": "#000000",
+            "400": "#000000",
+          },
+          brand: "#000000",
+        },
         rounded: {
         base: 0,
         full: 9999,
-      },
       } as const;
       ```
 

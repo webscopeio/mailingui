@@ -29,7 +29,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     h3: MdxH3,
     h4: MdxH4,
     p: MdxP,
-    pre: ({ children }) => <DocPre>{children}</DocPre>,
+    pre: ({ children, ...props }) => <DocPre {...props}>{children}</DocPre>,
     a: MdxA,
     code: MdxCode,
     ol: MdxOl,
