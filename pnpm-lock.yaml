@@ -11,6 +11,9 @@ dependencies:
   '@react-email/components':
     specifier: ^0.0.7
     version: 0.0.7(ts-node@10.9.1)
+  '@react-email/render':
+    specifier: ^0.0.7
+    version: 0.0.7
   '@types/node':
     specifier: 20.5.0
     version: 20.5.0
@@ -20,6 +23,9 @@ dependencies:
   '@types/react-dom':
     specifier: 18.2.7
     version: 18.2.7
+  clsx:
+    specifier: ^2.0.0
+    version: 2.0.0
   dayjs:
     specifier: ^1.11.9
     version: 1.11.9
