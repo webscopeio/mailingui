@@ -1,0 +1,52 @@
+import { Steps, Callout } from "nextra/components";
+
+# Manual Install
+
+<Steps>
+### Install dependencies and components
+
+MailingUI is built on top of [React.email](https://react.email) components and uses its `render` function to parse React into HTML.
+
+```bash
+npm install @react-email/components @react-email/render
+```
+
+### Create a theme file
+
+Email components **just work differently**, there is no good solution for theming. Our components reference a theme object that you can modify to fit your branding needs and allow quick and easy customization.
+
+To set up a theming, create a folder called `src/mailingui/themes` in your project and colocate a file named `index.ts` inside the folder and paste the following code into it.
+
+```ts copy
+export const theme = {
+  color: {
+    background: {
+      "100": "#ffffff",
+      "200": "#ffffff",
+      "300": "#ffffff",
+      "400": "#ffffff",
+    },
+    foreground: {
+      "100": "#000000",
+      "200": "#000000",
+      "300": "#000000",
+      "400": "#000000",
+    },
+    brand: "#000000",
+  },
+  rounded: {
+    base: 0,
+    full: 9999,
+  },
+} as const;
+```
+
+<Callout type="warning" emoji="⚠️">
+  This theme object is completely arbitrary, feel free to modify it to fit your
+  needs. However, **if you add or remove any of the existing keys-values** you will need to
+  update the components as well.
+</Callout>
+
+</Steps>
+
+Congratulations! 🥳 Once you've install these dependencies you can copy and paste the components you need. See [components](/docs/components) for the full list.

@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --nextra-navbar-height: 6rem;
+}
+
+.nextra-toc > div {
+  @apply top-[var(--nextra-navbar-height)];
+}
+
+.nextra-sidebar-container{
+  @apply !py-9;
+}
+
+.nextra-toc {
+  @apply !py-12;
+}
+
+article > main {
+  @apply !pt-12;
+}
+
+.-nx-mt-20 {
+  @apply !-mt-28;
+}
+
+.brand-gradient {
+  @apply bg-gradient-to-br from-indigo-700 from-10% via-purple-500 via-30% to-pink-500 to-90% saturate-[115%];
+}
+
+.hover-brand-gradient:hover {
+  @apply bg-gradient-to-br from-indigo-700 from-10% via-purple-600 via-30% to-pink-600 to-90% saturate-[115%];
+}

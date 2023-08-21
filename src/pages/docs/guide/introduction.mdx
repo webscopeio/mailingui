@@ -1,0 +1,45 @@
+import { Cards, Card } from "nextra/components";
+import { TerminalIcon, CopyIcon } from "lucide-react";
+import { Callout } from 'nextra/components'
+
+# Getting Started
+
+MailingUI is a set of _opinionated_ React components built on top of [React.email](https://react.email) designed to make the creation of emails easier.
+
+All of our components are completely open-sourced and intended to be used as copy-and-paste snippets. Right now, we have no plans on creating an npm package for the components. 
+
+However, we have enabled an [automatic install](/docs/guide/automatic-install) through our own CLI which will make the installation of components easier.
+
+## Prerequisites
+
+To use MailingUI components in your project, you have to set up a few things.
+
+<Callout type="info" emoji="ℹ️">
+We recommend using MailingUI in a [Next](https://nextjs.org/) project, as all of our examples are based on using this framework.
+</Callout>
+
+
+### Create a new Next project (optional)
+
+If you already have a Next project or would like to use MailingUI with a different React framework, you can skip this step.
+
+```bash copy
+npx create-next-app@latest --typescript
+```
+
+### Choose an installation method
+
+You are able to use our MailingUI CLI or manually install our components:
+
+<Cards>
+  <Card
+    icon={<TerminalIcon />}
+    title="Automatic Installation"
+    href="/docs/guide/automatic-install"
+  />
+  <Card
+    icon={<CopyIcon />}
+    title="Manual Installation"
+    href="/docs/guide/manual-install"
+  />
+</Cards>
