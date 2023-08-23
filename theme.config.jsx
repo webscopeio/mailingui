@@ -35,15 +35,13 @@ const theme = {
     const { frontMatter } = useConfig();
     const url = "https://mailingui.com" + asPath;
 
-    const ogImage = asPath.includes("/blog")
-      ? "images/og/blog.png"
-      : asPath.includes("/docs")
-      ? "images/og/components.png"
-      : asPath.includes("/feedback")
-      ? "images/og/feedback.png"
-      : asPath.includes("/templates")
-      ? "images/og/templates.png"
-      : "images/og/homepage.png";
+    const getOgImage = () => {
+      if (asPath.includes("/blog")) return "images/og/blog.png";
+      if (asPath.includes("/docs")) return "images/og/components.png";
+      if (asPath.includes("/feedback")) return "images/og/feedback.png";
+      if (asPath.includes("/templates")) return "images/og/templates.png";
+      return "images/og/homepage.png";
+    };
 
     return (
       <>
@@ -55,7 +53,7 @@ const theme = {
             frontMatter.description || "Create emails powered by open-source"
           }
         />
-        <meta property="og:image" content={ogImage} />
+        <meta property="og:image" content={getOgImage()} />
         <link rel="shortcut icon" href="favicons/favicon-512.png"></link>
         <link
           rel="icon"
