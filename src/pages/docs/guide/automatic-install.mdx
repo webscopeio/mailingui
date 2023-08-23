@@ -1,0 +1,31 @@
+import { Steps } from "nextra/components";
+
+# Automatic Install
+
+<Steps>
+
+### Initialize MailingUI
+
+Download all the necessary starting files for you to start working with MailingUI.
+
+```shell copy
+npx @mailingui/cli init [options]
+```
+
+- `-p`, `--path` define base path to your MailingUI components (default: `"./src/mailingui"`)
+- `-o`, `--overwrite` overwrite existing configuration (default: false)
+- `-h`, `--help` display help for command
+
+### Add Component(s)
+
+Add all or specific components to your project. See [components](/docs/components) for the full list.
+
+```shell copy
+npx @mailingui/cli add [options] [COMPONENT_NAME]
+```
+
+- `-o`, `--overwrite` automatically overwrite existing components (default: false)
+- `-a`, `--all` download all available components (default: false)
+- `-h`, `--help`` display help for command
+
+</Steps>

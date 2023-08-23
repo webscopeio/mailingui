@@ -1,0 +1,239 @@
+---
+title: Caching Shiki for Faster Build Times
+description: Shiki is arguably the most popular syntax highlighter out there. How can we improve its performance?
+date: "2023-08-14T00:00:00Z"
+github: iamhectorsosa
+---
+
+import { BlogPostWrapper } from "@components/blog/BlogPostWrapper.tsx";
+
+<BlogPostWrapper>
+
+Shiki is arguably the most popular syntax highlighter out there. It uses the [TextMate grammar system](https://macromates.com/manual/en/language_grammars) with the [VS Code Oniguruma library](https://github.com/microsoft/vscode-oniguruma) to tokenize strings which then can be stylized using VS Code themes or CSS variables. Shiki is the way to go if you want your code to look exactly like that in VS Code.
+
+> Using Shiki is practical because as your favorite languages and themes evolve, your syntax highlighting will evolve as well.
+
+If you're here for the faster build times, go to [faster build times](#faster-build-times). If you've never heard of or used Shiki before, here's a great introduction:
+
+## How does it work?
+
+Although Shiki has a lot of customization options (themes, languages, and custom renderers), at its core, Shiki's [highlighter](https://github.com/shikijs/shiki/blob/main/packages/shiki/src/highlighter.ts) is incredibly easy to work with:
+
+1. Call `getHighlighter` with the theme and languages you need to create a `highlighter` instance, and then
+2. Use the `highlighter` methods, such as `codeToHtml`, to take a string of code and transform it to syntax-highlighted HTML.
+
+Of course, there are more details, so make sure to check out [Shiki's configuration and options](https://github.com/shikijs/shiki/tree/main#configuration-and-options). However, if you want to keep things simple, here's how you'd get started:
+
+```js copy
+import { getHighlighter } from "shiki";
+
+// Create a highlighter instance
+const highlighter = await getHighlighter({
+  theme: "nord",
+  langs: ["ts"],
+});
+
+const code = `console.log("Here is your code.");`;
+
+// Call a highlighter method to get syntax-highlighted HTML
+const output = highlighter.codeToHtml(code, { lang: "ts" });
+```
+
+## What are the easiest customizations you can use?
+
+### Using CSS variables for theming
+
+One of the biggest things missing in Shiki is the lack of support for light/dark or dual-theming. While there are several solutions and alternatives out there, none are directly addressed by the library. If you're not restricted to using VS Code themes, you can use **CSS variables for theming**.
+
+```js copy
+import { getHighlighter } from "shiki";
+
+// Create a highlighter instance
+const highlighter = await getHighlighter({
+  // ✅ Use CSS variables for theming
+  theme: "css-variables",
+  langs: ["ts"],
+});
+```
+
+Then use CSS to style your code and create the theming implementation of your choice. Here's a safe starting point for this:
+
+```css copy
+:root {
+  --shiki-color-text: #24292f;
+  --shiki-color-background: #ffffff;
+  --shiki-token-constant: #0550ae;
+  --shiki-token-string: #24292f;
+  --shiki-token-comment: #6e7781;
+  --shiki-token-keyword: #cf222e;
+  --shiki-token-parameter: #24292f;
+  --shiki-token-function: #8250df;
+  --shiki-token-string-expression: #0a3069;
+  --shiki-token-punctuation: #24292f;
+  --shiki-token-link: #000012;
+}
+
+:root .dark-theme {
+  --shiki-color-text: #c9d1d9;
+  --shiki-color-background: #0d1117;
+  --shiki-token-constant: #79c0ff;
+  --shiki-token-string: #a5d6ff;
+  --shiki-token-comment: #8b949e;
+  --shiki-token-keyword: #ff7b72;
+  --shiki-token-parameter: #c9d1d9;
+  --shiki-token-function: #d2a8ff;
+  --shiki-token-string-expression: #a5d6ff;
+  --shiki-token-punctuation: #c9d1d9;
+  --shiki-token-link: #000012;
+}
+```
+
+Note: If you prefer to stick with VS Code Themes you might want to check out Anthony Fu's [Shikiji](https://github.com/antfu/shikiji#lightdark-dual-themes), which is an ESM-focused rewrite of Shiki.
+
+### Using custom renderers and CSS counters for line numbers
+
+Custom renderers allow you to define your own custom rendering rules per each element type. The easiest way to understand how custom renderers work is by creating a renderer for line numbers. Instead of using `codeToHtml`, you can use `codeToThemedTokens` from your highlighter instance to obtain an array of tokens and then call `renderToHTML`, passing your tokens and your custom renderer.
+
+```js copy
+import { getHighlighter, renderToHTML } from "shiki";
+
+// Create a highlighter instance
+const highlighter = await getHighlighter({
+  // ✅ Use CSS variables for theming
+  theme: "css-variables",
+  langs: ["ts"],
+});
+
+const code = `console.log("Here is your code.");`;
+
+// ✅ Tokenize your code to apply your custom renderer
+const tokens = highlighter.codeToThemedTokens(code, "ts");
+
+// ✅ Use your custom renderer to get syntax-highlighted HTML
+const output = renderToHTML(tokens, {
+  elements: {
+    line({ children, className, index }) {
+      return `<span data-line=${index}
+        class=${className}>${children}</span>`;
+    },
+  },
+});
+```
+
+You can combine renderers with CSS to create any implementation you might need. Here is an example using [CSS Counters](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_counter_styles/Using_CSS_counters) (with a touch of TailwindCSS) for this purpose:
+
+```css copy
+.shiki code {
+  @apply grid p-5 font-mono text-sm leading-normal;
+}
+
+code {
+  counter-reset: line;
+}
+
+code > [data-line]::before {
+  counter-increment: line;
+  content: counter(line);
+  @apply mr-6 inline-block w-4 text-right text-gray-500/50;
+}
+
+code[data-line-numbers-max-digits="2"] > [data-line]::before {
+  @apply w-8;
+}
+
+code[data-line-numbers-max-digits="3"] > [data-line]::before {
+  @apply w-12;
+}
+```
+
+A font pairing that I've enjoyed recently is [Schibsted Grotesk](https://fonts.google.com/specimen/Schibsted+Grotesk) with [IBM Plex Mono](https://fonts.google.com/specimen/IBM+Plex+Mono?query=IBM+PLex+Mono). Alright, now let's get to what we're here for _How to get faster build times using Shiki?_
+
+## Faster build times
+
+Regardless of how you use Shiki, the more code you highlight, the more likely it is that you will run into performance issues. After testing, our team concluded that **(a) creating Highlighter instances, (b) loading languages, and (c) generating token explanations are Shiki's most resource-intensive operations**.
+
+> You should make sure that the Highlighter instance is only created once, and that it is bootstrapped asynchronously before calling any of the exposed functions
+
+Shiki provides you with the flexibility to create the implementations you need to meet your syntax highlighting requirements, but you should exercise caution when using this flexibility. There's no built-in caching system or checks to make sure that the Highlighter instance is only created once, so you'll need to create your own.
+
+Creating a caching system doesn't have to be overly complicated. By leveraging [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) and abstracting the `getHighlighter` method, you can achieve this.
+
+```ts copy
+import shiki, { type Highlighter, type Theme, type Lang } from "shiki";
+
+// ✅ Use Map to store Highlighter instance promises
+const highlighterCache = new Map<string, Promise<Highlighter>>();
+
+export async function getHighlighter({
+  theme,
+  langs,
+}: {
+  theme: Theme;
+  langs: Lang[];
+}) {
+  // ✅ Generate identifiers for your instances, check and return if found
+  const key = [theme, ...langs].join("-");
+  const highlighter = highlighterCache.get(key);
+  if (highlighter) return await highlighter;
+
+  // ✅ If an instance hasn't been created, store it and return it
+  const highlighterPromise = shiki.getHighlighter({ theme, langs });
+
+  highlighterCache.set(key, highlighterPromise);
+  return await highlighterPromise;
+}
+```
+
+### A word on Shiki's explanations
+
+Shiki's explanations are the biggest hidden bottleneck, though. Understanding Shiki's explanations is key to optimizing performance. Explanations are set to `false` if you're using `codeToHtml`, but with `codeToThemedTokens` you'll find the option: `includeExplanation`, which annotates this option and describes explanations as:
+
+> Whether to include an explanation of each token's matching scopes and why it's given its color. It defaults to false to reduce output verbosity.
+
+Interestingly enough, explanations are considered and included in the source code for both methods. They are exposed to the developer only with `codeToThemedTokens` and documented with a default value of `false`. However, **it turns out that the default value for this option is set to true**, so if performance is your concern and you do not need to make use of explanations, set this option to `false`.
+
+```js copy
+import { getHighlighter } from "@utils/shiki"; // Shiki Cache Abstraction
+import { renderToHTML, type Theme, type Lang } from "shiki";
+
+/** ✅ Config */
+const theme: Theme = "css-variables";
+const lang: Lang = "ts";
+
+const highlighter = await getHighlighter({
+  theme,
+  langs: [lang],
+});
+
+const code = `console.log("Here is your code.");`;
+
+// ✅ Avoid getting explanations if you do not need them
+const tokens = highlighter.codeToThemedTokens(code, lang, theme, {
+  includeExplanation: false,
+});
+
+const output = renderToHTML(tokens, {
+  elements: {
+    line({ children, className, index }) {
+      return `<span data-line=${index}
+        class=${className}>${children}</span>`;
+    },
+  },
+});
+```
+
+## Final thoughts
+
+If you're using any flavor of markdown and do not need control over Shiki, plugins like [Rehype Pretty Code](https://github.com/atomiks/rehype-pretty-code), which integrate custom renders and caching systems, are excellent choices that align with the concepts explored in this article.
+
+This simple caching and setup solution made our build times a remarkable **80% faster**. We tried various other suggestions, but none worked as effectively as creating a caching system for Shiki Highlighter instances. By implementing these strategies, you can ensure a smoother and faster syntax highlighting experience for your projects.
+
+Here are a couple of things to keep in mind:
+
+- The keys used to identify instances are prone to duplicates if Highlighter instances are created using different aliases, i.e. `typescript` and `ts`. Check Shiki's [language aliases](https://github.com/shikijs/shiki/blob/main/docs/languages.md#all-languages) and make sure your team has a convention for their use.
+- You might not need to build your own caching system. If you aren't using Shiki directly, chances are that this has already been addressed by the libraries you're using.
+- Using Shiki in the browser might require a different approach, make sure to check [Shiki's architecture to learn more](https://github.com/shikijs/shiki/blob/main/docs/languages.md#all-languages).
+
+Huge thanks to: [@ChcJohnie](https://github.com/ChcJohnie) and [@ericvalcik](https://github.com/ericvalcik) for these findings.
+
+</BlogPostWrapper>

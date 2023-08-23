@@ -1,0 +1,22 @@
+import { Tabs, Tab } from "nextra/components";
+import { DynamicCode } from "@components/shared/DynamicCode";
+import { InstallationCode } from "./InstallationCode";
+
+If you haven't initialized MailingUI in your project, please refer to [Installation](/docs/guide/installation) docs first.
+
+<Tabs items={["CLI", "Manual"]}>
+  <Tab>
+  <DynamicCode textContent=" [options] [COMPONENT_NAME]" installName={props.cli}>
+  ```bash copy
+  npx @mailingui/cli add [options] [COMPONENT_NAME]
+  ```
+  </DynamicCode>
+
+  - `-p`, `--path` define base path to your MailingUI components (default: `"./src/mailingui"`)
+  - `-o`, `--overwrite` overwrite existing configuration (default: false)
+  - `-h`, `--help`` display help for command
+  </Tab>
+  <Tab>
+    <InstallationCode />
+  </Tab>
+</Tabs>

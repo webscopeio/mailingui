@@ -1,0 +1,38 @@
+import { getComponentProps } from "@utils/components";
+import BasicUsage from "@components/docs/components/basic-usage/basic-usage.mdx";
+import Installation from "@components/docs/components/installation/installation.mdx";
+import { Examples } from "@components/docs/components/examples/Examples.tsx";
+
+export const getStaticProps = async () => {
+  const { type, html, demoCode, sourceCode, examples } = await getComponentProps({
+    type: "divider"
+  }) 
+
+  return {
+    props: {
+      ssg: {
+        type,
+        html,
+        demoCode,
+        sourceCode,
+        examples
+      },
+    },
+  };
+};
+
+# Dividers
+
+Create visual separation for a clean, professional look
+
+## Basic Usage
+
+<BasicUsage />
+
+## Installation
+
+<Installation cli="divider" />
+
+## Examples
+
+<Examples />
