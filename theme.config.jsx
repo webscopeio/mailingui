@@ -27,24 +27,24 @@ const theme = {
   primaryHue: 330,
   useNextSeoProps() {
     return {
-      titleTemplate: "%s – MailingUI",
+      titleTemplate: "%s",
     };
   },
   head: () => {
     const { asPath } = useRouter();
     const { frontMatter } = useConfig();
-    const url = "https://mailingui.com" + asPath;
+    const basePath = "https://mailingui.com";
+    const url = basePath + asPath;
 
     const getOgImage = () => {
-      if (asPath.includes("/blog"))
-        return "https://mailingui.com/images/og/blog.png";
+      if (asPath.includes("/blog")) return basePath + "/images/og/blog.png";
       if (asPath.includes("/docs"))
-        return "https://mailingui.com/images/og/components.png";
+        return basePath + "/images/og/components.png";
       if (asPath.includes("/feedback"))
-        return "https://mailingui.com/images/og/feedback.png";
+        return basePath + "/images/og/feedback.png";
       if (asPath.includes("/templates"))
-        return "https://mailingui.com/images/og/templates.png";
-      return "https://mailingui.com/images/og/homepage.png";
+        return basePath + "/images/og/templates.png";
+      return basePath + "/images/og/homepage.png";
     };
 
     return (
@@ -87,14 +87,24 @@ const theme = {
         <meta property="twitter:image" content={getOgImage()} />
 
         {/* Icons*/}
-        <link rel="shortcut icon" href="favicons/favicon-512.png"></link>
+        <link
+          rel="shortcut icon"
+          href={basePath + "/favicons/favicon-512.png"}
+        ></link>
         <link
           rel="icon"
-          href="favicons/favicon-32.svg"
+          href={basePath + "/favicons/favicon-32.svg"}
           type="image/svg+xml"
         ></link>
-        <link rel="icon" href="favicons/favicon-32.ico" sizes="any"></link>
-        <link rel="apple-touch-icon" href="favicons/favicon-512.png"></link>
+        <link
+          rel="icon"
+          href={basePath + "/favicons/favicon-32.ico"}
+          sizes="any"
+        ></link>
+        <link
+          rel="apple-touch-icon"
+          href={basePath + "/favicons/favicon-512.png"}
+        ></link>
 
         <script
           defer=""

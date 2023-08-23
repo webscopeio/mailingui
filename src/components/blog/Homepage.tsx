@@ -11,8 +11,8 @@ export const Homepage = () => {
         <h1 className="text-4xl font-bold tracking-tight text-slate-100">
           From the blog
         </h1>
-      <p className="text-gray-400">
-          More news and blog posts coming soon...
+        <p className="text-gray-400">
+          News and blog posts from the MailingUI team
         </p>
       </header>
       <section className="grid grid-cols-1 gap-x-4 gap-y-8 border-t border-white/10 py-10 lg:grid-cols-2">
