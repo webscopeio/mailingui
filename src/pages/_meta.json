@@ -1,0 +1,53 @@
+{
+  "index": {
+    "title": "Home",
+    "display": "hidden",
+    "theme": {
+      "breadcrumb": false,
+      "footer": true,
+      "sidebar": false,
+      "toc": false,
+      "pagination": false,
+      "layout": "full"
+    }
+  },
+  "docs": {
+    "title": "Docs",
+    "type": "page",
+    "href": "/docs"
+  },
+  "templates": {
+    "title": "Templates",
+    "type": "page",
+    "href": "/templates",
+    "theme": {
+      "breadcrumb": false,
+      "toc": false
+    }
+  },
+  "blog": {
+    "title": "Blog",
+    "type": "page",
+    "href": "/blog",
+    "theme": {
+      "breadcrumb": false,
+      "footer": true,
+      "sidebar": false,
+      "toc": true,
+      "pagination": false
+    }
+  },
+  "feedback": {
+    "title": "Feedback",
+    "type": "page",
+    "href": "/feedback",
+    "theme": {
+      "breadcrumb": false,
+      "footer": true,
+      "sidebar": false,
+      "toc": false,
+      "pagination": false,
+      "layout": "full"
+    }
+  }
+}

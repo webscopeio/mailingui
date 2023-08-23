@@ -1,0 +1,32 @@
+import { getTemplateProps } from "@utils/templates";
+import { Header } from "@components/templates/Header.tsx";
+import { Examples } from "@components/templates/examples/Examples.tsx";
+
+export const getStaticProps = async () => {
+  const { type, html, demoCode, sourceCode, examples } = await getTemplateProps(
+    {
+      template: "minimal",
+      category: "newsletter"
+    }
+  );
+
+  return {
+    props: {
+      ssg: {
+        examples,
+      },
+    },
+  };
+};
+
+<div className="pt-2">
+  <Header
+    tag="Minimal Templates"
+    github="MailingUI"
+    title="Newsletter"
+    description="Newsletters are a great way to keep your audience up-to-date with what's going on in your business."
+    downloadHref="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/webscopeio/mailingui/tree/main/src/emails/minimal/newsletter"
+  />
+</div>
+
+<Examples />

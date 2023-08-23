@@ -1,3 +1,0 @@
-export {
-  Tabs,
-} from "./Tabs";
