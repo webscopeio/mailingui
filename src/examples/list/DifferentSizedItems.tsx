@@ -15,28 +15,32 @@ export default function VerticalList() {
       <Body style={main}>
         <Container style={container}>
           <ListRoot>
-            <ListItem size="xs">
-              <ListItemTitle>Nullam interdum enim in porta</ListItemTitle>
-              <ListItemContent>
+            <ListItem>
+              <ListItemTitle size="xs">
+                Nullam interdum enim in porta
+              </ListItemTitle>
+              <ListItemContent size="xs">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               </ListItemContent>
             </ListItem>
-            <ListItem size="sm">
-              <ListItemTitle>Donec eget eros nec nunc ultricies</ListItemTitle>
-              <ListItemContent>
+            <ListItem>
+              <ListItemTitle size="sm">
+                Donec eget eros nec nunc ultricies
+              </ListItemTitle>
+              <ListItemContent size="sm">
                 Praesent fermentum dolor hendrerit enim rhoncus, vitae vulputate
                 quam bibendum. Donec ac pulvinar tellus.
               </ListItemContent>
             </ListItem>
-            <ListItem size="md">
+            <ListItem>
               <ListItemTitle>Aenean odio</ListItemTitle>
               <ListItemContent>
                 Sed feugiat nibh a ligula euismod vehicula.
               </ListItemContent>
             </ListItem>
-            <ListItem size="lg">
-              <ListItemTitle>Cras feugiat</ListItemTitle>
-              <ListItemContent>
+            <ListItem>
+              <ListItemTitle size="lg">Cras feugiat</ListItemTitle>
+              <ListItemContent size="lg">
                 Cras vestibulum massa et erat maximus vulputate.
               </ListItemContent>
             </ListItem>

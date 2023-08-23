@@ -1,5 +1,3 @@
-"use client";
-
 import React, { FC, ReactNode, CSSProperties } from "react";
 import { Button as ReactEmailButton } from "@react-email/components";
 import { theme } from "@mailingui/themes";

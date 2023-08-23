@@ -1,5 +1,3 @@
-"use client";
-
 import * as React from "react";
 import { Text as ReactEmailText } from "@react-email/components";
 import { theme } from "@mailingui/themes";

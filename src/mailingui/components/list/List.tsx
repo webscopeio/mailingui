@@ -1,6 +1,4 @@
-"use client";
-
-import { FC, CSSProperties, ReactNode, createContext, useContext } from "react";
+import { FC, CSSProperties, ReactNode } from "react";
 import { Column, Row, Text } from "@react-email/components";
 import { theme } from "@mailingui/themes";
 
@@ -43,94 +41,29 @@ const variants = {
 
 type TextVariant = keyof typeof variants;
 
-type ListContextType = {
-  direction: "vertical" | "horizontal";
-  centered: boolean;
-  size: SizeType;
-  titleSize?: SizeType;
-  titleStyle?: CSSProperties;
-  bodyStyle?: CSSProperties;
-};
-
-const ListContext = createContext<ListContextType>({
-  direction: "vertical",
-  centered: false,
-  size: "md",
-  titleSize: undefined,
-});
-
 export type ListRootProps = {
-  centered?: boolean;
-  titleSize?: SizeType;
-  size?: SizeType;
   style?: CSSProperties;
-  titleStyle?: CSSProperties;
-  bodyStyle?: CSSProperties;
   children?: ReactNode;
-  horizontal?: boolean;
 };
 
-const ListRoot: FC<ListRootProps> = ({
-  style,
-  size,
-  centered,
-  titleSize,
-  horizontal,
-  titleStyle,
-  bodyStyle,
-  children,
-}) => {
-  const contextValue: ListContextType = {
-    direction: horizontal ? "horizontal" : "vertical",
-    centered: !!centered,
-    size: size ?? "md",
-    titleSize,
-    titleStyle,
-    bodyStyle,
-  };
-
-  return (
-    <ListContext.Provider value={contextValue}>
-      <Row style={{ ...style }}>{children}</Row>
-    </ListContext.Provider>
-  );
+const ListRoot: FC<ListRootProps> = ({ style, children }) => {
+  return <Row style={{ ...style }}>{children}</Row>;
 };
-
-type ListItemContextType = {
-  variant: TextVariant;
-  size: SizeType;
-};
-
-const ListItemContext = createContext<ListItemContextType>({
-  variant: "default",
-  size: "md",
-});
 
 type ListItemProps = {
   style?: CSSProperties;
   children?: ReactNode;
-  variant?: TextVariant;
-  size?: SizeType;
+  horizontal?: boolean;
 };
 
 const ListItem: FC<ListItemProps> = ({
   style,
-  variant = "default",
-  size,
+  horizontal = false,
   children,
 }) => {
-  const { direction, size: sizeContext } = useContext(ListContext);
-  const Wrapper = direction === "vertical" ? Row : Column;
-
-  const itemContextValue: ListItemContextType = {
-    variant,
-    size: size ?? sizeContext,
-  };
-
+  const Wrapper = !horizontal ? Row : Column;
   return (
-    <ListItemContext.Provider value={itemContextValue}>
-      <Wrapper style={{ verticalAlign: "top", ...style }}>{children}</Wrapper>
-    </ListItemContext.Provider>
+    <Wrapper style={{ verticalAlign: "top", ...style }}>{children}</Wrapper>
   );
 };
 
@@ -143,30 +76,21 @@ type ListItemTitleProps = {
 };
 
 const ListItemTitle: FC<ListItemTitleProps> = ({
-  centered,
-  size,
   style,
-  variant,
+  size = "md",
+  centered = false,
+  variant = "default",
   children,
 }) => {
-  const {
-    centered: centeredContext,
-    titleSize: titleSizeContext,
-    titleStyle: titleStyleContext,
-  } = useContext(ListContext);
-  const { variant: variantContext, size: sizeContext } =
-    useContext(ListItemContext);
-
   return (
     <Text
       style={{
-        textAlign: centered ?? centeredContext ? "center" : "inherit",
-        ...variants[variant ?? variantContext],
-        ...sizes[size ?? titleSizeContext ?? sizeContext],
+        textAlign: centered ? "center" : "inherit",
+        ...variants[variant],
+        ...sizes[size],
         fontWeight: 700,
         margin: 0,
         marginBottom: "4px",
-        ...titleStyleContext,
         ...style,
       }}
     >
@@ -185,25 +109,19 @@ type ListItemContentProps = {
 
 const ListItemContent: FC<ListItemContentProps> = ({
   style,
-  size,
-  centered,
-  variant,
+  size = "md",
+  centered = false,
+  variant = "default",
   children,
 }) => {
-  const { centered: centeredContext, bodyStyle: bodyStyleContext } =
-    useContext(ListContext);
-  const { variant: variantContext, size: sizeContext } =
-    useContext(ListItemContext);
-
   return (
     <Text
       style={{
-        textAlign: centered ?? centeredContext ? "center" : "inherit",
-        ...variants[variant ?? variantContext],
-        ...sizes[size ?? sizeContext],
+        textAlign: centered ? "center" : "inherit",
+        ...variants[variant],
+        ...sizes[size],
         margin: 0,
         marginBottom: "24px",
-        ...bodyStyleContext,
         ...style,
       }}
     >

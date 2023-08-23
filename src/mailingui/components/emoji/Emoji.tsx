@@ -1,5 +1,3 @@
-"use client";
-
 import React, { FC, CSSProperties } from "react";
 import { Img, Link } from "@react-email/components";
 
@@ -7,7 +5,7 @@ interface EmojiProps {
   type: EmojiType;
   small?: boolean;
   href?: string;
-  style?: CSSProperties,
+  style?: CSSProperties;
   bg?: boolean;
 }
 
@@ -20,7 +18,7 @@ const Emoji: FC<EmojiProps> = ({ type, href, style, small, bg }) => {
         height: size,
         width: size,
         margin: bg ? undefined : "14px",
-        ...style
+        ...style,
       }}
       src={getEmojiImg(type, bg)}
       alt={type}

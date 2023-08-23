@@ -1,12 +1,4 @@
-"use client";
-
-import React, {
-  FC,
-  CSSProperties,
-  ReactNode,
-  createContext,
-  useContext,
-} from "react";
+import React, { FC, CSSProperties, ReactNode } from "react";
 import { theme } from "@mailingui/themes";
 
 const {
@@ -44,14 +36,6 @@ const sizes: Record<"xs" | "sm" | "md" | "lg", CSSProperties> = {
   },
 };
 
-type BulletListContextType = {
-  size: keyof typeof sizes;
-};
-
-const BulletListContext = createContext<BulletListContextType>({
-  size: "md",
-});
-
 type BulletListProps = {
   type: "unordered" | "ordered";
   style?: CSSProperties;
@@ -59,23 +43,18 @@ type BulletListProps = {
   size?: keyof typeof sizes;
 };
 
-const BulletList: FC<BulletListProps> = ({ type, size, style, children }) => {
+const BulletList: FC<BulletListProps> = ({ type, style, children }) => {
   const ListRoot = type === "unordered" ? "ul" : "ol";
-  const contextValue: BulletListContextType = {
-    size: size ?? "md",
-  };
 
   return (
-    <BulletListContext.Provider value={contextValue}>
-      <ListRoot
-        style={{
-          paddingLeft: 20,
-          ...style,
-        }}
-      >
-        {children}
-      </ListRoot>
-    </BulletListContext.Provider>
+    <ListRoot
+      style={{
+        paddingLeft: 20,
+        ...style,
+      }}
+    >
+      {children}
+    </ListRoot>
   );
 };
 
@@ -92,12 +71,10 @@ const BulletListItem: FC<BulletListItemProps> = ({
   size = "md",
   children,
 }) => {
-  const { size: sizeContext } = useContext(BulletListContext);
-
   const style: CSSProperties = {
     padding: "2px 0",
     ...variants[variant],
-    ...sizes[size ?? sizeContext],
+    ...sizes[size],
     ...styleProp,
   };
 

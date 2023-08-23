@@ -1,5 +1,3 @@
-"use client";
-
 import React, { FC, CSSProperties } from "react";
 import { Img, Link } from "@react-email/components";
 
