@@ -36,15 +36,31 @@ const theme = {
     const url = "https://mailingui.com" + asPath;
 
     const getOgImage = () => {
-      if (asPath.includes("/blog")) return "images/og/blog.png";
-      if (asPath.includes("/docs")) return "images/og/components.png";
-      if (asPath.includes("/feedback")) return "images/og/feedback.png";
-      if (asPath.includes("/templates")) return "images/og/templates.png";
-      return "images/og/homepage.png";
+      if (asPath.includes("/blog"))
+        return "https://mailingui.com/images/og/blog.png";
+      if (asPath.includes("/docs"))
+        return "https://mailingui.com/images/og/components.png";
+      if (asPath.includes("/feedback"))
+        return "https://mailingui.com/images/og/feedback.png";
+      if (asPath.includes("/templates"))
+        return "https://mailingui.com/images/og/templates.png";
+      return "https://mailingui.com/images/og/homepage.png";
     };
 
     return (
       <>
+        {/* Primary Meta Tags */}
+        <title>{frontMatter.title || "MailingUI"}</title>
+        <meta name="title" content={frontMatter.title || "MailingUI"} />
+        <meta
+          name="description"
+          content={
+            frontMatter.description || "Create emails powered by open-source"
+          }
+        />
+
+        {/* Open Graph - Facebook */}
+        <meta property="og:type" content="website" />
         <meta property="og:url" content={url} />
         <meta property="og:title" content={frontMatter.title || "MailingUI"} />
         <meta
@@ -54,6 +70,23 @@ const theme = {
           }
         />
         <meta property="og:image" content={getOgImage()} />
+
+        {/* Twitter*/}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content={url} />
+        <meta
+          property="twitter:title"
+          content={frontMatter.title || "MailingUI"}
+        />
+        <meta
+          property="twitter:description"
+          content={
+            frontMatter.description || "Create emails powered by open-source"
+          }
+        />
+        <meta property="twitter:image" content={getOgImage()} />
+
+        {/* Icons*/}
         <link rel="shortcut icon" href="favicons/favicon-512.png"></link>
         <link
           rel="icon"
@@ -62,6 +95,7 @@ const theme = {
         ></link>
         <link rel="icon" href="favicons/favicon-32.ico" sizes="any"></link>
         <link rel="apple-touch-icon" href="favicons/favicon-512.png"></link>
+
         <script
           defer=""
           data-domain="mailingui.com"
