@@ -28,7 +28,8 @@
     "react-use-measure": "^2.1.1",
     "shiki": "^0.14.3",
     "tailwind-merge": "^1.14.0",
-    "typescript": "5.1.6"
+    "typescript": "5.1.6",
+    "valibot": "^0.13.1"
   },
   "devDependencies": {
     "@types/prettier": "^2.7.2",
