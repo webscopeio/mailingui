@@ -25,10 +25,10 @@ export const Examples = () => {
               <ExamplePreview html={example.html} />
             </Tab>
             <Tab>
-              <ExampleCode code={example.demoCode} />
+              <ExampleCode code={example.demoCode} lang={"tsx"} />
             </Tab>
             <Tab>
-              <ExampleCode code={example.markup} />
+              <ExampleCode code={example.markup} lang={"html"} />
             </Tab>
           </Tabs>
         </div>
