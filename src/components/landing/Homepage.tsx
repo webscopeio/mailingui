@@ -1,5 +1,7 @@
+import * as React from "react";
 import Image from "next/image";
 import { StarIcon } from "lucide-react";
+import { email, safeParse, string } from "valibot";
 import homepageHeroImage from "public/images/homepage-hero.png";
 import newsletterDove from "public/images/newsletter-dove.png";
 import minimalHeroImage from "public/images/minimal-hero.png";
@@ -10,6 +12,11 @@ import { ComponentsOverview } from "@components/docs/components/ComponentsOvervi
 const FORM_ID = "5117081";
 
 export const Homepage = () => {
+  const [newsletterForm, setNewsletterForm] = React.useState({
+    email: "",
+    isValid: true,
+  });
+
   return (
     <div className="mx-auto max-w-5xl space-y-24 pt-36">
       {/* MAIN HERO SECTION */}
@@ -64,18 +71,38 @@ export const Homepage = () => {
           </h3>
         </header>
         <form
-          className="flex flex-col gap-x-2 gap-y-3 lg:flex-row lg:justify-center"
+          onSubmit={(e) => {
+            const res = safeParse(string([email()]), newsletterForm.email);
+            if (!res.success) {
+              e.preventDefault();
+              setNewsletterForm({ ...newsletterForm, isValid: false });
+            }
+          }}
+          className="space-y-3 text-center"
           action={`https://app.convertkit.com/forms/${FORM_ID}/subscriptions`}
           method="post"
         >
-          <input
-            className="w-full rounded-xl p-4 text-base lg:w-96"
-            type="email"
-            name="email_address"
-            placeholder="Your email"
-            aria-label="email"
-          />
-          <CTA>Subscribe</CTA>
+          <div className="flex flex-col gap-x-2 gap-y-3 lg:flex-row lg:justify-center">
+            <input
+              className="w-full rounded-xl bg-stone-900 p-4 text-base lg:w-96"
+              type="text"
+              name="email_address"
+              placeholder="Your email"
+              aria-label="email"
+              value={newsletterForm.email}
+              onChange={(e) => {
+                setNewsletterForm({ email: e.target.value, isValid: true });
+              }}
+            />
+            <CTA disabled={!newsletterForm.isValid}>Subscribe</CTA>
+          </div>
+          <p
+            className={`text-sm font-medium text-pink-600 ${
+              !newsletterForm.isValid ? "visible" : "invisible"
+            }`}
+          >
+            Please provide a valid email address.
+          </p>
         </form>
       </div>
       {/* COMPONENTS SECTION */}
