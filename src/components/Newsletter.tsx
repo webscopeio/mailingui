@@ -5,6 +5,19 @@ import useMeasure from "react-use-measure";
 import { Dialog, DialogContent } from "./ui/Dialog";
 import { CTA } from "./ui/CTA";
 
+const NEWSLETTER_COPY = {
+  pending: {
+    title: "Confirm your newsletter subscription",
+    message:
+      "Thank you for joining us! Just one more step: check your email (including spam) to confirm your subscription and join our community.",
+  },
+  success: {
+    title: "🥳 Subscription confirmed!",
+    message:
+      "Welcome to the MailingUI community. Get ready for the latest updates, tips, and more, straight to your inbox. Your journey with us starts now.",
+  },
+};
+
 export const Newsletter: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
@@ -31,20 +44,18 @@ export const Newsletter: React.FC<{ children: React.ReactNode }> = ({
         }}
       >
         <DialogContent>
-          <div className="space-y-4 py-4 text-center">
-            <div className="space-y-2">
-              <h1 className="text-3xl font-bold tracking-tight text-slate-100">
-                {sub === "pending"
-                  ? "Check your email to confirm!"
-                  : "🥳 Subscription confirmed!"}
-              </h1>
-              <p className="text-gray-400">
-                {sub === "pending"
-                  ? "We have sent you an email to confirm your subscription to our newsletter! Just in case, check the spam folder!"
-                  : "Thank you for joining! We will keep you posted on updates!"}
-              </p>
-            </div>
-            <footer className="flex flex-col items-center justify-end gap-2 lg:flex-row">
+          <div className="flex flex-col gap-y-4 p-2">
+            <h1 className="text-2xl font-bold tracking-tight text-slate-100">
+              {sub === "pending"
+                ? NEWSLETTER_COPY.pending.title
+                : NEWSLETTER_COPY.success.title}
+            </h1>
+            <p className="text-gray-400">
+              {sub === "pending"
+                ? NEWSLETTER_COPY.pending.message
+                : NEWSLETTER_COPY.success.message}
+            </p>
+            <footer className="mt-2 flex justify-end">
               <CTA
                 compact
                 onClick={() => {
@@ -53,16 +64,6 @@ export const Newsletter: React.FC<{ children: React.ReactNode }> = ({
                 }}
               >
                 Back Home
-              </CTA>
-              <CTA
-                secondary
-                compact
-                onClick={() => {
-                  setIsOpen(false);
-                  router.push("/docs");
-                }}
-              >
-                Explore Docs
               </CTA>
             </footer>
           </div>
