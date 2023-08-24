@@ -19,18 +19,6 @@ interface ComponentMetadataType {
 
 export const componentTypes: ComponentMetadataType[] = [
   {
-    type: "hero-sections",
-    title: "Hero section",
-    subtitle: "Beautiful headers to showcase your message",
-    image: Heroes,
-  },
-  {
-    type: "lists",
-    title: "Lists",
-    subtitle: "Organize information with simple lists",
-    image: Lists,
-  },
-  {
     type: "badges",
     title: "Badges",
     subtitle: "Highlight key information with attention-grabbing badges",
@@ -43,16 +31,28 @@ export const componentTypes: ComponentMetadataType[] = [
     image: Buttons,
   },
   {
+    type: "dividers",
+    title: "Dividers",
+    subtitle: "Create visual separation for a clean, professional look",
+    image: Dividers,
+  },
+  {
     type: "emojis",
     title: "Emojis",
     subtitle: "Add personality and emotion to your messages",
     image: Emojis,
   },
   {
-    type: "social-icons",
-    title: "Social icons",
-    subtitle: "Increase engagement with clickable social icons",
-    image: SocialIcons,
+    type: "hero-sections",
+    title: "Hero section",
+    subtitle: "Beautiful headers to showcase your message",
+    image: Heroes,
+  },
+  {
+    type: "lists",
+    title: "Lists",
+    subtitle: "Organize information with simple lists",
+    image: Lists,
   },
   {
     type: "texts",
@@ -61,9 +61,9 @@ export const componentTypes: ComponentMetadataType[] = [
     image: Paragraphs,
   },
   {
-    type: "dividers",
-    title: "Dividers",
-    subtitle: "Create visual separation for a clean, professional look",
-    image: Dividers,
+    type: "social-icons",
+    title: "Social icons",
+    subtitle: "Increase engagement with clickable social icons",
+    image: SocialIcons,
   },
 ];
