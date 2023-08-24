@@ -32,3 +32,17 @@ export async function highlight(
 ) {
   return highlighter.codeToHtml(code, { lang, theme });
 }
+
+/**
+ * Transforms HTML to be consumed by Nextra components
+ * @param input Shiki syntax-highlighted HTML
+ * @returns Nextra-ready HTML
+ */
+export function transformHtmlCode(input: string) {
+  return input
+    .replaceAll("</code>", "")
+    .replaceAll("<code>", "")
+    .replace(/<pre [^>]*>/gi, "")
+    .replace("</pre>", "")
+    .replaceAll('<span class="line"></span>', '<span class="line"> </span>');
+}
