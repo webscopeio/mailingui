@@ -110,7 +110,7 @@ export const Homepage = () => {
         <header className="mx-auto lg:text-center">
           <h2 className="font-semibold uppercase text-gray-400">Components</h2>
           <h3 className="mx-auto text-5xl font-semibold tracking-tight lg:text-6xl">
-            Build an eye-catching email with pre-made components
+            Build eye-catching emails with pre-made components
           </h3>
         </header>
         <div>

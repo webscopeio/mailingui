@@ -38,7 +38,7 @@ const theme = {
 
     const getOgImage = () => {
       if (asPath.includes("/blog")) return basePath + "/images/og/blog.png";
-      if (asPath.includes("/docs"))
+      if (asPath.includes("/components"))
         return basePath + "/images/og/components.png";
       if (asPath.includes("/feedback"))
         return basePath + "/images/og/feedback.png";
