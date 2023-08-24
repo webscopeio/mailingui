@@ -20,7 +20,7 @@ export const Homepage = () => {
   return (
     <div className="mx-auto max-w-5xl space-y-24 pt-36">
       {/* MAIN HERO SECTION */}
-      <div className="-mb-16 grid h-full w-full place-content-center place-items-center gap-x-12 gap-y-6 lg:grid-cols-2">
+      <div className="-mb-16 grid h-full w-full place-content-center gap-x-12 gap-y-6 lg:grid-cols-2 lg:place-items-center">
         <div className="space-y-6">
           <div className="space-x-2">
             <GradientBadge>React</GradientBadge>
