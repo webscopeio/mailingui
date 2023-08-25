@@ -49,5 +49,16 @@
       "pagination": false,
       "layout": "full"
     }
+  },
+  "404": {
+    "title": "Not Found",
+    "theme": {
+      "breadcrumb": false,
+      "footer": true,
+      "sidebar": false,
+      "toc": false,
+      "pagination": false,
+      "layout": "full"
+    }
   }
 }
