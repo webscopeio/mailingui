@@ -3,6 +3,7 @@ import { FC } from "react";
 import { Resizable } from "re-resizable";
 import SubscriptionSuccess from "./templates/you-are-subscribed";
 import RegisterAnAccount from "./examples/register-an-account";
+import TellUsWhatYouThink from "./templates/tell-us-what-you-think";
 import { CTA } from "@components/ui/CTA";
 
 export const Homepage = () => {
@@ -34,7 +35,11 @@ export const Homepage = () => {
               <RegisterAnAccount />
             </ExampleWrapper>
           </div>
-          <div className="-mt-20 h-12 flex-1 bg-green-50"></div>
+          <div className="-mt-20 flex flex-1 flex-col gap-4">
+            <TemplateWrapper height={410}>
+              <TellUsWhatYouThink />
+            </TemplateWrapper>
+          </div>
           <div className="-mt-28 h-12 flex-1 bg-yellow-50"></div>
         </div>
       </div>
