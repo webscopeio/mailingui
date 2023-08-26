@@ -1,5 +1,8 @@
 import * as React from "react";
-import SubscriptionSuccess from "./examples/you-are-subscribed";
+import { FC } from "react";
+import { Resizable } from "re-resizable";
+import SubscriptionSuccess from "./templates/you-are-subscribed";
+import RegisterAnAccount from "./examples/register-an-account";
 import { CTA } from "@components/ui/CTA";
 
 export const Homepage = () => {
@@ -23,9 +26,12 @@ export const Homepage = () => {
           </div>
         </div>
         <div className="mt-9 flex w-full gap-4">
-          <div className="flex-1">
-            <ExampleWrapper>
+          <div className="flex flex-1 flex-col gap-4">
+            <TemplateWrapper height={410}>
               <SubscriptionSuccess />
+            </TemplateWrapper>
+            <ExampleWrapper height={160}>
+              <RegisterAnAccount />
             </ExampleWrapper>
           </div>
           <div className="-mt-20 h-12 flex-1 bg-green-50"></div>
@@ -36,19 +42,57 @@ export const Homepage = () => {
   );
 };
 
-const ExampleWrapper = ({
-  children,
-  height = 420,
-}: {
+const TemplateWrapper: FC<{
   children: React.ReactNode;
-  height?: number;
-}) => {
+  height: number;
+}> = ({ children, height }) => {
   return (
     <div
       className="w-[330px] overflow-scroll rounded-lg bg-[#f6f9fc] p-2"
       style={{ height: height }}
     >
       {children}
+    </div>
+  );
+};
+
+const ExampleWrapper: FC<{
+  children: React.ReactNode;
+  height: number;
+}> = ({ children, height }) => {
+  return (
+    <div style={{ width: "330px" }}>
+      <div
+        style={{
+          transform: "scale(0.5)",
+          width: "660px",
+          transformOrigin: "left top",
+        }}
+      >
+        <Resizable
+          bounds="parent"
+          minWidth="320px"
+          handleStyles={{
+            right: {
+              right: "initial",
+              left: "100%",
+              paddingLeft: "0.25rem",
+              paddingRight: "0.25rem",
+              width: "660px",
+              cursor: "ew-resize",
+            },
+          }}
+          handleClasses={{
+            right: "hidden sm:flex items-center",
+          }}
+          handleComponent={{
+            right: <div className="h-8 w-1.5 rounded-full bg-stone-100" />,
+          }}
+          scale={0.5}
+        >
+          <div style={{ height: height * 2 }}>{children}</div>
+        </Resizable>
+      </div>
     </div>
   );
 };
