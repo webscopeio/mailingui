@@ -1,14 +1,5 @@
 import * as React from "react";
-import {
-  Body,
-  Container,
-  Html,
-  Preview,
-  Section,
-  Row,
-  Column,
-  Head,
-} from "@react-email/components";
+import { Container, Section, Row, Column } from "@react-email/components";
 import { Badge } from "@mailingui/components";
 
 const DotBadges = () => (

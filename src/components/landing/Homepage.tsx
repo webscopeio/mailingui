@@ -1,14 +1,26 @@
 import * as React from "react";
+import dynamic from "next/dynamic";
 import { FC } from "react";
 import { Resizable } from "re-resizable";
 import SubscriptionSuccess from "./templates/you-are-subscribed";
-import RegisterAnAccount from "./examples/register-an-account";
-import TellUsWhatYouThink from "./templates/tell-us-what-you-think";
 import DotBadges from "./examples/badges";
-import MinimalDiscoutCode from "./templates/discount-code";
 import { CTA } from "@components/ui/CTA";
 
 export const Homepage = () => {
+  // TODO - otherwise hydration errors - FIX
+  const RegisterAnAccount = dynamic(
+    () => import("./examples/register-an-account"),
+    { ssr: false }
+  );
+  const TellUsWhatYouThink = dynamic(
+    () => import("./templates/tell-us-what-you-think"),
+    { ssr: false }
+  );
+  const MinimalDiscountCode = dynamic(
+    () => import("./templates/discount-code"),
+    { ssr: false }
+  );
+
   return (
     <div className="mx-auto max-w-5xl space-y-24 pt-16">
       <div className="h-full w-full">
@@ -45,7 +57,7 @@ export const Homepage = () => {
               <DotBadges />
             </ExampleWrapper>
             <TemplateWrapper height={210}>
-              <MinimalDiscoutCode />
+              <MinimalDiscountCode />
             </TemplateWrapper>
           </div>
           <div className="-mt-28 h-12 flex-1 bg-yellow-50"></div>
