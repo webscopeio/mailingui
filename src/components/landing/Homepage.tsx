@@ -30,7 +30,7 @@ export const Homepage = () => {
             <TemplateWrapper height={410}>
               <SubscriptionSuccess />
             </TemplateWrapper>
-            <ExampleWrapper height={160}>
+            <ExampleWrapper height={152} minWidth={180}>
               <RegisterAnAccount />
             </ExampleWrapper>
           </div>
@@ -59,40 +59,32 @@ const TemplateWrapper: FC<{
 const ExampleWrapper: FC<{
   children: React.ReactNode;
   height: number;
-}> = ({ children, height }) => {
+  minWidth?: number;
+}> = ({ children, height, minWidth = 160 }) => {
   return (
     <div style={{ width: "330px" }}>
-      <div
-        style={{
-          transform: "scale(0.5)",
-          width: "660px",
-          transformOrigin: "left top",
+      <Resizable
+        bounds="parent"
+        minWidth={`${minWidth}px`}
+        handleStyles={{
+          right: {
+            right: "initial",
+            left: "100%",
+            paddingLeft: "0.25rem",
+            paddingRight: "0.25rem",
+            width: "330px",
+            cursor: "ew-resize",
+          },
+        }}
+        handleClasses={{
+          right: "hidden sm:flex items-center",
+        }}
+        handleComponent={{
+          right: <div className="h-8 w-1.5 rounded-full bg-stone-100" />,
         }}
       >
-        <Resizable
-          bounds="parent"
-          minWidth="320px"
-          handleStyles={{
-            right: {
-              right: "initial",
-              left: "100%",
-              paddingLeft: "0.25rem",
-              paddingRight: "0.25rem",
-              width: "660px",
-              cursor: "ew-resize",
-            },
-          }}
-          handleClasses={{
-            right: "hidden sm:flex items-center",
-          }}
-          handleComponent={{
-            right: <div className="h-8 w-1.5 rounded-full bg-stone-100" />,
-          }}
-          scale={0.5}
-        >
-          <div style={{ height: height * 2 }}>{children}</div>
-        </Resizable>
-      </div>
+        <div style={{ height: height }}>{children}</div>
+      </Resizable>
     </div>
   );
 };

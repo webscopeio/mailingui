@@ -1,51 +1,23 @@
-import {
-  Body,
-  Container,
-  Head,
-  Html,
-  Preview,
-  Row,
-  Column,
-} from "@react-email/components";
+import { Container, Row, Column } from "@react-email/components";
 import { SocialIcon, Text } from "@mailingui/components";
 
 export default function RegisterAnAccount() {
   return (
     <div style={main}>
-      <div className="py-[100px]">
+      <div className="px-10 py-4">
         <Container style={container}>
           <Row>
-            <Text size="lg">
-              Register an account with us using the following providers:
-            </Text>
+            <Text size="lg">Register with:</Text>
           </Row>
-          <Row>
+          <Row style={{ transform: "translate(-14px, 0px)" }}>
             <Column>
-              <Row>
-                <Column width={44}>
-                  <SocialIcon type="github" size={32} />
-                </Column>
-                <Column width={20} />
-                <Column>GitHub</Column>
-              </Row>
+              <SocialIcon type="github" size={32} />
             </Column>
             <Column>
-              <Row>
-                <Column width={44}>
-                  <SocialIcon type="twitter" size={32} />
-                </Column>
-                <Column width={20} />
-                <Column>Twitter</Column>
-              </Row>
+              <SocialIcon type="twitter" size={32} />
             </Column>
             <Column>
-              <Row>
-                <Column width={44}>
-                  <SocialIcon type="google drive" size={32} />
-                </Column>
-                <Column width={20} />
-                <Column>Google</Column>
-              </Row>
+              <SocialIcon type="google drive" size={32} />
             </Column>
           </Row>
         </Container>
@@ -57,7 +29,6 @@ export default function RegisterAnAccount() {
 const main = {
   backgroundColor: "#ffffff",
   color: "#24292e",
-  height: "300px",
   borderRadius: "16px",
   fontFamily:
     '-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color SocialIcon","Segoe UI SocialIcon"',
@@ -65,5 +36,5 @@ const main = {
 
 const container = {
   padding: "100px 0",
-  maxWidth: 480,
+  maxWidth: 330,
 };
