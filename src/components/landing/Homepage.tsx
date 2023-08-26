@@ -5,6 +5,7 @@ import SubscriptionSuccess from "./templates/you-are-subscribed";
 import RegisterAnAccount from "./examples/register-an-account";
 import TellUsWhatYouThink from "./templates/tell-us-what-you-think";
 import DotBadges from "./examples/badges";
+import MinimalDiscoutCode from "./templates/discount-code";
 import { CTA } from "@components/ui/CTA";
 
 export const Homepage = () => {
@@ -43,6 +44,9 @@ export const Homepage = () => {
             <ExampleWrapper height={56} minWidth={245}>
               <DotBadges />
             </ExampleWrapper>
+            <TemplateWrapper height={210}>
+              <MinimalDiscoutCode />
+            </TemplateWrapper>
           </div>
           <div className="-mt-28 h-12 flex-1 bg-yellow-50"></div>
         </div>
@@ -81,9 +85,19 @@ const ExampleWrapper: FC<{
             left: "100%",
             paddingLeft: "0.25rem",
             paddingRight: "0.25rem",
-            width: "330px",
+            width: "auto",
             cursor: "ew-resize",
           },
+        }}
+        enable={{
+          top: false,
+          right: true,
+          bottom: false,
+          left: false,
+          topRight: false,
+          bottomRight: false,
+          bottomLeft: false,
+          topLeft: false,
         }}
         handleClasses={{
           right: "hidden sm:flex items-center",
