@@ -18,6 +18,16 @@ export const DemoPreview = () => {
           cursor: "ew-resize",
         },
       }}
+      enable={{
+        top: false,
+        right: true,
+        bottom: false,
+        left: false,
+        topRight: false,
+        bottomRight: false,
+        bottomLeft: false,
+        topLeft: false,
+      }}
       handleClasses={{
         right: "hidden sm:flex items-center",
       }}
