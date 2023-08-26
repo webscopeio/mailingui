@@ -1,26 +1,14 @@
 import * as React from "react";
-import dynamic from "next/dynamic";
 import { FC } from "react";
 import { Resizable } from "re-resizable";
 import SubscriptionSuccess from "./templates/you-are-subscribed";
 import DotBadges from "./examples/badges";
+import RegisterAnAccount from "./examples/register-an-account";
+import MinimalDiscountCode from "./templates/discount-code";
+import TellUsWhatYouThink from "./templates/tell-us-what-you-think";
 import { CTA } from "@components/ui/CTA";
 
 export const Homepage = () => {
-  // TODO - otherwise hydration errors - FIX
-  const RegisterAnAccount = dynamic(
-    () => import("./examples/register-an-account"),
-    { ssr: false }
-  );
-  const TellUsWhatYouThink = dynamic(
-    () => import("./templates/tell-us-what-you-think"),
-    { ssr: false }
-  );
-  const MinimalDiscountCode = dynamic(
-    () => import("./templates/discount-code"),
-    { ssr: false }
-  );
-
   return (
     <div className="mx-auto max-w-5xl space-y-24 pt-16">
       <div className="h-full w-full">
@@ -50,7 +38,7 @@ export const Homepage = () => {
             </ExampleWrapper>
           </div>
           <div className="-mt-20 flex flex-1 flex-col gap-4">
-            <TemplateWrapper height={410}>
+            <TemplateWrapper height={310}>
               <TellUsWhatYouThink />
             </TemplateWrapper>
             <ExampleWrapper height={56} minWidth={245}>
@@ -89,7 +77,7 @@ const ExampleWrapper: FC<{
   return (
     <div style={{ width: "330px" }}>
       <Resizable
-        bounds="parent"
+        bounds="window"
         minWidth={`${minWidth}px`}
         handleStyles={{
           right: {

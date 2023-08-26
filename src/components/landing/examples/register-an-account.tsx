@@ -7,7 +7,9 @@ export default function RegisterAnAccount() {
       <div className="px-10 py-4">
         <Container style={container}>
           <Row>
-            <Text size="lg">You can register with:</Text>
+            <Column>
+              <Text size="lg">You can register with:</Text>
+            </Column>
           </Row>
           <Row style={{ transform: "translate(-14px, 0px)" }}>
             <Column>

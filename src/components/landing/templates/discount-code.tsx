@@ -58,12 +58,14 @@ export const MinimalDiscoutCode: FC<MinimalResetPasswordProps> = ({
         </Column>
       </Row>
       <Row style={{ marginBottom: "10px" }} width={270}>
-        <Text>Dear customer,</Text>
-        <Text>
-          As a thank you for your continued support and loyalty, we would like
-          to offer you a special discount on your next purchase from Viola
-          store.
-        </Text>
+        <Column>
+          <Text>Dear customer,</Text>
+          <Text>
+            As a thank you for your continued support and loyalty, we would like
+            to offer you a special discount on your next purchase from Viola
+            store.
+          </Text>
+        </Column>
       </Row>
       <Row style={{ marginBottom: "20px" }} width={270}>
         <Column>
@@ -75,12 +77,14 @@ export const MinimalDiscoutCode: FC<MinimalResetPasswordProps> = ({
         </Column>
       </Row>
       <Row style={{ marginBottom: "10px" }} width={270}>
-        <Text style={{ fontSize: "48px", lineHeight: "52px" }}>{code}</Text>
-        <Text size="sm" style={{ color: "#64748B", paddingRight: "44px" }}>
-          Use the coupon code at checkout to receive {discount}% off your total
-          order. This offer is valid until {expiration}, so be sure to take
-          advantage of it before it expires.
-        </Text>
+        <Column>
+          <Text style={{ fontSize: "48px", lineHeight: "52px" }}>{code}</Text>
+          <Text size="sm" style={{ color: "#64748B", paddingRight: "44px" }}>
+            Use the coupon code at checkout to receive {discount}% off your
+            total order. This offer is valid until {expiration}, so be sure to
+            take advantage of it before it expires.
+          </Text>
+        </Column>
       </Row>
       <Row style={{ marginBottom: "10px" }} width={270}>
         <Column>
@@ -92,31 +96,37 @@ export const MinimalDiscoutCode: FC<MinimalResetPasswordProps> = ({
         </Column>
       </Row>
       <Row style={{ marginBottom: "10px" }} width={270}>
-        <Text>
-          We have recently launched new products and we invite you to check them
-          out.
-        </Text>
+        <Column>
+          <Text>
+            We have recently launched new products and we invite you to check
+            them out.
+          </Text>
+        </Column>
       </Row>
       <Row style={{ marginBottom: "32px" }} width={270}>
-        <Button href={link} width={270} height={56} backgroundColor="#000000">
-          View products
-        </Button>
+        <Column>
+          <Button href={link} width={270} height={56} backgroundColor="#000000">
+            View products
+          </Button>
+        </Column>
       </Row>
       <Row style={{ marginBottom: "16px" }} width={270}>
-        <Text>
-          We appreciate your business and hope that this discount makes your
-          shopping experience with us even better. If you have any questions or
-          need further assistance, please do not hesitate to contact our
-          customer support team.
-        </Text>
-        <Text>
-          Thank you again for your support and we look forward to serving you
-          soon.
-        </Text>
-        <Text>
-          Sincerely,
-          <br /> Minimal Team
-        </Text>
+        <Column>
+          <Text>
+            We appreciate your business and hope that this discount makes your
+            shopping experience with us even better. If you have any questions
+            or need further assistance, please do not hesitate to contact our
+            customer support team.
+          </Text>
+          <Text>
+            Thank you again for your support and we look forward to serving you
+            soon.
+          </Text>
+          <Text>
+            Sincerely,
+            <br /> Minimal Team
+          </Text>
+        </Column>
       </Row>
       <Row style={{ marginBottom: "32px" }} width={270}>
         <Column>

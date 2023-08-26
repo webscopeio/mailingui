@@ -50,18 +50,20 @@ export const ProductReview: FC<ProductReviewProps> = ({ name = "Jacob" }) => {
         </Column>
       </Row>
       <Row style={{ marginBottom: "16px" }} width={270}>
-        <Text>Dear {name},</Text>
-        <Text>
-          We hope this email finds you well. We wanted to take a moment to check
-          in with you and ask about your experience with the products you
-          purchased from us.
-        </Text>
-        <Text>
-          At Viola Studio, we are committed to providing our customers with the
-          best possible experience, and we want to ensure that we are meeting
-          that goal. We would be grateful if you could take a few minutes to
-          share your thoughts on your experience with us.
-        </Text>
+        <Column>
+          <Text>Dear {name},</Text>
+          <Text>
+            We hope this email finds you well. We wanted to take a moment to
+            check in with you and ask about your experience with the products
+            you purchased from us.
+          </Text>
+          <Text>
+            At Viola Studio, we are committed to providing our customers with
+            the best possible experience, and we want to ensure that we are
+            meeting that goal. We would be grateful if you could take a few
+            minutes to share your thoughts on your experience with us.
+          </Text>
+        </Column>
       </Row>
       <Row style={{ marginBottom: "25px" }} width={270}>
         <Column>
@@ -134,20 +136,22 @@ export const ProductReview: FC<ProductReviewProps> = ({ name = "Jacob" }) => {
         </Column>
       </Row>
       <Row style={{ marginBottom: "16px" }} width={270}>
-        <Text>
-          Your feedback is important to us, and it will help us identify areas
-          where we can improve and better serve our customers. We value your
-          opinion, and we would appreciate any suggestions or comments that you
-          may have.
-        </Text>
-        <Text>
-          Thank you for your time and consideration, and we look forward to
-          hearing from you soon.
-        </Text>
-        <Text>
-          Best regards,
-          <br /> Minimal Team
-        </Text>
+        <Column>
+          <Text>
+            Your feedback is important to us, and it will help us identify areas
+            where we can improve and better serve our customers. We value your
+            opinion, and we would appreciate any suggestions or comments that
+            you may have.
+          </Text>
+          <Text>
+            Thank you for your time and consideration, and we look forward to
+            hearing from you soon.
+          </Text>
+          <Text>
+            Best regards,
+            <br /> Minimal Team
+          </Text>
+        </Column>
       </Row>
       <Row style={{ marginBottom: "32px" }} width={270}>
         <Column>
