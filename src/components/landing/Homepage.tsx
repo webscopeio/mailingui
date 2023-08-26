@@ -77,7 +77,7 @@ const ExampleWrapper: FC<{
   return (
     <div style={{ width: "330px" }}>
       <Resizable
-        bounds="window"
+        bounds="parent"
         minWidth={`${minWidth}px`}
         handleStyles={{
           right: {
