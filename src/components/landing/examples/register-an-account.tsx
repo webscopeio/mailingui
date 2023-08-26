@@ -7,7 +7,7 @@ export default function RegisterAnAccount() {
       <div className="px-10 py-4">
         <Container style={container}>
           <Row>
-            <Text size="lg">Register with:</Text>
+            <Text size="lg">You can register with:</Text>
           </Row>
           <Row style={{ transform: "translate(-14px, 0px)" }}>
             <Column>
@@ -16,7 +16,7 @@ export default function RegisterAnAccount() {
             <Column>
               <SocialIcon type="twitter" size={32} />
             </Column>
-            <Column>
+            <Column width={32}>
               <SocialIcon type="google drive" size={32} />
             </Column>
           </Row>

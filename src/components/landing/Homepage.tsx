@@ -30,7 +30,7 @@ export const Homepage = () => {
             <TemplateWrapper height={410}>
               <SubscriptionSuccess />
             </TemplateWrapper>
-            <ExampleWrapper height={152} minWidth={180}>
+            <ExampleWrapper height={152} minWidth={190}>
               <RegisterAnAccount />
             </ExampleWrapper>
           </div>
