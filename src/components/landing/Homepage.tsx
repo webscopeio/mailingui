@@ -1,4 +1,5 @@
 import * as React from "react";
+import SubscriptionSuccess from "./examples/you-are-subscribed";
 import { CTA } from "@components/ui/CTA";
 
 export const Homepage = () => {
@@ -22,11 +23,32 @@ export const Homepage = () => {
           </div>
         </div>
         <div className="mt-9 flex w-full gap-4">
-          <div className="h-12 flex-1 bg-amber-100"></div>
+          <div className="flex-1">
+            <ExampleWrapper>
+              <SubscriptionSuccess />
+            </ExampleWrapper>
+          </div>
           <div className="-mt-20 h-12 flex-1 bg-green-50"></div>
           <div className="-mt-28 h-12 flex-1 bg-yellow-50"></div>
         </div>
       </div>
+    </div>
+  );
+};
+
+const ExampleWrapper = ({
+  children,
+  height = 420,
+}: {
+  children: React.ReactNode;
+  height?: number;
+}) => {
+  return (
+    <div
+      className="w-[330px] overflow-scroll rounded-lg bg-[#f6f9fc] p-2"
+      style={{ height: height }}
+    >
+      {children}
     </div>
   );
 };
