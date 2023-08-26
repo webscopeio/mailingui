@@ -4,6 +4,7 @@ import { Resizable } from "re-resizable";
 import SubscriptionSuccess from "./templates/you-are-subscribed";
 import RegisterAnAccount from "./examples/register-an-account";
 import TellUsWhatYouThink from "./templates/tell-us-what-you-think";
+import DotBadges from "./examples/badges";
 import { CTA } from "@components/ui/CTA";
 
 export const Homepage = () => {
@@ -39,6 +40,9 @@ export const Homepage = () => {
             <TemplateWrapper height={410}>
               <TellUsWhatYouThink />
             </TemplateWrapper>
+            <ExampleWrapper height={56} minWidth={245}>
+              <DotBadges />
+            </ExampleWrapper>
           </div>
           <div className="-mt-28 h-12 flex-1 bg-yellow-50"></div>
         </div>
