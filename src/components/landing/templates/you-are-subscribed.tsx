@@ -19,7 +19,7 @@ const baseUrl = `${
 }/static/minimal-theme`;
 
 export const SubscriptionSuccess: FC<SubscriptionSuccessProps> = ({
-  link = "https://google.com",
+  link = "#",
   items = [
     "A recap of our latest product launch and customer feedback",
     "A sneak peek of our upcoming events and promotions",

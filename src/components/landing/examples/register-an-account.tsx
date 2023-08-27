@@ -13,13 +13,13 @@ export default function RegisterAnAccount() {
           </Row>
           <Row style={{ transform: "translate(-14px, 0px)" }}>
             <Column>
-              <SocialIcon type="github" size={32} />
+              <SocialIcon type="github" size={32} href="#" />
             </Column>
             <Column>
-              <SocialIcon type="twitter" size={32} />
+              <SocialIcon type="twitter" size={32} href="#" />
             </Column>
             <Column width={32}>
-              <SocialIcon type="google drive" size={32} />
+              <SocialIcon type="google drive" size={32} href="#" />
             </Column>
           </Row>
         </Container>
@@ -31,7 +31,7 @@ export default function RegisterAnAccount() {
 const main = {
   backgroundColor: "#ffffff",
   color: "#24292e",
-  borderRadius: "16px",
+  borderRadius: "8px",
   fontFamily:
     '-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color SocialIcon","Segoe UI SocialIcon"',
 };

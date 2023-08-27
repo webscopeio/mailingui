@@ -78,7 +78,7 @@ export const ProductReview: FC<ProductReviewProps> = ({ name = "Jacob" }) => {
         <Column width={54}>
           <Emoji
             type="heart-eyes-face"
-            href="https://google.com"
+            href="#"
             bg
             small
             style={{ marginLeft: "11px" }}
@@ -88,7 +88,7 @@ export const ProductReview: FC<ProductReviewProps> = ({ name = "Jacob" }) => {
         <Column width={54}>
           <Emoji
             type="smiling-face"
-            href="https://google.com"
+            href="#"
             bg
             small
             style={{ marginLeft: "11px" }}
@@ -98,7 +98,7 @@ export const ProductReview: FC<ProductReviewProps> = ({ name = "Jacob" }) => {
         <Column width={54}>
           <Emoji
             type="neutral-face"
-            href="https://google.com"
+            href="#"
             bg
             small
             style={{ marginLeft: "11px" }}
@@ -108,7 +108,7 @@ export const ProductReview: FC<ProductReviewProps> = ({ name = "Jacob" }) => {
         <Column width={54}>
           <Emoji
             type="sad-face"
-            href="https://google.com"
+            href="#"
             bg
             small
             style={{ marginLeft: "11px" }}
@@ -118,7 +118,7 @@ export const ProductReview: FC<ProductReviewProps> = ({ name = "Jacob" }) => {
         <Column width={54}>
           <Emoji
             type="confounded-face"
-            href="https://google.com"
+            href="#"
             bg
             small
             style={{ marginLeft: "11px" }}

@@ -12,13 +12,13 @@ export default function ConnectWithUs() {
               <Text style={{ textAlign: "left" }}>Connect with us</Text>
             </Column>
             <Column width={44}>
-              <SocialIcon type="telegram" href="#link-to-telegram" />
+              <SocialIcon type="telegram" href="#" />
             </Column>
             <Column width={44}>
-              <SocialIcon type="twitter" href="#link-to-twitter" />
+              <SocialIcon type="twitter" href="#" />
             </Column>
             <Column width={44}>
-              <SocialIcon type="whatsapp" href="#link-to-whatsapp" />
+              <SocialIcon type="whatsapp" href="#" />
             </Column>
           </Row>
         </Container>
@@ -30,7 +30,7 @@ export default function ConnectWithUs() {
 const main = {
   backgroundColor: "#ffffff",
   color: "#24292e",
-  borderRadius: "16px",
+  borderRadius: "8px",
   fontFamily:
     '-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color SocialIcon","Segoe UI SocialIcon"',
 };

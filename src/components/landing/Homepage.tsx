@@ -2,6 +2,7 @@ import * as React from "react";
 import { FC } from "react";
 import dynamic from "next/dynamic";
 import { Resizable } from "re-resizable";
+import { ArrowRight } from "lucide-react";
 import SubscriptionSuccess from "./templates/you-are-subscribed";
 import DotBadges from "./examples/badges";
 import RegisterAnAccount from "./examples/register-an-account";
@@ -67,6 +68,12 @@ export const Homepage = () => {
             </ExampleWrapper>
           </div>
         </div>
+        <div className="flex w-full justify-end">
+          <CTA secondary href="/docs/components/overview">
+            More Examples
+            <ArrowRight />
+          </CTA>
+        </div>
       </div>
     </div>
   );
@@ -121,8 +128,9 @@ const ExampleWrapper: FC<{
         handleComponent={{
           right: <div className="h-8 w-1.5 rounded-full bg-stone-100" />,
         }}
+        className="!h-auto"
       >
-        <div style={{ overflow: "auto" }}>{children}</div>
+        <div style={{ height: "auto" }}>{children}</div>
       </Resizable>
     </div>
   );

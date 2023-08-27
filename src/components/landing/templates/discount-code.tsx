@@ -21,7 +21,7 @@ const baseUrl = `${
 export const MinimalDiscoutCode: FC<MinimalResetPasswordProps> = ({
   code = "HAPPY20",
   discount = 20,
-  link = "https://google.com",
+  link = "#",
   expiration = "July 31, 2023",
 }) => {
   return (

@@ -45,7 +45,7 @@ export default function CombinedLists() {
 const main = {
   backgroundColor: "#ffffff",
   color: "#24292e",
-  borderRadius: "16px",
+  borderRadius: "8px",
   fontFamily:
     '-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color SocialIcon","Segoe UI SocialIcon"',
 };
