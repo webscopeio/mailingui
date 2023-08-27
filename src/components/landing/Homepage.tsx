@@ -6,6 +6,7 @@ import DotBadges from "./examples/badges";
 import RegisterAnAccount from "./examples/register-an-account";
 import MinimalDiscountCode from "./templates/discount-code";
 import TellUsWhatYouThink from "./templates/tell-us-what-you-think";
+import CombinedLists from "./examples/list";
 import { CTA } from "@components/ui/CTA";
 
 export const Homepage = () => {
@@ -48,7 +49,11 @@ export const Homepage = () => {
               <MinimalDiscountCode />
             </TemplateWrapper>
           </div>
-          <div className="-mt-28 h-12 flex-1 bg-yellow-50"></div>
+          <div className="-mt-28 flex flex-1 flex-col gap-4">
+            <ExampleWrapper height={228} minWidth={222}>
+              <CombinedLists />
+            </ExampleWrapper>
+          </div>
         </div>
       </div>
     </div>
