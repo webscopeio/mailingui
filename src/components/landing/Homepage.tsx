@@ -1,15 +1,20 @@
 import * as React from "react";
 import { FC } from "react";
+import dynamic from "next/dynamic";
 import { Resizable } from "re-resizable";
 import SubscriptionSuccess from "./templates/you-are-subscribed";
 import DotBadges from "./examples/badges";
 import RegisterAnAccount from "./examples/register-an-account";
 import MinimalDiscountCode from "./templates/discount-code";
 import TellUsWhatYouThink from "./templates/tell-us-what-you-think";
-import CombinedLists from "./examples/list";
+import UpcomingEvents from "./templates/upcoming-events";
 import { CTA } from "@components/ui/CTA";
 
 export const Homepage = () => {
+  // TODO - fix hydration issue and import normally - check console errors on landing page
+  const CombinedLists = dynamic(() => import("./examples/list"), {
+    ssr: false,
+  });
   return (
     <div className="mx-auto max-w-5xl space-y-24 pt-16">
       <div className="h-full w-full">
@@ -53,6 +58,9 @@ export const Homepage = () => {
             <ExampleWrapper height={228} minWidth={222}>
               <CombinedLists />
             </ExampleWrapper>
+            <TemplateWrapper height={300}>
+              <UpcomingEvents />
+            </TemplateWrapper>
           </div>
         </div>
       </div>
