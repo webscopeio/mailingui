@@ -8,6 +8,7 @@ import RegisterAnAccount from "./examples/register-an-account";
 import MinimalDiscountCode from "./templates/discount-code";
 import TellUsWhatYouThink from "./templates/tell-us-what-you-think";
 import UpcomingEvents from "./templates/upcoming-events";
+import ConnectWithUs from "./examples/connect-with-us";
 import { CTA } from "@components/ui/CTA";
 
 export const Homepage = () => {
@@ -34,12 +35,12 @@ export const Homepage = () => {
             <CTA href="/docs/guide/introduction">Get Started</CTA>
           </div>
         </div>
-        <div className="mt-9 flex w-full gap-4">
+        <div className="mt-9 flex h-[650px] w-full gap-4">
           <div className="flex flex-1 flex-col gap-4">
             <TemplateWrapper height={410}>
               <SubscriptionSuccess />
             </TemplateWrapper>
-            <ExampleWrapper height={152} minWidth={190}>
+            <ExampleWrapper minWidth={190}>
               <RegisterAnAccount />
             </ExampleWrapper>
           </div>
@@ -47,7 +48,7 @@ export const Homepage = () => {
             <TemplateWrapper height={310}>
               <TellUsWhatYouThink />
             </TemplateWrapper>
-            <ExampleWrapper height={56} minWidth={245}>
+            <ExampleWrapper minWidth={245}>
               <DotBadges />
             </ExampleWrapper>
             <TemplateWrapper height={210}>
@@ -55,12 +56,15 @@ export const Homepage = () => {
             </TemplateWrapper>
           </div>
           <div className="-mt-28 flex flex-1 flex-col gap-4">
-            <ExampleWrapper height={228} minWidth={222}>
+            <ExampleWrapper minWidth={222}>
               <CombinedLists />
             </ExampleWrapper>
             <TemplateWrapper height={300}>
               <UpcomingEvents />
             </TemplateWrapper>
+            <ExampleWrapper minWidth={225}>
+              <ConnectWithUs />
+            </ExampleWrapper>
           </div>
         </div>
       </div>
@@ -84,9 +88,8 @@ const TemplateWrapper: FC<{
 
 const ExampleWrapper: FC<{
   children: React.ReactNode;
-  height: number;
   minWidth?: number;
-}> = ({ children, height, minWidth = 160 }) => {
+}> = ({ children, minWidth = 160 }) => {
   return (
     <div style={{ width: "330px" }}>
       <Resizable
@@ -119,7 +122,7 @@ const ExampleWrapper: FC<{
           right: <div className="h-8 w-1.5 rounded-full bg-stone-100" />,
         }}
       >
-        <div style={{ height: height }}>{children}</div>
+        <div style={{ overflow: "auto" }}>{children}</div>
       </Resizable>
     </div>
   );
