@@ -1,6 +1,12 @@
 import { Resizable } from "re-resizable";
 
-export const ExamplePreview = ({ type, html }: { type: string; html: string }) => {
+export const ExamplePreview = ({
+  type,
+  html,
+}: {
+  type: string;
+  html: string;
+}) => {
   return (
     <Resizable
       bounds="parent"
@@ -14,6 +20,16 @@ export const ExamplePreview = ({ type, html }: { type: string; html: string }) =
           width: "auto",
           cursor: "ew-resize",
         },
+      }}
+      enable={{
+        top: false,
+        right: true,
+        bottom: false,
+        left: false,
+        topRight: false,
+        bottomRight: false,
+        bottomLeft: false,
+        topLeft: false,
       }}
       handleClasses={{
         right: "hidden sm:flex items-center",
