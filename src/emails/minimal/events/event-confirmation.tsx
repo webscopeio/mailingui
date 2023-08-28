@@ -10,21 +10,23 @@ import {
 } from "@react-email/components";
 import React, { FC } from "react";
 import {
-  Text,
   SocialIcon,
   type SocialIconType,
   Button,
+  H3,
+  H1,
+  P,
+  Link,
 } from "@mailingui/components";
 
 type EventConfirmationProps = {
   name: string;
   date: string;
-  startTime: string;
-  endTime: string;
+  time: string;
   totalCost: string;
   eventName: string;
   reservationUrl: string;
-  noOfPeople: string;
+  numberOfGuests: string;
 };
 
 const baseUrl = `${
@@ -33,13 +35,12 @@ const baseUrl = `${
 
 export const EventConfirmation: FC<EventConfirmationProps> = ({
   name = "Jacob",
-  startTime = "4 PM",
-  endTime = "9 PM",
+  time = "4PM - 9PM",
   date = "September 5, 2023",
   totalCost = "$ 28.00",
   eventName = "Minimal Meetup",
   reservationUrl = "https://google.com",
-  noOfPeople = "2",
+  numberOfGuests = "2",
 }) => {
   return (
     <Html>
@@ -47,57 +48,26 @@ export const EventConfirmation: FC<EventConfirmationProps> = ({
       <Preview>Minimal - we&apos;ve confirmed your participation</Preview>
       <Body style={main}>
         <Container style={container} width={600}>
-          <Row style={{ marginBottom: "16px" }}>
-            <Column width={46} height={34}>
-              <Img src={`${baseUrl}/star.png`} alt="Star" />
-            </Column>
-            <Column>
-              <Text
-                style={{
-                  fontSize: "30px",
-                  lineHeight: "36px",
-                }}
-              >
-                MINIMAL
-              </Text>
-            </Column>
-          </Row>
-          <Row style={{ marginBottom: "32px" }}>
+          <RowFlow>
+            <Logo />
+          </RowFlow>
+          <RowFlow>
             <Img width={520} src={`${baseUrl}/divider.png`} />
-          </Row>
-          <Row style={{ marginBottom: "32px" }}>
-            <Text style={{ fontSize: "48px", lineHeight: "52px" }}>
-              Your {eventName} Event Confirmation
-            </Text>
-          </Row>
-          <Row style={{ marginBottom: "16px" }}>
-            <Text>Dear {name},</Text>
-            <Text>
+            <H1>Your {eventName} Event Confirmation</H1>
+            <P>Dear, {name}:</P>
+            <P>
               Thank you for signing up for the {eventName}. Via this email we
               are confirming your participation.
-            </Text>
-          </Row>
-          <Row style={{ marginBottom: "32px" }}>
+            </P>
             <Img width={520} src={`${baseUrl}/divider.png`} />
-          </Row>
-          <Row style={{ marginBottom: "16px" }}>
-            <Text>
-              <b>Date:</b> {date}
-            </Text>
-            <Text>
-              <b>Start Time:</b> {startTime}
-            </Text>
-            <Text>
-              <b>End Time:</b> {endTime}
-            </Text>
-            <Text>
-              <b>Number of People:</b> {noOfPeople}
-            </Text>
-            <Text>
-              <b>Entry Fee:</b> {totalCost}
-            </Text>
-          </Row>
-          <Row style={{ marginBottom: "32px" }}>
+          </RowFlow>
+          <RowFlow>
+            <Detail label="Date">{date}</Detail>
+            <Detail label="Time">{time}</Detail>
+            <Detail label="Number of Guests">{numberOfGuests}</Detail>
+            <Detail label="Entre Fee">{totalCost}</Detail>
+          </RowFlow>
+          <RowFlow>
             <Button
               href={reservationUrl}
               width={520}
@@ -106,32 +76,28 @@ export const EventConfirmation: FC<EventConfirmationProps> = ({
             >
               Change Attendance
             </Button>
-          </Row>
-          <Row style={{ marginBottom: "16px" }}>
-            <Text>
+          </RowFlow>
+          <RowFlow>
+            <P>
               We hope you see you at the event and don&apos;t forget to take
               advantage of the amenities and services we offer. Should you have
               any special requests or requirements, please do not hesitate to
               contact us.
-            </Text>
-            <Text>
+            </P>
+            <P>
               Please note there will be a photographer at the event and we will
               be taking photos for promotional purposes. If you do not wish to
               be photographed, please let us know.
-            </Text>
-            <Text>
+            </P>
+            <P>
               Thank you again for your interest. We look forward to seeing you
               there.
-            </Text>
-            <Text>
-              Best regards,
-              <br /> Minimal Team
-            </Text>
-          </Row>
-          <Row style={{ marginBottom: "32px" }}>
+            </P>
+            <P>Best regards,</P>
+            <P> Minimal Team</P>
             <Img width={520} src={`${baseUrl}/divider.png`} />
-          </Row>
-          <Row style={{ marginBottom: "32px" }}>
+          </RowFlow>
+          <RowFlow>
             {(
               [
                 "linkedin",
@@ -153,47 +119,18 @@ export const EventConfirmation: FC<EventConfirmationProps> = ({
               </div>
             ))}
             <Column width={520 - 196}></Column>
-          </Row>
-          <Row>
-            <Text>
+          </RowFlow>
+          <RowFlow>
+            <P compact muted>
               © Viola Company Inc., 2972 Westheimer Rd. Santa Ana, Illinois
               85486
-            </Text>
-            <Text>
-              <a
-                href="#unsubscribe"
-                style={{
-                  textDecoration: "none",
-                  color: "#000",
-                  display: "inline-block",
-                }}
-              >
-                Unsubscribe
-              </a>{" "}
-              ·{" "}
-              <a
-                href="#tos"
-                style={{
-                  textDecoration: "none",
-                  color: "#000",
-                  display: "inline-block",
-                }}
-              >
-                Terms of Use
-              </a>{" "}
-              ·{" "}
-              <a
-                href="#pp"
-                style={{
-                  textDecoration: "none",
-                  color: "#000",
-                  display: "inline-block",
-                }}
-              >
-                Privacy Policy
-              </a>
-            </Text>
-          </Row>
+            </P>
+            <P compact muted>
+              <Link href="#unsubscribe">Unsubscribe</Link> ·{" "}
+              <Link href="#tos">Terms of Use</Link> ·{" "}
+              <Link href="#pp">Privacy Policy</Link>
+            </P>
+          </RowFlow>
         </Container>
       </Body>
     </Html>
@@ -202,6 +139,35 @@ export const EventConfirmation: FC<EventConfirmationProps> = ({
 
 export default EventConfirmation;
 
+// Components
+const Logo = () => (
+  <>
+    <Column width={46} height={34}>
+      <Img src={`${baseUrl}/star.png`} alt="Star" />
+    </Column>
+    <Column>
+      <H3 compact>MINIMAL</H3>
+    </Column>
+  </>
+);
+
+const RowFlow = ({ children }: { children: React.ReactNode }) => (
+  <Row style={{ marginBottom: "24px" }}>{children}</Row>
+);
+
+const Detail = ({
+  label,
+  children,
+}: {
+  label: string;
+  children: React.ReactNode;
+}) => (
+  <P compact>
+    <b>{label}:</b> {children}
+  </P>
+);
+
+// Styles
 const main = {
   backgroundColor: "#f6f9fc",
   padding: "60px 0 122px 0",
@@ -210,7 +176,7 @@ const main = {
 const container = {
   backgroundColor: "#ffffff",
   border: "1px solid #f0f0f0",
-  padding: "40px",
+  padding: "60px 40px 40px",
   width: "600px",
   fontFamily:
     "'Inter', 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif",

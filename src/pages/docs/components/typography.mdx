@@ -1,0 +1,43 @@
+---
+title: Typography - Components
+description: Build eye-catching emails with pre-made components
+---
+
+import { getComponentProps } from "@utils/components";
+import BasicUsage from "@components/docs/components/basic-usage/basic-usage.mdx";
+import Installation from "@components/docs/components/installation/installation.mdx";
+import { Examples } from "@components/docs/components/examples/Examples.tsx";
+
+export const getStaticProps = async () => {
+  const { type, html, demoCode, sourceCode, examples } = await getComponentProps({
+    type: "typography"
+  }) 
+
+  return {
+    props: {
+      ssg: {
+        type,
+        html,
+        demoCode,
+        sourceCode,
+        examples
+      },
+    },
+  };
+};
+
+# Typography
+
+Beautiful typographic defaults for HTML you do control
+
+## Basic Usage
+
+<BasicUsage />
+
+## Installation
+
+<Installation cli="typography" />
+
+## Examples
+
+<Examples />
