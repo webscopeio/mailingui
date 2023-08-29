@@ -89,7 +89,7 @@ export const UpcomingEvents: FC<TipsForTripsProps> = ({
           </Row>
           {tips.map((tip, i) => (
             <Row key={i} style={row}>
-              <H4 style={{ marginTop: "48px", fontWeight: 700 }}>{tip.title}</H4>
+              <H4 style={{ marginTop: "48px" }}>{tip.title}</H4>
               <P>{tip.description}</P>
               <Img
                 src={`${baseUrl}/${tip.imageUrl}`}

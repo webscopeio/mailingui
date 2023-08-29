@@ -10,14 +10,18 @@ import {
 } from "@react-email/components";
 import React, { FC } from "react";
 import {
-  Text,
   SocialIcon,
   type SocialIconType,
   Button,
+  P,
+  Link,
+  H3,
+  H1,
 } from "@mailingui/components";
 
 type CampaignAnnouncementProps = {
-  name: string;
+  customerName: string;
+  campaignName: string;
   linkHref: string;
 };
 
@@ -26,7 +30,8 @@ const baseUrl = `${
 }/static/minimal-theme`;
 
 export const CampaignAnnouncement: FC<CampaignAnnouncementProps> = ({
-  name = "Jacob",
+  customerName = "Jacob",
+  campaignName = "Minimal",
   linkHref = "https://google.com",
 }) => {
   return (
@@ -35,72 +40,52 @@ export const CampaignAnnouncement: FC<CampaignAnnouncementProps> = ({
       <Preview>Minimal - Campaign Announcement</Preview>
       <Body style={main}>
         <Container style={container} width={600}>
-          <Row style={{ marginBottom: "16px" }}>
+          <Row style={row}>
             <Column width={46} height={34}>
               <Img src={`${baseUrl}/star.png`} alt="Star" />
             </Column>
             <Column>
-              <Text
-                style={{
-                  fontSize: "30px",
-                  lineHeight: "36px",
-                }}
-              >
-                MINIMAL
-              </Text>
+              <H3 compact>MINIMAL</H3>
             </Column>
           </Row>
-          <Row style={{ marginBottom: "32px" }}>
+          <Row style={row}>
             <Img width={520} src={`${baseUrl}/divider.png`} />
           </Row>
-          <Row style={{ marginBottom: "16px" }}>
-            <Text style={{ fontSize: "48px", lineHeight: "52px" }}>
-              Join our new Campaign and win exciting prizes!
-            </Text>
-          </Row>
-          <Row style={{ marginBottom: "16px" }}>
-            <Text>Dear {name},</Text>
-            <Text>
-              We are thrilled to invite you to participate in our new Campaign!
-              This is a great opportunity to win valuable prizes and showcase
-              your skills. If you are interested, please click the button below
-              and follow the instructions.
-            </Text>
-          </Row>
-          <Row style={{ marginBottom: "32px" }}>
+          <Row style={row}>
+            <H1>Check out our new Campaign and win exciting prizes!</H1>
+            <P>Dear, {customerName}:</P>
+            <P>
+              We are thrilled to annouce the launch of our new {campaignName}{" "}
+              Campaign! After months of hard work, we are excited to show you
+              what we have been up to. The <b>first 100 campaign subscribers will win exciting prizes</b>, so subscribe by clicking the button below and join {campaignName}!
+            </P>
             <Button
               href={linkHref}
               width={520}
               height={56}
               backgroundColor="#000000"
             >
-              I want to join the competition
+              Join {campaignName} Campaign
             </Button>
           </Row>
-          <Row style={{ marginBottom: "16px" }}>
-            <Text>
-              We are offering a range of exciting prizes for the top performers,
-              including 6-month traineeship in our company. Additionally, all
-              participants will receive discount coupon for various courses.
-            </Text>
-            <Text>
+          <Row style={row}>
+            <P>
+              Prizes include a <b>6-month traineeship in our company</b>. Additionally,
+              all participants will receive discount coupon for various courses.
+            </P>
+            <P>
               Don&apos;t miss out on this opportunity to develop your skills and
               showcase your talent! Please let us know if you have any questions
               or need more information.
-            </Text>
-            <Text>
-              Thank you for your time, and we hope to hear from you soon.
-            </Text>
-            <Text>
+            </P>
+            <P>Thank you for your time, and we hope to hear from you soon.</P>
+            <P>
               Best regards,
-              <br />
-              Minimal Team
-            </Text>
-          </Row>
-          <Row style={{ marginBottom: "32px" }}>
+              <br /> Minimal Team
+            </P>
             <Img width={520} src={`${baseUrl}/divider.png`} />
           </Row>
-          <Row style={{ marginBottom: "32px" }}>
+          <Row style={row}>
             {(
               [
                 "linkedin",
@@ -123,45 +108,24 @@ export const CampaignAnnouncement: FC<CampaignAnnouncementProps> = ({
             ))}
             <Column width={520 - 196}></Column>
           </Row>
-          <Row>
-            <Text>
+          <Row style={row}>
+            <P compact muted>
               © Viola Company Inc., 2972 Westheimer Rd. Santa Ana, Illinois
               85486
-            </Text>
-            <Text>
-              <a
-                href="#unsubscribe"
-                style={{
-                  textDecoration: "none",
-                  color: "#000",
-                  display: "inline-block",
-                }}
-              >
+            </P>
+            <P compact muted>
+              <Link muted href="#unsubscribe">
                 Unsubscribe
-              </a>{" "}
+              </Link>{" "}
               ·{" "}
-              <a
-                href="#tos"
-                style={{
-                  textDecoration: "none",
-                  color: "#000",
-                  display: "inline-block",
-                }}
-              >
+              <Link muted href="#tos">
                 Terms of Use
-              </a>{" "}
+              </Link>{" "}
               ·{" "}
-              <a
-                href="#pp"
-                style={{
-                  textDecoration: "none",
-                  color: "#000",
-                  display: "inline-block",
-                }}
-              >
+              <Link muted href="#pp">
                 Privacy Policy
-              </a>
-            </Text>
+              </Link>
+            </P>
           </Row>
         </Container>
       </Body>
@@ -171,16 +135,21 @@ export const CampaignAnnouncement: FC<CampaignAnnouncementProps> = ({
 
 export default CampaignAnnouncement;
 
+// Styles
 const main = {
   backgroundColor: "#f6f9fc",
-  padding: "60px 0 122px 0",
+  padding: "60px 0",
 };
 
 const container = {
   backgroundColor: "#ffffff",
   border: "1px solid #f0f0f0",
-  padding: "40px",
+  padding: "60px 40px 40px",
   width: "600px",
   fontFamily:
     "'Inter', 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif",
+};
+
+const row = {
+  margin: "0 0 24px",
 };

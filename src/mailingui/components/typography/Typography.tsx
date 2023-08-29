@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Text as ReactEmailText } from "@react-email/components";
+import { Text as ReactEmailText, Link as ReactEmailLink } from "@react-email/components";
 import { theme } from "@mailingui/themes";
 
 const { color, typography } = theme;
@@ -10,7 +10,7 @@ interface HeadingProps extends React.ComponentPropsWithoutRef<"p"> {
 
 const H1: React.FC<HeadingProps> = ({ compact, style, children, ...props }) => {
   return (
-    <ReactEmailText
+    <h1
       style={{
         fontSize: `${typography.baseFontSize * typography.typeScale ** 4}px`,
         lineHeight: `${typography.baseFontSize * typography.typeScale ** 4}px`,
@@ -23,13 +23,13 @@ const H1: React.FC<HeadingProps> = ({ compact, style, children, ...props }) => {
       {...props}
     >
       {children}
-    </ReactEmailText>
+    </h1>
   );
 };
 
 const H2: React.FC<HeadingProps> = ({ compact, style, children, ...props }) => {
   return (
-    <ReactEmailText
+    <h2
       style={{
         fontSize: `${typography.baseFontSize * typography.typeScale ** 3}px`,
         lineHeight: `${typography.baseFontSize * typography.typeScale ** 3}px`,
@@ -42,13 +42,13 @@ const H2: React.FC<HeadingProps> = ({ compact, style, children, ...props }) => {
       {...props}
     >
       {children}
-    </ReactEmailText>
+    </h2>
   );
 };
 
 const H3: React.FC<HeadingProps> = ({ compact, style, children, ...props }) => {
   return (
-    <ReactEmailText
+    <h3
       style={{
         fontSize: `${typography.baseFontSize * typography.typeScale ** 2}px`,
         lineHeight: `${typography.baseFontSize * typography.typeScale ** 2}px`,
@@ -61,13 +61,13 @@ const H3: React.FC<HeadingProps> = ({ compact, style, children, ...props }) => {
       {...props}
     >
       {children}
-    </ReactEmailText>
+    </h3>
   );
 };
 
 const H4: React.FC<HeadingProps> = ({ compact, style, children, ...props }) => {
   return (
-    <ReactEmailText
+    <h4
       style={{
         fontSize: `${typography.baseFontSize * typography.typeScale}px`,
         lineHeight: `${typography.baseFontSize * typography.typeScale}px`,
@@ -80,7 +80,7 @@ const H4: React.FC<HeadingProps> = ({ compact, style, children, ...props }) => {
       {...props}
     >
       {children}
-    </ReactEmailText>
+    </h4>
   );
 };
 
@@ -136,7 +136,7 @@ const Link: React.FC<LinkProps> = ({
   ...props
 }) => {
   return (
-    <a
+    <ReactEmailLink
       style={{
         display: block ? "block" : "inline",
         fontSize: block ? `${typography.baseFontSize}px` : "inherit",
@@ -151,7 +151,7 @@ const Link: React.FC<LinkProps> = ({
       {...props}
     >
       {children}
-    </a>
+    </ReactEmailLink>
   );
 };
 
