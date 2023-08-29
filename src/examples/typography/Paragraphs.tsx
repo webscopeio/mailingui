@@ -19,6 +19,11 @@ export default function Demo() {
           <P small muted>
             Enter your email address for more stories like this
           </P>
+          <P small muted>
+            Once upon a time, in a far-off land, there was a very lazy king who
+            spent all day lounging on his throne. One day, his advisors came to
+            him with a problem: the kingdom was running out of money.
+          </P>
         </Container>
       </Body>
     </Html>

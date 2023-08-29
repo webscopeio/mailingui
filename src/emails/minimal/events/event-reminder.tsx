@@ -19,7 +19,7 @@ import {
   Link,
 } from "@mailingui/components";
 
-type EventConfirmationProps = {
+type EventReminderProps = {
   guestName: string;
   eventName: string;
   eventDate: string;
@@ -34,7 +34,7 @@ const baseUrl = `${
     : "https://mailingui.com"
 }/static/minimal-theme`;
 
-export const EventConfirmation: React.FC<EventConfirmationProps> = ({
+export const EventReminder: React.FC<EventReminderProps> = ({
   guestName = "Jacob",
   eventName = "Minimal",
   eventDate = "September 5, 2023",
@@ -44,7 +44,7 @@ export const EventConfirmation: React.FC<EventConfirmationProps> = ({
 }) => (
   <Html>
     <Head />
-    <Preview>Minimal - we&apos;ve confirmed your participation</Preview>
+    <Preview>Minimal - friendly reminder: Minimal is almost here!</Preview>
     <Body style={main}>
       <Container style={container} width={600}>
         <Row style={row}>
@@ -59,20 +59,17 @@ export const EventConfirmation: React.FC<EventConfirmationProps> = ({
           <Img width={520} src={`${baseUrl}/divider.png`} />
         </Row>
         <Row style={row}>
-          <H1>Get Ready! You&apos;re in for {eventName}!</H1>
+          <H1>{eventName} is Almost Here!</H1>
           <P>Dear, {guestName}:</P>
           <P>
-            We are thrilled to inform you that your registration for {eventName}{" "}
-            has been successfully confirmed! Get ready for an unforgettable
-            experience on{" "}
-            <b>
-              {eventDate} at {eventVenue}
-            </b>
-            . We can&apos;t wait to have you join us for this exciting event.
+            We&apos;re excited to remind you about the upcoming {eventName}! The
+            event is just around the corner, and we can&apos;t wait to have you
+            join us for this special day.
           </P>
           <Img width={520} src={`${baseUrl}/divider.png`} />
         </Row>
         <Row style={row}>
+          <P compact>Here are the event details you need to know:</P>
           <P compact>
             <b>When:</b> {eventDate}
           </P>
@@ -90,18 +87,21 @@ export const EventConfirmation: React.FC<EventConfirmationProps> = ({
             height={56}
             backgroundColor="#000000"
           >
-            Save on Calendar
+            Share this Event
           </Button>
         </Row>
         <Row style={row}>
-          <P>
-            Feel free to reach out to us if you have any questions or need
-            further assistance. We&apos;re here to make sure you have a seamless
-            and enjoyable experience.
+          <P compact>
+            <b>Arrival:</b> Plan to arrive a bit early to check in and grab a
+            coffee before the event kicks off.
+          </P>
+          <P compact>
+            <b>Networking:</b> There will be ample opportunities to network with
+            fellow attendees, so bring your business cards and enthusiasm.{" "}
           </P>
           <P>
-            Once again, congratulations on securing your spot at {eventName}! We
-            look forward to seeing you.
+            Looking forward to seeing you at {eventName} and sharing an
+            incredible day together!
           </P>
           <P>
             Best regards,
@@ -132,7 +132,7 @@ export const EventConfirmation: React.FC<EventConfirmationProps> = ({
           ))}
           <Column width={520 - 196}></Column>
         </Row>
-        <Row style={row}>
+        <Row>
           <P compact muted>
             © Viola Company Inc., 2972 Westheimer Rd. Santa Ana, Illinois 85486
           </P>
@@ -149,13 +149,18 @@ export const EventConfirmation: React.FC<EventConfirmationProps> = ({
               Privacy Policy
             </Link>
           </P>
+          <P small muted>
+            Disclaimer: If you have any dietary restrictions or special
+            requirements, please let us know as soon as possible by replying to
+            this email and we&apos;ll do our best to accommodate you.
+          </P>
         </Row>
       </Container>
     </Body>
   </Html>
 );
 
-export default EventConfirmation;
+export default EventReminder;
 
 // Styles
 const main = {

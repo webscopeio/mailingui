@@ -42,7 +42,9 @@ const SocialIcon: FC<SocialIconProps> = ({
 
 const getIconUrl = (type: SocialIconType, bg?: boolean) => {
   const baseUrl = `${
-    process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
+    process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : "https://mailingui.com"
   }/socials`;
 
   return `${baseUrl}/${type}${bg ? "-bg" : ""}.png`;

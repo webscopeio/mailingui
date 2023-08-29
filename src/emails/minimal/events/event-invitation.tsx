@@ -10,17 +10,21 @@ import {
 } from "@react-email/components";
 import React, { FC } from "react";
 import {
-  Text,
   SocialIcon,
   type SocialIconType,
   Button,
+  P,
+  Link,
+  H3,
+  H1,
 } from "@mailingui/components";
 
 type MinimalResetPasswordProps = {
-  name: string;
-  date: string;
-  time: string;
-  location: string;
+  guestName: string;
+  eventName: string;
+  eventDate: string;
+  eventTime: string;
+  eventVenue: string;
   confirmBy: string;
   confirmUrl: string;
 };
@@ -30,11 +34,12 @@ const baseUrl = `${
 }/static/minimal-theme`;
 
 export const EventInvitation: FC<MinimalResetPasswordProps> = ({
-  name = "Jacob",
-  date = "August 22, 2023",
-  time = "5 PM",
-  location = "2972 Westheimer Rd. Santa Ana, Illinois 85486",
-  confirmBy = "July 31, 2023",
+  guestName = "Jacob",
+  eventName = "Minimal",
+  eventDate = "August 22, 2023",
+  eventTime = "4PM - 9PM",
+  eventVenue = "Minimal HQ — Moravské nám. 1007/14",
+  confirmBy = "August 20, 2023",
   confirmUrl = "https://google.com",
 }) => {
   return (
@@ -43,75 +48,70 @@ export const EventInvitation: FC<MinimalResetPasswordProps> = ({
       <Preview>Minimal - Attend our event</Preview>
       <Body style={main}>
         <Container style={container} width={600}>
-          <Row style={{ marginBottom: "16px" }}>
+          <Row style={row}>
             <Column width={46} height={34}>
               <Img src={`${baseUrl}/star.png`} alt="Star" />
             </Column>
             <Column>
-              <Text
-                style={{
-                  fontSize: "30px",
-                  lineHeight: "36px",
-                }}
-              >
-                MINIMAL
-              </Text>
+              <H3 compact>MINIMAL</H3>
             </Column>
           </Row>
-          <Row style={{ marginBottom: "32px" }}>
+          <Row style={row}>
             <Img width={520} src={`${baseUrl}/divider.png`} />
           </Row>
-          <Row style={{ marginBottom: "32px" }}>
-            <Text style={{ fontSize: "48px", lineHeight: "52px" }}>
-              Invitation to Minimal Meetup
-            </Text>
+          <Row style={row}>
+            <H1>You&apos;re Invited to {eventName}!</H1>
+            <P>Dear, {guestName}:</P>
+            <P>
+              We&apos;re thrilled to extend an exclusive invitation to you for a
+              truly exceptional event: {eventName}! Prepare to embark on a
+              journey of knowledge, inspiration, and networking like never
+              before on{" "}
+              <b>
+                {eventDate} at {eventVenue}
+              </b>
+              .
+            </P>
+            <Img width={520} src={`${baseUrl}/divider.png`} />
           </Row>
-          <Row style={{ marginBottom: "16px" }}>
-            <Text>Dear {name},</Text>
-            <Text>
-              We are delighted to invite you to Viola Meetup, which will be held
-              on <b>{date}</b> at <b>{time}</b> at <b>{location}</b>. As one of
-              our valued clients, we would be honored if you could join us for
-              this special occasion.
-            </Text>
-            <Text>
-              Viola Meetup promises to be an exciting and memorable event. We
-              have also arranged for awesome food, speakers and performers, so
-              you can enjoy a fun-filled and engaging experience.
-            </Text>
-            <Text>
-              We believe that this event is an excellent opportunity for you to
-              meet like-minded people or learn something new, and we hope that
-              you will be able to join us. Please confirm your attendance by{" "}
-              {confirmBy} to ensure that we can make adequate arrangements for
-              you.
-            </Text>
-          </Row>
-          <Row style={{ marginBottom: "32px" }}>
+          <Row style={row}>
+            <P compact>
+              <b>When:</b> {eventDate}
+            </P>
+            <P compact>
+              <b>What Time:</b> {eventTime}
+            </P>
+            <P compact>
+              <b>Where:</b> {eventVenue}
+            </P>
+            <P>
+              Your presence would honor us and add to the vibrancy of{" "}
+              {eventName}. Kindly RSVP by {confirmBy} to secure your spot. Click
+              the button below to confirm your attendance.
+            </P>
             <Button
               href={confirmUrl}
               width={520}
               height={56}
               backgroundColor="#000000"
             >
-              Confirm participation
+              Confirm your attendance
             </Button>
           </Row>
-          <Row style={{ marginBottom: "16px" }}>
-            <Text>
-              {" "}
-              We look forward to seeing you at Viola Meetup, and we thank you
-              for your continued support.
-            </Text>
-            <Text>
+          <Row style={row}>
+            <P>
+              We&apos;re eagerly counting down the days to welcome you at{" "}
+              {eventName}. Should you have any questions or need assistance,
+              please don&apos;t hesitate to contact us.
+            </P>
+            <P>Let&apos;s make this event a memorable one together!</P>
+            <P>
               Best regards,
               <br /> Minimal Team
-            </Text>
-          </Row>
-          <Row style={{ marginBottom: "32px" }}>
+            </P>
             <Img width={520} src={`${baseUrl}/divider.png`} />
           </Row>
-          <Row style={{ marginBottom: "32px" }}>
+          <Row style={row}>
             {(
               [
                 "linkedin",
@@ -134,45 +134,24 @@ export const EventInvitation: FC<MinimalResetPasswordProps> = ({
             ))}
             <Column width={520 - 196}></Column>
           </Row>
-          <Row>
-            <Text>
+          <Row style={row}>
+            <P compact muted>
               © Viola Company Inc., 2972 Westheimer Rd. Santa Ana, Illinois
               85486
-            </Text>
-            <Text>
-              <a
-                href="#unsubscribe"
-                style={{
-                  textDecoration: "none",
-                  color: "#000",
-                  display: "inline-block",
-                }}
-              >
+            </P>
+            <P compact muted>
+              <Link muted href="#unsubscribe">
                 Unsubscribe
-              </a>{" "}
+              </Link>{" "}
               ·{" "}
-              <a
-                href="#tos"
-                style={{
-                  textDecoration: "none",
-                  color: "#000",
-                  display: "inline-block",
-                }}
-              >
+              <Link muted href="#tos">
                 Terms of Use
-              </a>{" "}
+              </Link>{" "}
               ·{" "}
-              <a
-                href="#pp"
-                style={{
-                  textDecoration: "none",
-                  color: "#000",
-                  display: "inline-block",
-                }}
-              >
+              <Link muted href="#pp">
                 Privacy Policy
-              </a>
-            </Text>
+              </Link>
+            </P>
           </Row>
         </Container>
       </Body>
@@ -182,16 +161,21 @@ export const EventInvitation: FC<MinimalResetPasswordProps> = ({
 
 export default EventInvitation;
 
+// Styles
 const main = {
   backgroundColor: "#f6f9fc",
-  padding: "60px 0 122px 0",
+  padding: "60px 0",
 };
 
 const container = {
   backgroundColor: "#ffffff",
   border: "1px solid #f0f0f0",
-  padding: "40px",
+  padding: "60px 40px 40px",
   width: "600px",
   fontFamily:
     "'Inter', 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif",
+};
+
+const row = {
+  margin: "0 0 24px",
 };
