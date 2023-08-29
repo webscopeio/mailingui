@@ -1,3 +1,4 @@
+import * as React from 'react';
 import {
   Body,
   Column,
@@ -8,7 +9,6 @@ import {
   Head,
   Row,
 } from "@react-email/components";
-import React, { FC } from "react";
 import {
   SocialIcon,
   type SocialIconType,
@@ -30,7 +30,7 @@ const baseUrl = `${
     : "https://mailingui.com"
 }/static/minimal-theme`;
 
-export const EventReview: FC<EventReviewProps> = ({
+export const EventReview: React.FC<EventReviewProps> = ({
   guestName = "Jacob",
   eventName = "Minimal Meetup",
 }) => {

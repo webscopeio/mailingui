@@ -1,3 +1,4 @@
+import * as React from "react";
 import {
   Body,
   Column,
@@ -8,7 +9,6 @@ import {
   Head,
   Row,
 } from "@react-email/components";
-import React, { FC } from "react";
 import {
   SocialIcon,
   type SocialIconType,
@@ -31,7 +31,7 @@ const baseUrl = `${
   process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
 }/static/minimal-theme`;
 
-export const MinimalDiscoutCode: FC<MinimalResetPasswordProps> = ({
+export const MinimalDiscoutCode: React.FC<MinimalResetPasswordProps> = ({
   customerName = "Jacob",
   discountCode = "HAPPY20",
   discount = 20,

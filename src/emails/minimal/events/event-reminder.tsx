@@ -89,8 +89,6 @@ export const EventReminder: React.FC<EventReminderProps> = ({
           >
             Share this Event
           </Button>
-        </Row>
-        <Row style={row}>
           <P compact>
             <b>Arrival:</b> Plan to arrive a bit early to check in and grab a
             coffee before the event kicks off.

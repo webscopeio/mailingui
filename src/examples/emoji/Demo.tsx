@@ -1,3 +1,4 @@
+import * as React from "react";
 import { Body, Container, Html } from "@react-email/components";
 import { Emoji } from "@mailingui/components";
 

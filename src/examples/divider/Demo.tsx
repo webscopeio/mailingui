@@ -1,21 +1,21 @@
 import * as React from "react";
 import { Body, Container, Html } from "@react-email/components";
-import { Divider, Text } from "@mailingui/components";
+import { Divider, P } from "@mailingui/components";
 
 export default function Demo() {
   return (
     <Html>
       <Body style={main}>
         <Container style={container}>
-          <Text>
+          <P>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </Text>
+          </P>
           <Divider />
-          <Text>
+          <P>
             Duis aute irure dolor in reprehenderit in voluptate velit esse
             cillum dolore eu fugiat nulla pariatur.
-          </Text>
+          </P>
         </Container>
       </Body>
     </Html>

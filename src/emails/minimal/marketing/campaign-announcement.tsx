@@ -1,3 +1,4 @@
+import * as React from "react";
 import {
   Body,
   Column,
@@ -8,7 +9,6 @@ import {
   Head,
   Row,
 } from "@react-email/components";
-import React, { FC } from "react";
 import {
   SocialIcon,
   type SocialIconType,
@@ -29,7 +29,7 @@ const baseUrl = `${
   process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
 }/static/minimal-theme`;
 
-export const CampaignAnnouncement: FC<CampaignAnnouncementProps> = ({
+export const CampaignAnnouncement: React.FC<CampaignAnnouncementProps> = ({
   customerName = "Jacob",
   campaignName = "Minimal",
   linkHref = "https://google.com",
@@ -57,7 +57,9 @@ export const CampaignAnnouncement: FC<CampaignAnnouncementProps> = ({
             <P>
               We are thrilled to annouce the launch of our new {campaignName}{" "}
               Campaign! After months of hard work, we are excited to show you
-              what we have been up to. The <b>first 100 campaign subscribers will win exciting prizes</b>, so subscribe by clicking the button below and join {campaignName}!
+              what we have been up to. The{" "}
+              <b>first 100 campaign subscribers will win exciting prizes</b>, so
+              subscribe by clicking the button below and join {campaignName}!
             </P>
             <Button
               href={linkHref}
@@ -67,11 +69,10 @@ export const CampaignAnnouncement: FC<CampaignAnnouncementProps> = ({
             >
               Join {campaignName} Campaign
             </Button>
-          </Row>
-          <Row style={row}>
             <P>
-              Prizes include a <b>6-month traineeship in our company</b>. Additionally,
-              all participants will receive discount coupon for various courses.
+              Prizes include a <b>6-month traineeship in our company</b>.
+              Additionally, all participants will receive discount coupon for
+              various courses.
             </P>
             <P>
               Don&apos;t miss out on this opportunity to develop your skills and

@@ -1,3 +1,4 @@
+import * as React from "react";
 import {
   Body,
   Column,
@@ -8,7 +9,6 @@ import {
   Head,
   Row,
 } from "@react-email/components";
-import React, { FC } from "react";
 import {
   SocialIcon,
   type SocialIconType,
@@ -30,7 +30,7 @@ const baseUrl = `${
   process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
 }/static/minimal-theme`;
 
-export const News: FC<MinimalNewsProps> = ({
+export const News: React.FC<MinimalNewsProps> = ({
   customerName = "Jacob",
   link = "https://google.com",
   company = "Minimal",
@@ -66,21 +66,19 @@ export const News: FC<MinimalNewsProps> = ({
               . As a valued member of our community, we want to keep you
               informed about our recent activities and upcoming plans.
             </P>
-            <Img
-              src={`${baseUrl}/news-main.png`}
-              width={520}
-              style={{ marginBottom: "24px" }}
-            />
+            <Img src={`${baseUrl}/news-main.png`} width={520} />
           </Row>
           <Row style={row}>
             <P compact>
               <b>In this edition, you&apos;ll find:</b>
             </P>
             {items.map((item, i) => (
-              <P compact key={i}>{item}</P>
+              <P compact key={i}>
+                {item}
+              </P>
             ))}
           </Row>
-          <Row style={{ marginBottom: "32px" }}>
+          <Row style={row}>
             <Button
               href={link}
               width={520}
@@ -89,8 +87,6 @@ export const News: FC<MinimalNewsProps> = ({
             >
               Read more
             </Button>
-          </Row>
-          <Row style={row}>
             <P>Thank you for your time, and we hope to hear from you soon.</P>
             <P>
               Best regards,

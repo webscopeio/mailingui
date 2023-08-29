@@ -1,4 +1,4 @@
-import React, { CSSProperties, FC, ReactNode } from "react";
+import * as React from "react";
 import { Hr, Section, Row, Column } from "@react-email/components";
 import { theme } from "@mailingui/themes";
 
@@ -19,22 +19,22 @@ const variants = {
 };
 
 type DividerBaseProps = {
-  style?: CSSProperties;
-  dividerColor?: CSSProperties["borderColor"];
-  textColor?: CSSProperties["color"];
+  style?: React.CSSProperties;
+  dividerColor?: React.CSSProperties["borderColor"];
+  textColor?: React.CSSProperties["color"];
   variant?: keyof typeof variants;
 };
 
 type ConditionalDividerProps =
   | {
-      children: ReactNode;
+      children: React.ReactNode;
       baseWidth?: number;
     }
   | { children?: never; baseWidth?: never };
 
 type DividerProps = DividerBaseProps & ConditionalDividerProps;
 
-const Divider: FC<DividerProps> = ({
+const Divider: React.FC<DividerProps> = ({
   style: styleProp,
   dividerColor,
   textColor,
@@ -46,7 +46,7 @@ const Divider: FC<DividerProps> = ({
     width: `${Math.round(baseWidth * 0.4)}px`,
   };
 
-  const sectionCenter: CSSProperties = {
+  const sectionCenter: React.CSSProperties = {
     width: `${Math.round(baseWidth * 0.2)}px`,
     textAlign: "center",
     fontSize: "14px",

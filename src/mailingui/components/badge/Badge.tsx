@@ -1,4 +1,4 @@
-import React, { CSSProperties } from "react";
+import * as React from "react";
 import { theme } from "@mailingui/themes";
 
 /** Here we consume the tokens we need from our theme */
@@ -62,7 +62,7 @@ const Badge: React.FC<BadgeProps> = ({
   dot,
   children,
 }) => {
-  const style: CSSProperties = {
+  const style: React.CSSProperties = {
     ...variants[variant],
     ...sizes[size],
     borderRadius: pill ? "9999px" : "4px",

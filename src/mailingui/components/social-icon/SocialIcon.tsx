@@ -1,15 +1,15 @@
-import React, { FC, CSSProperties } from "react";
+import * as React from 'react';
 import { Img, Link } from "@react-email/components";
 
 interface SocialIconProps {
   type: SocialIconType;
   size?: number;
   href?: string;
-  style?: CSSProperties;
+  style?: React.CSSProperties;
   bg?: boolean;
 }
 
-const SocialIcon: FC<SocialIconProps> = ({
+const SocialIcon: React.FC<SocialIconProps> = ({
   type,
   href,
   style,

@@ -7,7 +7,7 @@ import {
   Row,
   Column,
 } from "@react-email/components";
-import { SocialIcon, Text } from "@mailingui/components";
+import { SocialIcon, P } from "@mailingui/components";
 
 export default function AllSocialIcons() {
   return (
@@ -17,9 +17,9 @@ export default function AllSocialIcons() {
       <Body style={main}>
         <Container style={container}>
           <Row>
-            <Text size="lg">
+            <P>
               Register an account with us using the following providers:
-            </Text>
+            </P>
           </Row>
           <Row>
             <Column>

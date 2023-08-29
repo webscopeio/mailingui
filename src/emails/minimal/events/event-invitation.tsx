@@ -1,3 +1,4 @@
+import * as React from "react";
 import {
   Body,
   Column,
@@ -8,7 +9,6 @@ import {
   Head,
   Row,
 } from "@react-email/components";
-import React, { FC } from "react";
 import {
   SocialIcon,
   type SocialIconType,
@@ -33,7 +33,7 @@ const baseUrl = `${
   process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
 }/static/minimal-theme`;
 
-export const EventInvitation: FC<MinimalResetPasswordProps> = ({
+export const EventInvitation: React.FC<MinimalResetPasswordProps> = ({
   guestName = "Jacob",
   eventName = "Minimal",
   eventDate = "August 22, 2023",
@@ -97,8 +97,6 @@ export const EventInvitation: FC<MinimalResetPasswordProps> = ({
             >
               Confirm your attendance
             </Button>
-          </Row>
-          <Row style={row}>
             <P>
               We&apos;re eagerly counting down the days to welcome you at{" "}
               {eventName}. Should you have any questions or need assistance,

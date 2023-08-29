@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Body, Container, Head, Html, Preview } from "@react-email/components";
-import { BulletList, BulletListItem, Text } from "@mailingui/components";
+import { BulletList, BulletListItem, P } from "@mailingui/components";
 
 export default function BulletListExample() {
   return (
@@ -9,9 +9,9 @@ export default function BulletListExample() {
       <Preview>Centered Paragraph</Preview>
       <Body style={main}>
         <Container style={container}>
-          <Text size="lg" style={{ fontWeight: 700 }}>
-            Here are a few simple search tips to get you started:
-          </Text>
+          <P>
+            <b>Here are a few simple search tips to get you started:</b>
+          </P>
           <BulletList type="unordered">
             <BulletListItem>
               To find a specific phrase, enter it in quotes: &quot;local
