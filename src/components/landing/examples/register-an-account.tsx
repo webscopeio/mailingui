@@ -38,5 +38,5 @@ const main = {
 
 const container = {
   padding: "100px 0",
-  maxWidth: 330,
+  maxWidth: 300,
 };

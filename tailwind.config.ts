@@ -11,9 +11,6 @@ const config: Config = {
       fontFamily: {
         sans: ["var(--font-basier-circle)"],
       },
-      screens: {
-        lg: "1072px",
-      },
     },
   },
   plugins: [],
