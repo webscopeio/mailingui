@@ -16,7 +16,7 @@ export const Footer = () => {
 
   return (
     <div className="bg-stone-900">
-      <footer className="mx-auto flex max-w-[90rem] flex-col justify-between gap-8 px-6 pb-24 pt-12 lg:flex-row">
+      <footer className="mx-auto flex max-w-[90rem] flex-col justify-between gap-y-8 px-6 pb-24 pt-12 md:flex-row">
         <div className="w-fit">
           <Link href="/" className="hover:opacity-75">
             <MailingUILogo />
@@ -26,7 +26,7 @@ export const Footer = () => {
           </div>
         </div>
         <div className="space-y-2">
-          <p className="text-gray-400">Join our Newsletter</p>
+          <p className="text-sm text-gray-400">Join our Newsletter</p>
           <form
             onSubmit={(e) => {
               const res = safeParse(string([email()]), newsletterForm.email);
@@ -39,9 +39,9 @@ export const Footer = () => {
             action={`https://app.convertkit.com/forms/${FORM_ID}/subscriptions`}
             method="post"
           >
-            <div className="flex flex-col gap-x-2 gap-y-3 md:flex-row">
+            <div className="flex flex-col gap-x-2 gap-y-3 sm:flex-row">
               <input
-                className="w-full rounded-xl border border-gray-400 bg-stone-900 p-4 text-base lg:w-96"
+                className="h-12 w-full rounded-xl border border-gray-400 bg-stone-900 p-4 text-sm md:w-72"
                 type="text"
                 name="email_address"
                 placeholder="Your email"
@@ -51,7 +51,7 @@ export const Footer = () => {
                   setNewsletterForm({ email: e.target.value, isValid: true });
                 }}
               />
-              <CTA className="md:w-fit" disabled={!newsletterForm.isValid}>
+              <CTA compact className="sm:w-fit" disabled={!newsletterForm.isValid}>
                 Subscribe
               </CTA>
             </div>
