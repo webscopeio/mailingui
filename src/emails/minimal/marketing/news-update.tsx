@@ -29,7 +29,9 @@ type MinimalNewsProps = {
 };
 
 const baseUrl = `${
-  process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
+  process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : "https://mailingui.com"
 }/static/minimal-theme`;
 
 export const News: React.FC<MinimalNewsProps> = ({

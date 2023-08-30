@@ -30,7 +30,9 @@ type MinimalResetPasswordProps = {
 };
 
 const baseUrl = `${
-  process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
+  process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : "https://mailingui.com"
 }/static/minimal-theme`;
 
 export const EventInvitation: React.FC<MinimalResetPasswordProps> = ({
