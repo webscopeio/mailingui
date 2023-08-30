@@ -1,3 +1,4 @@
+import * as React from "react";
 import {
   Body,
   Column,
@@ -8,27 +9,33 @@ import {
   Head,
   Row,
 } from "@react-email/components";
-import React, { FC } from "react";
 import {
-  Text,
   SocialIcon,
   type SocialIconType,
-  BulletList,
-  BulletListItem,
   Button,
+  P,
+  Link,
+  H3,
+  H1,
+  UL,
+  LI,
 } from "@mailingui/components";
 
 type MinimalNewsProps = {
+  customerName: string;
   link: string;
   company: string;
   items: string[];
 };
 
 const baseUrl = `${
-  process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
+  process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : "https://mailingui.com"
 }/static/minimal-theme`;
 
-export const News: FC<MinimalNewsProps> = ({
+export const News: React.FC<MinimalNewsProps> = ({
+  customerName = "Jacob",
   link = "https://google.com",
   company = "Minimal",
   items = [
@@ -44,55 +51,38 @@ export const News: FC<MinimalNewsProps> = ({
       <Preview>Minimal - New issue of our newsletter</Preview>
       <Body style={main}>
         <Container style={container} width={600}>
-          <Row style={{ marginBottom: "16px" }}>
+          <Row style={row}>
             <Column width={46} height={34}>
               <Img src={`${baseUrl}/star.png`} alt="Star" />
             </Column>
             <Column>
-              <Text
-                style={{
-                  fontSize: "30px",
-                  lineHeight: "36px",
-                }}
-              >
-                MINIMAL
-              </Text>
+              <H3 compact>MINIMAL</H3>
             </Column>
           </Row>
-          <Row style={{ marginBottom: "32px" }}>
+          <Row style={row}>
             <Img width={520} src={`${baseUrl}/divider.png`} />
           </Row>
-          <Row style={{ marginBottom: "32px" }}>
-            <Text style={{ fontSize: "48px", lineHeight: "52px" }}>
-              Stay Up-To-Date
-            </Text>
-          </Row>
-          <Row style={{ marginBottom: "16px" }}>
-            <Text>Dear Subscriber,</Text>
-            <Text>
+          <Row style={row}>
+            <H1>Stay Up-To-Date</H1>
+            <P>Dear, {customerName}:</P>
+            <P>
               We are excited to share the latest news and updates from {company}
               . As a valued member of our community, we want to keep you
               informed about our recent activities and upcoming plans.
-            </Text>
+            </P>
+            <Img src={`${baseUrl}/news-main.png`} width={520} />
           </Row>
-          <Row>
-            <Img
-              src={`${baseUrl}/news-main.png`}
-              width={520}
-              style={{ marginBottom: "24px" }}
-            />
-          </Row>
-          <Row style={{ marginBottom: "16px" }}>
-            <Text style={{ fontWeight: 700 }}>
-              In this edition, you&apos;ll find:
-            </Text>
-            <BulletList type="unordered">
+          <Row style={row}>
+            <P compact>
+              <b>In this edition, you&apos;ll find:</b>
+            </P>
+            <UL compact>
               {items.map((item, i) => (
-                <BulletListItem key={i}>{item}</BulletListItem>
+                <LI key={i}>{item}</LI>
               ))}
-            </BulletList>
+            </UL>
           </Row>
-          <Row style={{ marginBottom: "32px" }}>
+          <Row style={row}>
             <Button
               href={link}
               width={520}
@@ -101,22 +91,14 @@ export const News: FC<MinimalNewsProps> = ({
             >
               Read more
             </Button>
-          </Row>
-          <Row style={{ marginBottom: "16px" }}>
-            <Text>
-              We are committed to providing you with valuable content and
-              insights that will help you stay informed and engaged. Thank you
-              for your continued support and loyalty.
-            </Text>
-            <Text>
-              Sincerely,
+            <P>Thank you for your time, and we hope to hear from you soon.</P>
+            <P>
+              Best regards,
               <br /> Minimal Team
-            </Text>
-          </Row>
-          <Row style={{ marginBottom: "32px" }}>
+            </P>
             <Img width={520} src={`${baseUrl}/divider.png`} />
           </Row>
-          <Row style={{ marginBottom: "32px" }}>
+          <Row style={row}>
             {(
               [
                 "linkedin",
@@ -139,45 +121,24 @@ export const News: FC<MinimalNewsProps> = ({
             ))}
             <Column width={520 - 196}></Column>
           </Row>
-          <Row>
-            <Text>
+          <Row style={row}>
+            <P compact muted>
               © Viola Company Inc., 2972 Westheimer Rd. Santa Ana, Illinois
               85486
-            </Text>
-            <Text>
-              <a
-                href="#unsubscribe"
-                style={{
-                  textDecoration: "none",
-                  color: "#000",
-                  display: "inline-block",
-                }}
-              >
+            </P>
+            <P compact muted>
+              <Link muted href="#unsubscribe">
                 Unsubscribe
-              </a>{" "}
+              </Link>{" "}
               ·{" "}
-              <a
-                href="#tos"
-                style={{
-                  textDecoration: "none",
-                  color: "#000",
-                  display: "inline-block",
-                }}
-              >
+              <Link muted href="#tos">
                 Terms of Use
-              </a>{" "}
+              </Link>{" "}
               ·{" "}
-              <a
-                href="#pp"
-                style={{
-                  textDecoration: "none",
-                  color: "#000",
-                  display: "inline-block",
-                }}
-              >
+              <Link muted href="#pp">
                 Privacy Policy
-              </a>
-            </Text>
+              </Link>
+            </P>
           </Row>
         </Container>
       </Body>
@@ -187,16 +148,21 @@ export const News: FC<MinimalNewsProps> = ({
 
 export default News;
 
+// Styles
 const main = {
   backgroundColor: "#f6f9fc",
-  padding: "60px 0 122px 0",
+  padding: "60px 0",
 };
 
 const container = {
   backgroundColor: "#ffffff",
   border: "1px solid #f0f0f0",
-  padding: "40px",
+  padding: "60px 40px 40px",
   width: "600px",
   fontFamily:
     "'Inter', 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif",
+};
+
+const row = {
+  margin: "0 0 24px",
 };

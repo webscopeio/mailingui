@@ -1,3 +1,4 @@
+import * as React from "react";
 import {
   Body,
   Column,
@@ -8,29 +9,36 @@ import {
   Head,
   Row,
 } from "@react-email/components";
-import React, { FC } from "react";
 import {
-  Text,
   SocialIcon,
   type SocialIconType,
-  Button,
+  P,
+  Link,
+  H3,
+  H1,
+  H2,
+  OL,
+  LI,
 } from "@mailingui/components";
 
 type MinimalResetPasswordProps = {
-  code: string;
+  customerName: string;
+  discountCode: string;
   discount: number;
   link: string;
   expiration: string;
 };
 
 const baseUrl = `${
-  process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
+  process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : "https://mailingui.com"
 }/static/minimal-theme`;
 
-export const MinimalDiscoutCode: FC<MinimalResetPasswordProps> = ({
-  code = "HAPPY20",
+export const MinimalDiscoutCode: React.FC<MinimalResetPasswordProps> = ({
+  customerName = "Jacob",
+  discountCode = "HAPPY20",
   discount = 20,
-  link = "https://google.com",
   expiration = "July 31, 2023",
 }) => {
   return (
@@ -39,85 +47,65 @@ export const MinimalDiscoutCode: FC<MinimalResetPasswordProps> = ({
       <Preview>Minimal - don&apos;t miss out on new discounts</Preview>
       <Body style={main}>
         <Container style={container} width={600}>
-          <Row style={{ marginBottom: "16px" }}>
+          <Row style={row}>
             <Column width={46} height={34}>
               <Img src={`${baseUrl}/star.png`} alt="Star" />
             </Column>
             <Column>
-              <Text
-                style={{
-                  fontSize: "30px",
-                  lineHeight: "36px",
-                }}
-              >
-                MINIMAL
-              </Text>
+              <H3 compact>MINIMAL</H3>
             </Column>
           </Row>
-          <Row style={{ marginBottom: "32px" }}>
+          <Row style={row}>
             <Img width={520} src={`${baseUrl}/divider.png`} />
           </Row>
-          <Row style={{ marginBottom: "32px" }}>
-            <Text style={{ fontSize: "48px", lineHeight: "52px" }}>
-              Special Discount for you
-            </Text>
-          </Row>
-          <Row style={{ marginBottom: "16px" }}>
-            <Text>Dear customer,</Text>
-            <Text>
+          <Row style={row}>
+            <H1>Special Discount Alert!</H1>
+            <P>Dear, {customerName}:</P>
+            <P>
               As a thank you for your continued support and loyalty, we would
               like to offer you a special discount on your next purchase from
               Viola store.
-            </Text>
-          </Row>
-          <Row style={{ marginBottom: "32px" }}>
+            </P>
             <Img width={520} src={`${baseUrl}/divider.png`} />
           </Row>
-          <Row style={{ marginBottom: "32px" }}>
-            <Text style={{ fontSize: "48px", lineHeight: "52px" }}>{code}</Text>
-            <Text size="sm" style={{ color: "#64748B", paddingRight: "44px" }}>
+          <Row style={row}>
+            <H2>{discountCode}</H2>
+            <P compact muted>
+              {" "}
               Use the coupon code at checkout to receive {discount}% off your
               total order. This offer is valid until {expiration}, so be sure to
               take advantage of it before it expires.
-            </Text>
+            </P>
           </Row>
-          <Row style={{ marginBottom: "32px" }}>
+          <Row style={row}>
             <Img width={520} src={`${baseUrl}/divider.png`} />
-          </Row>
-          <Row style={{ marginBottom: "32px" }}>
-            We have recently launched new products and we invite you to check
-            them out.
-          </Row>
-          <Row style={{ marginBottom: "32px" }}>
-            <Button
-              href={link}
-              width={520}
-              height={56}
-              backgroundColor="#000000"
-            >
-              View products
-            </Button>
-          </Row>
-          <Row style={{ marginBottom: "16px" }}>
-            <Text>
-              We appreciate your business and hope that this discount makes your
-              shopping experience with us even better. If you have any questions
-              or need further assistance, please do not hesitate to contact our
-              customer support team.
-            </Text>
-            <Text>
-              Thank you again for your support and we look forward to serving
-              you soon.
-            </Text>
-            <Text>
-              Sincerely,
+            <P>Here&apos;s how to claim your discount:</P>
+            <OL>
+              <LI>
+                <b>First</b>, go to <Link>Viola Store&apos;s</Link> and choose
+                any of the items in stock,
+              </LI>
+              <LI>
+                <b>During checkout</b>, enter the discount code: {discountCode}{" "}
+                to get {discount}% off your shopping cart,
+              </LI>
+              <LI>
+                <b>Finally</b>, watch as the {discount}% savings grace your
+                total purchase.
+              </LI>
+            </OL>
+            <P>
+              Should you have any questions or require assistance, please
+              don&apos;t hesitate to reach out to our dedicated customer support
+              team.
+            </P>
+            <P>
+              Best regards,
               <br /> Minimal Team
-            </Text>
-          </Row>
-          <Row style={{ marginBottom: "32px" }}>
+            </P>
             <Img width={520} src={`${baseUrl}/divider.png`} />
           </Row>
-          <Row style={{ marginBottom: "32px" }}>
+          <Row style={row}>
             {(
               [
                 "linkedin",
@@ -140,45 +128,24 @@ export const MinimalDiscoutCode: FC<MinimalResetPasswordProps> = ({
             ))}
             <Column width={520 - 196}></Column>
           </Row>
-          <Row>
-            <Text>
+          <Row style={row}>
+            <P compact muted>
               © Viola Company Inc., 2972 Westheimer Rd. Santa Ana, Illinois
               85486
-            </Text>
-            <Text>
-              <a
-                href="#unsubscribe"
-                style={{
-                  textDecoration: "none",
-                  color: "#000",
-                  display: "inline-block",
-                }}
-              >
+            </P>
+            <P compact muted>
+              <Link muted href="#unsubscribe">
                 Unsubscribe
-              </a>{" "}
+              </Link>{" "}
               ·{" "}
-              <a
-                href="#tos"
-                style={{
-                  textDecoration: "none",
-                  color: "#000",
-                  display: "inline-block",
-                }}
-              >
+              <Link muted href="#tos">
                 Terms of Use
-              </a>{" "}
+              </Link>{" "}
               ·{" "}
-              <a
-                href="#pp"
-                style={{
-                  textDecoration: "none",
-                  color: "#000",
-                  display: "inline-block",
-                }}
-              >
+              <Link muted href="#pp">
                 Privacy Policy
-              </a>
-            </Text>
+              </Link>
+            </P>
           </Row>
         </Container>
       </Body>
@@ -188,16 +155,21 @@ export const MinimalDiscoutCode: FC<MinimalResetPasswordProps> = ({
 
 export default MinimalDiscoutCode;
 
+// Styles
 const main = {
   backgroundColor: "#f6f9fc",
-  padding: "60px 0 122px 0",
+  padding: "60px 0",
 };
 
 const container = {
   backgroundColor: "#ffffff",
   border: "1px solid #f0f0f0",
-  padding: "40px",
+  padding: "60px 40px 40px",
   width: "600px",
   fontFamily:
     "'Inter', 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif",
+};
+
+const row = {
+  margin: "0 0 24px",
 };

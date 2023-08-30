@@ -1,7 +1,7 @@
 import { type StaticImageData } from "next/image";
 
+import Typography from "public/images/components-preview/typography.png";
 import SocialIcons from "public/images/components-preview/social_icons.png";
-import Paragraphs from "public/images/components-preview/paragraphs.png";
 import Lists from "public/images/components-preview/listing.png";
 import Heroes from "public/images/components-preview/heroes.png";
 import Emojis from "public/images/components-preview/emojis.png";
@@ -55,15 +55,15 @@ export const componentTypes: ComponentMetadataType[] = [
     image: Lists,
   },
   {
-    type: "texts",
-    title: "Paragraphs",
-    subtitle: "Craft compelling content with easy-to-read paragraphs",
-    image: Paragraphs,
-  },
-  {
     type: "social-icons",
     title: "Social icons",
     subtitle: "Increase engagement with clickable social icons",
     image: SocialIcons,
+  },
+  {
+    type: "typography",
+    title: "Typography",
+    subtitle: "Beautiful typographic defaults for HTML you do control",
+    image: Typography,
   },
 ];

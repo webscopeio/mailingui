@@ -31,8 +31,8 @@ const SimpleHero = () => (
 export default SimpleHero;
 
 const main = {
-  backgroundColor: "#fff",
+  backgroundColor: "#ffffff",
   color: "#24292e",
   fontFamily:
-    '-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji"',
+    "'Inter', 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif",
 };

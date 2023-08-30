@@ -1,4 +1,4 @@
-import { FC, CSSProperties, ReactNode } from "react";
+import * as React from "react";
 import { Column, Row, Text } from "@react-email/components";
 import { theme } from "@mailingui/themes";
 
@@ -42,21 +42,21 @@ const variants = {
 type TextVariant = keyof typeof variants;
 
 export type ListRootProps = {
-  style?: CSSProperties;
-  children?: ReactNode;
+  style?: React.CSSProperties;
+  children?: React.ReactNode;
 };
 
-const ListRoot: FC<ListRootProps> = ({ style, children }) => {
+const ListRoot: React.FC<ListRootProps> = ({ style, children }) => {
   return <Row style={{ ...style }}>{children}</Row>;
 };
 
 type ListItemProps = {
-  style?: CSSProperties;
-  children?: ReactNode;
+  style?: React.CSSProperties;
+  children?: React.ReactNode;
   horizontal?: boolean;
 };
 
-const ListItem: FC<ListItemProps> = ({
+const ListItem: React.FC<ListItemProps> = ({
   style,
   horizontal = false,
   children,
@@ -70,12 +70,12 @@ const ListItem: FC<ListItemProps> = ({
 type ListItemTitleProps = {
   centered?: boolean;
   size?: SizeType;
-  style?: CSSProperties;
+  style?: React.CSSProperties;
   variant?: TextVariant;
-  children?: ReactNode;
+  children?: React.ReactNode;
 };
 
-const ListItemTitle: FC<ListItemTitleProps> = ({
+const ListItemTitle: React.FC<ListItemTitleProps> = ({
   style,
   size = "md",
   centered = false,
@@ -100,14 +100,14 @@ const ListItemTitle: FC<ListItemTitleProps> = ({
 };
 
 type ListItemContentProps = {
-  style?: CSSProperties;
+  style?: React.CSSProperties;
   size?: SizeType;
   centered?: boolean;
   variant?: TextVariant;
-  children?: ReactNode;
+  children?: React.ReactNode;
 };
 
-const ListItemContent: FC<ListItemContentProps> = ({
+const ListItemContent: React.FC<ListItemContentProps> = ({
   style,
   size = "md",
   centered = false,

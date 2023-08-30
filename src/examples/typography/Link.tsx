@@ -1,13 +1,20 @@
 import * as React from "react";
 import { Body, Container, Html } from "@react-email/components";
-import { Badge } from "@mailingui/components";
+import { P, Link } from "@mailingui/components";
 
 export default function Demo() {
   return (
     <Html>
       <Body style={main}>
         <Container style={container}>
-          <Badge>Badge</Badge>
+          <P>
+            The king thought long and hard, and finally came up with a{" "}
+            <Link href="#">brilliant plan</Link>: he would tax the jokes in the
+            kingdom.
+          </P>
+          <Link block href="#">More brilliant plans →</Link>
+          <Link block href="#">Terrible brilliant plans →</Link>
+          <Link block href="#">Not so terrible brilliant plans →</Link>
         </Container>
       </Body>
     </Html>
@@ -22,6 +29,6 @@ const main = {
 };
 
 const container = {
-  padding: "40px 0",
-  width: "60px",
+  padding: "110px 0",
+  maxWidth: 580,
 };

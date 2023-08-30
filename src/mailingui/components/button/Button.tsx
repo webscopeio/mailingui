@@ -1,4 +1,4 @@
-import React, { FC, ReactNode, CSSProperties } from "react";
+import * as React from "react";
 import { Button as ReactEmailButton } from "@react-email/components";
 import { theme } from "@mailingui/themes";
 
@@ -66,12 +66,12 @@ const sizes = {
 type ButtonProps = {
   variant?: keyof typeof variants;
   href: string;
-  children: ReactNode;
-  color?: CSSProperties["color"];
-  borderColor?: CSSProperties["color"];
+  children: React.ReactNode;
+  color?: React.CSSProperties["color"];
+  borderColor?: React.CSSProperties["color"];
   rounded?: keyof typeof roundedTheme;
-  backgroundColor?: CSSProperties["backgroundColor"];
-  style?: CSSProperties;
+  backgroundColor?: React.CSSProperties["backgroundColor"];
+  style?: React.CSSProperties;
 } & (
   | {
       size?: keyof typeof sizes;
@@ -81,7 +81,7 @@ type ButtonProps = {
   | { width: number; height: number; size?: never }
 );
 
-const Button: FC<ButtonProps> = ({
+const Button: React.FC<ButtonProps> = ({
   rounded = "base",
   href,
   color,
@@ -94,7 +94,7 @@ const Button: FC<ButtonProps> = ({
   width,
   height,
 }) => {
-  const styles: CSSProperties = {
+  const styles: React.CSSProperties = {
     ...variants[variant],
     borderRadius: roundedTheme[rounded],
     ...(backgroundColor ? { backgroundColor: backgroundColor } : {}),
@@ -136,7 +136,7 @@ const Button: FC<ButtonProps> = ({
               textDecoration: "none",
               msoHide: "all",
               ...styles,
-            } as CSSProperties
+            } as React.CSSProperties
           }
         >
           {children}

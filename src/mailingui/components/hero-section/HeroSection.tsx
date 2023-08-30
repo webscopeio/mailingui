@@ -1,4 +1,4 @@
-import React, { CSSProperties, FC } from "react";
+import * as React from 'react';
 import {
   Heading as ReactEmailHeading,
   Column,
@@ -36,10 +36,10 @@ interface HeroSectionProps {
   variant?: keyof typeof variants;
   bgImg: string;
   logoSrc: string;
-  overlayPadding?: CSSProperties["padding"];
+  overlayPadding?: React.CSSProperties["padding"];
 }
 
-const HeroSection: FC<HeroSectionProps> = ({
+const HeroSection: React.FC<HeroSectionProps> = ({
   overlay = false,
   centered = false,
   variant = "default",
@@ -67,16 +67,16 @@ const HeroSection: FC<HeroSectionProps> = ({
   );
 };
 
-const logo = (centered: boolean): CSSProperties => ({
+const logo = (centered: boolean): React.CSSProperties => ({
   paddingBottom: 10,
   margin: centered ? "0 auto" : undefined,
 });
 
 const header = (
-  overlayPadding: CSSProperties["padding"],
+  overlayPadding: React.CSSProperties["padding"],
   overlay: boolean,
   bgImg: string
-): CSSProperties => ({
+): React.CSSProperties => ({
   borderRadius: "10px 10px 0 0",
   background: overlay ? `url('${bgImg}')` : "none",
   padding: overlay ? overlayPadding : undefined,
@@ -85,7 +85,7 @@ const header = (
 const headerContent = (
   centered: boolean,
   variant: keyof typeof variants
-): CSSProperties => ({
+): React.CSSProperties => ({
   padding: "30px 40px",
   background: variants[variant].backgroundColor,
   borderRadius: "10px",
