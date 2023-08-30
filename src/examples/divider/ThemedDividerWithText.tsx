@@ -16,7 +16,9 @@ const ThemedDividerWithText = () => {
             aliquip ex ea commodo consequat.
           </P>
           <Divider baseWidth={440} variant="brand">
+            <P compact>
             Divider
+            </P>
           </Divider>
           <P>
             Duis aute irure dolor in reprehenderit in voluptate velit esse

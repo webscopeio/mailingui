@@ -15,7 +15,7 @@ const DividerWithText = () => {
             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
             aliquip ex ea commodo consequat.
           </P>
-          <Divider baseWidth={580}>Divider</Divider>
+          <Divider baseWidth={580}><P compact>Divider</P></Divider>
           <P>
             Duis aute irure dolor in reprehenderit in voluptate velit esse
             cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
