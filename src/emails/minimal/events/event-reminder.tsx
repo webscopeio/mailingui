@@ -17,6 +17,8 @@ import {
   H1,
   P,
   Link,
+  UL,
+  LI,
 } from "@mailingui/components";
 
 type EventReminderProps = {
@@ -91,14 +93,18 @@ export const EventReminder: React.FC<EventReminderProps> = ({
           </Button>
         </Row>
         <Row style={row}>
-          <P compact>
-            <b>Arrival:</b> Plan to arrive a bit early to check in and grab a
-            coffee before the event kicks off.
-          </P>
-          <P compact>
-            <b>Networking:</b> There will be ample opportunities to network with
-            fellow attendees, so bring your business cards and enthusiasm.{" "}
-          </P>
+          <P>Here are some tips for this event:</P>
+          <UL>
+            <LI>
+              <b>Arrival:</b> Plan to arrive a bit early to check in and grab a
+              coffee before the event kicks off.
+            </LI>
+            <LI>
+              <b>Networking:</b> There will be ample opportunities to network
+              with fellow attendees, so bring your business cards and
+              enthusiasm.{" "}
+            </LI>
+          </UL>
           <P>
             Looking forward to seeing you at {eventName} and sharing an
             incredible day together!

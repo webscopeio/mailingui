@@ -17,6 +17,8 @@ import {
   Link,
   H3,
   H1,
+  UL,
+  LI,
 } from "@mailingui/components";
 
 type SubscriptionSuccessProps = {
@@ -72,11 +74,11 @@ export const SubscriptionSuccess: React.FC<SubscriptionSuccessProps> = ({
             <P compact>
               <b>In this edition, you&apos;ll find:</b>
             </P>
-            {items.map((item, i) => (
-              <P compact key={i}>
-                {item}
-              </P>
-            ))}
+            <UL compact>
+              {items.map((item, i) => (
+                <LI key={i}>{item}</LI>
+              ))}
+            </UL>
           </Row>
           <Row style={row}>
             <Button

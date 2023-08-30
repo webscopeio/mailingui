@@ -22,7 +22,7 @@ export const theme = {
     baseFontSize: 17,
     typeScale: 1.333,
     fontWeight: {
-      light: "300",
+      base: "300",
       medium: "400",
       bold: "400",
     },

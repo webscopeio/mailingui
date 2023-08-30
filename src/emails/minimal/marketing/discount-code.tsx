@@ -17,6 +17,8 @@ import {
   H3,
   H1,
   H2,
+  OL,
+  LI,
 } from "@mailingui/components";
 
 type MinimalResetPasswordProps = {
@@ -76,18 +78,20 @@ export const MinimalDiscoutCode: React.FC<MinimalResetPasswordProps> = ({
           <Row style={row}>
             <Img width={520} src={`${baseUrl}/divider.png`} />
             <P>Here&apos;s how to claim your discount:</P>
-            <P compact>
-              <b>1. First</b>, go to <Link>Viola Store&apos;s</Link> and choose
-              any of the items in stock,
-            </P>
-            <P compact>
-              <b>2. During checkout</b>, enter the discount code: {discountCode}{" "}
-              to get {discount}% off your shopping cart,
-            </P>
-            <P compact>
-              <b>3. Finally</b>, watch as the {discount}% savings grace your
-              total purchase.
-            </P>
+            <OL>
+              <LI>
+                <b>First</b>, go to <Link>Viola Store&apos;s</Link> and choose
+                any of the items in stock,
+              </LI>
+              <LI>
+                <b>During checkout</b>, enter the discount code: {discountCode}{" "}
+                to get {discount}% off your shopping cart,
+              </LI>
+              <LI>
+                <b>Finally</b>, watch as the {discount}% savings grace your
+                total purchase.
+              </LI>
+            </OL>
             <P>
               Should you have any questions or require assistance, please
               don&apos;t hesitate to reach out to our dedicated customer support

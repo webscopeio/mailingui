@@ -1,5 +1,8 @@
 import * as React from "react";
-import { Text as ReactEmailText, Link as ReactEmailLink } from "@react-email/components";
+import {
+  Text as ReactEmailText,
+  Link as ReactEmailLink,
+} from "@react-email/components";
 import { theme } from "@mailingui/themes";
 
 const { color, typography } = theme;
@@ -111,7 +114,7 @@ const P: React.FC<ParagraphProps> = ({
           : `${typography.baseFontSize * 2}px`,
         fontWeight: bold
           ? typography.fontWeight.bold
-          : typography.fontWeight.light,
+          : typography.fontWeight.base,
         color: muted ? color.muted.foreground : color.foreground["100"],
         margin: compact ? "6px 0" : "24px 0",
         ...style,
@@ -141,7 +144,7 @@ const Link: React.FC<LinkProps> = ({
         display: block ? "block" : "inline",
         fontSize: block ? `${typography.baseFontSize}px` : "inherit",
         lineHeight: block ? `${typography.baseFontSize * 2}px` : "inherit",
-        fontWeight: typography.fontWeight.light,
+        fontWeight: typography.fontWeight.base,
         color: muted ? color.muted.foreground : color.foreground["100"],
         margin: block ? "6px 0px" : "inherit",
         textDecoration: "underline",
@@ -152,6 +155,95 @@ const Link: React.FC<LinkProps> = ({
     >
       {children}
     </ReactEmailLink>
+  );
+};
+
+interface UnorderedListProps extends React.ComponentPropsWithoutRef<"ul"> {
+  compact?: boolean;
+}
+
+const UL: React.FC<UnorderedListProps> = ({
+  compact,
+  style,
+  children,
+  ...props
+}) => {
+  return (
+    <ul
+      style={{
+        listStylePosition: "outside",
+        paddingInlineStart: "24px",
+        margin: compact ? "6px 0" : "24px 0",
+        ...style,
+      }}
+      {...props}
+    >
+      {children}
+    </ul>
+  );
+};
+
+interface OrderedListProps extends React.ComponentPropsWithoutRef<"ol"> {
+  compact?: boolean;
+}
+
+const OL: React.FC<OrderedListProps> = ({
+  compact,
+  style,
+  children,
+  ...props
+}) => {
+  return (
+    <ol
+      style={{
+        listStylePosition: "outside",
+        paddingInlineStart: "24px",
+        margin: compact ? "6px 0" : "24px 0",
+        ...style,
+      }}
+      {...props}
+    >
+      {children}
+    </ol>
+  );
+};
+
+interface ListItemProps extends React.ComponentPropsWithoutRef<"li"> {
+  loose?: boolean;
+  small?: boolean;
+  bold?: boolean;
+  muted?: boolean;
+}
+
+const LI: React.FC<ListItemProps> = ({
+  loose,
+  small,
+  bold,
+  muted,
+  style,
+  children,
+  ...props
+}) => {
+  return (
+    <li
+      style={{
+        fontSize: small
+          ? `${typography.baseFontSize / typography.typeScale}px`
+          : `${typography.baseFontSize}px`,
+        lineHeight: small
+          ? `${(typography.baseFontSize / typography.typeScale) * 1.75}px`
+          : `${typography.baseFontSize * 2}px`,
+        fontWeight: bold
+          ? typography.fontWeight.bold
+          : typography.fontWeight.base,
+        color: muted ? color.muted.foreground : color.foreground["100"],
+        margin: loose ? "12px 0" : "0",
+        ...style,
+      }}
+      {...props}
+    >
+      {children}
+    </li>
   );
 };
 
@@ -166,7 +258,7 @@ const Blockquote: React.FC<React.ComponentPropsWithoutRef<"p">> = ({
         fontStyle: "italic",
         fontSize: `${typography.baseFontSize}px`,
         lineHeight: `${typography.baseFontSize * 2}px`,
-        fontWeight: typography.fontWeight.light,
+        fontWeight: typography.fontWeight.base,
         color: color.foreground["100"],
         margin: "24px 0 0",
         padding: "0 0 0 24px",
@@ -204,4 +296,4 @@ const InlineCode: React.FC<React.ComponentPropsWithoutRef<"code">> = ({
   );
 };
 
-export { H1, H2, H3, H4, P, Blockquote, Link, InlineCode };
+export { H1, H2, H3, H4, P, Link, UL, OL, LI, Blockquote, InlineCode };
