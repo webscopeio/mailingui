@@ -7,7 +7,7 @@ import {
   Row,
   Column,
 } from "@react-email/components";
-import { Divider, SocialIcon, Text } from "@mailingui/components";
+import { Divider, SocialIcon, P } from "@mailingui/components";
 
 export default function AllSocialIcons() {
   return (
@@ -19,7 +19,7 @@ export default function AllSocialIcons() {
           <Divider />
           <Row>
             <Column>
-              <Text style={{ textAlign: "left" }}>Connect with us</Text>
+              <P style={{ textAlign: "left" }}>Connect with us</P>
             </Column>
             <Column width={44}>
               <SocialIcon type="telegram" href="#link-to-telegram" />
@@ -41,7 +41,7 @@ const main = {
   backgroundColor: "#ffffff",
   color: "#24292e",
   fontFamily:
-    '-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color SocialIcon","Segoe UI SocialIcon"',
+    "'Inter', 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif",
 };
 
 const container = {

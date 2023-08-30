@@ -1,13 +1,17 @@
 import * as React from "react";
 import { Body, Container, Html } from "@react-email/components";
-import { Badge } from "@mailingui/components";
+import { UL, LI } from "@mailingui/components";
 
 export default function Demo() {
   return (
     <Html>
       <Body style={main}>
         <Container style={container}>
-          <Badge>Badge</Badge>
+          <UL>
+            <LI>Laughter is the best medicine for any gloomy day.</LI>
+            <LI>Spreading smiles can brighten even the darkest of times.</LI>
+            <LI>Humor unites people, regardless of their backgrounds.</LI>
+          </UL>
         </Container>
       </Body>
     </Html>
@@ -22,6 +26,6 @@ const main = {
 };
 
 const container = {
-  padding: "40px 0",
-  width: "60px",
+  padding: "110px 0",
+  maxWidth: 580,
 };

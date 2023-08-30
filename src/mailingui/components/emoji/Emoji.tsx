@@ -1,15 +1,15 @@
-import React, { FC, CSSProperties } from "react";
+import * as React from 'react';
 import { Img, Link } from "@react-email/components";
 
 interface EmojiProps {
   type: EmojiType;
   small?: boolean;
   href?: string;
-  style?: CSSProperties;
+  style?: React.CSSProperties;
   bg?: boolean;
 }
 
-const Emoji: FC<EmojiProps> = ({ type, href, style, small, bg }) => {
+const Emoji: React.FC<EmojiProps> = ({ type, href, style, small, bg }) => {
   const size = small ? "32px" : bg ? "72px" : "44px";
 
   const emoji = (

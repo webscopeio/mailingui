@@ -1,13 +1,23 @@
 import * as React from "react";
 import { Body, Container, Html } from "@react-email/components";
-import { Badge } from "@mailingui/components";
+import { OL, LI } from "@mailingui/components";
 
 export default function Demo() {
   return (
     <Html>
       <Body style={main}>
         <Container style={container}>
-          <Badge>Badge</Badge>
+          <OL>
+            <LI>
+              Why don&apos;t scientists trust atoms? Because they make up
+              everything!
+            </LI>
+            <LI>
+              Parallel lines have so much in common. It&apos;s a shame
+              they&apos;ll never meet.
+            </LI>
+            <LI>How do you organize a space party? You &quot;planet&quot;!</LI>
+          </OL>
         </Container>
       </Body>
     </Html>
@@ -22,6 +32,6 @@ const main = {
 };
 
 const container = {
-  padding: "40px 0",
-  width: "60px",
+  padding: "110px 0",
+  maxWidth: 580,
 };

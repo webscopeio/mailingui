@@ -1,3 +1,4 @@
+import * as React from "react";
 import {
   Body,
   Container,
@@ -7,7 +8,7 @@ import {
   Row,
   Column,
 } from "@react-email/components";
-import { Emoji, Text } from "@mailingui/components";
+import { Emoji, P } from "@mailingui/components";
 
 export default function EmojisAsLink() {
   return (
@@ -18,9 +19,9 @@ export default function EmojisAsLink() {
         <Container style={container}>
           <Row>
             <Column>
-              <Text style={{ textAlign: "left" }}>
+              <P>
                 Were you satisfied with our Customer Care Service?
-              </Text>
+              </P>
             </Column>
             <Column style={{ paddingRight: "10px" }}>
               <Emoji type="thumbs-up" href="#link-ok" bg />
@@ -39,7 +40,7 @@ const main = {
   backgroundColor: "#ffffff",
   color: "#24292e",
   fontFamily:
-    '-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji"',
+    "'Inter', 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif",
 };
 
 const container = {

@@ -1,4 +1,4 @@
-import React, { FC, CSSProperties, ReactNode } from "react";
+import * as React from "react";
 import { theme } from "@mailingui/themes";
 
 const {
@@ -17,7 +17,7 @@ const variants = {
   },
 };
 
-const sizes: Record<"xs" | "sm" | "md" | "lg", CSSProperties> = {
+const sizes: Record<"xs" | "sm" | "md" | "lg", React.CSSProperties> = {
   xs: {
     fontSize: 12,
     lineHeight: "16px",
@@ -38,12 +38,12 @@ const sizes: Record<"xs" | "sm" | "md" | "lg", CSSProperties> = {
 
 type BulletListProps = {
   type: "unordered" | "ordered";
-  style?: CSSProperties;
-  children?: ReactNode;
+  style?: React.CSSProperties;
+  children?: React.ReactNode;
   size?: keyof typeof sizes;
 };
 
-const BulletList: FC<BulletListProps> = ({ type, style, children }) => {
+const BulletList: React.FC<BulletListProps> = ({ type, style, children }) => {
   const ListRoot = type === "unordered" ? "ul" : "ol";
 
   return (
@@ -60,18 +60,18 @@ const BulletList: FC<BulletListProps> = ({ type, style, children }) => {
 
 type BulletListItemProps = {
   variant?: keyof typeof variants;
-  children?: ReactNode;
-  style?: CSSProperties;
+  children?: React.ReactNode;
+  style?: React.CSSProperties;
   size?: keyof typeof sizes;
 };
 
-const BulletListItem: FC<BulletListItemProps> = ({
+const BulletListItem: React.FC<BulletListItemProps> = ({
   variant = "default",
   style: styleProp,
   size = "md",
   children,
 }) => {
-  const style: CSSProperties = {
+  const style: React.CSSProperties = {
     padding: "2px 0",
     ...variants[variant],
     ...sizes[size],

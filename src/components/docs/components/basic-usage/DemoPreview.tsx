@@ -18,6 +18,16 @@ export const DemoPreview = () => {
           cursor: "ew-resize",
         },
       }}
+      enable={{
+        top: false,
+        right: true,
+        bottom: false,
+        left: false,
+        topRight: false,
+        bottomRight: false,
+        bottomLeft: false,
+        topLeft: false,
+      }}
       handleClasses={{
         right: "hidden sm:flex items-center",
       }}
@@ -48,8 +58,8 @@ const getIframeHeight = (type: string): number => {
       return 160;
     case "divider":
       return 230;
-    case "text":
-      return 340;
+    case "typography":
+      return 550;
     default:
       return 350;
   }

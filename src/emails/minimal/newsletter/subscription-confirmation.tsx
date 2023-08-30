@@ -1,3 +1,4 @@
+import * as React from "react";
 import {
   Body,
   Column,
@@ -8,16 +9,18 @@ import {
   Head,
   Row,
 } from "@react-email/components";
-import React, { FC } from "react";
 import {
-  Text,
   SocialIcon,
   type SocialIconType,
   Button,
+  P,
+  Link,
+  H3,
+  H1,
 } from "@mailingui/components";
 
 type SubscriptionConfirmationProps = {
-  name: string;
+  subscriberName: string;
   confirmationUrl: string;
 };
 
@@ -25,48 +28,34 @@ const baseUrl = `${
   process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
 }/static/minimal-theme`;
 
-export const SubscriptionConfirmation: FC<SubscriptionConfirmationProps> = ({
-  name = "Jacob",
-  confirmationUrl = "https://google.com",
-}) => {
+export const SubscriptionConfirmation: React.FC<
+  SubscriptionConfirmationProps
+> = ({ subscriberName = "Jacob", confirmationUrl = "https://google.com" }) => {
   return (
     <Html>
       <Head />
       <Preview>Minimal - Confirm you email address</Preview>
       <Body style={main}>
         <Container style={container} width={600}>
-          <Row style={{ marginBottom: "16px" }}>
+          <Row style={row}>
             <Column width={46} height={34}>
               <Img src={`${baseUrl}/star.png`} alt="Star" />
             </Column>
             <Column>
-              <Text
-                style={{
-                  fontSize: "30px",
-                  lineHeight: "36px",
-                }}
-              >
-                MINIMAL
-              </Text>
+              <H3 compact>MINIMAL</H3>
             </Column>
           </Row>
-          <Row style={{ marginBottom: "32px" }}>
+          <Row style={row}>
             <Img width={520} src={`${baseUrl}/divider.png`} />
           </Row>
-          <Row style={{ marginBottom: "32px" }}>
-            <Text style={{ fontSize: "48px", lineHeight: "52px" }}>
-              Confirm Your Email Address
-            </Text>
-          </Row>
-          <Row style={{ marginBottom: "16px" }}>
-            <Text>Dear {name},</Text>
-            <Text>
+          <Row style={row}>
+            <H1>Confirm your Email Address</H1>
+            <P>Dear, {subscriberName}:</P>
+            <P>
               Recently you requested to join our newsletter. We require that you
               verify your email address before we can add you to our list.
               Please click on the link below to confirm your email address:
-            </Text>
-          </Row>
-          <Row style={{ marginBottom: "32px" }}>
+            </P>
             <Button
               href={confirmationUrl}
               width={520}
@@ -75,23 +64,18 @@ export const SubscriptionConfirmation: FC<SubscriptionConfirmationProps> = ({
             >
               Confirm Email Address
             </Button>
-          </Row>
-          <Row style={{ marginBottom: "16px" }}>
-            <Text>
+            <P>
               If you did not initiate this request or believe it was made in
               error, please disregard this email. If you have any concerns or
               need further assistance, please contact our customer support team.
-            </Text>
-            <Text>
+            </P>
+            <P>
               Best regards,
-              <br />
-              Minimal Team
-            </Text>
-          </Row>
-          <Row style={{ marginBottom: "32px" }}>
+              <br /> Minimal Team
+            </P>
             <Img width={520} src={`${baseUrl}/divider.png`} />
           </Row>
-          <Row style={{ marginBottom: "32px" }}>
+          <Row style={row}>
             {(
               [
                 "linkedin",
@@ -114,45 +98,24 @@ export const SubscriptionConfirmation: FC<SubscriptionConfirmationProps> = ({
             ))}
             <Column width={520 - 196}></Column>
           </Row>
-          <Row>
-            <Text>
+          <Row style={row}>
+            <P compact muted>
               © Viola Company Inc., 2972 Westheimer Rd. Santa Ana, Illinois
               85486
-            </Text>
-            <Text>
-              <a
-                href="#unsubscribe"
-                style={{
-                  textDecoration: "none",
-                  color: "#000",
-                  display: "inline-block",
-                }}
-              >
+            </P>
+            <P compact muted>
+              <Link muted href="#unsubscribe">
                 Unsubscribe
-              </a>{" "}
+              </Link>{" "}
               ·{" "}
-              <a
-                href="#tos"
-                style={{
-                  textDecoration: "none",
-                  color: "#000",
-                  display: "inline-block",
-                }}
-              >
+              <Link muted href="#tos">
                 Terms of Use
-              </a>{" "}
+              </Link>{" "}
               ·{" "}
-              <a
-                href="#pp"
-                style={{
-                  textDecoration: "none",
-                  color: "#000",
-                  display: "inline-block",
-                }}
-              >
+              <Link muted href="#pp">
                 Privacy Policy
-              </a>
-            </Text>
+              </Link>
+            </P>
           </Row>
         </Container>
       </Body>
@@ -162,16 +125,21 @@ export const SubscriptionConfirmation: FC<SubscriptionConfirmationProps> = ({
 
 export default SubscriptionConfirmation;
 
+// Styles
 const main = {
   backgroundColor: "#f6f9fc",
-  padding: "60px 0 122px 0",
+  padding: "60px 0",
 };
 
 const container = {
   backgroundColor: "#ffffff",
   border: "1px solid #f0f0f0",
-  padding: "40px",
+  padding: "60px 40px 40px",
   width: "600px",
   fontFamily:
     "'Inter', 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif",
+};
+
+const row = {
+  margin: "0 0 24px",
 };

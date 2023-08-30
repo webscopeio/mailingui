@@ -7,7 +7,7 @@ import {
   Row,
   Column,
 } from "@react-email/components";
-import { SocialIcon, Text } from "@mailingui/components";
+import { SocialIcon, P } from "@mailingui/components";
 
 export default function AllSocialIcons() {
   return (
@@ -17,9 +17,9 @@ export default function AllSocialIcons() {
       <Body style={main}>
         <Container style={container}>
           <Row>
-            <Text size="lg">
+            <P>
               Register an account with us using the following providers:
-            </Text>
+            </P>
           </Row>
           <Row>
             <Column>
@@ -57,7 +57,7 @@ const main = {
   backgroundColor: "#ffffff",
   color: "#24292e",
   fontFamily:
-    '-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color SocialIcon","Segoe UI SocialIcon"',
+    "'Inter', 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif",
 };
 
 const container = {

@@ -15,7 +15,7 @@ type SupportedComponents =
   | "list"
   | "bulletList"
   | "socialIcon"
-  | "text";
+  | "typography";
 
 const getComponents = (): Record<
   SupportedComponents,
@@ -59,9 +59,9 @@ const getComponents = (): Record<
       dependencies: [],
       ...getFileProps("./src/mailingui/components/social-icon/SocialIcon.tsx"),
     },
-    text: {
+    typography: {
       dependencies: [],
-      ...getFileProps("./src/mailingui/components/text/Text.tsx"),
+      ...getFileProps("./src/mailingui/components/typography/Typography.tsx"),
     },
   };
 };
