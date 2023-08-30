@@ -110,7 +110,7 @@ const Wrapper: React.FC<{
 }> = ({ children, height, className }) => {
   return (
     <div
-      className={cn("overflow-hidden rounded-lg bg-[#f6f9fc] p-6", className)}
+      className={cn("overflow-hidden rounded-lg bg-white p-2", className)}
       style={{ height: height ?? "fit-content" }}
     >
       {children}
