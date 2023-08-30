@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import DotBadges from "./examples/badges";
 import RegisterAnAccount from "./examples/register-an-account";
 import ConnectWithUs from "./examples/connect-with-us";
+import InlineCode from "./examples/inline-code";
 import { CTA } from "@components/ui/CTA";
 import { cn } from "@utils/cn";
 
@@ -47,7 +48,7 @@ export const Homepage = () => {
           <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             <div className="flex flex-1 flex-col gap-4">
               <Wrapper>
-                <DotBadges />
+                <InlineCode />
               </Wrapper>
               <Wrapper>
                 <RegisterAnAccount />

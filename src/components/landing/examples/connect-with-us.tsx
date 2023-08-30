@@ -1,5 +1,5 @@
 import { Container, Row, Column } from "@react-email/components";
-import { Divider, SocialIcon, Text } from "@mailingui/components";
+import { Divider, SocialIcon, P } from "@mailingui/components";
 
 export default function ConnectWithUs() {
   return (
@@ -9,7 +9,7 @@ export default function ConnectWithUs() {
           <Divider />
           <Row>
             <Column>
-              <Text style={{ textAlign: "left" }}>Connect with us</Text>
+              <P style={{ textAlign: "left" }}>Connect with us</P>
             </Column>
             <Column width={44}>
               <SocialIcon type="telegram" href="#" />

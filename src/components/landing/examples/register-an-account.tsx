@@ -1,5 +1,5 @@
 import { Container, Row, Column } from "@react-email/components";
-import { SocialIcon, Text } from "@mailingui/components";
+import { SocialIcon, P } from "@mailingui/components";
 
 export default function RegisterAnAccount() {
   return (
@@ -7,19 +7,36 @@ export default function RegisterAnAccount() {
       <div className="px-10 py-4">
         <Container style={container}>
           <Row>
-            <Column>
-              <Text size="lg">You can register with:</Text>
-            </Column>
+            <P style={{ marginTop: 0 }}>Register an account:</P>
           </Row>
-          <Row style={{ transform: "translate(-14px, 0px)" }}>
+          <Row>
             <Column>
-              <SocialIcon type="github" size={32} href="#" />
+              <Row>
+                <Column width={32}>
+                  <SocialIcon
+                    type="github"
+                    href="#link"
+                    size={32}
+                    style={{ margin: 0 }}
+                  />
+                </Column>
+                <Column width={12} />
+                <Column>GitHub</Column>
+              </Row>
             </Column>
             <Column>
-              <SocialIcon type="twitter" size={32} href="#" />
-            </Column>
-            <Column width={32}>
-              <SocialIcon type="google drive" size={32} href="#" />
+              <Row>
+                <Column width={32}>
+                  <SocialIcon
+                    type="twitter"
+                    href="#link"
+                    size={32}
+                    style={{ margin: 0 }}
+                  />
+                </Column>
+                <Column width={12} />
+                <Column>Twitter</Column>
+              </Row>
             </Column>
           </Row>
         </Container>
