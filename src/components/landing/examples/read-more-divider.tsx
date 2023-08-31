@@ -1,13 +1,12 @@
-import * as React from "react";
 import { Container } from "@react-email/components";
-import { P, InlineCode } from "@mailingui/components";
+import { Divider, P } from "@mailingui/components";
 
-export default function InlineCodeExample() {
+export default function ReadMoreDivider() {
   return (
     <Container style={container}>
-      <P compact>
-        Run{" "}
-        <InlineCode>npx @mailingui/cli</InlineCode>
+      <Divider />
+      <P small muted compact>
+        Note: If you have not finished your integration, check out our docs
       </P>
     </Container>
   );

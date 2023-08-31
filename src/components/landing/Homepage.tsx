@@ -1,9 +1,17 @@
 import * as React from "react";
 import { ArrowRight } from "lucide-react";
+
+import SendMyFeedback from "./examples/send-my-feedback";
 import DotBadges from "./examples/badges";
 import RegisterAnAccount from "./examples/register-an-account";
+import RateYourExperience from "./examples/rate-your-experience";
 import ConnectWithUs from "./examples/connect-with-us";
 import InlineCode from "./examples/inline-code";
+import ReadMoreDivider from "./examples/read-more-divider";
+import Links from "./examples/links";
+import Footer from "./examples/footer";
+import CustomerService from "./examples/customer-service";
+
 import { CTA } from "@components/ui/CTA";
 import { cn } from "@utils/cn";
 
@@ -44,52 +52,28 @@ export const Homepage = () => {
               Get Started
             </CTA>
           </div>
-          {/* COMPOENT GRID */}
+          {/* COMPONENT GRID */}
           <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             <div className="flex flex-1 flex-col gap-4">
-              <Wrapper>
-                <InlineCode />
-              </Wrapper>
-              <Wrapper>
-                <RegisterAnAccount />
-              </Wrapper>
-              <Wrapper>
-                <ConnectWithUs />
-              </Wrapper>
-              <Wrapper>
-                <RegisterAnAccount />
-              </Wrapper>
+              {EXAMPLE_GRID[0].map((Example, key) => (
+                <Wrapper key={key}>
+                  <Example />
+                </Wrapper>
+              ))}
             </div>
             <div className="flex flex-1 flex-col gap-4 md:-mt-20">
-              <Wrapper>
-                <RegisterAnAccount />
-              </Wrapper>
-              <Wrapper>
-                <DotBadges />
-              </Wrapper>
-              <Wrapper>
-                <RegisterAnAccount />
-              </Wrapper>
-              <Wrapper>
-                <ConnectWithUs />
-              </Wrapper>
-              <Wrapper>
-                <DotBadges />
-              </Wrapper>
+              {EXAMPLE_GRID[1].map((Example, key) => (
+                <Wrapper key={key}>
+                  <Example />
+                </Wrapper>
+              ))}
             </div>
             <div className="hidden flex-1 flex-col gap-4 lg:-mt-28 lg:flex">
-              <Wrapper>
-                <DotBadges />
-              </Wrapper>
-              <Wrapper>
-                <RegisterAnAccount />
-              </Wrapper>
-              <Wrapper>
-                <ConnectWithUs />
-              </Wrapper>
-              <Wrapper>
-                <RegisterAnAccount />
-              </Wrapper>
+              {EXAMPLE_GRID[2].map((Example, key) => (
+                <Wrapper key={key}>
+                  <Example />
+                </Wrapper>
+              ))}
             </div>
           </div>
           <div className="mt-8 flex w-full justify-end">
@@ -104,6 +88,12 @@ export const Homepage = () => {
   );
 };
 
+const EXAMPLE_GRID = {
+  0: [SendMyFeedback, RegisterAnAccount, DotBadges],
+  1: [RateYourExperience, InlineCode, Links, ConnectWithUs],
+  2: [ReadMoreDivider, CustomerService, Footer],
+};
+
 const Wrapper: React.FC<{
   children: React.ReactNode;
   className?: string;
@@ -111,7 +101,10 @@ const Wrapper: React.FC<{
 }> = ({ children, height, className }) => {
   return (
     <div
-      className={cn("overflow-hidden rounded-lg bg-white p-2", className)}
+      className={cn(
+        "overflow-hidden rounded-lg bg-white text-black p-4 flex items-center justify-center",
+        className
+      )}
       style={{ height: height ?? "fit-content" }}
     >
       {children}

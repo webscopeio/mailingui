@@ -1,14 +1,18 @@
-import * as React from "react";
 import { Container } from "@react-email/components";
-import { P, InlineCode } from "@mailingui/components";
+import { Link } from "@mailingui/components";
 
-export default function InlineCodeExample() {
+export default function Links() {
   return (
     <Container style={container}>
-      <P compact>
-        Run{" "}
-        <InlineCode>npx @mailingui/cli</InlineCode>
-      </P>
+      <Link block href="#">
+        More brilliant plans →
+      </Link>
+      <Link block href="#">
+        Terrible brilliant plans →
+      </Link>
+      <Link block href="#">
+        Not so terrible brilliant plans →
+      </Link>
     </Container>
   );
 }

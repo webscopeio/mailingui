@@ -1,22 +1,18 @@
 import { Container, Row, Column } from "@react-email/components";
-import { Divider, SocialIcon, P } from "@mailingui/components";
+import { P, Emoji } from "@mailingui/components";
 
-export default function ConnectWithUs() {
+export default function CustomerService() {
   return (
     <Container style={container}>
-      <Divider />
       <Row>
         <Column>
-          <P compact>Connect with us</P>
+          <P compact>Were you satisfied?</P>
         </Column>
-        <Column width={44}>
-          <SocialIcon type="telegram" href="#" />
+        <Column style={{ paddingRight: "8px" }}>
+          <Emoji type="thumbs-up" href="#link-ok" bg />
         </Column>
-        <Column width={44}>
-          <SocialIcon type="twitter" href="#" />
-        </Column>
-        <Column width={44}>
-          <SocialIcon type="whatsapp" href="#" />
+        <Column>
+          <Emoji type="thumbs-down" href="#link-nok" bg />
         </Column>
       </Row>
     </Container>

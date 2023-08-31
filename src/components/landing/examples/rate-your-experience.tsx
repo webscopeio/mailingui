@@ -1,23 +1,23 @@
-import * as React from "react";
 import { Container, Row, Column } from "@react-email/components";
-import { Badge, H1 } from "@mailingui/components";
+import { P, Emoji } from "@mailingui/components";
 
-export default function DotBadges() {
+export default function RateYourExperience() {
   return (
     <Container style={container}>
       <Row style={row}>
         <Column>
-          <H1 compact>Series B</H1>
+          <P compact>Rate your experience:</P>
         </Column>
       </Row>
-      <Row>
+      <Row style={row}>
         <Column>
-          <Badge variant="outline" dot>
-            New
-          </Badge>{" "}
-          <Badge variant="subtle" dot>
-            React
-          </Badge>
+          <Emoji type="sad-face" href="#rate-2" bg />
+        </Column>
+        <Column>
+          <Emoji type="smiling-face" href="#rate-4" bg />
+        </Column>
+        <Column>
+          <Emoji type="heart-eyes-face" href="#rate-5" bg />
         </Column>
       </Row>
     </Container>
@@ -33,5 +33,5 @@ const container = {
 };
 
 const row = {
-  margin: "0 0 16px",
+  margin: "0 0 6px",
 };

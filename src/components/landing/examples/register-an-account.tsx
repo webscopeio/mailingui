@@ -3,57 +3,55 @@ import { SocialIcon, P } from "@mailingui/components";
 
 export default function RegisterAnAccount() {
   return (
-    <div style={main}>
-      <div className="px-10 py-4">
-        <Container style={container}>
+    <Container style={container}>
+      <Row style={row}>
+        <Column>
+          <P compact>Register an account:</P>
+        </Column>
+      </Row>
+      <Row style={row}>
+        <Column>
           <Row>
-            <P style={{ marginTop: 0 }}>Register an account:</P>
+            <Column width={32}>
+              <SocialIcon
+                type="github"
+                href="#link"
+                size={32}
+                style={{ margin: 0 }}
+              />
+            </Column>
+            <Column width={12} />
+            <Column>GitHub</Column>
           </Row>
+        </Column>
+        <Column>
           <Row>
-            <Column>
-              <Row>
-                <Column width={32}>
-                  <SocialIcon
-                    type="github"
-                    href="#link"
-                    size={32}
-                    style={{ margin: 0 }}
-                  />
-                </Column>
-                <Column width={12} />
-                <Column>GitHub</Column>
-              </Row>
+            <Column width={32}>
+              <SocialIcon
+                type="twitter"
+                href="#link"
+                size={32}
+                style={{ margin: 0 }}
+              />
             </Column>
-            <Column>
-              <Row>
-                <Column width={32}>
-                  <SocialIcon
-                    type="twitter"
-                    href="#link"
-                    size={32}
-                    style={{ margin: 0 }}
-                  />
-                </Column>
-                <Column width={12} />
-                <Column>Twitter</Column>
-              </Row>
-            </Column>
+            <Column width={12} />
+            <Column>Twitter</Column>
           </Row>
-        </Container>
-      </div>
-    </div>
+        </Column>
+      </Row>
+    </Container>
   );
 }
 
-const main = {
-  backgroundColor: "#ffffff",
-  color: "#24292e",
-  borderRadius: "8px",
+// Styles
+const container = {
+  maxWidth: 280,
+  margin: "16px 0",
   fontFamily:
-    '-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color SocialIcon","Segoe UI SocialIcon"',
+    "'Inter', 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif",
 };
 
-const container = {
-  padding: "100px 0",
-  maxWidth: 300,
+const row = {
+  margin: "0 0 6px",
 };
+
