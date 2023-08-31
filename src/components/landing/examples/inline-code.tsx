@@ -5,9 +5,8 @@ import { P, InlineCode } from "@mailingui/components";
 export default function InlineCodeExample() {
   return (
     <Container style={container}>
-      <P compact>
-        Run{" "}
-        <InlineCode>npx @mailingui/cli</InlineCode>
+      <P compact style={{ fontSize: "20px", lineHeight: "40px" }}>
+        Run <InlineCode>npx @mailingui/cli</InlineCode>
       </P>
     </Container>
   );

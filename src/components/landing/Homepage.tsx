@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Github } from "lucide-react";
 
 import SendMyFeedback from "./examples/send-my-feedback";
 import DotBadges from "./examples/badges";
@@ -48,9 +48,19 @@ export const Homepage = () => {
                 apps.
               </p>
             </header>
-            <CTA className="w-full md:w-fit" href="/docs/guide/introduction">
-              Get Started
-            </CTA>
+            <div className="flex gap-4">
+              <CTA className="w-full md:w-fit" href="/docs/guide/introduction">
+                Get Started
+              </CTA>
+              <CTA
+                secondary
+                className="w-full md:w-fit"
+                href="https://github.com/webscopeio/mailingui"
+              >
+                <Github />
+                GitHub
+              </CTA>
+            </div>
           </div>
           {/* COMPONENT GRID */}
           <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
