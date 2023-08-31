@@ -7,7 +7,7 @@ import RegisterAnAccount from "./examples/register-an-account";
 import RateYourExperience from "./examples/rate-your-experience";
 import ConnectWithUs from "./examples/connect-with-us";
 import InlineCode from "./examples/inline-code";
-import ReadMoreDivider from "./examples/read-more-divider";
+import BlockquoteExample from "./examples/blockquote-example";
 import Links from "./examples/links";
 import Footer from "./examples/footer";
 import CustomerService from "./examples/customer-service";
@@ -89,9 +89,9 @@ export const Homepage = () => {
 };
 
 const EXAMPLE_GRID = {
-  0: [SendMyFeedback, RegisterAnAccount, DotBadges],
-  1: [RateYourExperience, InlineCode, Links, ConnectWithUs],
-  2: [ReadMoreDivider, CustomerService, Footer],
+  0: [DotBadges, RegisterAnAccount, SendMyFeedback],
+  1: [InlineCode, BlockquoteExample, RateYourExperience, ConnectWithUs],
+  2: [Links, CustomerService, Footer],
 };
 
 const Wrapper: React.FC<{

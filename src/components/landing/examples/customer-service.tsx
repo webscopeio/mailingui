@@ -6,13 +6,23 @@ export default function CustomerService() {
     <Container style={container}>
       <Row>
         <Column>
-          <P compact>Were you satisfied?</P>
+          <P compact>Were you satisfied with your order?</P>
         </Column>
-        <Column style={{ paddingRight: "8px" }}>
-          <Emoji type="thumbs-up" href="#link-ok" bg />
+        <Column width={52} style={{ paddingRight: "8px" }}>
+          <Emoji
+            type="thumbs-up"
+            href="#link-ok"
+            bg
+            style={{ width: "44px", height: "44px" }}
+          />
         </Column>
-        <Column>
-          <Emoji type="thumbs-down" href="#link-nok" bg />
+        <Column width={44}>
+          <Emoji
+            type="thumbs-down"
+            href="#link-nok"
+            bg
+            style={{ width: "44px", height: "44px" }}
+          />
         </Column>
       </Row>
     </Container>

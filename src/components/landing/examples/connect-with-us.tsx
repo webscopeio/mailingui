@@ -4,6 +4,10 @@ import { Divider, SocialIcon, P } from "@mailingui/components";
 export default function ConnectWithUs() {
   return (
     <Container style={container}>
+      <P compact>
+        Sincerely,
+        <br /> Minimal Team
+      </P>
       <Divider />
       <Row>
         <Column>
