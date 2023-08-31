@@ -48,7 +48,7 @@ export const Homepage = () => {
                 apps.
               </p>
             </header>
-            <div className="flex gap-4">
+            <div className="flex flex-col gap-2 md:flex-row">
               <CTA className="w-full md:w-fit" href="/docs/guide/introduction">
                 Get Started
               </CTA>
