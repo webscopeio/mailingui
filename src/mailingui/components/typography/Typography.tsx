@@ -15,6 +15,7 @@ const H1: React.FC<HeadingProps> = ({ compact, style, children, ...props }) => {
   return (
     <h1
       style={{
+        fontFamily: typography.fontFamily,
         fontSize: `${typography.baseFontSize * typography.typeScale ** 4}px`,
         lineHeight: `${typography.baseFontSize * typography.typeScale ** 4}px`,
         fontWeight: typography.fontWeight.bold,
@@ -34,6 +35,7 @@ const H2: React.FC<HeadingProps> = ({ compact, style, children, ...props }) => {
   return (
     <h2
       style={{
+        fontFamily: typography.fontFamily,
         fontSize: `${typography.baseFontSize * typography.typeScale ** 3}px`,
         lineHeight: `${typography.baseFontSize * typography.typeScale ** 3}px`,
         fontWeight: typography.fontWeight.bold,
@@ -53,6 +55,7 @@ const H3: React.FC<HeadingProps> = ({ compact, style, children, ...props }) => {
   return (
     <h3
       style={{
+        fontFamily: typography.fontFamily,
         fontSize: `${typography.baseFontSize * typography.typeScale ** 2}px`,
         lineHeight: `${typography.baseFontSize * typography.typeScale ** 2}px`,
         fontWeight: typography.fontWeight.bold,
@@ -72,6 +75,7 @@ const H4: React.FC<HeadingProps> = ({ compact, style, children, ...props }) => {
   return (
     <h4
       style={{
+        fontFamily: typography.fontFamily,
         fontSize: `${typography.baseFontSize * typography.typeScale}px`,
         lineHeight: `${typography.baseFontSize * typography.typeScale}px`,
         fontWeight: typography.fontWeight.bold,
@@ -106,6 +110,7 @@ const P: React.FC<ParagraphProps> = ({
   return (
     <ReactEmailText
       style={{
+        fontFamily: typography.fontFamily,
         fontSize: small
           ? `${typography.baseFontSize / typography.typeScale}px`
           : `${typography.baseFontSize}px`,
@@ -141,6 +146,7 @@ const Link: React.FC<LinkProps> = ({
   return (
     <ReactEmailLink
       style={{
+        fontFamily: typography.fontFamily,
         display: block ? "block" : "inline",
         fontSize: block ? `${typography.baseFontSize}px` : "inherit",
         lineHeight: block ? `${typography.baseFontSize * 2}px` : "inherit",
@@ -171,6 +177,7 @@ const UL: React.FC<UnorderedListProps> = ({
   return (
     <ul
       style={{
+        fontFamily: typography.fontFamily,
         listStylePosition: "outside",
         paddingInlineStart: "24px",
         margin: compact ? "6px 0" : "24px 0",
@@ -196,6 +203,7 @@ const OL: React.FC<OrderedListProps> = ({
   return (
     <ol
       style={{
+        fontFamily: typography.fontFamily,
         listStylePosition: "outside",
         paddingInlineStart: "24px",
         margin: compact ? "6px 0" : "24px 0",
@@ -227,6 +235,7 @@ const LI: React.FC<ListItemProps> = ({
   return (
     <li
       style={{
+        fontFamily: typography.fontFamily,
         fontSize: small
           ? `${typography.baseFontSize / typography.typeScale}px`
           : `${typography.baseFontSize}px`,
@@ -255,6 +264,7 @@ const Blockquote: React.FC<React.ComponentPropsWithoutRef<"p">> = ({
   return (
     <ReactEmailText
       style={{
+        fontFamily: typography.fontFamily,
         fontStyle: "italic",
         fontSize: `${typography.baseFontSize}px`,
         lineHeight: `${typography.baseFontSize * 2}px`,

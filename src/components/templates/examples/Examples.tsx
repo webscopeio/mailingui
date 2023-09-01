@@ -2,6 +2,7 @@ import { Tabs, Tab } from "nextra/components";
 import { useData } from "nextra/data";
 import { ExamplePreview } from "./ExamplePreview";
 import { ExampleCode } from "./ExampleCode";
+import { CTA } from "@components/ui/CTA";
 
 type Example = {
   name: string;
@@ -13,6 +14,28 @@ type Example = {
 
 export const Examples = () => {
   const { examples } = useData() as { examples: Example[] };
+
+  const onFormSubmit = async (html: string) => {
+    try {
+      const response = await fetch("https://react.email/api/send/test", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          to: "hello@hectorsosa.me",
+          subject: "React Email",
+          html,
+        }),
+      });
+
+      if (response.status === 429) {
+        const { error } = await response.json();
+        alert(error);
+      }
+    } catch (e) {
+      alert("Something went wrong. Please try again.");
+    }
+  };
+
   return (
     <div className="space-y-12 py-6">
       {examples.map((example, id: number) => (
@@ -20,6 +43,9 @@ export const Examples = () => {
           <h3 className="text-2xl font-semibold tracking-tight text-slate-100">
             {transformComponentName(example.name)}
           </h3>
+          <CTA onClick={() => onFormSubmit(example.html)} compact>
+            Test
+          </CTA>
           <Tabs items={["Preview", "Code", "HTML"]}>
             <Tab>
               <ExamplePreview html={example.html} />
