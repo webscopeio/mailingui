@@ -121,7 +121,7 @@ const baseUrl = `${
 const Logo = () => (
   <Row>
     <Column width={38} height={34}>
-      <Img src={`${baseUrl}/star.png`} alt="Minimal Logo" />
+      <Img width={34} height={34} src={`${baseUrl}/star.png`} alt="Minimal Logo" />
     </Column>
     <Column>
       <H3 compact>MINIMAL</H3>
