@@ -22,7 +22,7 @@ const baseUrl = `${
 }/${ASSETS_DIR}`;
 
 export default function EventConfirmation({
-  preview = "Minimal - we&apos;ve confirmed your participation",
+  preview = "Minimal - Get Ready! You're in for Minimal!",
   eventGuest = "Jacob",
   eventName = "Minimal",
   eventAddress = "Moravské nám. 1007/14",
