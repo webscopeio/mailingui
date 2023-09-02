@@ -16,11 +16,13 @@ export const theme = {
       background: "#f1f5f9",
       foreground: "#6d6c6c",
     },
+    border: "#737373",
     brand: "#000000",
   },
   typography: {
     baseFontSize: 17,
     typeScale: 1.333,
+    typeFlow: 24,
     fontFamily:
       "'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif",
     fontWeight: {

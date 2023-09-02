@@ -1,8 +1,9 @@
+import * as React from "react";
 import { Tabs, Tab } from "nextra/components";
 import { useData } from "nextra/data";
+import { ArrowRightIcon, CheckIcon, Loader2Icon } from "lucide-react";
 import { ExamplePreview } from "./ExamplePreview";
 import { ExampleCode } from "./ExampleCode";
-import { CTA } from "@components/ui/CTA";
 
 type Example = {
   name: string;
@@ -14,9 +15,24 @@ type Example = {
 
 export const Examples = () => {
   const { examples } = useData() as { examples: Example[] };
+  const [testState, setTestState] = React.useState<
+    "IDLE" | "PENDING" | "SUCCESS"
+  >("IDLE");
+
+  React.useEffect(() => {
+    if (testState !== "SUCCESS") return;
+    const timerId = setTimeout(() => {
+      setTestState("IDLE");
+    }, 2000);
+
+    return () => {
+      clearTimeout(timerId);
+    };
+  }, [testState]);
 
   const onFormSubmit = async (html: string) => {
     try {
+      setTestState("PENDING");
       const response = await fetch("https://react.email/api/send/test", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -26,11 +42,11 @@ export const Examples = () => {
           html,
         }),
       });
-
       if (response.status === 429) {
         const { error } = await response.json();
         alert(error);
       }
+      setTestState("SUCCESS");
     } catch (e) {
       alert("Something went wrong. Please try again.");
     }
@@ -40,12 +56,22 @@ export const Examples = () => {
     <div className="space-y-12 py-6">
       {examples.map((example, id: number) => (
         <div key={id}>
-          <h3 className="text-2xl font-semibold tracking-tight text-slate-100">
-            {transformComponentName(example.name)}
-          </h3>
-          <CTA onClick={() => onFormSubmit(example.html)} compact>
-            Test
-          </CTA>
+          <header className="flex items-center gap-6">
+            <h3 className="text-2xl font-semibold tracking-tight text-slate-100">
+              {transformComponentName(example.name)}
+            </h3>
+            <button
+              className="inline-flex gap-x-2 hover:opacity-80"
+              onClick={() => onFormSubmit(example.html)}
+            >
+              Test
+              {testState === "IDLE" && <ArrowRightIcon />}
+              {testState === "PENDING" && (
+                <Loader2Icon className="animate-spin" />
+              )}
+              {testState === "SUCCESS" && <CheckIcon />}
+            </button>
+          </header>
           <Tabs items={["Preview", "Code", "HTML"]}>
             <Tab>
               <ExamplePreview html={example.html} />

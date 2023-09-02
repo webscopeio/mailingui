@@ -11,7 +11,11 @@ interface HeadingProps extends React.ComponentPropsWithoutRef<"p"> {
   compact?: boolean;
 }
 
-const H1: React.FC<HeadingProps> = ({ compact, style, children, ...props }) => {
+const H1: React.FC<React.ComponentPropsWithoutRef<"p">> = ({
+  style,
+  children,
+  ...props
+}) => {
   return (
     <h1
       style={{
@@ -21,7 +25,7 @@ const H1: React.FC<HeadingProps> = ({ compact, style, children, ...props }) => {
         fontWeight: typography.fontWeight.bold,
         letterSpacing: "-0.35px",
         color: color.foreground["100"],
-        margin: compact ? "0" : "24px 0 0 0",
+        margin: 0,
         ...style,
       }}
       {...props}
@@ -41,7 +45,7 @@ const H2: React.FC<HeadingProps> = ({ compact, style, children, ...props }) => {
         fontWeight: typography.fontWeight.bold,
         letterSpacing: "-0.35px",
         color: color.foreground["100"],
-        margin: compact ? "0" : "24px 0 0 0",
+        margin: compact ? "0" : `${typography.typeFlow}px 0`,
         ...style,
       }}
       {...props}
@@ -61,7 +65,7 @@ const H3: React.FC<HeadingProps> = ({ compact, style, children, ...props }) => {
         fontWeight: typography.fontWeight.bold,
         letterSpacing: "-0.35px",
         color: color.foreground["100"],
-        margin: compact ? "0" : "24px 0 0 0",
+        margin: compact ? "0" : `${typography.typeFlow}px 0`,
         ...style,
       }}
       {...props}
@@ -81,7 +85,7 @@ const H4: React.FC<HeadingProps> = ({ compact, style, children, ...props }) => {
         fontWeight: typography.fontWeight.bold,
         letterSpacing: "-0.35px",
         color: color.foreground["100"],
-        margin: compact ? "0" : "24px 0 0 0",
+        margin: compact ? "0" : `${typography.typeFlow}px 0`,
         ...style,
       }}
       {...props}
@@ -121,7 +125,7 @@ const P: React.FC<ParagraphProps> = ({
           ? typography.fontWeight.bold
           : typography.fontWeight.base,
         color: muted ? color.muted.foreground : color.foreground["100"],
-        margin: compact ? "6px 0" : "24px 0",
+        margin: compact ? "0" : `${typography.typeFlow}px 0`,
         ...style,
       }}
       {...props}
@@ -178,9 +182,8 @@ const UL: React.FC<UnorderedListProps> = ({
     <ul
       style={{
         fontFamily: typography.fontFamily,
-        listStylePosition: "outside",
         paddingInlineStart: "24px",
-        margin: compact ? "6px 0" : "24px 0",
+        margin: compact ? "0" : `${typography.typeFlow}px 0`,
         ...style,
       }}
       {...props}
@@ -204,9 +207,8 @@ const OL: React.FC<OrderedListProps> = ({
     <ol
       style={{
         fontFamily: typography.fontFamily,
-        listStylePosition: "outside",
         paddingInlineStart: "24px",
-        margin: compact ? "6px 0" : "24px 0",
+        margin: compact ? "0" : `${typography.typeFlow}px 0`,
         ...style,
       }}
       {...props}
@@ -217,14 +219,12 @@ const OL: React.FC<OrderedListProps> = ({
 };
 
 interface ListItemProps extends React.ComponentPropsWithoutRef<"li"> {
-  loose?: boolean;
   small?: boolean;
   bold?: boolean;
   muted?: boolean;
 }
 
 const LI: React.FC<ListItemProps> = ({
-  loose,
   small,
   bold,
   muted,
@@ -246,7 +246,7 @@ const LI: React.FC<ListItemProps> = ({
           ? typography.fontWeight.bold
           : typography.fontWeight.base,
         color: muted ? color.muted.foreground : color.foreground["100"],
-        margin: loose ? "12px 0" : "0",
+        margin: "0",
         ...style,
       }}
       {...props}
@@ -270,7 +270,7 @@ const Blockquote: React.FC<React.ComponentPropsWithoutRef<"p">> = ({
         lineHeight: `${typography.baseFontSize * 2}px`,
         fontWeight: typography.fontWeight.base,
         color: color.foreground["100"],
-        margin: "24px 0 0",
+        margin: `${typography.typeFlow}px 0`,
         padding: "0 0 0 24px",
         borderLeft: "2px solid #525057",
         ...style,
@@ -306,4 +306,22 @@ const InlineCode: React.FC<React.ComponentPropsWithoutRef<"code">> = ({
   );
 };
 
-export { H1, H2, H3, H4, P, Link, UL, OL, LI, Blockquote, InlineCode };
+const HR: React.FC<React.ComponentPropsWithoutRef<"hr">> = ({
+  style,
+  ...props
+}) => {
+  return (
+    <hr
+      style={{
+        margin: `${typography.typeFlow}px 0`,
+        width: "100%",
+        border: "none",
+        borderTop: `1px solid ${color.border}`,
+        ...style,
+      }}
+      {...props}
+    />
+  );
+};
+
+export { H1, H2, H3, H4, P, Link, UL, OL, LI, Blockquote, InlineCode, HR };
