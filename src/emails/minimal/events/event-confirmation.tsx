@@ -143,7 +143,7 @@ const MinimalButton = ({
 
 const Footer = () => (
   <>
-    <Row style={{ marginBottom: "18px" }}>
+    <Row>
       <Column width={24} style={{ paddingRight: "18px" }}>
         <ReactEmailLink href="#">
           <Img
@@ -177,6 +177,27 @@ const Footer = () => (
         </ReactEmailLink>
       </Column>
       <Column width={"100%"}></Column>
+    </Row>
+    <Row>
+      <Column>
+        <P small muted>
+          We respect your privacy and are committed to safeguarding your
+          personal information. Any data you provide to us will be used solely
+          for the purpose for which it was provided, and we will never share,
+          sell, or disclose your information to any third party without your
+          explicit consent. For more information on how we handle your data,
+          please refer to our Privacy Policy on our website.
+        </P>
+        <P small muted>
+          If you have any concerns about your privacy or wish to update your
+          preferences, please contact us at{" "}
+          <Link muted href="#">
+            info@minimal.com
+          </Link>
+          . We appreciate your trust in us and strive to maintain the highest
+          standards of data protection.
+        </P>
+      </Column>
     </Row>
     <Row>
       <Column>

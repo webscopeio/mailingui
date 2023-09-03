@@ -125,7 +125,11 @@ const P: React.FC<ParagraphProps> = ({
           ? typography.fontWeight.bold
           : typography.fontWeight.base,
         color: muted ? color.muted.foreground : color.foreground["100"],
-        margin: compact ? "0" : `${typography.typeFlow}px 0`,
+        margin: compact
+          ? "0"
+          : small
+          ? `${typography.typeFlow / 2}px 0`
+          : `${typography.typeFlow}px 0`,
         ...style,
       }}
       {...props}
@@ -158,7 +162,7 @@ const Link: React.FC<LinkProps> = ({
         color: muted ? color.muted.foreground : color.foreground["100"],
         margin: block ? "6px 0px" : "inherit",
         textDecoration: "underline",
-        textUnderlineOffset: "8px",
+        textUnderlineOffset: "6px",
         ...style,
       }}
       {...props}
