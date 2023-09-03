@@ -22,7 +22,7 @@ const baseUrl = `${
 }/${ASSETS_DIR}`;
 
 export default function EventConfirmation({
-  preview = "Minimal - Get Ready! You're in for Minimal!",
+  preview = "Get Ready! You're in for Minimal!",
   eventGuest = "Jacob",
   eventName = "Minimal",
   eventAddress = "Moravské nám. 1007/14",
@@ -81,11 +81,12 @@ export default function EventConfirmation({
 
 // Styles
 const body = {
+  backgroundColor: "#fafafa", // bg-neutral-50,
   margin: 0,
 };
 
 const container = {
-  backgroundColor: "#fafafa", // bg-neutral-50,
+  backgroundColor: "#fff",
   padding: "60px 40px",
   maxWidth: "600px",
 };
@@ -116,17 +117,23 @@ const MinimalButton = ({
   children: React.ReactNode;
 }) => (
   // These styles are copy-and-paste to match theme
-  <div style={{ margin: "24px 0 0" }}>
+  <div
+    style={{
+      margin: "24px 0 0",
+      backgroundColor: "#171717",
+      width: "100%",
+      textAlign: "center",
+    }}
+  >
     <Button
-      pX={28}
       pY={16}
       href={href}
       style={{
-        backgroundColor: "#171717",
+        width: "100%",
         fontSize: "17px",
         color: "#fff",
         fontFamily:
-          "'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;",
+          "'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif",
       }}
     >
       {children}

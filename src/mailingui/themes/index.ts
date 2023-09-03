@@ -16,7 +16,7 @@ export const theme = {
       background: "#f1f5f9",
       foreground: "#6d6c6c",
     },
-    border: "#737373",
+    border: "#a3a3a3",
     brand: "#000000",
   },
   typography: {
