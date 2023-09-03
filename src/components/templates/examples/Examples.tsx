@@ -70,7 +70,7 @@ const TestPopover: React.FC<{ html: string }> = ({ html }) => {
     if (testState !== "SUCCESS") return;
     const timerId = setTimeout(() => {
       setTestState("IDLE");
-    }, 2000);
+    }, 3500);
 
     return () => {
       clearTimeout(timerId);

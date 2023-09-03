@@ -1,4 +1,5 @@
 import * as React from "react";
+
 import {
   Body,
   Container,
@@ -7,24 +8,21 @@ import {
   Head,
   Row,
   Column,
-  Img,
-  Button,
-  Link as ReactEmailLink,
 } from "@react-email/components";
-import { H1, P, H3, Link, HR } from "@mailingui/components";
 
-const DOMAIN = "mailingui.com";
-const ASSETS_DIR = "static/minimal";
-const baseUrl = `${
-  process.env.NODE_ENV === "development"
-    ? ""
-    : `https://${process.env.VERCEL_URL ?? DOMAIN}`
-}/${ASSETS_DIR}`;
+import { body, container, row } from "../shared/styles";
+import { Header } from "../shared/Header";
+import { MinimalButton } from "../shared/MinimalButton";
+import { Footer } from "../shared/Footer";
+
+import { H1, P, HR } from "@mailingui/components";
 
 export default function EventConfirmation({
   preview = "Get Ready! You're in for Minimal!",
   eventGuest = "Jacob",
   eventName = "Minimal",
+  eventDate = "August 22, 2023",
+  eventTime = "4PM - 9PM",
   eventAddress = "Moravské nám. 1007/14",
 }: Record<string, string>) {
   return (
@@ -33,28 +31,28 @@ export default function EventConfirmation({
       <Preview>{preview}</Preview>
       <Body style={body}>
         <Container style={container}>
-          <Logo />
-          <Row>
+          <Header />
+          <Row style={row}>
             <Column>
               <HR />
               <H1>Get Ready! You&apos;re in for {eventName}!</H1>
-              <P>Dear, {eventGuest}:</P>
+              <P>Dear {eventGuest},</P>
               <P>
                 We are thrilled to inform you that your registration for{" "}
                 {eventName}
                 has been successfully confirmed! Get ready for an unforgettable
                 experience on{" "}
                 <b>
-                  September 5, 2023 at {eventName} HQ — {eventAddress}
+                  {eventDate} at {eventName} HQ — {eventAddress}
                 </b>
                 . We can&apos;t wait to have you join us for this exciting
                 event.
               </P>
               <P compact>
-                <b>When:</b> September 5, 2023
+                <b>When:</b> {eventDate}
               </P>
               <P compact>
-                <b>What Time:</b> 4PM - 9PM
+                <b>What Time:</b> {eventTime}
               </P>
               <P compact>
                 <b>Where:</b> {eventName} HQ — {eventAddress}
@@ -69,7 +67,6 @@ export default function EventConfirmation({
                 Best regards,
                 <br /> Minimal Team
               </P>
-              <HR />
             </Column>
           </Row>
           <Footer />
@@ -78,146 +75,3 @@ export default function EventConfirmation({
     </Html>
   );
 }
-
-// Styles
-const body = {
-  backgroundColor: "#fafafa", // bg-neutral-50,
-  margin: 0,
-};
-
-const container = {
-  backgroundColor: "#fff",
-  padding: "60px 40px",
-  maxWidth: "600px",
-};
-
-// Components
-
-const Logo = () => (
-  <Row>
-    <Column width={38} height={34}>
-      <Img
-        width={34}
-        height={34}
-        src={`${baseUrl}/star.png`}
-        alt="Minimal Logo"
-      />
-    </Column>
-    <Column>
-      <H3 compact>MINIMAL</H3>
-    </Column>
-  </Row>
-);
-
-const MinimalButton = ({
-  href,
-  children,
-}: {
-  href: string;
-  children: React.ReactNode;
-}) => (
-  // These styles are copy-and-paste to match theme
-  <div
-    style={{
-      margin: "24px 0 0",
-      backgroundColor: "#171717",
-      width: "100%",
-      textAlign: "center",
-    }}
-  >
-    <Button
-      pY={16}
-      href={href}
-      style={{
-        width: "100%",
-        fontSize: "17px",
-        color: "#fff",
-        fontFamily:
-          "'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif",
-      }}
-    >
-      {children}
-    </Button>
-  </div>
-);
-
-const Footer = () => (
-  <>
-    <Row>
-      <Column width={24} style={{ paddingRight: "18px" }}>
-        <ReactEmailLink href="#">
-          <Img
-            style={{ height: "24px", width: "24px" }}
-            src={`${baseUrl}/icons/github.png`}
-          />
-        </ReactEmailLink>
-      </Column>
-      <Column width={24} style={{ paddingRight: "18px" }}>
-        <ReactEmailLink href="#">
-          <Img
-            style={{ height: "24px", width: "24px" }}
-            src={`${baseUrl}/icons/linkedin.png`}
-          />
-        </ReactEmailLink>
-      </Column>
-      <Column width={24} style={{ paddingRight: "18px" }}>
-        <ReactEmailLink href="#">
-          <Img
-            style={{ height: "24px", width: "24px" }}
-            src={`${baseUrl}/icons/slack.png`}
-          />
-        </ReactEmailLink>
-      </Column>
-      <Column width={24} style={{ paddingRight: "18px" }}>
-        <ReactEmailLink href="#">
-          <Img
-            style={{ height: "24px", width: "24px" }}
-            src={`${baseUrl}/icons/twitter.png`}
-          />
-        </ReactEmailLink>
-      </Column>
-      <Column width={"100%"}></Column>
-    </Row>
-    <Row>
-      <Column>
-        <P small muted>
-          We respect your privacy and are committed to safeguarding your
-          personal information. Any data you provide to us will be used solely
-          for the purpose for which it was provided, and we will never share,
-          sell, or disclose your information to any third party without your
-          explicit consent. For more information on how we handle your data,
-          please refer to our Privacy Policy on our website.
-        </P>
-        <P small muted>
-          If you have any concerns about your privacy or wish to update your
-          preferences, please contact us at{" "}
-          <Link muted href="#">
-            info@minimal.com
-          </Link>
-          . We appreciate your trust in us and strive to maintain the highest
-          standards of data protection.
-        </P>
-      </Column>
-    </Row>
-    <Row>
-      <Column>
-        <P small compact muted>
-          © Viola Company Inc., 2972 Westheimer Rd. Santa Ana, Illinois 85486
-        </P>
-        <P small compact muted>
-          <Link muted href="#unsubscribe">
-            Unsubscribe
-          </Link>{" "}
-          ·{" "}
-          <Link muted href="#tos">
-            Terms of Use
-          </Link>{" "}
-          ·{" "}
-          <Link muted href="#pp">
-            Privacy Policy
-          </Link>
-        </P>
-      </Column>
-    </Row>
-  </>
-);
