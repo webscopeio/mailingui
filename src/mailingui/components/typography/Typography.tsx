@@ -11,16 +11,21 @@ interface HeadingProps extends React.ComponentPropsWithoutRef<"p"> {
   compact?: boolean;
 }
 
-const H1: React.FC<HeadingProps> = ({ compact, style, children, ...props }) => {
+const H1: React.FC<React.ComponentPropsWithoutRef<"p">> = ({
+  style,
+  children,
+  ...props
+}) => {
   return (
     <h1
       style={{
+        fontFamily: typography.fontFamily,
         fontSize: `${typography.baseFontSize * typography.typeScale ** 4}px`,
         lineHeight: `${typography.baseFontSize * typography.typeScale ** 4}px`,
         fontWeight: typography.fontWeight.bold,
         letterSpacing: "-0.35px",
         color: color.foreground["100"],
-        margin: compact ? "0" : "24px 0 0 0",
+        margin: 0,
         ...style,
       }}
       {...props}
@@ -34,12 +39,13 @@ const H2: React.FC<HeadingProps> = ({ compact, style, children, ...props }) => {
   return (
     <h2
       style={{
+        fontFamily: typography.fontFamily,
         fontSize: `${typography.baseFontSize * typography.typeScale ** 3}px`,
         lineHeight: `${typography.baseFontSize * typography.typeScale ** 3}px`,
         fontWeight: typography.fontWeight.bold,
         letterSpacing: "-0.35px",
         color: color.foreground["100"],
-        margin: compact ? "0" : "24px 0 0 0",
+        margin: compact ? "0" : `${typography.typeFlow * 2}px 0 0`,
         ...style,
       }}
       {...props}
@@ -53,12 +59,13 @@ const H3: React.FC<HeadingProps> = ({ compact, style, children, ...props }) => {
   return (
     <h3
       style={{
+        fontFamily: typography.fontFamily,
         fontSize: `${typography.baseFontSize * typography.typeScale ** 2}px`,
         lineHeight: `${typography.baseFontSize * typography.typeScale ** 2}px`,
         fontWeight: typography.fontWeight.bold,
         letterSpacing: "-0.35px",
         color: color.foreground["100"],
-        margin: compact ? "0" : "24px 0 0 0",
+        margin: compact ? "0" : `${typography.typeFlow * 1.5}px 0 0`,
         ...style,
       }}
       {...props}
@@ -72,12 +79,13 @@ const H4: React.FC<HeadingProps> = ({ compact, style, children, ...props }) => {
   return (
     <h4
       style={{
+        fontFamily: typography.fontFamily,
         fontSize: `${typography.baseFontSize * typography.typeScale}px`,
         lineHeight: `${typography.baseFontSize * typography.typeScale}px`,
         fontWeight: typography.fontWeight.bold,
         letterSpacing: "-0.35px",
         color: color.foreground["100"],
-        margin: compact ? "0" : "24px 0 0 0",
+        margin: compact ? "0" : `${typography.typeFlow * 1.5}px 0 0`,
         ...style,
       }}
       {...props}
@@ -106,6 +114,7 @@ const P: React.FC<ParagraphProps> = ({
   return (
     <ReactEmailText
       style={{
+        fontFamily: typography.fontFamily,
         fontSize: small
           ? `${typography.baseFontSize / typography.typeScale}px`
           : `${typography.baseFontSize}px`,
@@ -116,7 +125,11 @@ const P: React.FC<ParagraphProps> = ({
           ? typography.fontWeight.bold
           : typography.fontWeight.base,
         color: muted ? color.muted.foreground : color.foreground["100"],
-        margin: compact ? "6px 0" : "24px 0",
+        margin: compact
+          ? "0"
+          : small
+          ? `${typography.typeFlow / 2}px 0`
+          : `${typography.typeFlow}px 0`,
         ...style,
       }}
       {...props}
@@ -141,6 +154,7 @@ const Link: React.FC<LinkProps> = ({
   return (
     <ReactEmailLink
       style={{
+        fontFamily: typography.fontFamily,
         display: block ? "block" : "inline",
         fontSize: block ? `${typography.baseFontSize}px` : "inherit",
         lineHeight: block ? `${typography.baseFontSize * 2}px` : "inherit",
@@ -148,7 +162,7 @@ const Link: React.FC<LinkProps> = ({
         color: muted ? color.muted.foreground : color.foreground["100"],
         margin: block ? "6px 0px" : "inherit",
         textDecoration: "underline",
-        textUnderlineOffset: "8px",
+        textUnderlineOffset: "6px",
         ...style,
       }}
       {...props}
@@ -171,9 +185,9 @@ const UL: React.FC<UnorderedListProps> = ({
   return (
     <ul
       style={{
-        listStylePosition: "outside",
+        fontFamily: typography.fontFamily,
         paddingInlineStart: "24px",
-        margin: compact ? "6px 0" : "24px 0",
+        margin: compact ? "0" : `${typography.typeFlow}px 0`,
         ...style,
       }}
       {...props}
@@ -196,9 +210,9 @@ const OL: React.FC<OrderedListProps> = ({
   return (
     <ol
       style={{
-        listStylePosition: "outside",
+        fontFamily: typography.fontFamily,
         paddingInlineStart: "24px",
-        margin: compact ? "6px 0" : "24px 0",
+        margin: compact ? "0" : `${typography.typeFlow}px 0`,
         ...style,
       }}
       {...props}
@@ -209,14 +223,12 @@ const OL: React.FC<OrderedListProps> = ({
 };
 
 interface ListItemProps extends React.ComponentPropsWithoutRef<"li"> {
-  loose?: boolean;
   small?: boolean;
   bold?: boolean;
   muted?: boolean;
 }
 
 const LI: React.FC<ListItemProps> = ({
-  loose,
   small,
   bold,
   muted,
@@ -227,6 +239,7 @@ const LI: React.FC<ListItemProps> = ({
   return (
     <li
       style={{
+        fontFamily: typography.fontFamily,
         fontSize: small
           ? `${typography.baseFontSize / typography.typeScale}px`
           : `${typography.baseFontSize}px`,
@@ -237,7 +250,7 @@ const LI: React.FC<ListItemProps> = ({
           ? typography.fontWeight.bold
           : typography.fontWeight.base,
         color: muted ? color.muted.foreground : color.foreground["100"],
-        margin: loose ? "12px 0" : "0",
+        margin: `${typography.typeFlow / 2}px 0`,
         ...style,
       }}
       {...props}
@@ -255,12 +268,13 @@ const Blockquote: React.FC<React.ComponentPropsWithoutRef<"p">> = ({
   return (
     <ReactEmailText
       style={{
+        fontFamily: typography.fontFamily,
         fontStyle: "italic",
         fontSize: `${typography.baseFontSize}px`,
         lineHeight: `${typography.baseFontSize * 2}px`,
         fontWeight: typography.fontWeight.base,
         color: color.foreground["100"],
-        margin: "24px 0 0",
+        margin: `${typography.typeFlow}px 0`,
         padding: "0 0 0 24px",
         borderLeft: "2px solid #525057",
         ...style,
@@ -296,4 +310,22 @@ const InlineCode: React.FC<React.ComponentPropsWithoutRef<"code">> = ({
   );
 };
 
-export { H1, H2, H3, H4, P, Link, UL, OL, LI, Blockquote, InlineCode };
+const HR: React.FC<React.ComponentPropsWithoutRef<"hr">> = ({
+  style,
+  ...props
+}) => {
+  return (
+    <hr
+      style={{
+        margin: `${typography.typeFlow}px 0`,
+        width: "100%",
+        border: "none",
+        borderTop: `1px solid ${color.border}`,
+        ...style,
+      }}
+      {...props}
+    />
+  );
+};
+
+export { H1, H2, H3, H4, P, Link, UL, OL, LI, Blockquote, InlineCode, HR };
