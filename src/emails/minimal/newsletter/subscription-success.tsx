@@ -1,170 +1,114 @@
 import * as React from "react";
+
 import {
   Body,
-  Column,
   Container,
   Html,
   Preview,
-  Img,
   Head,
   Row,
+  Column,
+  Img,
 } from "@react-email/components";
-import {
-  SocialIcon,
-  type SocialIconType,
-  Button,
-  P,
-  Link,
-  H3,
-  H1,
-  UL,
-  LI,
-} from "@mailingui/components";
 
-type SubscriptionSuccessProps = {
-  subscriberName: string;
-  company: string;
-  link: string;
-  items: string[];
-};
+import { body, container, row } from "../shared/styles";
+import { Header } from "../shared/Header";
+import { Footer } from "../shared/Footer";
 
-const baseUrl = `${
-  process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : ""
-}/static/minimal-theme`;
+import { baseUrl } from "../shared/assets";
+import { Banner } from "../shared/Banner";
+import { H1, P, HR, H3, OL, LI, Link } from "@mailingui/components";
 
-export const SubscriptionSuccess: React.FC<SubscriptionSuccessProps> = ({
+export default function SubscriptionSuccess({
+  preview = "Welcome to the Minimalist",
+  newsletterName = "The Minimalist",
   subscriberName = "Jacob",
-  company = "Minimal",
-  link = "https://google.com",
-  items = [
-    "A recap of our latest product launch and customer feedback",
-    "A sneak peek of our upcoming events and promotions",
-    "An inside look at our team and company culture",
-    "Tips and advice related to our industry or area of expertise",
-  ],
-}) => {
+}: Record<string, string>) {
   return (
     <Html>
       <Head />
-      <Preview>Minimal - New issue of our newsletter</Preview>
-      <Body style={main}>
-        <Container style={container} width={600}>
+      <Preview>{preview}</Preview>
+      <Body style={body}>
+        <Container style={container}>
+          <Header />
           <Row style={row}>
-            <Column width={46} height={34}>
-              <Img src={`${baseUrl}/star.png`} alt="Star" />
-            </Column>
             <Column>
-              <H3 compact>MINIMAL</H3>
+              <HR />
+              <H1>{preview}</H1>
+              <P>Dear {subscriberName},</P>
+              <P>
+                Welcome to <b>{newsletterName}</b> community. Your subscription
+                has been confirmed. Get ready for the latest updates, tips, and
+                more, straight to your inbox. Your journey with us starts now.
+              </P>
+              <HR />
+              <H3>
+                Recap of <Link href="#">#420</Link>
+              </H3>
+              <div style={{ margin: "24px 0" }}>
+                <Img
+                  width={"100%"}
+                  src={`${baseUrl}/newsletter/speaker.png`}
+                  alt="The Minimalist"
+                />
+                <P style={{ textAlign: "center" }} compact muted>
+                  Lights, Camera, Action
+                </P>
+              </div>
+              <OL>
+                <LI>
+                  Andy Warfield wrote an in-depth article on Dr Werner&apos;s
+                  blog about what it was like{" "}
+                  <Link href="#">
+                    Building and operating a pretty big storage system called S3
+                  </Link>
+                  .
+                </LI>
+                <LI>
+                  Vercel just introduced <Link href="#">react-tweet</Link>,
+                  which lets you embed tweets into any React app with a single
+                  line of code. It comes with RSC support, less client-side
+                  JavaScript, and it already needs to be renamed 🙅‍♂️.
+                </LI>
+                <LI>
+                  Brian Rinaldi wrote this touching{" "}
+                  <Link href="#">Jamstack Eulogy</Link>, which sparked some
+                  debate among all the pro-Jammies and anti-Jammies out there.
+                </LI>
+                <LI>
+                  <Link href="#">Remix-Dev-Tools</Link> makes it easier to
+                  monitor and manage page info, URL parameters, server
+                  responses, and more in your Remix apps.
+                </LI>
+                <LI>
+                  In a classic case of “if you can&apos;t beat &apos;em, join
+                  &apos;em”, Stack Overflow just released{" "}
+                  <Link href="#">Overflow AI</Link>. It&apos;s kind of like
+                  ChatGPT, but it gives a different company money when you ask
+                  it questions.
+                </LI>
+              </OL>
             </Column>
           </Row>
-          <Row style={row}>
-            <Img width={520} src={`${baseUrl}/divider.png`} />
-          </Row>
-          <Row style={row}>
-            <H1>You Are Subscribed!</H1>
-            <P>Dear, {subscriberName}:</P>
-            <P>
-              You are successfully signed up for our newsletter. Expect a weekly
-              email about all the amazing stuff happening withing the {company}
-              ecosystem.
+          <Banner backgroundColor="#fff7ed">
+            <P compact style={{ lineHeight: 1.5 }}>
+              <b>Want us to write about your company?</b>
+              <br />
+              Please reach out to: <Link href="#">info@minimal.com</Link>
             </P>
-            <Img src={`${baseUrl}/phone-newsletter.png`} width={520} />
-          </Row>
+          </Banner>
           <Row style={row}>
-            <P compact>
-              <b>In this edition, you&apos;ll find:</b>
-            </P>
-            <UL compact>
-              {items.map((item, i) => (
-                <LI key={i}>{item}</LI>
-              ))}
-            </UL>
+            <Column>
+              <P>Until next time</P>
+              <P muted>
+                Best regards,
+                <br /> Minimal Team
+              </P>
+            </Column>
           </Row>
-          <Row style={row}>
-            <Button
-              href={link}
-              width={520}
-              height={56}
-              backgroundColor="#000000"
-            >
-              Read more
-            </Button>
-            <P>
-              We are committed to providing you with valuable content and
-              insights that will help you stay informed and engaged. Thank you
-              for your continued support and loyalty.
-            </P>
-            <P>
-              Sincerely,
-              <br /> Minimal Team
-            </P>
-            <Img width={520} src={`${baseUrl}/divider.png`} />
-          </Row>
-          <Row style={row}>
-            {(
-              [
-                "linkedin",
-                "skype",
-                "medium",
-                "twitter",
-                "facebook",
-              ] as SocialIconType[]
-            ).map((type, i) => (
-              <div key={i}>
-                <Column width={24} style={{ paddingRight: "20px" }}>
-                  <SocialIcon
-                    type={type}
-                    style={{ margin: 0 }}
-                    size={24}
-                    href="https://google.com"
-                  />
-                </Column>
-              </div>
-            ))}
-            <Column width={520 - 196}></Column>
-          </Row>
-          <Row style={row}>
-            <P compact muted>
-              © Viola Company Inc., 2972 Westheimer Rd. Santa Ana, Illinois
-              85486
-            </P>
-            <P compact muted>
-              <Link muted href="#unsubscribe">
-                Unsubscribe
-              </Link>{" "}
-              ·{" "}
-              <Link muted href="#tos">
-                Terms of Use
-              </Link>{" "}
-              ·{" "}
-              <Link muted href="#pp">
-                Privacy Policy
-              </Link>
-            </P>
-          </Row>
+          <Footer />
         </Container>
       </Body>
     </Html>
   );
-};
-
-export default SubscriptionSuccess;
-
-// Styles
-const main = {
-  backgroundColor: "#f6f9fc",
-  padding: "60px 0",
-};
-
-const container = {
-  backgroundColor: "#ffffff",
-  border: "1px solid #f0f0f0",
-  padding: "60px 40px 40px",
-  width: "600px",
-  fontFamily:
-    "'Inter', 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif",
-};
-
-const row = {
-  margin: "0 0 24px",
-};
+}

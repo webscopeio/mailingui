@@ -8,13 +8,15 @@ import {
   Head,
   Row,
   Column,
+  Img,
+  Link,
 } from "@react-email/components";
 
 import { body, container, row } from "../shared/styles";
 import { Header } from "../shared/Header";
 import { Footer } from "../shared/Footer";
 
-import { H1, P, HR, Emoji } from "@mailingui/components";
+import { H1, P, HR } from "@mailingui/components";
 
 export default function EventReview({
   preview = "How was it?",
@@ -31,7 +33,7 @@ export default function EventReview({
           <Row style={row}>
             <Column>
               <HR />
-              <H1>Share your Experience with Us</H1>
+              <H1>Share your experience with us</H1>
               <P>Dear {eventGuest},</P>
               <P>
                 We hope you enjoyed yourself at the {eventName}. We wanted to
@@ -39,55 +41,31 @@ export default function EventReview({
                 experience!
               </P>
               <P>
-                Please use the emojis below to{" "}
-                <b>rate your overall experience</b>:
+                <b>Rate your overall experience</b>:
               </P>
-              <Row style={{ ...row, textAlign: "center" }}>
-                <Column>
-                  <Emoji
-                    type="enraged-face"
-                    style={{ paddingBottom: "8px" }}
-                    href="https://google.com"
-                    bg
-                  />
+              <Row>
+                <Column align="center">
+                  <Link href="#">
+                    <Img src={"https://i.ibb.co/W3xxzyp/confounded-face.png"} />
+                  </Link>
                   <P compact>Terrible</P>
                 </Column>
-                <Column>
-                  <Emoji
-                    type="sad-face"
-                    style={{ paddingLeft: "16px", paddingBottom: "8px" }}
-                    href="https://google.com"
-                    bg
-                  />
-                  <P compact>Bad</P>
+                <Column align="center">
+                  <Link href="#">
+                    <Img src={"https://i.ibb.co/qy348qN/neutral-face.png"} />
+                  </Link>
+                  <P compact>Okay</P>
                 </Column>
-                <Column>
-                  <Emoji
-                    type="neutral-face"
-                    style={{ paddingLeft: "16px", paddingBottom: "8px" }}
-                    href="https://google.com"
-                    bg
-                  />
-                  <P compact>Neutral</P>
+                <Column align="center">
+                  <Link href="#">
+                    <Img src={"https://i.ibb.co/Qn1rS3S/similing-face.png"} />
+                  </Link>
+                  <P compact>Great</P>
                 </Column>
-                <Column>
-                  <Emoji
-                    type="smiling-face"
-                    style={{ paddingLeft: "16px", paddingBottom: "8px" }}
-                    href="https://google.com"
-                    bg
-                  />
-                  <P compact>
-                  Good
-                  </P>
-                </Column>
-                <Column>
-                  <Emoji
-                    type="heart-eyes-face"
-                    style={{ paddingLeft: "16px", paddingBottom: "8px" }}
-                    href="https://google.com"
-                    bg
-                  />
+                <Column align="center">
+                  <Link href="#">
+                    <Img src={"https://i.ibb.co/Msz3Tqm/heart-eyes-face.png"} />
+                  </Link>
                   <P compact>Excelent</P>
                 </Column>
               </Row>

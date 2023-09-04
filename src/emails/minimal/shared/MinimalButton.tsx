@@ -1,16 +1,13 @@
-import * as React from 'react';
-import { Button } from '@react-email/components';
-import { theme } from '@mailingui/themes';
+import * as React from "react";
+import { Button } from "@react-email/components";
+import { theme } from "@mailingui/themes";
 
 const { typography } = theme;
 
-export const MinimalButton = ({
-  href,
-  children,
-}: {
+export const MinimalButton: React.FC<{
   href: string;
   children: React.ReactNode;
-}) => (
+}> = ({ href, children }) => (
   <div
     style={{
       margin: `${typography.typeFlow}px 0`,

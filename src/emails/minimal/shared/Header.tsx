@@ -4,7 +4,7 @@ import { baseUrl } from "./assets"
 import { row } from "./styles"
 import { H3 } from "@mailingui/components"
 
-export const Header = () => {
+export const Header: React.FC = () => {
   return (
     <Row style={row}>
     <Column width={38} height={34}>

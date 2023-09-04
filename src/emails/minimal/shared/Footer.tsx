@@ -7,41 +7,32 @@ import {
 } from "@react-email/components";
 import { row } from "./styles";
 import { baseUrl } from "./assets";
+import { Banner } from "./Banner";
 import { HR, Link, P } from "@mailingui/components";
 import { theme } from "@mailingui/themes";
 
 const { typography } = theme;
 
-export const Footer = () => (
+export const Footer: React.FC = () => (
   <>
-    <Row style={{ marginBottom: `${typography.typeFlow}px` }}>
-      <Column
+    <Banner style={{ marginBottom: `${typography.typeFlow}px` }}>
+      <hr
         style={{
-          ...row,
-          width: "100%",
-          paddingTop: "24px",
-          paddingBottom: "24px",
-          backgroundColor: "#f5f5f5",
+          width: "30px",
+          height: "4px",
+          margin: "4px 0",
+          backgroundColor: "#ef4444",
+          color: "#ef4444",
+          borderWidth: 0,
         }}
-      >
-        <hr
-          style={{
-            width: "30px",
-            height: "4px",
-            margin: "4px 0",
-            backgroundColor: "#ef4444",
-            color: "#ef4444",
-            borderWidth: 0,
-          }}
-        />
-        <P style={{ lineHeight: "1.5", margin: 0 }}>
-          <b>We&apos;d like to hear from you </b>
-        </P>
-        <P style={{ lineHeight: "1.5", margin: 0 }}>
-          Share your feedback at: <Link href="#">newsletters@minimal.com</Link>
-        </P>
-      </Column>
-    </Row>
+      />
+      <P style={{ lineHeight: "1.5", margin: 0 }}>
+        <b>We&apos;d like to hear from you </b>
+      </P>
+      <P style={{ lineHeight: "1.5", margin: 0 }}>
+        Share your feedback at: <Link href="#">newsletters@minimal.com</Link>
+      </P>
+    </Banner>
     <Row style={row}>
       <Column>
         <P small compact muted>

@@ -45,7 +45,7 @@ const H2: React.FC<HeadingProps> = ({ compact, style, children, ...props }) => {
         fontWeight: typography.fontWeight.bold,
         letterSpacing: "-0.35px",
         color: color.foreground["100"],
-        margin: compact ? "0" : `${typography.typeFlow}px 0`,
+        margin: compact ? "0" : `${typography.typeFlow * 2}px 0 0`,
         ...style,
       }}
       {...props}
@@ -65,7 +65,7 @@ const H3: React.FC<HeadingProps> = ({ compact, style, children, ...props }) => {
         fontWeight: typography.fontWeight.bold,
         letterSpacing: "-0.35px",
         color: color.foreground["100"],
-        margin: compact ? "0" : `${typography.typeFlow}px 0`,
+        margin: compact ? "0" : `${typography.typeFlow * 1.5}px 0 0`,
         ...style,
       }}
       {...props}
@@ -85,7 +85,7 @@ const H4: React.FC<HeadingProps> = ({ compact, style, children, ...props }) => {
         fontWeight: typography.fontWeight.bold,
         letterSpacing: "-0.35px",
         color: color.foreground["100"],
-        margin: compact ? "0" : `${typography.typeFlow}px 0`,
+        margin: compact ? "0" : `${typography.typeFlow * 1.5}px 0 0`,
         ...style,
       }}
       {...props}
@@ -250,7 +250,7 @@ const LI: React.FC<ListItemProps> = ({
           ? typography.fontWeight.bold
           : typography.fontWeight.base,
         color: muted ? color.muted.foreground : color.foreground["100"],
-        margin: "0",
+        margin: `${typography.typeFlow / 2}px 0`,
         ...style,
       }}
       {...props}
