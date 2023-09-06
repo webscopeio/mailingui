@@ -11,7 +11,7 @@ export const Banner: React.FC<
   }
 > = ({ backgroundColor = "#f5f5f5", children, style }) => {
   return (
-    <Row style={{ marginBlockEnd: `${typography.typeFlow}px`, ...style }}>
+    <Row style={{ marginBottom: `${typography.typeFlow}px`, ...style }}>
       <Column
         style={{
           ...row,

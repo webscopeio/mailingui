@@ -31,7 +31,7 @@ export default function SubscriptionSuccess({
           <Header />
           <Row style={row}>
             <Column>
-              <P style={{ marginBlockStart: 0 }}>
+              <P style={{ marginTop: 0 }}>
                 <b>Today&apos;s issue</b>: Prizz nation gets a speed boost,
                 invisible UI details make our hearts happy, and the JavaScript
                 musical that has audiences foaming at the mouth.

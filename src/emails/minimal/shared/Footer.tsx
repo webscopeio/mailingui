@@ -22,7 +22,7 @@ export const Footer: React.FC = () => (
         </P>
       </Column>
     </Row>
-    <Banner style={{ marginBlock: `${typography.typeFlow}px` }}>
+    <Banner style={{ margin: `${typography.typeFlow}px 0` }}>
       <hr
         style={{
           width: "30px",
