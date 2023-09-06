@@ -7,7 +7,7 @@ import {
 
 /** ✅ Config */
 const theme: Theme = "css-variables";
-const langs: Lang[] = ["html", "tsx"];
+const langs: Lang[] = ["html", "tsx", "mdx"];
 
 const highlighterCache = new Map<string, Promise<Highlighter>>();
 

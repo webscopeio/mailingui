@@ -25,7 +25,7 @@ const H1: React.FC<React.ComponentPropsWithoutRef<"p">> = ({
         fontWeight: typography.fontWeight.bold,
         letterSpacing: "-0.35px",
         color: color.foreground["100"],
-        margin: 0,
+        margin: `0 0 ${typography.typeFlow}px`,
         ...style,
       }}
       {...props}
@@ -45,7 +45,7 @@ const H2: React.FC<HeadingProps> = ({ compact, style, children, ...props }) => {
         fontWeight: typography.fontWeight.bold,
         letterSpacing: "-0.35px",
         color: color.foreground["100"],
-        margin: compact ? "0" : `${typography.typeFlow * 2}px 0 0`,
+        margin: compact ? "0" : `${typography.typeFlow * 2}px 0 ${typography.typeFlow}px`,
         ...style,
       }}
       {...props}
@@ -65,7 +65,7 @@ const H3: React.FC<HeadingProps> = ({ compact, style, children, ...props }) => {
         fontWeight: typography.fontWeight.bold,
         letterSpacing: "-0.35px",
         color: color.foreground["100"],
-        margin: compact ? "0" : `${typography.typeFlow * 1.5}px 0 0`,
+        margin: compact ? "0" : `${typography.typeFlow * 1.5}px 0 ${typography.typeFlow}px`,
         ...style,
       }}
       {...props}
@@ -85,7 +85,7 @@ const H4: React.FC<HeadingProps> = ({ compact, style, children, ...props }) => {
         fontWeight: typography.fontWeight.bold,
         letterSpacing: "-0.35px",
         color: color.foreground["100"],
-        margin: compact ? "0" : `${typography.typeFlow * 1.5}px 0 0`,
+        margin: compact ? "0" : `${typography.typeFlow * 1.5}px 0 ${typography.typeFlow}px`,
         ...style,
       }}
       {...props}
@@ -128,8 +128,8 @@ const P: React.FC<ParagraphProps> = ({
         margin: compact
           ? "0"
           : small
-          ? `${typography.typeFlow / 2}px 0`
-          : `${typography.typeFlow}px 0`,
+          ? `0 0 ${typography.typeFlow / 2}px`
+          : `0 0 ${typography.typeFlow}px`,
         ...style,
       }}
       {...props}
@@ -160,7 +160,7 @@ const Link: React.FC<LinkProps> = ({
         lineHeight: block ? `${typography.baseFontSize * 2}px` : "inherit",
         fontWeight: typography.fontWeight.base,
         color: muted ? color.muted.foreground : color.foreground["100"],
-        margin: block ? "6px 0px" : "inherit",
+        margin: block ? "0 0 6px" : "inherit",
         textDecoration: "underline",
         textUnderlineOffset: "6px",
         ...style,
@@ -187,7 +187,7 @@ const UL: React.FC<UnorderedListProps> = ({
       style={{
         fontFamily: typography.fontFamily,
         paddingInlineStart: "24px",
-        margin: compact ? "0" : `${typography.typeFlow}px 0`,
+        margin: compact ? "0" : `0 0 ${typography.typeFlow}px`,
         ...style,
       }}
       {...props}
@@ -212,7 +212,7 @@ const OL: React.FC<OrderedListProps> = ({
       style={{
         fontFamily: typography.fontFamily,
         paddingInlineStart: "24px",
-        margin: compact ? "0" : `${typography.typeFlow}px 0`,
+        margin: compact ? "0" : `0 0 ${typography.typeFlow}px`,
         ...style,
       }}
       {...props}
@@ -250,7 +250,7 @@ const LI: React.FC<ListItemProps> = ({
           ? typography.fontWeight.bold
           : typography.fontWeight.base,
         color: muted ? color.muted.foreground : color.foreground["100"],
-        margin: `${typography.typeFlow / 2}px 0`,
+        margin: `0 0 ${typography.typeFlow / 2}px`,
         ...style,
       }}
       {...props}
@@ -260,10 +260,9 @@ const LI: React.FC<ListItemProps> = ({
   );
 };
 
-const Blockquote: React.FC<React.ComponentPropsWithoutRef<"p">> = ({
+const Blockquote: React.FC<React.ComponentPropsWithoutRef<"blockquote">> = ({
   style,
   children,
-  ...props
 }) => {
   return (
     <ReactEmailText
@@ -274,12 +273,11 @@ const Blockquote: React.FC<React.ComponentPropsWithoutRef<"p">> = ({
         lineHeight: `${typography.baseFontSize * 2}px`,
         fontWeight: typography.fontWeight.base,
         color: color.foreground["100"],
-        margin: `${typography.typeFlow}px 0`,
+        margin: `0 0 ${typography.typeFlow}px`,
         padding: "0 0 0 24px",
         borderLeft: "2px solid #525057",
         ...style,
       }}
-      {...props}
     >
       {children}
     </ReactEmailText>

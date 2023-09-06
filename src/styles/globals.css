@@ -14,12 +14,23 @@
   @apply top-[var(--nextra-navbar-height)];
 }
 
-.nextra-sidebar-container{
+.nextra-sidebar-container {
   @apply !py-9;
 }
 
 .nextra-toc {
   @apply !py-12;
+}
+
+.nextra-button[title="Toggle word wrap"] {
+  @apply md:inline-flex;
+}
+
+@media (min-width: 768px) {
+  html[data-nextra-word-wrap] pre .line {
+    word-break: break-word;
+    white-space: pre-wrap;
+  }
 }
 
 article > main {

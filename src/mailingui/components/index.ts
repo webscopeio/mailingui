@@ -18,3 +18,5 @@ export {
 } from "./list/BulletList";
 
 export { H1, H2, H3, H4, P, Link, UL, OL, LI, Blockquote, InlineCode, HR } from "./typography/Typography";
+
+export { Markdown } from "./markdown/Markdown"

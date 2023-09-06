@@ -1,12 +1,16 @@
 import { Tabs, Tab } from "nextra/components";
 import { DemoPreview } from "./DemoPreview";
 import { DemoCode } from "./DemoCode";
+import { DemoMDX } from "./DemoMDX";
 
-<Tabs items={["Preview", "Code"]}>
+<Tabs items={["Preview", "Code", "MDX"]}>
   <Tab>
     <DemoPreview />
   </Tab>
   <Tab>
     <DemoCode />
+  </Tab>
+  <Tab>
+    <DemoMDX />
   </Tab>
 </Tabs>

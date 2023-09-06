@@ -1,10 +1,10 @@
 import * as React from "react";
-import { Button } from "@react-email/components";
+import { Button as ReactEmailButton } from "@react-email/components";
 import { theme } from "@mailingui/themes";
 
 const { typography } = theme;
 
-export const MinimalButton: React.FC<{
+export const Button: React.FC<{
   href: string;
   children: React.ReactNode;
 }> = ({ href, children }) => (
@@ -16,7 +16,7 @@ export const MinimalButton: React.FC<{
       textAlign: "center",
     }}
   >
-    <Button
+    <ReactEmailButton
       pY={16}
       href={href}
       style={{
@@ -28,6 +28,6 @@ export const MinimalButton: React.FC<{
       }}
     >
       {children}
-    </Button>
+    </ReactEmailButton>
   </div>
 );

@@ -15,7 +15,14 @@ const { typography } = theme;
 
 export const Footer: React.FC = () => (
   <>
-    <Banner style={{ marginBottom: `${typography.typeFlow}px` }}>
+    <Row style={row}>
+      <Column>
+        <P compact muted>
+          Best regards, <br /> Minimal Team
+        </P>
+      </Column>
+    </Row>
+    <Banner style={{ margin: `${typography.typeFlow}px 0` }}>
       <hr
         style={{
           width: "30px",

@@ -60,6 +60,8 @@ const getIframeHeight = (type: string): number => {
       return 230;
     case "typography":
       return 550;
+    case "markdown":
+      return 400;
     default:
       return 350;
   }
