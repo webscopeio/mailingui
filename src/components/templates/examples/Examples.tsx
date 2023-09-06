@@ -18,6 +18,7 @@ type Example = {
   html: string;
   demoCode: string;
   markup: string;
+  mdx?: string;
 };
 
 export const Examples = () => {
@@ -32,13 +33,24 @@ export const Examples = () => {
             </h3>
             <TestPopover html={example.html} />
           </header>
-          <Tabs items={["Preview", "Code", "HTML"]}>
+          <Tabs
+            items={
+              example.mdx
+                ? ["Preview", "Code", "MDX", "HTML"]
+                : ["Preview", "Code", "HTML"]
+            }
+          >
             <Tab>
               <ExamplePreview html={example.html} />
             </Tab>
             <Tab>
               <ExampleCode code={example.demoCode} lang={"tsx"} />
             </Tab>
+            {example.mdx && (
+              <Tab>
+                <ExampleCode code={example.mdx} lang={"mdx"} />
+              </Tab>
+            )}
             <Tab>
               <ExampleCode code={example.markup} lang={"html"} />
             </Tab>

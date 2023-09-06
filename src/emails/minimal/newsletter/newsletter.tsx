@@ -31,8 +31,7 @@ export default function SubscriptionSuccess({
           <Header />
           <Row style={row}>
             <Column>
-              <HR />
-              <P>
+              <P style={{ marginBlockStart: 0 }}>
                 <b>Today&apos;s issue</b>: Prizz nation gets a speed boost,
                 invisible UI details make our hearts happy, and the JavaScript
                 musical that has audiences foaming at the mouth.
@@ -134,15 +133,6 @@ export default function SubscriptionSuccess({
               Please reach out to: <Link href="#">info@minimal.com</Link>
             </P>
           </Banner>
-          <Row style={row}>
-            <Column>
-              <P>Until next time</P>
-              <P muted>
-                Best regards,
-                <br /> Minimal Team
-              </P>
-            </Column>
-          </Row>
           <Footer />
         </Container>
       </Body>

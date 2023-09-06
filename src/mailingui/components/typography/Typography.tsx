@@ -260,10 +260,9 @@ const LI: React.FC<ListItemProps> = ({
   );
 };
 
-const Blockquote: React.FC<React.ComponentPropsWithoutRef<"p">> = ({
+const Blockquote: React.FC<React.ComponentPropsWithoutRef<"blockquote">> = ({
   style,
   children,
-  ...props
 }) => {
   return (
     <ReactEmailText
@@ -279,7 +278,6 @@ const Blockquote: React.FC<React.ComponentPropsWithoutRef<"p">> = ({
         borderLeft: "2px solid #525057",
         ...style,
       }}
-      {...props}
     >
       {children}
     </ReactEmailText>

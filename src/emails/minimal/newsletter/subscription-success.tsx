@@ -33,7 +33,6 @@ export default function SubscriptionSuccess({
           <Header />
           <Row style={row}>
             <Column>
-              <HR />
               <H1>{preview}</H1>
               <P>Dear {subscriberName},</P>
               <P>
@@ -97,15 +96,6 @@ export default function SubscriptionSuccess({
               Please reach out to: <Link href="#">info@minimal.com</Link>
             </P>
           </Banner>
-          <Row style={row}>
-            <Column>
-              <P>Until next time</P>
-              <P muted>
-                Best regards,
-                <br /> Minimal Team
-              </P>
-            </Column>
-          </Row>
           <Footer />
         </Container>
       </Body>

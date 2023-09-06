@@ -12,10 +12,10 @@ import {
 
 import { body, container, row } from "../shared/styles";
 import { Header } from "../shared/Header";
-import { MinimalButton } from "../shared/MinimalButton";
+import { Button } from "../shared/Button";
 import { Footer } from "../shared/Footer";
 
-import { H1, P, HR, Link } from "@mailingui/components";
+import { H1, P, Link } from "@mailingui/components";
 
 export default function SubscriptionConfirmation({
   preview = "Confirm your email",
@@ -31,7 +31,6 @@ export default function SubscriptionConfirmation({
           <Header />
           <Row style={row}>
             <Column>
-              <HR />
               <H1>{preview}</H1>
               <P>Dear {subscriberName},</P>
               <P>
@@ -40,15 +39,11 @@ export default function SubscriptionConfirmation({
                 address before we can add you to our list. Please click on the
                 link below to confirm your email address:
               </P>
-              <MinimalButton href="#">Confirm Subscription</MinimalButton>
+              <Button href="#">Confirm Subscription</Button>
               <P>
                 If <b>you did not initiate this request</b>, believe it was made
                 in error, or have any privacy concerns, please reach out to:{" "}
                 <Link href="#">support@minimal.com</Link>
-              </P>
-              <P muted>
-                Best regards,
-                <br /> Minimal Team
               </P>
             </Column>
           </Row>
