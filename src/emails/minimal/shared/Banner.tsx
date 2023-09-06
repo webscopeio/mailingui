@@ -18,6 +18,7 @@ export const Banner: React.FC<
           width: "100%",
           paddingTop: "24px",
           paddingBottom: "24px",
+          lineHeight: `${typography.baseFontSize * 1.5}px`,
           backgroundColor,
         }}
       >

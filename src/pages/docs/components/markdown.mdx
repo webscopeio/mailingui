@@ -1,0 +1,44 @@
+---
+title: Markdown - Components
+description: Use the power of MDX to author your emails
+---
+
+import { getComponentProps } from "@utils/components";
+import BasicUsage from "@components/docs/components/basic-usage/basic-usage.mdx";
+import Installation from "@components/docs/components/installation/installation.mdx";
+import { Examples } from "@components/docs/components/examples/Examples.tsx";
+
+export const getStaticProps = async () => {
+  const { type, html, demoCode, mdx, sourceCode, examples } = await getComponentProps({
+    type: "markdown"
+  }) 
+
+  return {
+    props: {
+      ssg: {
+        type,
+        html,
+        demoCode,
+        mdx,
+        sourceCode,
+        examples,
+      },
+    },
+  };
+};
+
+# Markdown
+
+Use the power of MDX to author your emails
+
+## Basic Usage
+
+<BasicUsage />
+
+## Installation
+
+<Installation cli="markdown" />
+
+## Examples
+
+<Examples />

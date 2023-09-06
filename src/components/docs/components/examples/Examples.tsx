@@ -8,6 +8,7 @@ type Example = {
   type: string;
   html: string;
   demoCode: string;
+  mdx?: string;
 };
 
 export const Examples = () => {
@@ -19,13 +20,22 @@ export const Examples = () => {
           <h3 className="text-2xl font-semibold tracking-tight text-slate-100">
             {transformComponentName(example.name)}
           </h3>
-          <Tabs items={["Preview", "Code"]}>
+          <Tabs
+            items={
+              example.mdx ? ["Preview", "Code", "MDX"] : ["Preview", "Code"]
+            }
+          >
             <Tab>
               <ExamplePreview type={example.type} html={example.html} />
             </Tab>
             <Tab>
               <ExampleCode code={example.demoCode} />
             </Tab>
+            {example.mdx && (
+              <Tab>
+                <ExampleCode code={example.mdx} lang={"mdx"} />
+              </Tab>
+            )}
           </Tabs>
         </div>
       ))}
