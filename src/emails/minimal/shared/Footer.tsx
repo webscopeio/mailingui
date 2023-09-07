@@ -9,20 +9,17 @@ import { row } from "./styles";
 import { baseUrl } from "./assets";
 import { Banner } from "./Banner";
 import { HR, Link, P } from "@mailingui/components";
-import { theme } from "@mailingui/themes";
-
-const { typography } = theme;
 
 export const Footer: React.FC = () => (
   <>
     <Row style={row}>
       <Column>
-        <P compact muted>
+        <P muted>
           Best regards, <br /> Minimal Team
         </P>
       </Column>
     </Row>
-    <Banner style={{ margin: `${typography.typeFlow}px 0` }}>
+    <Banner style={{ marginBottom: "24px" }}>
       <hr
         style={{
           width: "30px",
@@ -33,35 +30,24 @@ export const Footer: React.FC = () => (
           borderWidth: 0,
         }}
       />
-      <P style={{ lineHeight: "1.5", margin: 0 }}>
+      <P style={{ margin: 0 }}>
         <b>We&apos;d like to hear from you </b>
-      </P>
-      <P style={{ lineHeight: "1.5", margin: 0 }}>
+        <br />
         Share your feedback at: <Link href="#">newsletters@minimal.com</Link>
       </P>
     </Banner>
     <Row style={row}>
       <Column>
-        <P small compact muted>
+        <P small muted>
           If you&apos;d like to update your details please{" "}
-          <Link muted href="#">
-            click here
-          </Link>
-          . Replies to this email will not reach us. If you don&apos;t want to
-          receive these updates anymore, please unsubscribe{" "}
-          <Link muted href="#">
-            here
-          </Link>
-          .
+          <Link small muted href="#">click here</Link>. Replies to this email will not reach
+          us. If you don&apos;t want to receive these updates anymore, please
+          unsubscribe <Link small muted href="#">here</Link>.
         </P>
-      </Column>
-    </Row>
-    <Row style={row}>
-      <Column>
         <HR />
       </Column>
     </Row>
-    <Row style={{ ...row, marginBottom: `${typography.typeFlow}px` }}>
+    <Row style={{ ...row, marginBottom: `24px` }}>
       <Column width={24} style={{ paddingRight: "18px" }}>
         <ReactEmailLink href="#">
           <Img
@@ -98,21 +84,12 @@ export const Footer: React.FC = () => (
     </Row>
     <Row style={row}>
       <Column>
-        <P small compact muted>
+        <P small muted>
           © Viola Company Inc., 2972 Westheimer Rd. Santa Ana, Illinois 85486
-        </P>
-        <P small compact muted>
-          <Link muted href="#unsubscribe">
-            Unsubscribe
-          </Link>{" "}
-          ·{" "}
-          <Link muted href="#tos">
-            Terms of Use
-          </Link>{" "}
-          ·{" "}
-          <Link muted href="#pp">
-            Privacy Policy
-          </Link>
+          <br />
+          <Link small muted href="#unsubscribe">Unsubscribe</Link> ·{" "}
+          <Link small muted href="#tos">Terms of Use</Link> ·{" "}
+          <Link small muted href="#pp">Privacy Policy</Link>
         </P>
       </Column>
     </Row>

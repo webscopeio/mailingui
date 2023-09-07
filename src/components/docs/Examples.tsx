@@ -1,7 +1,7 @@
 import { Tabs, Tab } from "nextra/components";
 import { useData } from "nextra/data";
-import { ExamplePreview } from "./ExamplePreview";
-import { ExampleCode } from "./ExampleCode";
+import { Preview } from "@components/shared/Preview";
+import { Codeblock } from "@components/shared/Codeblock";
 
 type Example = {
   name: string;
@@ -26,14 +26,14 @@ export const Examples = () => {
             }
           >
             <Tab>
-              <ExamplePreview type={example.type} html={example.html} />
+              <Preview type={example.type} html={example.html} />
             </Tab>
             <Tab>
-              <ExampleCode code={example.demoCode} />
+              <Codeblock code={example.demoCode} />
             </Tab>
             {example.mdx && (
               <Tab>
-                <ExampleCode code={example.mdx} lang={"mdx"} />
+                <Codeblock code={example.mdx} lang={"mdx"} />
               </Tab>
             )}
           </Tabs>

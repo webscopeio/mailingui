@@ -1,6 +1,12 @@
 import { Tabs, Tab } from "nextra/components";
 import { DynamicCode } from "@components/shared/DynamicCode";
-import { InstallationCode } from "./InstallationCode";
+import { Codeblock } from "@components/shared/Codeblock";
+import { useData } from "nextra/data";
+
+export const InstallationCode = () => {
+  const { sourceCode } = useData();
+  return <Codeblock code={sourceCode} /> 
+}
 
 If you haven't initialized MailingUI in your project, please refer to [Installation](/docs/guide/installation) docs first.
 

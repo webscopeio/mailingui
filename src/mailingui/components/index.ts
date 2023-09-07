@@ -17,6 +17,20 @@ export {
   type BulletListProps,
 } from "./list/BulletList";
 
-export { H1, H2, H3, H4, P, Link, UL, OL, LI, Blockquote, InlineCode, HR } from "./typography/Typography";
+export {
+  Typography,
+  H1,
+  H2,
+  H3,
+  H4,
+  P,
+  Blockquote,
+  HR,
+  Code,
+  Link,
+  UL,
+  OL,
+  LI,
+} from "./typography/Typography";
 
-export { Markdown } from "./markdown/Markdown"
+export { Markdown } from "./markdown/Markdown";

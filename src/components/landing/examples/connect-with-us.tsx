@@ -1,5 +1,5 @@
 import { Container, Row, Column } from "@react-email/components";
-import { Divider, SocialIcon, P } from "@mailingui/components";
+import { SocialIcon, P, HR } from "@mailingui/components";
 
 export default function ConnectWithUs() {
   return (
@@ -8,7 +8,7 @@ export default function ConnectWithUs() {
         Sincerely,
         <br /> Minimal Team
       </P>
-      <Divider />
+      <HR style={{ margin: "12px 0" }} />
       <Row>
         <Column>
           <P compact>Connect with us</P>

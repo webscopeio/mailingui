@@ -6,7 +6,7 @@ export default function RateYourExperience() {
     <Container style={container}>
       <Row style={row}>
         <Column>
-          <P compact>Rate your experience:</P>
+          <P style={{marginBottom: "12px"}}>Rate your experience:</P>
         </Column>
       </Row>
       <Row style={row}>

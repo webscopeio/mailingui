@@ -8,7 +8,7 @@ import {
   P,
   Link,
   Blockquote,
-  InlineCode,
+  Code,
   OL,
   LI,
   UL,
@@ -20,7 +20,7 @@ export default function Demo() {
       <Body style={main}>
         <Container style={container}>
           <H1>The Joke Tax Chronicles</H1>
-          <P muted compact>
+          <P lead>
             A story about the king and his subjects
           </P>
           <P>
@@ -51,7 +51,7 @@ export default function Demo() {
           </P>
           <P>
             Some of them were asked to install the package:{" "}
-            <InlineCode>npm i @jokester</InlineCode>
+            <Code>npm i @jokester</Code>
           </P>
           <H2>Lessons from Jokester: The Top Jokes</H2>
           <P>
@@ -87,7 +87,7 @@ export default function Demo() {
             Jokester&apos;s wisdom touched hearts and lifted spirits across the
             land.
           </P>
-          <P bold>Moral of the story: please think before telling jokes</P>
+          <P><b>Moral of the story: please think before telling jokes</b></P>
           <P small muted>
             Enter your email address for more stories like this
           </P>

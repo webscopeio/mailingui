@@ -3,14 +3,14 @@ import { Tabs, Tab } from "nextra/components";
 import { useData } from "nextra/data";
 import { CheckIcon, ChevronDownIcon, Loader2Icon, XIcon } from "lucide-react";
 import { email, safeParse, string } from "valibot";
-import { ExamplePreview } from "./ExamplePreview";
-import { ExampleCode } from "./ExampleCode";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@components/ui/Popover";
 import { CTA } from "@components/ui/CTA";
+import { Preview } from "@components/shared/Preview";
+import { Codeblock } from "@components/shared/Codeblock";
 
 type Example = {
   name: string;
@@ -41,18 +41,18 @@ export const Examples = () => {
             }
           >
             <Tab>
-              <ExamplePreview html={example.html} />
+              <Preview type="template" html={example.html} />
             </Tab>
             <Tab>
-              <ExampleCode code={example.demoCode} lang={"tsx"} />
+              <Codeblock code={example.demoCode} lang={"tsx"} />
             </Tab>
             {example.mdx && (
               <Tab>
-                <ExampleCode code={example.mdx} lang={"mdx"} />
+                <Codeblock code={example.mdx} lang={"mdx"} />
               </Tab>
             )}
             <Tab>
-              <ExampleCode code={example.markup} lang={"html"} />
+              <Codeblock code={example.markup} lang={"html"} />
             </Tab>
           </Tabs>
         </div>

@@ -6,7 +6,7 @@ export default function RegisterAnAccount() {
     <Container style={container}>
       <Row style={row}>
         <Column>
-          <P compact>Register an account:</P>
+          <P style={{marginBottom: "12px"}}>Register an account:</P>
         </Column>
       </Row>
       <Row style={row}>

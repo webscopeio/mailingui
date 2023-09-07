@@ -7,7 +7,7 @@ export default function DotBadges() {
     <Container style={container}>
       <Row style={row}>
         <Column>
-          <H1>Series B</H1>
+          <H1 compact>Series B</H1>
         </Column>
       </Row>
       <Row>
