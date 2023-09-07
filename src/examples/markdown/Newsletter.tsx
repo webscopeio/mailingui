@@ -11,7 +11,7 @@ import {
 } from "@react-email/components";
 
 import { MDXComponents } from "mdx/types";
-import Example from "./MagnurNews.mdx";
+import Example from "./Newsletter.mdx";
 import { Markdown, Typography } from "@mailingui/components";
 import { cx, type Styles } from "@mailingui/themes";
 
@@ -61,13 +61,13 @@ export default function Email() {
   return (
     <Html>
       <Head />
-      <Preview>magur.news · September 1, 2023</Preview>
+      <Preview>newsletter.news · September 1, 2023</Preview>
       <Body style={body}>
         <Container style={container}>
           <Row>
             <Column>
               <Markdown styles={styles} components={components}>
-                <Example title="magnur.news" />
+                <Example title="newsletter.news" />
               </Markdown>
             </Column>
           </Row>
@@ -85,5 +85,5 @@ export const body: React.CSSProperties = {
 export const container: React.CSSProperties = {
   backgroundColor: "#f2f2f2", // Email background color
   padding: "60px 30px",
-  maxWidth: "600px", // Estalbish the maximum size of the email
+  maxWidth: "650px", // Estalbish the maximum size of the email
 };
