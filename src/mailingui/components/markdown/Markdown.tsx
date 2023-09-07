@@ -19,64 +19,58 @@ function getComponents({
 }): MDXComponents {
   const defaultComponents: MDXComponents = {
     h1: (props) => (
-      <Typography.H1 style={cx(styles["global"], styles["h1"])} {...props} />
+      <Typography.H1
+        style={cx(["global", "headings", "h1"], { styles })}
+        {...props}
+      />
     ),
     h2: (props) => (
       <Typography.H2
-        style={cx(styles["global"], styles["headings"], styles["h2"])}
+        style={cx(["global", "headings", "h1"], { styles })}
         {...props}
       />
     ),
     h3: (props) => (
       <Typography.H3
-        style={cx(styles["global"], styles["headings"], styles["h3"])}
+        style={cx(["global", "headings", "h3"], { styles })}
         {...props}
       />
     ),
     h4: (props) => (
       <Typography.H4
-        style={cx(styles["global"], styles["headings"], styles["h4"])}
+        style={cx(["global", "headings", "h4"], { styles })}
         {...props}
       />
     ),
     p: (props) => (
       <Typography.P
-        style={cx(styles["global"], styles["text"], styles["p"])}
+        style={cx(["global", "text", "p"], { styles })}
         {...props}
       />
     ),
     blockquote: (props) => (
       <Typography.Blockquote
-        style={cx(styles["global"], styles["text"], styles["blockquote"])}
+        style={cx(["global", "text", "blockquote"], { styles })}
         {...props}
       />
     ),
     hr: (props) => (
-      <Typography.HR style={cx(styles["global"], styles["hr"])} {...props} />
+      <Typography.HR style={cx(["global", "hr"], { styles })} {...props} />
     ),
     code: (props) => (
-      <Typography.Code
-        style={cx(styles["global"], styles["code"])}
-        {...props}
-      />
+      <Typography.Code style={cx(["global", "code"], { styles })} {...props} />
     ),
     a: (props) => (
-      <Typography.Link
-        style={cx(styles["global"], styles["a"])}
-        {...props}
-      />
+      <Typography.Link style={cx(["global", "text", "a"], { styles })} {...props} />
     ),
     ul: (props) => (
-      <Typography.UL style={cx(styles["global"], styles["ul"])} {...props} />
+      <Typography.UL style={cx(["global", "ul"], { styles })} {...props} />
     ),
     ol: (props) => (
-      <Typography.OL style={cx(styles["global"], styles["ol"])} {...props} />
+      <Typography.OL style={cx(["global", "ol"], { styles })} {...props} />
     ),
     li: (props) => (
-      <Typography.LI
-        style={cx(styles["global"], styles["text"], styles["li"])}
-        {...props}
-      />
+      <Typography.LI style={cx(["global", "text", "li"], { styles })} {...props} />
     ),
     img: (props) => (
       <div>
@@ -107,18 +101,60 @@ function getComponents({
         )}
       </>
     ),
-    H1: (props) => <Typography.H1 {...props} />,
-    H2: (props) => <Typography.H2 {...props} />,
-    H3: (props) => <Typography.H3 {...props} />,
-    H4: (props) => <Typography.H4 {...props} />,
-    P: (props) => <Typography.P {...props} />,
-    Blockquote: (props) => <Typography.Blockquote {...props} />,
-    HR: (props) => <Typography.HR {...props} />,
-    Code: (props) => <Typography.Code {...props} />,
-    Link: (props) => <Typography.Link {...props} />,
-    UL: (props) => <Typography.UL {...props} />,
-    OL: (props) => <Typography.OL {...props} />,
-    LI: (props) => <Typography.LI {...props} />,
+    H1: (props) => (
+      <Typography.H1
+        style={cx(["global", "headings", "h1"], { styles })}
+        {...props}
+      />
+    ),
+    H2: (props) => (
+      <Typography.H2
+        style={cx(["global", "headings", "h1"], { styles })}
+        {...props}
+      />
+    ),
+    H3: (props) => (
+      <Typography.H3
+        style={cx(["global", "headings", "h3"], { styles })}
+        {...props}
+      />
+    ),
+    H4: (props) => (
+      <Typography.H4
+        style={cx(["global", "headings", "h4"], { styles })}
+        {...props}
+      />
+    ),
+    P: (props) => (
+      <Typography.P
+        style={cx(["global", "text", "p"], { styles })}
+        {...props}
+      />
+    ),
+    Blockquote: (props) => (
+      <Typography.Blockquote
+        style={cx(["global", "text", "blockquote"], { styles })}
+        {...props}
+      />
+    ),
+    HR: (props) => (
+      <Typography.HR style={cx(["global", "hr"], { styles })} {...props} />
+    ),
+    Code: (props) => (
+      <Typography.Code style={cx(["global", "code"], { styles })} {...props} />
+    ),
+    Link: (props) => (
+      <Typography.Link style={cx(["global", "text", "a"], { styles })} {...props} />
+    ),
+    UL: (props) => (
+      <Typography.UL style={cx(["global", "ul"], { styles })} {...props} />
+    ),
+    OL: (props) => (
+      <Typography.OL style={cx(["global", "ol"], { styles })} {...props} />
+    ),
+    LI: (props) => (
+      <Typography.LI style={cx(["global", "text", "li"], { styles })} {...props} />
+    ),
   };
   return { ...defaultComponents, ...components };
 }

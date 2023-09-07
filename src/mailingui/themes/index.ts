@@ -163,16 +163,16 @@ const styles: Styles = {
 };
 
 const cx = (
-  ...inputStyles: (React.CSSProperties | undefined | boolean)[]
+  inputStyles: (StyleKey | React.CSSProperties | undefined | boolean)[],
+  config: { styles: Styles } = { styles }
 ): React.CSSProperties =>
   inputStyles
-    .filter((s): s is React.CSSProperties => Boolean(s))
-    .reduce<React.CSSProperties>(
-      (mergedStyles, style) => ({
-        ...mergedStyles,
-        ...style,
-      }),
-      {}
-    );
+    .filter((s): s is StyleKey | React.CSSProperties => Boolean(s))
+    .reduce<React.CSSProperties>((mergedStyles, style) => {
+      if (typeof style === "string") {
+        return { ...mergedStyles, ...config.styles[style] };
+      }
+      return { ...mergedStyles, ...style };
+    }, {});
 
 export { type Styles, styles, cx };

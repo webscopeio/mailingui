@@ -8,20 +8,20 @@ export const Button: React.FC<
   }
 > = ({ href, ...props }) => (
   <div
-    style={cx(
+    style={cx([
       styles["global"],
       {
         width: "100%",
         backgroundColor: "#171717",
         textAlign: "center",
       },
-      props.style
-    )}
+      props.style,
+    ])}
   >
     <ReactEmailButton
       pY={16}
       href={href}
-      style={cx(
+      style={cx([
         styles["global"],
         styles["text"],
         {
@@ -29,8 +29,8 @@ export const Button: React.FC<
           color: "#fff",
           margin: 0,
         },
-        props.style
-      )}
+        props.style,
+      ])}
     >
       {props.children}
     </ReactEmailButton>
