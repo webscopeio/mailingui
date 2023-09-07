@@ -3,17 +3,16 @@ import { MDXProvider } from "@mdx-js/react";
 
 import { Row, Column, Img } from "@react-email/components";
 
+import { type MDXComponents } from "mdx/types";
 import { Typography } from "../typography/Typography";
 import { type Styles, cx } from "@mailingui/themes";
-
-type MDXComponents = Parameters<typeof MDXProvider>[number]["components"];
 
 function getComponents({
   components,
   styles,
   baseUrl,
 }: {
-  components: MDXComponents;
+  components?: MDXComponents;
   styles: Styles;
   baseUrl?: string;
 }): MDXComponents {
@@ -61,7 +60,10 @@ function getComponents({
       <Typography.Code style={cx(["global", "code"], { styles })} {...props} />
     ),
     a: (props) => (
-      <Typography.Link style={cx(["global", "text", "a"], { styles })} {...props} />
+      <Typography.Link
+        style={cx(["global", "text", "a"], { styles })}
+        {...props}
+      />
     ),
     ul: (props) => (
       <Typography.UL style={cx(["global", "ul"], { styles })} {...props} />
@@ -70,7 +72,10 @@ function getComponents({
       <Typography.OL style={cx(["global", "ol"], { styles })} {...props} />
     ),
     li: (props) => (
-      <Typography.LI style={cx(["global", "text", "li"], { styles })} {...props} />
+      <Typography.LI
+        style={cx(["global", "text", "li"], { styles })}
+        {...props}
+      />
     ),
     img: (props) => (
       <div>
@@ -144,7 +149,10 @@ function getComponents({
       <Typography.Code style={cx(["global", "code"], { styles })} {...props} />
     ),
     Link: (props) => (
-      <Typography.Link style={cx(["global", "text", "a"], { styles })} {...props} />
+      <Typography.Link
+        style={cx(["global", "text", "a"], { styles })}
+        {...props}
+      />
     ),
     UL: (props) => (
       <Typography.UL style={cx(["global", "ul"], { styles })} {...props} />
@@ -153,7 +161,10 @@ function getComponents({
       <Typography.OL style={cx(["global", "ol"], { styles })} {...props} />
     ),
     LI: (props) => (
-      <Typography.LI style={cx(["global", "text", "li"], { styles })} {...props} />
+      <Typography.LI
+        style={cx(["global", "text", "li"], { styles })}
+        {...props}
+      />
     ),
   };
   return { ...defaultComponents, ...components };
