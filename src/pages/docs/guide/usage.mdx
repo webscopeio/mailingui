@@ -7,14 +7,14 @@ import { Steps } from "nextra/components";
 
 # Usage
 
-MailingUI is built on top of [React.email](https://react.email) components and uses its `render` function to parse React into HTML that is optimized for various email clients. Once the HTML markup is rendered, you have the flexibility to employ any preferred email sending service or library to effectively deliver your emails.
+MailingUI is a set of _opinionated_ React components, built on top of [React.email](https://react.email), designed to make the creation of emails easier. Before you continue, make sure to read [Getting Started - Introduction](/docs/guide/introduction).
+
+MailingUI uses [React.email](https://react.email) `render` utility function to parse React into HTML that is optimized for various email clients. Once the HTML markup is rendered, you have the flexibility to employ any preferred email sending service or library to effectively deliver your emails.
 
 Let's explore how to use **MailingUI** components to create emails and send them using [Resend](https://resend.com/). For alternative providers, please refer to [React.email Integrations](https://react.email/docs/integrations/overview).
 
 <Steps>
 ### Install dependencies
-
-Once you've install MailingUI and its dependencies successfully (otherwise please refer to [Introduction](/docs/guide/introduction)), you can install Resend's SDK:
 
 ```bash copy
 npm install resend
@@ -22,44 +22,43 @@ npm install resend
 
 ### Create email template
 
-Use your **MailingUI** components along with any other [React.email Components](https://react.email/docs/components/html) to create your email template just like any other React component. Here's an example:
+Use any of your **MailingUI** components along with any other [React.email Components](https://react.email/docs/components/html) to create your email template just like any other React component. Here's an example:
 
-```tsx copy
-import { Body, Container, Html, Row } from "@react-email/components";
-import { H2, P } from "@mailingui/components";
+```ts copy filename="/emails/email.tsx"
+import * as React from "react";
+import { Html, Head, Body, Container, Row, Column } from "@react-email/components";
 
-type GreetingProps = {
-  username: string;
-};
+import Demo from "./Demo.mdx";
+import { Markdown } from "@mailingui/components";
 
-const Greeting = ({ username }: GreetingProps) => {
+export default function Email({ name }: { name: string }) {
   return (
     <Html>
-      <Body style={main}>
-        <Container style={container} width={600}>
-          <Row style={{ marginBottom: "16px" }}>
-            <H2 style={{ fontSize: "32px" }}>Hello, {username}!</H2>
-          </Row>
-          <Row>
-            <P>Greetings from MailingUI and React.email using Resend</P>
+      <Head />
+      <Body style={body}>
+        <Container style={container}>
+          <Row style={row}>
+            <Column>
+              <Markdown>
+                <Demo name={name} />
+              </Markdown>
+            </Column>
           </Row>
         </Container>
       </Body>
     </Html>
   );
-};
-export default Greeting;
+}
 
-const main = {
-  backgroundColor: "#f6f9fc",
-  padding: "60px 0 122px 0",
+export const body: React.CSSProperties = {
+  backgroundColor: "#fafafa", // Background color outside container
+  margin: 0, // Margin reset
 };
 
-const container = {
-  backgroundColor: "#ffffff",
-  border: "1px solid #f0f0f0",
-  padding: "40px",
-  fontFamily: "'Inter', sans-serif",
+export const container: React.CSSProperties = {
+  backgroundColor: "#fff", // Email background color
+  padding: "60px 30px", // We remove inline padding to enable full-width banners
+  maxWidth: "600px", // Estalbish the maximum size of the email
 };
 ```
 
@@ -69,10 +68,10 @@ The most common practice for sending emails is to manage them through API Routes
 
 Resend is the company behind React.email, therefore Resend's SDK is able to process React components as directly in place of HTML.
 
-```ts copy
+```ts copy filename="/api/email.tsx"
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
-import Greeting from "./src/emails/Greeting";
+import Email from "./src/emails/Email";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -83,8 +82,8 @@ export async function POST() {
       from: process.env.RESEND_SENDER,
       to: "vorcak@webscope.io",
       subject: "Greetings",
-      react: Greeting({
-        username: "vorcak",
+      react: Email({
+        name: "Jan Vorcak",
       }),
     });
     return NextResponse.json(data);

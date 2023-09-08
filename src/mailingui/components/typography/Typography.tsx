@@ -1,5 +1,5 @@
 import * as React from "react";
-import { cx } from "@mailingui/themes";
+import { cx } from "@mailingui/utils";
 
 const H1: React.FC<
   React.ComponentPropsWithoutRef<"h1"> & { compact?: boolean }

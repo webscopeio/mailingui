@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Button as ReactEmailButton } from "@react-email/components";
-import { cx, styles } from "@mailingui/themes";
+import { cx } from "@mailingui/utils";
 
 export const Button: React.FC<
   React.ComponentPropsWithoutRef<"button"> & {
@@ -9,7 +9,7 @@ export const Button: React.FC<
 > = ({ href, ...props }) => (
   <div
     style={cx([
-      styles["global"],
+      "global",
       {
         width: "100%",
         backgroundColor: "#171717",
@@ -22,8 +22,8 @@ export const Button: React.FC<
       pY={16}
       href={href}
       style={cx([
-        styles["global"],
-        styles["text"],
+        "global",
+        "text",
         {
           width: "100%",
           color: "#fff",

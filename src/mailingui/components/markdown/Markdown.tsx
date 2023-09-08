@@ -5,7 +5,9 @@ import { Row, Column, Img } from "@react-email/components";
 
 import { type MDXComponents } from "mdx/types";
 import { Typography } from "../typography/Typography";
-import { type Styles, cx } from "@mailingui/themes";
+
+import { cx } from "@mailingui/utils";
+import { type ThemeStyles } from "@mailingui/themes";
 
 function getComponents({
   components,
@@ -13,7 +15,7 @@ function getComponents({
   baseUrl,
 }: {
   components?: MDXComponents;
-  styles: Styles;
+  styles: ThemeStyles;
   baseUrl?: string;
 }): MDXComponents {
   const defaultComponents: MDXComponents = {
@@ -173,7 +175,7 @@ function getComponents({
 export const Markdown: React.FC<
   React.PropsWithChildren<{
     components?: MDXComponents;
-    styles?: Styles;
+    styles?: ThemeStyles;
     baseUrl?: string;
   }>
 > = ({ components, styles = {}, baseUrl, children }) => {
