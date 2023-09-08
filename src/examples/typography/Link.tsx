@@ -12,9 +12,11 @@ export default function Demo() {
             <Link href="#">brilliant plan</Link>: he would tax the jokes in the
             kingdom.
           </P>
+          <P>
           <Link block href="#">More brilliant plans →</Link>
           <Link block href="#">Terrible brilliant plans →</Link>
           <Link block href="#">Not so terrible brilliant plans →</Link>
+          </P>
         </Container>
       </Body>
     </Html>

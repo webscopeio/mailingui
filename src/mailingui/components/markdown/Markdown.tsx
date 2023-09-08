@@ -1,77 +1,170 @@
 import * as React from "react";
 import { MDXProvider } from "@mdx-js/react";
 
-import {
-  Row,
-  Column,
-  Link as ReactEmailLink,
-  Img,
-} from "@react-email/components";
+import { Row, Column, Img } from "@react-email/components";
 
-import {
-  H1,
-  H2,
-  H3,
-  H4,
-  P,
-  UL,
-  OL,
-  LI,
-  Blockquote,
-  InlineCode,
-  HR,
-  Link,
-} from "../typography/Typography";
-
-type MDXComponents = Parameters<typeof MDXProvider>[number]["components"];
+import { type MDXComponents } from "mdx/types";
+import { Typography } from "../typography/Typography";
+import { type Styles, cx } from "@mailingui/themes";
 
 function getComponents({
   components,
+  styles,
   baseUrl,
 }: {
-  components: MDXComponents;
+  components?: MDXComponents;
+  styles: Styles;
   baseUrl?: string;
 }): MDXComponents {
   const defaultComponents: MDXComponents = {
-    h1: (props) => <H1 {...props} />,
-    h2: (props) => <H2 {...props} />,
-    h3: (props) => <H3 {...props} />,
-    h4: (props) => <H4 {...props} />,
-    p: (props) => <P {...props} />,
-    ul: (props) => <UL {...props} />,
-    ol: (props) => <OL {...props} />,
-    li: (props) => <LI {...props} />,
-    blockquote: (props) => <Blockquote {...props} />,
-    code: (props) => <InlineCode {...props} />,
-    hr: (props) => <HR {...props} />,
-    a: (props) => <Link {...props} />,
+    h1: (props) => (
+      <Typography.H1
+        style={cx(["global", "headings", "h1"], { styles })}
+        {...props}
+      />
+    ),
+    h2: (props) => (
+      <Typography.H2
+        style={cx(["global", "headings", "h1"], { styles })}
+        {...props}
+      />
+    ),
+    h3: (props) => (
+      <Typography.H3
+        style={cx(["global", "headings", "h3"], { styles })}
+        {...props}
+      />
+    ),
+    h4: (props) => (
+      <Typography.H4
+        style={cx(["global", "headings", "h4"], { styles })}
+        {...props}
+      />
+    ),
+    p: (props) => (
+      <Typography.P
+        style={cx(["global", "text", "p"], { styles })}
+        {...props}
+      />
+    ),
+    blockquote: (props) => (
+      <Typography.Blockquote
+        style={cx(["global", "text", "blockquote"], { styles })}
+        {...props}
+      />
+    ),
+    hr: (props) => (
+      <Typography.HR style={cx(["global", "hr"], { styles })} {...props} />
+    ),
+    code: (props) => (
+      <Typography.Code style={cx(["global", "code"], { styles })} {...props} />
+    ),
+    a: (props) => (
+      <Typography.Link
+        style={cx(["global", "text", "a"], { styles })}
+        {...props}
+      />
+    ),
+    ul: (props) => (
+      <Typography.UL style={cx(["global", "ul"], { styles })} {...props} />
+    ),
+    ol: (props) => (
+      <Typography.OL style={cx(["global", "ol"], { styles })} {...props} />
+    ),
+    li: (props) => (
+      <Typography.LI
+        style={cx(["global", "text", "li"], { styles })}
+        {...props}
+      />
+    ),
     img: (props) => (
-      <div style={{ margin: "24px 0" }}>
+      <div>
         <Img
           width={"100%"}
           src={`${baseUrl ?? ""}${props.src}`}
           alt={props.alt}
         />
         {props.title && (
-          <P muted compact style={{ textAlign: "center" }}>
+          <Typography.P muted style={{ textAlign: "center", marginTop: "8px" }}>
             {props.title}
-          </P>
+          </Typography.P>
         )}
       </div>
     ),
-    Subtle: (props) => <P compact muted {...props} />,
     Row: (props) => <Row {...props} />,
     Column: (props) => <Column {...props} />,
-    Link: (props) => <ReactEmailLink {...props} />,
     Img: (props) => (
       <>
         <Img src={`${baseUrl ?? ""}${props.src}`} {...props} />
         {props.title && (
-          <P muted compact style={{ textAlign: "center" }}>
+          <Typography.P
+            muted
+            style={{ textAlign: "center", marginTop: "8px", marginBottom: 0 }}
+          >
             {props.title}
-          </P>
+          </Typography.P>
         )}
       </>
+    ),
+    H1: (props) => (
+      <Typography.H1
+        style={cx(["global", "headings", "h1"], { styles })}
+        {...props}
+      />
+    ),
+    H2: (props) => (
+      <Typography.H2
+        style={cx(["global", "headings", "h1"], { styles })}
+        {...props}
+      />
+    ),
+    H3: (props) => (
+      <Typography.H3
+        style={cx(["global", "headings", "h3"], { styles })}
+        {...props}
+      />
+    ),
+    H4: (props) => (
+      <Typography.H4
+        style={cx(["global", "headings", "h4"], { styles })}
+        {...props}
+      />
+    ),
+    P: (props) => (
+      <Typography.P
+        style={cx(["global", "text", "p"], { styles })}
+        {...props}
+      />
+    ),
+    Blockquote: (props) => (
+      <Typography.Blockquote
+        style={cx(["global", "text", "blockquote"], { styles })}
+        {...props}
+      />
+    ),
+    HR: (props) => (
+      <Typography.HR style={cx(["global", "hr"], { styles })} {...props} />
+    ),
+    Code: (props) => (
+      <Typography.Code style={cx(["global", "code"], { styles })} {...props} />
+    ),
+    Link: (props) => (
+      <Typography.Link
+        style={cx(["global", "text", "a"], { styles })}
+        {...props}
+      />
+    ),
+    UL: (props) => (
+      <Typography.UL style={cx(["global", "ul"], { styles })} {...props} />
+    ),
+    OL: (props) => (
+      <Typography.OL style={cx(["global", "ol"], { styles })} {...props} />
+    ),
+    LI: (props) => (
+      <Typography.LI
+        style={cx(["global", "text", "li"], { styles })}
+        {...props}
+      />
     ),
   };
   return { ...defaultComponents, ...components };
@@ -80,11 +173,12 @@ function getComponents({
 export const Markdown: React.FC<
   React.PropsWithChildren<{
     components?: MDXComponents;
+    styles?: Styles;
     baseUrl?: string;
   }>
-> = ({ components, baseUrl, children }) => {
+> = ({ components, styles = {}, baseUrl, children }) => {
   return (
-    <MDXProvider components={getComponents({ components, baseUrl })}>
+    <MDXProvider components={getComponents({ components, styles, baseUrl })}>
       {children}
     </MDXProvider>
   );

@@ -7,15 +7,15 @@ export default function Demo() {
     <Html>
       <Body style={main}>
         <Container style={container}>
-          <P muted compact>
-            A story about the king and his subjects{" "}
-          </P>
+          <P muted>A story about the king and his subjects </P>
           <P>
             Once upon a time, in a far-off land, there was a very lazy king who
             spent all day lounging on his throne. One day, his advisors came to
             him with a problem: the kingdom was running out of money.
           </P>
-          <P bold>Moral of the story: please think before telling jokes</P>
+          <P>
+            <b>Moral of the story: please think before telling jokes</b>
+          </P>
           <P small muted>
             Enter your email address for more stories like this
           </P>

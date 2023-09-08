@@ -6,7 +6,7 @@ export default function CustomerService() {
     <Container style={container}>
       <Row>
         <Column>
-          <P compact>Were you satisfied with your order?</P>
+          <P compact style={{ marginRight: "12px" }}>Were you satisfied with your order?</P>
         </Column>
         <Column width={52} style={{ paddingRight: "8px" }}>
           <Emoji

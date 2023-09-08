@@ -2,7 +2,7 @@ import * as React from "react";
 import { Code, Pre } from "nextra/components";
 import { transformHtmlCode } from "@utils/shiki";
 
-export const ExampleCode = ({
+export const Codeblock = ({
   code,
   lang = "tsx",
 }: {

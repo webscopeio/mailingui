@@ -1,329 +1,140 @@
 import * as React from "react";
-import {
-  Text as ReactEmailText,
-  Link as ReactEmailLink,
-} from "@react-email/components";
-import { theme } from "@mailingui/themes";
+import { cx } from "@mailingui/themes";
 
-const { color, typography } = theme;
+const H1: React.FC<
+  React.ComponentPropsWithoutRef<"h1"> & { compact?: boolean }
+> = ({ compact, style, ...props }) => (
+  <h1
+    style={cx(["global", "headings", "h1", compact && "compact", style])}
+    {...props}
+  />
+);
 
-interface HeadingProps extends React.ComponentPropsWithoutRef<"p"> {
-  compact?: boolean;
-}
+const H2: React.FC<
+  React.ComponentPropsWithoutRef<"h2"> & { compact?: boolean }
+> = ({ compact, style, ...props }) => (
+  <h2
+    style={cx(["global", "headings", "h2", compact && "compact", style])}
+    {...props}
+  />
+);
 
-const H1: React.FC<React.ComponentPropsWithoutRef<"p">> = ({
-  style,
-  children,
-  ...props
-}) => {
-  return (
-    <h1
-      style={{
-        fontFamily: typography.fontFamily,
-        fontSize: `${typography.baseFontSize * typography.typeScale ** 4}px`,
-        lineHeight: `${typography.baseFontSize * typography.typeScale ** 4}px`,
-        fontWeight: typography.fontWeight.bold,
-        letterSpacing: "-0.35px",
-        color: color.foreground["100"],
-        margin: `0 0 ${typography.typeFlow}px`,
-        ...style,
-      }}
-      {...props}
-    >
-      {children}
-    </h1>
-  );
-};
+const H3: React.FC<
+  React.ComponentPropsWithoutRef<"h3"> & { compact?: boolean }
+> = ({ compact, style, ...props }) => (
+  <h3
+    style={cx(["global", "headings", "h3", compact && "compact", style])}
+    {...props}
+  />
+);
 
-const H2: React.FC<HeadingProps> = ({ compact, style, children, ...props }) => {
-  return (
-    <h2
-      style={{
-        fontFamily: typography.fontFamily,
-        fontSize: `${typography.baseFontSize * typography.typeScale ** 3}px`,
-        lineHeight: `${typography.baseFontSize * typography.typeScale ** 3}px`,
-        fontWeight: typography.fontWeight.bold,
-        letterSpacing: "-0.35px",
-        color: color.foreground["100"],
-        margin: compact ? "0" : `${typography.typeFlow * 2}px 0 ${typography.typeFlow}px`,
-        ...style,
-      }}
-      {...props}
-    >
-      {children}
-    </h2>
-  );
-};
+const H4: React.FC<
+  React.ComponentPropsWithoutRef<"h4"> & { compact?: boolean }
+> = ({ compact, style, ...props }) => (
+  <h4
+    style={cx(["global", "headings", "h4", compact && "compact", style])}
+    {...props}
+  />
+);
 
-const H3: React.FC<HeadingProps> = ({ compact, style, children, ...props }) => {
-  return (
-    <h3
-      style={{
-        fontFamily: typography.fontFamily,
-        fontSize: `${typography.baseFontSize * typography.typeScale ** 2}px`,
-        lineHeight: `${typography.baseFontSize * typography.typeScale ** 2}px`,
-        fontWeight: typography.fontWeight.bold,
-        letterSpacing: "-0.35px",
-        color: color.foreground["100"],
-        margin: compact ? "0" : `${typography.typeFlow * 1.5}px 0 ${typography.typeFlow}px`,
-        ...style,
-      }}
-      {...props}
-    >
-      {children}
-    </h3>
-  );
-};
-
-const H4: React.FC<HeadingProps> = ({ compact, style, children, ...props }) => {
-  return (
-    <h4
-      style={{
-        fontFamily: typography.fontFamily,
-        fontSize: `${typography.baseFontSize * typography.typeScale}px`,
-        lineHeight: `${typography.baseFontSize * typography.typeScale}px`,
-        fontWeight: typography.fontWeight.bold,
-        letterSpacing: "-0.35px",
-        color: color.foreground["100"],
-        margin: compact ? "0" : `${typography.typeFlow * 1.5}px 0 ${typography.typeFlow}px`,
-        ...style,
-      }}
-      {...props}
-    >
-      {children}
-    </h4>
-  );
-};
-
-interface ParagraphProps extends React.ComponentPropsWithoutRef<"p"> {
-  compact?: boolean;
-  small?: boolean;
-  bold?: boolean;
-  muted?: boolean;
-}
-
-const P: React.FC<ParagraphProps> = ({
-  compact,
-  small,
-  bold,
-  muted,
-  style,
-  children,
-  ...props
-}) => {
-  return (
-    <ReactEmailText
-      style={{
-        fontFamily: typography.fontFamily,
-        fontSize: small
-          ? `${typography.baseFontSize / typography.typeScale}px`
-          : `${typography.baseFontSize}px`,
-        lineHeight: small
-          ? `${(typography.baseFontSize / typography.typeScale) * 1.75}px`
-          : `${typography.baseFontSize * 2}px`,
-        fontWeight: bold
-          ? typography.fontWeight.bold
-          : typography.fontWeight.base,
-        color: muted ? color.muted.foreground : color.foreground["100"],
-        margin: compact
-          ? "0"
-          : small
-          ? `0 0 ${typography.typeFlow / 2}px`
-          : `0 0 ${typography.typeFlow}px`,
-        ...style,
-      }}
-      {...props}
-    >
-      {children}
-    </ReactEmailText>
-  );
-};
-
-interface LinkProps extends React.ComponentPropsWithoutRef<"a"> {
-  block?: boolean;
-  muted?: boolean;
-}
-
-const Link: React.FC<LinkProps> = ({
-  block,
-  muted,
-  style,
-  children,
-  ...props
-}) => {
-  return (
-    <ReactEmailLink
-      style={{
-        fontFamily: typography.fontFamily,
-        display: block ? "block" : "inline",
-        fontSize: block ? `${typography.baseFontSize}px` : "inherit",
-        lineHeight: block ? `${typography.baseFontSize * 2}px` : "inherit",
-        fontWeight: typography.fontWeight.base,
-        color: muted ? color.muted.foreground : color.foreground["100"],
-        margin: block ? "0 0 6px" : "inherit",
-        textDecoration: "underline",
-        textUnderlineOffset: "6px",
-        ...style,
-      }}
-      {...props}
-    >
-      {children}
-    </ReactEmailLink>
-  );
-};
-
-interface UnorderedListProps extends React.ComponentPropsWithoutRef<"ul"> {
-  compact?: boolean;
-}
-
-const UL: React.FC<UnorderedListProps> = ({
-  compact,
-  style,
-  children,
-  ...props
-}) => {
-  return (
-    <ul
-      style={{
-        fontFamily: typography.fontFamily,
-        paddingInlineStart: "24px",
-        margin: compact ? "0" : `0 0 ${typography.typeFlow}px`,
-        ...style,
-      }}
-      {...props}
-    >
-      {children}
-    </ul>
-  );
-};
-
-interface OrderedListProps extends React.ComponentPropsWithoutRef<"ol"> {
-  compact?: boolean;
-}
-
-const OL: React.FC<OrderedListProps> = ({
-  compact,
-  style,
-  children,
-  ...props
-}) => {
-  return (
-    <ol
-      style={{
-        fontFamily: typography.fontFamily,
-        paddingInlineStart: "24px",
-        margin: compact ? "0" : `0 0 ${typography.typeFlow}px`,
-        ...style,
-      }}
-      {...props}
-    >
-      {children}
-    </ol>
-  );
-};
-
-interface ListItemProps extends React.ComponentPropsWithoutRef<"li"> {
-  small?: boolean;
-  bold?: boolean;
-  muted?: boolean;
-}
-
-const LI: React.FC<ListItemProps> = ({
-  small,
-  bold,
-  muted,
-  style,
-  children,
-  ...props
-}) => {
-  return (
-    <li
-      style={{
-        fontFamily: typography.fontFamily,
-        fontSize: small
-          ? `${typography.baseFontSize / typography.typeScale}px`
-          : `${typography.baseFontSize}px`,
-        lineHeight: small
-          ? `${(typography.baseFontSize / typography.typeScale) * 1.75}px`
-          : `${typography.baseFontSize * 2}px`,
-        fontWeight: bold
-          ? typography.fontWeight.bold
-          : typography.fontWeight.base,
-        color: muted ? color.muted.foreground : color.foreground["100"],
-        margin: `0 0 ${typography.typeFlow / 2}px`,
-        ...style,
-      }}
-      {...props}
-    >
-      {children}
-    </li>
-  );
-};
+const P: React.FC<
+  React.ComponentPropsWithoutRef<"p"> & {
+    compact?: boolean;
+    lead?: boolean;
+    small?: boolean;
+    muted?: boolean;
+  }
+> = ({ compact, lead, small, muted, style, ...props }) => (
+  <p
+    style={cx([
+      "global",
+      "text",
+      "p",
+      compact && "compact",
+      lead && "lead",
+      small && "small",
+      muted && "muted",
+      style,
+    ])}
+    {...props}
+  />
+);
 
 const Blockquote: React.FC<React.ComponentPropsWithoutRef<"blockquote">> = ({
   style,
-  children,
-}) => {
-  return (
-    <ReactEmailText
-      style={{
-        fontFamily: typography.fontFamily,
-        fontStyle: "italic",
-        fontSize: `${typography.baseFontSize}px`,
-        lineHeight: `${typography.baseFontSize * 2}px`,
-        fontWeight: typography.fontWeight.base,
-        color: color.foreground["100"],
-        margin: `0 0 ${typography.typeFlow}px`,
-        padding: "0 0 0 24px",
-        borderLeft: "2px solid #525057",
-        ...style,
-      }}
-    >
-      {children}
-    </ReactEmailText>
-  );
-};
-
-const InlineCode: React.FC<React.ComponentPropsWithoutRef<"code">> = ({
-  style,
-  children,
   ...props
-}) => {
-  return (
-    <code
-      style={{
-        fontFamily: "monospace",
-        whiteSpace: "nowrap",
-        borderRadius: "4px",
-        fontWeight: typography.fontWeight.medium,
-        color: "#525057",
-        backgroundColor: color.muted.background,
-        padding: "3px 4px",
-        ...style,
-      }}
-      {...props}
-    >
-      {children}
-    </code>
-  );
-};
+}) => (
+  <blockquote style={cx(["global", "text", "blockquote", style])} {...props} />
+);
 
 const HR: React.FC<React.ComponentPropsWithoutRef<"hr">> = ({
   style,
   ...props
+}) => <hr style={cx(["global", "hr", style])} {...props} />;
+
+const Code: React.FC<React.ComponentPropsWithoutRef<"code">> = ({
+  style,
+  ...props
 }) => {
-  return (
-    <hr
-      style={{
-        margin: `${typography.typeFlow}px 0`,
-        width: "100%",
-        border: "none",
-        borderTop: `1px solid ${color.border}`,
-        ...style,
-      }}
-      {...props}
-    />
-  );
+  return <code style={cx(["global", "code", style])} {...props} />;
 };
 
-export { H1, H2, H3, H4, P, Link, UL, OL, LI, Blockquote, InlineCode, HR };
+const Link: React.FC<
+  React.ComponentPropsWithoutRef<"a"> & {
+    small?: boolean;
+    muted?: boolean;
+    block?: boolean;
+  }
+> = ({ small, muted, block, target = "_blank", style, ...props }) => (
+  <a
+    target={target}
+    style={cx([
+      "global",
+      "text",
+      "a",
+      small && "small",
+      muted && "muted",
+      block && "block",
+      style,
+    ])}
+    {...props}
+  />
+);
+
+const UL: React.FC<React.ComponentPropsWithoutRef<"ul">> = ({
+  style,
+  ...props
+}) => {
+  return <ul style={cx(["global", "ul", style])} {...props} />;
+};
+
+const OL: React.FC<React.ComponentPropsWithoutRef<"ol">> = ({
+  style,
+  ...props
+}) => {
+  return <ol style={cx(["global", "ol", style])} {...props} />;
+};
+
+const LI: React.FC<React.ComponentPropsWithoutRef<"li">> = ({
+  style,
+  ...props
+}) => {
+  return <li style={cx(["global", "text", "li", style])} {...props} />;
+};
+
+export const Typography = {
+  H1,
+  H2,
+  H3,
+  H4,
+  P,
+  Blockquote,
+  HR,
+  Code,
+  Link,
+  UL,
+  OL,
+  LI,
+};
+
+export { H1, H2, H3, H4, P, Blockquote, HR, Code, Link, UL, OL, LI };

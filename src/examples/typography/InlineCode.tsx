@@ -1,16 +1,16 @@
 import * as React from "react";
 import { Body, Container, Html } from "@react-email/components";
-import { H2, P, InlineCode } from "@mailingui/components";
+import { H2, P, Code } from "@mailingui/components";
 
 export default function Demo() {
   return (
     <Html>
       <Body style={main}>
         <Container style={container}>
-          <H2>Truly <InlineCode>inline_code</InlineCode></H2>
+          <H2>Truly <Code>inline_code</Code></H2>
           <P>
             Some of them were asked to install the package:{" "}
-            <InlineCode>npm i @jokester</InlineCode>
+            <Code>npm i @jokester</Code>
           </P>
         </Container>
       </Body>

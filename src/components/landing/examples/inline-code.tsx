@@ -1,15 +1,15 @@
 import * as React from "react";
 import { Container } from "@react-email/components";
-import { P, InlineCode } from "@mailingui/components";
+import { P, Code } from "@mailingui/components";
 
 export default function InlineCodeExample() {
   return (
     <Container style={container}>
       <P compact>
         Run{" "}
-        <InlineCode style={{ fontWeight: "bold" }}>
+        <Code style={{ fontWeight: "bold" }}>
           npx @mailingui/cli
-        </InlineCode>
+        </Code>
       </P>
     </Container>
   );
