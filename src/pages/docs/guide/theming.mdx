@@ -1,0 +1,110 @@
+---
+title: Theming - Getting Started
+description: An open source collection of email components and templates
+---
+
+import { Steps } from "nextra/components";
+
+# Theming
+
+MailingUI is a set of _opinionated_ React components, built on top of [React.email](https://react.email), designed to make the creation of emails easier. Before you continue, make sure to read [Getting Started - Introduction](/docs/guide/introduction).
+
+Theming MailingUI components is powered by our **theme config** (fancy way of calling our theme object). Although this object could end up being completely different to the starting point we offer, it will give you typesafety and give you the sense of utility classes and merged styles in your components using inline CSS (which is ultimately the safest way to style Email).
+
+You have two options to update theming:
+
+## Modifying the theme config
+
+Scenario: We want to create a `Lead` component. So we will introduce a new color and a new variant to use in our MailingUI components.
+
+<Steps>
+
+### Adding Colors
+
+Add any color in _three_ easy steps:
+
+```ts copy filename="/themes/theme.ts"
+// 1. ADD A COLOR VARIANT (i.e., "hotpink")
+// This is how your color will be referenced as
+type ColorVariants = "global" | "hotpink";
+
+// 2. DECLARE ITS CSS COLOR VALUE
+// Completely type-safe and with autocompletion
+const defaultColors: ThemeColors = {
+  global: "#262626",
+  hotpink: "hotpink"
+};
+
+// 3. USE YOUR NEW COLOR
+// Completely type-safe and with autocompletion
+export const styles: ThemeStyles = {
+  global: {
+    fontFamily: "system-ui, sans-serif",
+    color: defaultColors.hotpink,
+  },
+  {...}
+};
+```
+
+### Creating a style
+
+Add any style in _three_ easy steps:
+
+```ts copy filename="/themes/theme.ts"
+// 1. ADD A STYLE VARIANT (i.e., "lead")
+// This is how your style will be referenced as
+type StyleVariants =
+  | "global"
+  | "headings"
+  | "lead"
+
+// 2. DECLARE ITS CSS STYLE
+// Completely type-safe and with autocompletion
+export const styles: ThemeStyles = {
+  global: {
+    fontFamily: "system-ui, sans-serif",
+    color: defaultColors.hotpink,
+  },
+  lead: {
+    fontSize: remToPx(1.5),
+    fontStyle: "italic",
+    fontWeight: 500,
+  },
+  {...}
+};
+```
+
+```ts copy filename="/components/Lead.tsx"
+// 3. USE YOUR NEW STYLE
+// Completely type-safe and with autocompletion
+import * as React from "react";
+import { cx } from "@mailingui/utils";
+
+export const Lead: React.FC<React.ComponentPropsWithoutRef<"p">> = ({
+  style,
+  ...props
+}) => <p style={cx(["global", "lead", style])} {...props} />;
+```
+
+</Steps>
+
+## Using `cx` to apply styles
+
+Taking an obvious inspiration, we've created an `cx` utility function to apply styles. It's code is simple but yet effective at its job. This is how we use it:
+
+```ts copy filename="/components/Lead.tsx"
+import * as React from "react";
+import { cx } from "@mailingui/utils";
+
+export const Lead: React.FC<
+  React.ComponentPropsWithoutRef<"p"> & { small?: boolean }
+> = ({ small, style, ...props }) => (
+  // You can add style variant keys, CSS properties, both conditionally
+  <p
+    style={cx(["global", "lead", small && { fontSize: "14px" }, style])}
+    {...props}
+  />
+);
+```
+
+Congratulations! 🥳 You're set for theming. Go ahead and make email feel a bit more modern and less 2010.

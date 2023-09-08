@@ -3,53 +3,251 @@ title: Manual Install - Getting Started
 description: An open source collection of email components and templates
 ---
 
-import { Steps, Callout } from "nextra/components";
+import { Steps, Callout, FileTree } from "nextra/components";
 
 # Manual Install
 
-<Steps>
-### Install dependencies and components
+MailingUI is a set of _opinionated_ React components, built on top of [React.email](https://react.email), designed to make the creation of emails easier. Before you continue, make sure to read [Getting Started - Introduction](/docs/guide/introduction).
 
-MailingUI is built on top of [React.email](https://react.email) components and uses its `render` function to parse React into HTML.
+<Steps>
+### Install dependencies
+
+We need [React.email](https://react.email) **components** as our baseline and their **render** utility function to transform your emails into HTML.
 
 ```bash
 npm install @react-email/components @react-email/render
 ```
 
-### Create a theme file
+If you are planning to write your emails using [MDX](https://mdxjs.com). You will also need:
 
-Email components **just work differently**, there is no good solution for theming. Our components reference a theme object that you can modify to fit your branding needs and allow quick and easy customization.
-
-To set up a theming, create a folder called `src/mailingui/themes` in your project and colocate a file named `index.ts` inside the folder and paste the following code into it.
-
-```ts copy
-export const theme = {
-  color: {
-    background: {
-      "100": "#ffffff",
-      "200": "#ffffff",
-      "300": "#ffffff",
-      "400": "#ffffff",
-    },
-    foreground: {
-      "100": "#000000",
-      "200": "#000000",
-      "300": "#000000",
-      "400": "#000000",
-    },
-    brand: "#000000",
-  },
-  rounded: {
-    base: 0,
-    full: 9999,
-  },
-} as const;
+```bash
+npm install @mdx-js/react
 ```
 
 <Callout type="warning" emoji="⚠️">
-  This theme object is completely arbitrary, feel free to modify it to fit your
-  needs. However, **if you add or remove any of the existing keys-values** you will need to
-  update the components as well.
+  We assume you have an integration to compile MDX to JS, such as
+  `@mdx-js/esbuild`, `@mdx-js/loader`, `@mdx-js/node-loader`, or
+  `@mdx-js/rollup` in place. If you don't, please refer to [MDX
+  Packages](https://mdxjs.com/packages/).
+</Callout>
+
+### Create your working sub-directories
+
+Whether you call it MailingUI or not is up to you. We recommend setting up a working directories where your emails, their components, theming, utils and assets will be.
+
+<FileTree>
+  <FileTree.Folder name="src" defaultOpen>
+    <FileTree.Folder name="emails" defaultOpen>
+      <FileTree.Folder name="assets" defaultOpen />
+    </FileTree.Folder>
+    <FileTree.Folder name="mailingui" defaultOpen>
+      <FileTree.Folder name="components" defaultOpen />
+      <FileTree.Folder name="themes" defaultOpen />
+      <FileTree.Folder name="utils" defaultOpen />
+    </FileTree.Folder>
+  </FileTree.Folder>
+</FileTree>
+
+### Set up themes and utils
+
+Emails **just work differently**, there is no good solution for theming. Our components are styled using a theme config (fancy way of calling our theme object) that you can modify to fit your branding needs for quick and easy customization.
+
+```ts copy filename="/themes/types.ts"
+import * as React from "react";
+
+// ⚠️ Proceed with caution
+
+export type Colors<T extends string> = Record<T, React.CSSProperties["color"]>;
+
+export type StyleKey<T extends string> = keyof JSX.IntrinsicElements | T;
+
+export type Styles<T extends string> = Partial<Record<StyleKey<T>, React.CSSProperties>>;
+```
+
+```ts copy filename="/themes/theme.ts"
+import type { Colors, Styles } from "./types";
+import { remToPx } from "@mailingui/utils";
+
+/**
+ * Color variants for MailingUI Components
+ * 
+ * Not meant to be exported
+ */
+type ColorVariants = "global" | "muted" | "muted-background";
+
+/**
+ * Style variants for MailingUI Components
+ * 
+ * Not meant to be exported
+ */
+type StyleVariants =
+  | "global"
+  | "headings"
+  | "text"
+  | "muted"
+  | "lead"
+  | "small"
+  | "block"
+  | "compact";
+
+/**
+ * Themed colors for MailingUI Components
+ * 
+ * Add any colors with CSS for consistency
+ * in your styles object
+ * 
+ * Not meant to be exported
+ * 
+ */
+const defaultColors: ThemeColors = {
+  global: "#262626", //neutral-800
+  muted: "#737373", // neutral-500
+  "muted-background": "#f5f5f5", //neutral-100
+};
+
+export type ThemeColors = Colors<ColorVariants>;
+export type ThemeStyles = Styles<StyleVariants>;
+
+/**
+ * Themed styles for MailingUI Components
+ * 
+ * Add any variants with CSS to access their
+ * styles using the object's key or
+ * as a utility class combined with `cx`
+ * 
+ */
+export const styles: ThemeStyles = {
+  global: {
+    fontFamily: "system-ui, sans-serif",
+    color: defaultColors.global,
+    marginBottom: `${remToPx(1.75)}`,
+  },
+  headings: {
+    letterSpacing: remToPx(-0.05),
+    marginTop: `${remToPx(2.5)}`,
+    fontWeight: 300,
+  },
+  text: {
+    fontSize: remToPx(1.125),
+    lineHeight: remToPx(2),
+    fontWeight: 300,
+  },
+  h1: {
+    fontSize: remToPx(3.75),
+    lineHeight: remToPx(3.75),
+    letterSpacing: remToPx(-0.05),
+    marginTop: 0,
+  },
+  h2: {
+    fontSize: remToPx(3),
+    lineHeight: remToPx(3),
+  },
+  h3: {
+    fontSize: remToPx(2.25),
+    lineHeight: remToPx(2.5),
+  },
+  h4: {
+    fontSize: remToPx(1.875),
+    lineHeight: remToPx(2.25),
+  },
+  p: {
+    marginTop: 0,
+  },
+  blockquote: {
+    fontStyle: "italic",
+    fontWeight: 500,
+    marginLeft: `${remToPx(0)}`,
+    marginRight: `${remToPx(0)}`,
+    padding: `0 0 0 ${remToPx(1)}`,
+    borderLeft: `${remToPx(0.25)} solid ${defaultColors.muted}`,
+  },
+  hr: {
+    marginTop: `${remToPx(2)}`,
+    width: "100%",
+    border: "none",
+    borderTop: `${remToPx(0.1)} solid ${defaultColors.muted}`,
+  },
+  code: {
+    fontFamily:
+      "ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace",
+    whiteSpace: "nowrap",
+    borderRadius: `${remToPx(0.25)}`,
+    padding: `${remToPx(0.125)} ${remToPx(0.25)}`,
+    backgroundColor: defaultColors["muted-background"],
+    color: defaultColors.muted,
+  },
+  a: {
+    textDecoration: "underline",
+    textUnderlineOffset: "6px",
+    color: "inherit",
+  },
+  ul: {
+    paddingLeft: `${remToPx(1.625)}`,
+  },
+  ol: {
+    paddingLeft: `${remToPx(1.625)}`,
+  },
+  li: {
+    paddingLeft: `${remToPx(0.375)}`,
+    marginBottom: `${remToPx(0.625)}`,
+  },
+  muted: {
+    color: defaultColors.muted,
+  },
+  lead: {
+    color: defaultColors.muted,
+    fontSize: remToPx(1.5),
+  },
+  small: {
+    fontSize: remToPx(0.875),
+    lineHeight: remToPx(1.5),
+  },
+  block: {
+    display: "block",
+    marginBottom: `${remToPx(1)}`,
+  },
+  compact: {
+    margin: 0,
+  },
+};
+```
+
+```ts copy filename="/utils/utils.ts"
+import * as React from "react";
+import { styles, type ThemeStyles } from "@mailingui/themes"
+
+// ⚠️ Proceed with caution
+
+const round = (num: number) =>
+  num
+    .toFixed(7)
+    .replace(/(\.[0-9]+?)0+$/, "$1")
+    .replace(/\.0$/, "");
+
+export const remToPx = (rem: number) => `${round(rem * 16)}px`;
+
+export const cx = (
+  inputStyles: (
+    | keyof ThemeStyles
+    | React.CSSProperties
+    | undefined
+    | boolean
+  )[],
+  config: { styles: ThemeStyles } = { styles }
+): React.CSSProperties =>
+  inputStyles
+    .filter((s): s is keyof ThemeStyles | React.CSSProperties => Boolean(s))
+    .reduce<React.CSSProperties>((mergedStyles, style) => {
+      if (typeof style === "string") {
+        return { ...mergedStyles, ...config.styles[style] };
+      }
+      return { ...mergedStyles, ...style };
+    }, {});
+```
+
+<Callout type="warning" emoji="⚠️">
+  This theme config is completely arbitrary but completely type safe, feel free
+  to take aid in its types and modify it to fit your needs. Just make sure to check your components.
 </Callout>
 
 </Steps>

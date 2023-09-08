@@ -13,9 +13,10 @@ import {
 import { MDXComponents } from "mdx/types";
 import Example from "./Newsletter.mdx";
 import { Markdown, Typography } from "@mailingui/components";
-import { cx, type Styles } from "@mailingui/themes";
+import { type ThemeStyles } from "@mailingui/themes";
+import { cx } from "@mailingui/utils";
 
-const styles: Styles = {
+const styles: ThemeStyles = {
   headings: {
     fontWeight: 600,
     color: "#0dba0d",

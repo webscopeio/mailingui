@@ -5,36 +5,32 @@ description: An open source collection of email components and templates
 
 import { Cards, Card } from "nextra/components";
 import { TerminalIcon, CopyIcon } from "lucide-react";
-import { Callout } from 'nextra/components'
+import { Callout } from "nextra/components";
 
 # Getting Started
 
-MailingUI is a set of _opinionated_ React components built on top of [React.email](https://react.email) designed to make the creation of emails easier.
-
-All of our components are completely open-sourced and intended to be used as copy-and-paste snippets. Right now, we have no plans on creating an npm package for the components. 
-
-However, we have enabled an [automatic install](/docs/guide/automatic-install) through our own CLI which will make the installation of components easier.
-
-## Prerequisites
-
-To use MailingUI components in your project, you have to set up a few things.
+MailingUI is a set of _opinionated_ React components, built on top of [React.email](https://react.email), designed to make the creation of emails easier.
 
 <Callout type="info" emoji="ℹ️">
-We recommend using MailingUI in a [Next](https://nextjs.org/) project, as all of our examples are based on using this framework.
+  When thinking about how is MailingUI built on top of [React.email](https://react.email), think about how [Shad's UI](https://ui.shadcn.com/) is built on top of [Radix UI](https://www.radix-ui.com/).
 </Callout>
 
+## Why
 
-### Create a new Next project (optional)
+> "We believe that email is an extremely important medium for people to communicate. However, we need to stop developing emails like 2010, and rethink how email can be done in 2022 and beyond. Email development needs a revamp. A renovation. Modernized for the way we build web apps today"  
+—[React.email](https://react.email).
 
-If you already have a Next project or would like to use MailingUI with a different React framework, you can skip this step.
+## How to use
 
-```bash copy
-npx create-next-app@latest --typescript
-```
+All of our components are completely **open-sourced** and intended for a
+*copy-and-paste* use. Currently, we don't have any plans in releasing MailingUI as an npm
+package.
 
-### Choose an installation method
+We do realize that asking you to _copy-and-paste_ everything might slow you down. Therefore, we've created a CLI for an [automatic install](/docs/guide/automatic-install) to make things easier.
 
-You are able to use our MailingUI CLI or manually install our components:
+## Installation
+
+Just like [React.email](https://react.email), you can incrementally adopt MailingUI into any TypeScript project using React. You can choose an automatic install using our CLI `@mailingui/cli` or copy-and-paste MailingUI's building blocks to get started:
 
 <Cards>
   <Card

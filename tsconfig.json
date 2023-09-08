@@ -26,7 +26,8 @@
       "@registry/*": ["./src/registry/*"],
       "@utils/*": ["src/utils/*"],
       "@mailingui/components": ["./src/mailingui/components/index.ts"],
-      "@mailingui/themes": ["./src/mailingui/themes/index.ts"]
+      "@mailingui/themes": ["./src/mailingui/themes/index.ts"],
+      "@mailingui/utils": ["./src/mailingui/utils/utils.ts"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
