@@ -4,23 +4,18 @@ description: Build eye-catching emails with pre-made components
 ---
 
 import { getComponentProps } from "@utils/components";
-import { BasicUsage } from "@components/docs/BasicUsage";
-import Installation from "@components/docs/installation.mdx";
-import { Examples } from "@components/docs/Examples";
+
+import { Installation } from "@components/docs/Installation";
+import { Example } from "@components/docs/Example";
 
 export const getStaticProps = async () => {
-  const { type, html, demoCode, sourceCode, examples } = await getComponentProps({
-    type: "typography"
-  }) 
+  const { sourceCode, examples } = await getComponentProps("typography", "Typography.tsx");
 
   return {
     props: {
       ssg: {
-        type,
-        html,
-        demoCode,
         sourceCode,
-        examples
+        examples,
       },
     },
   };
@@ -32,12 +27,42 @@ Beautiful typographic defaults for HTML you do control
 
 ## Basic Usage
 
-<BasicUsage />
+<Example name="Demo" />
 
 ## Installation
 
-<Installation cli="typography" />
+<Installation>
+  ```bash copy
+  npx @mailingui/cli add [options] typography
+  ```
+</Installation>
 
 ## Examples
 
-<Examples />
+### Headings
+
+<Example name="Headings" height={600} />
+
+### Paragraphs
+
+<Example name="Paragraphs" height={600} />
+
+### Blockquotes
+
+<Example name="Blockquotes" height={350} />
+
+### Unordered List
+
+<Example name="UnorderedList" height={400} />
+
+### Ordered List
+
+<Example name="OrderedList" height={440} />
+
+### Link
+
+<Example name="Link" height={490} />
+
+### Inline Code
+
+<Example name="InlineCode" height={400} />

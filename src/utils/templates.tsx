@@ -2,21 +2,12 @@ import fs from "fs";
 import { render } from "@react-email/render";
 import { getHighlighter, highlight } from "@utils/shiki";
 
-type getTemplatePropsOptions = {
-  template: string;
-  category: string;
-};
-
-export const getTemplateProps = async ({
-  template,
-  category,
-}: getTemplatePropsOptions) => {
+export const getTemplateProps = async (template: string, category: string) => {
   const highlighter = await getHighlighter();
 
-  // Examples
   const filenames = fs.readdirSync(`./src/emails/${template}/${category}`);
   const mdxFilenames = filenames.filter((file) => file.includes(".mdx"));
-  const examples = await Promise.all(
+  const templates = await Promise.all(
     filenames
       .filter((file) => file.includes(".tsx"))
       .map(async (file) => {
@@ -25,39 +16,50 @@ export const getTemplateProps = async ({
           await import(`src/emails/${template}/${category}/${file}`)
         ).default;
         const html = render(<Component />, { pretty: true });
-        const demoCodeRaw = fs.readFileSync(
+        const codeRaw = fs.readFileSync(
           `./src/emails/${template}/${category}/${file}`,
           "utf8"
         );
-        const demoCode = await highlight(highlighter, demoCodeRaw, "tsx");
+        const code = await highlight(highlighter, codeRaw, "tsx");
         const markup = await highlight(highlighter, html, "html");
 
         const mdxFilename = mdxFilenames.find((file) => file.includes(name));
-        if (mdxFilename) {
-          const mdxRaw = fs.readFileSync(
-            `./src/emails/${template}/${category}/${mdxFilename}`,
-            "utf8"
-          );
-          const mdx = await highlight(highlighter, mdxRaw, "mdx");
+
+        if (!mdxFilename) {
           return {
             name,
             html,
-            demoCode,
+            code,
             markup,
-            mdx,
           };
         }
-
+        const mdxRaw = fs.readFileSync(
+          `./src/emails/${template}/${category}/${mdxFilename}`,
+          "utf8"
+        );
+        const mdx = await highlight(highlighter, mdxRaw, "mdx");
         return {
           name,
           html,
-          demoCode,
+          code,
           markup,
+          mdx,
         };
       })
   );
 
-  return {
-    examples,
-  };
+  return templates.reduce<
+    Record<
+      string,
+      { html: string; code: string; markup: string; mdx: string | null }
+    >
+  >((res, template) => {
+    res[template.name] = {
+      html: template.html,
+      code: template.code,
+      markup: template.markup,
+      mdx: template.mdx ?? null,
+    };
+    return res;
+  }, {});
 };

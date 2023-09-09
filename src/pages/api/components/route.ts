@@ -6,17 +6,7 @@ const getFileProps = (path: string) => ({
   file: fs.readFileSync(path, "utf8"),
 });
 
-type SupportedComponents =
-  | "badge"
-  | "button"
-  | "divider"
-  | "emoji"
-  | "heroSection"
-  | "list"
-  | "bulletList"
-  | "socialIcon"
-  | "typography"
-  | "markdown";
+type SupportedComponents = "badge" | "button" | "typography" | "markdown";
 
 const getComponents = (): Record<
   SupportedComponents,
@@ -33,32 +23,6 @@ const getComponents = (): Record<
     button: {
       dependencies: [],
       ...getFileProps("./src/mailingui/components/button/Button.tsx"),
-    },
-    divider: {
-      dependencies: [],
-      ...getFileProps("./src/mailingui/components/divider/Divider.tsx"),
-    },
-    emoji: {
-      dependencies: [],
-      ...getFileProps("./src/mailingui/components/emoji/Emoji.tsx"),
-    },
-    heroSection: {
-      dependencies: [],
-      ...getFileProps(
-        "./src/mailingui/components/hero-section/HeroSection.tsx"
-      ),
-    },
-    list: {
-      dependencies: [],
-      ...getFileProps("./src/mailingui/components/list/List.tsx"),
-    },
-    bulletList: {
-      dependencies: [],
-      ...getFileProps("./src/mailingui/components/list/BulletList.tsx"),
-    },
-    socialIcon: {
-      dependencies: [],
-      ...getFileProps("./src/mailingui/components/social-icon/SocialIcon.tsx"),
     },
     typography: {
       dependencies: [],
