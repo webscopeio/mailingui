@@ -3,6 +3,8 @@ title: Badges - Components
 description: Build eye-catching emails with pre-made components
 ---
 
+import { Callout } from "nextra/components";
+
 import { getComponentProps } from "@utils/components";
 
 import { Installation } from "@components/docs/Installation";
@@ -27,7 +29,7 @@ Highlight key information with attention-grabbing badges
 
 ## Basic Usage
 
-<Example name="Demo" height={120} />
+<Example name="Demo" height={145} />
 
 ## Installation
 
@@ -39,6 +41,18 @@ Highlight key information with attention-grabbing badges
 
 ## Examples
 
-### Demo
+### Color Variants
 
-<Example name="Demo" height={120} />
+<Example name="ColorVariants" height={145} />
+
+### Rounded
+
+<Example name="Rounded" height={145} />
+
+<Callout type="warning" emoji="⚠️">
+  Note: Outlook has limited support for `border-radius` CSS property.
+</Callout>
+
+### Custom
+
+<Example name="Custom" height={145} />

@@ -1,19 +1,16 @@
 import * as React from "react";
-
 import {
   Body,
+  Column,
   Container,
+  Head,
   Html,
   Preview,
-  Head,
   Row,
-  Column,
 } from "@react-email/components";
+import { Badge } from "@mailingui/components";
 
-import Demo from "./Demo.mdx";
-import { Markdown } from "@mailingui/components";
-
-export default function Email() {
+export default function Demo() {
   return (
     <Html>
       <Head />
@@ -21,10 +18,13 @@ export default function Email() {
       <Body style={body}>
         <Container style={container}>
           <Row>
-            <Column>
-              <Markdown>
-                <Demo title="Latest News" />
-              </Markdown>
+            <Column align="center">
+            <Badge rounded compact style={{ marginRight: "12px" }}>
+                Primary
+              </Badge>
+              <Badge rounded secondary compact>
+                Secondary
+              </Badge>
             </Column>
           </Row>
         </Container>

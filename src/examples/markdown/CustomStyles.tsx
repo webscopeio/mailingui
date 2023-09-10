@@ -23,7 +23,7 @@ export default function Email() {
           <Row>
             <Column>
               <Markdown
-                styles={{
+                theme={{
                   headings: {
                     fontWeight: 600,
                     color: "#4f46e5",
@@ -32,6 +32,10 @@ export default function Email() {
                     fontFamily:
                       "'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', P052, serif",
                   },
+                  "primary": {
+                    backgroundColor: "#4f46e5",
+                    border: "1px solid #4f46e5"
+                  }
                 }}
               >
                 <Example title="Latest News" />
@@ -45,7 +49,7 @@ export default function Email() {
 }
 
 export const body: React.CSSProperties = {
-  backgroundColor: "#fafafa", // Background color outside container
+  backgroundColor: "#fff", // Background color outside container
   margin: 0, // Margin reset
 };
 

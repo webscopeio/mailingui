@@ -1,30 +1,22 @@
 import * as React from "react";
-import { styles, type ThemeStyles } from "@mailingui/themes"
-
-// ⚠️ Proceed with caution
-
-const round = (num: number) =>
-  num
-    .toFixed(7)
-    .replace(/(\.[0-9]+?)0+$/, "$1")
-    .replace(/\.0$/, "");
-
-export const remToPx = (rem: number) => `${round(rem * 16)}px`;
+import { theme, type Theme } from "@mailingui/themes";
 
 export const cx = (
   inputStyles: (
-    | keyof ThemeStyles
+    | keyof Theme
     | React.CSSProperties
     | undefined
     | boolean
   )[],
-  config: { styles: ThemeStyles } = { styles }
+  config: {
+    theme?: Theme;
+  } = { theme }
 ): React.CSSProperties =>
   inputStyles
-    .filter((s): s is keyof ThemeStyles | React.CSSProperties => Boolean(s))
+    .filter((s): s is keyof Theme | React.CSSProperties => Boolean(s))
     .reduce<React.CSSProperties>((mergedStyles, style) => {
       if (typeof style === "string") {
-        return { ...mergedStyles, ...config.styles[style] };
+        return { ...mergedStyles, ...theme[style], ...config.theme?.[style] };
       }
       return { ...mergedStyles, ...style };
     }, {});

@@ -30,17 +30,17 @@ type ColorVariants = "global" | "hotpink";
 
 // 2. DECLARE ITS CSS COLOR VALUE
 // Completely type-safe and with autocompletion
-const defaultColors: ThemeColors = {
+const colors: ThemeColors = {
   global: "#262626",
   hotpink: "hotpink"
 };
 
 // 3. USE YOUR NEW COLOR
 // Completely type-safe and with autocompletion
-export const styles: ThemeStyles = {
+export const theme: Theme = {
   global: {
     fontFamily: "system-ui, sans-serif",
-    color: defaultColors.hotpink,
+    color: colors.hotpink,
   },
   {...}
 };
@@ -51,19 +51,19 @@ export const styles: ThemeStyles = {
 Add any style in _three_ easy steps:
 
 ```ts copy filename="/themes/theme.ts"
-// 1. ADD A STYLE VARIANT (i.e., "lead")
+// 1. ADD A THEME VARIANT (i.e., "lead")
 // This is how your style will be referenced as
-type StyleVariants =
+type ThemeVariants =
   | "global"
   | "headings"
   | "lead"
 
 // 2. DECLARE ITS CSS STYLE
 // Completely type-safe and with autocompletion
-export const styles: ThemeStyles = {
+export const theme: Theme = {
   global: {
     fontFamily: "system-ui, sans-serif",
-    color: defaultColors.hotpink,
+    color: colors.hotpink,
   },
   lead: {
     fontSize: remToPx(1.5),
@@ -99,12 +99,71 @@ import { cx } from "@mailingui/utils";
 export const Lead: React.FC<
   React.ComponentPropsWithoutRef<"p"> & { small?: boolean }
 > = ({ small, style, ...props }) => (
-  // You can add style variant keys, CSS properties, both conditionally
+  // You can add theme variant keys and CSS properties, both conditionally
   <p
     style={cx(["global", "lead", small && { fontSize: "14px" }, style])}
     {...props}
   />
 );
+```
+
+## Using MDX and context themes
+
+If you are using MDX and will need to update theme on an email-basis. You have the option to enable your components with a `theme` prop and pass it in your `cx` function. You do not need this if you plan to manage your themes exclusively with the theme config.
+
+```ts copy filename="/components/Lead.tsx"
+import * as React from "react";
+import { Theme } from "@mailingui/themes";
+import { cx } from "@mailingui/utils";
+
+export const Lead: React.FC<
+  React.ComponentPropsWithoutRef<"p"> & { small?: boolean; theme?: Theme }
+> = ({ small, theme, style, ...props }) => (
+  // Add your theme using a prop and `cx`
+  <p
+    style={cx(["global", "lead", small && { fontSize: "14px" }, style], {
+      theme,
+    })}
+    {...props}
+  />
+);
+```
+
+Then use the `Markdown` component to pass custom theme styles:
+
+```tsx
+import * as React from "react";
+
+import { Body, Container, Html, Head, Row, Column } from "@react-email/components";
+
+import Example from "./CustomStyles.mdx";
+import { Markdown, Lead } from "@mailingui/components";
+
+export default function Email() {
+  return (
+    <Html>
+      <Head />
+      <Body>
+        <Container>
+          <Row>
+            <Column>
+              <Markdown
+                theme={{
+                  lead: {
+                    fontFamily:
+                      "'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', P052, serif",
+                  },
+                }}
+              >
+                <Example title="Latest News" />
+              </Markdown>
+            </Column>
+          </Row>
+        </Container>
+      </Body>
+    </Html>
+  );
+}
 ```
 
 Congratulations! 🥳 You're set for theming. Go ahead and make email feel a bit more modern and less 2010.

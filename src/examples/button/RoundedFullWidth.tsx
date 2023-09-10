@@ -1,19 +1,16 @@
 import * as React from "react";
-
 import {
   Body,
+  Column,
   Container,
+  Head,
   Html,
   Preview,
-  Head,
   Row,
-  Column,
 } from "@react-email/components";
+import { Button } from "@mailingui/components";
 
-import Demo from "./Demo.mdx";
-import { Markdown } from "@mailingui/components";
-
-export default function Email() {
+export default function Demo() {
   return (
     <Html>
       <Head />
@@ -22,9 +19,9 @@ export default function Email() {
         <Container style={container}>
           <Row>
             <Column>
-              <Markdown>
-                <Demo title="Latest News" />
-              </Markdown>
+              <Button fullWidth rounded compact href="#">
+                Rounded Full Width
+              </Button>
             </Column>
           </Row>
         </Container>

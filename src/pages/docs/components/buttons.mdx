@@ -3,6 +3,8 @@ title: Buttons - Components
 description: Build eye-catching emails with pre-made components
 ---
 
+import { Callout } from "nextra/components";
+
 import { getComponentProps } from "@utils/components";
 
 import { Installation } from "@components/docs/Installation";
@@ -27,7 +29,7 @@ Drive user action with clickable buttons
 
 ## Basic Usage
 
-<Example name="Demo" height={150} />
+<Example name="Demo" height={175} />
 
 ## Installation
 
@@ -39,6 +41,30 @@ Drive user action with clickable buttons
 
 ## Examples
 
-### Demo
+### Color Variants
 
-<Example name="Demo" height={150} />
+<Example name="ColorVariants" height={312} />
+
+### Full Width
+
+<Example name="FullWidth" height={250} />
+
+### Rounded
+
+<Example name="Rounded" height={175} />
+
+<Callout type="warning" emoji="⚠️">
+  Note: Outlook has limited support for `border-radius` CSS property.
+</Callout>
+
+### Rounded Full Width
+
+<Example name="RoundedFullWidth" height={175} />
+
+<Callout type="warning" emoji="⚠️">
+  Note: Outlook has limited support for `border-radius` CSS property.
+</Callout>
+
+### Custom
+
+<Example name="Custom" height={175} />
