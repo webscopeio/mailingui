@@ -1,5 +1,6 @@
 import * as React from "react";
 
+import { baseUrl } from "../shared/assets";
 import { Wrapper } from "../shared/Wrapper";
 
 import SubscriptionConfirmation from "./subscription-confirmation.mdx";
@@ -13,6 +14,7 @@ export default function Email({
 }: Record<string, string>) {
   return (
     <Markdown
+      baseUrl={baseUrl}
       components={{
         wrapper: (props) => <Wrapper {...props} />,
       }}

@@ -15,6 +15,7 @@ export {
   UL,
   OL,
   LI,
+  Img
 } from "./typography/Typography";
 
 export { Markdown } from "./markdown/Markdown";

@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import * as React from "react";
 
 import { Theme } from "@mailingui/themes";
@@ -103,9 +104,9 @@ const HR: React.FC<
 
 const Code: React.FC<
   React.ComponentPropsWithoutRef<"code"> & { theme?: Theme }
-> = ({ style, theme, ...props }) => {
-  return <code style={cx(["global", "code", style], { theme })} {...props} />;
-};
+> = ({ style, theme, ...props }) => (
+  <code style={cx(["global", "code", style], { theme })} {...props} />
+);
 
 const Link: React.FC<
   React.ComponentPropsWithoutRef<"a"> & {
@@ -134,23 +135,43 @@ const Link: React.FC<
 
 const UL: React.FC<
   React.ComponentPropsWithoutRef<"ul"> & { theme?: Theme }
-> = ({ style, theme, ...props }) => {
-  return <ul style={cx(["global", "ul", style], { theme })} {...props} />;
-};
+> = ({ style, theme, ...props }) => (
+  <ul style={cx(["global", "ul", style], { theme })} {...props} />
+);
 
 const OL: React.FC<
   React.ComponentPropsWithoutRef<"ol"> & { theme?: Theme }
-> = ({ style, theme, ...props }) => {
-  return <ol style={cx(["global", "ol", style], { theme })} {...props} />;
-};
+> = ({ style, theme, ...props }) => (
+  <ol style={cx(["global", "ol", style], { theme })} {...props} />
+);
 
 const LI: React.FC<
   React.ComponentPropsWithoutRef<"li"> & { theme?: Theme }
-> = ({ style, theme, ...props }) => {
-  return (
-    <li style={cx(["global", "text", "li", style], { theme })} {...props} />
-  );
-};
+> = ({ style, theme, ...props }) => (
+  <li style={cx(["global", "text", "li", style], { theme })} {...props} />
+);
+
+const Img: React.FC<
+  React.ComponentPropsWithoutRef<"img"> & { caption?: string; theme?: Theme }
+> = ({ caption, theme, alt, src, width, height, style, ...props }) => (
+  <figure style={cx(["figure"], { theme })}>
+    <img
+      style={cx(["global", "img", Boolean(caption) && "compact", style], {
+        theme,
+      })}
+      alt={alt}
+      src={src}
+      width={width}
+      height={height}
+      {...props}
+    />
+    {caption && (
+      <figcaption style={cx(["global", "text", "small", "muted", "figcaption"], { theme })}>
+        {caption}
+      </figcaption>
+    )}
+  </figure>
+);
 
 export const Typography = {
   H1,
@@ -165,6 +186,7 @@ export const Typography = {
   UL,
   OL,
   LI,
+  Img,
 };
 
-export { H1, H2, H3, H4, P, Blockquote, HR, Code, Link, UL, OL, LI };
+export { H1, H2, H3, H4, P, Blockquote, HR, Code, Link, UL, OL, LI, Img };

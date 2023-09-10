@@ -1,7 +1,7 @@
 import * as React from "react";
 import { MDXProvider } from "@mdx-js/react";
 
-import { Row, Column, Img } from "@react-email/components";
+import { Row, Column } from "@react-email/components";
 
 import { type MDXComponents } from "mdx/types";
 
@@ -21,6 +21,7 @@ function getComponents({
   baseUrl?: string;
 }): MDXComponents {
   const defaultComponents: MDXComponents = {
+    // HTML Mappings
     h1: (props) => <Typography.H1 theme={theme} {...props} />,
     h2: (props) => <Typography.H2 theme={theme} {...props} />,
     h3: (props) => <Typography.H3 theme={theme} {...props} />,
@@ -33,35 +34,18 @@ function getComponents({
     ul: (props) => <Typography.UL theme={theme} {...props} />,
     ol: (props) => <Typography.OL theme={theme} {...props} />,
     li: (props) => <Typography.LI theme={theme} {...props} />,
-    img: (props) => (
-      <div>
-        <Img
-          width={"100%"}
-          src={`${baseUrl ?? ""}${props.src}`}
-          alt={props.alt}
-        />
-        {props.title && (
-          <Typography.P muted style={{ textAlign: "center", marginTop: "8px" }}>
-            {props.title}
-          </Typography.P>
-        )}
-      </div>
+    img: ({ title, src, ...props }) => (
+      <Typography.Img
+        theme={theme}
+        caption={title}
+        src={`${baseUrl ?? ""}${src}`}
+        {...props}
+      />
     ),
+    // React Email Components
     Row: (props) => <Row {...props} />,
     Column: (props) => <Column {...props} />,
-    Img: (props) => (
-      <>
-        <Img src={`${baseUrl ?? ""}${props.src}`} {...props} />
-        {props.title && (
-          <Typography.P
-            muted
-            style={{ textAlign: "center", marginTop: "8px", marginBottom: 0 }}
-          >
-            {props.title}
-          </Typography.P>
-        )}
-      </>
-    ),
+    // MailingUI Components
     H1: (props) => <Typography.H1 theme={theme} {...props} />,
     H2: (props) => <Typography.H2 theme={theme} {...props} />,
     H3: (props) => <Typography.H3 theme={theme} {...props} />,
@@ -74,6 +58,14 @@ function getComponents({
     UL: (props) => <Typography.UL theme={theme} {...props} />,
     OL: (props) => <Typography.OL theme={theme} {...props} />,
     LI: (props) => <Typography.LI theme={theme} {...props} />,
+    Img: ({ title, src, ...props }) => (
+      <Typography.Img
+        theme={theme}
+        caption={title}
+        src={`${baseUrl ?? ""}${src}`}
+        {...props}
+      />
+    ),
     Badge: (props) => <Badge theme={theme} {...props} />,
     Button: (props) => <Button theme={theme} {...props} />,
   };

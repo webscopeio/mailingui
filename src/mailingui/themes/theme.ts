@@ -157,6 +157,21 @@ export const theme: Theme = {
     paddingLeft: `${remToPx(0.375)}`,
     marginBottom: `${remToPx(0.625)}`,
   },
+  figure: {
+    margin: 0,
+    width: "100%",
+  },
+  img: {
+    maxWidth: "100%",
+    display: "block",
+    outline: "none",
+    border: "none",
+    textDecoration: "none",
+  },
+  figcaption: {
+    marginTop: `${remToPx(0.5)}`,
+    textAlign: "center"
+  },
   muted: {
     color: colors.muted,
   },

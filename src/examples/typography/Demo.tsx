@@ -12,6 +12,7 @@ import {
   OL,
   LI,
   UL,
+  Img,
 } from "@mailingui/components";
 
 export default function Demo() {
@@ -23,6 +24,7 @@ export default function Demo() {
           <P lead>
             A story about the king and his subjects
           </P>
+          <Img caption="Once upon a time" alt="Code Image" src="https://plus.unsplash.com/premium_photo-1678565999588-08fdd0b1410b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2494&q=80" />
           <P>
             Once upon a time, in a far-off land, there was a very lazy king who
             spent all day lounging on his throne. One day, his advisors came to
