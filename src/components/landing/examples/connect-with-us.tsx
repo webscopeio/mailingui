@@ -1,5 +1,5 @@
 import { Container, Row, Column } from "@react-email/components";
-import { SocialIcon, P, HR } from "@mailingui/components";
+import { P, HR } from "@mailingui/components";
 
 export default function ConnectWithUs() {
   return (
@@ -12,15 +12,6 @@ export default function ConnectWithUs() {
       <Row>
         <Column>
           <P compact>Connect with us</P>
-        </Column>
-        <Column width={44}>
-          <SocialIcon type="telegram" href="#" />
-        </Column>
-        <Column width={44}>
-          <SocialIcon type="twitter" href="#" />
-        </Column>
-        <Column width={44}>
-          <SocialIcon type="whatsapp" href="#" />
         </Column>
       </Row>
     </Container>

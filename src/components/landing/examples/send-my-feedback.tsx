@@ -10,7 +10,7 @@ export default function SendMyFeedback() {
           <P style={{ marginBottom: "12px" }}>
             Write a review of your own. Let us know what you think.
           </P>
-          <Button href={"#"} width={280} height={56} backgroundColor="#000">
+          <Button href={"#"}>
             Send My Feedback
           </Button>
         </Column>

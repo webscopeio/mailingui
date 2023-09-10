@@ -12,10 +12,10 @@ export default function DotBadges() {
       </Row>
       <Row>
         <Column>
-          <Badge variant="outline" dot>
+          <Badge style={{marginRight: "6px"}}>
             New
           </Badge>{" "}
-          <Badge variant="subtle" dot>
+          <Badge secondary>
             React
           </Badge>
         </Column>
