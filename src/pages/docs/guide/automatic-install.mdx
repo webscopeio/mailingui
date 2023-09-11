@@ -27,7 +27,7 @@ Use your favorite framework and create a React TypeScript project where you can 
 Download all the necessary starting files for you to start working with MailingUI.
 
 ```shell copy
-npx @mailingui/cli init [options]
+npx @mailingui/cli init
 ```
 
 - `-p`, `--path` define base path to your MailingUI components (default: `"./src/mailingui"`)
@@ -39,7 +39,7 @@ npx @mailingui/cli init [options]
 Add all or specific components to your project. See [components](/docs/components) for the full list.
 
 ```shell copy
-npx @mailingui/cli add [options] [COMPONENT_NAME]
+npx @mailingui/cli add --all
 ```
 
 - `-o`, `--overwrite` automatically overwrite existing components (default: false)
@@ -48,12 +48,11 @@ npx @mailingui/cli add [options] [COMPONENT_NAME]
 
 ### Configure your path aliases (optional)
 
-Create path aliases to help you write email templates easier while using MailingUI
-
 ```ts copy
 {
   "compilerOptions": {
     {...}
+    "baseUrl": ".",
     "paths": {
       "@mailingui/components": ["./src/mailingui/components/index.ts"],
       "@mailingui/themes": ["./src/mailingui/themes/index.ts"],
@@ -62,6 +61,10 @@ Create path aliases to help you write email templates easier while using Mailing
   },
 }
 ```
+
+<Callout type="info" emoji="ℹ️">
+  Path alias depends on where you decide to install your MailingUI components. Example above shows installation in `./src/mailingui`
+</Callout>
 
 </Steps>
 
