@@ -1,7 +1,9 @@
 import { BASE_URL } from "../constants";
 
 type ThemeAPIResponse = {
+  index: string;
   theme: string;
+  types: string;
 };
 
 export async function getTheme(): Promise<ThemeAPIResponse> {

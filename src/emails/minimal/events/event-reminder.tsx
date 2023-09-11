@@ -1,7 +1,6 @@
 import * as React from "react";
 
 import { Wrapper } from "../shared/Wrapper";
-import { Button } from "../shared/Button";
 
 import EventReminder from "./event-reminder.mdx";
 
@@ -18,7 +17,6 @@ export default function Email({
   return (
     <Markdown
       components={{
-        Button: (props) => <Button {...props} />,
         wrapper: (props) => <Wrapper {...props} />,
       }}
     >

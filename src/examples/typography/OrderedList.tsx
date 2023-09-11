@@ -5,7 +5,7 @@ import { OL, LI } from "@mailingui/components";
 export default function Demo() {
   return (
     <Html>
-      <Body style={main}>
+      <Body style={body}>
         <Container style={container}>
           <OL>
             <LI>
@@ -24,14 +24,13 @@ export default function Demo() {
   );
 }
 
-const main = {
-  backgroundColor: "#ffffff",
-  color: "#24292e",
-  fontFamily:
-    "'Inter', 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif",
+export const body: React.CSSProperties = {
+  backgroundColor: "#fff", // Background color outside container
+  margin: 0, // Margin reset
 };
 
-const container = {
-  padding: "110px 0",
-  maxWidth: 580,
+export const container: React.CSSProperties = {
+  backgroundColor: "#fff", // Email background color
+  padding: "60px 30px",
+  maxWidth: "600px", // Estalbish the maximum size of the email
 };

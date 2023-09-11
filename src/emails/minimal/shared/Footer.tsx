@@ -1,14 +1,10 @@
 import * as React from "react";
-import {
-  Column,
-  Row,
-  Link as ReactEmailLink,
-  Img,
-} from "@react-email/components";
+import { Column, Row } from "@react-email/components";
+
 import { row } from "./styles";
 import { baseUrl } from "./assets";
-import { Banner } from "./Banner";
-import { HR, Link, P } from "@mailingui/components";
+
+import { HR, Link, P, Img } from "@mailingui/components";
 
 export const Footer: React.FC = () => (
   <>
@@ -19,77 +15,89 @@ export const Footer: React.FC = () => (
         </P>
       </Column>
     </Row>
-    <Banner style={{ marginBottom: "24px" }}>
-      <hr
+    <Row style={{ marginBottom: "24px" }}>
+      <Column
         style={{
-          width: "30px",
-          height: "4px",
-          margin: "4px 0",
-          backgroundColor: "#ef4444",
-          color: "#ef4444",
-          borderWidth: 0,
+          ...row,
+          width: "100%",
+          paddingTop: "36px",
+          paddingBottom: "36px",
+          backgroundColor: "#f5f5f5",
         }}
-      />
-      <P style={{ margin: 0 }}>
-        <b>We&apos;d like to hear from you </b>
-        <br />
-        Share your feedback at: <Link href="#">newsletters@minimal.com</Link>
-      </P>
-    </Banner>
+      >
+        <hr
+          style={{
+            width: "30px",
+            height: "4px",
+            margin: "4px 0",
+            backgroundColor: "#ef4444",
+            color: "#ef4444",
+            borderWidth: 0,
+          }}
+        />
+        <P compact>
+          <b>We&apos;d like to hear from you </b>
+          <br />
+          Share your feedback at: <Link href="#">newsletters@minimal.com</Link>
+        </P>
+      </Column>
+    </Row>
     <Row style={row}>
       <Column>
         <P small muted>
           If you&apos;d like to update your details please{" "}
-          <Link small muted href="#">click here</Link>. Replies to this email will not reach
-          us. If you don&apos;t want to receive these updates anymore, please
-          unsubscribe <Link small muted href="#">here</Link>.
+          <Link small muted href="#">
+            click here
+          </Link>
+          . Replies to this email will not reach us. If you don&apos;t want to
+          receive these updates anymore, please unsubscribe{" "}
+          <Link small muted href="#">
+            here
+          </Link>
+          .
         </P>
         <HR />
       </Column>
     </Row>
-    <Row style={{ ...row, marginBottom: `24px` }}>
-      <Column width={24} style={{ paddingRight: "18px" }}>
-        <ReactEmailLink href="#">
-          <Img
-            style={{ height: "24px", width: "24px" }}
-            src={`${baseUrl}/icons/github.png`}
-          />
-        </ReactEmailLink>
+    <Row style={row}>
+      <Column width={36}>
+        <Link href="#">
+          <Img width={24} src={`${baseUrl}/icons/github.png`} />
+        </Link>
       </Column>
-      <Column width={24} style={{ paddingRight: "18px" }}>
-        <ReactEmailLink href="#">
-          <Img
-            style={{ height: "24px", width: "24px" }}
-            src={`${baseUrl}/icons/linkedin.png`}
-          />
-        </ReactEmailLink>
+      <Column width={36}>
+        <Link href="#">
+          <Img width={24} src={`${baseUrl}/icons/linkedin.png`} />
+        </Link>
       </Column>
-      <Column width={24} style={{ paddingRight: "18px" }}>
-        <ReactEmailLink href="#">
-          <Img
-            style={{ height: "24px", width: "24px" }}
-            src={`${baseUrl}/icons/slack.png`}
-          />
-        </ReactEmailLink>
+      <Column width={36}>
+        <Link href="#">
+          <Img width={24} src={`${baseUrl}/icons/slack.png`} />
+        </Link>
       </Column>
-      <Column width={24} style={{ paddingRight: "18px" }}>
-        <ReactEmailLink href="#">
-          <Img
-            style={{ height: "24px", width: "24px" }}
-            src={`${baseUrl}/icons/twitter.png`}
-          />
-        </ReactEmailLink>
+      <Column width={36}>
+        <Link href="#">
+          <Img width={24} src={`${baseUrl}/icons/twitter.png`} />
+        </Link>
       </Column>
-      <Column width={"100%"}></Column>
+      <Column width="auto" />
     </Row>
     <Row style={row}>
       <Column>
         <P small muted>
           © Viola Company Inc., 2972 Westheimer Rd. Santa Ana, Illinois 85486
           <br />
-          <Link small muted href="#unsubscribe">Unsubscribe</Link> ·{" "}
-          <Link small muted href="#tos">Terms of Use</Link> ·{" "}
-          <Link small muted href="#pp">Privacy Policy</Link>
+          <Link small muted href="#unsubscribe">
+            Unsubscribe
+          </Link>{" "}
+          ·{" "}
+          <Link small muted href="#tos">
+            Terms of Use
+          </Link>{" "}
+          ·{" "}
+          <Link small muted href="#pp">
+            Privacy Policy
+          </Link>
         </P>
       </Column>
     </Row>

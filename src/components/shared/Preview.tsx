@@ -1,6 +1,6 @@
 import { Resizable } from "re-resizable";
 
-export const Preview = ({ type, html }: { type: string; html: string }) => {
+export const Preview = ({ html, height }: { html: string, height?: number }) => {
   return (
     <Resizable
       bounds="parent"
@@ -36,7 +36,7 @@ export const Preview = ({ type, html }: { type: string; html: string }) => {
         <iframe
           className="w-full rounded-md"
           style={{
-            height: getIframeHeight(type),
+            height: height ?? 400,
           }}
           id="Basic Usage"
           title="Basic Usage"
@@ -45,23 +45,4 @@ export const Preview = ({ type, html }: { type: string; html: string }) => {
       </div>
     </Resizable>
   );
-};
-
-const getIframeHeight = (type: string): number => {
-  switch (type) {
-    case "badge":
-      return 120;
-    case "button":
-      return 160;
-    case "divider":
-      return 230;
-    case "typography":
-      return 350;
-    case "markdown":
-      return 600;
-    case "template":
-      return 650;
-    default:
-      return 350;
-  }
 };

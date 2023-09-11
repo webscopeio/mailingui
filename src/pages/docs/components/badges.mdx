@@ -3,23 +3,19 @@ title: Badges - Components
 description: Build eye-catching emails with pre-made components
 ---
 
+import { Callout } from "nextra/components";
+
 import { getComponentProps } from "@utils/components";
-import { BasicUsage } from "@components/docs/BasicUsage";
-import Installation from "@components/docs/installation.mdx";
-import { Examples } from "@components/docs/Examples";
+
+import { Installation } from "@components/docs/Installation";
+import { Example } from "@components/docs/Example";
 
 export const getStaticProps = async () => {
-  const { type, html, demoCode, sourceCode, examples } =
-    await getComponentProps({
-      type: "badge",
-    });
+  const { sourceCode, examples } = await getComponentProps("badge", "Badge.tsx");
 
   return {
     props: {
       ssg: {
-        type,
-        html,
-        demoCode,
         sourceCode,
         examples,
       },
@@ -33,12 +29,30 @@ Highlight key information with attention-grabbing badges
 
 ## Basic Usage
 
-<BasicUsage />
+<Example name="Demo" height={145} />
 
 ## Installation
 
-<Installation cli="badge" />
+<Installation>
+  ```bash copy
+  npx @mailingui/cli add [options] badge
+  ```
+</Installation>
 
 ## Examples
 
-<Examples />
+### Color Variants
+
+<Example name="ColorVariants" height={145} />
+
+### Rounded
+
+<Example name="Rounded" height={145} />
+
+<Callout type="warning" emoji="⚠️">
+  Note: Outlook has limited support for `border-radius` CSS property.
+</Callout>
+
+### Custom
+
+<Example name="Custom" height={145} />

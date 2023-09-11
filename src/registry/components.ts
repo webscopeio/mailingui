@@ -1,20 +1,15 @@
 import { type StaticImageData } from "next/image";
 
-import Typography from "public/images/components-preview/typography.png";
-import SocialIcons from "public/images/components-preview/social_icons.png";
-import Lists from "public/images/components-preview/listing.png";
-import Heroes from "public/images/components-preview/heroes.png";
-import Emojis from "public/images/components-preview/emojis.png";
-import Dividers from "public/images/components-preview/dividers.png";
-import Buttons from "public/images/components-preview/buttons.png";
 import Badges from "public/images/components-preview/badges.png";
+import Buttons from "public/images/components-preview/buttons.png";
+import Markdown from "public/images/components-preview/markdown.png";
+import Typography from "public/images/components-preview/typography.png";
 
-interface ComponentMetadataType {
+type ComponentMetadataType = {
   type: string;
   title: string;
   subtitle: string;
   image: StaticImageData;
-  dependencies?: string[];
 }
 
 export const componentTypes: ComponentMetadataType[] = [
@@ -31,34 +26,10 @@ export const componentTypes: ComponentMetadataType[] = [
     image: Buttons,
   },
   {
-    type: "dividers",
-    title: "Dividers",
-    subtitle: "Create visual separation for a clean, professional look",
-    image: Dividers,
-  },
-  {
-    type: "emojis",
-    title: "Emojis",
-    subtitle: "Add personality and emotion to your messages",
-    image: Emojis,
-  },
-  {
-    type: "hero-sections",
-    title: "Hero section",
-    subtitle: "Beautiful headers to showcase your message",
-    image: Heroes,
-  },
-  {
-    type: "lists",
-    title: "Lists",
-    subtitle: "Organize information with simple lists",
-    image: Lists,
-  },
-  {
-    type: "social-icons",
-    title: "Social icons",
-    subtitle: "Increase engagement with clickable social icons",
-    image: SocialIcons,
+    type: "markdown",
+    title: "Markdown",
+    subtitle: "Use the power of MDX to author your emails",
+    image: Markdown,
   },
   {
     type: "typography",

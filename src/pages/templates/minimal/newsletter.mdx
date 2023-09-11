@@ -3,22 +3,18 @@ title: Newsletter - Minimal Templates
 description: Modern email templates, crafted using MailingUI
 ---
 
+
 import { getTemplateProps } from "@utils/templates";
 import { Header } from "@components/templates/Header";
-import { Examples } from "@components/templates/Examples";
+import { Template } from "@components/templates/Template";
 
 export const getStaticProps = async () => {
-  const { type, html, demoCode, sourceCode, examples } = await getTemplateProps(
-    {
-      template: "minimal",
-      category: "newsletter"
-    }
-  );
+  const templates = await getTemplateProps("minimal", "newsletter");
 
   return {
     props: {
       ssg: {
-        examples,
+        templates,
       },
     },
   };
@@ -34,4 +30,15 @@ export const getStaticProps = async () => {
   />
 </div>
 
-<Examples />
+
+## Subscription Confirmation
+
+<Template name="subscription-confirmation" height={800} hasMDX />
+
+## Subscription Success
+
+<Template name="subscription-success" height={800} hasMDX />
+
+## Newsletter
+
+<Template name="newsletter" height={800} hasMDX />

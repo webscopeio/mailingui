@@ -2,11 +2,6 @@
   "overview": "Overview",
   "badges": "Badges",
   "buttons": "Buttons",
-  "dividers": "Dividers",
-  "emojis": "Emojis",
-  "hero-sections": "Hero Sections",
-  "lists": "Lists",
-  "social-icons": "Social Icons",
-  "typography": "Typography",
-  "markdown": "Markdown"
+  "markdown": "Markdown",
+  "typography": "Typography"
 }

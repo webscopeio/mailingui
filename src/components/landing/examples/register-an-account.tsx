@@ -1,41 +1,36 @@
 import { Container, Row, Column } from "@react-email/components";
-import { SocialIcon, P } from "@mailingui/components";
+import { P, Img } from "@mailingui/components";
+import { baseUrl } from "src/emails/minimal/shared/assets";
 
 export default function RegisterAnAccount() {
   return (
     <Container style={container}>
-      <Row style={row}>
+      <Row>
         <Column>
-          <P style={{marginBottom: "12px"}}>Register an account:</P>
+          <P style={{ marginBottom: "12px" }}>Register an account:</P>
         </Column>
       </Row>
-      <Row style={row}>
+      <Row>
         <Column>
           <Row>
-            <Column width={32}>
-              <SocialIcon
-                type="github"
-                href="#link"
-                size={32}
-                style={{ margin: 0 }}
-              />
+            <Column width={36}>
+              <Img compact width={24} src={`${baseUrl}/icons/github.png`} />
             </Column>
-            <Column width={12} />
-            <Column>GitHub</Column>
+            <Column width={6} />
+            <Column width="auto">
+              <P compact>GitHub</P>
+            </Column>
           </Row>
         </Column>
         <Column>
           <Row>
-            <Column width={32}>
-              <SocialIcon
-                type="twitter"
-                href="#link"
-                size={32}
-                style={{ margin: 0 }}
-              />
+            <Column width={36}>
+              <Img compact width={24} src={`${baseUrl}/icons/twitter.png`} />
             </Column>
-            <Column width={12} />
-            <Column>Twitter</Column>
+            <Column width={6} />
+            <Column width="auto">
+              <P compact>Twitter</P>
+            </Column>
           </Row>
         </Column>
       </Row>
@@ -47,11 +42,4 @@ export default function RegisterAnAccount() {
 const container = {
   maxWidth: 280,
   margin: "16px 0",
-  fontFamily:
-    "'Inter', 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif",
 };
-
-const row = {
-  margin: "0 0 6px",
-};
-

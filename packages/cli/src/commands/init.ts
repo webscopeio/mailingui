@@ -11,6 +11,7 @@ import {
 } from "../constants";
 import { getPackageManager } from "../utils/getPackageManager";
 import { getTheme } from "../utils/getTheme";
+import { getUtils } from "../utils/getUtils";
 
 export const init = new Command()
   .name("init")
@@ -73,12 +74,29 @@ export const init = new Command()
       fs.mkdirSync(path.resolve(componentsPath), { recursive: true });
     }
 
-    const { theme } = await getTheme();
+    fs.writeFileSync(`${options.path}/components/index.ts`, "");
+
+    const { index, theme, types } = await getTheme();
     const themePath = `${options.path}/themes`;
     if (!fs.existsSync(path.resolve(themePath))) {
       fs.mkdirSync(path.resolve(themePath), { recursive: true });
     }
-    fs.writeFileSync(`${themePath}/index.ts`, theme);
+    fs.writeFileSync(`${themePath}/index.ts`, index);
+    fs.writeFileSync(`${themePath}/theme.ts`, theme);
+    fs.writeFileSync(`${themePath}/types.ts`, types);
+
+    const { index: utilsIndex, utils } = await getUtils();
+    const utilsPath = `${options.path}/utils`;
+    if (!fs.existsSync(path.resolve(utilsPath))) {
+      fs.mkdirSync(path.resolve(utilsPath), { recursive: true });
+    }
+    fs.writeFileSync(`${utilsPath}/index.ts`, utilsIndex);
+    const pathToThemes = path.relative(
+      `${options.path}/utils`,
+      `${options.path}/themes`
+    );
+    const utilsFile = utils.replace("@mailingui/themes", pathToThemes);
+    fs.writeFileSync(`${utilsPath}/utils.ts`, utilsFile);
 
     const settings = {
       basePath: options.path,

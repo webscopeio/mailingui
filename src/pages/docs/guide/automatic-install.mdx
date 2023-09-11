@@ -11,6 +11,17 @@ MailingUI is a set of _opinionated_ React components, built on top of [React.ema
 
 <Steps>
 
+### Create a React TypeScript Project
+
+Use your favorite framework and create a React TypeScript project where you can integrate MailingUI.
+
+<Callout type="warning" emoji="⚠️">
+  If you will write emails using MDX, we assume you have an integration to
+  compile MDX to JS, such as `@mdx-js/esbuild`, `@mdx-js/loader`,
+  `@mdx-js/node-loader`, or `@mdx-js/rollup` in place. If you don't, please
+  refer to [MDX Packages](https://mdxjs.com/packages/).
+</Callout>
+
 ### Initialize MailingUI
 
 Download all the necessary starting files for you to start working with MailingUI.
@@ -35,10 +46,28 @@ npx @mailingui/cli add [options] [COMPONENT_NAME]
 - `-a`, `--all` download all available components (default: false)
 - `-h`, `--help`` display help for command
 
+### Configure your path aliases (optional)
+
+Create path aliases to help you write email templates easier while using MailingUI
+
+```ts copy
+{
+  "compilerOptions": {
+    {...}
+    "paths": {
+      "@mailingui/components": ["./src/mailingui/components/index.ts"],
+      "@mailingui/themes": ["./src/mailingui/themes/index.ts"],
+      "@mailingui/utils": ["./src/mailingui/utils/index.ts"]
+    }
+  },
+}
+```
+
 </Steps>
 
 🥳 **Congratulations**, you are ready to create beautiful emails using React.
 
 <Callout type="info" emoji="ℹ️">
-  If you would like to learn more about what's happening under the hood, make sure to reference: [manual install](/docs/guide/manual-install)
+  If you would like to learn more about what's happening under the hood, make
+  sure to reference: [manual install](/docs/guide/manual-install)
 </Callout>

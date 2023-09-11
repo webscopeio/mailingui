@@ -4,22 +4,16 @@ description: Use the power of MDX to author your emails
 ---
 
 import { getComponentProps } from "@utils/components";
-import { BasicUsage } from "@components/docs/BasicUsage";
-import Installation from "@components/docs/installation.mdx";
-import { Examples } from "@components/docs/Examples";
+
+import { Installation } from "@components/docs/Installation";
+import { Example } from "@components/docs/Example";
 
 export const getStaticProps = async () => {
-  const { type, html, demoCode, mdx, sourceCode, examples } = await getComponentProps({
-    type: "markdown"
-  }) 
+  const { sourceCode, examples } = await getComponentProps("markdown", "Markdown.tsx");
 
   return {
     props: {
       ssg: {
-        type,
-        html,
-        demoCode,
-        mdx,
         sourceCode,
         examples,
       },
@@ -33,12 +27,22 @@ Use the power of MDX to author your emails
 
 ## Basic Usage
 
-<BasicUsage />
+<Example name="Demo" hasMDX />
 
 ## Installation
 
-<Installation cli="markdown" />
+<Installation>
+  ```bash copy
+  npx @mailingui/cli add [options] markdown
+  ```
+</Installation>
 
 ## Examples
 
-<Examples />
+### Custom Styles
+
+<Example name="CustomStyles" height={600} hasMDX />
+
+### Newsletter
+
+<Example name="Newsletter" height={600} hasMDX />

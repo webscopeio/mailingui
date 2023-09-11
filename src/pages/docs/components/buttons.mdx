@@ -3,24 +3,21 @@ title: Buttons - Components
 description: Build eye-catching emails with pre-made components
 ---
 
+import { Callout } from "nextra/components";
+
 import { getComponentProps } from "@utils/components";
-import { BasicUsage } from "@components/docs/BasicUsage";
-import Installation from "@components/docs/installation.mdx";
-import { Examples } from "@components/docs/Examples";
+
+import { Installation } from "@components/docs/Installation";
+import { Example } from "@components/docs/Example";
 
 export const getStaticProps = async () => {
-  const { type, html, demoCode, sourceCode, examples } = await getComponentProps({
-    type: "button"
-  }) 
+  const { sourceCode, examples } = await getComponentProps("button", "Button.tsx");
 
   return {
     props: {
       ssg: {
-        type,
-        html,
-        demoCode,
         sourceCode,
-        examples
+        examples,
       },
     },
   };
@@ -32,12 +29,42 @@ Drive user action with clickable buttons
 
 ## Basic Usage
 
-<BasicUsage />
+<Example name="Demo" height={175} />
 
 ## Installation
 
-<Installation cli="button" />
+<Installation>
+  ```bash copy
+  npx @mailingui/cli add [options] button
+  ```
+</Installation>
 
 ## Examples
 
-<Examples />
+### Color Variants
+
+<Example name="ColorVariants" height={312} />
+
+### Full Width
+
+<Example name="FullWidth" height={250} />
+
+### Rounded
+
+<Example name="Rounded" height={175} />
+
+<Callout type="warning" emoji="⚠️">
+  Note: Outlook has limited support for `border-radius` CSS property.
+</Callout>
+
+### Rounded Full Width
+
+<Example name="RoundedFullWidth" height={175} />
+
+<Callout type="warning" emoji="⚠️">
+  Note: Outlook has limited support for `border-radius` CSS property.
+</Callout>
+
+### Custom
+
+<Example name="Custom" height={175} />

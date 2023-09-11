@@ -2,7 +2,6 @@ import * as React from "react";
 
 import { baseUrl } from "../shared/assets";
 import { Wrapper } from "../shared/Wrapper";
-import { Button } from "../shared/Button";
 
 import Newsletter from "./newsletter.mdx";
 
@@ -15,7 +14,6 @@ export default function Email({
     <Markdown
       baseUrl={baseUrl}
       components={{
-        Button: (props) => <Button {...props} />,
         wrapper: (props) => <Wrapper {...props} />,
       }}
     >

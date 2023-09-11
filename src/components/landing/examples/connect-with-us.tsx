@@ -1,26 +1,29 @@
 import { Container, Row, Column } from "@react-email/components";
-import { SocialIcon, P, HR } from "@mailingui/components";
+import { P, HR, Img } from "@mailingui/components";
+import { baseUrl } from "src/emails/minimal/shared/assets";
 
 export default function ConnectWithUs() {
   return (
     <Container style={container}>
-      <P compact>
+      <P muted compact>
         Sincerely,
         <br /> Minimal Team
       </P>
       <HR style={{ margin: "12px 0" }} />
       <Row>
-        <Column>
-          <P compact>Connect with us</P>
+        <Column width="auto">
+          <P muted compact>
+            Connect with us
+          </P>
         </Column>
-        <Column width={44}>
-          <SocialIcon type="telegram" href="#" />
+        <Column width={42}>
+          <Img compact width={24} src={`${baseUrl}/icons/github.png`} />
         </Column>
-        <Column width={44}>
-          <SocialIcon type="twitter" href="#" />
+        <Column width={42}>
+          <Img compact width={24} src={`${baseUrl}/icons/linkedin.png`} />
         </Column>
-        <Column width={44}>
-          <SocialIcon type="whatsapp" href="#" />
+        <Column width={24}>
+          <Img compact width={24} src={`${baseUrl}/icons/twitter.png`} />
         </Column>
       </Row>
     </Container>
@@ -31,6 +34,4 @@ export default function ConnectWithUs() {
 const container = {
   maxWidth: 280,
   margin: "16px 0",
-  fontFamily:
-    "'Inter', 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif",
 };

@@ -1,98 +1,94 @@
 import fs from "fs";
 import { render } from "@react-email/render";
+import { Lang } from "shiki";
 import { getHighlighter, highlight } from "@utils/shiki";
 
-type getComponentPropsOptions = {
-  type: string;
+export const getComponentProps = async (type: string, filename: string) => {
+  const sourceCode = await getSourceCode(type, filename);
+  const examples = await getExamplesProps(type);
+
+  return { sourceCode, examples };
 };
 
-export const getComponentProps = async ({ type }: getComponentPropsOptions) => {
+export const getSourceCode = async (type: string, filename: string) => {
   const highlighter = await getHighlighter();
 
-  // Installation
-  const sourceCodeRaw = fs.readFileSync(
-    `./src/mailingui/components/${type}/${
-      type.charAt(0).toUpperCase() +
-      type.slice(1).replace(/-(\w)/g, (_, letter) => letter.toUpperCase())
-    }.tsx`,
+  const codeRaw = fs.readFileSync(
+    `./src/mailingui/components/${type}/${filename}`,
     "utf8"
   );
-  const sourceCode = await highlight(highlighter, sourceCodeRaw, "tsx");
+  return await highlight(highlighter, codeRaw, "tsx");
+};
 
-  // Basic Usage
-  const Component = (await import(`src/examples/${type}/Demo.tsx`)).default;
-  const html = render(<Component />, { pretty: true });
-  const demoCodeRaw = fs.readFileSync(
-    `./src/examples/${type}/Demo.tsx`,
-    "utf8"
-  );
-  const demoCode = await highlight(highlighter, demoCodeRaw, "tsx");
+export const getExamplesProps = async (type: string) => {
+  const highlighter = await getHighlighter();
 
-  // Examples
-  const filenames = fs
-    .readdirSync(`./src/examples/${type}`)
-    .filter((file) => file !== "Demo.tsx");
+  const filenames = fs.readdirSync(`./src/examples/${type}`);
   const mdxFilenames = filenames.filter((file) => file.includes(".mdx"));
+
   const examples = await Promise.all(
     filenames
-      .filter((file) => file.includes(".tsx"))
+      .filter((file) => /\.(tsx|jsx)$/.test(file))
       .map(async (file) => {
-        const name = file.replace(".tsx", "");
         const Component = (await import(`src/examples/${type}/${file}`))
           .default;
         const html = render(<Component />, { pretty: true });
-        const demoCodeRaw = fs.readFileSync(
+        const codeRaw = fs.readFileSync(
           `./src/examples/${type}/${file}`,
           "utf8"
         );
-        const demoCode = await highlight(highlighter, demoCodeRaw, "tsx");
+        const code = await highlight(highlighter, codeRaw, "tsx");
+        const markup = await highlight(highlighter, html, "html");
+
+        const name = file.replace(/\.[a-zA-Z0-9]+$/, "");
         const mdxFilename = mdxFilenames.find((file) => file.includes(name));
-        if (mdxFilename) {
-          const mdxRaw = fs.readFileSync(
-            `./src/examples/${type}/${mdxFilename}`,
-            "utf8"
-          );
-          const mdx = await highlight(highlighter, mdxRaw, "mdx");
+
+        if (!mdxFilename) {
           return {
             name,
-            type,
             html,
-            demoCode,
-            mdx,
+            code,
+            markup,
           };
         }
 
+        const mdxRaw = fs.readFileSync(
+          `./src/examples/${type}/${mdxFilename}`,
+          "utf8"
+        );
+        const mdx = await highlight(highlighter, mdxRaw, "mdx");
         return {
           name,
-          type,
           html,
-          demoCode,
+          code,
+          markup,
+          mdx,
         };
       })
   );
 
-  const mdxFilename = mdxFilenames.find((file) => file.includes("Demo.mdx"));
-  if (mdxFilename) {
-    const mdxRaw = fs.readFileSync(
-      `./src/examples/${type}/${mdxFilename}`,
-      "utf8"
-    );
-    const mdx = await highlight(highlighter, mdxRaw, "mdx");
-    return {
-      type,
-      html,
-      demoCode,
-      mdx,
-      sourceCode,
-      examples,
+  return examples.reduce<
+    Record<
+      string,
+      { html: string; code: string; markup: string; mdx: string | null }
+    >
+  >((res, example) => {
+    res[example.name] = {
+      html: example.html,
+      code: example.code,
+      markup: example.markup,
+      mdx: example.mdx ?? null,
     };
-  }
+    return res;
+  }, {});
+};
 
-  return {
-    type,
-    html,
-    demoCode,
-    sourceCode,
-    examples,
-  };
+export const getHighlightedCode = async (
+  filePath: string,
+  lang: Lang = "tsx"
+) => {
+  const highlighter = await getHighlighter();
+
+  const codeRaw = fs.readFileSync(filePath, "utf8");
+  return await highlight(highlighter, codeRaw, lang);
 };

@@ -3,24 +3,21 @@ title: Typography - Components
 description: Build eye-catching emails with pre-made components
 ---
 
+import { Callout } from "nextra/components";
+
 import { getComponentProps } from "@utils/components";
-import { BasicUsage } from "@components/docs/BasicUsage";
-import Installation from "@components/docs/installation.mdx";
-import { Examples } from "@components/docs/Examples";
+
+import { Installation } from "@components/docs/Installation";
+import { Example } from "@components/docs/Example";
 
 export const getStaticProps = async () => {
-  const { type, html, demoCode, sourceCode, examples } = await getComponentProps({
-    type: "typography"
-  }) 
+  const { sourceCode, examples } = await getComponentProps("typography", "Typography.tsx");
 
   return {
     props: {
       ssg: {
-        type,
-        html,
-        demoCode,
         sourceCode,
-        examples
+        examples,
       },
     },
   };
@@ -32,12 +29,62 @@ Beautiful typographic defaults for HTML you do control
 
 ## Basic Usage
 
-<BasicUsage />
+<Example name="Demo" />
+
+<Callout type="info" emoji="ℹ️">
+  Note: If you aren't excited in using all of those HTML tags, check the example [With MDX](#with-mdx), which uses our Markdown component to power email with MDX.
+</Callout>
 
 ## Installation
 
-<Installation cli="typography" />
+<Installation>
+  ```bash copy
+  npx @mailingui/cli add [options] typography
+  ```
+</Installation>
 
 ## Examples
 
-<Examples />
+### With MDX
+
+<Callout type="info" emoji="ℹ️">
+  Note: The cool thing about using MDX is that you can change per-email basis the styles you need. Here we'll set those headings a bit bolder and reduce the typography's flow. For more themeing see: [Theming](/docs/guide/theming)
+</Callout>
+
+<Example name="WithMDX" height={525} hasMDX />
+
+### Headings
+
+<Example name="Headings" height={525} />
+
+### Paragraphs
+
+<Example name="Paragraphs" height={525} />
+
+### Blockquotes
+
+<Example name="Blockquotes" height={240} />
+
+### Unordered List
+
+<Example name="UnorderedList" height={288} />
+
+### Ordered List
+
+<Example name="OrderedList" height={360} />
+
+### Link
+
+<Example name="Link" height={380} />
+
+### Inline Code
+
+<Example name="InlineCode" height={340} />
+
+### Images
+
+<Example name="Images" height={496} />
+
+### Images for Icons
+
+<Example name="Emojis" height={182} />

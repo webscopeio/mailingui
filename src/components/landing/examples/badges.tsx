@@ -1,21 +1,18 @@
-import * as React from "react";
 import { Container, Row, Column } from "@react-email/components";
-import { Badge, H1 } from "@mailingui/components";
+import { H2, Badge } from "@mailingui/components";
 
 export default function DotBadges() {
   return (
     <Container style={container}>
-      <Row style={row}>
-        <Column>
-          <H1 compact>Series B</H1>
-        </Column>
-      </Row>
       <Row>
         <Column>
-          <Badge variant="outline" dot>
+          <H2 compact style={{ fontWeight: 600, marginBottom: "12px" }}>
+            v1.0 Release
+          </H2>
+          <Badge compact style={{ marginRight: "6px" }}>
             New
-          </Badge>{" "}
-          <Badge variant="subtle" dot>
+          </Badge>
+          <Badge compact secondary>
             React
           </Badge>
         </Column>
@@ -27,11 +24,5 @@ export default function DotBadges() {
 // Styles
 const container = {
   maxWidth: 280,
-  margin: "16px 0",
-  fontFamily:
-    "'Inter', 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif",
-};
-
-const row = {
-  margin: "0 0 16px",
+  margin: "12px 0",
 };

@@ -13,10 +13,10 @@ import {
 import { MDXComponents } from "mdx/types";
 import Example from "./Newsletter.mdx";
 import { Markdown, Typography } from "@mailingui/components";
-import { type ThemeStyles } from "@mailingui/themes";
+import { type Theme } from "@mailingui/themes";
 import { cx } from "@mailingui/utils";
 
-const styles: ThemeStyles = {
+const theme: Theme = {
   headings: {
     fontWeight: 600,
     color: "#0dba0d",
@@ -38,7 +38,7 @@ const components: MDXComponents = {
       small
       muted
       style={cx(["text"], {
-        styles,
+        theme,
       })}
       {...props}
     />
@@ -67,7 +67,7 @@ export default function Email() {
         <Container style={container}>
           <Row>
             <Column>
-              <Markdown styles={styles} components={components}>
+              <Markdown theme={theme} components={components}>
                 <Example title="newsletter.news" />
               </Markdown>
             </Column>
@@ -79,12 +79,12 @@ export default function Email() {
 }
 
 export const body: React.CSSProperties = {
-  backgroundColor: "#ededed", // Background color outside container
+  backgroundColor: "#fff", // Background color outside container
   margin: 0, // Margin reset
 };
 
 export const container: React.CSSProperties = {
-  backgroundColor: "#f2f2f2", // Email background color
+  backgroundColor: "#fff", // Email background color
   padding: "60px 30px",
-  maxWidth: "650px", // Estalbish the maximum size of the email
+  maxWidth: "600px", // Estalbish the maximum size of the email
 };

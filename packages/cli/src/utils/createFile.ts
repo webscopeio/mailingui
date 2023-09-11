@@ -26,10 +26,10 @@ export async function createFile(
 
   const filepath = `${directoryPath}/${path.basename(component.path)}`;
   const pathToThemes = path.relative(directoryPath, `${basePath}/themes`);
-  const componentFileWithUpdateTheme = component.file.replace(
-    "@mailingui/themes",
-    pathToThemes
-  );
+  const pathToUtils = path.relative(directoryPath, `${basePath}/utils`);
+  const updatedComponent = component.file
+    .replace("@mailingui/themes", pathToThemes)
+    .replace("@mailingui/utils", pathToUtils);
 
   if (fs.existsSync(filepath) && !overwrite) {
     const response = await prompts({
@@ -44,7 +44,17 @@ export async function createFile(
     }
   }
 
-  fs.writeFileSync(filepath, componentFileWithUpdateTheme);
+  const index = fs.readFileSync(`${basePath}/components/index.ts`, "utf8");
+  const indexLine = `\nexport { ${
+    componentName.charAt(0).toUpperCase() + componentName.slice(1)
+  } } from "./${componentName}/${
+    componentName.charAt(0).toUpperCase() + componentName.slice(1)
+  }";\n`;
+  if (!index.includes(indexLine)) {
+    const updatedIndex = index + indexLine;
+    fs.writeFileSync(`${basePath}/components/index.ts`, updatedIndex);
+  }
+  fs.writeFileSync(filepath, updatedComponent);
   console.log(
     `Component ${chalk.yellow(
       componentName

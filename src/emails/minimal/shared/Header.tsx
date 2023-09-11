@@ -1,8 +1,10 @@
 import * as React from "react";
-import { Column, Img, Row } from "@react-email/components";
+import { Column, Row } from "@react-email/components";
+
 import { baseUrl } from "./assets";
 import { row } from "./styles";
-import { H3, HR } from "@mailingui/components";
+
+import { H3, HR, Img } from "@mailingui/components";
 
 export const Header: React.FC = () => {
   return (
@@ -10,6 +12,7 @@ export const Header: React.FC = () => {
       <Row style={row}>
         <Column width={38} height={34}>
           <Img
+            compact
             width={34}
             height={34}
             src={`${baseUrl}/star.png`}
@@ -17,7 +20,9 @@ export const Header: React.FC = () => {
           />
         </Column>
         <Column>
-          <H3 compact>MINIMAL</H3>
+          <H3 compact>
+            MINIMAL
+          </H3>
         </Column>
       </Row>
       <Row style={row}>
