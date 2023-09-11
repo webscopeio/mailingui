@@ -1,5 +1,5 @@
 import fs from "fs";
-import { NextResponse } from "next/server";
+import type { NextApiRequest, NextApiResponse } from "next";
 
 const getFileProps = (path: string) => ({
   path,
@@ -35,10 +35,14 @@ const getComponents = (): Record<
   };
 };
 
-export const GET = async () => {
-  try {
-    return NextResponse.json({ components: getComponents() });
-  } catch (error) {
-    return NextResponse.error();
-  }
+type ResponseData = {
+  components: ReturnType<typeof getComponents>;
 };
+
+export default function handler(
+  req: NextApiRequest,
+  res: NextApiResponse<ResponseData>
+) {
+  const components = getComponents();
+  res.status(200).json({ components });
+}
