@@ -2,12 +2,7 @@ import * as React from "react";
 import { theme, type Theme } from "@mailingui/themes";
 
 export const cx = (
-  inputStyles: (
-    | keyof Theme
-    | React.CSSProperties
-    | undefined
-    | boolean
-  )[],
+  inputStyles: (keyof Theme | React.CSSProperties | undefined | boolean)[],
   config: {
     theme?: Theme;
   } = { theme }

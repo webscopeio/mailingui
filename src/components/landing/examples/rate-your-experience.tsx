@@ -1,10 +1,10 @@
-import { Container, Row, Column, Link } from "@react-email/components";
-import { Img, P } from "@mailingui/components";
+import { Container, Row, Column } from "@react-email/components";
+import { Link, Img, P } from "@mailingui/components";
 
 export default function RateYourExperience() {
   return (
     <Container style={container}>
-      <Row style={row}>
+      <Row>
         <Column>
           <P style={{ marginBottom: "12px" }}>Rate your experience:</P>
         </Column>
@@ -13,23 +13,20 @@ export default function RateYourExperience() {
         <Column align="center">
           <Link href="#">
             <Img
-              caption="Terrible"
+              width={36}
               src={"https://i.ibb.co/W3xxzyp/confounded-face.png"}
             />
           </Link>
         </Column>
         <Column align="center">
           <Link href="#">
-            <Img
-              caption="Okay"
-              src={"https://i.ibb.co/qy348qN/neutral-face.png"}
-            />
+            <Img width={36} src={"https://i.ibb.co/qy348qN/neutral-face.png"} />
           </Link>
         </Column>
         <Column align="center">
           <Link href="#">
             <Img
-              caption="Great"
+              width={36}
               src={"https://i.ibb.co/Qn1rS3S/similing-face.png"}
             />
           </Link>
@@ -37,7 +34,7 @@ export default function RateYourExperience() {
         <Column align="center">
           <Link href="#">
             <Img
-              caption="Excelent"
+              width={36}
               src={"https://i.ibb.co/Msz3Tqm/heart-eyes-face.png"}
             />
           </Link>
@@ -51,10 +48,4 @@ export default function RateYourExperience() {
 const container = {
   maxWidth: 280,
   margin: "16px 0 0",
-  fontFamily:
-    "'Inter', 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif",
-};
-
-const row = {
-  margin: "0 0 6px",
 };

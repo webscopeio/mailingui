@@ -3,6 +3,8 @@ title: Typography - Components
 description: Build eye-catching emails with pre-made components
 ---
 
+import { Callout } from "nextra/components";
+
 import { getComponentProps } from "@utils/components";
 
 import { Installation } from "@components/docs/Installation";
@@ -29,6 +31,10 @@ Beautiful typographic defaults for HTML you do control
 
 <Example name="Demo" />
 
+<Callout type="info" emoji="ℹ️">
+  Note: If you aren't excited in using all of those HTML tags, check the example [With MDX](#with-mdx), which uses our Markdown component to power email with MDX.
+</Callout>
+
 ## Installation
 
 <Installation>
@@ -38,6 +44,14 @@ Beautiful typographic defaults for HTML you do control
 </Installation>
 
 ## Examples
+
+### With MDX
+
+<Callout type="info" emoji="ℹ️">
+  Note: The cool thing about using MDX is that you can change per-email basis the styles you need. Here we'll set those headings a bit bolder and reduce the typography's flow. For more themeing see: [Theming](/docs/guide/theming)
+</Callout>
+
+<Example name="WithMDX" height={525} hasMDX />
 
 ### Headings
 
@@ -66,3 +80,11 @@ Beautiful typographic defaults for HTML you do control
 ### Inline Code
 
 <Example name="InlineCode" height={340} />
+
+### Images
+
+<Example name="Images" height={496} />
+
+### Images for Icons
+
+<Example name="Emojis" height={182} />

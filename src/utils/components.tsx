@@ -1,5 +1,6 @@
 import fs from "fs";
 import { render } from "@react-email/render";
+import { Lang } from "shiki";
 import { getHighlighter, highlight } from "@utils/shiki";
 
 export const getComponentProps = async (type: string, filename: string) => {
@@ -47,7 +48,7 @@ export const getExamplesProps = async (type: string) => {
             name,
             html,
             code,
-            markup
+            markup,
           };
         }
 
@@ -80,4 +81,14 @@ export const getExamplesProps = async (type: string) => {
     };
     return res;
   }, {});
+};
+
+export const getHighlightedCode = async (
+  filePath: string,
+  lang: Lang = "tsx"
+) => {
+  const highlighter = await getHighlighter();
+
+  const codeRaw = fs.readFileSync(filePath, "utf8");
+  return await highlight(highlighter, codeRaw, lang);
 };

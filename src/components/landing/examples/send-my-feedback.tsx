@@ -8,9 +8,9 @@ export default function SendMyFeedback() {
       <Row>
         <Column>
           <P style={{ marginBottom: "12px" }}>
-            Write a review of your own. Let us know what you think.
+            Write a review of your own:
           </P>
-          <Button href={"#"}>
+          <Button compact href={"#"}>
             Send My Feedback
           </Button>
         </Column>
@@ -23,6 +23,4 @@ export default function SendMyFeedback() {
 const container = {
   maxWidth: 280,
   margin: "16px 0",
-  fontFamily:
-    "'Inter', 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif",
 };

@@ -9,7 +9,7 @@ const H1: React.FC<
     compact?: boolean;
     theme?: Theme;
   }
-> = ({ compact, style, theme, ...props }) => (
+> = ({ compact, theme, style, ...props }) => (
   <h1
     style={cx(["global", "headings", "h1", compact && "compact", style], {
       theme,
@@ -23,7 +23,7 @@ const H2: React.FC<
     compact?: boolean;
     theme?: Theme;
   }
-> = ({ compact, style, theme, ...props }) => (
+> = ({ compact, theme, style, ...props }) => (
   <h2
     style={cx(["global", "headings", "h2", compact && "compact", style], {
       theme,
@@ -37,7 +37,7 @@ const H3: React.FC<
     compact?: boolean;
     theme?: Theme;
   }
-> = ({ compact, style, theme, ...props }) => (
+> = ({ compact, theme, style, ...props }) => (
   <h3
     style={cx(["global", "headings", "h3", compact && "compact", style], {
       theme,
@@ -51,7 +51,7 @@ const H4: React.FC<
     compact?: boolean;
     theme?: Theme;
   }
-> = ({ compact, style, theme, ...props }) => (
+> = ({ compact, theme, style, ...props }) => (
   <h4
     style={cx(["global", "headings", "h4", compact && "compact", style], {
       theme,
@@ -68,7 +68,7 @@ const P: React.FC<
     muted?: boolean;
     theme?: Theme;
   }
-> = ({ compact, lead, small, muted, style, theme, ...props }) => (
+> = ({ compact, lead, small, muted, theme, style, ...props }) => (
   <p
     style={cx(
       [
@@ -88,23 +88,28 @@ const P: React.FC<
 );
 
 const Blockquote: React.FC<
-  React.ComponentPropsWithoutRef<"blockquote"> & { theme?: Theme }
-> = ({ style, theme, ...props }) => (
+  React.ComponentPropsWithoutRef<"blockquote"> & {
+    compact?: boolean;
+    theme?: Theme;
+  }
+> = ({ compact, theme, style, ...props }) => (
   <blockquote
-    style={cx(["global", "text", "blockquote", style], { theme })}
+    style={cx(["global", "text", "blockquote", compact && "compact", style], {
+      theme,
+    })}
     {...props}
   />
 );
 
 const HR: React.FC<
   React.ComponentPropsWithoutRef<"hr"> & { theme?: Theme }
-> = ({ style, theme, ...props }) => (
+> = ({ theme, style, ...props }) => (
   <hr style={cx(["global", "hr", style], { theme })} {...props} />
 );
 
 const Code: React.FC<
   React.ComponentPropsWithoutRef<"code"> & { theme?: Theme }
-> = ({ style, theme, ...props }) => (
+> = ({ theme, style, ...props }) => (
   <code style={cx(["global", "code", style], { theme })} {...props} />
 );
 
@@ -115,7 +120,7 @@ const Link: React.FC<
     block?: boolean;
     theme?: Theme;
   }
-> = ({ small, muted, block, target = "_blank", style, theme, ...props }) => (
+> = ({ small, muted, block, target = "_blank", theme, style, ...props }) => (
   <a
     target={target}
     style={cx(
@@ -135,30 +140,43 @@ const Link: React.FC<
 
 const UL: React.FC<
   React.ComponentPropsWithoutRef<"ul"> & { theme?: Theme }
-> = ({ style, theme, ...props }) => (
+> = ({ theme, style, ...props }) => (
   <ul style={cx(["global", "ul", style], { theme })} {...props} />
 );
 
 const OL: React.FC<
   React.ComponentPropsWithoutRef<"ol"> & { theme?: Theme }
-> = ({ style, theme, ...props }) => (
+> = ({ theme, style, ...props }) => (
   <ol style={cx(["global", "ol", style], { theme })} {...props} />
 );
 
 const LI: React.FC<
   React.ComponentPropsWithoutRef<"li"> & { theme?: Theme }
-> = ({ style, theme, ...props }) => (
+> = ({ theme, style, ...props }) => (
   <li style={cx(["global", "text", "li", style], { theme })} {...props} />
 );
 
 const Img: React.FC<
-  React.ComponentPropsWithoutRef<"img"> & { caption?: string; theme?: Theme }
-> = ({ caption, theme, alt, src, width, height, style, ...props }) => (
+  React.ComponentPropsWithoutRef<"img"> & {
+    caption?: string;
+    compact?: boolean;
+    theme?: Theme;
+  }
+> = ({ caption, compact, theme, alt, src, width, height, style, ...props }) => (
   <figure style={cx(["figure"], { theme })}>
     <img
-      style={cx(["global", "img", Boolean(caption) && "compact", style], {
-        theme,
-      })}
+      style={cx(
+        [
+          "global",
+          "img",
+          Boolean(caption) && "compact",
+          compact && "compact",
+          style,
+        ],
+        {
+          theme,
+        }
+      )}
       alt={alt}
       src={src}
       width={width}
@@ -166,7 +184,11 @@ const Img: React.FC<
       {...props}
     />
     {caption && (
-      <figcaption style={cx(["global", "text", "small", "muted", "figcaption"], { theme })}>
+      <figcaption
+        style={cx(["global", "text", "small", "muted", "figcaption"], {
+          theme,
+        })}
+      >
         {caption}
       </figcaption>
     )}

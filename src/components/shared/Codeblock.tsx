@@ -5,12 +5,19 @@ import { transformHtmlCode } from "@utils/shiki";
 export const Codeblock = ({
   code,
   lang = "tsx",
+  filename,
 }: {
   code: string;
   lang?: string;
+  filename?: string;
 }) => {
   return (
-    <Pre data-theme="default" data-language={lang} hasCopyCode>
+    <Pre
+      filename={filename}
+      data-theme="default"
+      data-language={lang}
+      hasCopyCode
+    >
       <Code
         data-theme="default"
         data-language={lang}

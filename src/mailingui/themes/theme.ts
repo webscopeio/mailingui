@@ -170,7 +170,7 @@ export const theme: Theme = {
   },
   figcaption: {
     marginTop: `${remToPx(0.5)}`,
-    textAlign: "center"
+    textAlign: "center",
   },
   muted: {
     color: colors.muted,
@@ -202,7 +202,8 @@ export const theme: Theme = {
     marginBottom: `${remToPx(1)}`,
   },
   compact: {
-    margin: 0,
+    marginTop: 0,
+    marginBottom: 0,
   },
   rounded: {
     borderRadius: remToPx(1),
