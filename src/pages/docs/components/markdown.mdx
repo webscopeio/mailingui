@@ -3,6 +3,8 @@ title: Markdown - Components
 description: Use the power of MDX to author your emails
 ---
 
+import { Callout } from "nextra/components";
+
 import { getComponentProps } from "@utils/components";
 
 import { Installation } from "@components/docs/Installation";
@@ -25,6 +27,10 @@ export const getStaticProps = async () => {
 
 Use the power of MDX to author your emails
 
+<Callout type="warning" emoji="⚠️">
+  Note: There is no support for Context when using React Server Component. Please use the component directly in combination with the function `getMDXComponents`
+</Callout>
+
 ## Basic Usage
 
 <Example name="Demo" hasMDX />
@@ -33,7 +39,7 @@ Use the power of MDX to author your emails
 
 <Installation>
   ```bash copy
-  npx @mailingui/cli add [options] markdown
+  npx @mailingui/cli add markdown
   ```
 </Installation>
 
@@ -46,3 +52,7 @@ Use the power of MDX to author your emails
 ### Newsletter
 
 <Example name="Newsletter" height={600} hasMDX />
+
+### Usage with React Server Components
+
+<Example name="WithGetMDXComponents" height={600} hasMDX />

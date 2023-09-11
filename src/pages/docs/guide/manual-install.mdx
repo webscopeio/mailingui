@@ -81,7 +81,7 @@ Whether you call it MailingUI or not is up to you. We recommend setting up a wor
 Emails **just work differently**, there is no good solution for theming. Our components are styled using a theme config (fancy way of calling our theme object) that you can modify to fit your branding needs for quick and easy customization.
 
 <Callout type="info" emoji="ℹ️">
- We recommend creating an index file to manage all the exports from these files, specially if using path aliases.
+ We recommend creating an index file to manage all the exports from these files, specially if using path aliases. One for themes, one for utils.
 </Callout>
 
 <Code name="types" filename="/themes/types.ts" lang="ts"  />
@@ -104,6 +104,7 @@ Create path aliases to help you write email templates easier while using Mailing
 {
   "compilerOptions": {
     {...}
+    "baseUrl": ".",
     "paths": {
       "@mailingui/components": ["./src/mailingui/components/index.ts"],
       "@mailingui/themes": ["./src/mailingui/themes/index.ts"],
@@ -112,6 +113,10 @@ Create path aliases to help you write email templates easier while using Mailing
   },
 }
 ```
+
+<Callout type="info" emoji="ℹ️">
+  Path alias depends on where you decide to install your MailingUI components. Example above shows installation in `./src/mailingui`
+</Callout>
 
 </Steps>
 
