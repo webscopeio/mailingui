@@ -1,9 +1,10 @@
 import fs from "fs";
+import path from "path";
 import type { NextApiRequest, NextApiResponse } from "next";
 
-const getFileProps = (path: string) => ({
-  path,
-  file: fs.readFileSync(path, "utf8"),
+const getFileProps = (pathname: string) => ({
+  path: pathname,
+  file: fs.readFileSync(path.join(process.cwd(), pathname), "utf8"),
 });
 
 type SupportedComponents = "badge" | "button" | "typography" | "markdown";
