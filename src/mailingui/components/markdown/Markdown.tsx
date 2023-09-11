@@ -11,7 +11,7 @@ import { Typography } from "../typography/Typography";
 
 import { type Theme } from "@mailingui/themes";
 
-function getComponents({
+export function getMDXComponents({
   components,
   theme,
   baseUrl,
@@ -80,7 +80,7 @@ export const Markdown: React.FC<
   }>
 > = ({ components, theme = {}, baseUrl, children }) => {
   return (
-    <MDXProvider components={getComponents({ components, theme, baseUrl })}>
+    <MDXProvider components={getMDXComponents({ components, theme, baseUrl })}>
       {children}
     </MDXProvider>
   );

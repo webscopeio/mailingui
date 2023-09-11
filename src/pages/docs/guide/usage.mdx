@@ -26,12 +26,19 @@ Use any of your **MailingUI** components along with any other [React.email Compo
 
 ```ts copy filename="/emails/email.tsx"
 import * as React from "react";
-import { Html, Head, Body, Container, Row, Column } from "@react-email/components";
+import {
+  Html,
+  Head,
+  Body,
+  Container,
+  Row,
+  Column,
+} from "@react-email/components";
 
 import Demo from "./Demo.mdx";
-import { Markdown } from "@mailingui/components";
+import { Typography } from "@mailingui/components";
 
-export default function Email({ name }: { name: string }) {
+export default function Email({ greeting }: { greeting: string }) {
   return (
     <Html>
       <Head />
@@ -39,9 +46,7 @@ export default function Email({ name }: { name: string }) {
         <Container style={container}>
           <Row style={row}>
             <Column>
-              <Markdown>
-                <Demo name={name} />
-              </Markdown>
+              <Typography.P>{greeting}</Typography.P>
             </Column>
           </Row>
         </Container>
@@ -83,7 +88,7 @@ export async function POST() {
       to: "vorcak@webscope.io",
       subject: "Greetings",
       react: Email({
-        name: "Jan Vorcak",
+        greeting: "Hello, Jan Vorcak!",
       }),
     });
     return NextResponse.json(data);
