@@ -46,10 +46,10 @@ export async function createFile(
 
   const index = fs.readFileSync(`${basePath}/components/index.ts`, "utf8");
   const indexLine = `\nexport { ${
-    componentName.charAt(0).toUpperCase() + componentName.slice(1)
+    component.exports
   } } from "./${componentName}/${
     componentName.charAt(0).toUpperCase() + componentName.slice(1)
-  }";\n`;
+  }";\n`.replace(/,/g, ", ");
   if (!index.includes(indexLine)) {
     const updatedIndex = index + indexLine;
     fs.writeFileSync(`${basePath}/components/index.ts`, updatedIndex);
