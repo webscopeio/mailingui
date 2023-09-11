@@ -12,11 +12,11 @@ export default function handler(
   res: NextApiResponse<ResponseData>
 ) {
   const index = fs.readFileSync(
-    path.join(process.cwd(), "./src/mailingui/utils/index.ts"),
+    path.resolve("./src/mailingui/utils/index.ts"),
     "utf8"
   );
   const utils = fs.readFileSync(
-    path.join(process.cwd(), "./src/mailingui/utils/utils.ts"),
+    path.resolve("./src/mailingui/utils/utils.ts"),
     "utf8"
   );
   res.status(200).json({ index, utils });

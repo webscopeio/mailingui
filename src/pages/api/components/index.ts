@@ -4,7 +4,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 
 const getFileProps = (pathname: string) => ({
   path: pathname,
-  file: fs.readFileSync(path.join(process.cwd(), pathname), "utf8"),
+  file: fs.readFileSync(path.resolve(pathname), "utf8"),
 });
 
 type SupportedComponents = "badge" | "button" | "typography" | "markdown";
