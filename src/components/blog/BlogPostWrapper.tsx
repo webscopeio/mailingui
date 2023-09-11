@@ -10,7 +10,7 @@ export const BlogPostWrapper = ({
   children: React.ReactNode;
 }) => {
   const pathname = usePathname();
-  const slug = pathname.match(/\/([^/]+)$/)?.[1];
+  const slug = pathname?.match(/\/([^/]+)$/)?.[1];
   const registry = blogPostRegistry.find((item) => item.slug === slug);
 
   if (!registry) return null;

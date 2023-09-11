@@ -24,7 +24,7 @@ export const Newsletter: React.FC<{ children: React.ReactNode }> = ({
   const [isOpen, setIsOpen] = React.useState(false);
   const [ref, { width, height }] = useMeasure();
   const searchParams = useSearchParams();
-  const sub = searchParams.get("sub");
+  const sub = searchParams?.get("sub");
   const router = useRouter();
 
   React.useEffect(() => {
