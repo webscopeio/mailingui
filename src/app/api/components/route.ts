@@ -1,10 +1,9 @@
 import fs from "fs";
-import path from "path";
-import type { NextApiRequest, NextApiResponse } from "next";
+import { NextResponse } from "next/server";
 
-const getFileProps = (pathname: string) => ({
-  path: pathname,
-  file: fs.readFileSync(path.resolve(pathname), "utf8"),
+const getFileProps = (path: string) => ({
+  path,
+  file: fs.readFileSync(path, "utf8"),
 });
 
 type SupportedComponents = "badge" | "button" | "typography" | "markdown";
@@ -36,14 +35,7 @@ const getComponents = (): Record<
   };
 };
 
-type ResponseData = {
-  components: ReturnType<typeof getComponents>;
-};
-
-export default function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<ResponseData>
-) {
+export async function GET() {
   const components = getComponents();
-  res.status(200).json({ components });
+  return NextResponse.json({ components });
 }
