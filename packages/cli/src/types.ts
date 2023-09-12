@@ -1,6 +1,7 @@
 export type Component = {
-  dependencies: Array<string>;
+  type: string;
+  filename: string;
+  dependencies: string[];
   exports: string[];
-  path: string;
   file: string;
 };
