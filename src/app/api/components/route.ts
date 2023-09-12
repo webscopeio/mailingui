@@ -1,61 +1,86 @@
 import fs from "fs";
 import { NextResponse } from "next/server";
 
-const getFileProps = (path: string) => ({
-  path,
-  file: fs.readFileSync(path, "utf8"),
-});
+/**
+ * Supported Components that should be installable via CLI
+ */
+type supportedComponents = "badge" | "button" | "typography" | "markdown";
 
-type SupportedComponents = "badge" | "button" | "typography" | "markdown";
-
-const getComponents = (): Record<
-  SupportedComponents,
+// DO NOT MODIFY
+type ComponentRegistry = Record<
+  supportedComponents,
   {
-    dependencies: SupportedComponents[];
+    type: string;
+    filename: string;
+    dependencies: supportedComponents[];
     exports: string[];
-    path: string;
+    file?: string;
   }
-> => {
-  return {
-    badge: {
-      dependencies: [],
-      exports: ["Badge"],
-      ...getFileProps("./src/mailingui/components/badge/Badge.tsx"),
-    },
-    button: {
-      dependencies: [],
-      exports: ["Button"],
-      ...getFileProps("./src/mailingui/components/button/Button.tsx"),
-    },
-    typography: {
-      dependencies: [],
-      exports: [
-        "Typography",
-        "H1",
-        "H2",
-        "H3",
-        "H4",
-        "P",
-        "Blockquote",
-        "HR",
-        "Code",
-        "Link",
-        "UL",
-        "OL",
-        "LI",
-        "Img",
-      ],
-      ...getFileProps("./src/mailingui/components/typography/Typography.tsx"),
-    },
-    markdown: {
-      dependencies: ["badge", "button", "typography"],
-      exports: ["Markdown", "getMDXComponents"],
-      ...getFileProps("./src/mailingui/components/markdown/Markdown.tsx"),
-    },
-  };
+>;
+
+/**
+ * Component Registry required for CLI
+ */
+const componentRegistry: ComponentRegistry = {
+  badge: {
+    type: "badge",
+    filename: "Badge.tsx",
+    dependencies: [],
+    exports: ["Badge"],
+  },
+  button: {
+    type: "button",
+    filename: "Button.tsx",
+    dependencies: [],
+    exports: ["Button"],
+  },
+  typography: {
+    type: "typography",
+    filename: "Typography.tsx",
+    dependencies: [],
+    exports: [
+      "Typography",
+      "H1",
+      "H2",
+      "H3",
+      "H4",
+      "P",
+      "Blockquote",
+      "HR",
+      "Code",
+      "Link",
+      "UL",
+      "OL",
+      "LI",
+      "Img",
+    ],
+  },
+  markdown: {
+    type: "markdown",
+    filename: "Markdown.tsx",
+    dependencies: ["badge", "button", "typography"],
+    exports: ["Markdown", "getMDXComponents"],
+  },
+};
+
+// DO NOT MODIFY
+const getComponents = (components: ComponentRegistry) => {
+  return Object.entries(components).reduce(
+    (res, [key, component]) => ({
+      ...res,
+      [key]: {
+        ...component,
+        file: fs.readFileSync(
+          `./src/mailingui/components/${component.type}/${component.filename}`,
+          "utf8"
+        ),
+      },
+    }),
+    {}
+  );
 };
 
 export async function GET() {
-  const components = getComponents();
+  const components = getComponents(componentRegistry);
   return NextResponse.json({ components });
 }
