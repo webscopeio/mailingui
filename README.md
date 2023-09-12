@@ -2,9 +2,14 @@
 
 ## Description
 
-MailingUI is a set of _opinionated_ React components built on top of [React.email](https://react.email) designed to make the creation of emails easier.
+MailingUI is a set of _opinionated_ React components, built on top of [React.email](https://react.email), designed to make the creation of emails easier.
 
-All of our components are completely open-sourced and intended to be used as copy-and-paste snippets. Right now, we have no plans on creating an npm package for the components.
+> "We believe that email is an extremely important medium for people to communicate. However, we need to stop developing emails like 2010, and rethink how email can be done in 2022 and beyond. Email development needs a revamp. A renovation. Modernized for the way we build web apps today"  
+—[React.email](https://react.email).
+
+All of our components are completely **open-sourced** and intended for a
+*copy-and-paste* use. Currently, we don't have any plans in releasing MailingUI as an npm
+package.
 
 ## Documentation
 

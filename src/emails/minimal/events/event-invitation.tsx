@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { Wrapper } from "../shared/Wrapper";
+import { Wrapper } from "./shared/Wrapper";
 
 import EventInvitation from "./event-invitation.mdx";
 
