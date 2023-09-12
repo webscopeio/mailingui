@@ -28,7 +28,7 @@ export const getStaticProps = async () => {
 Use the power of MDX to author your emails
 
 <Callout type="warning" emoji="⚠️">
-  Note: There is no support for Context when using React Server Component. Please use the component directly in combination with the function `getMDXComponents`
+  Note: There is no support for Context when using React Server Components. Please use the MDX import directly in combination with the function `getMDXComponents`
 </Callout>
 
 ## Basic Usage
@@ -56,3 +56,7 @@ Use the power of MDX to author your emails
 ### Usage with React Server Components
 
 <Example name="WithGetMDXComponents" height={600} hasMDX />
+
+<Callout type="info" emoji="ℹ️">
+  Note: The Markdown component allows us to nest multiple MDX files within one another and preserve their styles. There is currently no workaround when using RSC for this, however using the MDX import directly in combination with the function `getMDXComponents` works the same with the tradeoff of losing the ability to nest multiple files.
+</Callout>

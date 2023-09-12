@@ -1,7 +1,7 @@
 import * as React from "react";
 
-import { baseUrl } from "../shared/assets";
-import { Wrapper } from "../shared/Wrapper";
+import { baseUrl } from "./shared/assets";
+import { Wrapper } from "./shared/Wrapper";
 
 import SubscriptionConfirmation from "./subscription-confirmation.mdx";
 
