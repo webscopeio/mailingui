@@ -5,32 +5,26 @@ import chalk from "chalk";
 import { Component } from "../types";
 
 export async function createFile(
-  componentName: string,
+  name: string,
   components: Record<string, Component>,
   basePath: string,
   overwrite?: boolean
 ) {
-  const component = components[componentName];
+  const component = components[name];
 
   for (const dependency of component.dependencies) {
     await createFile(dependency, components, basePath, overwrite);
   }
 
-  const directoryPath = `${basePath}/components/${path.basename(
-    path.dirname(component.path)
-  )}`;
+  const componentDir = `${basePath}/components/${component.type}`;
 
-  if (!fs.existsSync(directoryPath)) {
-    fs.mkdirSync(directoryPath, { recursive: true });
+  if (!fs.existsSync(componentDir)) {
+    fs.mkdirSync(componentDir, { recursive: true });
   }
 
-  const filepath = `${directoryPath}/${path.basename(component.path)}`;
-  const pathToThemes = path.relative(directoryPath, `${basePath}/themes`);
-  const pathToUtils = path.relative(directoryPath, `${basePath}/utils`);
-  const updatedComponent = component.file
-    .replace("@mailingui/themes", pathToThemes)
-    .replace("@mailingui/utils", pathToUtils);
+  const filepath = `${componentDir}/${component.filename}`;
 
+  // Overwrite prompt
   if (fs.existsSync(filepath) && !overwrite) {
     const response = await prompts({
       type: "confirm",
@@ -44,20 +38,32 @@ export async function createFile(
     }
   }
 
+  // Replace path aliases for relative paths
+  const pathToThemes = path.relative(componentDir, `${basePath}/themes`);
+  const pathToUtils = path.relative(componentDir, `${basePath}/utils`);
+  const updatedComponent = component.file
+    .replace("@mailingui/themes", pathToThemes)
+    .replace("@mailingui/utils", pathToUtils);
+
+  // Create component
+  fs.writeFileSync(filepath, updatedComponent);
+
+  // Export the component from index
   const index = fs.readFileSync(`${basePath}/components/index.ts`, "utf8");
-  const indexLine = `\nexport { ${
-    component.exports
-  } } from "./${componentName}/${
-    componentName.charAt(0).toUpperCase() + componentName.slice(1)
-  }";\n`.replace(/,/g, ", ");
+
+  const indexLine = `\nexport { ${component.exports} } from "./${
+    component.type
+  }/${component.filename.replace(/\.[^.]+$/, "")}";\n`;
+
   if (!index.includes(indexLine)) {
     const updatedIndex = index + indexLine;
     fs.writeFileSync(`${basePath}/components/index.ts`, updatedIndex);
   }
-  fs.writeFileSync(filepath, updatedComponent);
+
+  // Installation Success
   console.log(
     `Component ${chalk.yellow(
-      componentName
+      name
     )} downloaded successfully! You can find it at ${chalk.yellow(filepath)}\n`
   );
 }
