@@ -1,0 +1,12 @@
+{
+  "root": true,
+  "extends": [
+    "@webscopeio/eslint-config",
+    "next/core-web-vitals",
+    "plugin:tailwindcss/recommended",
+    "prettier"
+  ],
+  "rules": {
+    "@typescript-eslint/no-unused-vars": "error"
+  }
+}
