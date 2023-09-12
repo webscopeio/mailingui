@@ -1,0 +1,126 @@
+---
+title: Try it out - Getting Started
+description: An open source collection of email components and templates
+---
+
+import { Callout, Steps, FileTree } from "nextra/components";
+
+# Try it out
+
+MailingUI is a set of _opinionated_ React components, built on top of [React.email](https://react.email), designed to make the creation of emails easier. Before you continue, make sure to read [Getting Started - Introduction](/docs/guide/introduction).
+
+## Creating a preview environment
+
+We've created a starter template for you to try MailingUI and develop emails in a **preview environment**.
+
+<Callout type="info" emoji="ℹ️">
+  This template is heavily inspired in [React.email](https://react.email)
+  Preview mode.
+</Callout>
+
+MailingUI is incredibly flexible to work in any React Typescript project. In this example, we will experiment following this structure:
+
+<FileTree>
+  <FileTree.Folder name="emails" defaultOpen>
+    <FileTree.File name="Email.tsx" />
+    <FileTree.Folder name="mailingui" defaultOpen>
+      <FileTree.Folder name="components" defaultOpen />
+      <FileTree.Folder name="themes" defaultOpen />
+      <FileTree.Folder name="utils" defaultOpen />
+    </FileTree.Folder>
+  </FileTree.Folder>
+  <FileTree.Folder name="src" defaultOpen></FileTree.Folder>
+</FileTree>
+
+<Steps>
+### Clone the starter template
+
+The easiest way is to use Rich Harris' [Degit](https://github.com/Rich-Harris/degit). Choose where to create a new project and run the command:
+
+```bash copy
+# npm i -g degit
+degit webscopeio/mailingui/examples/preview preview
+cd preview
+
+pnpm i
+pnpm run dev
+```
+
+### Initialize MailingUI
+
+Download all the necessary starting files for you to start working with MailingUI.
+
+```shell copy
+npx @mailingui/cli init -p emails/mailingui
+```
+
+- `-p`, `--path` define base path to your MailingUI components (default: `"./src/mailingui"`)
+- `-o`, `--overwrite` overwrite existing configuration (default: false)
+- `-h`, `--help` display help for command
+
+### Add Component(s)
+
+Add all or specific components to your project. See [components](/docs/components) for the full list.
+
+```shell copy
+npx @mailingui/cli add --all
+```
+
+- `-o`, `--overwrite` automatically overwrite existing components (default: false)
+- `-a`, `--all` download all available components (default: false)
+- `-h`, `--help`` display help for command
+
+### Configure your path aliases (optional)
+
+```ts copy
+{
+  "compilerOptions": {
+    {...}
+    "baseUrl": ".",
+    "paths": {
+      "@mailingui/components": ["./emails/mailingui/components/index.ts"],
+      "@mailingui/themes": ["./emails/mailingui/themes/index.ts"],
+      "@mailingui/utils": ["./emails/mailingui/utils/index.ts"]
+    }
+  },
+}
+```
+
+</Steps>
+
+## Create emails in the `/emails` directory
+
+```ts copy
+import * as React from "react";
+import { Body, Container, Html } from "@react-email/components";
+import { P } from "@mailingui/components";
+
+export default function Demo() {
+  return (
+    <Html>
+      <Body style={body}>
+        <Container style={container}>
+          <P>
+            Once upon a time, in a far-off land, there was a very lazy king who
+            spent all day lounging on his throne. One day, his advisors came to
+            him with a problem: the kingdom was running out of money.
+          </P>
+        </Container>
+      </Body>
+    </Html>
+  );
+}
+
+export const body: React.CSSProperties = {
+  backgroundColor: "#fff", // Background color outside container
+  margin: 0, // Margin reset
+};
+
+export const container: React.CSSProperties = {
+  backgroundColor: "#fff", // Email background color
+  padding: "60px 30px",
+  maxWidth: "600px", // Estalbish the maximum size of the email
+};
+```
+
+🥳 **Congratulations**, you are ready to create beautiful emails using React.
