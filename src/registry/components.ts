@@ -2,6 +2,7 @@ import { type StaticImageData } from "next/image";
 
 import Badges from "public/images/components-preview/badges.png";
 import Buttons from "public/images/components-preview/buttons.png";
+import IconRow from "public/images/components-preview/icon-row.png";
 import Markdown from "public/images/components-preview/markdown.png";
 import Typography from "public/images/components-preview/typography.png";
 
@@ -24,6 +25,12 @@ export const componentTypes: ComponentMetadataType[] = [
     title: "Buttons",
     subtitle: "Drive user action with clickable buttons",
     image: Buttons,
+  },
+  {
+    type: "icon-row",
+    title: "Icon Row",
+    subtitle: "Drive user action with clickable row of icons",
+    image: IconRow,
   },
   {
     type: "markdown",
