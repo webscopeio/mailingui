@@ -162,38 +162,71 @@ const Img: React.FC<
     compact?: boolean;
     theme?: Theme;
   }
-> = ({ caption, compact, theme, alt, src, width, height, style, ...props }) => (
-  <figure style={cx(["figure"], { theme })}>
-    <img
-      style={cx(
-        [
-          "global",
-          "img",
-          Boolean(caption) && "compact",
-          compact && "compact",
-          style,
-        ],
-        {
-          theme,
-        }
-      )}
-      alt={alt}
-      src={src}
-      width={width}
-      height={height}
-      {...props}
-    />
-    {caption && (
+> = ({ caption, compact, theme, alt, src, width, height, style, ...props }) => {
+  if (!caption)
+    return (
+      <img
+        style={cx(
+          [
+            "global",
+            "img",
+            Boolean(caption) && "compact",
+            compact && "compact",
+            style,
+          ],
+          {
+            theme,
+          }
+        )}
+        alt={alt}
+        src={src}
+        width={width}
+        height={height}
+        {...props}
+      />
+    );
+  return (
+    <figure style={cx(["figure"], { theme })}>
+      <img
+        style={cx(
+          [
+            "global",
+            "img",
+            Boolean(caption) && "compact",
+            compact && "compact",
+            style,
+          ],
+          {
+            theme,
+          }
+        )}
+        alt={alt}
+        src={src}
+        width={width}
+        height={height}
+        {...props}
+      />
+
       <figcaption
-        style={cx(["global", "text", "small", "muted", "figcaption"], {
-          theme,
-        })}
+        style={cx(
+          [
+            "global",
+            "text",
+            "small",
+            "muted",
+            compact && "compact",
+            "figcaption",
+          ],
+          {
+            theme,
+          }
+        )}
       >
         {caption}
       </figcaption>
-    )}
-  </figure>
-);
+    </figure>
+  );
+};
 
 export const Typography = {
   H1,

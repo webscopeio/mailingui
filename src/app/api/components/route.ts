@@ -4,7 +4,12 @@ import { NextResponse } from "next/server";
 /**
  * Supported Components that should be installable via CLI
  */
-type supportedComponents = "badge" | "button" | "typography" | "markdown";
+type supportedComponents =
+  | "badge"
+  | "button"
+  | "typography"
+  | "markdown"
+  | "icon-row";
 
 // DO NOT MODIFY
 type ComponentRegistry = Record<
@@ -33,6 +38,12 @@ const componentRegistry: ComponentRegistry = {
     filename: "Button.tsx",
     dependencies: [],
     exports: ["Button"],
+  },
+  "icon-row": {
+    type: "icon-row",
+    filename: "IconRow.tsx",
+    dependencies: ["typography"],
+    exports: ["IconRow"],
   },
   typography: {
     type: "typography",

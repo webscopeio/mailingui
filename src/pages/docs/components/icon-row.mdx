@@ -1,0 +1,50 @@
+---
+title: Icon Row - Components
+description: Build eye-catching emails with pre-made components
+---
+
+import { Callout } from "nextra/components";
+
+import { getComponentProps } from "@utils/components";
+
+import { Installation } from "@components/docs/Installation";
+import { Example } from "@components/docs/Example";
+
+export const getStaticProps = async () => {
+  const { sourceCode, examples } = await getComponentProps("icon-row", "IconRow.tsx");
+
+  return {
+    props: {
+      ssg: {
+        sourceCode,
+        examples,
+      },
+    },
+  };
+};
+
+# Icon Row
+
+Drive user action with clickable icons
+
+## Basic Usage
+
+<Example name="Demo" height={198} />
+
+## Installation
+
+<Installation>
+  ```bash copy
+  npx @mailingui/cli add icon-row
+  ```
+</Installation>
+
+## Examples
+
+### Rating Emojis
+
+<Example name="RatingEmojis" height={198} />
+
+### Social Icons
+
+<Example name="SocialIcons" height={180} />
