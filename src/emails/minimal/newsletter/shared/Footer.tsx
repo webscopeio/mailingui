@@ -1,10 +1,10 @@
 import * as React from "react";
-import { Column, Row } from "@react-email/components";
+import { Column, Row, Section } from "@react-email/components";
 
 import { row } from "./styles";
 import { baseUrl } from "./assets";
 
-import { HR, Link, P, Img } from "@mailingui/components";
+import { HR, Link, P, IconRow } from "@mailingui/components";
 
 export const Footer: React.FC = () => (
   <>
@@ -59,29 +59,28 @@ export const Footer: React.FC = () => (
         <HR />
       </Column>
     </Row>
-    <Row style={row}>
-      <Column width={36}>
-        <Link href="#">
-          <Img width={24} src={`${baseUrl}/icons/github.png`} />
-        </Link>
-      </Column>
-      <Column width={36}>
-        <Link href="#">
-          <Img width={24} src={`${baseUrl}/icons/linkedin.png`} />
-        </Link>
-      </Column>
-      <Column width={36}>
-        <Link href="#">
-          <Img width={24} src={`${baseUrl}/icons/slack.png`} />
-        </Link>
-      </Column>
-      <Column width={36}>
-        <Link href="#">
-          <Img width={24} src={`${baseUrl}/icons/twitter.png`} />
-        </Link>
-      </Column>
-      <Column width="auto" />
-    </Row>
+    <Section style={row}>
+      <IconRow
+        icons={[
+          {
+            href: "#",
+            src: `${baseUrl}/icons/github.png`,
+          },
+          {
+            href: "#",
+            src: `${baseUrl}/icons/linkedin.png`,
+          },
+          {
+            href: "#",
+            src: `${baseUrl}/icons/slack.png`,
+          },
+          {
+            href: "#",
+            src: `${baseUrl}/icons/twitter.png`,
+          },
+        ]}
+      />
+    </Section>
     <Row style={row}>
       <Column>
         <P small muted>

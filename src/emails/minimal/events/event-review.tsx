@@ -4,7 +4,7 @@ import { Wrapper } from "./shared/Wrapper";
 
 import EventReview from "./event-review.mdx";
 
-import { Markdown } from "@mailingui/components";
+import { Markdown, IconRow } from "@mailingui/components";
 
 export default function Email({
   preview = "How was it?",
@@ -15,6 +15,7 @@ export default function Email({
     <Markdown
       components={{
         wrapper: (props) => <Wrapper {...props} />,
+        IconRow: (props) => <IconRow {...props} />,
       }}
     >
       <EventReview

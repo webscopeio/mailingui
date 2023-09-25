@@ -1,6 +1,8 @@
 export { Badge } from "./badge/Badge";
 export { Button } from "./button/Button";
 
+export { IconRow } from "./icon-row/IconRow";
+
 export {
   Typography,
   H1,
@@ -15,7 +17,7 @@ export {
   UL,
   OL,
   LI,
-  Img
+  Img,
 } from "./typography/Typography";
 
 export { Markdown, getMDXComponents } from "./markdown/Markdown";
