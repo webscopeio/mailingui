@@ -1,5 +1,5 @@
 import { Container, Row, Column } from "@react-email/components";
-import { P, HR, Img } from "@mailingui/components";
+import { P, HR, IconRow } from "@mailingui/components";
 import { baseUrl } from "src/emails/minimal/events/shared/assets";
 
 export default function ConnectWithUs() {
@@ -11,19 +11,30 @@ export default function ConnectWithUs() {
       </P>
       <HR style={{ margin: "12px 0" }} />
       <Row>
-        <Column width="auto">
-          <P muted compact>
-            Connect with us
+        <Column>
+          <P compact muted>
+            Contact us
           </P>
         </Column>
-        <Column width={42}>
-          <Img compact width={24} src={`${baseUrl}/icons/github.png`} />
-        </Column>
-        <Column width={42}>
-          <Img compact width={24} src={`${baseUrl}/icons/linkedin.png`} />
-        </Column>
-        <Column width={24}>
-          <Img compact width={24} src={`${baseUrl}/icons/twitter.png`} />
+        <Column>
+          <IconRow
+            compact
+            align="right"
+            icons={[
+              {
+                href: "#",
+                src: `${baseUrl}/icons/github.png`,
+              },
+              {
+                href: "#",
+                src: `${baseUrl}/icons/linkedin.png`,
+              },
+              {
+                href: "#",
+                src: `${baseUrl}/icons/twitter.png`,
+              },
+            ]}
+          />
         </Column>
       </Row>
     </Container>

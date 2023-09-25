@@ -9,7 +9,6 @@ import {
   Row,
 } from "@react-email/components";
 import { IconRow, P } from "@mailingui/components";
-import { baseUrl } from "src/emails/minimal/events/shared/assets";
 
 export default function Demo() {
   return (
@@ -21,7 +20,7 @@ export default function Demo() {
           <Row>
             <Column>
               <P compact muted>
-                Contact us
+                Are you satisfied?
               </P>
             </Column>
             <Column>
@@ -31,15 +30,15 @@ export default function Demo() {
                 icons={[
                   {
                     href: "#",
-                    src: `${baseUrl}/icons/github.png`,
+                    src: "https://i.ibb.co/mTFWRLS/thumbs-down.png",
                   },
                   {
                     href: "#",
-                    src: `${baseUrl}/icons/twitter.png`,
+                    src: "https://i.ibb.co/nc5tK5J/thumbs-up.png",
                   },
                 ]}
-                iconWidth={32}
-                iconGap={28}
+                iconWidth={38}
+                iconGap={24}
               />
             </Column>
           </Row>

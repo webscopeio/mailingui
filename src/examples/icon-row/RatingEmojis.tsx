@@ -34,7 +34,7 @@ export default function Demo() {
                 text: "Excelent",
               },
             ]}
-            iconWidth={45}
+            iconWidth={38}
           />
         </Container>
       </Body>

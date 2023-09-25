@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Body, Container, Head, Html, Preview } from "@react-email/components";
 import { IconRow } from "@mailingui/components";
+import { baseUrl } from "src/emails/minimal/events/shared/assets";
 
 export default function Demo() {
   return (
@@ -10,31 +11,28 @@ export default function Demo() {
       <Body style={body}>
         <Container style={container}>
           <IconRow
+            compact
             align="center"
-            fullWidth={true}
             icons={[
               {
                 href: "#",
-                src: "https://i.ibb.co/W3xxzyp/confounded-face.png",
-                text: "Terrible",
+                src: `${baseUrl}/icons/github.png`,
               },
               {
                 href: "#",
-                src: "https://i.ibb.co/qy348qN/neutral-face.png",
-                text: "Okay",
+                src: `${baseUrl}/icons/linkedin.png`,
               },
               {
                 href: "#",
-                src: "https://i.ibb.co/Qn1rS3S/similing-face.png",
-                text: "Great",
+                src: `${baseUrl}/icons/slack.png`,
               },
               {
                 href: "#",
-                src: "https://i.ibb.co/Msz3Tqm/heart-eyes-face.png",
-                text: "Excelent",
+                src: `${baseUrl}/icons/twitter.png`,
               },
             ]}
-            iconWidth={45}
+            iconWidth={32}
+            iconGap={28}
           />
         </Container>
       </Body>
