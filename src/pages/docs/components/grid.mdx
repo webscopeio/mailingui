@@ -1,0 +1,54 @@
+---
+title: Grid - Components
+description: Build eye-catching emails with pre-made components
+---
+
+import { Callout } from "nextra/components";
+
+import { getComponentProps } from "@utils/components";
+
+import { Installation } from "@components/docs/Installation";
+import { Example } from "@components/docs/Example";
+
+export const getStaticProps = async () => {
+  const { sourceCode, examples } = await getComponentProps("grid", "Grid.tsx");
+
+  return {
+    props: {
+      ssg: {
+        sourceCode,
+        examples,
+      },
+    },
+  };
+};
+
+# Grid
+
+Responsive content layouts without media queries
+
+## Basic Usage
+
+<Example name="Demo" height={285} />
+
+## Installation
+
+<Installation>
+  ```bash copy
+  npx @mailingui/cli add grid
+  ```
+</Installation>
+
+## Examples
+
+### Responsive Grid
+
+<Example name="Responsive" height={240} />
+
+### Custom Widths
+
+<Example name="CustomWidths" height={240} />
+
+### Nested Layouts
+
+<Example name="ThreeColumns" height={450} />
