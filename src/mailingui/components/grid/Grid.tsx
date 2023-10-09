@@ -3,7 +3,6 @@ import { Column, Row } from "@react-email/components";
 
 const BREAKPOINT = 480;
 const GAP = 4;
-const PADDING = 4;
 
 type CellProps = {
   width?: number;
@@ -32,7 +31,7 @@ const Cell: React.FC<React.PropsWithChildren<CellProps>> = ({
 };
 
 const Divider: React.FC<Omit<CellProps, "gap">> = ({
-  width = PADDING,
+  width = GAP,
   breakpoint = BREAKPOINT,
 }) => {
   return (
@@ -62,7 +61,9 @@ const Grid: React.FC<
     cellCount++;
     // Add a Divider after each Cell except for the last one
     if (index < React.Children.count(children) - 1 && gap) {
-      childrenWithDividers.push(<Divider key={`divider-${index}`} />);
+      childrenWithDividers.push(
+        <Divider width={gap} key={`divider-${index}`} />
+      );
       gapCount++;
     }
   });
