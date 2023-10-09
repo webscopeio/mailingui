@@ -7,6 +7,7 @@ import { NextResponse } from "next/server";
 type supportedComponents =
   | "badge"
   | "button"
+  | "grid"
   | "typography"
   | "markdown"
   | "icon-row";
@@ -38,6 +39,12 @@ const componentRegistry: ComponentRegistry = {
     filename: "Button.tsx",
     dependencies: [],
     exports: ["Button"],
+  },
+  grid: {
+    type: "grid",
+    filename: "Grid.tsx",
+    dependencies: [],
+    exports: ["Cell", "Grid"]
   },
   "icon-row": {
     type: "icon-row",
