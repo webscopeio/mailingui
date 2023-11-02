@@ -28,7 +28,11 @@ export const IconRow: React.FC<{
   return (
     <Row
       align={align}
-      style={{ width: fullWidth ? "100%" : colWidth * icons.length }}
+      style={{
+        width: fullWidth ? "100%" : colWidth * icons.length,
+        margin: "auto",
+      }}
+      width={fullWidth ? "100%" : colWidth * icons.length}
     >
       {icons.map(({ href, src, text }, i) => (
         <Column
@@ -37,13 +41,13 @@ export const IconRow: React.FC<{
           style={{
             paddingRight: fullWidth || i === icons.length - 1 ? 0 : iconGap,
           }}
-          width={fullWidth ? `${100 / icons.length - 1}%` : undefined}
+          width={fullWidth ? `${100 / icons.length - 1}%` : iconWidth}
         >
           <Link theme={theme} style={{ textDecoration: "none" }} href={href}>
             <Img
-              theme={theme}
-              compact={compact || Boolean(text)}
               caption={text}
+              compact={compact || Boolean(text)}
+              theme={theme}
               width={iconWidth}
               src={src}
             />

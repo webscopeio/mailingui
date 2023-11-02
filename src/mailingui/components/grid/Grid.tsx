@@ -27,6 +27,7 @@ const Cell: React.FC<React.PropsWithChildren<CellProps>> = ({
         width: `calc(${breakpoint ** 2}px - ${breakpoint * 100}%)`,
         verticalAlign: align,
       }}
+      width={`${minWidth}%`}
     >
       {children}
     </Column>
