@@ -1,6 +1,7 @@
 import { Column, Row } from "@react-email/components";
 import * as React from "react";
 import { Img, Link } from "../typography/Typography";
+import { Theme } from "@mailingui/themes";
 
 export const IconRow: React.FC<{
   compact?: boolean;
@@ -13,6 +14,7 @@ export const IconRow: React.FC<{
   }[];
   iconGap?: Extract<React.CSSProperties["gap"], number>;
   iconWidth?: Extract<React.CSSProperties["width"], number>;
+  theme?: Theme;
 }> = ({
   compact = false,
   align = "left",
@@ -20,6 +22,7 @@ export const IconRow: React.FC<{
   icons,
   iconGap = 16,
   iconWidth = 24,
+  theme,
 }) => {
   const colWidth = iconWidth + iconGap;
   return (
@@ -36,8 +39,9 @@ export const IconRow: React.FC<{
           }}
           width={fullWidth ? `${100 / icons.length - 1}%` : undefined}
         >
-          <Link style={{ textDecoration: "none" }} href={href}>
+          <Link theme={theme} style={{ textDecoration: "none" }} href={href}>
             <Img
+              theme={theme}
               compact={compact || Boolean(text)}
               caption={text}
               width={iconWidth}
