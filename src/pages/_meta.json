@@ -50,6 +50,12 @@
       "layout": "full"
     }
   },
+  "development": {
+    "title": "I Need Development",
+    "type": "page",
+    "href": "https://webscope.io",
+    "newWindow": true
+  },
   "404": {
     "title": "Not Found",
     "theme": {

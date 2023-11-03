@@ -48,3 +48,9 @@ article > main {
 .hover-brand-gradient:hover {
   @apply bg-gradient-to-br from-indigo-700 from-10% via-purple-600 via-30% to-pink-600 to-90% saturate-[115%];
 }
+
+.nextra-sidebar-container a[href="https://webscope.io"],
+.nextra-nav-container a[href="https://webscope.io"] span
+{
+  @apply underline underline-offset-[6px];
+}
