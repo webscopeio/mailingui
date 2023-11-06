@@ -14,6 +14,9 @@ import CustomerService from "./examples/customer-service";
 
 import { CTA } from "@components/ui/CTA";
 import { cn } from "@utils/cn";
+import { GridCardExample } from "./examples/grid-card-example";
+import { GridDataExample } from "./examples/grid-data-example";
+import CouponExample from "./examples/coupon-example";
 
 export const Homepage = () => {
   return (
@@ -99,9 +102,15 @@ export const Homepage = () => {
 };
 
 const EXAMPLE_GRID = {
-  0: [DotBadges, RegisterAnAccount, SendMyFeedback],
-  1: [InlineCode, BlockquoteExample, RateYourExperience, ConnectWithUs],
-  2: [Links, CustomerService, Footer],
+  0: [DotBadges, RegisterAnAccount, GridDataExample, SendMyFeedback],
+  1: [
+    InlineCode,
+    BlockquoteExample,
+    RateYourExperience,
+    CouponExample,
+    ConnectWithUs,
+  ],
+  2: [Links, CustomerService, GridCardExample, Footer],
 };
 
 const Wrapper: React.FC<{
