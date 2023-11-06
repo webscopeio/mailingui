@@ -107,6 +107,39 @@ export const Lead: React.FC<
 );
 ```
 
+## Using `applyTheme` utility for file-based theming
+
+When applying a theme, you have to provide the `theme` property on each individual usage of a themable component. This utility allows you to apply theme at the top of your files and use the components already with a theme included in your JSX syntax eliminating the need to specify it every time.
+
+```tsx copy filename="/components/Header.tsx"
+import * as React from "react";
+import { Column, Row } from "@react-email/components";
+
+import * as components from "@mailingui/components";
+import { applyTheme } from "emails/utils/applyTheme";
+
+import { theme } from "../theme";
+
+const { Img } = applyTheme(components, theme);
+
+export const Header: React.FC = () => {
+  return (
+    <Row>
+      <Column>
+        <Img
+          compact
+          width={119}
+          height={29}
+          src="/logo.png"
+          alt="Company Logo"
+        />
+      </Column>
+    </Row>
+  );
+};
+
+```
+
 ## Using MDX and context themes
 
 If you are using MDX and will need to update theme on an email-basis. You have the option to enable your components with a `theme` prop and pass it in your `cx` function. You do not need this if you plan to manage your themes exclusively with the theme config.
