@@ -29,7 +29,7 @@ export function applyTheme<T extends ApplyThemeType>(
   components: T,
   theme: Theme
 ): Without<T, "getMDXComponents" | "Grid" | "Cell"> {
-  let themables = {};
+  const themables = {};
 
   Object.entries(components).forEach(([key, comp]) => {
     if (typeof comp !== "function") return;
