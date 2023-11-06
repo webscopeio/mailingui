@@ -1,7 +1,7 @@
 import * as React from "react";
 import Link from "next/link";
 import { email, safeParse, string } from "valibot";
-import { ExternalLinkIcon } from "lucide-react";
+import { ExternalLinkIcon, MailIcon } from "lucide-react";
 import { WebscopeLogo } from "@components/WebscopeLogo";
 import { CTA } from "@components/ui/CTA";
 
@@ -41,6 +41,15 @@ export const Footer = () => {
           </span>
         </div>
         <div className="space-y-2">
+          <p className="flex items-center gap-x-2 text-gray-400">
+            <MailIcon className="h-5 w-5" />
+            <Link
+              className="font-semibold underline"
+              href="mailto:hello@mailingui.com"
+            >
+              hello@mailingui.com
+            </Link>
+          </p>
           <p className="text-sm text-gray-400">Join our Newsletter</p>
           <form
             onSubmit={(e) => {

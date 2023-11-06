@@ -6,6 +6,15 @@ import { Footer } from "@components/shared/Footer";
 
 const theme = {
   logo: <MailingUILogo />,
+  banner: {
+    key: `${Math.random()} Contact Banner`,
+    text: (
+      <a href="mailto:hello@mailingui.com" target="_blank">
+        Need help with your emails? Contact us at{" "}
+        <span style={{ textDecoration: "underline" }}>hello@mailingui.com</span>
+      </a>
+    ),
+  },
   project: {
     link: "https://github.com/webscopeio/mailingui",
   },
