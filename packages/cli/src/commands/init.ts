@@ -96,7 +96,7 @@ export const init = new Command()
       `${options.path}/themes`
     );
     const utilsFile = utils.replace("@mailingui/themes", pathToThemes);
-    fs.writeFileSync(`${utilsPath}/utils.ts`, utilsFile);
+    fs.writeFileSync(`${utilsPath}/utils.tsx`, utilsFile);
 
     const settings = {
       basePath: options.path,
