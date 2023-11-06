@@ -7,12 +7,14 @@ const GAP = 4;
 type CellProps = {
   width?: number;
   breakpoint?: number;
+  align?: "top" | "middle" | "bottom";
   gap?: number;
 };
 
 const Cell: React.FC<React.PropsWithChildren<CellProps>> = ({
   width = 50,
   breakpoint = BREAKPOINT,
+  align = "middle",
   children,
 }) => {
   const minWidth = width > 100 ? 100 : width;
@@ -23,7 +25,9 @@ const Cell: React.FC<React.PropsWithChildren<CellProps>> = ({
         minWidth: `${minWidth}%`,
         maxWidth: "100%",
         width: `calc(${breakpoint ** 2}px - ${breakpoint * 100}%)`,
+        verticalAlign: align,
       }}
+      width={`${minWidth}%`}
     >
       {children}
     </Column>
