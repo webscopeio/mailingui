@@ -102,15 +102,16 @@ export const Homepage = () => {
 };
 
 const EXAMPLE_GRID = {
-  0: [DotBadges, RegisterAnAccount, GridDataExample, SendMyFeedback],
+  0: [DotBadges, RegisterAnAccount, GridCardExample],
   1: [
     InlineCode,
     BlockquoteExample,
+    GridDataExample,
     RateYourExperience,
+
     CouponExample,
-    ConnectWithUs,
   ],
-  2: [Links, CustomerService, GridCardExample, Footer],
+  2: [Links, CustomerService, SendMyFeedback, ConnectWithUs, Footer],
 };
 
 const Wrapper: React.FC<{
