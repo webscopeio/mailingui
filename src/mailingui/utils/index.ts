@@ -1,1 +1,1 @@
-export { cx } from "./utils"
+export { cx, applyTheme } from "./utils";

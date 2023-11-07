@@ -8,7 +8,7 @@ const round = (num: number) =>
     .replace(/(\.[0-9]+?)0+$/, "$1")
     .replace(/\.0$/, "");
 
-const remToPx = (rem: number) => `${round(rem * 16)}px`;
+export const remToPx = (rem: number) => `${round(rem * 16)}px`;
 
 // TYPE DEFINITIONS
 
