@@ -9,6 +9,7 @@ type supportedComponents =
   | "button"
   | "grid"
   | "typography"
+  | "mdx-components"
   | "markdown"
   | "icon-row";
 
@@ -44,7 +45,7 @@ const componentRegistry: ComponentRegistry = {
     type: "grid",
     filename: "Grid.tsx",
     dependencies: [],
-    exports: ["Cell", "Grid"]
+    exports: ["Cell", "Grid"],
   },
   "icon-row": {
     type: "icon-row",
@@ -73,11 +74,17 @@ const componentRegistry: ComponentRegistry = {
       "Img",
     ],
   },
+  "mdx-components": {
+    type: "markdown",
+    filename: "getMDXComponents.tsx",
+    dependencies: ["badge", "button", "typography"],
+    exports: ["getMDXComponents"],
+  },
   markdown: {
     type: "markdown",
     filename: "Markdown.tsx",
-    dependencies: ["badge", "button", "typography"],
-    exports: ["Markdown", "getMDXComponents"],
+    dependencies: ["badge", "button", "typography", "mdx-components"],
+    exports: ["Markdown"],
   },
 };
 

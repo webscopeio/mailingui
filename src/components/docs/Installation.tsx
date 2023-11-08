@@ -11,7 +11,7 @@ import { Codeblock } from "@components/shared/Codeblock";
 export const Installation: React.FC<React.PropsWithChildren> = ({
   children,
 }) => {
-  const { sourceCode } = useData();
+  const { sourceCode, sourceCodeExtra } = useData();
   return (
     <>
       <InstallationInstructions />
@@ -22,6 +22,7 @@ export const Installation: React.FC<React.PropsWithChildren> = ({
         </Tab>
         <Tab>
           <Codeblock code={sourceCode} />
+          {sourceCodeExtra && <Codeblock code={sourceCodeExtra} />}
         </Tab>
       </Tabs>
     </>

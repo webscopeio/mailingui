@@ -12,11 +12,14 @@ import { Example } from "@components/docs/Example";
 
 export const getStaticProps = async () => {
   const { sourceCode, examples } = await getComponentProps("markdown", "Markdown.tsx");
+  const { sourceCode: sourceCodeExtra } = await getComponentProps("markdown", "getMDXComponents.tsx");
+
 
   return {
     props: {
       ssg: {
         sourceCode,
+        sourceCodeExtra,
         examples,
       },
     },
