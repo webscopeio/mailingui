@@ -26,7 +26,7 @@ type ColorVariants =
   | "destructive"
   | "destructive-foreground";
 
-type ThemeColors = Colors<ColorVariants>;
+export type ThemeColors<T extends string = never> = Colors<ColorVariants | T>;
 
 /**
  * Theme variants for MailingUI Components
