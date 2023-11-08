@@ -1,7 +1,7 @@
-import { Grid, Cell, P } from "@mailingui/components";
 import { Container } from "@react-email/components";
+import { Grid, Cell, P } from "@mailingui/components";
 
-export const GridDataExample = () => {
+export default function GridDataExample() {
   return (
     <Container style={container}>
       <Grid gap={6}>
@@ -20,7 +20,7 @@ export const GridDataExample = () => {
       </Grid>
     </Container>
   );
-};
+}
 
 // Styles
 const container = {
