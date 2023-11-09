@@ -1,7 +1,7 @@
-import { Img, P, Grid, Cell } from "@mailingui/components";
 import { Container } from "@react-email/components";
+import { Img, P, Grid, Cell } from "@mailingui/components";
 
-export const GridCardExample = () => {
+export default function GridCardExample() {
   return (
     <Container style={container}>
       <Grid>
@@ -37,7 +37,7 @@ export const GridCardExample = () => {
       </Grid>
     </Container>
   );
-};
+}
 
 // Styles
 const container = {

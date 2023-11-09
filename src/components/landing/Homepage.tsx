@@ -11,12 +11,12 @@ import BlockquoteExample from "./examples/blockquote-example";
 import Links from "./examples/links";
 import Footer from "./examples/footer";
 import CustomerService from "./examples/customer-service";
+import GridCardExample from "./examples/grid-card-example";
+import GridDataExample from "./examples/grid-data-example";
+import CouponExample from "./examples/coupon-example";
 
 import { CTA } from "@components/ui/CTA";
 import { cn } from "@utils/cn";
-import { GridCardExample } from "./examples/grid-card-example";
-import { GridDataExample } from "./examples/grid-data-example";
-import CouponExample from "./examples/coupon-example";
 
 export const Homepage = () => {
   return (
