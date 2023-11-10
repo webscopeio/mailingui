@@ -169,7 +169,7 @@ export const theme: Theme = {
     textDecoration: "none",
   },
   figcaption: {
-    marginTop: `${remToPx(0.5)}`,
+    paddingTop: `${remToPx(0.5)}`,
     textAlign: "center",
   },
   muted: {
