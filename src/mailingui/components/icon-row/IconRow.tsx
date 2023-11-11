@@ -25,7 +25,7 @@ export const IconRow: React.FC<{
   iconGap = 16,
   iconWidth = 24,
   iconHeight = iconWidth,
-  pb = 16,
+  pb,
   theme,
 }) => {
   const colWidth = iconWidth + iconGap;
@@ -51,6 +51,7 @@ export const IconRow: React.FC<{
             theme={theme}
             style={{
               textDecoration: "none",
+              display: "inline-block",
               paddingBottom: pb,
             }}
             href={href}
