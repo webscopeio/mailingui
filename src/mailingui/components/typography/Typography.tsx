@@ -166,8 +166,12 @@ const Img: React.FC<
 > = ({ caption, compact, theme, alt, src, width, height, style, ...props }) => {
   if (!caption)
     return (
-      <Row
+      <img
+        alt={alt}
+        src={src}
         width={width}
+        height={height}
+        {...props}
         style={cx(
           [
             "global",
@@ -180,11 +184,7 @@ const Img: React.FC<
             theme,
           }
         )}
-      >
-        <Column>
-          <img alt={alt} src={src} width={width} height={height} {...props} />
-        </Column>
-      </Row>
+      />
     );
   return (
     <figure style={cx(["figure"], { theme })}>
