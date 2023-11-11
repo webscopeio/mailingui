@@ -52,6 +52,7 @@ export const IconRow: React.FC<{
             style={{
               textDecoration: "none",
               display: "inline-block",
+              margin: 0,
               paddingBottom: pb,
             }}
             href={href}
