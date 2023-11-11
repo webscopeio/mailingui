@@ -44,6 +44,7 @@ export const IconRow: React.FC<{
           key={i}
           style={{
             paddingRight: fullWidth || i === icons.length - 1 ? 0 : iconGap,
+            paddingBottom: pb,
           }}
           width={fullWidth ? `${100 / icons.length - 1}%` : iconWidth}
         >
@@ -51,9 +52,7 @@ export const IconRow: React.FC<{
             theme={theme}
             style={{
               textDecoration: "none",
-              display: "inline-block",
               margin: 0,
-              paddingBottom: pb,
             }}
             href={href}
           >
