@@ -11,7 +11,7 @@ import {
 } from "@react-email/components";
 
 import Example from "./CustomStyles.mdx";
-import { getMDXComponents } from "@mailingui/components";
+import { getMDXComponents } from "@mailingui/utils";
 import { Theme } from "@mailingui/themes";
 
 const theme: Theme = {
