@@ -15,7 +15,7 @@ export const IconRow: React.FC<{
   iconGap?: Extract<React.CSSProperties["gap"], number>;
   iconWidth?: Extract<React.CSSProperties["width"], number>;
   iconHeight?: Extract<React.CSSProperties["height"], number>;
-  pb?: string | number;
+  paddingBottom?: string | number;
   theme?: Theme;
 }> = ({
   compact = false,
@@ -25,7 +25,7 @@ export const IconRow: React.FC<{
   iconGap = 16,
   iconWidth = 24,
   iconHeight = iconWidth,
-  pb,
+  paddingBottom,
   theme,
 }) => {
   const colWidth = iconWidth + iconGap;
@@ -44,7 +44,7 @@ export const IconRow: React.FC<{
           key={i}
           style={{
             paddingRight: fullWidth || i === icons.length - 1 ? 0 : iconGap,
-            paddingBottom: pb,
+            paddingBottom,
           }}
           width={fullWidth ? `${100 / icons.length - 1}%` : iconWidth}
         >
