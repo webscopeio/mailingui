@@ -23,4 +23,3 @@ export {
 } from "./typography/Typography";
 
 export { Markdown } from "./markdown/Markdown";
-export { getMDXComponents } from "./markdown/getMDXComponents";
