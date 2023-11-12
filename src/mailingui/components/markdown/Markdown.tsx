@@ -5,7 +5,7 @@ import { MDXProvider } from "@mdx-js/react";
 
 import { type MDXComponents } from "mdx/types";
 
-import { getMDXComponents } from "./getMDXComponents";
+import { getMDXComponents } from "../../utils";
 
 import { type Theme } from "@mailingui/themes";
 

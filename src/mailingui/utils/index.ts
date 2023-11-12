@@ -1,1 +1,1 @@
-export { cx, applyTheme } from "./utils";
+export { cx, applyTheme, getMDXComponents } from "./utils";
