@@ -44,7 +44,7 @@ const componentRegistry: ComponentRegistry = {
     type: "grid",
     filename: "Grid.tsx",
     dependencies: [],
-    exports: ["Cell", "Grid"]
+    exports: ["Cell", "Grid"],
   },
   "icon-row": {
     type: "icon-row",
@@ -77,7 +77,7 @@ const componentRegistry: ComponentRegistry = {
     type: "markdown",
     filename: "Markdown.tsx",
     dependencies: ["badge", "button", "typography"],
-    exports: ["Markdown", "getMDXComponents"],
+    exports: ["Markdown"],
   },
 };
 

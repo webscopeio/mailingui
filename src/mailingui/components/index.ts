@@ -22,4 +22,4 @@ export {
   Img,
 } from "./typography/Typography";
 
-export { Markdown, getMDXComponents } from "./markdown/Markdown";
+export { Markdown } from "./markdown/Markdown";
