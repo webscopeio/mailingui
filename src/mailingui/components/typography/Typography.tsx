@@ -1,8 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 import * as React from "react";
 
-import { Theme } from "@mailingui/themes";
-import { cx } from "@mailingui/utils";
+import { Theme } from "../../themes";
+import { cx } from "../../utils";
+import { Column, Row } from "@react-email/components";
 
 const H1: React.FC<
   React.ComponentPropsWithoutRef<"h1"> & {
@@ -166,6 +167,11 @@ const Img: React.FC<
   if (!caption)
     return (
       <img
+        alt={alt}
+        src={src}
+        width={width}
+        height={height}
+        {...props}
         style={cx(
           [
             "global",
@@ -178,34 +184,34 @@ const Img: React.FC<
             theme,
           }
         )}
-        alt={alt}
-        src={src}
-        width={width}
-        height={height}
-        {...props}
       />
     );
   return (
     <figure style={cx(["figure"], { theme })}>
-      <img
+      <Row
+        width={width}
         style={cx(
           [
             "global",
             "img",
             Boolean(caption) && "compact",
+            Boolean(caption) && {
+              marginBottom: 0,
+              paddingBottom: 0,
+            },
             compact && "compact",
+            { height },
             style,
           ],
           {
             theme,
           }
         )}
-        alt={alt}
-        src={src}
-        width={width}
-        height={height}
-        {...props}
-      />
+      >
+        <Column height={height}>
+          <img alt={alt} src={src} width={width} height={height} {...props} />
+        </Column>
+      </Row>
 
       <figcaption
         style={cx(
