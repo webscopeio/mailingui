@@ -163,7 +163,17 @@ const Img: React.FC<
     compact?: boolean;
     theme?: Theme;
   }
-> = ({ caption, compact, theme, alt, src, width, height, style, ...props }) => {
+> = ({
+  caption,
+  compact,
+  theme,
+  alt,
+  src,
+  width = "100%",
+  height,
+  style,
+  ...props
+}) => {
   if (!caption)
     return (
       <img
