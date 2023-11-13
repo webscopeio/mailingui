@@ -47,7 +47,7 @@ type ThemeVariants =
   | "destructive"
   | "rounded";
 
-export type Theme = Styles<ThemeVariants>;
+export type Theme<T extends string = never> = Styles<ThemeVariants | T>;
 
 // COLORS
 
