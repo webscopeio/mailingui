@@ -1,1 +1,1 @@
-export { theme, type Theme, remToPx } from "./theme";
+export { theme, type Theme, type ThemeColors, remToPx } from "./theme";
