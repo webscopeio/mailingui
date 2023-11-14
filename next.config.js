@@ -19,12 +19,12 @@ const nextConfig = {
       },
       {
         source: "/templates",
-        destination: "/templates/minimal/overview",
+        destination: "/templates/free/minimal",
         permanent: false,
       },
       {
-        source: "/templates/minimal",
-        destination: "/templates/minimal/overview",
+        source: "/templates/free",
+        destination: "/templates/free/minimal",
         permanent: false,
       },
     ];

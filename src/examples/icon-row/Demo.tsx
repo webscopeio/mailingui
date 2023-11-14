@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Body, Container, Head, Html, Preview } from "@react-email/components";
 import { IconRow } from "@mailingui/components";
-import { baseUrl } from "src/emails/minimal/events/shared/assets";
+import { baseUrl } from "src/emails/minimal/shared/assets";
 
 export default function Demo() {
   return (

@@ -1,4 +1,4 @@
-import { DownloadIcon } from "lucide-react";
+import { ArrowRightIcon } from "lucide-react";
 import { CTA } from "@components/ui/CTA";
 
 export const Header = ({
@@ -7,15 +7,17 @@ export const Header = ({
   title,
   description,
   downloadHref,
+  preview
 }: {
   tag: string;
   github: string;
   title: string;
   description: string;
-  downloadHref: string;
+  downloadHref?: string;
+  preview?: boolean;
 }) => {
   return (
-    <header className="space-y-4 border-b border-white/10 pb-10">
+    <header className="space-y-4">
       <div className="space-y-2">
         <div className="flex items-center gap-x-2 text-sm text-gray-400">
           <span>{tag}</span>
@@ -39,10 +41,17 @@ export const Header = ({
         </h1>
         <p className="text-gray-400">{description}</p>
       </div>
-      <CTA href={downloadHref}>
-        <DownloadIcon />
-        Download all
-      </CTA>
+      {downloadHref ? (
+        <CTA href={downloadHref}>
+          {preview ? "Go to Preview" : "Get templates"}
+          <ArrowRightIcon />
+        </CTA>
+      ) : (
+        <CTA disabled>
+          Coming soon
+          <ArrowRightIcon />
+        </CTA>
+      )}
     </header>
   );
 };

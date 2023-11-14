@@ -21,8 +21,7 @@
     "type": "page",
     "href": "/templates",
     "theme": {
-      "breadcrumb": false,
-      "toc": false
+      "breadcrumb": false
     }
   },
   "blog": {

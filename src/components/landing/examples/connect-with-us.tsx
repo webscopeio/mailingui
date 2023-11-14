@@ -1,6 +1,6 @@
 import { Container, Row, Column } from "@react-email/components";
 import { P, HR, IconRow } from "@mailingui/components";
-import { baseUrl } from "src/emails/minimal/events/shared/assets";
+import { baseUrl } from "src/emails/minimal/shared/assets";
 
 export default function ConnectWithUs() {
   return (
