@@ -49,6 +49,19 @@
       "layout": "full"
     }
   },
+  "newsletter": {
+    "title": "Newsleter",
+    "type": "page",
+    "href": "/newsletter",
+    "theme": {
+      "breadcrumb": false,
+      "footer": true,
+      "sidebar": false,
+      "toc": false,
+      "pagination": false,
+      "layout": "full"
+    }
+  },
   "404": {
     "title": "Not Found",
     "theme": {

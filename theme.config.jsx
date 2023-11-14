@@ -53,6 +53,8 @@ const theme = {
         return basePath + "/images/og/feedback.png";
       if (asPath.includes("/templates"))
         return basePath + "/images/og/templates.png";
+      if (asPath.includes("/newsletter"))
+        return basePath + "/images/og/newsletter.png";
       return basePath + "/images/og/homepage.png";
     };
 

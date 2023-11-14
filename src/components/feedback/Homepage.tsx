@@ -30,7 +30,7 @@ export const Homepage = () => {
         src={feedbackImage}
         alt="Feedback Image"
         quality={100}
-        className="lg:max-w-[500px]"
+        className="max-w-[400px] lg:max-w-[500px]"
         priority={true}
       />
     </div>
