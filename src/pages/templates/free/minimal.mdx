@@ -1,5 +1,5 @@
 ---
-title: Events - Minimal Templates
+title: Minimal Templates
 description: Modern email templates, crafted using MailingUI
 ---
 
@@ -8,7 +8,7 @@ import { Header } from "@components/templates/Header";
 import { Template } from "@components/templates/Template";
 
 export const getStaticProps = async () => {
-  const templates = await getTemplateProps("minimal", "events");
+  const templates = await getTemplateProps("minimal");
 
   return {
     props: {
@@ -21,27 +21,42 @@ export const getStaticProps = async () => {
 
 <div className="pt-2">
   <Header
-    tag="Minimal Templates"
+    tag="Free templates"
     github="MailingUI"
-    title="Events"
-    description="Events are a great way to get people together. Can be conference, a meetup, or a party."
-    downloadHref="https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/webscopeio/mailingui/tree/main/src/emails/minimal/events"
+    title="Minimal"
+    description="Minimal calls for a simple and clean design."
+    downloadHref="https://shop.mailingui.com/checkout/buy/5e030159-761b-4007-8cb2-16f83d26cf8f?dark=1"
   />
 </div>
 
+## Newsletters
 
-## Event Invitation
+### Subscription Confirmation
+
+<Template name="subscription-confirmation" height={800} hasMDX />
+
+### Subscription Success
+
+<Template name="subscription-success" height={800} hasMDX />
+
+### Newsletter
+
+<Template name="newsletter" height={800} hasMDX />
+
+## Events
+
+### Event Invitation
 
 <Template name="event-invitation" height={800} hasMDX />
 
-## Event Confirmation
+### Event Confirmation
 
 <Template name="event-confirmation" height={800} hasMDX />
 
-## Event Reminder
+### Event Reminder
 
 <Template name="event-reminder" height={800} hasMDX />
 
-## Event Review
+### Event Review
 
 <Template name="event-review" height={800} hasMDX />

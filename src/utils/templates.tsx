@@ -2,22 +2,21 @@ import fs from "fs";
 import { render } from "@react-email/render";
 import { getHighlighter, highlight } from "@utils/shiki";
 
-export const getTemplateProps = async (template: string, category: string) => {
+export const getTemplateProps = async (template: string) => {
   const highlighter = await getHighlighter();
 
-  const filenames = fs.readdirSync(`./src/emails/${template}/${category}`);
+  const filenames = fs.readdirSync(`./src/emails/${template}`);
   const mdxFilenames = filenames.filter((file) => file.includes(".mdx"));
   const templates = await Promise.all(
     filenames
       .filter((file) => file.includes(".tsx"))
       .map(async (file) => {
         const name = file.replace(".tsx", "");
-        const Component = (
-          await import(`src/emails/${template}/${category}/${file}`)
-        ).default;
+        const Component = (await import(`src/emails/${template}/${file}`))
+          .default;
         const html = render(<Component />, { pretty: true });
         const codeRaw = fs.readFileSync(
-          `./src/emails/${template}/${category}/${file}`,
+          `./src/emails/${template}/${file}`,
           "utf8"
         );
         const code = await highlight(highlighter, codeRaw, "tsx");
@@ -34,7 +33,7 @@ export const getTemplateProps = async (template: string, category: string) => {
           };
         }
         const mdxRaw = fs.readFileSync(
-          `./src/emails/${template}/${category}/${mdxFilename}`,
+          `./src/emails/${template}/${mdxFilename}`,
           "utf8"
         );
         const mdx = await highlight(highlighter, mdxRaw, "mdx");
