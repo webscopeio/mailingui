@@ -1,0 +1,17 @@
+# Order Confirmation
+
+Dear {props.firstName},<br/><br/>
+We would like to inform you that your order {props.orderNo} has been confirmed and is in progress!
+
+Following are items in your order:
+
+<Items items={props.items} />
+<br/>
+<Total total={props.total} />
+<br/>
+
+If you would like to see your order or change it, visit our site:
+
+<Button fullWidth href={props.orderUrl}>View Order Status</Button>
+
+If there is any mistake, please do not hesitate and contact our support. Thank you for shopping with us!

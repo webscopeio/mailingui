@@ -1,0 +1,12 @@
+# User {props.user} has requested access to {props.team}
+
+Hi {props.firstName},<br/><br/>
+User {props.user} has requested access to {props.team}. You can manage this request in user dashboard.
+
+<Badge src={props.userImage} alt={props.userImageAlt} name={props.user} />
+<br />
+<Button fullWidth href={props.dashboardUrl}>Manage Users</Button>
+
+If you have problems clicking the button, copy and paste this link: <Link href={props.dashboardUrl}>{props.dashboardUrl}</Link>
+
+Thank you for using MailingUI.

@@ -1,0 +1,17 @@
+# Account Deactivated
+
+Dear {props.firstName},<br /><br />
+Your account has been deactivated.
+
+<Spacer />
+
+**Reason:** {props.reason} <br />
+
+<Spacer />
+<br />
+
+You can request a re-activation in case you want to appeal this decision.
+
+<Button fullWidth href={props.reactivationLink}>Request Account Reactivation</Button>
+
+Any active subscriptions will be canceled automatically.

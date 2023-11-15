@@ -1,0 +1,20 @@
+# {props.hasExpired ? "Your Trial Has Expired" : "Trial Expiration Notice" }
+
+Dear {props.firstName},<br /><br />
+Your trial period {props.hasExpired ? "has ended." : "is nearing it's end." }
+{props.hasExpired ? "It has expired on" : "It will expire on" } **{props.expirationDate}**.
+We hope you liked MailingUI and will be interested in upgrading your subscription.
+
+<Spacer />
+
+Here are a few things you get with the subscription:
+
+* Premium Templates
+* Unlimited Access
+* **24/7** Support
+
+<Button fullWidth href={props.subscriptionUrl}>Upgrade My Subscription</Button>
+
+If you do not want to upgrade, please disregard this email.
+
+We thank you for trying us out and hope to see you in the future!

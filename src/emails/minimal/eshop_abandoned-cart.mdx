@@ -1,0 +1,15 @@
+# You still have items in your cart!
+
+Dear {props.firstName},<br/><br/>
+It seems like you still haven't completed the purchase, your cart is eagerly waiting for you!
+
+Items you forgot about:
+
+<Items items={props.items} />
+<br/>
+
+Click the button below and complete your purchase!
+
+<Button fullWidth href={props.orderUrl}>Complete Purchase</Button>
+
+If there is any mistake, please do not hesitate and contact our support. Thank you for shopping with us!

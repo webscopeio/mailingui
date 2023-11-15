@@ -1,0 +1,14 @@
+# You have been removed from {props.team}
+
+Dear {props.firstName},<br/><br/>
+You have been removed from team {props.team} on MailingUI.
+
+<Badge src={props.teamImage} alt={props.teamImageAlt} name={props.team} />
+<br/>
+{props.contactEmail && (
+    <P>If you think this is a mistake, you can contact {props.team} administrator:
+        {' '}<Link href={`mailto:${props.contactEmail}`}>{props.contactEmail}</Link>
+    </P>
+)}
+
+Thank you for using MailingUI.

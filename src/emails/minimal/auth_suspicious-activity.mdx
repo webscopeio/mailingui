@@ -1,0 +1,20 @@
+# Suspicious Activity Detected 
+
+Dear {props.firstName},<br /><br />
+We have noticed suspicious activity on your account. Please review the following information and decide further action:
+
+<Spacer />
+
+**Location:**&emsp;&emsp;&nbsp;{props.location} <br />
+**IP Address:**&emsp;&nbsp;{props.ipAddress} <br />
+**Datetime:**&emsp;&emsp;{props.date} <br />
+
+<Spacer />
+<br />
+
+In case this was not you, please proceed by resetting your password.
+If you have any more concerns or need further assistance, please contact our customer support team.
+
+<Button fullWidth href={props.resetLink}>Reset password</Button>
+
+If you initiated this login, please disregard this email.

@@ -1,0 +1,18 @@
+# Order Confirmation
+
+Dear {props.firstName},<br/><br/>
+Your order **{props.orderNo}** has been shipped and is soon coming to you!
+
+You can track the package status here.
+
+<Button fullWidth href={props.trackingUrl}>View Tracking</Button>
+
+<HR />
+<OrderHeader date={props.date} orderNo={props.orderNo} address={props.address} />
+<HR />
+<Items items={props.items} />
+<HR />
+<Total total={props.total} subTotal={props.subTotal} discount={props.discount} shipping={props.shipping} />
+<HR />
+
+If there is any mistake, please do not hesitate and contact our support. Thank you for shopping with us!

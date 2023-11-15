@@ -1,0 +1,12 @@
+# Join Team {props.team}
+
+Dear {props.firstName},<br/><br/>
+You have been invited to team {props.team} on MailingUI app. This invitation expires in **{props.expiration}**.
+
+<Badge src={props.teamImage} alt={props.teamImageAlt} name={props.team} />
+<br />
+<Button fullWidth href={props.joinUrl}>Join {props.team}</Button>
+
+If you have problems clicking the button, copy and paste this link: <Link href={props.joinUrl}>{props.joinUrl}</Link>
+
+Thank you for using MailingUI.
