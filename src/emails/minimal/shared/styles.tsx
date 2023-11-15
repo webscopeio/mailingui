@@ -61,7 +61,7 @@ export const getSharedMDXComponents = ({
   feedbackFooter?: boolean;
   isNewsletter?: boolean;
 }) => ({
-  wrapper: (props) => (
+  wrapper: (props: any) => (
     <Wrapper
       {...props}
       headerHeading={headerHeading}
@@ -69,25 +69,25 @@ export const getSharedMDXComponents = ({
       isNewsletter={isNewsletter}
     />
   ),
-  h1: (props) => (!headerHeading ? <H1 {...props} theme={theme} /> : null),
-  h2: (props) => (
+  h1: (props: any) => (!headerHeading ? <H1 {...props} theme={theme} /> : null),
+  h2: (props: any) => (
     <H2 {...props} theme={theme} style={{ color: colors.primary }} />
   ),
-  Button: (props) => (
+  Button: (props: any) => (
     <Row style={{ paddingBottom: remToPx(1.5) }}>
       <Column>
         <Button rounded {...props} theme={theme} style={{ marginBottom: 0 }} />
       </Column>
     </Row>
   ),
-  Spacer: (props) => (
+  Spacer: (props: any) => (
     <Row>
       <Column>
         <HR {...props} theme={theme} style={spacer} align="left" />
       </Column>
     </Row>
   ),
-  ColoredBlock: (props) => (
+  ColoredBlock: (props: any) => (
     <>
       <Row>
         <Column>
@@ -104,22 +104,22 @@ export const getSharedMDXComponents = ({
       </Row>
     </>
   ),
-  HR: (props) => (
+  HR: (props: any) => (
     <Row>
       <Column>
         <HR {...props} theme={theme} />
       </Column>
     </Row>
   ),
-  Items: (props) => (
+  Items: (props: any) => (
     <>
-      {props.items.map((item, index) => (
+      {props.items.map((item: any, index: any) => (
         <OrderItem key={[item.title, index].join()} {...item} index={index} />
       ))}
     </>
   ),
-  OrderHeader: (props) => <OrderHeader {...props} />,
-  Total: (props) => <OrderTotal {...props} />,
-  Rating: (props) => <Rating {...props} />,
-  Badge: (props) => <Badge {...props} />,
+  OrderHeader: (props: any) => <OrderHeader {...props} />,
+  Total: (props: any) => <OrderTotal {...props} />,
+  Rating: (props: any) => <Rating {...props} />,
+  Badge: (props: any) => <Badge {...props} />,
 });

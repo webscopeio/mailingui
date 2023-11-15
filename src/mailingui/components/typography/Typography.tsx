@@ -1,9 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 import * as React from "react";
 
+import { Column, Row } from "@react-email/components";
 import { Theme } from "../../themes";
 import { cx } from "../../utils";
-import { Column, Row } from "@react-email/components";
 
 const H1: React.FC<
   React.ComponentPropsWithoutRef<"h1"> & {
