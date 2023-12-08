@@ -4,14 +4,109 @@ description: Modern email templates, crafted using MailingUI
 ---
 
 import { Header } from "@components/templates/Header";
+import { PremiumTemplate } from "@components/templates/PremiumTemplate";
+
+export const getStaticProps = async () => {
+  const response = await fetch('https://preview.mailingui.com/api/templates');
+  if (!response.ok) {
+    throw new Error(`HTTP error! Status: ${response.status}`);
+  }
+
+  const { templates } = await response.json();
+
+  return {
+    props: {
+      ssg: {
+        templates,
+      },
+    },
+  };
+};
 
 <div className="pt-2">
   <Header
     tag="Premium templates"
     github="MailingUI"
-    title="Bianco (Coming soon)"
-    description="Take a sneak peak by launching our preview mode below:"
-    downloadHref="https://preview.mailingui.com/preview/bianco/auth_2fa"
-    preview
+    title="Bianco"
+    description="Part of MailingUI's Premium Templates Bundle"
+    downloadHref="https://shop.mailingui.com/checkout/buy/c22393be-2122-4afd-b2f5-48b382c26bb9"
   />
 </div>
+
+## User Authentication
+
+### Authentication 2FA
+
+<PremiumTemplate id="bianco/auth_2fa" height={800} />
+
+### Authentication Confirm Account
+
+<PremiumTemplate id="bianco/auth_confirm-account" height={680} />
+
+### Authentication Deactivated Account
+
+<PremiumTemplate id="bianco/auth_deactivated-account" height={860} />
+
+### Authentication Invitation Organization
+
+<PremiumTemplate id="bianco/auth_invitation-organisation" height={740} />
+
+### Authentication Reset Password
+
+<PremiumTemplate id="bianco/auth_reset-password" height={750} />
+
+### Authentication Sign In
+
+<PremiumTemplate id="bianco/auth_sign-in" height={750} />
+
+### Authentication Suspicious Activity
+
+<PremiumTemplate id="bianco/auth_suspicious-acitvity" height={1030} />
+
+### Authentication Trial Expiration
+
+<PremiumTemplate id="bianco/auth_trial-expiration" height={1180} />
+
+## E-commerce
+
+### E-shop Abandoned Cart
+
+<PremiumTemplate id="bianco/eshop_abandoned-cart" height={1410} />
+
+### E-shop Order Confirmation
+
+<PremiumTemplate id="bianco/eshop_order-confirmation" height={1190} />
+
+### E-shop Order Delivered
+
+<PremiumTemplate id="bianco/eshop_order-delivered" height={970} />
+
+### E-shop Order Shipment
+
+<PremiumTemplate id="bianco/eshop_order-shipment" height={1500} />
+
+### E-shop Review
+
+<PremiumTemplate id="bianco/eshop_review" height={1062} />
+
+## User Access
+
+### Users Team Invite
+
+<PremiumTemplate id="bianco/users_team-invite" height={910} />
+
+### Users Team Removed
+
+<PremiumTemplate id="bianco/users_team-removed" height={910} />
+
+### Users Team Request
+
+<PremiumTemplate id="bianco/users_team-request" height={1010} />
+
+### Users Unread Message
+
+<PremiumTemplate id="bianco/users_unread-message" height={910} />
+
+### Users Welcome
+
+<PremiumTemplate id="bianco/users_welcome" height={890} />

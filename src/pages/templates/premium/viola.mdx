@@ -4,14 +4,109 @@ description: Modern email templates, crafted using MailingUI
 ---
 
 import { Header } from "@components/templates/Header";
+import { PremiumTemplate } from "@components/templates/PremiumTemplate";
+
+export const getStaticProps = async () => {
+  const response = await fetch('https://preview.mailingui.com/api/templates');
+  if (!response.ok) {
+    throw new Error(`HTTP error! Status: ${response.status}`);
+  }
+
+  const { templates } = await response.json();
+
+  return {
+    props: {
+      ssg: {
+        templates,
+      },
+    },
+  };
+};
 
 <div className="pt-2">
   <Header
     tag="Premium templates"
     github="MailingUI"
-    title="Viola (Coming soon)"
-    description="Take a sneak peak by launching our preview mode below:"
-    downloadHref="https://preview.mailingui.com/preview/viola/auth_2fa"
-    preview
+    title="Viola"
+    description="Part of MailingUI's Premium Templates Bundle"
+    downloadHref="https://shop.mailingui.com/checkout/buy/c22393be-2122-4afd-b2f5-48b382c26bb9"
   />
 </div>
+
+## User Authentication
+
+### Authentication 2FA
+
+<PremiumTemplate id="viola/auth_2fa" height={715} />
+
+### Authentication Confirm Account
+
+<PremiumTemplate id="viola/auth_confirm-account" height={650} />
+
+### Authentication Deactivated Account
+
+<PremiumTemplate id="viola/auth_deactivated-account" height={830} />
+
+### Authentication Invitation Organization
+
+<PremiumTemplate id="viola/auth_invitation-organisation" height={710} />
+
+### Authentication Reset Password
+
+<PremiumTemplate id="viola/auth_reset-password" height={715} />
+
+### Authentication Sign In
+
+<PremiumTemplate id="viola/auth_sign-in" height={715} />
+
+### Authentication Suspicious Activity
+
+<PremiumTemplate id="viola/auth_suspicious-acitvity" height={950} />
+
+### Authentication Trial Expiration
+
+<PremiumTemplate id="viola/auth_trial-expiration" height={940} />
+
+## E-commerce
+
+### E-shop Abandoned Cart
+
+<PremiumTemplate id="viola/eshop_abandoned-cart" height={1150} />
+
+### E-shop Order Confirmation
+
+<PremiumTemplate id="viola/eshop_order-confirmation" height={1160} />
+
+### E-shop Order Delivered
+
+<PremiumTemplate id="viola/eshop_order-delivered" height={1070} />
+
+### E-shop Order Shipment
+
+<PremiumTemplate id="viola/eshop_order-shipment" height={1480} />
+
+### E-shop Review
+
+<PremiumTemplate id="viola/eshop_review" height={1120} />
+
+## User Access
+
+### Users Team Invite
+
+<PremiumTemplate id="viola/users_team-invite" height={880} />
+
+### Users Team Removed
+
+<PremiumTemplate id="viola/users_team-removed" height={780} />
+
+### Users Team Request
+
+<PremiumTemplate id="viola/users_team-request" height={910} />
+
+### Users Unread Message
+
+<PremiumTemplate id="viola/users_unread-message" height={620} />
+
+### Users Welcome
+
+<PremiumTemplate id="viola/users_welcome" height={650} />
